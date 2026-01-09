@@ -2,8 +2,8 @@ package com.andreafilice.lavorami;
 
 public class EventDescriptor {
     protected String title;
-    protected int titleIcon;
-    protected int tipeOfTransport;
+    protected String titleIcon;
+    protected String typeOfTransport;
     protected String roads;
     protected String[] lines;
     protected String startDate;
@@ -11,6 +11,17 @@ public class EventDescriptor {
     protected String details;
     protected String company;
 
+    public EventDescriptor(String title, String titleIcon, String typeOfTransport, String roads, String[] lines, String startDate, String endDate, String details, String company) {
+        this.title = title;
+        this.titleIcon = titleIcon;
+        this.typeOfTransport = typeOfTransport;
+        this.roads = roads;
+        this.lines = lines;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.details = details;
+        this.company = company;
+    }
 
     public int getTitleIconID(String swiftIconName){
         switch(swiftIconName) {
@@ -53,5 +64,41 @@ public class EventDescriptor {
 
         }
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getTitleIcon() {
+        return titleIcon;
+    }
+
+    public String getTypeOfTransport() {
+        return typeOfTransport;
+    }
+
+    public String getRoads() {
+        return roads;
+    }
+
+    public String[] getLines() {
+        return lines;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public String getCompany() {
+        return company;
     }
 }
