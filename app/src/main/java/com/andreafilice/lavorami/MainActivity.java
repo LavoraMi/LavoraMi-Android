@@ -84,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
         //* CHIP GROUP (FILTRI)
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
 
+        if(filterGroup != null){
+            filterGroup.check(R.id.chipAll);
+        }
+
         //* SEARCH BAR
         EditText editSearch = findViewById(R.id.editSearch);
         editSearch.addTextChangedListener(new TextWatcher() {
@@ -158,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                     eventsDisplay = response.body();
                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    WorkAdapter adapter = new WorkAdapter(eventsDisplay);
+                    adapter = new WorkAdapter(eventsDisplay);
                     adapter.setFilteredList(eventsDisplay);
                     recyclerView.setAdapter(adapter);
                     Log.d("SUCCESS","Oggetti caricati:" +events.size());
@@ -203,34 +207,60 @@ public class MainActivity extends AppCompatActivity {
         if (events == null || events.isEmpty()) {
             return;
         }
+
         List<EventDescriptor> filtrata = new ArrayList<>();
         long oggi = System.currentTimeMillis();
+
         for (EventDescriptor item : events) {
             switch (categoria) {
-                case "Treno":
-                    if (isTreno(item)) filtrata.add(item);
+                case "tutti":
+                    filtrata.add(item);
                     break;
 
-                case "Metropolitana":
-                    if (isMetro(item)) filtrata.add(item);
-                    break;
-
-                case "Bus":
+                case "bus":
                     if (isBus(item)) filtrata.add(item);
                     break;
 
-                case "InCorso":
+                case "tram":
+                    if(isTram(item)) filtrata.add(item);
+                    break;
+
+                case "metropolitana":
+                    if (isMetro(item)) filtrata.add(item);
+                    break;
+
+                case "treno":
+                    if (isTreno(item)) filtrata.add(item);
+                    break;
+
+                case "in corso":
                     long inizio = getDateMillis(item.getStartDate());
                     long fine = getDateMillis(item.getEndDate());
                     if (oggi >= inizio && oggi <= fine) filtrata.add(item);
                     break;
 
-                case "Programmati":
+                case "programmati":
                     if (oggi < getDateMillis(item.getStartDate())) filtrata.add(item);
                     break;
 
-                case "Finiti":
-                    if (oggi > getDateMillis(item.getEndDate())) filtrata.add(item);
+                case "di atm":
+                    if(item.company.equalsIgnoreCase("ATM")) filtrata.add(item);
+                    break;
+
+                case "di trenord":
+                    if(item.company.equalsIgnoreCase("Trenord")) filtrata.add(item);
+                    break;
+
+                case "di movibus":
+                    if(item.company.equalsIgnoreCase("Movibus")) filtrata.add(item);
+                    break;
+
+                case "di stav":
+                    if(item.company.equalsIgnoreCase("STAV")) filtrata.add(item);
+                    break;
+
+                case "di autoguidovie":
+                    if(item.company.equalsIgnoreCase("Autoguidovie")) filtrata.add(item);
                     break;
             }
         }
@@ -238,6 +268,11 @@ public class MainActivity extends AppCompatActivity {
             adapter.setFilteredList(filtrata);
         }
     }
+
+    private boolean isTram(EventDescriptor item) {
+        return (item.typeOfTransport.contains("tram") && !item.typeOfTransport.equalsIgnoreCase("\"tram.fill.tunnel\""));
+    }
+
     private boolean isTreno(EventDescriptor item) {
         for (String l : item.getLines()) {
             if (l.matches("(?i)^(S|R|RE|RV).*")) return true;

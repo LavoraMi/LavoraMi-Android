@@ -63,13 +63,9 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
         int color = ContextCompat.getColor(holder.itemView.getContext(), R.color.text_primary);
 
-        // Applichiamo il colore all'icona
         ImageViewCompat.setImageTintList(holder.cardImage, ColorStateList.valueOf(color));
-
-        // Imposta immagine dinamicamente
         holder.cardImage.setImageResource(item.getCardImageID());
 
-        // Popola testo
         holder.titleText.setText(item.getTitle());
         holder.trattaText.setText(item.getRoads());
         holder.startDateText.setText("Dal: " + finalStartDate);
@@ -77,41 +73,28 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         holder.companyText.setText(item.getCompany());
         holder.descriptionText.setText(item.getDetails());
 
-        // --- AGGIUNTA CHIP DELLE LINEE ---
-
-        // 1. Svuota il gruppo per evitare duplicati quando scorri la lista
         holder.chipGroupLinee.removeAllViews();
         List<String> lineeRaw = Arrays.asList(item.getLines());
         if (!lineeRaw.isEmpty()) {
-            // Divide la stringa ogni volta che trova una virgola
-
-
             for (String nome : lineeRaw) {
                 String nomePulito = nome.trim();
-
-                // Crea il Chip
                 Chip chip = new Chip(holder.itemView.getContext());
                 chip.setText(nomePulito);
 
-                // --- FORMA SQUADRATA ---
-                chip.setChipCornerRadius(10f); // 0f per angoli retti, 4f per un leggero arrotondamento moderno
-                chip.setEnsureMinTouchTargetSize(false); // RIMUOVE lo spazio vuoto sopra e sotto
-                chip.setChipMinHeight(0f); // Permette al chip di essere basso quanto il testo
+                chip.setChipCornerRadius(10f);
+                chip.setEnsureMinTouchTargetSize(false);
+                chip.setChipMinHeight(0f);
 
-                // --- COMPATTEZZA E PADDING ---
-                chip.setChipStartPadding(10f); // Padding laterale interno
+                chip.setChipStartPadding(10f);
                 chip.setChipEndPadding(10f);
 
-                // --- TESTO ---
                 chip.setTextSize(14f);
                 chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
                 chip.setTextColor(Color.WHITE);
 
-                // --- COLORE ---
                 int coloreLinea = getColorForLinea(nomePulito);
                 chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
 
-                // Disabilita l'icona di chiusura e altri stili inutili
                 chip.setCloseIconVisible(false);
                 chip.setClickable(false);
                 chip.setCheckable(false);
@@ -169,7 +152,6 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
                 return Color.parseColor("#834c16");
 
             //Metro Lines
-
             case "M1":
                 return Color.parseColor("#e40520");
             case "M2":
@@ -202,10 +184,9 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
         }
     }
+
     public void setFilteredList(List<EventDescriptor> filteredList) {
-        // Protezione: se il filtro non trova nulla, passiamo una lista vuota, non null
         this.eventList = (filteredList != null) ? filteredList : new ArrayList<>();
         notifyDataSetChanged();
     }
-
 }

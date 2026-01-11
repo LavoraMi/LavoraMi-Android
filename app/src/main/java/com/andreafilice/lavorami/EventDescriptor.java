@@ -25,7 +25,7 @@ public class EventDescriptor {
         this.details = details;
         this.company = company;
     }
-    // Restituisce l'ID dell'immagine della card direttamente dal titolo
+
     public int getCardImageID() {
         return getTitleIconID(this.titleIcon);
     }
@@ -48,7 +48,6 @@ public class EventDescriptor {
             default:
                 return R.drawable.empty_image;
         }
-
     }
 
     public int getTypeOfTransportID(String swiftIconName){
@@ -113,7 +112,7 @@ public class EventDescriptor {
             return outputFormat.format(finalDate);
         } catch (Exception e) {
             e.printStackTrace();
-            return initialDate; // In caso di errore, restituisce la data originale
+            return initialDate;
         }
     }
 }

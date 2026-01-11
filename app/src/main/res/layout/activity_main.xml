@@ -79,11 +79,29 @@
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipTreno"
+                android:id="@+id/chipAll"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Treno"
+                android:text="Tutti"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBus"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bus"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTram"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tram"
                 android:textColor="@android:color/white"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -97,11 +115,11 @@
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipBus"
+                android:id="@+id/chipTreno"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bus"
+                android:text="Treno"
                 android:textColor="@android:color/white"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -120,6 +138,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Programmati"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipATM"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="di ATM"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTrenord"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="di Trenord"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMovibus"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="di Movibus"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipStav"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="di STAV"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAutoguidovie"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="di Autoguidovie"
                 android:textColor="@android:color/white"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
