@@ -40,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         //*INITIALIZE THE LOADING LAYOUT
         loadingLayout = findViewById(R.id.loadingLayout);
 
+        if(loadingLayout != null){
+            loadingLayout.setVisibility(View.VISIBLE);
+            findViewById(R.id.recyclerView).setVisibility(View.GONE);
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
