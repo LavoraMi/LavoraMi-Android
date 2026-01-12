@@ -5,4 +5,35 @@
     <color name="surface_card">#F2F1F6</color>
     <color name="redMetro">#FF272D</color>
     <color name="desc">#98979C</color>
+    <color name="M1">#E40520</color>
+    <color name="M2">#5E9322</color>
+    <color name="M3">#fcbe00</color>
+    <color name="M4">#001789</color>
+    <color name="M5">#a593c6</color>
+    <color name="S1">#e40520</color>
+    <color name="S2">#009879</color>
+    <color name="S3">#a90a2e</color>
+    <color name="S4">#82bb26</color>
+    <color name="S5">#f39223</color>
+    <color name="S6">#f6d200</color>
+    <color name="S7">#e40072</color>
+    <color name="S8">#f6b6b6</color>
+    <color name="S9">#a2338a</color>
+    <color name="S10">#e42313</color>
+    <color name="S11">#a593c6</color>
+    <color name="S12">#FFFFFF</color>
+    <color name="S13">#a76d11</color>
+    <color name="S19">#660d37</color>
+    <color name="S30">#00a650</color>
+    <color name="S31">#FEFEFE</color>
+    <color name="S40">#75bc76</color>
+    <color name="S50">#834c16</color>
+    <color name="MXP">#8c0077</color>
+    <color name="BUS">#1c1cff</color>
+    <color name="FILOBUS">#65b32e</color>
+    <color name="REGIONAL">#0000cc</color>
+    <color name="OTHER">#FEFEFE</color>
+
+
+
 </resources>

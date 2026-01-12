@@ -106,7 +106,8 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
                 chip.setTextColor(Color.WHITE);
 
                 int coloreLinea = getColorForLinea(nomePulito);
-                chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
+                int coloreEffettivo = ContextCompat.getColor(holder.itemView.getContext(), coloreLinea);
+                chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
 
                 chip.setCloseIconVisible(false);
                 chip.setClickable(false);
@@ -156,72 +157,72 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         switch(nomeLinea){
             //Suburban Lines
             case "S1":
-                return Color.parseColor("#e40520");
+                return R.color.S1;
             case "S2":
-                return Color.parseColor("#009879");
+                return R.color.S2;
             case "S3":
-                return Color.parseColor("#a90a2e");
+                return R.color.S3;
             case "S4":
-                return Color.parseColor("#82bb26");
+                return R.color.S4;
             case "S5":
-                return Color.parseColor("#f39223");
+                return R.color.S5;
             case "S6":
-                return Color.parseColor("#f6d200");
+                return R.color.S6;
             case "S7":
-                return Color.parseColor("#e40072");
+                return R.color.S7;
             case "S8":
-                return Color.parseColor("#f6b6b6");
+                return R.color.S8;
             case "S9":
-                return Color.parseColor("#a2338a");
+                return R.color.S9;
             case "S11":
-                return Color.parseColor("#a593c6");
+                return R.color.S11;
             case "S12":
-                return Color.BLACK;
+                return R.color.S12;
             case "S13":
-                return Color.parseColor("#a76d11");
+                return R.color.S13;
             case "S19":
-                return Color.parseColor("#660d37");
+                return R.color.S19;
             case "S31":
-                return Color.GRAY;
+                return R.color.S31;
 
             //TILO Lines
             case "S10":
-                return Color.parseColor("#e42313");
+                return R.color.S10;
             case "S30":
-                return Color.parseColor("#00a650");
+                return R.color.S30;
             case "S40":
-                return Color.parseColor("#75bc76");
+                return R.color.S40;
             case "S50":
-                return Color.parseColor("#834c16");
+                return R.color.S50;
 
             //Metro Lines
             case "M1":
-                return Color.parseColor("#e40520");
+                return R.color.M1;
             case "M2":
-                return Color.parseColor("#5e9322");
+                return R.color.M2;
             case "M3":
-                return Color.parseColor("#fcbe00");
+                return R.color.M3;
             case "M4":
-                return Color.parseColor("#001789");
+                return R.color.M4;
             case "M5":
-                return Color.parseColor("#a593c6");
+                return R.color.M5;
 
             case "MXP":
-                return Color.parseColor("#8c0077");
+                return R.color.MXP;
 
             //Bus Lines and other lines
             default:
                 if(nomeLinea.contains("z")){
-                    return Color.parseColor("#1c1cff");
+                    return R.color.BUS;
                 }
                 else if(nomeLinea.contains("Filobus")){
-                    return Color.parseColor("#65b32e");
+                    return R.color.FILOBUS;
                 }
                 else if(nomeLinea.contains("R")){
-                    return Color.BLUE;
+                    return R.color.REGIONAL;
                 }
                 else{
-                    return Color.GRAY;
+                    return R.color.OTHER;
                 }
         }
     }
