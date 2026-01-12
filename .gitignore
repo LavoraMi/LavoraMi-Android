@@ -1,3 +1,5 @@
+#Android Studio files
+
 *.iml
 .gradle
 /local.properties
