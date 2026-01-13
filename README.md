@@ -68,9 +68,9 @@ Perfetta per pendolari che desiderano rimanere sempre informati sulle interruzio
 ## 📋 Requisiti
 
 - **Android** 8.0 (API 26) o superiore
-- **Android Studio** 2022.1 o superiore
+- **Android Studio** 2025.2.2 o superiore
 - **Java Development Kit (JDK)** 11 o superiore
-- **Android SDK** con Build Tools 34.0.0
+- **Android SDK** con Build Tools 36.0.0
 
 ---
 
