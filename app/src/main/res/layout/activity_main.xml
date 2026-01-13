@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tutti"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -93,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bus"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tram"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Metropolitana"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Treno"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="In Corso"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Programmati"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -147,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="di ATM"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -156,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="di Trenord"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="di Movibus"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -174,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="di STAV"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -183,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="di Autoguidovie"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
         </com.google.android.material.chip.ChipGroup>

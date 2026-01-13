@@ -1,6 +1,8 @@
 package com.andreafilice.lavorami;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.media.metrics.Event;
 import android.os.Bundle;
 import android.text.Editable;
@@ -88,10 +90,24 @@ public class MainActivity extends AppCompatActivity {
 
         if(filterGroup != null){
             filterGroup.check(R.id.chipAll);
+            for (int i = 0; i < filterGroup.getChildCount(); i++) {
+                View child = filterGroup.getChildAt(i);
+                if (child instanceof Chip) {
+                    Chip chip = (Chip) child;
+
+                    // Imposta lo spessore del bordo (es. 1dp o 2dp)
+                    chip.setChipStrokeWidth(3f);
+
+                    // Imposta il colore del bordo (Grigio)
+                    chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
+
+                }
+            }
         }
 
         //* SEARCH BAR
         EditText editSearch = findViewById(R.id.editSearch);
+        editSearch.setBackgroundResource(R.drawable.bg_edittext_search);
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

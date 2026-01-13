@@ -105,6 +105,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
                 chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
                 chip.setTextColor(Color.WHITE);
 
+
                 int coloreLinea = getColorForLinea(nomePulito);
                 int coloreEffettivo = ContextCompat.getColor(holder.itemView.getContext(), coloreLinea);
                 chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
