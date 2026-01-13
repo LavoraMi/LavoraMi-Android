@@ -104,12 +104,6 @@ public class LinesActivity extends AppCompatActivity {
                 startActivity(intent);
             });
 
-            // 7. Aggiungi una linea sottile di separazione (opzionale)
-            View separator = new View(this);
-            separator.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, 2));
-            separator.setBackgroundColor(Color.parseColor("#33FFFFFF"));
-            container.addView(separator);
         }
     }
 }
