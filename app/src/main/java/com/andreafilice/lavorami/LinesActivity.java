@@ -93,13 +93,15 @@ public class LinesActivity extends AppCompatActivity {
             } else {
                 badge.setBackgroundColor(colore);
             }
-            container.addView(row);
+
 
             row.setOnClickListener(v -> {
-                Intent intent = new Intent(this, LinesActivity.class);
+                Intent intent = new Intent(this, LinesDetailActvity.class);
                 intent.putExtra("NOME_LINEA", label);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             });
+            container.addView(row);
 
         }
     }
