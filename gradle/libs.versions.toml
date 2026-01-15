@@ -1,5 +1,7 @@
 [versions]
 agp = "8.13.2"
+dotenvJava = "3.2.0"
+gson = "2.13.2"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
@@ -8,10 +10,15 @@ material = "1.13.0"
 activity = "1.12.2"
 constraintlayout = "2.2.1"
 fragment = "1.8.9"
+playServicesMaps = "20.0.0"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
+retrofit = "3.0.0"
 
 [libraries]
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+dotenv-java = { module = "io.github.cdimascio:dotenv-java", version.ref = "dotenvJava" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -20,8 +27,10 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
+play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
