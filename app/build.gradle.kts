@@ -1,6 +1,16 @@
+import java.util.Properties
+import java.io.File
+
 plugins {
     alias(libs.plugins.android.application)
 }
+
+//DOT ENV INTEGRATION
+val envProperties = Properties()
+val envFile = File(rootProject.projectDir, ".env")
+if (envFile.exists())
+    envFile.inputStream().use { envProperties.load(it) }
+val apiKey = envProperties.getProperty("API_KEYS", "")
 
 android {
     namespace = "com.andreafilice.lavorami"
@@ -16,6 +26,7 @@ android {
         versionName = "1.0.0"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
+        manifestPlaceholders["API_KEY"] = apiKey
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -49,4 +60,5 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("io.github.cdimascio:dotenv-java:3.0.0")
 }
