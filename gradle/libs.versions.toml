@@ -34,4 +34,5 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+ben-manes-versions = { id = "com.github.ben-manes.versions", version = "0.53.0" }
 
