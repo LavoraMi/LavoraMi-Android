@@ -529,7 +529,7 @@ public class StationDB {
             case "S13": return R.color.S13;
             case "S19": return R.color.S19;
             case "S31": return R.color.S31;
-            default: return R.color.OTHER;   // Grigio per le Suburbane
+            default: return R.color.OTHER;
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.andreafilice.lavorami;
 
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -32,8 +31,10 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.chip.Chip;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class LinesDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -55,20 +56,16 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         aggiornaUI();
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        if (mapFragment != null) {
+        if (mapFragment != null)
             mapFragment.getMapAsync(this);
-        }
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Dettaglio " + nomeLinea);
         }
-        // Imposta lo spessore del bordo (es. 1dp o 2dp)
+
         chipMappa.setChipStrokeWidth(3f);
-        // Imposta il colore del bordo (Grigio)
         chipMappa.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
-        // Imposta lo spessore del bordo (es. 1dp o 2dp)
         chipLavori.setChipStrokeWidth(3f);
-        // Imposta il colore del bordo (Grigio)
         chipLavori.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
         chipMappa.setOnClickListener(v -> {
             cardMappa.setVisibility(View.VISIBLE);
@@ -84,6 +81,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -124,18 +122,153 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         .icon(creaPuntino(coloreEffettivo)));
             }
         }
-        PolylineOptions polylineOptions = new PolylineOptions()
-                .width(10)
-                .color(ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea)))
-                .geodesic(true);
 
-        for (MetroStation stazione : StationDB.getAllStations()) {
-            if (stazione.getLine().equals(nomeLinea)) {
-                polylineOptions.add(new LatLng(stazione.getLatitude(), stazione.getLongitude()));
+        int coloreLinea = ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
+        List<MetroStation> tutteLeStazioni = new ArrayList<>();
+
+        for (MetroStation s : StationDB.getAllStations()) {
+            if (s.getLine().equals(nomeLinea)) {
+                tutteLeStazioni.add(s);
             }
         }
 
+        if (nomeLinea.equalsIgnoreCase("M1")) {
+            disegnaM1(tutteLeStazioni, coloreLinea);
+        } else if (nomeLinea.equalsIgnoreCase("M2")) {
+            disegnaM2(tutteLeStazioni, coloreLinea);
+        } else {
+            disegnaPolilinea(tutteLeStazioni, coloreLinea);
+        }
+    }
+
+    private void disegnaPolilinea(List<MetroStation> stazioni, int colore) {
+        if (stazioni.size() < 2) return;
+
+        PolylineOptions polylineOptions = new PolylineOptions()
+                .width(10)
+                .color(colore)
+                .geodesic(true);
+
+        for (MetroStation s : stazioni) {
+            polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));
+        }
         mMap.addPolyline(polylineOptions);
+    }
+
+    private void disegnaM1(List<MetroStation> stazioni, int colore) {
+        List<MetroStation> troncoPrincipale = new ArrayList<>();
+        List<MetroStation> ramoBisceglie = new ArrayList<>();
+
+        List<String> nomiRamoBisceglie = Arrays.asList(
+                "Wagner", "De Angeli", "Gambara", "Bande Nere",
+                "Primaticcio", "Inganni", "Bisceglie"
+        );
+
+        MetroStation snodoPagano = null;
+
+        for (MetroStation s : stazioni) {
+            String nome = s.getName();
+            if (nome.contains("Pagano")) {
+                snodoPagano = s;
+            }
+
+            boolean isRamo = false;
+            for (String nomeRamo : nomiRamoBisceglie) {
+                if (nome.contains(nomeRamo)) {
+                    isRamo = true;
+                    break;
+                }
+            }
+
+            if (isRamo)
+                ramoBisceglie.add(s);
+            else
+                troncoPrincipale.add(s);
+        }
+        disegnaPolilinea(troncoPrincipale, colore);
+        if (snodoPagano != null) ramoBisceglie.add(0, snodoPagano);
+        disegnaPolilinea(ramoBisceglie, colore);
+    }
+
+    private void disegnaM2(List<MetroStation> stazioni, int colore) {
+        List<MetroStation> troncoCentrale = new ArrayList<>();
+        List<MetroStation> ramoCologno = new ArrayList<>();
+        List<MetroStation> ramoGessate = new ArrayList<>();
+        List<MetroStation> ramoAssago = new ArrayList<>();
+        List<MetroStation> ramoAbbiategrasso = new ArrayList<>();
+
+        List<String> nomiCologno = Arrays.asList("Cologno");
+        List<String> nomiAssago = Arrays.asList("Assago");
+        List<String> nomiAbbiategrasso = Arrays.asList("Abbiategrasso");
+        List<String> nomiGessate = Arrays.asList("Vimodrone", "Cascina Burrona", "Cernusco", "Villa Fiorita", "Cassina", "Bussero", "Villa Pompea", "Gorgonzola", "Antonietta", "Gessate");
+
+        MetroStation snodoGobba = null;
+        MetroStation snodoFamagosta = null;
+
+        for (MetroStation s : stazioni) {
+            String nome = s.getName();
+            if (nome.contains("Cascina Gobba")) snodoGobba = s;
+            if (nome.contains("Famagosta")) snodoFamagosta = s;
+        }
+
+        for (MetroStation s : stazioni) {
+            String nome = s.getName();
+            boolean assegnata = false;
+
+            for (String n : nomiCologno) {
+                if (nome.contains(n)) {
+                    ramoCologno.add(s);
+                    assegnata = true;
+                    break;
+                }
+            }
+            if(assegnata) continue;
+
+            for (String n : nomiAssago) {
+                if (nome.contains(n)) {
+                    ramoAssago.add(s);
+                    assegnata = true;
+                    break;
+                }
+            }
+            if(assegnata) continue;
+
+            for (String n : nomiAbbiategrasso) {
+                if (nome.contains(n)) {
+                    ramoAbbiategrasso.add(s);
+                    assegnata = true;
+                    break;
+                }
+            }
+            if(assegnata) continue;
+
+            for (String n : nomiGessate) {
+                if (nome.contains(n)) {
+                    ramoGessate.add(s);
+                    assegnata = true;
+                    break;
+                }
+            }
+            if(assegnata) continue;
+
+            troncoCentrale.add(s);
+        }
+
+        disegnaPolilinea(troncoCentrale, colore);
+
+        if (snodoGobba != null) {
+            ramoCologno.add(0, snodoGobba);
+            ramoGessate.add(0, snodoGobba);
+        }
+        disegnaPolilinea(ramoCologno, colore);
+        disegnaPolilinea(ramoGessate, colore);
+
+        if (snodoFamagosta != null) {
+            ramoAssago.add(0, snodoFamagosta);
+            ramoAbbiategrasso.add(0, snodoFamagosta);
+        }
+        disegnaPolilinea(ramoAssago, colore);
+        disegnaPolilinea(ramoAbbiategrasso, colore);
     }
 
     private BitmapDescriptor creaPuntino(int colore) {
@@ -152,6 +285,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         return BitmapDescriptorFactory.fromBitmap(bmp);
     }
+
     private void caricaEventiFiltrati() {
         LinearLayout container = findViewById(R.id.containerLavori);
         container.removeAllViews();
@@ -171,7 +305,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 titolo.setText(evento.getTitle());
                 icona.setImageResource(evento.getCardImageID());
                 int colorRes = isDarkMode() ? Color.WHITE : Color.BLACK;
-                icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary))); // Forza il bianco per il simbolo
+                icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
 
                 if (descrizione != null)
                     descrizione.setText(evento.getDetails());
@@ -196,9 +330,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 operatore.setText(evento.company);
                 container.addView(card);
             }
-
         }
     }
+
     public long getDateMillis(String dateString) {
         if (dateString == null) return 0;
         String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'+01:00'";
@@ -215,6 +349,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             return 0;
         }
     }
+
     private void aggiornaInfoSuperiori() {
         TextView tvDirezioni = findViewById(R.id.detDirezioni);
         TextView tvAttesa = findViewById(R.id.detAttesa);
@@ -238,28 +373,27 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         if (numeroLavori > 0) {
             tvLavori.setText(numeroLavori + " segnalazioni attive");
-            tvLavori.setTextColor(Color.parseColor("#FF5252")); // Rosso "allerta"
+            tvLavori.setTextColor(Color.parseColor("#FF5252"));
         } else {
             tvLavori.setText("Stato linea: Regolare");
             tvLavori.setTextColor(Color.GREEN);
         }
     }
+
     private boolean isDarkMode() {
         int nightModeFlags = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
         return nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES;
     }
+
     private String getCapolinea(String linea) {
         if (linea == null) return "Direzioni non disponibili";
 
         switch (linea.toUpperCase().trim()) {
-            // --- METROPOLITANE ---
             case "M1": return "Sesto 1° Maggio FS ↔ Rho Fiera / Bisceglie";
             case "M2": return "Assago Forum / Abbiategrasso ↔ Gessate / Cologno Nord";
             case "M3": return "San Donato ↔ Comasina";
             case "M4": return "San Cristoforo ↔ Linate Aeroporto";
             case "M5": return "San Siro Stadio ↔ Bignami";
-
-            // --- SUBURBANE (Linee S) ---
             case "S1": return "Saronno ↔ Lodi";
             case "S2": return "Mariano Comense ↔ Milano Rogoredo";
             case "S3": return "Saronno ↔ Milano Cadorna";
@@ -272,13 +406,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S11": return "Chiasso ↔ Milano Porta Garibaldi / Rho";
             case "S12": return "Cormano-Cusano ↔ Melegnano";
             case "S13": return "Milano Bovisa ↔ Pavia";
-
-            // --- ALTRE LINEE (Tram o Suburbane specifiche) ---
-            case "S19": return "Stazione 19 (Verifica tratta specifica)"; // S19 è spesso usata per rinforzi o tratte speciali
-            case "31": return "Cinisello Balsamo ↔ Milano Bicocca (Tram)";
-
-            default:
-                return "Direzioni non disponibili per " + linea;
+            case "S19": return "Stazione 19 (Verifica tratta specifica)";
+            case "S31": return "Cinisello Balsamo ↔ Milano Bicocca (Tram)";
+            default: return "Direzioni non disponibili per " + linea;
         }
     }
 }
