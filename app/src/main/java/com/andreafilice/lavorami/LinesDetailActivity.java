@@ -49,14 +49,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         chipMappa.setChecked(true);
-        // Recuperiamo il nome della linea (es. "M3") passato dall'altra activity
         nomeLinea = getIntent().getStringExtra("NOME_LINEA");
-        if (nomeLinea == null) nomeLinea = "M1"; // Default di sicurezza
+        if (nomeLinea == null) nomeLinea = "M1";
 
-        // Impostiamo i testi e il colore del badge nella parte superiore
         aggiornaUI();
-
-        // Carichiamo la mappa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -74,7 +70,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipLavori.setOnClickListener(v -> {
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
-            caricaEventiFiltrati(); // Funzione che carica le card
+            caricaEventiFiltrati();
         });
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
@@ -89,21 +85,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private void aggiornaUI() {
         TextView detBadge = findViewById(R.id.detBadge);
         TextView detTitolo = findViewById(R.id.detTitolo);
-        if(nomeLinea.startsWith("M")){
+        if(nomeLinea.startsWith("M"))
             detTitolo.setText("Metro " + nomeLinea);
-        }
-        if(nomeLinea.startsWith("S")){
+        if(nomeLinea.startsWith("S"))
             detTitolo.setText("Suburbano " + nomeLinea);
-        }
         detBadge.setText(nomeLinea);
-
-        // Recupera l'ID del colore dal DB (es. R.color.m3_yellow)
         int colorResId = StationDB.getLineColor(nomeLinea);
-
-        // TRASFORMA IL RIFERIMENTO IN COLORE REALE
         int coloreEffettivo = ContextCompat.getColor(this, colorResId);
-
-        // Applica al badge
         detBadge.getBackground().setColorFilter(coloreEffettivo, PorterDuff.Mode.SRC_IN);
     }
 
@@ -114,7 +102,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         if (nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
             try {
-                // Applica lo stile dal file JSON
                 boolean success = mMap.setMapStyle(
                         MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
 
@@ -125,13 +112,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 Log.e("MAP_STYLE", "File map_style.json non trovato.", e);
             }
         }
-        // Coordinate di Milano
         LatLng milano = new LatLng(45.4642, 9.1900);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(milano, 11f));
 
-        // Disegniamo i puntini di tutte le stazioni
         for (MetroStation stazione : StationDB.getAllStations()) {
-            // FILTRO: Se la linea della stazione è uguale a quella scelta dall'utente
             if (stazione.getLine().equals(nomeLinea)) {
                 int colorResId = StationDB.getLineColor(stazione.getLine());
                 int coloreEffettivo = ContextCompat.getColor(this, colorResId);
@@ -143,7 +127,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
         }
         PolylineOptions polylineOptions = new PolylineOptions()
-                .width(10) // Spessore della linea
+                .width(10)
                 .color(ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea)))
                 .geodesic(true);
 
@@ -156,19 +140,15 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         mMap.addPolyline(polylineOptions);
     }
 
-    // Funzione per creare il puntino con bordo bianco
     private BitmapDescriptor creaPuntino(int colore) {
-        int size = 20; // Dimensione del pallino
+        int size = 20;
         Bitmap bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bmp);
         Paint paint = new Paint();
         paint.setAntiAlias(true);
 
-        // Bordo bianco
         paint.setColor(Color.WHITE);
         canvas.drawCircle(size/2f, size/2f, size/2f, paint);
-
-        // Centro colorato
         paint.setColor(colore);
         canvas.drawCircle(size/2f, size/2f, (size/2f) - 4, paint);
 
@@ -183,7 +163,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
 
-                // Riferimenti ai componenti
                 ImageView icona = card.findViewById(R.id.iconEvent);
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 TextView descrizione = card.findViewById(R.id.txtDescription);
@@ -191,33 +170,27 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
                 TextView operatore = card.findViewById(R.id.txtOperator);
                 ProgressBar progressBar = card.findViewById(R.id.progressBarDate);
-                // 1. Icona e Titolo
                 titolo.setText(evento.getTitle());
                 icona.setImageResource(evento.getCardImageID());
                 int colorRes = isDarkMode() ? Color.WHITE : Color.BLACK;
-                // Dentro caricaEventiFiltrati, dove popoli la card
                 icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary))); // Forza il bianco per il simbolo
 
-                // 2. Descrizione
-                if (descrizione != null) {
+                if (descrizione != null)
                     descrizione.setText(evento.getDetails());
-                }
 
-                // 3. Date
                 txtInizio.setText("Inizio: " + EventDescriptor.formattaData(evento.getStartDate()));
                 txtFine.setText("Fine: " + EventDescriptor.formattaData(evento.getEndDate()));
 
-                // 4. Calcolo ProgressBar
                 if (progressBar != null) {
                     long inizio = getDateMillis(evento.getStartDate());
                     long fine = getDateMillis(evento.getEndDate());
                     long oggi = System.currentTimeMillis();
 
-                    if (oggi < inizio) {
+                    if (oggi < inizio)
                         progressBar.setProgress(0);
-                    } else if (oggi > fine) {
+                    else if (oggi > fine)
                         progressBar.setProgress(100);
-                    } else {
+                    else {
                         float progress = ((float) (oggi - inizio) / (fine - inizio)) * 100;
                         progressBar.setProgress((int) progress);
                     }
@@ -249,24 +222,15 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         TextView tvAttesa = findViewById(R.id.detAttesa);
         TextView tvLavori = findViewById(R.id.detLavori);
 
-        // 1. Direzioni (puoi hardcodarle o prenderle da StationDB)
-        // Se nomeLinea è "M1", scrivi i capolinea della rossa
         tvDirezioni.setText(getCapolinea(nomeLinea));
 
-        // 2. Tempo di attesa (puoi simularlo o associarlo alla linea)
-
-        if (nomeLinea.startsWith("M")) {
-            // Frequenza Metro
+        if (nomeLinea.startsWith("M"))
             tvAttesa.setText("Frequenza media: 3 - 6 min");
-        } else if (nomeLinea.startsWith("S")) {
-            // Frequenza Treni Suburbani
+        else if (nomeLinea.startsWith("S"))
             tvAttesa.setText("Frequenza media: 30 min");
-        } else {
-            // Altre linee (Tram/Bus)
+        else
             tvAttesa.setText("Frequenza variabile");
-        }
 
-        // 3. Conteggio lavori
         int numeroLavori = 0;
         for (EventDescriptor e : EventData.listaEventiCompleta) {
             for (String l : e.getLines()) {
@@ -319,5 +283,4 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 return "Direzioni non disponibili per " + linea;
         }
     }
-
 }
