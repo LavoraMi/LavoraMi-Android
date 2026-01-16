@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public long getDateMillis(String dateString) {
         if (dateString == null) return 0;
-        String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+        String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'+01:00'";
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(serverFormat, Locale.getDefault());
