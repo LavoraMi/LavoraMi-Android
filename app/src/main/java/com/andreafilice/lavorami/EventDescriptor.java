@@ -102,7 +102,7 @@ public class EventDescriptor {
 
     public static String formattaData(String initialDate) {
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+01:00'", Locale.getDefault());
             inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
             Date finalDate = inputFormat.parse(initialDate);
