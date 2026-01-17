@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout loadingLayout;
     private LinearLayout errorLayout;
     private WorkAdapter adapter;
-    List<EventDescriptor> listaCompleta = new ArrayList<>(events);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

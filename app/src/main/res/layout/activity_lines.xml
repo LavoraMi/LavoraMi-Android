@@ -26,12 +26,28 @@
             android:text="@string/lines"
             android:textColor="@color/text_primary"
             android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.7" />
 
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/background_app"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="10dp"
+            android:hint="Cerca linea (es. S5, RE8)..."
+            android:paddingStart="15dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#666666"
+            android:inputType="text"
+            app:layout_constraintTop_toBottomOf="@id/textView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -46,6 +62,19 @@
             android:padding="16dp">
 
             <TextView
+                android:id="@+id/emptyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nessuna corrispondenza trovata."
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:gravity="center"
+                android:layout_marginTop="100dp"
+                android:fontFamily="@font/archivo_medium"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/subTitleMetro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Metropolitana"
@@ -64,10 +93,10 @@
                 android:orientation="vertical"
                 android:divider="@drawable/line_divider"
                 android:showDividers="middle">
-
             </LinearLayout>
 
             <TextView
+                android:id="@+id/subTitleSuburban"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Linee Suburbane"
@@ -87,58 +116,53 @@
                 android:orientation="vertical"
                 android:divider="@drawable/line_divider"
                 android:showDividers="middle">
-
             </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:id="@+id/customBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/background_app"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
-            android:id="@+id/customBottomBar"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:background="@color/background_app"
-            android:orientation="horizontal"
-            android:weightSum="3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_home"
+            app:tint="#FD272D" />
 
-            <ImageButton
-                android:id="@+id/homeButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_home"
-                app:tint="?attr/colorControlNormal" />
+        <ImageButton
+            android:id="@+id/linesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_lines"
+            app:tint="?attr/colorControlNormal" />
 
-            <ImageButton
-                android:id="@+id/linesButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_lines"
-                app:tint="#FD272D" />
-
-            <ImageButton
-                android:id="@+id/settingsButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_setting"
-                app:tint="?attr/colorControlNormal" />
-        </LinearLayout>
-
-
-
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_setting"
+            app:tint="?attr/colorControlNormal" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
