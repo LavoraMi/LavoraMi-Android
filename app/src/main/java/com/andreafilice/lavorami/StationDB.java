@@ -485,6 +485,139 @@ public class StationDB {
         stations.add(new MetroStation("Como S. Giovanni", 45.80901, 9.07279, "Main", "S31"));
         return stations;
     }
+
+    public static List<MetroStation> getStationsS10() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Biasca",  46.35198,  8.97416,  "Main","S10"));
+        stations.add(new MetroStation( "Castione",  46.22363,  9.0415,  "Main","S10"));
+        stations.add(new MetroStation( "Bellinzona",  46.19543,  9.02951,  "Main","S10"));
+        stations.add(new MetroStation( "Giubiasco",  46.17381,  9.00359,  "Main","S10"));
+        stations.add(new MetroStation( "Lugano",  46.00501,  8.94695,  "Main","S10"));
+        stations.add(new MetroStation( "Lugano Paradiso",  45.98917,  8.94656,  "Main","S10"));
+        stations.add(new MetroStation( "Melide",  45.95576,  8.94823,  "Main","S10"));
+        stations.add(new MetroStation( "Maroggia - Melano",  45.93241,  8.97383,  "Main","S10"));
+        stations.add(new MetroStation( "Capolago - Riva S. Vitale",  45.90285,  8.97889,  "Main","S10"));
+        stations.add(new MetroStation( "Mendrisio S. Martino",  45.87721,  8.98308,  "Main","S10"));
+        stations.add(new MetroStation( "Mendrisio",  45.8691,  8.97878,  "Main","S10"));
+        stations.add(new MetroStation( "Balerna",  45.84681,  9.0051,  "Main","S10"));
+        stations.add(new MetroStation( "Chiasso",  45.83217,  9.03175,  "Main","S10"));
+        stations.add(new MetroStation( "Como S. Giovanni",  45.80901,  9.07279,  "Main","S10"));
+        stations.add(new MetroStation( "Como Camerlata",  45.78457,  9.0794,  "Main","S10"));
+        return stations;
+    }
+    public static List<MetroStation> getStationsS50() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Biasca",  46.35198,  8.97416,  "Main","S50"));
+        stations.add(new MetroStation( "Castione",  46.22363,  9.0415,  "Main","S50"));
+        stations.add(new MetroStation( "Bellinzona",  46.19543,  9.02951,  "Main","S50"));
+        stations.add(new MetroStation( "Giubiasco",  46.17381,  9.00359,  "Main","S50"));
+        stations.add(new MetroStation( "Lugano",  46.00501,  8.94695,  "Main","S50"));
+        stations.add(new MetroStation( "Lugano Paradiso",  45.98917,  8.94656,  "Main","S50"));
+        stations.add(new MetroStation( "Melide",  45.95576,  8.94823,  "Main","S50"));
+        stations.add(new MetroStation( "Maroggia - Melano",  45.93241,  8.97383,  "Main","S50"));
+        stations.add(new MetroStation( "Capolago - Riva S. Vitale",  45.90285,  8.97889,  "Main","S50"));
+        stations.add(new MetroStation( "Mendrisio S. Martino",  45.87721,  8.98308,  "Main","S50"));
+        stations.add(new MetroStation( "Mendrisio",  45.8691,  8.97878,  "Main","S50"));
+        stations.add(new MetroStation( "Stabio",  45.84971,  8.94394,  "Main","S50"));
+        stations.add(new MetroStation( "Cantello Gaggiolo",  45.83781,  8.90739,  "Main","S50"));
+        stations.add(new MetroStation( "Arcisate",  45.85857,  8.86291,  "Main","S50"));
+        stations.add(new MetroStation( "Induno Olona",  45.84587,  8.83802,  "Main","S50"));
+        stations.add(new MetroStation( "Varese",  45.81625,  8.83295,  "Main","S50"));
+        stations.add(new MetroStation( "Gallarate",  45.65974,  8.79853,  "Main","S50"));
+        stations.add(new MetroStation( "Busto Arsizio",  45.61593,  8.86589,  "Main","S50"));
+        stations.add(new MetroStation( "Busto Arsizio Nord",  45.60617,  8.85139,  "Main","S50"));
+        stations.add(new MetroStation( "Ferno - Lonate Pozzolo",  45.60854,  8.75525,  "Main","S50"));
+        stations.add(new MetroStation( "Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","S50"));
+        stations.add(new MetroStation( "Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","S50"));
+        return stations;
+    }
+    public static List<MetroStation> getStationsS30() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Cadenazzo",  46.15262,  8.94168,  "Main","S30"));
+        stations.add(new MetroStation( "Quartino",  46.15129,  8.88732,  "Main","S30"));
+        stations.add(new MetroStation( "Magadino - Vira",  46.14531,  8.85019,  "Main","S30"));
+        stations.add(new MetroStation( "S. Nazzaro",  46.13519,  8.80704,  "Main","S30"));
+        stations.add(new MetroStation( "Gerra",  46.12207,  8.78494,  "Main","S30"));
+        stations.add(new MetroStation( "Ranzo - S. Abbondio",  46.11697,  8.7766,  "Main","S30"));
+        stations.add(new MetroStation( "Pino - Tronzano",  46.09866,  8.73706,  "Main","S30"));
+        stations.add(new MetroStation( "Maccagno",  46.04324,  8.73763,  "Main","S30"));
+        stations.add(new MetroStation( "Colmegna",  46.02475,  8.75189,  "Main","S30"));
+        stations.add(new MetroStation( "Luino",  45.9969,  8.73738,  "Main","S30"));
+        stations.add(new MetroStation( "Porto Valtraglia",  45.95836,  8.67402,  "Main","S30"));
+        stations.add(new MetroStation( "Calde'",  45.9457,  8.66324,  "Main","S30"));
+        stations.add(new MetroStation( "Laveno Mombello",  45.90326,  8.6244,  "Main","S30"));
+        stations.add(new MetroStation( "Sangiano",  45.87449,  8.63087,  "Main","S30"));
+        stations.add(new MetroStation( "Besozzo",  45.84233,  8.66322,  "Main","S30"));
+        stations.add(new MetroStation( "Travedona Biandronno",  45.80976,  8.69615,  "Main","S30"));
+        stations.add(new MetroStation( "Ternate Varano Borghi",  45.78183,  8.70069,  "Main","S30"));
+        stations.add(new MetroStation( "Mornago Cimbro",  45.72985,  8.73441,  "Main","S30"));
+        stations.add(new MetroStation( "Besnate",  45.69549,  8.76125,  "Main","S30"));
+        stations.add(new MetroStation( "Gallarate",  45.65974,  8.79853,  "Main","S30"));
+        return stations;
+    }
+    public static List<MetroStation> getStationsS40() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Como S. Giovanni",  45.80901,  9.07279,  "Main","S40"));
+        stations.add(new MetroStation( "Chiasso",  45.83217,  9.03175,  "Main","S40"));
+        stations.add(new MetroStation( "Balerna",  45.84681,  9.0051,  "Main","S40"));
+        stations.add(new MetroStation( "Mendrisio",  45.8691,  8.97878,  "Main","S40"));
+        stations.add(new MetroStation( "Stabio",  45.84971,  8.94394,  "Main","S40"));
+        stations.add(new MetroStation( "Cantello Gaggiolo",  45.83781,  8.90739,  "Main","S40"));
+        stations.add(new MetroStation( "Arcisate",  45.85857,  8.86291,  "Main","S40"));
+        stations.add(new MetroStation( "Induno Olona",  45.84587,  8.83802,  "Main","S40"));
+        stations.add(new MetroStation( "Varese",  45.81625,  8.83295,  "Main","S40"));
+        return stations;
+    }
+    public static List<MetroStation> getStationsRE80() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Locarno",  46.17264,  8.80166,  "Main","RE80"));
+        stations.add(new MetroStation( "Minusio",  46.174,  8.81956,  "Main","RE80"));
+        stations.add(new MetroStation( "Tenero",  46.1774,  8.85186,  "Main","RE80"));
+        stations.add(new MetroStation( "Gordola",  46.17915,  8.86585,  "Main","RE80"));
+        stations.add(new MetroStation( "Riazzino",  46.17532,  8.88625,  "Main","RE80"));
+        stations.add(new MetroStation( "Cadenazzo",  46.15262,  8.94168,  "Main","RE80"));
+        stations.add(new MetroStation( "S. Antonino",  46.16041,  8.97392,  "Main","RE80"));
+        stations.add(new MetroStation( "Lugano",  46.00501,  8.94695,  "Main","RE80"));
+        stations.add(new MetroStation( "Lugano Paradiso",  45.98917,  8.94656,  "Main","RE80"));
+        stations.add(new MetroStation( "Melide",  45.95576,  8.94823,  "Main","RE80"));
+        stations.add(new MetroStation( "Maroggia - Melano",  45.93241,  8.97383,  "Main","RE80"));
+        stations.add(new MetroStation( "Capolago - Riva S. Vitale",  45.90285,  8.97889,  "Main","RE80"));
+        stations.add(new MetroStation( "Mendrisio S. Martino",  45.87721,  8.98308,  "Main","RE80"));
+        stations.add(new MetroStation( "Mendrisio",  45.8691,  8.97878,  "Main","RE80"));
+        stations.add(new MetroStation( "Balerna",  45.84681,  9.0051,  "Main","RE80"));
+        stations.add(new MetroStation( "Chiasso",  45.83217,  9.03175,  "Main","RE80"));
+        stations.add(new MetroStation( "Como S. Giovanni",  45.80901,  9.07279,  "Main","RE80"));
+        stations.add(new MetroStation( "Seregno",  45.64609,  9.20302,  "Main","RE80"));
+        stations.add(new MetroStation( "Monza",  45.57797,  9.27289,  "Main","RE80"));
+        stations.add(new MetroStation( "Milano Centrale",  45.48713,  9.20482,  "Main","RE80"));
+        return stations;
+    }
+    public static List<MetroStation> getStationsMXP1() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP1"));
+        stations.add(new MetroStation( "Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","MXP1"));
+        stations.add(new MetroStation( "Busto Arsizio Nord",  45.60617,  8.85139,  "Main","MXP1"));
+        stations.add(new MetroStation( "Saronno",  45.62534,  9.03075,  "Main","MXP1"));
+        stations.add(new MetroStation( "Milano Bovisa",  45.50257,  9.15925,  "Main","MXP1"));
+        stations.add(new MetroStation( "Milano Domodossola",  45.48089,  9.16224,  "Main","MXP1"));
+        stations.add(new MetroStation( "Milano Cadorna",  45.46843,  9.17553,  "Main","MXP1"));
+        return stations;
+    }
+    public static List<MetroStation> getStationsMXP2() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation( "Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP2"));
+        stations.add(new MetroStation( "Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","MXP2"));
+        stations.add(new MetroStation( "Ferno - Lonate Pozzolo",  45.60854,  8.75525,  "Main","MXP2"));
+        stations.add(new MetroStation( "Busto Arsizio Nord",  45.60617,  8.85139,  "Main","MXP2"));
+        stations.add(new MetroStation( "Castellanza",  45.61056,  8.87547,  "Main","MXP2"));
+        stations.add(new MetroStation( "Rescaldina",  45.62229,  8.94666,  "Main","MXP2"));
+        stations.add(new MetroStation( "Saronno",  45.62534,  9.03075,  "Main","MXP2"));
+        stations.add(new MetroStation( "Milano Bovisa",  45.50257,  9.15925,  "Main","MXP2"));
+        stations.add(new MetroStation( "Milano Pta Garibaldi",  45.48449,  9.18737,  "Main","MXP2"));
+        stations.add(new MetroStation( "Milano Centrale",  45.48713,  9.20482,  "Main","MXP2"));
+        return stations;
+    }
+
     public static List<MetroStation> getAllStations() {
         List<MetroStation> allStations = new ArrayList<>();
         allStations.addAll(getStationsM1());
@@ -506,30 +639,90 @@ public class StationDB {
         allStations.addAll(getStationsS13());
         allStations.addAll(getStationsS19());
         allStations.addAll(getStationsS31());
+        allStations.addAll(getStationsS10());
+        allStations.addAll(getStationsS30());
+        allStations.addAll(getStationsS40());
+        allStations.addAll(getStationsS50());
+        allStations.addAll(getStationsRE80());
+        allStations.addAll(getStationsMXP1());
+        allStations.addAll(getStationsMXP2());
         return allStations;
     }
-    public static int getLineColor(String lineName) {
-        switch (lineName) {
-            case "M1": return R.color.M1;
-            case "M2": return R.color.M2;
-            case "M3": return R.color.M3;
-            case "M4": return R.color.M4;
-            case "M5": return R.color.M5;
-            case "S1": return R.color.S1;
-            case "S2": return R.color.S2;
-            case "S3": return R.color.S3;
-            case "S4": return R.color.S4;
-            case "S5": return R.color.S5;
-            case "S6": return R.color.S6;
-            case "S7": return R.color.S7;
-            case "S8": return R.color.S8;
-            case "S9": return R.color.S9;
-            case "S11": return R.color.S11;
-            case "S12": return R.color.S12;
-            case "S13": return R.color.S13;
-            case "S19": return R.color.S19;
-            case "S31": return R.color.S31;
-            default: return R.color.OTHER;
+
+    public static int getLineColor(String nomeLinea) {
+        switch (nomeLinea) {
+            //Suburban Lines
+            case "S1":
+                return R.color.S1;
+            case "S2":
+                return R.color.S2;
+            case "S3":
+                return R.color.S3;
+            case "S4":
+                return R.color.S4;
+            case "S5":
+                return R.color.S5;
+            case "S6":
+                return R.color.S6;
+            case "S7":
+                return R.color.S7;
+            case "S8":
+                return R.color.S8;
+            case "S9":
+                return R.color.S9;
+            case "S11":
+                return R.color.S11;
+            case "S12":
+                return R.color.S12;
+            case "S13":
+                return R.color.S13;
+            case "S19":
+                return R.color.S19;
+            case "S31":
+                return R.color.S31;
+            case "AV":
+                return R.color.AV;
+
+            //TILO Lines
+            case "S10":
+                return R.color.S10;
+            case "S30":
+                return R.color.S30;
+            case "S40":
+                return R.color.S40;
+            case "S50":
+                return R.color.S50;
+
+            //Metro Lines
+            case "M1":
+                return R.color.M1;
+            case "M2":
+                return R.color.M2;
+            case "M3":
+                return R.color.M3;
+            case "M4":
+                return R.color.M4;
+            case "M5":
+                return R.color.M5;
+
+            //Bus Lines and others
+            default:
+                if (nomeLinea.contains("z") || nomeLinea.contains("k"))
+                    return R.color.BUS;
+                else if (nomeLinea.contains("Filobus"))
+                    return R.color.FILOBUS;
+                else if(nomeLinea.equals("RE80"))
+                    return R.color.RE80;
+                else if (nomeLinea.contains("R"))
+                    return R.color.REGIONAL;
+                else if (nomeLinea.matches("^[1-9][0-9]?$"))
+                    return R.color.TRAM;
+                else if (nomeLinea.contains("P"))
+                    return R.color.AUTOGUIDOVIE;
+                else if(nomeLinea.startsWith("MXP"))
+                    return R.color.MXP;
+                else
+                    return R.color.OTHER;
         }
     }
 }

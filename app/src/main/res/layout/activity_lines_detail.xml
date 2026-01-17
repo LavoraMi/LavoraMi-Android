@@ -36,10 +36,15 @@
 
             <TextView
                 android:id="@+id/detBadge"
-                android:layout_width="67dp"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_badge_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="40dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:gravity="center"
+                android:singleLine="true"
+                android:ellipsize="none"
+                android:background="@drawable/bg_badge_line"
                 android:text=""
                 android:textColor="#FFFFFF"
                 android:textSize="32sp"
@@ -47,12 +52,14 @@
 
             <TextView
                 android:id="@+id/detTitolo"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginStart="15dp"
                 android:text=""
                 android:textColor="@color/text_primary"
                 android:textSize="30sp"
+                android:ellipsize="end"
                 android:textStyle="bold"
                 android:maxLines="1"/>
         </LinearLayout>

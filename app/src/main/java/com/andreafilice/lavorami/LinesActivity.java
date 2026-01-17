@@ -29,6 +29,12 @@ public class LinesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lines);
         LinearLayout containerMetro = findViewById(R.id.groupMetro);
         LinearLayout containerSub = findViewById(R.id.groupSub);
+        LinearLayout containerTILO = findViewById(R.id.groupTrans);
+        LinearLayout containerMXP = findViewById(R.id.groupMXP);
+        LinearLayout containerTram = findViewById(R.id.groupTram);
+        LinearLayout containerTrans = findViewById(R.id.groupTrans);
+
+
         EditText searchLines = findViewById(R.id.editSearch);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -58,7 +64,33 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerSub, "S13", R.color.S13, "Suburbano S13");
         aggiungiLinea(containerSub, "S19", R.color.S19, "Suburbano S19");
         aggiungiLinea(containerSub, "S31", R.color.S31, "Suburbano S31");
-
+        //AGGIUGNI TILO
+        aggiungiLinea(containerTILO,"S10",R.color.S10,"Trasnfrontaliere S10");
+        aggiungiLinea(containerTILO,"S30",R.color.S30,"Trasnfrontaliere S30");
+        aggiungiLinea(containerTILO,"S40",R.color.S40,"Trasnfrontaliere S40");
+        aggiungiLinea(containerTILO,"S50",R.color.S50,"Trasnfrontaliere S10");
+        aggiungiLinea(containerTILO,"RE80",R.color.RE80,"Trasnfrontaliere RE80");
+        //AGGIUNGI MXP
+        aggiungiLinea(containerMXP,"MXP1",R.color.MXP,"Malpensa Express 1");
+        aggiungiLinea(containerMXP,"MXP2",R.color.MXP,"Malpensa Express 2");
+        //AGGIUNGI TRAM
+        aggiungiLinea(containerTram,"1",R.color.TRAM,"Tram 1");
+        aggiungiLinea(containerTram,"2",R.color.TRAM,"Tram 2");
+        aggiungiLinea(containerTram,"3",R.color.TRAM,"Tram 3");
+        aggiungiLinea(containerTram,"4",R.color.TRAM,"Tram 4");
+        aggiungiLinea(containerTram,"5",R.color.TRAM,"Tram 5");
+        aggiungiLinea(containerTram,"7",R.color.TRAM,"Tram 7");
+        aggiungiLinea(containerTram,"9",R.color.TRAM,"Tram 9");
+        aggiungiLinea(containerTram,"10",R.color.TRAM,"Tram 10");
+        aggiungiLinea(containerTram,"12",R.color.TRAM,"Tram 12");
+        aggiungiLinea(containerTram,"14",R.color.TRAM,"Tram 14");
+        aggiungiLinea(containerTram,"15",R.color.TRAM,"Tram 15");
+        aggiungiLinea(containerTram,"16",R.color.TRAM,"Tram 16");
+        aggiungiLinea(containerTram,"19",R.color.TRAM,"Tram 19");
+        aggiungiLinea(containerTram,"24",R.color.TRAM,"Tram 24");
+        aggiungiLinea(containerTram,"27",R.color.TRAM,"Tram 27");
+        aggiungiLinea(containerTram,"31",R.color.TRAM,"Tram 31");
+        aggiungiLinea(containerTram,"33",R.color.TRAM,"Tram 33");
         //* SEARCH BAR
         searchLines.setBackgroundResource(R.drawable.bg_edittext_search);
         searchLines.addTextChangedListener(new TextWatcher() {
@@ -72,20 +104,39 @@ public class LinesActivity extends AppCompatActivity {
                 // Riferimenti ai titoli e al messaggio "vuoto"
                 TextView titleMetro = findViewById(R.id.subTitleMetro);
                 TextView titleSub = findViewById(R.id.subTitleSuburban);
+                TextView titleMXP = findViewById(R.id.subTitleMXP);
+                TextView titleTrans = findViewById(R.id.subTitleTrans);
+                TextView titleTram = findViewById(R.id.subTitleTram);
                 TextView tvNoResults = findViewById(R.id.emptyView);
 
                 // Filtriamo i due container
-                boolean metroHaRisultati = filtraContainer(containerMetro, query);
-                boolean subHaRisultati = filtraContainer(containerSub, query);
+                boolean hasMetro = filtraContainer(containerMetro, query);
+                boolean hasSub = filtraContainer(containerSub, query);
+                boolean hasMXP = filtraContainer(containerMXP, query);
+                boolean hasTrans = filtraContainer(containerTrans, query);
+                boolean hasTram = filtraContainer(containerTram, query);
 
                 // 1. Gestione Titoli
-                if (titleMetro != null) titleMetro.setVisibility(metroHaRisultati ? View.VISIBLE : View.GONE);
-                if (titleSub != null) titleSub.setVisibility(subHaRisultati ? View.VISIBLE : View.GONE);
+                // Gestione visibilità Titoli e Container
+                titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+                containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+
+                titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+                containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+
+                titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+                containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+
+                titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+                containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+
+                titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
 
                 // 2. Gestione Messaggio "Nessun Risultato"
                 // Se entrambi sono false, mostriamo il messaggio
                 if (tvNoResults != null) {
-                    if (!metroHaRisultati && !subHaRisultati) {
+                    if (!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram) {
                         tvNoResults.setVisibility(View.VISIBLE);
                     } else {
                         tvNoResults.setVisibility(View.GONE);

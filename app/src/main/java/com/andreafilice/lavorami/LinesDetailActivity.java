@@ -95,6 +95,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Metro " + nomeLinea);
         if(nomeLinea.startsWith("S"))
             detTitolo.setText("Suburbano " + nomeLinea);
+        if(nomeLinea.matches("^[1-9][0-9]?$"))
+            detTitolo.setText("Tram "+nomeLinea);
+        if(nomeLinea.equals("S10")||nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("RE80"))
+            detTitolo.setText("Transfrontaliere: "+ nomeLinea);
+        if(nomeLinea.startsWith("MXP"))
+            detTitolo.setText(nomeLinea);
         detBadge.setText(nomeLinea);
         int colorResId = StationDB.getLineColor(nomeLinea);
         int coloreEffettivo = ContextCompat.getColor(this, colorResId);
@@ -361,6 +367,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             tvAttesa.setText("Frequenza media: 3 - 6 min");
         else if (nomeLinea.startsWith("S"))
             tvAttesa.setText("Frequenza media: 30 min");
+        else if(nomeLinea.matches("^[1-9][0-9]?$"))
+            tvAttesa.setText("Frequenza media: 5-20min");
+        else if(nomeLinea.startsWith("MXP"))
+            tvAttesa.setText("Frequenza media: 30 min");
+        else if(nomeLinea.equals("S10")||nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("S50")||nomeLinea.equals("RE80"))
+            tvAttesa.setText("Freqeunza media: 30 min");
         else
             tvAttesa.setText("Frequenza variabile");
 
@@ -408,6 +420,31 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S13": return "Milano Bovisa ↔ Pavia";
             case "S19": return "Stazione 19 (Verifica tratta specifica)";
             case "S31": return "Cinisello Balsamo ↔ Milano Bicocca (Tram)";
+            case "MXP1": return "Milano Cadorna ↔ Malpensa Aeroporto T1-T2";
+            case "MXP2": return "Milano Centrale ↔ Malpensa Aeroporto T1-T2";
+            case "S10": return "Biasca ↔ Como";
+            case "S20": return "Castione ↔ Locarno";
+            case "S30": return "Cadenazzo ↔ Gallarate";
+            case "S40": return "Como ↔ Varese";
+            case "S50": return "Biasca ↔ Malpensa Aeroporto T1-T2";
+            case "RE80": return "Locarno ↔ Milano Centrale";
+            case "1": return "Greco (Via Martiri Oscuri) - Roserio";
+            case "2": return "Piazza Bausan - Piazzale Negrelli";
+            case "3": return "Duomo (Via Cantù) - Gratosoglio";
+            case "4": return "Piazza Castello - Parco Nord (Niguarda)";
+            case "5": return "Ospedale Maggiore (Niguarda) - Ortica (Via Milesi)";
+            case "7": return "Piazzale Lagosta - Precotto (Via Anassagora)";
+            case "9": return "Stazione Centrale (Piazza IV Novembre) - Porta Genova FS";
+            case "10": return "Viale Lunigiana - Piazza 24 Maggio";
+            case "12": return "Roserio - Viale Molise";
+            case "14": return "Piazzale Cimitero Maggiore - Lorenteggio (Via Segneri)";
+            case "15": return "Duomo (Via Dogana) - Rozzano (Via Guido Rossa)";
+            case "16": return "Stadio San Siro (Piazzale Axum) - Via Monte Velino";
+            case "19": return "Lambrate FS - Piazza Castelli";
+            case "24": return "Duomo (Via Dogana) - Vigentino (Via Selvanesco)";
+            case "27": return "Piazza Fontana - Viale Ungheria";
+            case "31": return "Bicocca M5 - Cinisello (Via Monte Ortigara)";
+            case "33": return "Piazzale Lagosta - Viale Rimembranze di Lambrate";
             default: return "Direzioni non disponibili per " + linea;
         }
     }

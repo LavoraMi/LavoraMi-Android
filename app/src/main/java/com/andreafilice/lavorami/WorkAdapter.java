@@ -217,12 +217,16 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
             //Bus Lines and others
             default:
-                if(nomeLinea.contains("z"))
+                if(nomeLinea.contains("z")||nomeLinea.contains("k"))
                     return R.color.BUS;
                 else if(nomeLinea.contains("Filobus"))
                     return R.color.FILOBUS;
                 else if(nomeLinea.contains("R"))
                     return R.color.REGIONAL;
+                else if(nomeLinea.matches("^[1-9][0-9]?$"))
+                    return R.color.TRAM;
+                else if(nomeLinea.contains("P"))
+                    return R.color.AUTOGUIDOVIE;
                 else
                     return R.color.OTHER;
         }
