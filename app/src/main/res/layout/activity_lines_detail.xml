@@ -15,7 +15,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,9 +29,6 @@
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="@+id/textView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView"
                 app:srcCompat="@drawable/outline_arrow_back_ios_new_24"
                 app:tint="@color/text_primary" />
 
@@ -44,8 +40,6 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:gravity="center"
-                android:singleLine="true"
-                android:ellipsize="none"
                 android:background="@drawable/bg_badge_line"
                 android:text=""
                 android:textColor="#FFFFFF"
@@ -83,10 +77,11 @@
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tempo di attesa::"
+            android:text="Tempo di attesa:"
             android:textColor="@color/text_primary"
             android:textSize="12sp"
             android:layout_marginTop="25dp"
@@ -100,6 +95,7 @@
             android:textSize="20sp"
             android:text=""
             android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,6 +129,7 @@
                 android:textColor="@color/text_primary"
                 android:text="Mappa"
                 app:chipBackgroundColor="@color/selector_chip_filter"/>
+
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipLavoriInCorso"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -157,15 +154,14 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
         </androidx.cardview.widget.CardView>
+
         <LinearLayout
-            android:id="@+id/containerLavori"
+            android:id="@+id/lavoriSezioneWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
-            android:layout_marginTop="20dp">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -174,23 +170,28 @@
                 android:textColor="@color/text_primary"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"/>
 
-            <TextView
-                android:id="@+id/emptyView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/containerLavori"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nessuna corrispondenza trovata."
-                android:textSize="18sp"
-                android:textColor="@color/text_primary"
-                android:fontFamily="@font/archivo_medium"
-                android:visibility="gone"
-                app:layout_constraintTop_toTopOf="@+id/recyclerView"
-                app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
+                android:orientation="vertical" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Nessun lavoro attuale o programmato su questa linea."
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:alpha="0.7"
+            android:fontFamily="sans-serif-medium"
+            android:visibility="gone" />
 
     </LinearLayout>
 </ScrollView>

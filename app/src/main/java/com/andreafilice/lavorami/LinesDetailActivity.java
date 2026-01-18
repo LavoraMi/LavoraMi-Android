@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -76,6 +77,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipMappa.setOnClickListener(v -> {
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
+            findViewById(R.id.emptyView).setVisibility(View.GONE);
         });
 
         chipLavori.setOnClickListener(v -> {
@@ -327,15 +329,17 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     }
 
     private void caricaEventiFiltrati() {
-        boolean atLeastOneWork = false;
         LinearLayout container = findViewById(R.id.containerLavori);
+        TextView emptyView = findViewById(R.id.emptyView);
         container.removeAllViews();
+        boolean emptyList = false;
+        String targetLine = (nomeLinea.equals("MXP1") || nomeLinea.equals("MXP2")) ? "MXP" : nomeLinea;
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
-            Log.d("INFO", nomeLinea);
-            if (evento.getLines() != null && Arrays.asList(evento.getLines()).contains((nomeLinea.equals("MXP1") || nomeLinea.equals("MXP2")) ? "MXP" : nomeLinea)) {
-                if(!atLeastOneWork) atLeastOneWork = true;
+            if (evento.getLines() == null) continue;
 
+            if (Arrays.asList(evento.getLines()).contains(targetLine)) {
+                emptyList = true;
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
 
                 ImageView icona = card.findViewById(R.id.iconEvent);
@@ -345,13 +349,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
                 TextView operatore = card.findViewById(R.id.txtOperator);
                 ProgressBar progressBar = card.findViewById(R.id.progressBarDate);
+
                 titolo.setText(evento.getTitle());
                 icona.setImageResource(evento.getCardImageID());
-                int colorRes = isDarkMode() ? Color.WHITE : Color.BLACK;
                 icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
 
-                if (descrizione != null)
-                    descrizione.setText(evento.getDetails());
+                if (descrizione != null) descrizione.setText(evento.getDetails());
 
                 txtInizio.setText("Inizio: " + EventDescriptor.formattaData(evento.getStartDate()));
                 txtFine.setText("Fine: " + EventDescriptor.formattaData(evento.getEndDate()));
@@ -361,15 +364,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     long fine = getDateMillis(evento.getEndDate());
                     long oggi = System.currentTimeMillis();
 
-                    if (oggi < inizio)
-                        progressBar.setProgress(0);
-                    else if (oggi > fine)
-                        progressBar.setProgress(100);
+                    if (oggi < inizio) progressBar.setProgress(0);
+                    else if (oggi > fine) progressBar.setProgress(100);
                     else {
                         float progress = ((float) (oggi - inizio) / (fine - inizio)) * 100;
                         progressBar.setProgress((int) progress);
                     }
-
                     if(progressBar.getProgress() == 100)
                         progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#16660e")));
                 }
@@ -377,6 +377,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 container.addView(card);
             }
         }
+
+        emptyView.setVisibility((emptyList) ? View.GONE : View.VISIBLE);
+        container.setVisibility((emptyList) ? View.VISIBLE : View.GONE);
     }
 
     public long getDateMillis(String dateString) {
