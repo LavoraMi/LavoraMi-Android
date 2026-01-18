@@ -157,6 +157,7 @@
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
         </androidx.cardview.widget.CardView>
         <LinearLayout
             android:id="@+id/containerLavori"
@@ -174,6 +175,20 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/emptyView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nessuna corrispondenza trovata."
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/archivo_medium"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@+id/recyclerView"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </LinearLayout>
 

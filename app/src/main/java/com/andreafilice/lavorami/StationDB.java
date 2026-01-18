@@ -470,19 +470,16 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS31() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Milano Porta Garibaldi", 45.48449, 9.18737, "Main", "S31"));
-        stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Main", "S31"));
-        stations.add(new MetroStation("Sesto S. Giovanni", 45.54126, 9.23903, "Main", "S31"));
-        stations.add(new MetroStation("Monza", 45.57797, 9.27289, "Main", "S31"));
-        stations.add(new MetroStation("Lissone - Muggiò", 45.60618, 9.23526, "Main", "S31"));
-        stations.add(new MetroStation("Desio", 45.62011, 9.21829, "Main", "S31"));
-        stations.add(new MetroStation("Seregno", 45.64609, 9.20302, "Main", "S31"));
-        stations.add(new MetroStation("Camnago - Lentate", 45.66837, 9.13328, "Main", "S31"));
-        stations.add(new MetroStation("Carimate", 45.69718, 9.10737, "Main", "S31"));
-        stations.add(new MetroStation("Cantù - Cermenate", 45.71623, 9.09948, "Main", "S31"));
-        stations.add(new MetroStation("Cucciago", 45.74081, 9.08206, "Main", "S31"));
-        stations.add(new MetroStation("Como Camerlata", 45.78457, 9.0794, "Main", "S31"));
-        stations.add(new MetroStation("Como S. Giovanni", 45.80901, 9.07279, "Main", "S31"));
+        stations.add(new MetroStation("Brescia", 45.53252, 10.21297, "Main", "S31"));
+        stations.add(new MetroStation("Brescia Borgo S. Giovanni", 45.54333, 10.19076, "Main", "S31"));
+        stations.add(new MetroStation("Brescia Violino", 45.54511, 10.16873, "Main", "S31"));
+        stations.add(new MetroStation("Castegnato", 45.56608, 10.11827, "Main", "S31"));
+        stations.add(new MetroStation("Paderno Franciacorta", 45.58691, 10.08725, "Main", "S31"));
+        stations.add(new MetroStation("Passirano", 45.59021, 10.06359, "Main", "S31"));
+        stations.add(new MetroStation("Bornato - Calino", 45.59035, 10.03298, "Main", "S31"));
+        stations.add(new MetroStation("Borgonato - Adro", 45.62225, 10.02005, "Main", "S31"));
+        stations.add(new MetroStation("Provaglio Timoline", 45.63504, 10.03538, "Main", "S31"));
+        stations.add(new MetroStation("Iseo", 45.65657, 10.05003, "Main", "S31"));
         return stations;
     }
 

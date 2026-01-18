@@ -82,9 +82,8 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
         int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
         holder.progressBar.setProgress(progressPercentage);
-        if(progressPercentage == 100){
+        if(progressPercentage == 100)
             holder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#16660e")));
-        }
 
         holder.chipGroupLinee.removeAllViews();
         List<String> lineeRaw = Arrays.asList(item.getLines());

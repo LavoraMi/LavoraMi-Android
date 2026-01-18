@@ -144,7 +144,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 tutteLeStazioni.add(s);
             }
         }
-        // --- LOG DI DEBUG ---
+
         android.util.Log.d("MAPPA_FIX", "========================================");
         android.util.Log.d("MAPPA_FIX", "Linea richiesta: [" + nomeLinea + "]");
         android.util.Log.d("MAPPA_FIX", "Stazioni trovate nel filtro: " + tutteLeStazioni.size());
@@ -156,32 +156,27 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
         android.util.Log.d("MAPPA_FIX", "ID Colore recuperato: " + StationDB.getLineColor(nomeLinea));
         android.util.Log.d("MAPPA_FIX", "========================================");
-        // ----------------------
+
         android.util.Log.d("MAPPA_FIX", "Colore HEX reale: " + String.format("#%06X", (0xFFFFFF & coloreLinea)));
         if (!tutteLeStazioni.isEmpty()) {
-            // Creiamo un "box" che contenga tutte le stazioni
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for (MetroStation s : tutteLeStazioni) {
                 builder.include(new LatLng(s.getLatitude(), s.getLongitude()));
             }
             LatLngBounds bounds = builder.build();
 
-            // Spostiamo la camera per inquadrare perfettamente la linea
-            // 100 è il padding (margine) in pixel dai bordi dello schermo
             int padding = 150;
             mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
         } else {
-            // Se non ci sono stazioni, vai su Milano (fallback)
             LatLng milano = new LatLng(45.4642, 9.1900);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(milano, 11f));
         }
-        if (nomeLinea.equalsIgnoreCase("M1")) {
+        if (nomeLinea.equalsIgnoreCase("M1"))
             disegnaM1(tutteLeStazioni, coloreLinea);
-        } else if (nomeLinea.equalsIgnoreCase("M2")) {
+        else if (nomeLinea.equalsIgnoreCase("M2"))
             disegnaM2(tutteLeStazioni, coloreLinea);
-        } else {
+        else
             disegnaPolilinea(tutteLeStazioni, coloreLinea);
-        }
     }
 
     private void disegnaPolilinea(List<MetroStation> stazioni, int colore) {
@@ -332,11 +327,14 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     }
 
     private void caricaEventiFiltrati() {
+        boolean atLeastOneWork = false;
         LinearLayout container = findViewById(R.id.containerLavori);
         container.removeAllViews();
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
-            if (evento.getLines() != null && Arrays.asList(evento.getLines()).contains(nomeLinea)) {
+            Log.d("INFO", nomeLinea);
+            if (evento.getLines() != null && Arrays.asList(evento.getLines()).contains((nomeLinea.equals("MXP1") || nomeLinea.equals("MXP2")) ? "MXP" : nomeLinea)) {
+                if(!atLeastOneWork) atLeastOneWork = true;
 
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
 
@@ -371,6 +369,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         float progress = ((float) (oggi - inizio) / (fine - inizio)) * 100;
                         progressBar.setProgress((int) progress);
                     }
+
+                    if(progressBar.getProgress() == 100)
+                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#16660e")));
                 }
                 operatore.setText(evento.company);
                 container.addView(card);
@@ -418,7 +419,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         int numeroLavori = 0;
         for (EventDescriptor e : EventData.listaEventiCompleta) {
             for (String l : e.getLines()) {
-                if (l.equalsIgnoreCase(nomeLinea)) { numeroLavori++; break; }
+                if (l.equalsIgnoreCase((nomeLinea.equals("MXP1") || nomeLinea.equals("MXP2") ? "MXP" : nomeLinea))) { numeroLavori++; break; }
             }
         }
 
@@ -458,7 +459,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S12": return "Cormano-Cusano ↔ Melegnano";
             case "S13": return "Milano Bovisa ↔ Pavia";
             case "S19": return "Stazione 19 (Verifica tratta specifica)";
-            case "S31": return "Cinisello Balsamo ↔ Milano Bicocca (Tram)";
+            case "S31": return "Brescia ↔ Iseo";
             case "MXP1": return "Milano Cadorna ↔ Malpensa Aeroporto T1-T2";
             case "MXP2": return "Milano Centrale ↔ Malpensa Aeroporto T1-T2";
             case "S10": return "Biasca ↔ Como";
