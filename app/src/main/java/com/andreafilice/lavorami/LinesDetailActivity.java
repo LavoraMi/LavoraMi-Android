@@ -13,7 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -44,6 +48,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_lines_detail);
         Chip chipMappa = findViewById(R.id.chipMappa);
         Chip chipLavori = findViewById(R.id.chipLavoriInCorso);
@@ -63,6 +68,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             getSupportActionBar().setTitle("Dettaglio " + nomeLinea);
         }
 
+
         chipMappa.setChipStrokeWidth(3f);
         chipMappa.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
         chipLavori.setChipStrokeWidth(3f);
@@ -77,9 +83,11 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             containerLavori.setVisibility(View.VISIBLE);
             caricaEventiFiltrati();
         });
+
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
+
     }
 
     @Override
@@ -111,14 +119,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.getUiSettings().setMapToolbarEnabled(false);
+
         if (isDarkMode()) {
             mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
         }
-        LatLng milano = new LatLng(45.4642, 9.1900);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(milano, 11f));
 
         for (MetroStation stazione : StationDB.getAllStations()) {
-            if (stazione.getLine().equals(nomeLinea)) {
+            if (stazione.getLine().trim().equalsIgnoreCase(nomeLinea.trim())) {
                 int colorResId = StationDB.getLineColor(stazione.getLine());
                 int coloreEffettivo = ContextCompat.getColor(this, colorResId);
 
@@ -133,11 +140,41 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
 
         for (MetroStation s : StationDB.getAllStations()) {
-            if (s.getLine().equals(nomeLinea)) {
+            if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim())) {
                 tutteLeStazioni.add(s);
             }
         }
+        // --- LOG DI DEBUG ---
+        android.util.Log.d("MAPPA_FIX", "========================================");
+        android.util.Log.d("MAPPA_FIX", "Linea richiesta: [" + nomeLinea + "]");
+        android.util.Log.d("MAPPA_FIX", "Stazioni trovate nel filtro: " + tutteLeStazioni.size());
 
+        if (tutteLeStazioni.size() > 0) {
+            android.util.Log.d("MAPPA_FIX", "Esempio badge stazione trovata: [" + tutteLeStazioni.get(0).getLine() + "]");
+        } else {
+            android.util.Log.e("MAPPA_FIX", "ATTENZIONE: Nessuna stazione trovata. Controlla il nome del badge in StationDB!");
+        }
+        android.util.Log.d("MAPPA_FIX", "ID Colore recuperato: " + StationDB.getLineColor(nomeLinea));
+        android.util.Log.d("MAPPA_FIX", "========================================");
+        // ----------------------
+        android.util.Log.d("MAPPA_FIX", "Colore HEX reale: " + String.format("#%06X", (0xFFFFFF & coloreLinea)));
+        if (!tutteLeStazioni.isEmpty()) {
+            // Creiamo un "box" che contenga tutte le stazioni
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            for (MetroStation s : tutteLeStazioni) {
+                builder.include(new LatLng(s.getLatitude(), s.getLongitude()));
+            }
+            LatLngBounds bounds = builder.build();
+
+            // Spostiamo la camera per inquadrare perfettamente la linea
+            // 100 è il padding (margine) in pixel dai bordi dello schermo
+            int padding = 150;
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+        } else {
+            // Se non ci sono stazioni, vai su Milano (fallback)
+            LatLng milano = new LatLng(45.4642, 9.1900);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(milano, 11f));
+        }
         if (nomeLinea.equalsIgnoreCase("M1")) {
             disegnaM1(tutteLeStazioni, coloreLinea);
         } else if (nomeLinea.equalsIgnoreCase("M2")) {
@@ -153,12 +190,14 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         PolylineOptions polylineOptions = new PolylineOptions()
                 .width(10)
                 .color(colore)
-                .geodesic(true);
+                .geodesic(true)
+                .zIndex(1000f);
 
         for (MetroStation s : stazioni) {
             polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));
         }
         mMap.addPolyline(polylineOptions);
+        android.util.Log.d("MAPPA_ULTIMATUM", "Metodo addPolyline eseguito con " + stazioni.size() + " punti.");
     }
 
     private void disegnaM1(List<MetroStation> stazioni, int colore) {

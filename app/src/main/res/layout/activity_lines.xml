@@ -206,7 +206,8 @@
             android:padding="12dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_home"
-            app:tint="#FD272D" />
+            app:tint="?attr/colorControlNormal"
+             />
 
         <ImageButton
             android:id="@+id/linesButton"
@@ -217,7 +218,7 @@
             android:padding="12dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_lines"
-            app:tint="?attr/colorControlNormal" />
+            app:tint="#FD272D" />
 
         <ImageButton
             android:id="@+id/settingsButton"

@@ -717,7 +717,7 @@ public class StationDB {
                     return R.color.REGIONAL;
                 else if (nomeLinea.matches("^[1-9][0-9]?$"))
                     return R.color.TRAM;
-                else if (nomeLinea.contains("P"))
+                else if (nomeLinea.startsWith("P"))
                     return R.color.AUTOGUIDOVIE;
                 else if(nomeLinea.startsWith("MXP"))
                     return R.color.MXP;

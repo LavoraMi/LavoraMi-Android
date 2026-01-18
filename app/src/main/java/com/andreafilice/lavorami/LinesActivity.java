@@ -68,7 +68,7 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerTILO,"S10",R.color.S10,"Trasnfrontaliere S10");
         aggiungiLinea(containerTILO,"S30",R.color.S30,"Trasnfrontaliere S30");
         aggiungiLinea(containerTILO,"S40",R.color.S40,"Trasnfrontaliere S40");
-        aggiungiLinea(containerTILO,"S50",R.color.S50,"Trasnfrontaliere S10");
+        aggiungiLinea(containerTILO,"S50",R.color.S50,"Trasnfrontaliere S50");
         aggiungiLinea(containerTILO,"RE80",R.color.RE80,"Trasnfrontaliere RE80");
         //AGGIUNGI MXP
         aggiungiLinea(containerMXP,"MXP1",R.color.MXP,"Malpensa Express 1");
