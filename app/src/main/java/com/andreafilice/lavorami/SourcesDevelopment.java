@@ -37,8 +37,7 @@ public class SourcesDevelopment extends AppCompatActivity {
                 String subject = "Segnalazione Bug LavoraMI";
 
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:"));
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
+                intent.setData(Uri.parse("mailto:help.playepik@gmail.com"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
                 try {
