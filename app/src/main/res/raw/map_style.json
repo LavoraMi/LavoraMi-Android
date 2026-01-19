@@ -8,5 +8,10 @@
   { "featureType": "road", "elementType": "geometry.stroke", "stylers": [{ "color": "#212a37" }] },
   { "featureType": "road", "elementType": "labels.text.fill", "stylers": [{ "color": "#9ca5b3" }] },
   { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#17263c" }] },
-  { "featureType": "transit.station", "stylers": [{ "visibility": "off" }] }
+  { "featureType": "transit.station", "stylers": [{ "visibility": "off" }] },
+  {
+    "featureType": "poi",
+    "elementType": "all",
+    "stylers": [{ "visibility": "off" }]
+  }
 ]

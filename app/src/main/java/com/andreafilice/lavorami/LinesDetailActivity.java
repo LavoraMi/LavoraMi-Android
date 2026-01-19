@@ -77,11 +77,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipMappa.setOnClickListener(v -> {
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
+            findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
             findViewById(R.id.emptyView).setVisibility(View.GONE);
         });
 
         chipLavori.setOnClickListener(v -> {
             cardMappa.setVisibility(View.GONE);
+            findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.VISIBLE);
             caricaEventiFiltrati();
         });
@@ -330,56 +332,69 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
     private void caricaEventiFiltrati() {
         LinearLayout container = findViewById(R.id.containerLavori);
+        View wrapper = findViewById(R.id.lavoriSezioneWrapper);
         TextView emptyView = findViewById(R.id.emptyView);
+
+        if (container == null || wrapper == null) return;
+
         container.removeAllViews();
-        boolean emptyList = false;
-        String targetLine = (nomeLinea.equals("MXP1") || nomeLinea.equals("MXP2")) ? "MXP" : nomeLinea;
+        boolean foundAtLeastOne = false;
+
+        String searchTag = nomeLinea.trim().toUpperCase();
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
             if (evento.getLines() == null) continue;
 
-            if (Arrays.asList(evento.getLines()).contains(targetLine)) {
-                emptyList = true;
+            boolean matchFound = false;
+            for (String lineInEvent : evento.getLines()) {
+                if (lineInEvent != null) {
+                    if (lineInEvent.trim().toUpperCase().equals(searchTag)) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+            }
+
+            if (matchFound && !evento.isEventTerminated()) {
+                foundAtLeastOne = true;
+
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
 
                 ImageView icona = card.findViewById(R.id.iconEvent);
+                if (icona != null) {
+                    icona.setImageResource(evento.getCardImageID());
+                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                }
+
                 TextView titolo = card.findViewById(R.id.txtTitle);
-                TextView descrizione = card.findViewById(R.id.txtDescription);
+                TextView desc = card.findViewById(R.id.txtDescription);
+                if (titolo != null) titolo.setText(evento.getTitle());
+                if (desc != null) desc.setText(evento.getDetails());
+
                 TextView txtInizio = card.findViewById(R.id.txtStartDate);
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
-                TextView operatore = card.findViewById(R.id.txtOperator);
-                ProgressBar progressBar = card.findViewById(R.id.progressBarDate);
 
-                titolo.setText(evento.getTitle());
-                icona.setImageResource(evento.getCardImageID());
-                icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
-
-                if (descrizione != null) descrizione.setText(evento.getDetails());
-
-                txtInizio.setText("Inizio: " + EventDescriptor.formattaData(evento.getStartDate()));
-                txtFine.setText("Fine: " + EventDescriptor.formattaData(evento.getEndDate()));
-
-                if (progressBar != null) {
-                    long inizio = getDateMillis(evento.getStartDate());
-                    long fine = getDateMillis(evento.getEndDate());
-                    long oggi = System.currentTimeMillis();
-
-                    if (oggi < inizio) progressBar.setProgress(0);
-                    else if (oggi > fine) progressBar.setProgress(100);
-                    else {
-                        float progress = ((float) (oggi - inizio) / (fine - inizio)) * 100;
-                        progressBar.setProgress((int) progress);
-                    }
-                    if(progressBar.getProgress() == 100)
-                        progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#16660e")));
+                if (txtInizio != null) {
+                    txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
                 }
-                operatore.setText(evento.company);
+                if (txtFine != null) {
+                    txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
+                }
+
+                ProgressBar pb = card.findViewById(R.id.progressBarDate);
+                if (pb != null) {
+                    int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
+                    pb.setProgress(perc);
+                    pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ?
+                            Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
+                }
+
                 container.addView(card);
             }
         }
 
-        emptyView.setVisibility((emptyList) ? View.GONE : View.VISIBLE);
-        container.setVisibility((emptyList) ? View.VISIBLE : View.GONE);
+        wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
+        emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
     }
 
     public long getDateMillis(String dateString) {
