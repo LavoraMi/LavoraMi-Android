@@ -85,6 +85,8 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         holder.progressBar.setProgress(progressPercentage);
         if(progressPercentage == 100)
             holder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#16660e")));
+        else
+            holder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#FD272D")));
 
         holder.chipGroupLinee.removeAllViews();
         List<String> lineeRaw = Arrays.asList(item.getLines());
@@ -228,7 +230,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
                     return R.color.FILOBUS;
                 else if(nomeLinea.contains("R"))
                     return R.color.REGIONAL;
-                else if(nomeLinea.matches("^[1-33]?$"))
+                else if(nomeLinea.matches("^([1-9]|[1-2][0-9]|3[0-3])$"))
                     return R.color.TRAM;
                 else if(nomeLinea.contains("P"))
                     return R.color.AUTOGUIDOVIE;

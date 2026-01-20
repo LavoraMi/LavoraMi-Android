@@ -85,7 +85,12 @@
                 android:layout_height="wrap_content"
                 android:text="Tutti"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_filters"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipBus"
@@ -94,7 +99,12 @@
                 android:layout_height="wrap_content"
                 android:text="Bus"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_bus"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTram"
@@ -103,7 +113,12 @@
                 android:layout_height="wrap_content"
                 android:text="Tram"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_tram"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipMetro"
@@ -112,7 +127,12 @@
                 android:layout_height="wrap_content"
                 android:text="Metropolitana"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_metro"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTreno"
@@ -121,7 +141,12 @@
                 android:layout_height="wrap_content"
                 android:text="Treno"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_train"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipInCorso"
@@ -130,7 +155,12 @@
                 android:layout_height="wrap_content"
                 android:text="In Corso"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_incorso"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipProgrammati"
@@ -139,7 +169,12 @@
                 android:layout_height="wrap_content"
                 android:text="Programmati"
                 android:textColor="@color/text_primary"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_calendar"
+                app:chipIconVisible="true"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconSize="15dp"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipATM"
