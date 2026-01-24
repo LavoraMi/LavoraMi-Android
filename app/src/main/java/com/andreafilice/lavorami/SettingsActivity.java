@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -39,8 +41,8 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         //*SETTINGS BUTTONS
-        Button btnSourcesAndDevelopment = (Button) findViewById(R.id.fonts);
-        btnSourcesAndDevelopment.setOnClickListener(v -> {
+        RelativeLayout sourcesBtn = findViewById(R.id.btnFonts);
+        sourcesBtn.setOnClickListener(v -> {
             changeActivity(SourcesDevelopment.class);
         });
     }
