@@ -90,7 +90,6 @@ public class FilterSelection extends AppCompatActivity {
 
         DataManager.refreshDatas(this);
         String selectedFilter = DataManager.getStringData(this, "DEFAULT_FILTER", "Tutti");
-        int indexFilterSaved = getIndexFilterSaved(filterValues, selectedFilter);
         setGlobalVariables(filterValues, selectedFilter);
         setCheckImage(filterIcons);
 
