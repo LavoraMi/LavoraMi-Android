@@ -18,6 +18,10 @@ public class DataManager{
         sharedPref.edit().putInt(key, value).apply();
     }
 
+    public static void saveBoolData(String key, boolean value){
+        sharedPref.edit().putBoolean(key, value).apply();
+    }
+
     public static String getStringData(Context context, String key, String defaulValue){
         refreshDatas(context);
         return sharedPref.getString(key, defaulValue);
@@ -26,5 +30,10 @@ public class DataManager{
     public static int getIntData(Context context, String key, int defaultValue){
         refreshDatas(context);
         return sharedPref.getInt(key, defaultValue);
+    }
+
+    public static boolean getBoolData(Context context, String key, boolean defaultValue){
+        refreshDatas(context);
+        return sharedPref.getBoolean(key, defaultValue);
     }
 }

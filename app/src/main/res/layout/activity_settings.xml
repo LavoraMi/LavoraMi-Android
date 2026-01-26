@@ -65,7 +65,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/disclosureHeader"
+                        android:id="@+id/groupTrenord"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:paddingHorizontal="16dp">
@@ -90,74 +90,39 @@
                             android:textSize="17sp" />
 
                         <ImageView
-                            android:id="@+id/disclosureArrow"
+                            android:id="@+id/disclosureArrowTrenord"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:rotation="270"
+                            android:rotation="180"
                             android:src="@drawable/ic_dropdown"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:id="@+id/disclosureContentTreno"
+                        android:id="@+id/disclosureContentTrenord"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:paddingBottom="8dp">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:layout_marginStart="56dp"
-                            android:background="#38383A" />
+                        <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingHorizontal="16dp">
-
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
-                                android:id="@+id/iconSLines"
+                                android:id="@+id/iconS"
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_slines"
                                 app:tint="@color/text_primary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="40dp"
-                                android:text="Linee S"
-                                android:textColor="@color/text_primary"
-                                android:textSize="15sp" />
-
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/ic_star_empty"
-                                app:tint="#FF9F0A" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="Linee S" android:textColor="@color/text_primary" android:textSize="15sp" />
+                            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
-                    </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lineeR"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="visible"
-                        android:paddingBottom="8dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingHorizontal="16dp">
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconR"
                                 android:layout_width="28dp"
@@ -165,38 +130,11 @@
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_rlines"
                                 app:tint="@color/text_primary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="40dp"
-                                android:text="Linee R"
-                                android:textColor="@color/text_primary"
-                                android:textSize="15sp" />
-
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/ic_star_empty"
-                                app:tint="#FF9F0A" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="Linee R" android:textColor="@color/text_primary" android:textSize="15sp" />
+                            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/lineeRE"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="visible"
-                        android:paddingBottom="8dp">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingHorizontal="16dp">
-
+                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconRE"
                                 android:layout_width="28dp"
@@ -204,23 +142,8 @@
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/icon_relines"
                                 app:tint="@color/text_primary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="40dp"
-                                android:text="Linee RE"
-                                android:textColor="@color/text_primary"
-                                android:textSize="15sp" />
-
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/ic_star_empty"
-                                app:tint="#FF9F0A" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="Linee RE" android:textColor="@color/text_primary" android:textSize="15sp" />
+                            <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -241,7 +164,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/disclosureHeaderAtm"
+                        android:id="@+id/groupATM"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:paddingHorizontal="16dp">
@@ -271,7 +194,7 @@
                             android:layout_height="20dp"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:rotation="270"
+                            android:rotation="180"
                             android:src="@drawable/ic_dropdown"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
@@ -281,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:paddingBottom="8dp">
 
                         <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />

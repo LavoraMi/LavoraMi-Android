@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
@@ -37,6 +38,35 @@ public class NotificationSettings extends AppCompatActivity {
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchEndWorks = findViewById(R.id.switchEndWork);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchStrikeNotifications = findViewById(R.id.switchStrike);
 
+        //*LOAD FROM LOCAL SAVES
+        /// Load the boolean datas from the DataManager for every toggle.
+
+        DataManager.refreshDatas(this);
+        boolean notificationsEnabled = DataManager.getBoolData(this, "NOTIFICATIONS_SWITCH", true);
+        boolean notificationsStartWorks = DataManager.getBoolData(this, "NOTIFICATIONS_STARTWORKS", true);
+        boolean notificationsEndWorks = DataManager.getBoolData(this, "NOTIFICATIONS_ENDWORKS", true);
+        boolean notificationsStrikes = DataManager.getBoolData(this, "NOTIFICATIONS_STRIKES", true);
+
+        /// NOTE: Cast the type from the boolean to the Switch Value.
+        switchNotificationsGeneral.setChecked(notificationsEnabled);
+        switchStartWorks.setChecked(notificationsStartWorks);
+        switchEndWorks.setChecked(notificationsEndWorks);
+        switchStrikeNotifications.setChecked(notificationsStrikes);
+
+        /// NOTE: In this section of the code, we will be setting up the UI if the notificationGeneral
+        /// Switch is disabled.
+
+        boolean checked = switchNotificationsGeneral.isChecked();
+        switchStartWorks.setChecked(checked);
+        switchEndWorks.setChecked(checked);
+        switchStrikeNotifications.setChecked(checked);
+        switchStartWorks.setClickable(checked);
+        switchEndWorks.setClickable(checked);
+        switchStrikeNotifications.setClickable(checked);
+        switchStartWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchEndWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchStrikeNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
         //*CHECK FOR MAIN SWITCH DISABLED
         switchNotificationsGeneral.setOnClickListener(v -> {
             boolean isChecked = switchNotificationsGeneral.isChecked();
@@ -51,7 +81,13 @@ public class NotificationSettings extends AppCompatActivity {
             switchStartWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchEndWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchStrikeNotifications.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);
         });
+
+        /// Set the OnClickListener for ALL the Switches.
+        switchStartWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);});
+        switchEndWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);});
+        switchStrikeNotifications.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);});
     }
 
     public void changeActivity(Class<?> destinationLayout){
@@ -62,5 +98,14 @@ public class NotificationSettings extends AppCompatActivity {
         Intent layoutChange = new Intent(NotificationSettings.this, destinationLayout); //*CREATE THE INTENT WITH THE DESTINATION
         startActivity(layoutChange); //*CHANGE LAYOUT
         overridePendingTransition(1, 0);
+    }
+
+    public void saveDatas(Switch switchNotificationsGeneral, Switch switchStartWorks, Switch switchEndWorks, Switch switchStrikeNotifications){
+        /// In this Method, we will save the current configuration of the switches from the Settings
+
+        DataManager.saveBoolData("NOTIFICATIONS_SWITCH", switchNotificationsGeneral.isChecked());
+        DataManager.saveBoolData("NOTIFICATIONS_STARTWORKS", switchStartWorks.isChecked());
+        DataManager.saveBoolData("NOTIFICATIONS_ENDWORKS", switchEndWorks.isChecked());
+        DataManager.saveBoolData("NOTIFICATIONS_STRIKES", switchStrikeNotifications.isChecked());
     }
 }

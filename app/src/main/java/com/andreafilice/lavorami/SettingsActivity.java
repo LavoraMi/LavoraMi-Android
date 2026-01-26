@@ -2,8 +2,11 @@ package com.andreafilice.lavorami;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -54,6 +57,24 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout filtersButton = findViewById(R.id.btnFiltro);
         filtersButton.setOnClickListener(v -> {
             changeActivity(FilterSelection.class);
+        });
+
+        RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
+        groupTrenord.setOnClickListener(v -> {
+            LinearLayout trenordLayout = findViewById(R.id.disclosureContentTrenord);
+            ImageView arrowDisclosure = findViewById(R.id.disclosureArrowTrenord);
+
+            trenordLayout.setVisibility((trenordLayout.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+            arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
+        });
+
+        RelativeLayout groupATM = findViewById(R.id.groupATM);
+        groupATM.setOnClickListener(v -> {
+            LinearLayout atmLayout = findViewById(R.id.disclosureContentAtm);
+            ImageView arrowDisclosure = findViewById(R.id.disclosureArrowAtm);
+
+            atmLayout.setVisibility((atmLayout.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
+            arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
         });
 
         //*LOADING DATAS
