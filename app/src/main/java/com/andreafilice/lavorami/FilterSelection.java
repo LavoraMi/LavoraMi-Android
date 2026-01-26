@@ -120,6 +120,7 @@ public class FilterSelection extends AppCompatActivity {
         ///
         ///@PARAMETER
         /// ImageView[] filterIcons is the array containing the icons with correct IDs
+
         for (int i = 0; i < filterIcons.length; i++) {
             filterIcons[i].setVisibility((i == indexFilterSelected) ? ImageView.VISIBLE : ImageView.GONE);
         }

@@ -27,7 +27,7 @@ android {
         var buildNumber = "24012026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
-        resValue("string", "appVersionFull", (versionName + " (" + buildNumber + ")") ?: "1.0.0 (000)")
+        resValue("string", "appVersionFull", ("$versionName ($buildNumber)"))
         manifestPlaceholders["API_KEY"] = apiKey
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
