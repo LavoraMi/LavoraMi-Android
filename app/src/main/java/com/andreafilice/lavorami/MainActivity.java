@@ -45,10 +45,17 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout loadingLayout;
     private LinearLayout errorLayout;
     private WorkAdapter adapter;
+    private String defaultCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //*INITIALIZE THE DATAMANAGER SCRIPT
+        DataManager.refreshDatas(this);
+
+        defaultCategory = DataManager.getStringData(this, "DEFAULT_FILTER", "Tutti");
+        Log.d("DATA", defaultCategory);
 
         //*RIEMPIMENTO STRUTTURA DATI CONTENENTE DATI EVENTI
         downloadJSONData();
@@ -92,7 +99,44 @@ public class MainActivity extends AppCompatActivity {
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
 
         if(filterGroup != null){
-            filterGroup.check(R.id.chipAll);
+            switch(defaultCategory){
+                case "Tutti":
+                    filterGroup.check(R.id.chipAll);
+                    break;
+                case "Bus":
+                    filterGroup.check(R.id.chipBus);
+                    break;
+                case "Tram":
+                    filterGroup.check(R.id.chipTram);
+                    break;
+                case "Metropolitana":
+                    filterGroup.check(R.id.chipMetro);
+                    break;
+                case "Treno":
+                    filterGroup.check(R.id.chipTreno);
+                    break;
+                case "In Corso":
+                    filterGroup.check(R.id.chipInCorso);
+                    break;
+                case "Programmati":
+                    filterGroup.check(R.id.chipProgrammati);
+                    break;
+                case "di ATM":
+                    filterGroup.check(R.id.chipATM);
+                    break;
+                case "di Trenord":
+                    filterGroup.check(R.id.chipTrenord);
+                    break;
+                case "di Movibus":
+                    filterGroup.check(R.id.chipMovibus);
+                    break;
+                case "di STAV":
+                    filterGroup.check(R.id.chipStav);
+                    break;
+                case "di Autoguidovie":
+                    filterGroup.check(R.id.chipAutoguidovie);
+                    break;
+            }
             for (int i = 0; i < filterGroup.getChildCount(); i++) {
                 View child = filterGroup.getChildAt(i);
                 if (child instanceof Chip) {

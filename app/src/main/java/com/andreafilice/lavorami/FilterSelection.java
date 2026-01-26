@@ -82,6 +82,18 @@ public class FilterSelection extends AppCompatActivity {
                 "di Autoguidovie"
         };
 
+        //*LOAD FROM DATAS
+        /// In this section of the code, we will load the filterDefault value and
+        /// Correctly set the UI tick.
+        /// The steps are: Load the Datas, Get the data from DataManager, get the CurrentIndex,
+        /// Set global variables so we can set the Tickimage with the Method 'setCheckImage'
+
+        DataManager.refreshDatas(this);
+        String selectedFilter = DataManager.getStringData(this, "DEFAULT_FILTER", "Tutti");
+        int indexFilterSaved = getIndexFilterSaved(filterValues, selectedFilter);
+        setGlobalVariables(filterValues, selectedFilter);
+        setCheckImage(filterIcons);
+
         //*CHANGE THE FILTER
         /// In this For-Loop, will be set the return type of the Filter currently selected from the user
         /// This @String variable can be used into the method 'applicaFiltroCategoria(String categoria)' as a @PARAMETER
@@ -90,6 +102,8 @@ public class FilterSelection extends AppCompatActivity {
             filterLayouts[i].setOnClickListener(v -> {
                 getCurrentFilterSelected(filterValues, index);
                 setCheckImage(filterIcons);
+                DataManager.refreshDatas(this);
+                DataManager.saveStringData("DEFAULT_FILTER", getCurrentFilterSelected(filterValues, index));
             });
         }
     }
@@ -115,7 +129,6 @@ public class FilterSelection extends AppCompatActivity {
     }
 
     public void setCheckImage(ImageView[] filterIcons){
-        //*SET THE IMAGE
         /// In this Method, the Check Image will be displayed correclty for the current selected filter.
         ///
         ///@PARAMETER
@@ -124,5 +137,33 @@ public class FilterSelection extends AppCompatActivity {
         for (int i = 0; i < filterIcons.length; i++) {
             filterIcons[i].setVisibility((i == indexFilterSelected) ? ImageView.VISIBLE : ImageView.GONE);
         }
+    }
+
+    public int getIndexFilterSaved(String[] filters, String data){
+        /// In this Method, we find the current index of the Filter currently saved as predefinite.
+        ///
+        ///@PARAMETER
+        /// String[] filters is the array containing the values that the default filter can be.
+        /// String data is the DataManager variable taken from the sharedPreferences.
+
+        for (int i = 0; i < filters.length; i++) {
+            if(filters[i].equals(data))
+                return i;
+        }
+
+        //*FALLBACK VALUE
+        return -1;
+    }
+
+    public void setGlobalVariables(String[] filters, String data){
+        /// In this Method, we modify the global variables with the loaded ones.
+        /// Modifying this type of data is important for 'setCheckImage' Method.
+        ///
+        ///@PARAMETER
+        /// String[] filters is the array containing the values that the default filter can be.
+        /// String data is the DataManager variable taken from sharedPreferences.
+
+        indexFilterSelected = getIndexFilterSaved(filters, data);
+        nameFilterSelected = getCurrentFilterSelected(filters, indexFilterSelected);
     }
 }

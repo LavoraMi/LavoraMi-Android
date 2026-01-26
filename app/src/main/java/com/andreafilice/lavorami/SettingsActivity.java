@@ -55,6 +55,13 @@ public class SettingsActivity extends AppCompatActivity {
         filtersButton.setOnClickListener(v -> {
             changeActivity(FilterSelection.class);
         });
+
+        //*LOADING DATAS
+        /// In this section of the code, we will loading the datas from the DataManager file.
+        DataManager.refreshDatas(this);
+        String selectedFilter = DataManager.getStringData(this, "DEFAULT_FILTER", "Tutti");
+        TextView filterSelectedText = findViewById(R.id.filterText);
+        filterSelectedText.setText(selectedFilter);
     }
 
     public void changeActivity(Class<?> destinationLayout){
