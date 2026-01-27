@@ -221,6 +221,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //*URL VERIFY SHA-256 CHECKSUM
+        /// For better security measures, we check the CDN SHA-256 Checksum.
+        /// The value of the Checksum is get by CMD tools.
+
         CertificatePinner certificatePinner = new CertificatePinner.Builder()
                 .add("cdn-playepik.netlify.app", "sha256/DFv0rPImhleLzIvctvEusBa5wnzQ/+aSqyW18y26L+s=")
                 .build();

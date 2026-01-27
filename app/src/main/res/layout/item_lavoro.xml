@@ -22,7 +22,7 @@
             android:layout_width="26dp"
             android:layout_height="26dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/txtTitle"

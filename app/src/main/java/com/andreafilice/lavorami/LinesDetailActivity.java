@@ -151,19 +151,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
         }
 
-        android.util.Log.d("MAPPA_FIX", "========================================");
-        android.util.Log.d("MAPPA_FIX", "Linea richiesta: [" + nomeLinea + "]");
-        android.util.Log.d("MAPPA_FIX", "Stazioni trovate nel filtro: " + tutteLeStazioni.size());
-
-        if (tutteLeStazioni.size() > 0) {
-            android.util.Log.d("MAPPA_FIX", "Esempio badge stazione trovata: [" + tutteLeStazioni.get(0).getLine() + "]");
-        } else {
-            android.util.Log.e("MAPPA_FIX", "ATTENZIONE: Nessuna stazione trovata. Controlla il nome del badge in StationDB!");
-        }
-        android.util.Log.d("MAPPA_FIX", "ID Colore recuperato: " + StationDB.getLineColor(nomeLinea));
-        android.util.Log.d("MAPPA_FIX", "========================================");
-
-        android.util.Log.d("MAPPA_FIX", "Colore HEX reale: " + String.format("#%06X", (0xFFFFFF & coloreLinea)));
         if (!tutteLeStazioni.isEmpty()) {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             for (MetroStation s : tutteLeStazioni) {
@@ -198,7 +185,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));
         }
         mMap.addPolyline(polylineOptions);
-        android.util.Log.d("MAPPA_ULTIMATUM", "Metodo addPolyline eseguito con " + stazioni.size() + " punti.");
     }
 
     private void disegnaM1(List<MetroStation> stazioni, int colore) {
@@ -376,12 +362,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtInizio = card.findViewById(R.id.txtStartDate);
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
 
-                if (txtInizio != null) {
+                if (txtInizio != null) 
                     txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
-                }
-                if (txtFine != null) {
+                if (txtFine != null)
                     txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
-                }
 
                 ProgressBar pb = card.findViewById(R.id.progressBarDate);
                 if (pb != null) {

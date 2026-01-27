@@ -38,13 +38,15 @@
             android:layout_marginTop="8dp"
             android:background="@color/background_app"
             android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawableTint="@color/text_primary"
             android:drawablePadding="10dp"
             android:hint="Cerca linea (es. S5, RE8)..."
             android:paddingStart="15dp"
             android:textColor="@android:color/white"
             android:textColorHint="#666666"
             android:inputType="text"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            tools:ignore="RtlSymmetry" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
