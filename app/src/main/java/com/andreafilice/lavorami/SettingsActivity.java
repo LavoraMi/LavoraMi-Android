@@ -144,7 +144,6 @@ public class SettingsActivity extends AppCompatActivity {
                 icons[finalI].setImageResource(newRes);
                 icons[finalI].setTag(newRes);
                 favorites.add(lineCodes[finalI]);
-                Log.d("FAVORITES", favorites.toString());
                 DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, favorites);
             });
         }
