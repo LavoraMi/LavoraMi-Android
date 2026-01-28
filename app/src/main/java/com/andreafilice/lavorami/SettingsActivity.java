@@ -123,6 +123,9 @@ public class SettingsActivity extends AppCompatActivity {
         setStarIcons(starIcons, lineCodes);
 
         //*SET THE VERSION TEXT
+        /// In this section of the code, we change dynamically the text of appVersionFull TextView
+        /// From the baseVersion to fullVersion for see also the Build Number.
+
         TextView appVersionText = findViewById(R.id.appVersionFull);
         RelativeLayout versionButton = findViewById(R.id.btnVersion);
 
