@@ -121,6 +121,7 @@ public class SettingsActivity extends AppCompatActivity {
         favorites = DataManager.getStringArray(this, DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
 
         setStarIcons(starIcons, lineCodes);
+        loadFavorites(starIcons, lineCodes);
 
         //*SET THE VERSION TEXT
         /// In this section of the code, we change dynamically the text of appVersionFull TextView
@@ -143,8 +144,8 @@ public class SettingsActivity extends AppCompatActivity {
         /// Class<?> destinationLayout is a destination activity which this function change.
 
         //*CHANGE LAYOUT
-        Intent layoutChange = new Intent(SettingsActivity.this, destinationLayout); //*CREATE THE INTENT WITH THE DESTINATION
-        startActivity(layoutChange); //*CHANGE LAYOUT
+        Intent layoutChange = new Intent(SettingsActivity.this, destinationLayout);
+        startActivity(layoutChange);
         overridePendingTransition(1, 0);
     }
 
