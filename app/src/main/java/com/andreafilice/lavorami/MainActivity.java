@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -42,7 +44,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<EventDescriptor> events = new ArrayList<EventDescriptor>();
     private ArrayList<EventDescriptor> eventsDisplay = new ArrayList<EventDescriptor>();
-    private LinearLayout loadingLayout;
+    private ShimmerFrameLayout loadingLayout;
     private LinearLayout errorLayout;
     private WorkAdapter adapter;
     private String defaultCategory;
@@ -200,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         //? ACTIVATE THE LOADING LAYOUT
         if(loadingLayout != null){
             loadingLayout.setVisibility(View.VISIBLE);
+            loadingLayout.startShimmer();
             errorLayout.setVisibility(View.GONE);
             findViewById(R.id.recyclerView).setVisibility(View.GONE);
         }
@@ -231,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
                 if(loadingLayout != null){
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.GONE);
+                    loadingLayout.stopShimmer();
                     findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
                 }
 

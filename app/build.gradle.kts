@@ -24,7 +24,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
-        var buildNumber = "30012026"
+        var buildNumber = "01022026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
         resValue("string", "appVersionFull", ("$versionName ($buildNumber)"))
@@ -64,4 +64,5 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.dotenv.java)
     implementation(libs.androidx.browser)
+    implementation(libs.shimmer)
 }
