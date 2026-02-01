@@ -151,8 +151,8 @@ public class LinesActivity extends AppCompatActivity {
                 containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
 
                 //*MOVIBUS LINES
-                titleMovibus.setVisibility(hasTram ? View.VISIBLE : View.GONE);
-                containerMovibus.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+                containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
 
                 if (tvNoResults != null) {
                     if (!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram)
@@ -188,7 +188,8 @@ public class LinesActivity extends AppCompatActivity {
             findViewById(R.id.infoIconSuburbane),
             findViewById(R.id.infoIconTransfrontaliere),
             findViewById(R.id.infoIconMXP),
-            findViewById(R.id.infoIconTram)
+            findViewById(R.id.infoIconTram),
+            findViewById(R.id.infoIconMovibus)
         };
 
         String[] infoUrls = {
@@ -196,7 +197,8 @@ public class LinesActivity extends AppCompatActivity {
             "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
             "https://www.tilo.ch",
             "https://www.malpensaexpress.it",
-            "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf"
+            "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
+            "https://movibus.it/news/"
         };
 
         for (int i = 0; i < infoButtons.length; i++) {
