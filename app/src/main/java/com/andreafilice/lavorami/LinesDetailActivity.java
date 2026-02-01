@@ -65,7 +65,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         /// Check if the line is a TRAM, else do not display the Map View.
         if (nomeLinea == null) nomeLinea = "M1";
-        if (tipoDiLinea.contains("Tram")){
+        if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z")){
             chipMappa.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
             findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.VISIBLE);
@@ -108,13 +108,21 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             containerLavori.setVisibility(View.VISIBLE);
             caricaEventiFiltrati();
 
-            if(!chipLavori.isChecked() && !chipMappa.isChecked()){
+            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !haveMapAvailable()){
                 chipMappa.setChecked(true);
                 chipLavori.setChecked(false);
                 cardMappa.setVisibility(View.VISIBLE);
                 containerLavori.setVisibility(View.GONE);
                 findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
                 findViewById(R.id.emptyView).setVisibility(View.GONE);
+            }
+            else if(!chipLavori.isChecked() && !chipMappa.isChecked() && haveMapAvailable()){
+                chipMappa.setChecked(false);
+                chipLavori.setChecked(true);
+                cardMappa.setVisibility(View.GONE);
+                containerLavori.setVisibility(View.VISIBLE);
+                findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.VISIBLE);
+                findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
             }
         });
 
@@ -143,6 +151,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Transfrontaliere: "+ nomeLinea);
         if(nomeLinea.startsWith("MXP"))
             detTitolo.setText(nomeLinea);
+        if(nomeLinea.startsWith("z6"))
+            detTitolo.setText("Movibus " + nomeLinea);
+        if(nomeLinea.startsWith("z5"))
+            detTitolo.setText("STAV " + nomeLinea);
 
         detBadge.setText(nomeLinea);
         int colorResId = StationDB.getLineColor(nomeLinea);
@@ -523,8 +535,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "27": return "Piazza Fontana - Viale Ungheria";
             case "31": return "Bicocca M5 - Cinisello (Via Monte Ortigara)";
             case "33": return "Piazzale Lagosta - Viale Rimembranze di Lambrate";
-            case "z620": return "Magenta Via Tobagi - Milano Molino Dorino MM";
+            case "Z620": return "Magenta Via Tobagi - Milano Molino Dorino MM";
             default: return "Direzioni non disponibili per " + linea;
         }
+    }
+
+    public boolean haveMapAvailable(){
+        return tipoDiLinea.contains("Tram") || this.nomeLinea.contains("z");
     }
 }
