@@ -331,6 +331,94 @@
                 android:divider="@drawable/line_divider"
                 android:showDividers="middle">
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/subTitleStav"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="Linee Stav"
+                    android:textAllCaps="true"
+                    android:textColor="@color/desc"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/infoIconStav"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:contentDescription="Info"
+                    android:focusable="true"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupStav"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_line_group"
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/subTitleAutoGuidoVie"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="Linee AutoGuidoVie"
+                    android:textAllCaps="true"
+                    android:textColor="@color/desc"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/infoIconAutoGuidoVie"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:contentDescription="Info"
+                    android:focusable="true"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupAutoGuidoVie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_line_group"
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -37,7 +37,8 @@ public class LinesActivity extends AppCompatActivity {
         LinearLayout containerTram = findViewById(R.id.groupTram);
         LinearLayout containerTrans = findViewById(R.id.groupTrans);
         LinearLayout containerMovibus = findViewById(R.id.groupMovibus);
-
+        LinearLayout containerStav = findViewById(R.id.groupStav);
+        LinearLayout containerAutoGuidoVie = findViewById(R.id.groupAutoGuidoVie);
 
         EditText searchLines = findViewById(R.id.editSearch);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -103,7 +104,39 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerTram,"33",R.color.TRAM,"Tram 33");
 
         //MOVIBUS
+        aggiungiLinea(containerMovibus,"z6c3",R.color.BUS,"Movibus z6c3");
+        aggiungiLinea(containerMovibus,"z601",R.color.BUS,"Movibus z601");
+        aggiungiLinea(containerMovibus,"z602",R.color.BUS,"Movibus z602");
+        aggiungiLinea(containerMovibus,"z603",R.color.BUS,"Movibus z603");
+        aggiungiLinea(containerMovibus,"z606",R.color.BUS,"Movibus z606");
+        aggiungiLinea(containerMovibus,"z611",R.color.BUS,"Movibus z611");
+        aggiungiLinea(containerMovibus,"z612",R.color.BUS,"Movibus z612");
+        aggiungiLinea(containerMovibus,"z616",R.color.BUS,"Movibus z616");
+        aggiungiLinea(containerMovibus,"z617",R.color.BUS,"Movibus z617");
+        aggiungiLinea(containerMovibus,"z618",R.color.BUS,"Movibus z618");
+        aggiungiLinea(containerMovibus,"z619",R.color.BUS,"Movibus z619");
         aggiungiLinea(containerMovibus,"z620",R.color.BUS,"Movibus z620");
+        aggiungiLinea(containerMovibus,"z621",R.color.BUS,"Movibus z621");
+        aggiungiLinea(containerMovibus,"z622",R.color.BUS,"Movibus z622");
+        aggiungiLinea(containerMovibus,"z625",R.color.BUS,"Movibus z625");
+        aggiungiLinea(containerMovibus,"z627",R.color.BUS,"Movibus z627");
+        aggiungiLinea(containerMovibus,"z636",R.color.BUS,"Movibus z636");
+        aggiungiLinea(containerMovibus,"z641",R.color.BUS,"Movibus z641");
+        aggiungiLinea(containerMovibus,"z642",R.color.BUS,"Movibus z642");
+
+        //STAV
+        aggiungiLinea(containerStav,"z551",R.color.BUS,"Stav z551");
+        aggiungiLinea(containerStav,"z552",R.color.BUS,"Stav z552");
+        aggiungiLinea(containerStav,"z553",R.color.BUS,"Stav z553");
+        aggiungiLinea(containerStav,"z554",R.color.BUS,"Stav z554");
+        aggiungiLinea(containerStav,"z555",R.color.BUS,"Stav z555");
+        aggiungiLinea(containerStav,"z556",R.color.BUS,"Stav z556");
+        aggiungiLinea(containerStav,"z557",R.color.BUS,"Stav z557");
+        aggiungiLinea(containerStav,"z559",R.color.BUS,"Stav z559");
+        aggiungiLinea(containerStav,"z560",R.color.BUS,"Stav z560");
+
+        //AUTOGUIDOVIE
+        aggiungiLinea(containerAutoGuidoVie,"test",R.color.AUTOGUIDOVIE,"ztest");
 
         //* SEARCH BAR
         searchLines.setBackgroundResource(R.drawable.bg_edittext_search);
@@ -121,6 +154,8 @@ public class LinesActivity extends AppCompatActivity {
                 TextView titleTrans = findViewById(R.id.subTitleTransfrontaliere);
                 TextView titleTram = findViewById(R.id.subTitleTram);
                 TextView titleMovibus = findViewById(R.id.subTitleMovibus);
+                TextView titleStav = findViewById(R.id.subTitleStav);
+                TextView titleAutoGuidoVie= findViewById(R.id.groupAutoGuidoVie);
                 TextView tvNoResults = findViewById(R.id.emptyView);
 
                 boolean hasMetro = filtraContainer(containerMetro, query);
@@ -129,6 +164,7 @@ public class LinesActivity extends AppCompatActivity {
                 boolean hasTrans = filtraContainer(containerTrans, query);
                 boolean hasTram = filtraContainer(containerTram, query);
                 boolean hasMovibus = filtraContainer(containerMovibus, query);
+                boolean hasStav= filtraContainer(containerStav, query);
 
                 //*METRO LINES
                 titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
@@ -153,6 +189,14 @@ public class LinesActivity extends AppCompatActivity {
                 //*MOVIBUS LINES
                 titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
                 containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+
+                //*STAV LINES
+                titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+
+                //*AUTOGUIDOVIE LINES
+                titleAutoGuidoVie.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                containerAutoGuidoVie.setVisibility(hasStav ? View.VISIBLE : View.GONE);
 
                 if (tvNoResults != null) {
                     if (!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram)
