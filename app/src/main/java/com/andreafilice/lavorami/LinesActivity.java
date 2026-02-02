@@ -104,10 +104,10 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerTram,"33",R.color.TRAM,"Tram 33");
 
         //MOVIBUS
-        aggiungiLinea(containerMovibus,"z6c3",R.color.BUS,"Movibus z6c3");
         aggiungiLinea(containerMovibus,"z601",R.color.BUS,"Movibus z601");
         aggiungiLinea(containerMovibus,"z602",R.color.BUS,"Movibus z602");
         aggiungiLinea(containerMovibus,"z603",R.color.BUS,"Movibus z603");
+        aggiungiLinea(containerMovibus,"z6C3",R.color.BUS,"Movibus z6C3");
         aggiungiLinea(containerMovibus,"z606",R.color.BUS,"Movibus z606");
         aggiungiLinea(containerMovibus,"z611",R.color.BUS,"Movibus z611");
         aggiungiLinea(containerMovibus,"z612",R.color.BUS,"Movibus z612");
@@ -123,17 +123,23 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerMovibus,"z636",R.color.BUS,"Movibus z636");
         aggiungiLinea(containerMovibus,"z641",R.color.BUS,"Movibus z641");
         aggiungiLinea(containerMovibus,"z642",R.color.BUS,"Movibus z642");
+        aggiungiLinea(containerMovibus,"z643",R.color.BUS,"Movibus z643");
+        aggiungiLinea(containerMovibus,"z644",R.color.BUS,"Movibus z644");
+        aggiungiLinea(containerMovibus,"z646",R.color.BUS,"Movibus z646");
+        aggiungiLinea(containerMovibus,"z647",R.color.BUS,"Movibus z647");
+        aggiungiLinea(containerMovibus,"z648",R.color.BUS,"Movibus z648");
+        aggiungiLinea(containerMovibus,"z649",R.color.BUS,"Movibus z649");
 
         //STAV
-        aggiungiLinea(containerStav,"z551",R.color.BUS,"Stav z551");
-        aggiungiLinea(containerStav,"z552",R.color.BUS,"Stav z552");
-        aggiungiLinea(containerStav,"z553",R.color.BUS,"Stav z553");
-        aggiungiLinea(containerStav,"z554",R.color.BUS,"Stav z554");
-        aggiungiLinea(containerStav,"z555",R.color.BUS,"Stav z555");
-        aggiungiLinea(containerStav,"z556",R.color.BUS,"Stav z556");
-        aggiungiLinea(containerStav,"z557",R.color.BUS,"Stav z557");
-        aggiungiLinea(containerStav,"z559",R.color.BUS,"Stav z559");
-        aggiungiLinea(containerStav,"z560",R.color.BUS,"Stav z560");
+        aggiungiLinea(containerStav,"z551",R.color.BUS,"STAV z551");
+        aggiungiLinea(containerStav,"z552",R.color.BUS,"STAV z552");
+        aggiungiLinea(containerStav,"z553",R.color.BUS,"STAV z553");
+        aggiungiLinea(containerStav,"z554",R.color.BUS,"STAV z554");
+        aggiungiLinea(containerStav,"z555",R.color.BUS,"STAV z555");
+        aggiungiLinea(containerStav,"z556",R.color.BUS,"STAV z556");
+        aggiungiLinea(containerStav,"z557",R.color.BUS,"STAV z557");
+        aggiungiLinea(containerStav,"z559",R.color.BUS,"STAV z559");
+        aggiungiLinea(containerStav,"z560",R.color.BUS,"STAV z560");
 
         //AUTOGUIDOVIE
         aggiungiLinea(containerAutoGuidoVie,"test",R.color.AUTOGUIDOVIE,"ztest");
@@ -233,7 +239,9 @@ public class LinesActivity extends AppCompatActivity {
             findViewById(R.id.infoIconTransfrontaliere),
             findViewById(R.id.infoIconMXP),
             findViewById(R.id.infoIconTram),
-            findViewById(R.id.infoIconMovibus)
+            findViewById(R.id.infoIconMovibus),
+            findViewById(R.id.infoIconStav),
+            findViewById(R.id.infoIconAutoGuidoVie)
         };
 
         String[] infoUrls = {
@@ -242,7 +250,9 @@ public class LinesActivity extends AppCompatActivity {
             "https://www.tilo.ch",
             "https://www.malpensaexpress.it",
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
-            "https://movibus.it/news/"
+            "https://movibus.it/news/",
+            "https://stavautolinee.it/reti-servite/",
+            "https://autoguidovie.it/it/avvisi"
         };
 
         for (int i = 0; i < infoButtons.length; i++) {
