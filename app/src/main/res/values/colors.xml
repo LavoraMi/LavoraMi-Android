@@ -30,11 +30,12 @@
     <color name="S50">#834c16</color>
     <color name="MXP">#8c0077</color>
     <color name="BUS">#1c1cff</color>
+    <color name="RE">#FF0000</color>
     <color name="FILOBUS">#65b32e</color>
     <color name="REGIONAL">#0000cc</color>
     <color name="AV">#fc3a3a</color>
     <color name="TRAM">#ff912f</color>
-    <color name="OTHER">#b8b8b8</color>
+    <color name="OTHER">#E2DADA</color>
     <color name="AUTOGUIDOVIE">#443700</color>
     <color name="RE80">#068dfd</color>
     <color name="Black">#000000</color>

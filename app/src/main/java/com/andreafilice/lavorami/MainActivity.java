@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         /// The value of the Checksum is get by CMD tools.
 
         CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn-playepik.netlify.app", "sha256/DFv0rPImhleLzIvctvEusBa5wnzQ/+aSqyW18y26L+s=")
+                .add("cdn.lavorami.it", "sha256/VMw18sAhS/3iF/FDknmBakQ123t+OXJqqVG9NWkti/o=")
                 .build();
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://cdn-playepik.netlify.app/")
+                .baseUrl("https://cdn.lavorami.it/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient)
                 .build();

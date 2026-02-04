@@ -226,8 +226,10 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
                     return R.color.BUS;
                 else if(nomeLinea.contains("Filobus"))
                     return R.color.FILOBUS;
-                else if(nomeLinea.contains("R"))
+                else if(nomeLinea.contains("R") && !nomeLinea.contains("RE"))
                     return R.color.REGIONAL;
+                else if(nomeLinea.contains("RE"))
+                    return R.color.RE;
                 else if(nomeLinea.matches("^([1-9]|[1-2][0-9]|3[0-3])$"))
                     return R.color.TRAM;
                 else if(nomeLinea.contains("P"))
