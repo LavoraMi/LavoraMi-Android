@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 public class SourcesDevelopment extends AppCompatActivity {
 
     @Override
@@ -27,7 +29,9 @@ public class SourcesDevelopment extends AppCompatActivity {
         });
 
         //*BUTTONS
-        TextView btnReportBug = findViewById(R.id.btnReportBug);
+        MaterialButton btnReportBug = findViewById(R.id.btnReportBug);
+        MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
+        MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
         ImageButton btnBack = (ImageButton) findViewById(R.id.backBtn);
 
         btnReportBug.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +40,7 @@ public class SourcesDevelopment extends AppCompatActivity {
                 String subject = "Segnalazione Bug LavoraMI";
 
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:help.playepik@gmail.com"));
+                intent.setData(Uri.parse("mailto:info@lavorami.it"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
                 try {
@@ -47,8 +51,8 @@ public class SourcesDevelopment extends AppCompatActivity {
             }
         });
 
-        btnBack.setOnClickListener(v -> {
-            ActivityManager.changeActivity(this, SettingsActivity.class);
-        });
+        btnWebsite.setOnClickListener(v -> {ActivityManager.openURL(this, "https://lavorami.it");});
+        btnPatreon.setOnClickListener(v -> {ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi");});
+        btnBack.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
     }
 }

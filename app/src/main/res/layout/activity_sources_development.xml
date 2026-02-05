@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/archivo_medium"
-        android:text="@string/app_version"
+        android:text="@string/appVersionFull"
         android:textColor="#808080"
         app:layout_constraintEnd_toEndOf="@+id/appName"
         app:layout_constraintHorizontal_bias="1.0"
@@ -229,23 +229,79 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReportBug"
-                android:layout_width="match_parent"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="40dp"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:padding="12dp"
-                android:text="🐞 Segnala un bug"
-                android:textAlignment="center"
+                android:text="Segnala un bug"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_bug"
+                app:iconSize="30dp"
+                app:iconPadding="12dp"
+                app:iconTint="#FF5252"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWebsite"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/archivo_medium"
+                android:text="Sito web"
+                android:textColor="#FF5252"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_globe"
+                app:iconSize="30dp"
+                app:iconPadding="12dp"
+                app:iconTint="#FF5252"
+                app:iconGravity="textStart" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/archivo_medium"
+                android:text="Supportaci"
+                android:textAlignment="center"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPatreon"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/archivo_medium"
+                android:text="Supportaci su Patreon"
+                android:textColor="#FF5252"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_support"
+                app:iconSize="30dp"
+                app:iconPadding="12dp"
+                app:iconTint="#FF5252"
+                app:iconGravity="textStart" />
         </LinearLayout>
     </ScrollView>
 

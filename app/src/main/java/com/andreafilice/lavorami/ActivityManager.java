@@ -3,6 +3,7 @@ package com.andreafilice.lavorami;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 
 public class ActivityManager {
     public static void changeActivity(Context context, Class<?> destinationLayout){
@@ -16,5 +17,13 @@ public class ActivityManager {
         /// In this section, we check if the context is an Activity and then we apply the animation.
         if (context instanceof Activity)
             ((Activity) context).overridePendingTransition(0, 0);
+    }
+
+    public static void openURL(Context context, String url){
+        ///@PARAMETER
+        ///Strin url is the URL to open in Browser.
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        context.startActivity(browserIntent);
     }
 }
