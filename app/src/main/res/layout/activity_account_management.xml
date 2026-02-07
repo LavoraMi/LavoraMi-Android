@@ -151,7 +151,8 @@
                     android:layout_gravity="end"
                     android:fontFamily="@font/archivo_medium"
                     android:text="Non hai un account?"
-                    android:textColor="#FF3B30" />
+                    android:textColor="#FF3B30"
+                    android:clickable="true"/>
 
                 <Space
                     android:layout_width="match_parent"
@@ -518,7 +519,8 @@
                     android:layout_gravity="end"
                     android:fontFamily="@font/archivo_medium"
                     android:text="Hai già un account?"
-                    android:textColor="#FF3B30" />
+                    android:textColor="#FF3B30"
+                    android:clickable="true"/>
 
                 <Space
                     android:layout_width="match_parent"

@@ -87,10 +87,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/nameSettingsText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Andrea Filice"
+                            android:text="Name"
                             android:textColor="@color/text_primary"
                             android:textSize="20sp" />
 

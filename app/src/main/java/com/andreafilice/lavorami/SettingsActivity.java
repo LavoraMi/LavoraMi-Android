@@ -34,6 +34,7 @@ import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    SessionManager sessionManager;
     private Set<String> favorites = new HashSet<>(); //*FAVORITES LINES
 
     @Override
@@ -46,6 +47,8 @@ public class SettingsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        sessionManager = new SessionManager(this);
 
         //*NAVBAR
         ImageButton btnLines = (ImageButton) findViewById(R.id.linesButton);
@@ -166,6 +169,9 @@ public class SettingsActivity extends AppCompatActivity {
 
             return true;
         });
+
+        TextView nameSettingsText = findViewById(R.id.nameSettingsText);
+        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : "Il tuo Account");
     }
 
     public void setStarIcons(ImageView[] icons, String[] lineCodes){
