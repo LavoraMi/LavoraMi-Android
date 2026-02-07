@@ -5,6 +5,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Map;
 
 public class SupabaseModels {
+
+    /// This class is a CallBack class that is called into AccountManagement for do AuthRequests to Supabase server.
+    /// @ATTRIBUTES
+    /// @String email is the user Email of his account or the account to log into.
+    /// @String password is the user Password of his account.
+    /// @Map<String,Object> data is the full_name attribute but Supabase accepts only HashMaps, so we have to cast to that type ofd metadata.
     public static class AuthRequest {
         public String email;
         public String password;
@@ -21,6 +27,12 @@ public class SupabaseModels {
         }
     }
 
+
+    /// This class is a Callback succesful class that return user datas from our Database.
+    /// @ATTRIBUTES
+    /// @String access_token is the token from the LOGIN phase that grant to us the regolar permissions to the user.
+    /// @User user is the User Object, it contains: name, email and password.
+
     public static class AuthResponse {
         public String access_token;
         public User user;
@@ -33,6 +45,9 @@ public class SupabaseModels {
         }
     }
 
+    /// This class is a Callback class for the 'changePassword' method.
+    /// @ATTRIBUTES
+    /// @String password is the New password from the EditText component into the Dialog in AccountManagement.java
     public static class PasswordRequest {
         public String password;
         public PasswordRequest(String password) {

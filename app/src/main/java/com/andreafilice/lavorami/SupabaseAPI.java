@@ -32,7 +32,7 @@ public interface SupabaseAPI {
         @Body SupabaseModels.PasswordRequest request
     );
 
-    @POST("rest/v1/rpc/delete_user_account")
+    @POST("rest/v1/rpc/delete_self")
     Call<Void> deleteAccount(
         @Header("apikey") String apiKey,
         @Header("Authorization") String bearerToken

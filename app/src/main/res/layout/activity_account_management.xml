@@ -52,7 +52,7 @@
             <LinearLayout
                 android:id="@+id/login_view_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
@@ -149,10 +149,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:clickable="true"
                     android:fontFamily="@font/archivo_medium"
                     android:text="Non hai un account?"
-                    android:textColor="#FF3B30"
-                    android:clickable="true"/>
+                    android:textColor="#FF3B30" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -186,7 +186,7 @@
             <LinearLayout
                 android:id="@+id/profile_view_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
@@ -278,7 +278,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="filiceandrea8@gmail.com"
+                        android:text="user_email"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -365,7 +365,7 @@
                     android:id="@+id/btnLogout"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="10dp"
                     android:clickable="true"
                     app:cardBackgroundColor="#FF3B30"
                     app:cardCornerRadius="16dp"
@@ -386,7 +386,7 @@
             <LinearLayout
                 android:id="@+id/signup_view_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
@@ -517,10 +517,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:clickable="true"
                     android:fontFamily="@font/archivo_medium"
                     android:text="Hai già un account?"
-                    android:textColor="#FF3B30"
-                    android:clickable="true"/>
+                    android:textColor="#FF3B30" />
 
                 <Space
                     android:layout_width="match_parent"

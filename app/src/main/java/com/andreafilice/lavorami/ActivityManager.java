@@ -21,7 +21,7 @@ public class ActivityManager {
 
     public static void openURL(Context context, String url){
         ///@PARAMETER
-        ///Strin url is the URL to open in Browser.
+        ///String url is the URL to open in Browser.
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         context.startActivity(browserIntent);
