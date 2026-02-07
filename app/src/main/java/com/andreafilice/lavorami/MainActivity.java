@@ -1,8 +1,11 @@
 package com.andreafilice.lavorami;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +20,11 @@ import android.widget.TextView;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -49,6 +56,19 @@ public class MainActivity extends AppCompatActivity {
     private WorkAdapter adapter;
     private String defaultCategory;
 
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if(isGranted){
+                    Log.d("PERMISSIONS", "Notifiche concesse!");
+                    if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty()) {
+                        NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
+                    }
+                }
+                else{
+                    Log.e("PERMISSIONS", "Permesso notifiche rifiutato.");
+                }
+            });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         downloadJSONData(defaultCategory);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        //*NOTIFICATION CONSENT POPUP
+        askForNotificationPermission();
 
         //*INITIALIZE THE LOADING LAYOUT
         loadingLayout = findViewById(R.id.loadingLayout);
@@ -155,9 +178,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0 && filterGroup != null) {
+                if (s.length() > 0 && filterGroup != null)
                     filterGroup.clearCheck();
-                }
                 String testoRicerca = s.toString().toLowerCase().trim();
                 filtra(testoRicerca);
             }
@@ -183,6 +205,15 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+    private void askForNotificationPermission(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
+    }
+
     public String getCategory() {
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
         if (filterGroup == null) return "tutti";
@@ -283,19 +314,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void filtra(String testo) {
+        List<EventDescriptor> listaFiltrata = new ArrayList<>();
+
         if (adapter == null || events == null || events.isEmpty())
             return;
         if (testo == null || testo.trim().isEmpty()) {
-            adapter.setFilteredList(events);
+            for (EventDescriptor item : events){
+                long now = System.currentTimeMillis();
+                long terminated = getDateMillis(item.getEndDate());
+                if(terminated > now){
+                    listaFiltrata.add(item);
+                }
+            }
+            adapter.setFilteredList(listaFiltrata);
+
             checkForEmptyList(events);
             return;
         }
 
-        List<EventDescriptor> listaFiltrata = new ArrayList<>();
         String testoLower = testo.toLowerCase().trim();
 
         for (EventDescriptor item : events) {
             boolean found = false;
+            long now = System.currentTimeMillis();
+            long terminated = getDateMillis(item.getEndDate());
 
             if (!found && item.getLines() != null) {
                 for (String line : item.getLines()) {
@@ -305,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-            if (found)
+            if (found && terminated > now)
                 listaFiltrata.add(item);
         }
 
