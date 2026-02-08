@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Fonti Dati"
+                android:text="@string/fonti_dati"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold" />

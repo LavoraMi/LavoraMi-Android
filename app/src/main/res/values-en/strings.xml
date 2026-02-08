@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LavoraMi</string>
+    <string name="lavoriInCorso">Work in progess</string>
+    <string name="settings">Settings</string>
+    <string name="general">General</string>
+    <string name="lines">Lines</string>
+    <string name="disclaimer_text">LavoraMi is an independent application developed by third parties and is NOT affiliated with, supported, authorized, or sponsored by ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI, or other transportation entities mentioned.  All data displayed in this application (timetables, service statuses, alerts) is collected from public sources and processed automatically for the sole purpose of improving its comprehensibility and readability for the end user.  No warranty, express or implied, is provided regarding the accuracy, completeness, reliability, or timeliness of the information provided. The information may not reflect last-minute changes.  Use of the application is entirely at your own risk. The developer accepts no responsibility for any inaccuracies, delays, missed services, or direct or indirect damage resulting from reliance on the information provided by this app.  For critical travel decisions, it is recommended that you always refer to official channels, audio announcements, and signage at the station.  All trademarks, logos, and trade names mentioned belong to their respective owners.  Translated with DeepL.com (free version)</string>
+    <string name="fonti_dati">Data Sources</string>
+</resources>
