@@ -1,8 +1,11 @@
 package com.andreafilice.lavorami;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.text.InputType;
@@ -20,8 +23,10 @@ import android.content.Intent;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -35,6 +40,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executor;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -59,9 +65,11 @@ public class AccountManagement extends AppCompatActivity {
     LinearLayout loginView;
     LinearLayout loggedInView;
     LinearLayout signUpView;
+    LinearLayout lockedScreen;
     TextView fullNameTextLoginPage;
     TextView tvProfileName;
     TextView tvProfileEmail;
+    boolean screenUnlocked = false;
 
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -141,10 +149,11 @@ public class AccountManagement extends AppCompatActivity {
         btnGoogleRegister.setOnClickListener(v -> {initializeGoogleIntent();});
 
         //*VIEWS
-        /// In this section we initialize the views for this states: LOGGED IN, SIGN IN, SIGN UP.
+        /// In this section we initialize the views for this states: LOGGED IN, SIGN IN, SIGN UP and LOCKEDSCREEN.
         loginView = findViewById(R.id.login_view_container);
         loggedInView = findViewById(R.id.profile_view_container);
         signUpView = findViewById(R.id.signup_view_container);
+        lockedScreen = findViewById(R.id.lockedScreen);
 
         //*LOGIN VIEW
         /// In this section of the code, we set the button triggers and more of the SIGN IN View (also called LOGIN).
@@ -198,8 +207,11 @@ public class AccountManagement extends AppCompatActivity {
                 signUp(nameSignUp.getText().toString(), emailSignUp.getText().toString(), passwordSignUp.getText().toString());
         });
 
-        //*SET THE BASE VIEW
-        updateUI();
+        //*SET THE BASE VIEW AND ASK THE CREDENTIALS
+        if(sessionManager.isLoggedIn())
+            showBiometricPrompt();
+        else
+            updateUI();
     }
 
     private void initializeGoogleIntent(){
@@ -251,6 +263,8 @@ public class AccountManagement extends AppCompatActivity {
 
                     updateUI();
                     Toast.makeText(AccountManagement.this, "Bentornato!", Toast.LENGTH_SHORT).show();
+                    screenUnlocked = true;
+                    updateUI();
                 } else
                     Toast.makeText(AccountManagement.this, "Errore Login: Credenziali errate", Toast.LENGTH_SHORT).show();
             }
@@ -296,6 +310,8 @@ public class AccountManagement extends AppCompatActivity {
 
                     updateUI();
                     Toast.makeText(AccountManagement.this, "Accesso con Google riuscito!", Toast.LENGTH_SHORT).show();
+                    screenUnlocked = true;
+                    updateUI();
                 } else {
                     Toast.makeText(AccountManagement.this, "Errore Login: " + response.code(), Toast.LENGTH_SHORT).show();
                     try {
@@ -333,18 +349,19 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(AccountManagement.this, "Registrazione COMPLETATA!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, "Registrazione andata a buon fine!", Toast.LENGTH_SHORT).show();
+                    screenUnlocked = true;
                     updateUI();
                 }
                 else{
-                    Toast.makeText(AccountManagement.this, "ERRORE REGISTRAZIONE.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, "Si è verificato un errore durante la registrazione. Riprova.", Toast.LENGTH_SHORT).show();
                     Log.d("ERRORE_REG", response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, "Errore Rete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, "Si è verificato un errore durante la registrazione. Riprova.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -498,20 +515,29 @@ public class AccountManagement extends AppCompatActivity {
         /// This function is a Refactor function to avoid to call svarious times the same snippet of code.
         /// This function set, based from sessionManager value, the UI that the user sees.
         /// If LoggedIn, set the visiblity to GONE for 'loginView' and 'signUpView' variables, after set the values of the user from the sessionManager datas.
+        /// This function also checks if the LOCKED view is necessary to turn on for protect your Account.
 
-        if(sessionManager.isLoggedIn()){
+        if(sessionManager.isLoggedIn() && screenUnlocked){
             loginView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.VISIBLE);
+            lockedScreen.setVisibility(View.GONE);
 
             fullNameTextLoginPage.setText("Ciao " + sessionManager.getUserName());
             tvProfileName.setText(sessionManager.getUserName());
             tvProfileEmail.setText(sessionManager.getUserEmail());
         }
+        else if (sessionManager.isLoggedIn() && !screenUnlocked){
+            loginView.setVisibility(View.GONE);
+            signUpView.setVisibility(View.GONE);
+            loggedInView.setVisibility(View.GONE);
+            lockedScreen.setVisibility(View.VISIBLE);
+        }
         else{
             loginView.setVisibility(View.VISIBLE);
             signUpView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.GONE);
+            lockedScreen.setVisibility(View.GONE);
         }
     }
 
@@ -531,5 +557,59 @@ public class AccountManagement extends AppCompatActivity {
             Log.d("ERROR", "Impossibile trovare questo valore. ERR: " + e.getMessage());
         }
         return null;
+    }
+
+    private void showBiometricPrompt() {
+        /// This method call a Google API to request a Biometric authentication.
+        /// This method protects the user Account by veryfing who is accesing at that account with that device.
+        /// @FALLBACK rules:
+        /// If no FaceID or TouchID are setted-up into the device, Fallback to ask the PIN or Device Password.
+        /// If no PIN also is found, Fallback to unlock the screen automatically.
+
+        BiometricManager biometricManager = BiometricManager.from(this);
+
+        int authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL;
+        int canAuthenticate = biometricManager.canAuthenticate(authenticators);
+
+        if (canAuthenticate != BiometricManager.BIOMETRIC_SUCCESS) {
+            screenUnlocked = true;
+            updateUI();
+            return;
+        }
+
+        /// In this section of the code, we create the PopUp for log-in with Biometric Auth in your account.
+        /// The pop-up UI is different base by Manufacture Implementation.
+        /// @FALLBACK
+        /// If the Biometric Auth failed, go back to Settings page and don't access to the Account.
+
+        Executor executor = ContextCompat.getMainExecutor(this);
+        BiometricPrompt biometricPrompt = new BiometricPrompt(this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                ActivityManager.changeActivity(AccountManagement.this, SettingsActivity.class);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                screenUnlocked = true;
+                updateUI();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                ActivityManager.changeActivity(AccountManagement.this, SettingsActivity.class);
+            }
+        });
+
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Accedi al tuo Account")
+                .setSubtitle("Usa l'impronta o il viso per accedere")
+                .setAllowedAuthenticators(authenticators)
+                .build();
+
+        biometricPrompt.authenticate(promptInfo);
     }
 }
