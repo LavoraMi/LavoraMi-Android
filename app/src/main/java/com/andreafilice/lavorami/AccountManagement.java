@@ -136,16 +136,9 @@ public class AccountManagement extends AppCompatActivity {
 
         //*SIGN-IN WITH GOOGLE
         CardView btnGoogleLogin = findViewById(R.id.btnGoogleLogin);
-        btnGoogleLogin.setOnClickListener(v -> {
-            if(googleClient != null){
-                Intent signInIntent = googleClient.getSignInIntent();
-
-                googleLoginLauncher.launch(signInIntent);
-            }
-            else{
-                Toast.makeText(this, "Errore durante il Login con Google.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        CardView btnGoogleRegister = findViewById(R.id.btnGoogleSignUp);
+        btnGoogleLogin.setOnClickListener(v -> {initializeGoogleIntent();});
+        btnGoogleRegister.setOnClickListener(v -> {initializeGoogleIntent();});
 
         //*VIEWS
         /// In this section we initialize the views for this states: LOGGED IN, SIGN IN, SIGN UP.
@@ -204,6 +197,21 @@ public class AccountManagement extends AppCompatActivity {
 
         //*SET THE BASE VIEW
         updateUI();
+    }
+
+    private void initializeGoogleIntent(){
+        /// This function is a refactored function and is used by Google Sign-In buttons in the .xml file.
+        /// This function simplify the core-logic and avoid repetitions into the code.
+        /// @PARAMETERS
+        /// No parameters for this method.
+
+        if(googleClient != null){
+            Intent signInIntent = googleClient.getSignInIntent();
+
+            googleLoginLauncher.launch(signInIntent);
+        }
+        else
+            Toast.makeText(this, "Errore durante il Login con Google.", Toast.LENGTH_SHORT).show();
     }
 
     private void login(String email, String password) {
@@ -271,6 +279,15 @@ public class AccountManagement extends AppCompatActivity {
                     String email = response.body().user.email;
 
                     String nameUser = "Utente Google";
+
+                    if (response.body().user.userMetadata != null) {
+                        if (response.body().user.userMetadata.containsKey("full_name"))
+                            nameUser = response.body().user.userMetadata.get("full_name").toString();
+                        else if (response.body().user.userMetadata.containsKey("name"))
+                            nameUser = response.body().user.userMetadata.get("name").toString();
+                        else if (response.body().user.userMetadata.containsKey("display_name"))
+                            nameUser = response.body().user.userMetadata.get("display_name").toString();
+                    }
 
                     sessionManager.saveSession(token, email, nameUser);
 
