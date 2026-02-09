@@ -44,6 +44,98 @@
             app:srcCompat="@drawable/ic_refresh" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/strikeBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/disclosureBg"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_info"
+                app:tint="@color/text_primary" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/strikeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="AVVISO SCIOPERO"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/strikeDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="Sciopero proclamato il date."
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/strikeGuaranteed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="Le fasce di garantite (06:00 - 09:00, 18:00 - 21:00) value."
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/strikeCompanies"
+                    android:layout_width="291dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="ADERENTI: Trenord, ATM, Movibus"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/closeBtn"
+                    android:layout_width="291dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="X Chiudi"
+                    android:textAlignment="center"
+                    android:textColor="@color/RE"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
     <EditText
         android:id="@+id/editSearch"
         android:layout_width="match_parent"
@@ -54,11 +146,11 @@
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="10dp"
         android:hint="Cerca linea (es. S5, RE8)..."
+        android:inputType="text"
         android:paddingStart="15dp"
         android:textColor="@android:color/white"
         android:textColorHint="#666666"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+        app:layout_constraintTop_toBottomOf="@id/strikeBanner" />
 
     <HorizontalScrollView
         android:id="@+id/filterScroll"
@@ -87,10 +179,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_filters"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipBus"
@@ -101,10 +193,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_bus"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTram"
@@ -115,10 +207,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_tram"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipMetro"
@@ -129,10 +221,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_metro"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTreno"
@@ -143,10 +235,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_train"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipInCorso"
@@ -157,10 +249,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_incorso"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipProgrammati"
@@ -171,10 +263,10 @@
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_calendar"
-                app:chipIconVisible="true"
-                app:chipIconTint="@color/text_primary"
                 app:chipIconSize="15dp"
-                app:iconStartPadding="10dp"/>
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipATM"
@@ -228,15 +320,15 @@
         android:id="@+id/emptyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nessuna corrispondenza trovata."
-        android:textSize="18sp"
-        android:textColor="@color/text_primary"
         android:fontFamily="@font/archivo_medium"
+        android:text="Nessuna corrispondenza trovata."
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@+id/recyclerView"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -255,8 +347,8 @@
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/filterScroll"
         app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintTop_toBottomOf="@+id/filterScroll"
         app:shimmer_auto_start="true">
 
         <LinearLayout
@@ -266,8 +358,11 @@
             android:padding="12dp">
 
             <include layout="@layout/item_lavoro" />
+
             <include layout="@layout/item_lavoro" />
+
             <include layout="@layout/item_lavoro" />
+
             <include layout="@layout/item_lavoro" />
 
         </LinearLayout>
@@ -278,13 +373,13 @@
         android:id="@+id/errorNetwork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
         app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -297,44 +392,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:fontFamily="@font/archivo_medium"
             android:text="Impossibile caricare i dati dal server."
             android:textColor="@color/text_primary"
-            android:textSize="20sp"
-            android:fontFamily="@font/archivo_medium"/>
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
+            android:fontFamily="@font/archivo_medium"
             android:text="Controlla la tua connessione e riprova."
             android:textColor="@color/text_primary"
-            android:textSize="16sp"
-            android:fontFamily="@font/archivo_medium"/>
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnRefreshOnError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/redMetro"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/redMetro"
             android:text="Riprova"
+            android:textColor="@color/White"
             app:icon="@drawable/ic_refresh"
-            app:iconPadding="10dp"
             app:iconGravity="textStart"
-            app:iconTint="@color/White"
-            android:textColor="@color/White"/>
+            app:iconPadding="10dp"
+            app:iconTint="@color/White" />
 
         <TextView
             android:id="@+id/errorDeps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
+            android:fontFamily="@font/archivo_medium"
             android:text="_message"
             android:textColor="@color/text_primary"
-            android:textSize="12sp"
-            android:fontFamily="@font/archivo_medium"/>
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -390,7 +485,7 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/setupViewPager"
@@ -406,19 +501,19 @@
             android:layout_marginBottom="24dp"
             android:background="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/setupActionContainer"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:tabBackground="@drawable/selector_dot_indicator"
-            app:tabIndicatorHeight="0dp"
-            app:tabRippleColor="@android:color/transparent"
-            app:tabMinWidth="24dp"
-            app:tabMaxWidth="24dp"
-            app:tabPaddingStart="8dp"
-            app:tabPaddingEnd="8dp"
-            app:tabPaddingTop="0dp"
-            app:tabPaddingBottom="0dp"
             app:tabGravity="center"
-            app:tabMode="fixed" />
+            app:tabIndicatorHeight="0dp"
+            app:tabMaxWidth="24dp"
+            app:tabMinWidth="24dp"
+            app:tabMode="fixed"
+            app:tabPaddingBottom="0dp"
+            app:tabPaddingEnd="8dp"
+            app:tabPaddingStart="8dp"
+            app:tabPaddingTop="0dp"
+            app:tabRippleColor="@android:color/transparent" />
 
         <LinearLayout
             android:id="@+id/setupActionContainer"
@@ -432,13 +527,13 @@
                 android:id="@+id/btnSetupNext"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
+                android:backgroundTint="#FD272D"
+                android:fontFamily="@font/archivo_medium"
                 android:text="Avanti"
                 android:textAllCaps="false"
                 android:textColor="@color/White"
                 android:textSize="18sp"
-                app:cornerRadius="12dp"
-                android:fontFamily="@font/archivo_medium"
-                android:backgroundTint="#FD272D" />
+                app:cornerRadius="12dp" />
 
         </LinearLayout>
 

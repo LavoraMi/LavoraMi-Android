@@ -208,10 +208,12 @@ public class AccountManagement extends AppCompatActivity {
         });
 
         //*SET THE BASE VIEW AND ASK THE CREDENTIALS
-        if(sessionManager.isLoggedIn())
+        if(sessionManager.isLoggedIn() && DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true))
             showBiometricPrompt();
-        else
+        else{
+            screenUnlocked = true;
             updateUI();
+        }
     }
 
     private void initializeGoogleIntent(){

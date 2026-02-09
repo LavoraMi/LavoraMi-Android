@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.util.Log;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -35,6 +36,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private WorkAdapter adapter;
     private String defaultCategory;
     private boolean hasCompletedSetup;
+    private StrikeDescriptor strikeCDNResponse;
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
@@ -339,6 +342,7 @@ public class MainActivity extends AppCompatActivity {
 
         APIWorks apiworks = retrofit.create(APIWorks.class);
 
+        /// In this section of the code, we fetch the lavoriAttuali.json file from our CDN and, after the succesfull operation, we create the Event ArrayList.
         apiworks.getLavori().enqueue(new Callback<ArrayList<EventDescriptor>>() {
             @Override
             public void onResponse(Call<ArrayList<EventDescriptor>> call, Response<ArrayList<EventDescriptor>> response) {
@@ -383,9 +387,56 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /// In this section of the code, we GET the '_vars.json' file from our CDN and load the Strikes Configuration.
+        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor> () {
+            @Override
+            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+                strikeCDNResponse = response.body();
+                updateStrike(strikeCDNResponse);
+            }
+
+            @Override
+            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
+                if (loadingLayout != null) {
+                    boolean showErrorMessage = DataManager.getBoolData(MainActivity.this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
+                    TextView errorDeps = findViewById(R.id.errorDeps);
+
+                    errorDeps.setText(t.getMessage());
+                    errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
+
+                    loadingLayout.setVisibility(View.GONE);
+                    errorLayout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
-    private void checkForEmptyList(List<EventDescriptor> list){
+    private void updateStrike(StrikeDescriptor strikeDescriptor) {
+        /// In this method, we update the Strike Banner TextViews, with the strikeDetails catched before from the CDN.
+        /// In this method, we set also the Advanced Options Key for "Show Strikes Banner" setting.
+        /// @PARAMETER
+        /// StrikeDescriptor strikeDescriptor is the response body from the CDN Request executed before this method.
+
+        if(DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true)){
+            MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
+            TextView strikeDesc = findViewById(R.id.strikeDesc);
+            TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
+            TextView strikeCompanies = findViewById(R.id.strikeCompanies);
+            TextView closeBtn = findViewById(R.id.closeBtn);
+
+            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
+
+            //*UPDATE TEXT VALUES
+            strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
+            strikeGuaranteed.setText(String.format("Le fasce di garantite (06:00 - 09:00, 18:00 - 21:00) %s.", strikeDescriptor.getStrikeGuaranteed()));
+            strikeCompanies.setText(String.format("ADERENTI: %s", strikeDescriptor.getStrikeCompanies()));
+
+            closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
+        }
+    }
+
+    private void checkForEmptyList(List<EventDescriptor> list) {
         TextView noWorkFounds = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
 

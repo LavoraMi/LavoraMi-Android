@@ -5,4 +5,7 @@ import java.util.ArrayList;
 public interface APIWorks {
     @GET("lavoriAttuali.json")
     Call<ArrayList<EventDescriptor>> getLavori();
+
+    @GET("_vars.json")
+    Call<StrikeDescriptor> getStrike();
 }
