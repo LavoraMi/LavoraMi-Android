@@ -46,6 +46,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import okhttp3.Cache;
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -83,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
         defaultCategory = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         Log.d("DATA", defaultCategory);
 
-        //*DOWNLOADING EVENTS
-        downloadJSONData(defaultCategory);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
@@ -117,10 +116,14 @@ public class MainActivity extends AppCompatActivity {
 
             if(currentPage < pages.size() - 1)
                 viewPager.setCurrentItem(currentPage + 1);
-            else{
+            else {
                 DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
                 setupOverlay.setVisibility(View.GONE);
             }
+
+            /// In this section, we ask the permission of notifications to the user, beacuse in this Index there is the "Notification" page.
+            if(currentPage == 2)
+                askForNotificationPermission();
         });
 
         Button btnSetupSkip = findViewById(R.id.btnSetupSkip);
@@ -258,6 +261,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+        //*DOWNLOADING EVENTS
+        downloadJSONData(defaultCategory);
     }
 
     private void askForNotificationPermission(){
@@ -282,9 +288,31 @@ public class MainActivity extends AppCompatActivity {
         return "tutti";
     }
 
-    public void downloadJSONData(String categoryToFilter){
-        //? ACTIVATE THE LOADING LAYOUT
-        if(loadingLayout != null){
+    public void downloadJSONData(String categoryToFilter) {
+        /// In this section of the code, we create a CACHE Memory to save the JSON Downloaded.
+        /// This part is very important because avoids to use Bandwith of our CDN for nothing.
+        if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty()) {
+            if (loadingLayout != null) {
+                loadingLayout.setVisibility(View.GONE);
+                loadingLayout.stopShimmer();
+                errorLayout.setVisibility(View.GONE);
+                findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
+            }
+
+            events = new ArrayList<>(EventData.listaEventiCompleta);
+            eventsDisplay = new ArrayList<>(events);
+
+            RecyclerView recyclerView = findViewById(R.id.recyclerView);
+            recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+            adapter = new WorkAdapter(eventsDisplay);
+            adapter.setFilteredList(eventsDisplay);
+            recyclerView.setAdapter(adapter);
+
+            applicaFiltroCategoria(categoryToFilter);
+            return;
+        }
+
+        if (loadingLayout != null) {
             loadingLayout.setVisibility(View.VISIBLE);
             loadingLayout.startShimmer();
             errorLayout.setVisibility(View.GONE);
@@ -315,27 +343,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<EventDescriptor>> call, Response<ArrayList<EventDescriptor>> response) {
                 //? DISABLE THE LOADING LAYOUT
-                if(loadingLayout != null){
+                if (loadingLayout != null) {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.GONE);
                     loadingLayout.stopShimmer();
                     findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
                 }
 
-                if(response.isSuccessful() && response.body() != null){
+                if (response.isSuccessful() && response.body() != null) {
                     events.clear();
                     events = response.body();
                     eventsDisplay.clear();
                     eventsDisplay = response.body();
                     EventData.listaEventiCompleta = events;
                     NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
+
                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                     adapter = new WorkAdapter(eventsDisplay);
                     adapter.setFilteredList(eventsDisplay);
                     recyclerView.setAdapter(adapter);
 
-                    Log.d("SUCCESS","Oggetti caricati:" +events.size());
                     applicaFiltroCategoria(categoryToFilter);
                 }
             }
@@ -343,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
                 //* ON FAILURE, ACTIVATE THE "ERROR" LAYOUT
-                if(loadingLayout != null){
+                if (loadingLayout != null) {
                     boolean showErrorMessage = DataManager.getBoolData(MainActivity.this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                     TextView errorDeps = findViewById(R.id.errorDeps);
 
@@ -353,7 +381,6 @@ public class MainActivity extends AppCompatActivity {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                 }
-                Log.e("ERROR","Errore nel download: " + t.getMessage());
             }
         });
     }
