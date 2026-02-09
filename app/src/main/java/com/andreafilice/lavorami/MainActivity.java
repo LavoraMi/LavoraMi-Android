@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,15 +25,20 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout errorLayout;
     private WorkAdapter adapter;
     private String defaultCategory;
+    private boolean hasCompletedSetup;
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
@@ -81,8 +88,55 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        //*NOTIFICATION CONSENT POPUP
-        askForNotificationPermission();
+        //*SETUP PAGES
+        /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
+        /// This method is also used into the iOS version of LavoraMi.
+        hasCompletedSetup = DataManager.getBoolData(this, DataKeys.KEY_END_SETUP, false);
+
+        ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
+        setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
+
+        List<SetupModels.SetupPage> pages = new ArrayList<>();
+        pages.add(new SetupModels.SetupPage("Benvenuto su LavoraMi", "Tieniti informato. Prima e durante il tuo viaggio.", "ic_ticket"));
+        pages.add(new SetupModels.SetupPage("Pianifica il Viaggio", "Pianifica il tuo viaggio sapendo dei disagi, ben prima di partire.", "ic_map"));
+        pages.add(new SetupModels.SetupPage("Tieni sott'occhio i lavori", "Seleziona una linea da poter mostrare nel Widget dell'app per tenerla sempre sott'occhio.", "ic_star_fill"));
+        pages.add(new SetupModels.SetupPage("Tieniti Aggiornato", "Attiva le notifiche per rimanere al passo coi lavori.", "ic_bell_fill"));
+        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per salvare le tue linee su altri dispositivi.", "ic_lock"));
+
+        ViewPager2 viewPager = findViewById(R.id.setupViewPager);
+        SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.setupIndicator);
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {}).attach();
+
+        /// In this section of the code, we set-up the "NEXT" and "SKIP" buttons from the view.
+        MaterialButton btnSetupNext = findViewById(R.id.btnSetupNext);
+        btnSetupNext.setOnClickListener(v -> {
+            int currentPage = viewPager.getCurrentItem();
+
+            if(currentPage < pages.size() - 1)
+                viewPager.setCurrentItem(currentPage + 1);
+            else{
+                DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
+                setupOverlay.setVisibility(View.GONE);
+            }
+        });
+
+        Button btnSetupSkip = findViewById(R.id.btnSetupSkip);
+        btnSetupSkip.setOnClickListener(v ->{
+            DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
+            setupOverlay.setVisibility(View.GONE);
+        });
+
+        /// In this section we also set the "NEXT" button to "END" when it's the last Page.
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                btnSetupNext.setText((position == pages.size() -1) ? "Fine" : "Avanti");
+            }
+        });
 
         //*INITIALIZE THE LOADING LAYOUT
         loadingLayout = findViewById(R.id.loadingLayout);
@@ -208,9 +262,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void askForNotificationPermission(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
-            }
         }
     }
 

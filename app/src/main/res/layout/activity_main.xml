@@ -382,4 +382,78 @@
             app:tint="?attr/colorControlNormal" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/setupOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_app"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/setupViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/setupActionContainer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/setupIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginBottom="24dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/setupActionContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tabBackground="@drawable/selector_dot_indicator"
+            app:tabIndicatorHeight="0dp"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabMinWidth="24dp"
+            app:tabMaxWidth="24dp"
+            app:tabPaddingStart="8dp"
+            app:tabPaddingEnd="8dp"
+            app:tabPaddingTop="0dp"
+            app:tabPaddingBottom="0dp"
+            app:tabGravity="center"
+            app:tabMode="fixed" />
+
+        <LinearLayout
+            android:id="@+id/setupActionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSetupNext"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Avanti"
+                android:textAllCaps="false"
+                android:textColor="@color/White"
+                android:textSize="18sp"
+                app:cornerRadius="12dp"
+                android:fontFamily="@font/archivo_medium"
+                android:backgroundTint="#FD272D" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSetupSkip"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:text="Salta"
+            android:textColor="#FD272D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
