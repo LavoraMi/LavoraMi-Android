@@ -209,6 +209,7 @@ public class LinesActivity extends AppCompatActivity {
                 boolean hasTram = filtraContainer(containerTram, query);
                 boolean hasMovibus = filtraContainer(containerMovibus, query);
                 boolean hasStav= filtraContainer(containerStav, query);
+                boolean hasAuto = filtraContainer(containerAutoGuidovie, query);
 
                 //*METRO LINES
                 titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
@@ -246,12 +247,12 @@ public class LinesActivity extends AppCompatActivity {
                 containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
 
                 //*AUTOGUIDOVIE LINES
-                titleAutoGuidoVie.setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                infoButtons[7].setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                containerAutoGuidovie.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                infoButtons[7].setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
 
                 if (tvNoResults != null) {
-                    if (!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram)
+                    if (!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto)
                         tvNoResults.setVisibility(View.VISIBLE);
                     else
                         tvNoResults.setVisibility(View.GONE);
