@@ -189,14 +189,14 @@ public class LinesActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String query = s.toString().toLowerCase().trim();
 
-                TextView titleMetro = findViewById(R.id.subTitleMetro);
-                TextView titleSub = findViewById(R.id.subTitleSuburbane);
-                TextView titleMXP = findViewById(R.id.subTitleMXP);
-                TextView titleTrans = findViewById(R.id.subTitleTransfrontaliere);
-                TextView titleTram = findViewById(R.id.subTitleTram);
-                TextView titleMovibus = findViewById(R.id.subTitleMovibus);
-                TextView titleStav = findViewById(R.id.subTitleStav);
-                TextView titleAutoGuidoVie= findViewById(R.id.subTitleAutoGuidoVie);
+                LinearLayout titleMetro = findViewById(R.id.headerMetro);
+                LinearLayout titleSub = findViewById(R.id.headerSuburbane);
+                LinearLayout titleMXP = findViewById(R.id.headerMXP);
+                LinearLayout titleTrans = findViewById(R.id.headerTransfrontaliere);
+                LinearLayout titleTram = findViewById(R.id.headerTram);
+                LinearLayout titleMovibus = findViewById(R.id.headerMovibus);
+                LinearLayout titleStav = findViewById(R.id.headerSTAV);
+                LinearLayout titleAutoGuidoVie= findViewById(R.id.headerAutoguidovie);
                 TextView tvNoResults = findViewById(R.id.emptyView);
 
                 boolean hasMetro = filtraContainer(containerMetro, query);
@@ -210,42 +210,34 @@ public class LinesActivity extends AppCompatActivity {
 
                 //*METRO LINES
                 titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
-                infoButtons[0].setVisibility(hasMetro ? View.VISIBLE : View.GONE);
                 containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
 
                 //*SUBURBAN LINES
                 titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
-                infoButtons[1].setVisibility(hasSub ? View.VISIBLE : View.GONE);
                 containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
 
                 //*MXP LINES
                 titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
-                infoButtons[3].setVisibility(hasMXP ? View.VISIBLE : View.GONE);
                 containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
 
                 //*TRANSFRONTALIERE LINES
                 titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
-                infoButtons[2].setVisibility(hasTrans ? View.VISIBLE : View.GONE);
                 containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
 
                 //*TRAM LINES
                 titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
-                infoButtons[4].setVisibility(hasTram ? View.VISIBLE : View.GONE);
                 containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
 
                 //*MOVIBUS LINES
                 titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
-                infoButtons[5].setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
                 containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
 
                 //*STAV LINES
                 titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                infoButtons[6].setVisibility(hasStav ? View.VISIBLE : View.GONE);
                 containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
 
                 //*AUTOGUIDOVIE LINES
                 titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
-                infoButtons[7].setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                 containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
 
                 if (tvNoResults != null) {
