@@ -11,7 +11,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.net.Uri;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 

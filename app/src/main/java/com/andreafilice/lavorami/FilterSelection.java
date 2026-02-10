@@ -1,7 +1,5 @@
 package com.andreafilice.lavorami;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;

@@ -1,7 +1,6 @@
 package com.andreafilice.lavorami;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -10,20 +9,17 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.util.Log;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -48,7 +44,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import okhttp3.Cache;
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;

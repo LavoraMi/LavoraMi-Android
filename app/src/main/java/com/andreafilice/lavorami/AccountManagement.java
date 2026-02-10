@@ -1,18 +1,14 @@
 package com.andreafilice.lavorami;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -30,10 +26,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.facebook.shimmer.BuildConfig;
-import com.google.android.gms.common.api.Result;
-import com.google.gson.internal.GsonBuildConfig;
 
 import android.widget.TextView;
 import android.widget.Toast;

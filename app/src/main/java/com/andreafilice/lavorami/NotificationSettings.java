@@ -1,13 +1,9 @@
 package com.andreafilice.lavorami;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -15,12 +11,9 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import java.util.Calendar;
 
 public class NotificationSettings extends AppCompatActivity {
 

@@ -1,7 +1,5 @@
 package com.andreafilice.lavorami;
 
-import java.util.List;
-
 public class MetroStation {
     private String name;
     private double latitude;
