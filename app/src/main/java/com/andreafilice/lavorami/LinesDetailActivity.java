@@ -138,6 +138,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     }
 
     private void aggiornaUI() {
+        TextView lineLimitation = findViewById(R.id.lineLimitation);
+        lineLimitation.setVisibility((nomeLinea.equals("S2") || nomeLinea.equals("S12") || nomeLinea.equals("S19")) ? View.VISIBLE : View.GONE);
         TextView detBadge = findViewById(R.id.detBadge);
         TextView detTitolo = findViewById(R.id.detTitolo);
 
@@ -461,10 +463,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setCheckable(false);
 
                         chipGroup.addView(chip);
-
                     }
                 }
-
                 container.addView(card);
             }
         }
@@ -496,16 +496,18 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         tvDirezioni.setText(getCapolinea(nomeLinea));
 
+        Log.d("LINEA", nomeLinea);
+
         if (nomeLinea.startsWith("M"))
-            tvAttesa.setText("Frequenza media: 3 - 6 min");
+            tvAttesa.setText(getFrequenza(nomeLinea));
         else if (nomeLinea.startsWith("S"))
-            tvAttesa.setText("Frequenza media: 30 min");
+            tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
-            tvAttesa.setText("Frequenza media: 5-20min");
+            tvAttesa.setText("Frequenza media: 5-20 min.");
         else if(nomeLinea.startsWith("MXP"))
-            tvAttesa.setText("Frequenza media: 30 min");
+            tvAttesa.setText("Frequenza media: 30 min.");
         else if(nomeLinea.equals("S10")||nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("S50")||nomeLinea.equals("RE80"))
-            tvAttesa.setText("Freqeunza media: 30 min");
+            tvAttesa.setText("Freqeunza media: 30 min.");
         else
             tvAttesa.setText("Frequenza variabile");
 
@@ -618,5 +620,33 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
     public boolean haveMapAvailable(){
         return tipoDiLinea.contains("Tram") || this.nomeLinea.contains("z");
+    }
+
+    public String getFrequenza(String lineName){
+        switch(lineName) {
+            case "M1": return "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min.";
+            case "M2": return "Gessate: 12-15 min | Assago: 9-10 min.";
+            case "M3": return "4-5 min.";
+            case "M4": return "2-3 min.";
+            case "M5": return "4 min.";
+            case "S1":
+            case "S2":
+            case "S3":
+            case "S4":
+            case "S5":
+            case "S6":
+            case "S8":
+            case "S9":
+            case "S11":
+            case "S12":
+            case "S13":
+            case "S19":
+                return "30 min.";
+            case "S31":
+            case "S40":
+            case "S50":
+                return "1 ora.";
+            default: return "Errore";
+        }
     }
 }

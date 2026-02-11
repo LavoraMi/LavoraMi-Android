@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:text="Direzioni:"
             android:textColor="@color/text_primary"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_marginTop="25dp"
             android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:text="Tempo di attesa:"
             android:textColor="@color/text_primary"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_marginTop="25dp"
             android:textStyle="bold" />
 
@@ -93,7 +93,17 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
-            android:text=""
+            android:text="Negri"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lineLimitation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
+            android:paddingTop="10dp"
+            android:text="LA LINEA É ATTIVA SOLO NEI GIORNI SETTIMANALI."
             android:textStyle="bold" />
 
         <TextView
@@ -101,7 +111,7 @@
             android:layout_height="wrap_content"
             android:text="Stato linea"
             android:textColor="@color/text_primary"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:layout_marginTop="25dp"
             android:textStyle="bold" />
 

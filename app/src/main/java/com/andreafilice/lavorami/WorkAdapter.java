@@ -207,6 +207,8 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
                 return R.color.S40;
             case "S50":
                 return R.color.S50;
+            case "RE80":
+                return R.color.RE80;
 
             //METRO LINES
             case "M1":

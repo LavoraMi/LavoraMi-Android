@@ -118,7 +118,7 @@ public class SettingsActivity extends AppCompatActivity {
             "Autoguidovie"
         };
 
-        favorites = DataManager.getStringArray(this, DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
+        favorites = new HashSet<>(DataManager.getStringArray(this, DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
         Log.d("DATA", favorites.toString());
 
         setStarIcons(starIcons, lineCodes);
@@ -165,7 +165,12 @@ public class SettingsActivity extends AppCompatActivity {
                 int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
                 icons[finalI].setImageResource(newRes);
                 icons[finalI].setTag(newRes);
-                favorites.add(lineCodes[finalI]);
+
+                if (newRes == R.drawable.ic_star_fill)
+                    favorites.add(lineCodes[finalI]);
+                else
+                    favorites.remove(lineCodes[finalI]);
+
                 DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, favorites);
             });
         }
