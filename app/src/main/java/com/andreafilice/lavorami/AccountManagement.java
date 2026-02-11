@@ -594,7 +594,6 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                ActivityManager.changeActivity(AccountManagement.this, SettingsActivity.class);
             }
         });
 
