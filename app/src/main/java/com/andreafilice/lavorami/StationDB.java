@@ -632,7 +632,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Milano Cadorna FN",
-                new String[]{"M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4"},
+                new String[]{"M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "z603", "z6C3"},
                 "tram.fill.tunnel"
         ));
 

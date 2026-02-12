@@ -70,9 +70,15 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if (nomeLinea == null) nomeLinea = "M1";
         if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z")){
             chipMappa.setVisibility(View.GONE);
+            chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
+            containerInterscambi.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
             caricaEventiFiltrati();
+
+            if(!tipoDiLinea.contains("Tram"))
+                caricaFermateInterscambio();
+
             chipMappa.setChecked(false);
             chipLavori.setChecked(true);
             chipInterscambi.setChecked(false);
@@ -597,6 +603,79 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
+    }
+
+    private void caricaFermateInterscambio(){
+        TextView detInterscambio = findViewById(R.id.detInterscambio);
+        TextView detAttesa = findViewById(R.id.detAttesa);
+        TextView txtInterscambio = findViewById(R.id.txtInterscambio);
+        TextView txtMinutes = findViewById(R.id.txtMinutes);
+        ChipGroup chipGroupLinee = findViewById(R.id.chipGroupLinee);
+
+        detInterscambio.setVisibility(View.VISIBLE);
+        detAttesa.setVisibility(View.GONE);
+        txtInterscambio.setVisibility(View.VISIBLE);
+        txtMinutes.setVisibility(View.GONE);
+        chipGroupLinee.setVisibility(View.VISIBLE);
+
+        for (InterchangeInfo info : StationDB.getBusInterchanges()){
+            if(info.getLines() == null) continue;
+
+            String searchTag = (nomeLinea.contains("MXP")) ? "MXP" : nomeLinea.trim().toUpperCase();
+            boolean matchFound = false;
+            for (String lineInEvent : info.getLines()) {
+                if (lineInEvent != null) {
+                    if (lineInEvent.trim().toUpperCase().equals(searchTag)) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+            }
+
+            if(matchFound) {
+                if (info != null && info.getLines() != null) {
+                    detInterscambio.setText(info.getKey());
+                    chipGroupLinee.removeAllViews();
+
+                    for (String lineName : info.getLines()) {
+                        String nomePulito = lineName.trim();
+                        Chip chip = new Chip(this);
+                        chip.setText(nomePulito);
+
+                        ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
+                                .toBuilder()
+                                .setAllCornerSizes(10f)
+                                .build();
+
+                        chip.setShapeAppearanceModel(cornerRadius);
+                        chip.setEnsureMinTouchTargetSize(false);
+                        chip.setChipMinHeight(0f);
+
+                        chip.setChipStartPadding(10f);
+                        chip.setChipEndPadding(10f);
+
+                        chip.setTextSize(14f);
+                        chip.setTypeface(Typeface.create("@font/archivo_medium", Typeface.BOLD));
+                        chip.setTextColor(Color.WHITE);
+
+                        int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
+                        int coloreTesto = (coloreLinea == R.color.OTHER) ? R.color.Black : R.color.White;
+                        int coloreTestoEffettivo = ContextCompat.getColor(this, coloreTesto);
+                        int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
+                        chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
+                        chip.setTextColor(coloreTestoEffettivo);
+
+                        chip.setCloseIconVisible(false);
+                        chip.setClickable(false);
+                        chip.setCheckable(false);
+
+                        chipGroupLinee.addView(chip);
+                    }
+                }
+            }
+        }
+        if(detInterscambio.getText().toString().isEmpty())
+            detInterscambio.setText("Nessuna fermata di interscambio.");
     }
 
     public long getDateMillis(String dateString) {
