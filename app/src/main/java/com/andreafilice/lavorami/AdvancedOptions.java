@@ -255,7 +255,7 @@ public class AdvancedOptions extends AppCompatActivity {
                     .build();
 
             if (cipherForPrompt != null) {
-                biometricPrompt.authenticate(new BiometricPrompt.CryptoObject(cipherForPrompt), promptInfo);
+                biometricPrompt.authenticate(promptInfo, new BiometricPrompt.CryptoObject(cipherForPrompt));
             } else {
                 biometricPrompt.authenticate(promptInfo);
             }
