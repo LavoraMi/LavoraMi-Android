@@ -135,7 +135,7 @@ public class NotificationSettings extends AppCompatActivity {
 
     public void saveDatas(Switch switchNotificationsGeneral, Switch switchStartWorks, Switch switchEndWorks, Switch switchStrikeNotifications){
         /// In this Method, we will save the current configuration of the switches from the Settings
-        /// @PARAMETER All of the current parameters are the Switch Objects from the XML file.
+        /// @PARAMETER All the current parameters are the Switch Objects from the XML file.
 
         DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, switchNotificationsGeneral.isChecked());
         DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, switchStartWorks.isChecked());

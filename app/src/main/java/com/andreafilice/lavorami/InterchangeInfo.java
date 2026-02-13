@@ -5,16 +5,23 @@ import android.util.Log;
 public class InterchangeInfo {
     private String key;
     private String[] lines;
+    private String[] linesToShow;
     private String typeOfInterchange;
 
-    public InterchangeInfo(String key, String[] lines, String typeOfInterchange){
+    public InterchangeInfo(String key, String[] lines, String[] linesToShow, String typeOfInterchange){
         this.key = key;
         this.lines = lines;
+        this.linesToShow = linesToShow;
         this.typeOfInterchange = typeOfInterchange;
+    }
+
+    public InterchangeInfo(String key, String[] lines, String typeOfInterchange){
+        this(key, lines, null, typeOfInterchange);
     }
 
     public String getKey() {return key;}
     public String[] getLines() {return lines;}
+    public String[] getLinesToShow() {return linesToShow;}
     public String getTypeOfInterchange() {return typeOfInterchange;}
 
     public int getCardImageID() {return getTitleIconID(this.typeOfInterchange);}

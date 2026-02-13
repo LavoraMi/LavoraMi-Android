@@ -47,6 +47,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private GoogleMap mMap;
     private String nomeLinea;
     private String tipoDiLinea;
+    private View lavoriNested;
+    private View interscambiNested;
+    private View lavoriWrapper;
+    private View interscambiWrapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
+
+        lavoriNested = findViewById(R.id.lavoriNested);
+        interscambiNested = findViewById(R.id.interscambiNested);
+        lavoriWrapper = findViewById(R.id.lavoriSezioneWrapper);
+        interscambiWrapper = findViewById(R.id.interscambiWrapper);
+
         chipMappa.setChecked(true);
 
         /// Take the EXTRA Arguments from the Intent.
@@ -105,6 +115,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.GONE);
+            lavoriWrapper.setVisibility(View.GONE);
+            lavoriNested.setVisibility(View.GONE);
+            interscambiWrapper.setVisibility(View.GONE);
+            interscambiNested.setVisibility(View.GONE);
             findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
             findViewById(R.id.emptyView).setVisibility(View.GONE);
 
@@ -119,6 +133,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
             containerInterscambi.setVisibility(View.GONE);
+            interscambiWrapper.setVisibility(View.GONE);
+            interscambiNested.setVisibility(View.GONE);
             caricaEventiFiltrati();
 
             if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
@@ -144,6 +160,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.VISIBLE);
+            lavoriWrapper.setVisibility(View.GONE);
+            lavoriNested.setVisibility(View.GONE);
             findViewById(R.id.emptyView).setVisibility(View.GONE);
             caricaInterscambiLinee();
 
@@ -510,7 +528,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
 
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
+        lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
+        emptyView.setText("Non ci sono lavori su questa linea.");
     }
 
     private void caricaInterscambiLinee() {
@@ -602,7 +622,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
 
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
+        interscambiNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
+        emptyView.setText("Nessun interscambio con questa linea.");
     }
 
     private void caricaFermateInterscambio(){
@@ -619,11 +641,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipGroupLinee.setVisibility(View.VISIBLE);
 
         for (InterchangeInfo info : StationDB.getBusInterchanges()){
-            if(info.getLines() == null) continue;
+            if(info.getLinesToShow() == null) continue;
 
             String searchTag = (nomeLinea.contains("MXP")) ? "MXP" : nomeLinea.trim().toUpperCase();
             boolean matchFound = false;
-            for (String lineInEvent : info.getLines()) {
+
+            for (String lineInEvent : info.getLinesToShow()) {
                 if (lineInEvent != null) {
                     if (lineInEvent.trim().toUpperCase().equals(searchTag)) {
                         matchFound = true;
@@ -674,8 +697,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 }
             }
         }
-        if(detInterscambio.getText().toString().isEmpty())
+        if(detInterscambio.getText().toString().isEmpty()){
+            detInterscambio.setTypeface(detInterscambio.getTypeface(), Typeface.NORMAL);
             detInterscambio.setText("Nessuna fermata di interscambio.");
+        }
     }
 
     public long getDateMillis(String dateString) {

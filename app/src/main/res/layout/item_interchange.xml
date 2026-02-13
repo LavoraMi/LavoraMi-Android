@@ -83,17 +83,23 @@
 
         </LinearLayout>
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroupLinee"
-            android:layout_width="match_parent"
+        <HorizontalScrollView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:chipSpacingHorizontal="6dp"
-            app:chipSpacingVertical="6dp"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutSubInfo" />
+            app:layout_constraintTop_toBottomOf="@id/layoutSubInfo">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupLinee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipSpacingHorizontal="6dp"
+                app:singleLine="true" />
+        </HorizontalScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
