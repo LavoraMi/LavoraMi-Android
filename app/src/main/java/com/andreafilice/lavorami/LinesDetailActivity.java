@@ -151,7 +151,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 cardMappa.setVisibility(View.GONE);
                 containerLavori.setVisibility(View.VISIBLE);
                 containerInterscambi.setVisibility(View.GONE);
-                containerInterscambi.setVisibility(View.GONE);
                 findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
             }
         });
@@ -170,7 +169,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 chipLavori.setChecked(true);
                 cardMappa.setVisibility(View.GONE);
                 containerLavori.setVisibility(View.VISIBLE);
-                containerInterscambi.setVisibility(View.GONE);
                 containerInterscambi.setVisibility(View.GONE);
                 findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
             }
