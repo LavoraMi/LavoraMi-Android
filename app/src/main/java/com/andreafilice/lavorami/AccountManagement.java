@@ -599,7 +599,7 @@ public class AccountManagement extends AppCompatActivity {
 
         BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Accedi al tuo Account")
-                .setSubtitle("Usa l'impronta o il viso per accedere")
+                .setSubtitle("Usa l'impronta o il viso per accedere.")
                 .setAllowedAuthenticators(authenticators)
                 .build();
 

@@ -4,12 +4,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.cardview.widget.CardView;
@@ -17,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.concurrent.Executor;
 
 public class AdvancedOptions extends AppCompatActivity {
 
@@ -40,10 +46,12 @@ public class AdvancedOptions extends AppCompatActivity {
         boolean isErrorActive = DataManager.getBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
         boolean isBannerActive = DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
         boolean isRequireBiometrics = DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+        boolean isShowDetails = DataManager.getBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
 
         Switch errorMessagesSwitch = findViewById(R.id.switchErrors);
         Switch strikeBannersSwitch = findViewById(R.id.switchBanner);
         Switch biometricsSwitch = findViewById(R.id.switchBiometrics);
+        Switch detailsSwitch = findViewById(R.id.switchDetails);
 
         errorMessagesSwitch.setChecked(isErrorActive);
         errorMessagesSwitch.setTrackTintMode((errorMessagesSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
@@ -53,6 +61,9 @@ public class AdvancedOptions extends AppCompatActivity {
 
         biometricsSwitch.setChecked(isRequireBiometrics);
         biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
+        detailsSwitch.setChecked(isShowDetails);
+        detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
 
         //*SAVE DATAS
         /// Save the value from the Switch Checked status to DataManager.
@@ -66,9 +77,11 @@ public class AdvancedOptions extends AppCompatActivity {
             strikeBannersSwitch.setTrackTintMode((strikeBannersSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         });
 
-        biometricsSwitch.setOnClickListener(v -> {
-            DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
-            biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        biometricsSwitch.setOnClickListener(v -> {showBiometricPrompt(biometricsSwitch);});
+
+        detailsSwitch.setOnClickListener(v -> {
+            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, detailsSwitch.isChecked());
+            detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         });
 
         //*CACHE MEMORY
@@ -92,6 +105,7 @@ public class AdvancedOptions extends AppCompatActivity {
         try {
             File dir = context.getCacheDir();
             deleteDir(dir);
+            Toast.makeText(context, "Cache pulite correttamente!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e) {e.printStackTrace();}
     }
@@ -117,5 +131,67 @@ public class AdvancedOptions extends AppCompatActivity {
             return dir.delete();
         else
             return false;
+    }
+
+    private void showBiometricPrompt(Switch biometricsSwitch) {
+        /// This method call a Google API to request a Biometric authentication.
+        /// This method protects the user protection by veryfing who is accesing at that setting with that device.
+        /// @FALLBACK rules:
+        /// If no FaceID or TouchID are setted-up into the device, Fallback to ask the PIN or Device Password.
+        /// If no PIN also is found, Fallback to unlock the screen automatically.
+
+        BiometricManager biometricManager = BiometricManager.from(this);
+
+        int authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL;
+        int canAuthenticate = biometricManager.canAuthenticate(authenticators);
+        biometricsSwitch.setChecked(DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true));
+
+        if (canAuthenticate != BiometricManager.BIOMETRIC_SUCCESS) {
+            DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
+            biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            return;
+        }
+
+        /// In this section of the code, we create the PopUp for log-in with Biometric Auth.
+        /// The pop-up UI is different base by Manufacture Implementation.
+        /// @FALLBACK
+        /// If the Biometric Auth failed, don't apply the modifications to the DataManager.
+
+        Executor executor = ContextCompat.getMainExecutor(this);
+        BiometricPrompt biometricPrompt = new BiometricPrompt(this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(AdvancedOptions.this, "Autenticazione non riuscita.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                biometricsSwitch.setChecked(false);
+                DataManager.saveBoolData(AdvancedOptions.this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
+                biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        if(biometricsSwitch.isChecked()){
+            BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                    .setTitle("Modifica impostazioni")
+                    .setSubtitle("Usa l'impronta o il viso per modificare questa impostazione.")
+                    .setAllowedAuthenticators(authenticators)
+                    .build();
+
+            biometricPrompt.authenticate(promptInfo);
+        }
+        else {
+            biometricsSwitch.setChecked(true);
+            DataManager.saveBoolData(AdvancedOptions.this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
+            biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        }
     }
 }

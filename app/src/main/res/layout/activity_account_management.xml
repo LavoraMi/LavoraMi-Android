@@ -228,6 +228,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:paddingBottom="70dp"
                 android:paddingHorizontal="24dp"
                 android:visibility="visible">
 

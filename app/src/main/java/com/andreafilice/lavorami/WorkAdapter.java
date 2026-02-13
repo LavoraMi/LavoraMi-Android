@@ -62,7 +62,9 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
-
+        boolean showDetails = DataManager.getBoolData(holder.itemView.getContext(),
+                DataKeys.KEY_SHOW_DETAILS,
+                true);
         EventDescriptor item = eventList.get(position);
 
         String finalStartDate = formattaData(item.getStartDate());
@@ -79,6 +81,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         holder.endDateText.setText("Al: " + finalEndDate);
         holder.companyText.setText(item.getCompany());
         holder.descriptionText.setText(item.getDetails());
+        holder.descriptionText.setVisibility((showDetails) ? View.VISIBLE : View.GONE);
 
         int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
         holder.progressBar.setProgress(progressPercentage);
