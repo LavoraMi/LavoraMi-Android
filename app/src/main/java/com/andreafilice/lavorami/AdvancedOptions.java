@@ -254,11 +254,10 @@ public class AdvancedOptions extends AppCompatActivity {
                     .setAllowedAuthenticators(authenticators)
                     .build();
 
-            if (cipherForPrompt != null) {
+            if (cipherForPrompt != null)
                 biometricPrompt.authenticate(promptInfo, new BiometricPrompt.CryptoObject(cipherForPrompt));
-            } else {
+            else
                 biometricPrompt.authenticate(promptInfo);
-            }
         }
         else {
             biometricsSwitch.setChecked(true);
