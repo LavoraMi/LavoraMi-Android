@@ -9,6 +9,7 @@ import android.os.Build;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Set;
 
 public class NotificationScheduler {
@@ -139,18 +140,21 @@ public class NotificationScheduler {
 
                 if (notifyStart) {
                     if (startMillis > now) {
-                        schedule(context, alarmManager, event.title.hashCode(), startMillis,
+                        long notificationTime = getSelectedTime(context, startMillis);
+                        schedule(context, alarmManager, event.title.hashCode(), notificationTime,
                                 "Lavori Iniziati!", String.format("I lavori in %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.", event.roads, event.getStringLines(), event.company));
                     }
                     if (startMillis - oneDayMillis > now) {
-                        schedule(context, alarmManager, event.title.hashCode() + 1, startMillis - oneDayMillis,
+                        long notificationTimeDayBefore = getSelectedTime(context, startMillis - oneDayMillis);
+                        schedule(context, alarmManager, event.title.hashCode() + 1, notificationTimeDayBefore,
                                 "⚠\uFE0F I lavori iniziano domani!", String.format("Domani iniziano i lavori in %s per %s. Consulta il sito di %s", event.roads, event.getStringLines(), event.company));
                     }
                 }
 
                 if (notifyEnd) {
                     if (endMillis > now) {
-                        schedule(context, alarmManager, event.title.hashCode() + 2, endMillis,
+                        long notificationTimeEnd = getSelectedTime(context, endMillis);
+                        schedule(context, alarmManager, event.title.hashCode() + 2, notificationTimeEnd,
                                 "Lavori terminati!", String.format("I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.", event.roads, event.getStringLines(), event.company));
                     }
                 }
@@ -196,5 +200,15 @@ public class NotificationScheduler {
         } catch (Exception e) {
             Log.e(TAG, "Errore generico: " + e.getMessage());
         }
+    }
+
+    private static long getSelectedTime(Context context, long eventDateMillis) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(eventDateMillis);
+        calendar.set(Calendar.HOUR_OF_DAY, DataManager.getIntData(context, DataKeys.KEY_HOURS_NOTIFICATIONS, 10));
+        calendar.set(Calendar.MINUTE, DataManager.getIntData(context, DataKeys.KEY_MINUTES_NOTIFICATIONS, 0));
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTimeInMillis();
     }
 }
