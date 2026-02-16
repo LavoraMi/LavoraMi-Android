@@ -50,98 +50,149 @@ public class LinesActivity extends AppCompatActivity {
         /// Every type of line is sorted in order of importance.
 
         //METRO
-        aggiungiLinea(containerMetro, "M1", R.color.M1, "Metro M1");
-        aggiungiLinea(containerMetro, "M2", R.color.M2, "Metro M2");
-        aggiungiLinea(containerMetro, "M3", R.color.M3, "Metro M3");
-        aggiungiLinea(containerMetro, "M4", R.color.M4, "Metro M4");
-        aggiungiLinea(containerMetro, "M5", R.color.M5, "Metro M5");
+        aggiungiLinea(containerMetro, "M1", R.color.M1, "Metro");
+        aggiungiLinea(containerMetro, "M2", R.color.M2, "Metro");
+        aggiungiLinea(containerMetro, "M3", R.color.M3, "Metro");
+        aggiungiLinea(containerMetro, "M4", R.color.M4, "Metro");
+        aggiungiLinea(containerMetro, "M5", R.color.M5, "Metro");
 
         // SUBURBANI
-        aggiungiLinea(containerSub, "S1", R.color.S1, "Suburbano S1");
-        aggiungiLinea(containerSub, "S2", R.color.S2, "Suburbano S2");
-        aggiungiLinea(containerSub, "S3", R.color.S3, "Suburbano S3");
-        aggiungiLinea(containerSub, "S4", R.color.S4, "Suburbano S4");
-        aggiungiLinea(containerSub, "S5", R.color.S5, "Suburbano S5");
-        aggiungiLinea(containerSub, "S6", R.color.S6, "Suburbano S6");
-        aggiungiLinea(containerSub, "S7", R.color.S7, "Suburbano S7");
-        aggiungiLinea(containerSub, "S8", R.color.S8, "Suburbano S8");
-        aggiungiLinea(containerSub, "S9", R.color.S9, "Suburbano S9");
-        aggiungiLinea(containerSub, "S11", R.color.S11, "Suburbano S11");
-        aggiungiLinea(containerSub, "S12", R.color.S12, "Suburbano S12");
-        aggiungiLinea(containerSub, "S13", R.color.S13, "Suburbano S13");
-        aggiungiLinea(containerSub, "S19", R.color.S19, "Suburbano S19");
-        aggiungiLinea(containerSub, "S31", R.color.S31, "Suburbano S31");
+        aggiungiLinea(containerSub, "S1", R.color.S1, "Suburbano");
+        aggiungiLinea(containerSub, "S2", R.color.S2, "Suburbano");
+        aggiungiLinea(containerSub, "S3", R.color.S3, "Suburbano");
+        aggiungiLinea(containerSub, "S4", R.color.S4, "Suburbano");
+        aggiungiLinea(containerSub, "S5", R.color.S5, "Suburbano");
+        aggiungiLinea(containerSub, "S6", R.color.S6, "Suburbano");
+        aggiungiLinea(containerSub, "S7", R.color.S7, "Suburbano");
+        aggiungiLinea(containerSub, "S8", R.color.S8, "Suburbano");
+        aggiungiLinea(containerSub, "S9", R.color.S9, "Suburbano");
+        aggiungiLinea(containerSub, "S11", R.color.S11, "Suburbano");
+        aggiungiLinea(containerSub, "S12", R.color.S12, "Suburbano");
+        aggiungiLinea(containerSub, "S13", R.color.S13, "Suburbano");
+        aggiungiLinea(containerSub, "S19", R.color.S19, "Suburbano");
+        aggiungiLinea(containerSub, "S31", R.color.S31, "Suburbano");
 
         //TILO
-        aggiungiLinea(containerTILO,"S10",R.color.S10,"Transfrontaliera S10");
-        aggiungiLinea(containerTILO,"S30",R.color.S30,"Transfrontaliera S30");
-        aggiungiLinea(containerTILO,"S40",R.color.S40,"Transfrontaliera S40");
-        aggiungiLinea(containerTILO,"S50",R.color.S50,"Transfrontaliera S50");
-        aggiungiLinea(containerTILO,"RE80",R.color.RE80,"Transfrontaliera RE80");
+        aggiungiLinea(containerTILO,"S10",R.color.S10,"Transfrontaliera");
+        aggiungiLinea(containerTILO,"S30",R.color.S30,"Transfrontaliera");
+        aggiungiLinea(containerTILO,"S40",R.color.S40,"Transfrontaliera");
+        aggiungiLinea(containerTILO,"S50",R.color.S50,"Transfrontaliera");
+        aggiungiLinea(containerTILO,"RE80",R.color.RE80,"Transfrontaliera");
 
         //MXP
-        aggiungiLinea(containerMXP,"MXP1",R.color.MXP,"Malpensa Express 1");
-        aggiungiLinea(containerMXP,"MXP2",R.color.MXP,"Malpensa Express 2");
+        aggiungiLinea(containerMXP,"MXP1",R.color.MXP,"Malpensa Express");
+        aggiungiLinea(containerMXP,"MXP2",R.color.MXP,"Malpensa Express");
 
         //TRAM
-        aggiungiLinea(containerTram,"1",R.color.TRAM,"Tram 1");
-        aggiungiLinea(containerTram,"2",R.color.TRAM,"Tram 2");
-        aggiungiLinea(containerTram,"3",R.color.TRAM,"Tram 3");
-        aggiungiLinea(containerTram,"4",R.color.TRAM,"Tram 4");
-        aggiungiLinea(containerTram,"5",R.color.TRAM,"Tram 5");
-        aggiungiLinea(containerTram,"7",R.color.TRAM,"Tram 7");
-        aggiungiLinea(containerTram,"9",R.color.TRAM,"Tram 9");
-        aggiungiLinea(containerTram,"10",R.color.TRAM,"Tram 10");
-        aggiungiLinea(containerTram,"12",R.color.TRAM,"Tram 12");
-        aggiungiLinea(containerTram,"14",R.color.TRAM,"Tram 14");
-        aggiungiLinea(containerTram,"15",R.color.TRAM,"Tram 15");
-        aggiungiLinea(containerTram,"16",R.color.TRAM,"Tram 16");
-        aggiungiLinea(containerTram,"19",R.color.TRAM,"Tram 19");
-        aggiungiLinea(containerTram,"24",R.color.TRAM,"Tram 24");
-        aggiungiLinea(containerTram,"27",R.color.TRAM,"Tram 27");
-        aggiungiLinea(containerTram,"31",R.color.TRAM,"Tram 31");
-        aggiungiLinea(containerTram,"33",R.color.TRAM,"Tram 33");
+        aggiungiLinea(containerTram,"1",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"2",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"3",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"4",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"5",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"7",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"9",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"10",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"12",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"14",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"15",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"16",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"19",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"24",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"27",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"31",R.color.TRAM,"Tram");
+        aggiungiLinea(containerTram,"33",R.color.TRAM,"Tram");
 
         //MOVIBUS
-        aggiungiLinea(containerMovibus,"z601",R.color.BUS,"Movibus z601");
-        aggiungiLinea(containerMovibus,"z602",R.color.BUS,"Movibus z602");
-        aggiungiLinea(containerMovibus,"z603",R.color.BUS,"Movibus z603");
-        aggiungiLinea(containerMovibus,"z6C3",R.color.BUS,"Movibus z6C3");
-        aggiungiLinea(containerMovibus,"z606",R.color.BUS,"Movibus z606");
-        aggiungiLinea(containerMovibus,"z611",R.color.BUS,"Movibus z611");
-        aggiungiLinea(containerMovibus,"z612",R.color.BUS,"Movibus z612");
-        aggiungiLinea(containerMovibus,"z616",R.color.BUS,"Movibus z616");
-        aggiungiLinea(containerMovibus,"z617",R.color.BUS,"Movibus z617");
-        aggiungiLinea(containerMovibus,"z618",R.color.BUS,"Movibus z618");
-        aggiungiLinea(containerMovibus,"z619",R.color.BUS,"Movibus z619");
-        aggiungiLinea(containerMovibus,"z620",R.color.BUS,"Movibus z620");
-        aggiungiLinea(containerMovibus,"z621",R.color.BUS,"Movibus z621");
-        aggiungiLinea(containerMovibus,"z622",R.color.BUS,"Movibus z622");
-        aggiungiLinea(containerMovibus,"z625",R.color.BUS,"Movibus z625");
-        aggiungiLinea(containerMovibus,"z627",R.color.BUS,"Movibus z627");
-        aggiungiLinea(containerMovibus,"z636",R.color.BUS,"Movibus z636");
-        aggiungiLinea(containerMovibus,"z641",R.color.BUS,"Movibus z641");
-        aggiungiLinea(containerMovibus,"z642",R.color.BUS,"Movibus z642");
-        aggiungiLinea(containerMovibus,"z643",R.color.BUS,"Movibus z643");
-        aggiungiLinea(containerMovibus,"z644",R.color.BUS,"Movibus z644");
-        aggiungiLinea(containerMovibus,"z646",R.color.BUS,"Movibus z646");
-        aggiungiLinea(containerMovibus,"z647",R.color.BUS,"Movibus z647");
-        aggiungiLinea(containerMovibus,"z648",R.color.BUS,"Movibus z648");
-        aggiungiLinea(containerMovibus,"z649",R.color.BUS,"Movibus z649");
+        aggiungiLinea(containerMovibus,"z601",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z602",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z603",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z6C3",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z606",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z611",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z612",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z616",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z617",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z618",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z619",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z620",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z621",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z622",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z625",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z627",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z636",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z641",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z642",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z643",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z644",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z646",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z647",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z648",R.color.BUS,"Movibus");
+        aggiungiLinea(containerMovibus,"z649",R.color.BUS,"Movibus");
 
         //STAV
-        aggiungiLinea(containerStav,"z551",R.color.BUS,"STAV z551");
-        aggiungiLinea(containerStav,"z552",R.color.BUS,"STAV z552");
-        aggiungiLinea(containerStav,"z553",R.color.BUS,"STAV z553");
-        aggiungiLinea(containerStav,"z554",R.color.BUS,"STAV z554");
-        aggiungiLinea(containerStav,"z555",R.color.BUS,"STAV z555");
-        aggiungiLinea(containerStav,"z556",R.color.BUS,"STAV z556");
-        aggiungiLinea(containerStav,"z557",R.color.BUS,"STAV z557");
-        aggiungiLinea(containerStav,"z559",R.color.BUS,"STAV z559");
-        aggiungiLinea(containerStav,"z560",R.color.BUS,"STAV z560");
+        aggiungiLinea(containerStav,"z551",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z552",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z553",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z554",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z555",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z556",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z557",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z559",R.color.BUS,"STAV");
+        aggiungiLinea(containerStav,"z560",R.color.BUS,"STAV");
 
         //AUTOGUIDOVIE
-        aggiungiLinea(containerAutoGuidovie,"test",R.color.AUTOGUIDOVIE,"ztest");
+        aggiungiLinea(containerAutoGuidovie,"z401", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z402", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z403", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z404", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z405", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z406", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z407", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z409", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z410", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z411", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z412", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z413", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z415", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z418", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z419", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z420", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z431", R.color.BUS,"Autoguidovie");
+
+        aggiungiLinea(containerAutoGuidovie,"z219", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z221", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z222", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z225", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z227", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z228", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z229", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z231", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z232", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z233", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z234", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z250", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z251", R.color.BUS,"Autoguidovie");
+
+        aggiungiLinea(containerAutoGuidovie,"k208", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k214", R.color.BUS,"Autoguidovie");
+
+        aggiungiLinea(containerAutoGuidovie,"k501", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k502", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k503", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k505", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k506", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k507", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k510", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k511", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k512", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k520", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k521", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k522", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k523", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k524", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"k525", R.color.BUS,"Autoguidovie");
+
+        aggiungiLinea(containerAutoGuidovie,"k601", R.color.BUS,"Autoguidovie");
 
         //*WEBSITE LINKS
         /// In this section of the code, we set the default action (OnClick) of the ImageView
@@ -291,7 +342,7 @@ public class LinesActivity extends AppCompatActivity {
         TextView name = row.findViewById(R.id.lineName);
         if (badge != null && name != null) {
             badge.setText(label);
-            name.setText(description);
+            name.setText((description + " " +  label));
 
             int colore = ContextCompat.getColor(this, colorHex);
 
@@ -304,7 +355,7 @@ public class LinesActivity extends AppCompatActivity {
             row.setOnClickListener(v -> {
                 Intent intent = new Intent(this, LinesDetailActivity.class);
                 intent.putExtra("NOME_LINEA", label);
-                intent.putExtra("TIPO_DI_LINEA", description);
+                intent.putExtra("TIPO_DI_LINEA", (description + " " + label));
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             });

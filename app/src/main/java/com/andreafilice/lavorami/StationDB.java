@@ -704,60 +704,70 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
                 "Gorgonzola MM",
                 new String[]{"M2", "z401", "z403"},
+                new String[] {"z401", "z403"},
                 "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Cernusco sul Naviglio MM",
                 new String[]{"M2"},
+                new String[] {"z402"},
                 "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Gessate MM",
                 new String[]{"M2", "z404", "z405", "z406", "z407"},
+                new String[]{"z404", "z405", "z406", "z407"},
                 "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "San Donato MM",
                 new String[]{"M3", "z411", "z412", "z413", "z415", "z420", "k501", "k502", "k511", "k512", "k521", "k522", "k523", "k524", "k525"},
+                new String[]{"z411", "z412", "z413", "z415", "z420", "k501", "k502", "k511", "k512", "k521", "k522", "k523", "k524", "k525"},
                 "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Sesto San Giovanni FS",
                 new String[]{"M1", "R13", "R14", "RE8", "S7", "S8", "S9", "S11", "z221", "z222", "z225", "z227"},
+                new String[]{"z221", "z222", "z225", "z227"},
                 "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Monza FS",
                 new String[]{"R13", "R14", "RE8", "RE80", "S7", "S8", "S9", "S11", "z228"},
+                new String[]{"z228"},
                 "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Seregno FS",
                 new String[]{"RE80", "S9", "S11", "z228", "z231", "z233"},
+                new String[]{"z228", "z231", "z233"},
                 "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Desio FS",
                 new String[]{"RE80", "S9", "S11", "z250", "z251"},
+                new String[]{"z250", "z251"},
                 "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Crema FS",
                 new String[]{"R6", "k503", "k505", "k506", "k507", "k512", "k520", "k521", "k522", "k523", "k524", "k525", "k601"},
+                new String[]{"k503", "k505", "k507", "k520", "k601"},
                 "bus.fill"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Linate Aereoporto",
                 new String[]{"M4", "k510"},
+                new String[]{"k510"},
                 "airplane.departure"
         ));
 
@@ -775,6 +785,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Cremona",
+                new String[]{"k208", "k214"},
                 new String[]{"k208", "k214"},
                 "bus.fill"
         ));

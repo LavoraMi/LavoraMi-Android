@@ -78,7 +78,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         /// Check if the line is a TRAM, else do not display the Map View.
         if (nomeLinea == null) nomeLinea = "M1";
-        if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z")){
+        if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z") || nomeLinea.contains("k")){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -213,6 +213,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Movibus " + nomeLinea);
         if(nomeLinea.startsWith("z5"))
             detTitolo.setText("STAV " + nomeLinea);
+        if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2") || nomeLinea.startsWith("k"))
+            detTitolo.setText("Autoguidovie" + nomeLinea);
 
         detBadge.setText(nomeLinea);
         int colorResId = StationDB.getLineColor(nomeLinea);
@@ -467,7 +469,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 int color = ContextCompat.getColor(this, R.color.text_primary);
                 ImageViewCompat.setImageTintList(card.findViewById(R.id.iconEvent), ColorStateList.valueOf(color));
 
-                if (txtInizio != null) 
+                if (txtInizio != null)
                     txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
                 if (txtFine != null)
                     txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
@@ -697,7 +699,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
         if(detInterscambio.getText().toString().isEmpty()){
             detInterscambio.setTypeface(detInterscambio.getTypeface(), Typeface.NORMAL);
-            detInterscambio.setText("Nessuna fermata di interscambio.");
+            detInterscambio.setVisibility(View.GONE);
+            findViewById(R.id.detInterscambioEmpty).setVisibility(View.VISIBLE);
         }
     }
 
@@ -842,13 +845,59 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "Z557": return "Gaggiano (De Gasperi) - San Vito";
             case "Z559": return "Magenta FS - Abbiategrasso FS";
             case "Z560": return "Abbiategrasso FS - Milano Bisceglie MM";
+            case "Z401": return "Melzo FS - Gorgonzola M2";
+            case "Z402": return "Cernusco S.N - Peschiera B.";
+            case "Z403": return "Melzo - Gessate M2 - Gorgonzola M2";
+            case "Z404": return "Melzo - Inzago - Gorgonzola M2";
+            case "Z405": return "Gessate M2 - Cassano D'Adda - Treviglio";
+            case "Z406": return "Gessate M2 - Inzago - Cassano D'Adda";
+            case "Z407": return "Gessate M2 - Bellinzago - Cassano D'Adda";
+            case "Z409": return "Rodano - Liscate - Truccazzano";
+            case "Z410": return "Liscate - Rodano - Pantigliate";
+            case "Z411": return "Melzo FS - Liscate - S.Donato MM";
+            case "Z412": return "Zelo B.P - Comazzo - S.Donato MM";
+            case "Z413": return "Paullo - Mombretto - S.Donato MM";
+            case "Z415": return "Zelo B.P - Paullo - S.Donato MM";
+            case "Z418": return "San Giuliano M. - Melegnano - Riozzo";
+            case "Z419": return "Paullo - Melzo - Gorgonzola";
+            case "Z420": return "S.Zenone Al L. - Melegnano - S.Donato MM";
+            case "Z431": return "Melegnano - Vizzolo P. - Locate T.";
+            case "Z219": return "Paderno D. - Cinisello B. - Monza";
+            case "Z221": return "Sesto S.G. - Monza - Mariano Comense";
+            case "Z222": return "Sesto S.G. - S. Fruttoso - Monza FS";
+            case "Z225": return "Sesto S.G. - Nova M. - Paderno D.";
+            case "Z227": return "Sesto S.G. - Muggiò - Monza";
+            case "Z228": return "Monza FS - Lissone - Seregno FS";
+            case "Z229": return "Paderno Dugnano - Cinisello B.";
+            case "Z231": return "Desio - Seregno FS - Carate B.";
+            case "Z232": return "Desio - Seregno - Besana B.";
+            case "Z233": return "Triuggio - Albiate - Seregno FS";
+            case "Z234": return "Vedano Al L. - Macherio - Muggiò";
+            case "Z250": return "Desio FS - Cesano M. - Limbiate";
+            case "Z251": return "Desio FS - Bovisio M. - Limbiate";
+            case "K208": return "Cremona - Casalmaggiore";
+            case "K214": return "Cremona - Viadana";
+            case "K501": return "Crema - Pandino - S.Donato MM";
+            case "K502": return "Crema - Rivolta - S.Donato MM";
+            case "K503": return "Crema - Rivolta D'Adda - S.Donato MM";
+            case "K505": return "Crema - Treviglio - S.Donato MM";
+            case "K506": return "Crema - Pandino - Bisceglie MM";
+            case "K507": return "Crema - Mediglia - Bisceglie MM";
+            case "K510": return "Rivolta D'Adda - Pioltello - Linate";
+            case "K511": return "Melzo - Linate - S.Donato MM";
+            case "K512": return "Crema - Spino D'Adda - S.Donato MM";
+            case "K520": return "Crema - Magnacavallo";
+            case "K521": return "Crema - S.Donato MM";
+            case "K522": return "Crema - S.Zenone - S.Donato MM";
+            case "K523": return "Crema - Trescore - S.Donato MM";
+            case "K524": return "Crema - Chieve - S.Donato MM";
+            case "K525": return "Crema - Vaiano - S.Donato MM";
+            case "K601": return "Crema - Soncino";
             default: return "Direzioni non disponibili per " + linea;
         }
     }
 
-    public boolean haveMapAvailable(){
-        return tipoDiLinea.contains("Tram") || this.nomeLinea.contains("z");
-    }
+    public boolean haveMapAvailable(){return tipoDiLinea.contains("Tram") || this.nomeLinea.contains("z");}
 
     public String getFrequenza(String lineName){
         switch(lineName) {
