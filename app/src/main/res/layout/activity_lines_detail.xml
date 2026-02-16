@@ -165,7 +165,7 @@
             android:id="@+id/detActionGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -222,7 +222,7 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/lavoriNested"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="300dp"
                 android:fillViewport="false">
 
                 <LinearLayout
