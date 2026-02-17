@@ -233,7 +233,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
             case "Aereoporto":
                 return R.color.airport;
             default:
-                if(nomeLinea.contains("z")||nomeLinea.contains("k"))
+                if(nomeLinea.contains("z"))
                     return R.color.BUS;
                 else if(nomeLinea.contains("Filobus"))
                     return R.color.FILOBUS;

@@ -158,7 +158,11 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerAutoGuidovie,"z419", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z420", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z431", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z432", R.color.BUS,"Autoguidovie");
 
+        aggiungiLinea(containerAutoGuidovie,"z203", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z205", R.color.BUS,"Autoguidovie");
+        aggiungiLinea(containerAutoGuidovie,"z209", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z219", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z221", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z222", R.color.BUS,"Autoguidovie");
@@ -172,27 +176,6 @@ public class LinesActivity extends AppCompatActivity {
         aggiungiLinea(containerAutoGuidovie,"z234", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z250", R.color.BUS,"Autoguidovie");
         aggiungiLinea(containerAutoGuidovie,"z251", R.color.BUS,"Autoguidovie");
-
-        aggiungiLinea(containerAutoGuidovie,"k208", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k214", R.color.BUS,"Autoguidovie");
-
-        aggiungiLinea(containerAutoGuidovie,"k501", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k502", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k503", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k505", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k506", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k507", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k510", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k511", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k512", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k520", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k521", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k522", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k523", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k524", R.color.BUS,"Autoguidovie");
-        aggiungiLinea(containerAutoGuidovie,"k525", R.color.BUS,"Autoguidovie");
-
-        aggiungiLinea(containerAutoGuidovie,"k601", R.color.BUS,"Autoguidovie");
 
         //*WEBSITE LINKS
         /// In this section of the code, we set the default action (OnClick) of the ImageView

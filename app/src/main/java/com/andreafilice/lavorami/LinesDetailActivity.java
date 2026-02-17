@@ -78,7 +78,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         /// Check if the line is a TRAM, else do not display the Map View.
         if (nomeLinea == null) nomeLinea = "M1";
-        if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z") || nomeLinea.contains("k")){
+        if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z")){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -213,7 +213,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Movibus " + nomeLinea);
         if(nomeLinea.startsWith("z5"))
             detTitolo.setText("STAV " + nomeLinea);
-        if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2") || nomeLinea.startsWith("k"))
+        if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie" + nomeLinea);
 
         detBadge.setText(nomeLinea);
@@ -772,6 +772,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M3": return "San Donato - Comasina";
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
+
             case "S1": return "Saronno - Lodi";
             case "S2": return "Mariano Comense - Milano Rogoredo";
             case "S3": return "Saronno - Milano Cadorna";
@@ -786,14 +787,17 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S13": return "Milano Bovisa - Pavia";
             case "S19": return "Stazione 19 (Verifica tratta specifica)";
             case "S31": return "Brescia - Iseo";
+
             case "MXP1": return "Milano Cadorna - Malpensa Aeroporto T1-T2";
             case "MXP2": return "Milano Centrale - Malpensa Aeroporto T1-T2";
+
             case "S10": return "Biasca - Como";
             case "S20": return "Castione - Locarno";
             case "S30": return "Cadenazzo - Gallarate";
             case "S40": return "Como - Varese";
             case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
             case "RE80": return "Locarno - Milano Centrale";
+
             case "1": return "Greco (Via Martiri Oscuri) - Roserio";
             case "2": return "Piazza Bausan - Piazzale Negrelli";
             case "3": return "Duomo (Via Cantù) - Gratosoglio";
@@ -811,6 +815,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "27": return "Piazza Fontana - Viale Ungheria";
             case "31": return "Bicocca M5 - Cinisello (Via Monte Ortigara)";
             case "33": return "Piazzale Lagosta - Viale Rimembranze di Lambrate";
+
             case "Z601": return "Legnano - Milano Molino Dorino MM";
             case "Z602": return "Milano Cadorna - Legnano";
             case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
@@ -836,6 +841,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "Z647": return "Cornaredo - Castano Primo";
             case "Z648": return "Arconate - Busto Garolfo - Milano Molino Dorino MM";
             case "Z649": return "Magenta - Arluno - Milano Molino Dorino MM";
+
             case "Z551": return "Abbiategrasso - Milano Bisceglie MM";
             case "Z552": return "Abbiategrasso - S. Stefano FS";
             case "Z553": return "Abbiategrasso - Milano Romolo M2";
@@ -845,54 +851,42 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "Z557": return "Gaggiano (De Gasperi) - San Vito";
             case "Z559": return "Magenta FS - Abbiategrasso FS";
             case "Z560": return "Abbiategrasso FS - Milano Bisceglie MM";
-            case "Z401": return "Melzo FS - Gorgonzola M2";
-            case "Z402": return "Cernusco S.N - Peschiera B.";
-            case "Z403": return "Melzo - Gessate M2 - Gorgonzola M2";
-            case "Z404": return "Melzo - Inzago - Gorgonzola M2";
+
+            case "Z401": return "Melzo FS - Vignate - Villa Fiorita M2";
+            case "Z402": return "Cernusco M2 - Pioltello FS - S.Felice";
+            case "Z403": return "Gorgonzola M2 - Melzo (Circolare)";
+            case "Z404": return "Melzo FS - Inzago - Gessate M2";
             case "Z405": return "Gessate M2 - Cassano D'Adda - Treviglio";
-            case "Z406": return "Gessate M2 - Inzago - Cassano D'Adda";
-            case "Z407": return "Gessate M2 - Bellinzago - Cassano D'Adda";
-            case "Z409": return "Rodano - Liscate - Truccazzano";
-            case "Z410": return "Liscate - Rodano - Pantigliate";
-            case "Z411": return "Melzo FS - Liscate - S.Donato MM";
-            case "Z412": return "Zelo B.P - Comazzo - S.Donato MM";
-            case "Z413": return "Paullo - Mombretto - S.Donato MM";
-            case "Z415": return "Zelo B.P - Paullo - S.Donato MM";
-            case "Z418": return "San Giuliano M. - Melegnano - Riozzo";
-            case "Z419": return "Paullo - Melzo - Gorgonzola";
-            case "Z420": return "S.Zenone Al L. - Melegnano - S.Donato MM";
-            case "Z431": return "Melegnano - Vizzolo P. - Locate T.";
-            case "Z219": return "Paderno D. - Cinisello B. - Monza";
-            case "Z221": return "Sesto S.G. - Monza - Mariano Comense";
+            case "Z406": return "Trecella - Bellinzago - Gessate M2";
+            case "Z407": return "Gorgonzola M2 - Truccazzano";
+            case "Z409": return "Rodano - S.Felice - Linate Aereoporto";
+            case "Z410": return "Pantigliate - Peschiera - S.Donato M3";
+            case "Z411": return "Melzo FS - Settala - S.Donato M3";
+            case "Z412": return "Zelo B.P - Paullo - S.Donato M3";
+            case "Z413": return "Tribiano - S.Donato M3";
+            case "Z415": return "Melegnano - Dresano - S.Donato M3";
+            case "Z418": return "S.Zenone FS - Casalmaiocco";
+            case "Z419": return "Paullo - Melzo - Gorgonzola M2";
+            case "Z420": return "Vizzolo - Melegnano - S.Donato M3";
+            case "Z431": return "Melegnano FS - Carpiano/Cerro L.";
+            case "Z432": return "Melegnano FS - Dresano - Vizzolo (Circolare)";
+            case "Z203": return "Muggiò - Monza FS - Cologno Nord M2";
+            case "Z205": return "Limbiate Mombello - Varedo - Monza FS";
+            case "Z209": return "Cesano FN - Desio - Lissone";
+            case "Z219": return "Monza FS - Muggiò - Paderno Dugnano";
+            case "Z221": return "Sesto S.G. - Monza FS - Carate";
             case "Z222": return "Sesto S.G. - S. Fruttoso - Monza FS";
-            case "Z225": return "Sesto S.G. - Nova M. - Paderno D.";
-            case "Z227": return "Sesto S.G. - Muggiò - Monza";
-            case "Z228": return "Monza FS - Lissone - Seregno FS";
-            case "Z229": return "Paderno Dugnano - Cinisello B.";
-            case "Z231": return "Desio - Seregno FS - Carate B.";
-            case "Z232": return "Desio - Seregno - Besana B.";
+            case "Z225": return "Sesto S.G. - Cinisello B. - Nova M.se";
+            case "Z227": return "Monza H/Lissone FS - Muggiò - Cinisello";
+            case "Z228": return "Seregno FS - Lissone - Monza FS";
+            case "Z229": return "Paderno ITC - Cusano - Cinisello B.";
+            case "Z231": return "Carate - Giussano - Seregno FS - Desio";
+            case "Z232": return "Desio - Seregno - Besana FS";
             case "Z233": return "Triuggio - Albiate - Seregno FS";
-            case "Z234": return "Vedano Al L. - Macherio - Muggiò";
-            case "Z250": return "Desio FS - Cesano M. - Limbiate";
-            case "Z251": return "Desio FS - Bovisio M. - Limbiate";
-            case "K208": return "Cremona - Casalmaggiore";
-            case "K214": return "Cremona - Viadana";
-            case "K501": return "Crema - Pandino - S.Donato MM";
-            case "K502": return "Crema - Rivolta - S.Donato MM";
-            case "K503": return "Crema - Rivolta D'Adda - S.Donato MM";
-            case "K505": return "Crema - Treviglio - S.Donato MM";
-            case "K506": return "Crema - Pandino - Bisceglie MM";
-            case "K507": return "Crema - Mediglia - Bisceglie MM";
-            case "K510": return "Rivolta D'Adda - Pioltello - Linate";
-            case "K511": return "Melzo - Linate - S.Donato MM";
-            case "K512": return "Crema - Spino D'Adda - S.Donato MM";
-            case "K520": return "Crema - Magnacavallo";
-            case "K521": return "Crema - S.Donato MM";
-            case "K522": return "Crema - S.Zenone - S.Donato MM";
-            case "K523": return "Crema - Trescore - S.Donato MM";
-            case "K524": return "Crema - Chieve - S.Donato MM";
-            case "K525": return "Crema - Vaiano - S.Donato MM";
-            case "K601": return "Crema - Soncino";
+            case "Z234": return "Vedano Al L. - Lissone - Muggiò";
+            case "Z242": return "Desio - Seregno FS - Renate";
+            case "Z250": return "Lissone FS - Desio FS - Cesano FN";
+            case "Z251": return "Desio FS - Bovisio M. - Limbiate - Cesano FN";
             default: return "Direzioni non disponibili per " + linea;
         }
     }
