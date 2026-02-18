@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
     private String defaultCategory;
     private boolean hasCompletedSetup;
     private StrikeDescriptor strikeCDNResponse;
+    private ProgressBar progressBarRefresh;
+    private ImageButton btnRefresh;
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
@@ -144,9 +147,13 @@ public class MainActivity extends AppCompatActivity {
         //*INITIALIZE THE LOADING LAYOUT
         loadingLayout = findViewById(R.id.loadingLayout);
         errorLayout = findViewById(R.id.errorNetwork);
+        progressBarRefresh = findViewById(R.id.progressBarRefresh);
+
+        loadingLayout.startShimmer();
 
         if(loadingLayout != null){
             loadingLayout.setVisibility(View.VISIBLE);
+            progressBarRefresh.setVisibility(View.VISIBLE);
             findViewById(R.id.recyclerView).setVisibility(View.GONE);
         }
 
@@ -157,18 +164,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //*NAVBAR
-        ImageButton btnLines = (ImageButton) findViewById(R.id.linesButton);
+        ImageButton btnLines = findViewById(R.id.linesButton);
         btnLines.setOnClickListener(v -> {ActivityManager.changeActivity(this, LinesActivity.class);});
 
-        ImageButton btnSettings = (ImageButton) findViewById(R.id.settingsButton);
+        ImageButton btnSettings = findViewById(R.id.settingsButton);
         btnSettings.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
 
         //*REFRESH BUTTON
-        ImageButton btnRefresh = (ImageButton) findViewById(R.id.buttonRefresh);
-        Button btnRefreshOnError = (Button) findViewById(R.id.btnRefreshOnError);
+        btnRefresh = findViewById(R.id.buttonRefresh);
+        Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
 
-        btnRefresh.setOnClickListener(v -> {downloadJSONData(getCategory());});
-        btnRefreshOnError.setOnClickListener(v -> {downloadJSONData(getCategory());});
+        btnRefresh.setOnClickListener(v -> {downloadJSONData(getCategory(), true);});
+        btnRefreshOnError.setOnClickListener(v -> {downloadJSONData(getCategory(), true);});
 
         //* CHIP GROUP (FILTERS)
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
@@ -281,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //*DOWNLOADING EVENTS
-        downloadJSONData(defaultCategory);
+        downloadJSONData(defaultCategory, false);
     }
 
     private void askForNotificationPermission(){
@@ -306,13 +313,14 @@ public class MainActivity extends AppCompatActivity {
         return "tutti";
     }
 
-    public void downloadJSONData(String categoryToFilter) {
+    public void downloadJSONData(String categoryToFilter, boolean reloadingDatas) {
         /// In this section of the code, we create a CACHE Memory to save the JSON Downloaded.
         /// This part is very important because avoids to use Bandwith of our CDN for nothing.
-        if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty()) {
+        if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty() && !reloadingDatas) {
             if (loadingLayout != null) {
                 loadingLayout.setVisibility(View.GONE);
-                loadingLayout.stopShimmer();
+                progressBarRefresh.setVisibility(View.GONE);
+                btnRefresh.setVisibility(View.VISIBLE);
                 errorLayout.setVisibility(View.GONE);
                 findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
             }
@@ -332,8 +340,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (loadingLayout != null) {
             loadingLayout.setVisibility(View.VISIBLE);
-            loadingLayout.startShimmer();
             errorLayout.setVisibility(View.GONE);
+            loadingLayout.startShimmer();
+            progressBarRefresh.setVisibility(View.VISIBLE);
+            btnRefresh.setVisibility(View.GONE);
             findViewById(R.id.recyclerView).setVisibility(View.GONE);
         }
 
@@ -365,7 +375,8 @@ public class MainActivity extends AppCompatActivity {
                 if (loadingLayout != null) {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.GONE);
-                    loadingLayout.stopShimmer();
+                    btnRefresh.setVisibility(View.VISIBLE);
+                    progressBarRefresh.setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
                 }
 

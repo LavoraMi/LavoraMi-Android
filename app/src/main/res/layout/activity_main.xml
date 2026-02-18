@@ -12,10 +12,12 @@
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@color/background_app"
         android:paddingTop="40dp"
         android:paddingBottom="16dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
 
         <TextView
             android:id="@+id/textView"
@@ -38,10 +40,25 @@
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView"
             app:srcCompat="@drawable/ic_refresh" />
+
+        <ProgressBar
+            android:id="@+id/progressBarRefresh"
+            android:layout_width="42dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="12dp"
+            android:indeterminate="true"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/buttonRefresh"
+            app:layout_constraintHorizontal_bias="0.795"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible"
+            android:indeterminateTint="@color/redMetro"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -321,7 +338,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_medium"
-        android:text="Nessuna corrispondenza trovata."
+        android:text="Nessun lavoro per il filtro selezionato."
         android:textColor="@color/text_primary"
         android:textSize="18sp"
         android:visibility="gone"
@@ -358,15 +375,10 @@
             android:padding="12dp">
 
             <include layout="@layout/item_lavoro" />
-
             <include layout="@layout/item_lavoro" />
-
             <include layout="@layout/item_lavoro" />
-
             <include layout="@layout/item_lavoro" />
-
         </LinearLayout>
-
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <LinearLayout
