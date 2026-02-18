@@ -100,15 +100,31 @@
             android:textStyle="bold"
             android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/detInterscambio"
+        <LinearLayout
+            android:id="@+id/layoutDetInterscambio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
-            android:textSize="20sp"
-            android:text=""
-            android:textStyle="bold"
-            android:visibility="gone"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iconInterscambio"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/ic_train"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/detInterscambio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:text=""
+                android:textStyle="bold"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/detInterscambioEmpty"

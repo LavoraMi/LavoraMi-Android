@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -627,21 +628,23 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         emptyView.setText("Nessun interscambio con questa linea.");
     }
 
-    private void caricaFermateInterscambio(){
+    private void caricaFermateInterscambio() {
+        LinearLayout layoutDetInterscambio = findViewById(R.id.layoutDetInterscambio);
         TextView detInterscambio = findViewById(R.id.detInterscambio);
         TextView detAttesa = findViewById(R.id.detAttesa);
         TextView txtInterscambio = findViewById(R.id.txtInterscambio);
         TextView txtMinutes = findViewById(R.id.txtMinutes);
         ChipGroup chipGroupLinee = findViewById(R.id.chipGroupLinee);
+        ImageView iconInterchange = findViewById(R.id.iconInterscambio);
 
-        detInterscambio.setVisibility(View.VISIBLE);
+        layoutDetInterscambio.setVisibility(View.VISIBLE);
         detAttesa.setVisibility(View.GONE);
         txtInterscambio.setVisibility(View.VISIBLE);
         txtMinutes.setVisibility(View.GONE);
         chipGroupLinee.setVisibility(View.VISIBLE);
 
-        for (InterchangeInfo info : StationDB.getBusInterchanges()){
-            if(info == null || info.getLinesToShow() == null) continue;
+        for (InterchangeInfo info : StationDB.getBusInterchanges()) {
+            if (info == null || info.getLinesToShow() == null) continue;
 
             String searchTag = (nomeLinea.contains("MXP")) ? "MXP" : nomeLinea.trim().toUpperCase();
             boolean matchFound = false;
@@ -655,10 +658,11 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 }
             }
 
-            if(matchFound) {
+            if (matchFound) {
                 if (info.getLines() != null) {
                     detInterscambio.setText(info.getKey());
                     chipGroupLinee.removeAllViews();
+                    iconInterchange.setImageResource(info.getCardImageID());
 
                     for (String lineName : info.getLines()) {
                         String nomePulito = lineName.trim();
@@ -673,10 +677,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setShapeAppearanceModel(cornerRadius);
                         chip.setEnsureMinTouchTargetSize(false);
                         chip.setChipMinHeight(0f);
-
                         chip.setChipStartPadding(10f);
                         chip.setChipEndPadding(10f);
-
                         chip.setTextSize(14f);
                         chip.setTypeface(Typeface.create("@font/archivo_medium", Typeface.BOLD));
                         chip.setTextColor(Color.WHITE);
@@ -697,9 +699,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 }
             }
         }
-        if(detInterscambio.getText().toString().isEmpty()){
+        if (detInterscambio.getText().toString().isEmpty()) {
             detInterscambio.setTypeface(detInterscambio.getTypeface(), Typeface.NORMAL);
-            detInterscambio.setVisibility(View.GONE);
+            layoutDetInterscambio.setVisibility(View.GONE);
             findViewById(R.id.detInterscambioEmpty).setVisibility(View.VISIBLE);
         }
     }
@@ -750,10 +752,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
 
         if (numeroLavori > 0) {
-            tvLavori.setText(numeroLavori + " segnalazioni attive");
+            tvLavori.setText(numeroLavori + " segnalazioni attive.");
             tvLavori.setTextColor(Color.parseColor("#FF5252"));
         } else {
-            tvLavori.setText("Stato linea: Regolare");
+            tvLavori.setText("Stato linea: Regolare.");
             tvLavori.setTextColor(Color.GREEN);
         }
     }
@@ -816,19 +818,19 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "31": return "Bicocca M5 - Cinisello (Via Monte Ortigara)";
             case "33": return "Piazzale Lagosta - Viale Rimembranze di Lambrate";
 
-            case "Z601": return "Legnano - Milano Molino Dorino MM";
+            case "Z601": return "Legnano - Molino Dorino M1";
             case "Z602": return "Milano Cadorna - Legnano";
             case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
             case "Z6C3": return "San Vittore Olona - Cerro Maggiore - Milano Cadorna";
-            case "Z606": return "Milano Molino Dorino MM - Cerro Maggiore";
+            case "Z606": return "Molino Dorino M1 - Cerro Maggiore";
             case "Z611": return "Legnano - Parabiago";
             case "Z612": return "Legnano - Arese (Il CENTRO)";
             case "Z616": return "Pregnana Milanese - Rho FS";
-            case "Z617": return "Milano Molino Dorino MM - Origgio / Lainate";
+            case "Z617": return "Molino Dorino M1 - Origgio / Lainate";
             case "Z618": return "Rho FS - Vanzago";
             case "Z619": return "Pogliano M. - Plesso IST Maggiolini";
-            case "Z620": return "Magenta - Milano Molino Dorino MM";
-            case "Z621": return "Cuggiono - Milano Molino Dorino MM";
+            case "Z620": return "Magenta - Molino Dorino M1";
+            case "Z621": return "Cuggiono - Molino Dorino M1";
             case "Z622": return "Cuggiono - Ossona - Cornaredo";
             case "Z625": return "Busto Arsizio - Busto Garolfo";
             case "Z627": return "Castano Primo - Legnano";
@@ -839,10 +841,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "Z644": return "Arconate - Parabiago";
             case "Z646": return "Castano Primo - Magenta FS";
             case "Z647": return "Cornaredo - Castano Primo";
-            case "Z648": return "Arconate - Busto Garolfo - Milano Molino Dorino MM";
-            case "Z649": return "Magenta - Arluno - Milano Molino Dorino MM";
+            case "Z648": return "Arconate - Busto Garolfo - Molino Dorino M1";
+            case "Z649": return "Magenta - Arluno - Molino Dorino M1";
 
-            case "Z551": return "Abbiategrasso - Milano Bisceglie MM";
+            case "Z551": return "Abbiategrasso - Bisceglie M1";
             case "Z552": return "Abbiategrasso - S. Stefano FS";
             case "Z553": return "Abbiategrasso - Milano Romolo M2";
             case "Z554": return "Albairate - Bubbiano";
@@ -850,7 +852,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "Z556": return "Abbiategrasso FS - Motta Visconti";
             case "Z557": return "Gaggiano (De Gasperi) - San Vito";
             case "Z559": return "Magenta FS - Abbiategrasso FS";
-            case "Z560": return "Abbiategrasso FS - Milano Bisceglie MM";
+            case "Z560": return "Abbiategrasso FS - Bisceglie M1";
 
             case "Z401": return "Melzo FS - Vignate - Villa Fiorita M2";
             case "Z402": return "Cernusco M2 - Pioltello FS - S.Felice";
