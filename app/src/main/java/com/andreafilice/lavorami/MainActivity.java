@@ -149,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
         errorLayout = findViewById(R.id.errorNetwork);
         progressBarRefresh = findViewById(R.id.progressBarRefresh);
 
-        loadingLayout.startShimmer();
+        if(loadingLayout != null)
+            loadingLayout.startShimmer();
 
         if(loadingLayout != null){
             loadingLayout.setVisibility(View.VISIBLE);

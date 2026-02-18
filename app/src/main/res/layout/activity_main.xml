@@ -338,7 +338,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_medium"
-        android:text="Nessun lavoro per il filtro selezionato."
+        android:text="Nessun lavoro trovato per il filtro selezionato."
         android:textColor="@color/text_primary"
         android:textSize="18sp"
         android:visibility="gone"
