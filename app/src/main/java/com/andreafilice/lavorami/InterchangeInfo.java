@@ -30,6 +30,7 @@ public class InterchangeInfo {
         Log.d("ID", iconName);
         switch(iconName) {
             case "lightrail":
+            case "train.side.front.car":
                 return R.drawable.ic_train;
             case "tram.fill.tunnel":
                 return R.drawable.ic_metro;

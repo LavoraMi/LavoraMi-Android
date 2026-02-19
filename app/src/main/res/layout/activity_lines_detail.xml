@@ -279,7 +279,7 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/interscambiNested"
                 android:layout_width="match_parent"
-                android:layout_height="370dp"
+                android:layout_height="440dp"
                 android:fillViewport="false">
 
                 <LinearLayout

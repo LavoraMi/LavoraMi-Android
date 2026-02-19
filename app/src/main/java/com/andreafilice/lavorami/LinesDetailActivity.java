@@ -466,6 +466,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
                 TextView txtInizio = card.findViewById(R.id.txtStartDate);
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
+                TextView companyTxt = card.findViewById(R.id.txtOperator);
+                TextView roadsTxt = card.findViewById(R.id.txtRoute);
 
                 int color = ContextCompat.getColor(this, R.color.text_primary);
                 ImageViewCompat.setImageTintList(card.findViewById(R.id.iconEvent), ColorStateList.valueOf(color));
@@ -474,6 +476,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
                 if (txtFine != null)
                     txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
+                if(companyTxt != null)
+                    companyTxt.setText(evento.getCompany());
+                if(roadsTxt != null)
+                    roadsTxt.setText(evento.getRoads());
 
                 ProgressBar pb = card.findViewById(R.id.progressBarDate);
                 if (pb != null) {
@@ -511,8 +517,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
-                        int coloreTesto = (coloreLinea == R.color.OTHER) ? R.color.Black : R.color.White;
-                        int coloreTestoEffettivo = ContextCompat.getColor(this, coloreTesto);
+                        int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
                         int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
                         chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
                         chip.setTextColor(coloreTestoEffettivo);
@@ -605,8 +610,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setTextColor(Color.WHITE);
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
-                        int coloreTesto = (coloreLinea == R.color.OTHER) ? R.color.Black : R.color.White;
-                        int coloreTestoEffettivo = ContextCompat.getColor(this, coloreTesto);
+                        int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
                         int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
                         chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
                         chip.setTextColor(coloreTestoEffettivo);
@@ -684,8 +688,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setTextColor(Color.WHITE);
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
-                        int coloreTesto = (coloreLinea == R.color.OTHER) ? R.color.Black : R.color.White;
-                        int coloreTestoEffettivo = ContextCompat.getColor(this, coloreTesto);
+                        int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
                         int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
                         chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
                         chip.setTextColor(coloreTestoEffettivo);
@@ -751,10 +754,15 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
         }
 
-        if (numeroLavori > 0) {
+        if (numeroLavori > 1) {
             tvLavori.setText(numeroLavori + " segnalazioni attive.");
             tvLavori.setTextColor(Color.parseColor("#FF5252"));
-        } else {
+        }
+        else if(numeroLavori == 1){
+            tvLavori.setText(numeroLavori + " segnalazione attiva.");
+            tvLavori.setTextColor(Color.parseColor("#FF5252"));
+        }
+        else {
             tvLavori.setText("Stato linea: Regolare.");
             tvLavori.setTextColor(Color.GREEN);
         }

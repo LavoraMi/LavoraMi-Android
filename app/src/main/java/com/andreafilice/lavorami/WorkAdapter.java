@@ -114,8 +114,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
 
 
                 int coloreLinea = getColorForLinea(nomePulito);
-                int coloreTesto = (coloreLinea == R.color.OTHER) ? R.color.Black : R.color.White;
-                int coloreTestoEffettivo = ContextCompat.getColor(holder.itemView.getContext(), coloreTesto);
+                int coloreTestoEffettivo = ContextCompat.getColor(holder.itemView.getContext(), R.color.White);
                 int coloreEffettivo = ContextCompat.getColor(holder.itemView.getContext(), coloreLinea);
                 chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
                 chip.setTextColor(coloreTestoEffettivo);
