@@ -93,11 +93,13 @@ public class AdvancedOptions extends AppCompatActivity {
         boolean isBannerActive = DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
         boolean isRequireBiometrics = DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
         boolean isShowDetails = DataManager.getBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
+        boolean isShowMoreDetails = DataManager.getBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, false);
 
         Switch errorMessagesSwitch = findViewById(R.id.switchErrors);
         Switch strikeBannersSwitch = findViewById(R.id.switchBanner);
         Switch biometricsSwitch = findViewById(R.id.switchBiometrics);
         Switch detailsSwitch = findViewById(R.id.switchDetails);
+        Switch moreDetailsSwitch = findViewById(R.id.switchMoreDetails);
 
         errorMessagesSwitch.setChecked(isErrorActive);
         errorMessagesSwitch.setTrackTintMode((errorMessagesSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
@@ -110,6 +112,9 @@ public class AdvancedOptions extends AppCompatActivity {
 
         detailsSwitch.setChecked(isShowDetails);
         detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
+        moreDetailsSwitch.setChecked(isShowMoreDetails);
+        moreDetailsSwitch.setTrackTintMode((moreDetailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
 
         //*SAVE DATAS
         /// Save the value from the Switch Checked status to DataManager.
@@ -128,6 +133,11 @@ public class AdvancedOptions extends AppCompatActivity {
         detailsSwitch.setOnClickListener(v -> {
             DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, detailsSwitch.isChecked());
             detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        });
+
+        moreDetailsSwitch.setOnClickListener(v -> {
+            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, moreDetailsSwitch.isChecked());
+            moreDetailsSwitch.setTrackTintMode((moreDetailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         });
 
         //*CACHE MEMORY
