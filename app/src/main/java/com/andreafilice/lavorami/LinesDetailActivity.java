@@ -581,7 +581,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
                 if(txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
                 if (titolo != null){
-                    if(evento.getKey() != "Lodi TIBB")
+                    if(!evento.getKey().equals("Lodi TIBB"))
                         titolo.setText(evento.getKey());
                     else
                         titolo.setText("Milano Scalo Romana");

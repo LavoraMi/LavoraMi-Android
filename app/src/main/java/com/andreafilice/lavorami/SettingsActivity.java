@@ -205,6 +205,8 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+                    DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
+                    DataManager.saveBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, false);
                     Toast.makeText(this, "Impostazioni ripristinate correttamente!", Toast.LENGTH_SHORT).show();
                 }).show();
     }
