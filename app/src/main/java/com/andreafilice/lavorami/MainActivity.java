@@ -457,7 +457,7 @@ public class MainActivity extends AppCompatActivity {
 
             //*UPDATE TEXT VALUES
             strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
-            strikeGuaranteed.setText(String.format("Le fasce di garantite (06:00 - 09:00, 18:00 - 21:00) %s.", strikeDescriptor.getStrikeGuaranteed()));
+            strikeGuaranteed.setText(String.format("Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) %s", strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("ADERENTI: %s", strikeDescriptor.getStrikeCompanies()));
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});

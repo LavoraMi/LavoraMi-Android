@@ -101,13 +101,14 @@
 
                 <TextView
                     android:id="@+id/strikeTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_medium"
                     android:text="AVVISO SCIOPERO"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/strikeDesc"
@@ -123,9 +124,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Le fasce di garantite (06:00 - 09:00, 18:00 - 21:00) value."
+                    android:text="Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) value."
                     android:textColor="@color/text_primary"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/strikeCompanies"

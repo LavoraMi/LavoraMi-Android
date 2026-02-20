@@ -215,7 +215,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if(nomeLinea.startsWith("z5"))
             detTitolo.setText("STAV " + nomeLinea);
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
-            detTitolo.setText("Autoguidovie" + nomeLinea);
+            detTitolo.setText("Autoguidovie " + nomeLinea);
 
         detBadge.setText(nomeLinea);
         int colorResId = StationDB.getLineColor(nomeLinea);
