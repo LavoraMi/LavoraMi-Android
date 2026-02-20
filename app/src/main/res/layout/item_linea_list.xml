@@ -22,16 +22,27 @@
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/shimmerLineBadge"
+            android:layout_width="40dp"
+            android:layout_height="26dp"
+            android:background="@drawable/bg_badge_line_shimmer"
+            android:gravity="center"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
             android:textSize="13sp" />
 
         <TextView
             android:id="@+id/shimmerTextAnim"
             android:layout_width="200dp"
             android:layout_height="16dp"
-            android:background="@drawable/bg_badge_line"
+            android:background="@drawable/bg_badge_line_shimmer"
             android:gravity="center"
             android:layout_marginLeft="20dp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:textSize="13sp"
             android:textStyle="bold" />
 

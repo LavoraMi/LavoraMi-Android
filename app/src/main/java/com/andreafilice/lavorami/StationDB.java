@@ -456,16 +456,15 @@ public class StationDB {
     public static List<MetroStation> getStationsS19() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Milano Rogoredo", 45.43386, 9.23911, "Main", "S19"));
-        stations.add(new MetroStation("Milano Pta Vittoria", 45.45989, 9.22355, "Main", "S19"));
-        stations.add(new MetroStation("Milano Dateo", 45.46799, 9.21845, "Main", "S19"));
-        stations.add(new MetroStation("Milano Pta Venezia", 45.47633, 9.20709, "Main", "S19"));
-        stations.add(new MetroStation("Milano Repubblica", 45.48034, 9.19888, "Main", "S19"));
-        stations.add(new MetroStation("Milano Pta Garibaldi", 45.48449, 9.18737, "Main", "S19"));
-        stations.add(new MetroStation("Milano Lancetti", 45.4949, 9.17637, "Main", "S19"));
-        stations.add(new MetroStation("Milano Villapizzone", 45.50202, 9.15092, "Main", "S19"));
-        stations.add(new MetroStation("Milano Certosa", 45.50683, 9.13593, "Main", "S19"));
-        stations.add(new MetroStation("Rho FieraMilano", 45.52113, 9.0885, "Main", "S19"));
-        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S19"));
+        stations.add(new MetroStation("Milano Scalo Romana", 45.44585, 9.21303, "Main", "S19"));
+        stations.add(new MetroStation("Milano Tibaldi - Bocconi", 45.44394, 9.18506, "Main", "S19"));
+        stations.add(new MetroStation("Milano Romolo", 45.44335, 9.1675, "Main", "S19"));
+        stations.add(new MetroStation("Milano S. Cristoforo", 45.44256, 9.13008, "Main", "S19"));
+        stations.add(new MetroStation("Corsico", 45.43605, 9.10899, "Main", "S19"));
+        stations.add(new MetroStation("Cesano Boscone", 45.43044, 9.09158, "Main", "S19"));
+        stations.add(new MetroStation("Trezzano sul Naviglio", 45.42025, 9.0669, "Main", "S19"));
+        stations.add(new MetroStation("Gaggiano", 45.40874, 9.03118, "Main", "S19"));
+        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "S19"));
         return stations;
     }
 
@@ -597,13 +596,17 @@ public class StationDB {
 
     public static List<MetroStation> getStationsMXP1() {
         List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Gallarate",  45.65974,  8.79853,  "Main","MXP1"));
         stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP1"));
         stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","MXP1"));
+        stations.add(new MetroStation("Ferno - Lonate Pozzolo",  45.60854,  8.75525,  "Main","MXP1"));
         stations.add(new MetroStation("Busto Arsizio Nord",  45.60617,  8.85139,  "Main","MXP1"));
+        stations.add(new MetroStation("Castellanza",  45.61056,  8.87547,  "Main","MXP1"));
+        stations.add(new MetroStation("Rescaldina",  45.62229,  8.94666,  "Main","MXP1"));
         stations.add(new MetroStation("Saronno",  45.62534,  9.03075,  "Main","MXP1"));
         stations.add(new MetroStation("Milano Bovisa",  45.50257,  9.15925,  "Main","MXP1"));
-        stations.add(new MetroStation("Milano Domodossola",  45.48089,  9.16224,  "Main","MXP1"));
-        stations.add(new MetroStation("Milano Cadorna",  45.46843,  9.17553,  "Main","MXP1"));
+        stations.add(new MetroStation("Milano Pta Garibaldi",  45.48449,  9.18737,  "Main","MXP1"));
+        stations.add(new MetroStation("Milano Centrale",  45.48713,  9.20482,  "Main","MXP1"));
         return stations;
     }
 
@@ -611,14 +614,11 @@ public class StationDB {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP2"));
         stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","MXP2"));
-        stations.add(new MetroStation("Ferno - Lonate Pozzolo",  45.60854,  8.75525,  "Main","MXP2"));
         stations.add(new MetroStation("Busto Arsizio Nord",  45.60617,  8.85139,  "Main","MXP2"));
-        stations.add(new MetroStation("Castellanza",  45.61056,  8.87547,  "Main","MXP2"));
-        stations.add(new MetroStation("Rescaldina",  45.62229,  8.94666,  "Main","MXP2"));
         stations.add(new MetroStation("Saronno",  45.62534,  9.03075,  "Main","MXP2"));
         stations.add(new MetroStation("Milano Bovisa",  45.50257,  9.15925,  "Main","MXP2"));
-        stations.add(new MetroStation("Milano Pta Garibaldi",  45.48449,  9.18737,  "Main","MXP2"));
-        stations.add(new MetroStation("Milano Centrale",  45.48713,  9.20482,  "Main","MXP2"));
+        stations.add(new MetroStation("Milano Domodossola",  45.48089,  9.16224,  "Main","MXP2"));
+        stations.add(new MetroStation("Milano Cadorna",  45.46843,  9.17553,  "Main","MXP2"));
         return stations;
     }
 
@@ -784,7 +784,7 @@ public class StationDB {
         return Arrays.asList(
                 new InterchangeInfo("Rho Fiera-Milano", new String[]{"S5", "S6", "S11", "AV", "M1"}, "lightrail"),
                 new InterchangeInfo("Lotto", new String[]{"M1", "M5"}, "tram.fill.tunnel"),
-                new InterchangeInfo("Cadorna FN", new String[]{"MXP1", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M1", "M2"}, "lightrail"),
+                new InterchangeInfo("Cadorna FN", new String[]{"MXP2", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "M1", "M2"}, "lightrail"),
                 new InterchangeInfo("Duomo", new String[]{"M1", "M3"}, "tram.fill.tunnel"),
                 new InterchangeInfo("San Babila", new String[]{"M1", "M4"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Porta Venezia", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "M1"}, "tram.fill.tunnel"),
@@ -792,28 +792,28 @@ public class StationDB {
                 new InterchangeInfo("Sesto 1° Maggio FS", new String[]{"R13", "R14", "RE8", "S7", "S8", "S9", "S11"}, "lightrail"),
                 new InterchangeInfo("Romolo", new String[]{"R31", "S9", "S19"}, "lightrail"),
                 new InterchangeInfo("S. Ambrogio", new String[]{"M2", "M4"}, "tram.fill.tunnel"),
-                new InterchangeInfo("Porta Garibaldi", new String[]{"AV", "MXP", "R6", "R13", "R14", "R21", "R23", "R28", "RE2", "RE5", "RE6", "RE13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "M2", "M5"}, "lightrail"),
-                new InterchangeInfo("Centrale FS", new String[]{"AV", "MXP", "R4", "R28", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M2", "M3"}, "lightrail"),
+                new InterchangeInfo("Porta Garibaldi", new String[]{"AV", "MXP1", "R6", "R13", "R14", "R21", "R23", "R28", "RE2", "RE5", "RE6", "RE13", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "M2", "M5"}, "lightrail"),
+                new InterchangeInfo("Centrale FS", new String[]{"AV", "MXP1", "R4", "R28", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M2", "M3"}, "lightrail"),
                 new InterchangeInfo("Lambrate FS", new String[]{"R4", "R6", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9", "M2"}, "lightrail"),
                 new InterchangeInfo("Affori FN", new String[]{"R16", "S2", "S4", "M3"}, "lightrail"),
                 new InterchangeInfo("Zara", new String[]{"M3", "M5"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Repubblica", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "M3"}, "lightrail"),
-                new InterchangeInfo("Lodi TIBB", new String[]{"S9", "S19", "M3"}, "figure.walk"),
-                new InterchangeInfo("Rogoredo FS", new String[]{"R34", "R38", "RE8", "RE11", "RE13", "S1", "S2", "S9", "S12", "S13", "S19", "M3"}, "lightrail"),
+                new InterchangeInfo("Lodi TIBB", new String[]{"R31", "S9", "S19", "M3"}, "figure.walk"),
+                new InterchangeInfo("Rogoredo FS", new String[]{"R31", "R34", "R38", "RE8", "RE11", "RE13", "S1", "S2", "S9", "S12", "S13", "S19", "M3"}, "lightrail"),
                 new InterchangeInfo("San Cristoforo", new String[]{"R31", "S9", "S19", "M4"}, "lightrail"),
                 new InterchangeInfo("Sforza - Policlinico", new String[]{"M3", "M4"}, "figure.walk"),
                 new InterchangeInfo("Dateo", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "M4"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Stazione Forlanini", new String[]{"R34", "RE8", "S5", "S6", "S9"}, "lightrail"),
                 new InterchangeInfo("Linate Aereoporto", new String[]{"Aereoporto", "M4"}, "airplane.departure"),
-                new InterchangeInfo("Domodossola FN", new String[]{"R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "MXP1", "M5"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Domodossola FN", new String[]{"R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "MXP2", "M5"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Como S. Giovanni", new String[]{"S10", "S11", "S40", "RE80"}, "lightrail"),
                 new InterchangeInfo("Mendrisio", new String[]{"S10", "S40", "S50", "RE80"}, "lightrail"),
                 new InterchangeInfo("Biasca", new String[]{"S10", "S50"}, "lightrail"),
                 new InterchangeInfo("Varese", new String[]{"S5", "S40", "S50"}, "lightrail"),
                 new InterchangeInfo("Gallarate", new String[]{"S30", "S50"}, "lightrail"),
-                new InterchangeInfo("Busto Arsizio Nord", new String[]{"S50", "MXP"}, "lightrail"),
-                new InterchangeInfo("Milano Bovisa", new String[]{"S1", "S2", "S3", "S4", "S12", "S13", "MXP"}, "lightrail"),
-                new InterchangeInfo("Saronno", new String[]{"S1", "S3", "MXP"}, "lightrail"),
+                new InterchangeInfo("Busto Arsizio Nord", new String[]{"S50", "MXP1", "MXP2"}, "lightrail"),
+                new InterchangeInfo("Milano Bovisa", new String[]{"S1", "S2", "S3", "S4", "S12", "S13", "MXP1", "MXP2"}, "lightrail"),
+                new InterchangeInfo("Saronno", new String[]{"S1", "S3", "MXP1", "MXP2"}, "lightrail"),
                 new InterchangeInfo("Monza", new String[]{"S7", "S8", "S9", "S11", "RE80"}, "lightrail")
         );
     }

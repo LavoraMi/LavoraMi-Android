@@ -287,23 +287,28 @@ public class LinesActivity extends AppCompatActivity {
 
     private void aggiungiLinea(LinearLayout container, String label, int colorHex, String description) {
         findViewById(R.id.shimmerTextAnim).setVisibility(View.GONE);
+        findViewById(R.id.shimmerLineBadge).setVisibility(View.GONE);
         View row = getLayoutInflater().inflate(R.layout.item_linea_list, container, false);
 
         TextView badge = row.findViewById(R.id.lineBadge);
         TextView name = row.findViewById(R.id.lineName);
         TextView shimmerAnim = row.findViewById(R.id.shimmerTextAnim);
+        TextView shimmerBadgeAnim = row.findViewById(R.id.shimmerLineBadge);
+        TextView lineBadge = row.findViewById(R.id.lineBadge);
 
         if (badge != null && name != null) {
             badge.setText(label);
             name.setText((description + " " +  label));
             shimmerAnim.setVisibility(View.GONE);
+            shimmerBadgeAnim.setVisibility(View.GONE);
+            lineBadge.setVisibility(View.VISIBLE);
 
             int colore = ContextCompat.getColor(this, colorHex);
 
             if (badge.getBackground() != null)
                 badge.getBackground().mutate().setTint(colore);
             else
-                badge.setBackgroundColor(colore);
+                badge.setBackgroundColor(R.color.White);
 
 
             row.setOnClickListener(v -> {

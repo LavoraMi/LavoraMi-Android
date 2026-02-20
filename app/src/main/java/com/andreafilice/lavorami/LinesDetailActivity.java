@@ -209,7 +209,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if(nomeLinea.equals("S10")||nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("RE80"))
             detTitolo.setText("Transfrontaliere: "+ nomeLinea);
         if(nomeLinea.startsWith("MXP"))
-            detTitolo.setText(nomeLinea);
+            detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
             detTitolo.setText("Movibus " + nomeLinea);
         if(nomeLinea.startsWith("z5"))
@@ -433,7 +433,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         container.removeAllViews();
         boolean foundAtLeastOne = false;
 
-        String searchTag = (nomeLinea.contains("MXP")) ? "MXP" : nomeLinea.trim().toUpperCase();
+        String searchTag = nomeLinea.trim().toUpperCase();
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
             if (evento.getLines() == null) continue;
@@ -549,7 +549,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         container.removeAllViews();
         boolean foundAtLeastOne = false;
 
-        String searchTag = (nomeLinea.contains("MXP")) ? "MXP" : nomeLinea.trim().toUpperCase();
+        String searchTag = nomeLinea.trim().toUpperCase();
 
         for (InterchangeInfo evento : StationDB.getInterchanges()) {
             if (evento.getLines() == null) continue;
@@ -577,7 +577,15 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 TextView desc = card.findViewById(R.id.txtLineCode);
-                if (titolo != null) titolo.setText(evento.getKey());
+                TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
+
+                if(txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+                if (titolo != null){
+                    if(evento.getKey() != "Lodi TIBB")
+                        titolo.setText(evento.getKey());
+                    else
+                        titolo.setText("Milano Scalo Romana");
+                }
                 if (desc != null) desc.setText(nomeLinea);
 
                 int color = ContextCompat.getColor(this, R.color.text_primary);
@@ -650,7 +658,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         for (InterchangeInfo info : StationDB.getBusInterchanges()) {
             if (info == null || info.getLinesToShow() == null) continue;
 
-            String searchTag = (nomeLinea.contains("MXP")) ? "MXP" : nomeLinea.trim().toUpperCase();
+            String searchTag = nomeLinea.trim().toUpperCase();
             boolean matchFound = false;
 
             for (String lineInEvent : info.getLinesToShow()) {
@@ -750,7 +758,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         int numeroLavori = 0;
         for (EventDescriptor e : EventData.listaEventiCompleta) {
             for (String l : e.getLines()) {
-                if (l.equalsIgnoreCase((nomeLinea.equals("MXP1") || nomeLinea.equals("MXP2") ? "MXP" : nomeLinea))) { numeroLavori++; break; }
+                if (l.equalsIgnoreCase(nomeLinea)) { numeroLavori++; break; }
             }
         }
 
@@ -795,11 +803,11 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S11": return "Chiasso - Milano Porta Garibaldi / Rho";
             case "S12": return "Cormano-Cusano - Melegnano";
             case "S13": return "Milano Bovisa - Pavia";
-            case "S19": return "Stazione 19 (Verifica tratta specifica)";
+            case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 
-            case "MXP1": return "Milano Cadorna - Malpensa Aeroporto T1-T2";
-            case "MXP2": return "Milano Centrale - Malpensa Aeroporto T1-T2";
+            case "MXP1": return "Gallarate - Malpensa - Milano Centrale";
+            case "MXP2": return "Malpensa - Milano Cadorna";
 
             case "S10": return "Biasca - Como";
             case "S20": return "Castione - Locarno";
@@ -922,6 +930,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S12":
             case "S13":
             case "S19":
+            case "MXP1":
+            case "MXP2":
                 return "30 min.";
             case "S31":
             case "S40":
