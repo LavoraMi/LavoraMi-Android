@@ -334,6 +334,7 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
 
             applicaFiltroCategoria(categoryToFilter);
+            checkForStrikes();
             return;
         }
 
@@ -414,7 +415,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        checkForStrikes();
+    }
+
+    private void checkForStrikes(){
         /// In this section of the code, we GET the '_vars.json' file from our CDN and load the Strikes Configuration.
+
+        CertificatePinner certificatePinner = new CertificatePinner.Builder()
+                .add("cdn.lavorami.it", "sha256/VMw18sAhS/3iF/FDknmBakQ123t+OXJqqVG9NWkti/o=")
+                .build();
+
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .certificatePinner(certificatePinner)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://cdn.lavorami.it/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient)
+                .build();
+
+        APIWorks apiworks = retrofit.create(APIWorks.class);
+
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor> () {
             @Override
             public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
