@@ -7,6 +7,7 @@ public enum DataKeys {
     /// @FALLBACK Fallback Rule: no Fallback rules.
 
     KEY_DEFAULT_FILTER,
+    KEY_DEFAULT_THEME,
     KEY_NOTIFICATION_SWITCH,
     KEY_NOTIFICATION_STARTWORKS,
     KEY_NOTIFICATION_ENDWORKS,

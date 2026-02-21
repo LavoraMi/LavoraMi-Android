@@ -25,6 +25,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         defaultCategory = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
-        Log.d("DATA", defaultCategory);
+        setTheme();
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -661,5 +662,31 @@ public class MainActivity extends AppCompatActivity {
             Log.e("DATA_ERROR", "Impossibile leggere: " + dateString + " | Errore: " + e.getMessage());
             return 0;
         }
+    }
+
+    private void setTheme(){
+        /// This method apply the theme that the user have selected by Loading the Data and cased it.
+        /// @PARAMETERS
+        /// There are no parameters.
+
+        String typeLoaded = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+        int modeSelected;
+
+        switch (typeLoaded){
+            case "Sistema":
+                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                break;
+            case "Scuro":
+                modeSelected = AppCompatDelegate.MODE_NIGHT_YES;
+                break;
+            case "Chiaro":
+                modeSelected = AppCompatDelegate.MODE_NIGHT_NO;
+                break;
+            default:
+                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                break;
+        }
+
+        AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
 }

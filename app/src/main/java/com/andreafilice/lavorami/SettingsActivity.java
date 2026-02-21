@@ -62,6 +62,9 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout filtersButton = findViewById(R.id.btnFiltro);
         filtersButton.setOnClickListener(v -> {changeActivity(this, FilterSelection.class);});
 
+        RelativeLayout themeButton = findViewById(R.id.btnTema);
+        themeButton.setOnClickListener(v -> {changeActivity(this, ThemeSettings.class);});
+
         RelativeLayout advancedOptionsButton = findViewById(R.id.btnAdvanced);
         advancedOptionsButton.setOnClickListener(v -> {changeActivity(this, AdvancedOptions.class);});
 
@@ -92,6 +95,10 @@ public class SettingsActivity extends AppCompatActivity {
         String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         TextView filterSelectedText = findViewById(R.id.filterText);
         filterSelectedText.setText(selectedFilter);
+
+        String selectedTheme = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+        TextView themeSelectedText = findViewById(R.id.themeText);
+        themeSelectedText.setText(selectedTheme);
 
         //*SET FAVORITES
         ImageView[] starIcons = {
@@ -154,6 +161,21 @@ public class SettingsActivity extends AppCompatActivity {
 
         TextView nameSettingsText = findViewById(R.id.nameSettingsText);
         nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : "Il tuo Account");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        //*LOADING DATAS
+        /// In this section of the code, we will loading the datas from the DataManager file also AFTER the Back Gesture.
+        String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        TextView filterSelectedText = findViewById(R.id.filterText);
+        filterSelectedText.setText(selectedFilter);
+
+        String selectedTheme = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+        TextView themeSelectedText = findViewById(R.id.themeText);
+        themeSelectedText.setText(selectedTheme);
     }
 
     public void setStarIcons(ImageView[] icons, String[] lineCodes){
