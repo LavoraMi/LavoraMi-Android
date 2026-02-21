@@ -61,6 +61,7 @@ public class AccountManagement extends AppCompatActivity {
     TextView fullNameTextLoginPage;
     TextView tvProfileName;
     TextView tvProfileEmail;
+    LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
 
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
@@ -139,6 +140,7 @@ public class AccountManagement extends AppCompatActivity {
         CardView btnGoogleRegister = findViewById(R.id.btnGoogleSignUp);
         btnGoogleLogin.setOnClickListener(v -> {initializeGoogleIntent();});
         btnGoogleRegister.setOnClickListener(v -> {initializeGoogleIntent();});
+        createdWithGoogle = findViewById(R.id.createdWithGoogle);
 
         //*VIEWS
         /// In this section we initialize the views for this states: LOGGED IN, SIGN IN, SIGN UP and LOCKEDSCREEN.
@@ -200,9 +202,10 @@ public class AccountManagement extends AppCompatActivity {
         });
 
         //*SET THE BASE VIEW AND ASK THE CREDENTIALS
+        /// If the user is Logged In and the Option in Advanced Options is enable, require the Biometric Auth to continue.
         if(sessionManager.isLoggedIn() && DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true))
             showBiometricPrompt();
-        else{
+        else {
             screenUnlocked = true;
             updateUI();
         }
@@ -253,7 +256,7 @@ public class AccountManagement extends AppCompatActivity {
                             nameUser = response.body().user.userMetadata.get("display_name").toString();
                     }
 
-                    sessionManager.saveSession(token, email, nameUser);
+                    sessionManager.saveSession(token, email, nameUser, false);
 
                     updateUI();
                     Toast.makeText(AccountManagement.this, "Bentornato!", Toast.LENGTH_SHORT).show();
@@ -300,17 +303,19 @@ public class AccountManagement extends AppCompatActivity {
                             nameUser = response.body().user.userMetadata.get("display_name").toString();
                     }
 
-                    sessionManager.saveSession(token, email, nameUser);
+                    sessionManager.saveSession(token, email, nameUser, true);
 
                     updateUI();
                     Toast.makeText(AccountManagement.this, "Accesso con Google riuscito!", Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
                     updateUI();
-                } else {
+                }
+                else {
                     Toast.makeText(AccountManagement.this, "Errore Login: " + response.code(), Toast.LENGTH_SHORT).show();
                     try {
                         Log.e("GOOGLE_LOGIN", response.errorBody().string());
-                    } catch (Exception e) {}
+                    }
+                    catch (Exception e) {}
                 }
             }
 
@@ -533,6 +538,10 @@ public class AccountManagement extends AppCompatActivity {
             loggedInView.setVisibility(View.GONE);
             lockedScreen.setVisibility(View.GONE);
         }
+
+        //*UPDATE GOOGLE UI
+        /// Update the Google UI for show if the account is created with Google or not.
+        createdWithGoogle.setVisibility((sessionManager.isLoggedInWithGoogle()) ? View.VISIBLE : View.GONE);
     }
 
     private String getMetaData(String key){

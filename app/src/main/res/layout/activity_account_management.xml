@@ -363,6 +363,35 @@
                         android:textSize="20sp" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/createdWithGoogle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-15dp"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/iconGoogle"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_google_logo"
+                        android:visibility="visible"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/iconGoogle"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Account creato con Google."
+                        android:textColor="#8E8E93"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

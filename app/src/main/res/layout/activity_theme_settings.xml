@@ -73,12 +73,23 @@
                         android:layout_height="56dp"
                         android:paddingHorizontal="16dp">
 
+                        <ImageView
+                            android:id="@+id/iconSystem"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_setting"
+                            app:tint="@color/redMetro"
+                            android:visibility="visible"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:text="Sistema"
+                            android:layout_toEndOf="@id/iconSystem"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -105,11 +116,22 @@
                         android:layout_height="56dp"
                         android:paddingHorizontal="16dp">
 
+                        <ImageView
+                            android:id="@+id/iconDark"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_dark"
+                            app:tint="@color/redMetro"
+                            android:visibility="visible"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:layout_toEndOf="@id/iconDark"
                             android:text="Scuro"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -137,12 +159,23 @@
                         android:layout_height="56dp"
                         android:paddingHorizontal="16dp">
 
+                        <ImageView
+                            android:id="@+id/iconLight"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_light"
+                            app:tint="@color/redMetro"
+                            android:visibility="visible"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:text="Chiaro"
+                            android:layout_toEndOf="@id/iconLight"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 

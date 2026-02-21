@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -27,7 +29,7 @@ import java.util.Set;
 public class SettingsActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
-    private Set<String> favorites = new HashSet<>(); //*FAVORITES LINES
+    private Set<String> favorites = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +70,6 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout advancedOptionsButton = findViewById(R.id.btnAdvanced);
         advancedOptionsButton.setOnClickListener(v -> {changeActivity(this, AdvancedOptions.class);});
 
-        RelativeLayout btnRefresh = findViewById(R.id.btnRefresh);
-        btnRefresh.setOnClickListener(v -> {resetSettings();});
-
         //*FAVORITES LINES
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {
@@ -90,15 +89,9 @@ public class SettingsActivity extends AppCompatActivity {
             arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
         });
 
-        //*LOADING DATAS
-        /// In this section of the code, we will loading the datas from the DataManager file.
-        String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
-        TextView filterSelectedText = findViewById(R.id.filterText);
-        filterSelectedText.setText(selectedFilter);
-
-        String selectedTheme = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
-        TextView themeSelectedText = findViewById(R.id.themeText);
-        themeSelectedText.setText(selectedTheme);
+        //*UI UPDATES
+        /// Update the UI Setting Button Texts with this function.
+        reloadDatas();
 
         //*SET FAVORITES
         ImageView[] starIcons = {
@@ -159,16 +152,22 @@ public class SettingsActivity extends AppCompatActivity {
             return true;
         });
 
-        TextView nameSettingsText = findViewById(R.id.nameSettingsText);
-        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : "Il tuo Account");
+        //*RESET SETTINGS
+        /// In this section of the code we create the Listener for the Reset Settings button
+        RelativeLayout btnRefresh = findViewById(R.id.btnRefresh);
+        btnRefresh.setOnClickListener(v -> {resetSettings(starIcons, lineCodes);});
     }
 
     @Override
     protected void onResume(){
         super.onResume();
+        reloadDatas();
+    }
 
+    public void reloadDatas(){
         //*LOADING DATAS
         /// In this section of the code, we will loading the datas from the DataManager file also AFTER the Back Gesture.
+
         String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         TextView filterSelectedText = findViewById(R.id.filterText);
         filterSelectedText.setText(selectedFilter);
@@ -176,6 +175,20 @@ public class SettingsActivity extends AppCompatActivity {
         String selectedTheme = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
         TextView themeSelectedText = findViewById(R.id.themeText);
         themeSelectedText.setText(selectedTheme);
+
+        TextView nameSettingsText = findViewById(R.id.nameSettingsText);
+        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : "Il tuo Account");
+
+        ImageView profileImage = findViewById(R.id.profileImage);
+        profileImage.setImageResource((!sessionManager.isLoggedInWithGoogle())
+                ? R.drawable.ic_account_circle
+                : R.drawable.ic_google_logo
+        );
+
+        if(!sessionManager.isLoggedInWithGoogle())
+            profileImage.setColorFilter(ContextCompat.getColor(this, R.color.redMetro));
+        else if(sessionManager.isLoggedInWithGoogle())
+            profileImage.clearColorFilter();
     }
 
     public void setStarIcons(ImageView[] icons, String[] lineCodes){
@@ -211,7 +224,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public void resetSettings(){
+    public void resetSettings(ImageView[] images, String[] lines){
         new AlertDialog.Builder(this)
                 .setTitle("Sei sicuro?")
                 .setMessage("Sei sicuro di voler ripristinare le impostazioni?")
@@ -230,7 +243,38 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, false);
+                    DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
                     Toast.makeText(this, "Impostazioni ripristinate correttamente!", Toast.LENGTH_SHORT).show();
+
+                    reloadDatas();
+                    setTheme();
+                    loadFavorites(images, lines);
                 }).show();
+    }
+
+    private void setTheme(){
+        /// This method apply the theme that the user have selected by Loading the Data and cased it.
+        /// @PARAMETERS
+        /// There are no parameters.
+
+        String typeLoaded = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+        int modeSelected;
+
+        switch (typeLoaded){
+            case "Sistema":
+                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                break;
+            case "Scuro":
+                modeSelected = AppCompatDelegate.MODE_NIGHT_YES;
+                break;
+            case "Chiaro":
+                modeSelected = AppCompatDelegate.MODE_NIGHT_NO;
+                break;
+            default:
+                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+                break;
+        }
+
+        AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
 }
