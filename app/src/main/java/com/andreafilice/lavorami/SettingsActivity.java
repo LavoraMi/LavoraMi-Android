@@ -171,6 +171,7 @@ public class SettingsActivity extends AppCompatActivity {
                 else
                     favorites.remove(lineCodes[finalI]);
 
+                NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
                 DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, favorites);
             });
         }

@@ -185,7 +185,8 @@ public class NotificationScheduler {
 
             Log.d(TAG, "Schedulato ID " + id + " per: " + title);
 
-        } catch (SecurityException se) {
+        }
+        catch (SecurityException se) {
             Log.e(TAG, "Errore Permessi (SecurityException): " + se.getMessage());
             try {
                 Intent intentFallback = new Intent(context, NotificationReceiver.class);
@@ -197,8 +198,9 @@ public class NotificationScheduler {
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Errore generico: " + e.getMessage());
+        }
+        catch (Exception e) {
+            Log.e(TAG, "Errore: " + e.getMessage());
         }
     }
 

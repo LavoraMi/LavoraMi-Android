@@ -4,8 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Build;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -14,6 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import android.content.pm.PackageManager;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
+import android.Manifest;
 
 public class NotificationSettings extends AppCompatActivity {
 
@@ -102,6 +111,12 @@ public class NotificationSettings extends AppCompatActivity {
         //*SET-UP THE UI
         /// Here we set-up the current configuration loaded from sharedPrefs
 
+        LinearLayout permissionDeniedLayout = findViewById(R.id.noPermission);
+        ScrollView scrollView = findViewById(R.id.scrollView);
+
+        permissionDeniedLayout.setVisibility((areNotificationsEnabled()) ? View.GONE : View.VISIBLE);
+        scrollView.setVisibility((areNotificationsEnabled()) ? View.VISIBLE : View.GONE);
+
         int hoursSaved = DataManager.getIntData(this, DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
         int minutesSaved = DataManager.getIntData(this, DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
 
@@ -130,11 +145,14 @@ public class NotificationSettings extends AppCompatActivity {
                 true
             );
             timePickerDialog.show();
+
+            NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
         });
     }
 
     public void saveDatas(Switch switchNotificationsGeneral, Switch switchStartWorks, Switch switchEndWorks, Switch switchStrikeNotifications){
         /// In this Method, we will save the current configuration of the switches from the Settings
+        /// After the save data process, we apply the new configuration with the NotificationScheduler
         /// @PARAMETER All the current parameters are the Switch Objects from the XML file.
 
         DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, switchNotificationsGeneral.isChecked());
@@ -145,5 +163,21 @@ public class NotificationSettings extends AppCompatActivity {
         switchStartWorks.setTrackTintMode((switchStartWorks.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchEndWorks.setTrackTintMode((switchEndWorks.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchStrikeNotifications.setTrackTintMode((switchStrikeNotifications.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
+        NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
+    }
+
+    private boolean areNotificationsEnabled() {
+        /// In this method, we return if the user allow Notifications or not.
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            return ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED;
+        }
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        return notificationManager.areNotificationsEnabled();
     }
 }

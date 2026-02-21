@@ -72,9 +72,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == eventList.size()) {
+        if (position == eventList.size())
             return VIEW_TYPE_FOOTER;
-        }
         return VIEW_TYPE_ITEM;
     }
 
@@ -136,6 +135,11 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             .toBuilder()
                             .setAllCornerSizes(10f)
                             .build();
+
+                    if(nomePulito.contains("Filobus")){
+                        chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_bolt));
+                        chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                    }
 
                     chip.setShapeAppearanceModel(cornerRadius);
                     chip.setEnsureMinTouchTargetSize(false);
@@ -257,14 +261,19 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             //METRO LINES
             case "M1":
+            case "NM1":
                 return R.color.M1;
             case "M2":
+            case "NM2":
                 return R.color.M2;
             case "M3":
+            case "NM3":
                 return R.color.M3;
             case "M4":
+            case "NM4":
                 return R.color.M4;
             case "M5":
+            case "NM5":
                 return R.color.M5;
 
             //OTHERS

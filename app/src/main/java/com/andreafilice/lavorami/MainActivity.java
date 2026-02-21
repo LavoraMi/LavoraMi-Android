@@ -71,13 +71,11 @@ public class MainActivity extends AppCompatActivity {
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if(isGranted){
                     Log.d("PERMISSIONS", "Notifiche concesse!");
-                    if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty()) {
+                    if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty())
                         NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
-                    }
                 }
-                else{
+                else
                     Log.e("PERMISSIONS", "Permesso notifiche rifiutato.");
-                }
             });
 
     @Override
