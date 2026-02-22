@@ -547,30 +547,32 @@ public class MainActivity extends AppCompatActivity {
         /// NOTE: toLowerCase() for better switch-casing
         categoria = categoria.toLowerCase();
 
+        long now = System.currentTimeMillis();
+        long terminated;
+
         for (EventDescriptor item : events) {
+            terminated = getDateMillis(item.getEndDate());
+
             switch (categoria) {
                 case "tutti":
-                    long now = System.currentTimeMillis();
-                    long terminated = getDateMillis(item.getEndDate());
-
                     if (terminated > now)
                         filtrata.add(item);
                     break;
 
                 case "bus":
-                    if (isBus(item)) filtrata.add(item);
+                    if (isBus(item) && terminated > now) filtrata.add(item);
                     break;
 
                 case "tram":
-                    if(isTram(item)) filtrata.add(item);
+                    if(isTram(item) && terminated > now) filtrata.add(item);
                     break;
 
                 case "metropolitana":
-                    if (isMetro(item)) filtrata.add(item);
+                    if (isMetro(item) && terminated > now) filtrata.add(item);
                     break;
 
                 case "treno":
-                    if (isTreno(item)) filtrata.add(item);
+                    if (isTreno(item) && terminated > now) filtrata.add(item);
                     break;
 
                 case "in corso":
@@ -585,23 +587,23 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case "di atm":
-                    if(item.company.equalsIgnoreCase("ATM")) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("ATM") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di trenord":
-                    if(item.company.equalsIgnoreCase("Trenord")) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("Trenord") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di movibus":
-                    if(item.company.equalsIgnoreCase("Movibus")) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("Movibus") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di stav":
-                    if(item.company.equalsIgnoreCase("STAV")) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("STAV") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di autoguidovie":
-                    if(item.company.equalsIgnoreCase("Autoguidovie")) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > now) filtrata.add(item);
                     break;
             }
         }
