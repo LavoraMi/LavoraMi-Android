@@ -19,7 +19,7 @@ public class NotificationScheduler {
     public static void scheduleWorkNotifications(Context context, ArrayList<EventDescriptor> eventList) {
         boolean isEnabled = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_SWITCH, true);
 
-        if (!isEnabled)  return;
+        if (!isEnabled) return;
 
         Set<String> favorites = DataManager.getStringArray(context, DataKeys.KEY_FAVORITE_LINES, null);
         if (favorites == null || favorites.isEmpty()) return;
@@ -48,83 +48,50 @@ public class NotificationScheduler {
                         switch (fav) {
                             case "Metro":
                                 for (String line : event.lines) {
-                                    if (line.matches("(?i)M[1-5].*")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.matches("(?i)M[1-5].*")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "S":
                                 for (String line : event.lines) {
-                                    if (line.matches("(?i)^S\\d+$")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.matches("(?i)^S\\d+$")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "R":
                                 for (String line : event.lines) {
-                                    if (line.matches("(?i)^R\\d+$")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.matches("(?i)^R\\d+$")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "RE":
                                 for (String line : event.lines) {
-                                    if (line.matches("(?i)^RE\\d+$")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.matches("(?i)^RE\\d+$")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "Tram":
                                 for (String line : event.lines) {
-                                    if (line.matches("^([1-9]|[1-2][0-9]|3[0-3])$")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.matches("^([1-9]|[1-2][0-9]|3[0-3])$")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "z5":
                                 for (String line : event.lines) {
-                                    if (line.toLowerCase().startsWith("z5")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.toLowerCase().startsWith("z5")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "z6":
                                 for (String line : event.lines) {
-                                    if (line.toLowerCase().startsWith("z6")) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (line.toLowerCase().startsWith("z6")) { isMatch = true; break; }
                                 }
                                 break;
-
                             case "Autoguidovie":
                                 if (event.company != null && event.company.toLowerCase().contains("autoguidovie")) {
                                     isMatch = true;
                                 }
                                 break;
-
                             case "Bus":
                                 for (String line : event.lines) {
-                                    boolean isTram = line.matches("^([1-9]|[1-2][0-9]|3[0-3])$");
+                                    boolean isTram  = line.matches("^([1-9]|[1-2][0-9]|3[0-3])$");
                                     boolean isMetro = line.matches("(?i)M[1-5].*");
                                     boolean isTreno = line.matches("(?i)^(S|R|RE|RV).*");
-
-                                    if (!isTram && !isMetro && !isTreno) {
-                                        isMatch = true;
-                                        break;
-                                    }
+                                    if (!isTram && !isMetro && !isTreno) { isMatch = true; break; }
                                 }
                                 break;
                         }
@@ -136,26 +103,55 @@ public class NotificationScheduler {
                 long startMillis = event.getDateMillis(event.startDate);
                 long endMillis = event.getDateMillis(event.endDate);
                 long now = System.currentTimeMillis();
-                long oneDayMillis = 24 * 60 * 60 * 1000;
+                long oneDayMillis  = 24L * 60 * 60 * 1000;
+
+                int baseId = (event.roads + event.startDate + event.endDate + event.getStringLines()).hashCode();
+                int idStart = baseId * 10;
+                int idPreStart = baseId * 10 + 1;
+                int idEnd = baseId * 10 + 2;
+                int idPreEnd = baseId * 10 + 3;
 
                 if (notifyStart) {
                     if (startMillis > now) {
-                        long notificationTime = getSelectedTime(context, startMillis);
-                        schedule(context, alarmManager, event.title.hashCode(), notificationTime,
-                                "Lavori Iniziati!", String.format("I lavori in %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.", event.roads, event.getStringLines(), event.company));
+                        long notifTime = getSelectedTime(context, startMillis);
+                        if (notifTime > now) {
+                            schedule(context, alarmManager, idStart, notifTime,
+                                    "Lavori Iniziati!",
+                                    String.format("I lavori in %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                            event.roads, event.getStringLines(), event.company));
+                        }
                     }
-                    if (startMillis - oneDayMillis > now) {
-                        long notificationTimeDayBefore = getSelectedTime(context, startMillis - oneDayMillis);
-                        schedule(context, alarmManager, event.title.hashCode() + 1, notificationTimeDayBefore,
-                                "⚠\uFE0F I lavori iniziano domani!", String.format("Domani iniziano i lavori in %s per %s. Consulta il sito di %s", event.roads, event.getStringLines(), event.company));
+                    long startDayBefore = startMillis - oneDayMillis;
+                    if (startDayBefore > now) {
+                        long notifTimePre = getSelectedTime(context, startDayBefore);
+                        if (notifTimePre > now) {
+                            schedule(context, alarmManager, idPreStart, notifTimePre,
+                                    "⚠\uFE0F I lavori iniziano domani!",
+                                    String.format("Domani iniziano i lavori in %s per %s. Consulta il sito di %s per maggiori info.",
+                                            event.roads, event.getStringLines(), event.company));
+                        }
                     }
                 }
 
                 if (notifyEnd) {
                     if (endMillis > now) {
-                        long notificationTimeEnd = getSelectedTime(context, endMillis);
-                        schedule(context, alarmManager, event.title.hashCode() + 2, notificationTimeEnd,
-                                "Lavori terminati!", String.format("I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.", event.roads, event.getStringLines(), event.company));
+                        long notifTimeEnd = getSelectedTime(context, endMillis);
+                        if (notifTimeEnd > now) {
+                            schedule(context, alarmManager, idEnd, notifTimeEnd,
+                                    "Lavori terminati!",
+                                    String.format("I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                            event.roads, event.getStringLines(), event.company));
+                        }
+                    }
+                    long endDayBefore = endMillis - oneDayMillis;
+                    if (endDayBefore > now) {
+                        long notifTimePreEnd = getSelectedTime(context, endDayBefore);
+                        if (notifTimePreEnd > now) {
+                            schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
+                                    "⚠\uFE0F I lavori finiscono domani!",
+                                    String.format("Domani terminano i lavori in %s per %s. Consulta il sito di %s per maggiori info.",
+                                            event.roads, event.getStringLines(), event.company));
+                        }
                     }
                 }
             }
@@ -183,19 +179,20 @@ public class NotificationScheduler {
             else
                 am.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
 
-            Log.d(TAG, "Schedulato ID " + id + " per: " + title);
+            Log.d(TAG, "Schedulato ID=" + id + " | " + title + " | " + msg);
 
-        }
-        catch (SecurityException se) {
+        } catch (SecurityException se) {
             Log.e(TAG, "Errore Permessi (SecurityException): " + se.getMessage());
             try {
                 Intent intentFallback = new Intent(context, NotificationReceiver.class);
                 intentFallback.putExtra("title", title);
                 intentFallback.putExtra("message", msg);
                 intentFallback.putExtra("id", id);
-                PendingIntent piFallback = PendingIntent.getBroadcast(context, id, intentFallback, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent piFallback = PendingIntent.getBroadcast(context, id, intentFallback,
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                 am.set(AlarmManager.RTC_WAKEUP, time, piFallback);
-            } catch (Exception e2) {
+            }
+            catch (Exception e2) {
                 e2.printStackTrace();
             }
         }
