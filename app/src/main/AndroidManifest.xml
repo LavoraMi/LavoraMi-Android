@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
         <activity
+            android:name=".RequestUserDatas"
+            android:exported="false" />
+        <activity
             android:name=".ThemeSettings"
             android:exported="false" />
         <activity

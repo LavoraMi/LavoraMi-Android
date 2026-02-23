@@ -224,6 +224,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
+                android:text="Supportaci"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPatreon"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/archivo_medium"
+                android:text="Supportaci su Patreon"
+                android:textColor="#FF5252"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_support"
+                app:iconSize="30dp"
+                app:iconPadding="12dp"
+                app:iconTint="#FF5252"
+                app:iconGravity="textStart" />
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/archivo_medium"
                 android:text="Contatti"
                 android:textAlignment="center"
                 android:textSize="28sp"
@@ -267,37 +303,20 @@
                 app:iconTint="#FF5252"
                 app:iconGravity="textStart" />
 
-            <View
-                android:layout_width="150dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/archivo_medium"
-                android:text="Supportaci"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                android:textStyle="bold" />
-
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPatreon"
+                android:id="@+id/btnRequestDatas"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Supportaci su Patreon"
+                android:text="Richiedi i tuoi dati"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                app:icon="@drawable/ic_support"
+                app:icon="@drawable/ic_user_datas"
                 app:iconSize="30dp"
                 app:iconPadding="12dp"
                 app:iconTint="#FF5252"
