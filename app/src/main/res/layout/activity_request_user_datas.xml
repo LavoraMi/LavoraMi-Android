@@ -97,7 +97,6 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
                     app:cardBackgroundColor="@color/disclosureBg"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
@@ -229,7 +228,7 @@
                             app:tint="@color/redMetro"/>
 
                         <EditText
-                            android:id="@+id/etLoginEmail"
+                            android:id="@+id/etEmailAccount"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
@@ -260,25 +259,43 @@
                     android:layout_weight="1" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/btnLogin"
+                    android:id="@+id/btnRequestDatas"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="32dp"
                     android:clickable="true"
                     android:focusable="true"
-                    app:cardBackgroundColor="@color/redMetro"
+                    app:cardBackgroundColor="@color/GRAY"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/archivo_medium"
-                        android:text="Accedi"
-                        android:textColor="@color/White"
-                        android:textSize="18sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp">
+
+                        <ImageView
+                            android:id="@+id/imgButton"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_send"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/White"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/archivo_medium"
+                            android:text="Richiedi Dati"
+                            android:textColor="@color/White"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>

@@ -42,4 +42,5 @@
     <color name="White">#FFF</color>
     <color name="disclosureBg">#F6EFEF</color>
     <color name="airport">#66C4C4</color>
+    <color name="GRAY">#595858</color>
 </resources>

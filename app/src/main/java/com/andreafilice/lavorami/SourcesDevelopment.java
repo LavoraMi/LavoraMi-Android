@@ -31,7 +31,8 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnReportBug = findViewById(R.id.btnReportBug);
         MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
         MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
-        ImageButton btnBack = (ImageButton) findViewById(R.id.backBtn);
+        MaterialButton btnRequestDatas = findViewById(R.id.btnRequestDatas);
+        ImageButton btnBack = findViewById(R.id.backBtn);
 
         btnReportBug.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +45,8 @@ public class SourcesDevelopment extends AppCompatActivity {
 
                 try {
                     startActivity(Intent.createChooser(intent, "Invia segnalazione bug"));
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -52,6 +54,7 @@ public class SourcesDevelopment extends AppCompatActivity {
 
         btnWebsite.setOnClickListener(v -> {ActivityManager.openURL(this, "https://lavorami.it");});
         btnPatreon.setOnClickListener(v -> {ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi");});
+        btnRequestDatas.setOnClickListener(v -> {ActivityManager.changeActivity(this, RequestUserDatas.class);});
         btnBack.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
     }
 }

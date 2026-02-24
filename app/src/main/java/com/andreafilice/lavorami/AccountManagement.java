@@ -130,12 +130,12 @@ public class AccountManagement extends AppCompatActivity {
             Toast.makeText(this, "Errore durante la connessione al Server.", Toast.LENGTH_SHORT).show();
 
         //*BACK BUTTON
+        /// In this section of the code, we initialize the Back Button and his action.
         ImageView backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> {
-            ActivityManager.changeActivity(this, SettingsActivity.class);
-        });
+        backBtn.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
 
         //*SIGN-IN WITH GOOGLE
+        /// In this section we initialize all of the elements needed for the Google Sign-Up.
         CardView btnGoogleLogin = findViewById(R.id.btnGoogleLogin);
         CardView btnGoogleRegister = findViewById(R.id.btnGoogleSignUp);
         btnGoogleLogin.setOnClickListener(v -> {initializeGoogleIntent();});
@@ -176,10 +176,12 @@ public class AccountManagement extends AppCompatActivity {
         CardView btnLogout = findViewById(R.id.btnLogout);
         CardView btnChangePassword = findViewById(R.id.btnChangePassword);
         CardView btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
+        CardView btnRequestYourDatas = findViewById(R.id.btnRequestYourDatas);
 
         btnLogout.setOnClickListener(v -> {showConfirmLogout();});
         btnChangePassword.setOnClickListener(v -> {changePassword();});
         btnDeleteAccount.setOnClickListener(v -> {deleteAccount();});
+        btnRequestYourDatas.setOnClickListener(v -> {ActivityManager.changeActivity(this, RequestUserDatas.class);});
 
         //*SIGNUP VIEW
         /// In this section of the code, we set the button triggers and more for the SIGN UP View.
