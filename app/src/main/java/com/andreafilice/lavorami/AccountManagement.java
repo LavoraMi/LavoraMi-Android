@@ -4,8 +4,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
+
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +61,7 @@ public class AccountManagement extends AppCompatActivity {
     LinearLayout loginView;
     LinearLayout loggedInView;
     LinearLayout signUpView;
+    LinearLayout resetPasswordView;
     LinearLayout lockedScreen;
     TextView fullNameTextLoginPage;
     TextView tvProfileName;
@@ -102,7 +107,6 @@ public class AccountManagement extends AppCompatActivity {
 
         /// In this section of the code, we initialize the GoogleSignInClient for SignIn with Google
         String webClientID = getMetaData("googleAPI");
-        Log.d("GOOGLE", webClientID);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(webClientID)
@@ -147,15 +151,26 @@ public class AccountManagement extends AppCompatActivity {
         loginView = findViewById(R.id.login_view_container);
         loggedInView = findViewById(R.id.profile_view_container);
         signUpView = findViewById(R.id.signup_view_container);
+        resetPasswordView = findViewById(R.id.requestPasswordChange);
         lockedScreen = findViewById(R.id.lockedScreen);
 
         //*LOGIN VIEW
         /// In this section of the code, we set the button triggers and more of the SIGN IN View (also called LOGIN).
         TextView tvGoToSignup = findViewById(R.id.tvGoToSignup);
+        TextView tvResetPassword = findViewById(R.id.tvResetPassword);
+
         tvGoToSignup.setOnClickListener(v -> {
             loginView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.GONE);
             signUpView.setVisibility(View.VISIBLE);
+        });
+
+        tvResetPassword.setOnClickListener(v -> {
+            loginView.setVisibility(View.GONE);
+            loggedInView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.VISIBLE);
+            signUpView.setVisibility(View.GONE);
         });
 
         EditText emailLogin = findViewById(R.id.etLoginEmail);
@@ -183,12 +198,41 @@ public class AccountManagement extends AppCompatActivity {
         btnDeleteAccount.setOnClickListener(v -> {deleteAccount();});
         btnRequestYourDatas.setOnClickListener(v -> {ActivityManager.changeActivity(this, RequestUserDatas.class);});
 
+        //*RESET PASSWORD VIEW
+        /// In this section of the code, we set the button triggers and more for the RESET PASSWORD View.
+        CardView btnRequest = findViewById(R.id.btnRequest);
+        EditText etEmailReset = findViewById(R.id.etEmailReset);
+
+        btnRequest.setOnClickListener(v -> {sendResetPasswordEmail(etEmailReset.getText().toString());});
+
+        etEmailReset.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                btnRequest.setBackgroundTintList((validateEmail(etEmailReset.getText().toString())
+                        ? ColorStateList.valueOf(getResources().getColor(R.color.redMetro))
+                        : ColorStateList.valueOf(getResources().getColor(R.color.GRAY))
+                ));
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                btnRequest.setBackgroundTintList((validateEmail(etEmailReset.getText().toString())
+                        ? ColorStateList.valueOf(getResources().getColor(R.color.redMetro))
+                        : ColorStateList.valueOf(getResources().getColor(R.color.GRAY))
+                ));
+            }
+        });
+
         //*SIGNUP VIEW
         /// In this section of the code, we set the button triggers and more for the SIGN UP View.
         TextView tvGoToLogin = findViewById(R.id.tvGoToLogin);
+
         tvGoToLogin.setOnClickListener(v -> {
             loginView.setVisibility(View.VISIBLE);
             loggedInView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
         });
 
@@ -389,7 +433,7 @@ public class AccountManagement extends AppCompatActivity {
     private void logout(){
         /// In this method we call, from the sessionManager, the 'logout()' function.
         /// That function clears the Session cache datas and log-out from the account that is saved into that sessionManager.
-        /// We call into tghe 'api.logout' function this sessionManager method.
+        /// We call into the 'api.logout' function this sessionManager method.
         /// This action require some parameters:
         /// @PARAMETERS
         /// @Header apiKey is the ANON key of the Supabase DB from the .env file.
@@ -415,6 +459,46 @@ public class AccountManagement extends AppCompatActivity {
                 Toast.makeText(AccountManagement.this, "Errore durante la disconnesione", Toast.LENGTH_SHORT).show();
                 Log.d("DISCONNECTING_ERROR", t.getMessage());
             }
+        });
+    }
+
+    private void sendResetPasswordEmail(String email) {
+        /// In this method we call, from the sessionManager, the 'resetPassword()' function.
+        /// That function send a recovery Email to the user for recover the password that he lost.
+        /// We call the 'api.resetPassword' function.
+        /// This action require some parameters:
+        /// @PARAMETERS
+        /// @Header apiKey is the ANON key of the Supabase DB from the .env file.
+        /// @Body supabaseModels.ResetPasswordRequest is the body request for catch errors and send the Email.
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(getMetaData("supabaseURL"))
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        SupabaseAPI api = retrofit.create(SupabaseAPI.class);
+        SupabaseModels.ResetPasswordRequest request = new SupabaseModels.ResetPasswordRequest(email);
+
+        api.resetPassword(getMetaData("supabaseANON"), request).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    new AlertDialog.Builder(AccountManagement.this)
+                            .setTitle("Email inviata!")
+                            .setMessage("Email inviata a " + email + "!")
+                            .setNegativeButton("Chiudi", null)
+                            .create()
+                            .show();
+                    updateUI();
+                }
+                else {
+                    Log.e("SUPABASE_AUTH", "Error: " + response.code());
+                    Toast.makeText(AccountManagement.this, "Errore: utente non trovato o troppe richieste.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(AccountManagement.this, "Errore durante l'invio della Mail, riprova.", Toast.LENGTH_SHORT).show();}
         });
     }
 
@@ -464,57 +548,18 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     private void changePassword(){
-        /// In this method, we create a Dialog with an EditText field (like LavoraMi for iOS) and, after the Dialog is promped.
-        /// We check the userResponse, if is 'YES' we call a function from our Supabase API called 'updatePassword'.
+        /// In this method we create a AlertDialog for the user to select if send a mail to recover the password or not
+        /// If "NO" nothing happens, if "YES" we call the 'sendResetPasswordEmail' method created before.
         /// @PARAMETERS
-        /// @Header apiKey is the ANON key of the Supabase DB from the .env file.
-        /// @Header Authorization is the SessionBearerToken that let us change safely the user Password from our Database.
-        /// @Body SupabaseModels.PasswordRequest is the Callback action, declared into our SupabaseModels.java script.
-        /// The 'updatePassword' method from our API, get as parameter also the EdiText value from our user.
-
-        final EditText alertInput = new EditText(this);
-        alertInput.setHint("Inserisci");
-        alertInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-
-        FrameLayout container = new FrameLayout(this);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(50, 20, 50, 20);
-        alertInput.setLayoutParams(params);
-        container.addView(alertInput);
+        /// String email is the user Email for send the mail, catched by the method 'sessionManager.getUserEmail()'
 
         new AlertDialog.Builder(this)
                 .setTitle("Modifica Password")
-                .setMessage("Inserisci la tua nuova password per accedere.")
-                .setView(container)
+                .setMessage("Ti invieremo una mail per modificare la tua password, vuoi continuare?")
                 .setNegativeButton("Annulla", null)
-                .setPositiveButton("Fine", (dialog, which) -> {
-                    String newPassword = alertInput.getText().toString();
-                    
-                    if(newPassword.length() < 8)
-                        Toast.makeText(this, "Errore: Password troppo corta. Minimo 8 caratteri.", Toast.LENGTH_SHORT).show();
-                    else{
-                        String token = sessionManager.getToken();
-
-                        SupabaseModels.PasswordRequest req = new SupabaseModels.PasswordRequest(newPassword);
-
-                        api.updatePassword(getMetaData("supabaseANON"), "Bearer " + token, req).enqueue(new Callback<Void>() {
-                            @Override
-                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                if(response.isSuccessful())
-                                    Toast.makeText(AccountManagement.this, "Password cambiata con successo!", Toast.LENGTH_SHORT).show();
-                                else
-                                    Toast.makeText(AccountManagement.this, "Errore durante il cambio di Password. Riprova", Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onFailure(Call<Void> call, Throwable t) {
-                                Toast.makeText(AccountManagement.this, "Errore durante il cambio di Password. Riprova", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
+                .setPositiveButton("Continua", (dialog, which) -> {
+                    String userEmail = sessionManager.getUserEmail();
+                    sendResetPasswordEmail(userEmail);
                 }).show();
     }
 
@@ -527,6 +572,7 @@ public class AccountManagement extends AppCompatActivity {
         if(sessionManager.isLoggedIn() && screenUnlocked){
             loginView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.VISIBLE);
             lockedScreen.setVisibility(View.GONE);
 
@@ -538,10 +584,12 @@ public class AccountManagement extends AppCompatActivity {
             loginView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.GONE);
             lockedScreen.setVisibility(View.VISIBLE);
         }
         else{
             loginView.setVisibility(View.VISIBLE);
+            resetPasswordView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.GONE);
             lockedScreen.setVisibility(View.GONE);
@@ -622,4 +670,6 @@ public class AccountManagement extends AppCompatActivity {
 
         biometricPrompt.authenticate(promptInfo);
     }
+
+    public boolean validateEmail(String mail){return (mail.contains("@") && !mail.isEmpty());}
 }

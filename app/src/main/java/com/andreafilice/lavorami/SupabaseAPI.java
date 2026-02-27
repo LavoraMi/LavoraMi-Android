@@ -40,7 +40,13 @@ public interface SupabaseAPI {
 
     @POST("auth/v1/token?grant_type=id_token")
     Call<SupabaseModels.AuthResponse> loginWithGoogle(
-            @Header("apikey") String apiKey,
-            @Body SupabaseModels.GoogleLoginRequest request
+        @Header("apikey") String apiKey,
+        @Body SupabaseModels.GoogleLoginRequest request
+    );
+
+    @POST("auth/v1/recover")
+    Call<Void> resetPassword(
+        @Header("apikey") String apiKey,
+        @Body SupabaseModels.ResetPasswordRequest request
     );
 }

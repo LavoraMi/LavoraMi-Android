@@ -68,4 +68,12 @@ public class SupabaseModels {
             this.id_token = token;
         }
     }
+
+    /// This class is a Callback class from the 'resetPassword' method.
+    /// @ATTRIBUTES
+    /// @String email is the user redirect mail to send the Email.
+    public static class ResetPasswordRequest {
+        public String email;
+        public ResetPasswordRequest(String email) {this.email = email;}
+    }
 }
