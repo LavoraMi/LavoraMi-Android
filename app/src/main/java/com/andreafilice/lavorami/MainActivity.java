@@ -316,6 +316,9 @@ public class MainActivity extends AppCompatActivity {
     public void downloadJSONData(String categoryToFilter, boolean reloadingDatas) {
         /// In this section of the code, we create a CACHE Memory to save the JSON Downloaded.
         /// This part is very important because avoids to use Bandwith of our CDN for nothing.
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
+
         if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty() && !reloadingDatas) {
             if (loadingLayout != null) {
                 loadingLayout.setVisibility(View.GONE);
@@ -328,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
             events = new ArrayList<>(EventData.listaEventiCompleta);
             eventsDisplay = new ArrayList<>(events);
 
-            RecyclerView recyclerView = findViewById(R.id.recyclerView);
+            recyclerView = findViewById(R.id.recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
             adapter = new WorkAdapter(eventsDisplay, DataManager.getBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, false));
             adapter.setFilteredList(eventsDisplay);
@@ -345,7 +348,8 @@ public class MainActivity extends AppCompatActivity {
             loadingLayout.startShimmer();
             progressBarRefresh.setVisibility(View.VISIBLE);
             btnRefresh.setVisibility(View.GONE);
-            findViewById(R.id.recyclerView).setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+            strikeBanner.setVisibility(View.GONE);
         }
 
         //*URL VERIFY SHA-256 CHECKSUM
@@ -379,6 +383,7 @@ public class MainActivity extends AppCompatActivity {
                     btnRefresh.setVisibility(View.VISIBLE);
                     progressBarRefresh.setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
+                    strikeBanner.setVisibility(View.VISIBLE);
                 }
 
                 if (response.isSuccessful() && response.body() != null) {
@@ -411,6 +416,7 @@ public class MainActivity extends AppCompatActivity {
 
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
+                    strikeBanner.setVisibility(View.GONE);
                     progressBarRefresh.setVisibility(View.GONE);
                 }
             }
