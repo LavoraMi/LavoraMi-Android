@@ -8,8 +8,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Set;
 
 public class NotificationScheduler {
@@ -157,6 +161,70 @@ public class NotificationScheduler {
             }
         }
     }
+
+    public static void scheduleStrikeNotification(Context context, StrikeDescriptor strike) {
+        boolean isEnabled = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_SWITCH, true);
+        if (!isEnabled) return;
+
+        boolean notifyStrikes = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_STRIKES, true);
+        if (!notifyStrikes) return;
+
+        if (strike == null || strike.getStrikeDate() == null) return;
+
+        long strikeMillis = parseDateMillis(strike.getStrikeDate());
+        if (strikeMillis < 0) {
+            Log.e(TAG, "Data sciopero non valida: " + strike.getStrikeDate());
+            return;
+        }
+
+        long now = System.currentTimeMillis();
+        long oneDayMillis = 24L * 60 * 60 * 1000;
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        int baseId = (strike.getStrikeDate() + strike.getStrikeCompanies() + strike.getStrikeGuaranteed()).hashCode();
+        int idStrike = baseId * 10 + 20;
+        int idPreStrike = baseId * 10 + 21;
+
+        if (strikeMillis > now) {
+            long notifTime = getSelectedTime(context, strikeMillis);
+            if (notifTime > now) {
+                schedule(context, alarmManager, idStrike, notifTime,
+                        "\uD83D\uDEAB Oggi Sciopero!",
+                        String.format("Oggi è previsto uno sciopero di %s, le fascie garantite %s",
+                                strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
+            }
+        }
+
+        long strikeDayBefore = strikeMillis - oneDayMillis;
+        if (strikeDayBefore > now) {
+            long notifTimePre = getSelectedTime(context, strikeDayBefore);
+            if (notifTimePre > now) {
+                schedule(context, alarmManager, idPreStrike, notifTimePre,
+                        "⚠\uFE0F Sciopero domani!",
+                        String.format("Domani c'è sciopero per %s, le fascie garantite %s",
+                                strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
+            }
+        }
+    }
+
+    private static long parseDateMillis(String dateStr) {
+        String[] formats = { "yyyy-MM-dd", "dd/MM/yyyy", "dd-MM-yyyy" };
+        for (String fmt : formats) {
+            try {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(fmt, Locale.getDefault());
+
+                simpleDateFormat.setLenient(false);
+                Date date = simpleDateFormat.parse(dateStr);
+
+                if (date != null)
+                    return date.getTime();
+            }
+            catch (ParseException ignored) { }
+        }
+        return -1;
+    }
+
 
     @SuppressLint("ScheduleExactAlarm")
     private static void schedule(Context context, AlarmManager am, int id, long time, String title, String msg) {

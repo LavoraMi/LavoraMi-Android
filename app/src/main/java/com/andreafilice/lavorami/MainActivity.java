@@ -489,6 +489,8 @@ public class MainActivity extends AppCompatActivity {
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
         }
+
+        NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
     }
 
     private void checkForEmptyList(List<EventDescriptor> list) {
