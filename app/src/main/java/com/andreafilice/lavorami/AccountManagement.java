@@ -350,7 +350,13 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(AccountManagement.this, "Registrazione andata a buon fine!", Toast.LENGTH_SHORT).show();
+                    new AlertDialog.Builder(AccountManagement.this)
+                            .setTitle("Conferma Mail")
+                            .setMessage("Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare.")
+                            .setNegativeButton("Chiudi", null)
+                            .create()
+                            .show();
+
                     screenUnlocked = true;
                     updateUI();
                 }
