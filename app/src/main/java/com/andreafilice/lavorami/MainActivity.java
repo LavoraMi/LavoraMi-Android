@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         pages.add(new SetupModels.SetupPage("Pianifica il Viaggio", "Pianifica il tuo viaggio sapendo dei disagi, ben prima di partire.", "ic_map"));
         pages.add(new SetupModels.SetupPage("Tieni sott'occhio i lavori", "Seleziona una linea da poter mostrare nel Widget dell'app per tenerla sempre sott'occhio.", "ic_star_fill"));
         pages.add(new SetupModels.SetupPage("Tieniti Aggiornato", "Attiva le notifiche per rimanere al passo coi lavori.", "ic_bell_fill"));
-        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per salvare le tue linee su altri dispositivi.", "ic_lock"));
+        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.", "ic_lock"));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
