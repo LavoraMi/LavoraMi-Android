@@ -99,6 +99,7 @@ public class FilterSelection extends AppCompatActivity {
                 getCurrentFilterSelected(filterValues, index);
                 setCheckImage(filterIcons);
                 DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_FILTER, getCurrentFilterSelected(filterValues, index));
+                finish();
             });
         }
     }
