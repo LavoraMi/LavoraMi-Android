@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -72,16 +73,16 @@ public class RequestUserDatas extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 btnRequestDatas.setBackgroundTintList((validateEmail(etEmailAccount.getText().toString())
-                        ? ColorStateList.valueOf(getResources().getColor(R.color.redMetro))
-                        : ColorStateList.valueOf(getResources().getColor(R.color.GRAY))
+                        ? ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.redMetro))
+                        : ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.GRAY))
                 ));
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 btnRequestDatas.setBackgroundTintList((validateEmail(etEmailAccount.getText().toString())
-                        ? ColorStateList.valueOf(getResources().getColor(R.color.redMetro))
-                        : ColorStateList.valueOf(getResources().getColor(R.color.GRAY))
+                        ? ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.redMetro))
+                        : ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.GRAY))
                 ));
             }
         });

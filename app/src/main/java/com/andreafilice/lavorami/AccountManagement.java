@@ -211,16 +211,16 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 btnRequest.setBackgroundTintList((validateEmail(etEmailReset.getText().toString())
-                        ? ColorStateList.valueOf(getResources().getColor(R.color.redMetro))
-                        : ColorStateList.valueOf(getResources().getColor(R.color.GRAY))
+                        ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                        : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
                 ));
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 btnRequest.setBackgroundTintList((validateEmail(etEmailReset.getText().toString())
-                        ? ColorStateList.valueOf(getResources().getColor(R.color.redMetro))
-                        : ColorStateList.valueOf(getResources().getColor(R.color.GRAY))
+                        ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                        : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
                 ));
             }
         });
