@@ -61,6 +61,7 @@ public class AccountManagement extends AppCompatActivity {
     LinearLayout loginView;
     LinearLayout loggedInView;
     LinearLayout signUpView;
+    LinearLayout signingInWithGoogleView;
     LinearLayout resetPasswordView;
     LinearLayout lockedScreen;
     TextView fullNameTextLoginPage;
@@ -68,6 +69,7 @@ public class AccountManagement extends AppCompatActivity {
     TextView tvProfileEmail;
     LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
+    boolean loggingInWithGoogle = false;
 
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -153,6 +155,7 @@ public class AccountManagement extends AppCompatActivity {
         signUpView = findViewById(R.id.signup_view_container);
         resetPasswordView = findViewById(R.id.requestPasswordChange);
         lockedScreen = findViewById(R.id.lockedScreen);
+        signingInWithGoogleView = findViewById(R.id.loggingInGoogle);
 
         //*LOGIN VIEW
         /// In this section of the code, we set the button triggers and more of the SIGN IN View (also called LOGIN).
@@ -265,7 +268,8 @@ public class AccountManagement extends AppCompatActivity {
 
         if(googleClient != null){
             Intent signInIntent = googleClient.getSignInIntent();
-
+            loggingInWithGoogle = true;
+            updateUI();
             googleLoginLauncher.launch(signInIntent);
         }
         else
@@ -283,6 +287,8 @@ public class AccountManagement extends AppCompatActivity {
         /// String password is the password of that account to log into.
 
         SupabaseModels.AuthRequest req = new SupabaseModels.AuthRequest(email, password);
+        loggingInWithGoogle = false;
+        updateUI();
 
         api.login(getMetaData("supabaseANON"), req).enqueue(new Callback<SupabaseModels.AuthResponse>() {
             @Override
@@ -304,9 +310,9 @@ public class AccountManagement extends AppCompatActivity {
 
                     sessionManager.saveSession(token, email, nameUser, false);
 
-                    updateUI();
                     Toast.makeText(AccountManagement.this, "Bentornato!", Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
+                    loggingInWithGoogle = false;
                     updateUI();
                 } else
                     Toast.makeText(AccountManagement.this, "Errore Login: Credenziali errate", Toast.LENGTH_SHORT).show();
@@ -330,6 +336,8 @@ public class AccountManagement extends AppCompatActivity {
         /// String token is the token from our .env file that contains ClientsID for connecting to Google Cloud services.
 
         SupabaseModels.GoogleLoginRequest req = new SupabaseModels.GoogleLoginRequest(token);
+        loggingInWithGoogle = true;
+        updateUI();
 
         api.loginWithGoogle(getMetaData("supabaseANON"), req).enqueue(new Callback<SupabaseModels.AuthResponse>() {
             @Override
@@ -356,17 +364,14 @@ public class AccountManagement extends AppCompatActivity {
                     screenUnlocked = true;
                     updateUI();
                 }
-                else {
+                else
                     Toast.makeText(AccountManagement.this, "Errore Login: " + response.code(), Toast.LENGTH_SHORT).show();
-                    try {
-                        Log.e("GOOGLE_LOGIN", response.errorBody().string());
-                    }
-                    catch (Exception e) {}
-                }
             }
 
             @Override
             public void onFailure(Call<SupabaseModels.AuthResponse> call, Throwable t) {
+                loggingInWithGoogle = false;
+                updateUI();
                 Toast.makeText(AccountManagement.this, "Errore di connessione", Toast.LENGTH_SHORT).show();
             }
         });
@@ -440,6 +445,7 @@ public class AccountManagement extends AppCompatActivity {
         /// @Header Authorization is the SessionBearerToken that let us safely logout the user from his session.
 
         String token = sessionManager.getToken();
+        loggingInWithGoogle = false;
 
         if(token == null){
             sessionManager.logout();
@@ -579,6 +585,7 @@ public class AccountManagement extends AppCompatActivity {
             fullNameTextLoginPage.setText("Ciao " + sessionManager.getUserName());
             tvProfileName.setText(sessionManager.getUserName());
             tvProfileEmail.setText(sessionManager.getUserEmail());
+            signingInWithGoogleView.setVisibility(View.GONE);
         }
         else if (sessionManager.isLoggedIn() && !screenUnlocked){
             loginView.setVisibility(View.GONE);
@@ -586,13 +593,23 @@ public class AccountManagement extends AppCompatActivity {
             loggedInView.setVisibility(View.GONE);
             resetPasswordView.setVisibility(View.GONE);
             lockedScreen.setVisibility(View.VISIBLE);
+            signingInWithGoogleView.setVisibility(View.GONE);
         }
-        else{
+        else if(loggingInWithGoogle){
+            loginView.setVisibility(View.GONE);
+            signUpView.setVisibility(View.GONE);
+            loggedInView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.GONE);
+            lockedScreen.setVisibility(View.GONE);
+            signingInWithGoogleView.setVisibility(View.VISIBLE);
+        }
+        else {
             loginView.setVisibility(View.VISIBLE);
             resetPasswordView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
             loggedInView.setVisibility(View.GONE);
             lockedScreen.setVisibility(View.GONE);
+            signingInWithGoogleView.setVisibility(View.GONE);
         }
 
         //*UPDATE GOOGLE UI

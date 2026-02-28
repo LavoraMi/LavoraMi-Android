@@ -2,5 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/archivo_medium</item>
+        <item>@font/nunito_sans_medium</item>
+        <item>@font/roboto_flex</item>
     </array>
 </resources>
