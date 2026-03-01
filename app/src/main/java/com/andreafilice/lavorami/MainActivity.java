@@ -388,7 +388,6 @@ public class MainActivity extends AppCompatActivity {
                     btnRefresh.setVisibility(View.VISIBLE);
                     progressBarRefresh.setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
-                    strikeBanner.setVisibility(View.VISIBLE);
                 }
 
                 if (response.isSuccessful() && response.body() != null) {
@@ -448,12 +447,18 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         APIWorks apiworks = retrofit.create(APIWorks.class);
+        MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
 
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor> () {
             @Override
             public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
-                strikeCDNResponse = response.body();
-                updateStrike(strikeCDNResponse);
+                Log.d("RESPONSE_STRIKES", response.body().isStrikeEnabled());
+                if(response.isSuccessful()) {
+                    strikeCDNResponse = response.body();
+                    updateStrike(strikeCDNResponse);
+                }
+                else
+                    strikeBanner.setVisibility(View.GONE);
             }
 
             @Override
@@ -464,6 +469,7 @@ public class MainActivity extends AppCompatActivity {
 
                     errorDeps.setText(t.getMessage());
                     errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
+                    strikeBanner.setVisibility(View.GONE);
 
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
