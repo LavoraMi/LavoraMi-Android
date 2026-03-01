@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,6 +83,10 @@ public class AdvancedOptions extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //*BUTTONS
         ImageButton backButton = findViewById(R.id.backBtn);

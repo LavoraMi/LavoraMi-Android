@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -56,8 +57,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_lines_detail);
+
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         Chip chipMappa = findViewById(R.id.chipMappa);
         Chip chipLavori = findViewById(R.id.chipLavoriInCorso);
         Chip chipInterscambi = findViewById(R.id.chipInterscambi);
@@ -580,7 +585,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
 
                 if(txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
-                if (titolo != null){
+                if (titolo != null) {
+                    //! IMPROVE THIS LOGIC
                     if(!evento.getKey().equals("Lodi TIBB"))
                         titolo.setText(evento.getKey());
                     else

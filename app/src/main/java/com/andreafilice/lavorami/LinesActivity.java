@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +43,13 @@ public class LinesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_lines);
+
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //*INITIALIZE COMPONENTS
+        /// In this section of the code, we initialize all the containers for the sub-menus.
         containerMetro = findViewById(R.id.groupMetro);
         containerSub = findViewById(R.id.groupSub);
         containerTILO = findViewById(R.id.groupTrans);

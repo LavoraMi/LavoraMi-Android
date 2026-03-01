@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import androidx.biometric.BiometricManager;
@@ -103,6 +104,10 @@ public class AccountManagement extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ///In this section of the code, we initialize the SessionManager for save the credentials of the Logged Account.
         sessionManager = new SessionManager(this);

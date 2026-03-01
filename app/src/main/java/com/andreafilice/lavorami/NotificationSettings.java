@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Build;
@@ -36,6 +37,10 @@ public class NotificationSettings extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ImageButton backButton = (ImageButton) findViewById(R.id.backBtn);
         backButton.setOnClickListener(v -> {

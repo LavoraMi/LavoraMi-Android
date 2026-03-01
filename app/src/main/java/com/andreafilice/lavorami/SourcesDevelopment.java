@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -27,7 +28,12 @@ public class SourcesDevelopment extends AppCompatActivity {
             return insets;
         });
 
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //*BUTTONS
+        /// In this section of the code, we initialize the end-screen buttons for the redirects.
         MaterialButton btnReportBug = findViewById(R.id.btnReportBug);
         MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
         MaterialButton btnPatreon = findViewById(R.id.btnPatreon);

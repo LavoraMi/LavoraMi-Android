@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,8 +24,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class RequestUserDatas extends AppCompatActivity {
-
-    //*GLOBAL VARIABLES
     String selectedFileFormat = "JSON";
 
     @Override
@@ -37,6 +36,10 @@ public class RequestUserDatas extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //*LOCK THE ORIENTATION
+        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //*BACK BUTTON
         /// In this section of the code, we come back to the previous Activity with the 'finish()' instruction.
