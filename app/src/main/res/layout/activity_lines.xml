@@ -53,9 +53,10 @@
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
-        app:layout_constraintTop_toBottomOf="@+id/filterScroll"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:shimmer_auto_start="true">
 
         <LinearLayout
