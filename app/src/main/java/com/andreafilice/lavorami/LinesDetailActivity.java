@@ -237,6 +237,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         if (isDarkMode())
             mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
+        else
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style_light));
 
         for (MetroStation stazione : StationDB.getAllStations()) {
             if (stazione.getLine().trim().equalsIgnoreCase(nomeLinea.trim())) {
