@@ -186,6 +186,12 @@ public class MainActivity extends AppCompatActivity {
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
 
         if(filterGroup != null){
+            filterGroup.setSaveEnabled(false);
+
+            for (int i = 0; i < filterGroup.getChildCount(); i++) {
+                filterGroup.getChildAt(i).setSaveEnabled(false);
+            }
+
             switch(defaultCategory){
                 case "Tutti":
                     filterGroup.check(R.id.chipAll);
@@ -226,7 +232,8 @@ public class MainActivity extends AppCompatActivity {
             }
             for (int i = 0; i < filterGroup.getChildCount(); i++) {
                 View child = filterGroup.getChildAt(i);
-                if (child instanceof Chip) { 
+
+                if (child instanceof Chip) {
                     Chip chip = (Chip) child;
                     chip.setChipStrokeWidth(3f);
                     chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
@@ -709,6 +716,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        AppCompatDelegate.setDefaultNightMode(modeSelected);
+        if (AppCompatDelegate.getDefaultNightMode() != modeSelected)
+            AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
 }
