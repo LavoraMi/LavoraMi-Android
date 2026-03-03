@@ -509,14 +509,15 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView view = findViewById(R.id.recyclerView);
 
         noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        view.setVisibility((list.isEmpty()) ? View.GONE : View.VISIBLE);
+        view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
 
     private void filtra(String testo) {
         List<EventDescriptor> listaFiltrata = new ArrayList<>();
 
-        if (adapter == null || events == null || events.isEmpty())
+        if (adapter == null || events == null || events.isEmpty() || errorLayout.getVisibility() == View.VISIBLE)
             return;
+
         if (testo == null || testo.trim().isEmpty()) {
             for (EventDescriptor item : events){
                 long now = System.currentTimeMillis();
@@ -554,7 +555,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void applicaFiltroCategoria(String categoria) {
-        if(adapter == null)
+        if(adapter == null || errorLayout.getVisibility() == View.VISIBLE)
             return;
 
         if (events == null || events.isEmpty())
