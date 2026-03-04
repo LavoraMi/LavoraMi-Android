@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -135,8 +136,18 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnSetupSkip = findViewById(R.id.btnSetupSkip);
         btnSetupSkip.setOnClickListener(v ->{
-            DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
-            setupOverlay.setVisibility(View.GONE);
+            /// In this section of the code, we ask the user if he wants to skip the Setup.
+            new AlertDialog.Builder(this)
+                    .setTitle("Sei sicuro?")
+                    .setMessage("Sei sicuro di voler saltare la parte di configurazione?")
+                    .setNegativeButton("Annulla", null)
+                    .setPositiveButton("Continua", ((dialog, which) -> {
+                        DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
+                        setupOverlay.setVisibility(View.GONE);
+                        askForNotificationPermission();
+                    }))
+                    .create()
+                    .show();
         });
 
         /// In this section we also set the "NEXT" button to "END" when it's the last Page.
@@ -144,7 +155,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                int currentPage = viewPager.getCurrentItem();
+
                 btnSetupNext.setText((position == pages.size() -1) ? "Fine" : "Avanti");
+                btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
+
+                if(currentPage == 2)
+                    askForNotificationPermission();
             }
         });
 
