@@ -2,10 +2,13 @@ package com.andreafilice.lavorami;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Build;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -42,9 +45,14 @@ public class NotificationSettings extends AppCompatActivity {
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        ImageButton backButton = (ImageButton) findViewById(R.id.backBtn);
-        backButton.setOnClickListener(v -> {
-            ActivityManager.changeActivity(this, SettingsActivity.class);
+        ImageButton backButton = findViewById(R.id.backBtn);
+        backButton.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
+
+        TextView openSettings = findViewById(R.id.openSettings);
+        openSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.setData(Uri.fromParts("package", getPackageName(), null));
+            startActivity(intent);
         });
 
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchNotificationsGeneral = findViewById(R.id.switchMaster);

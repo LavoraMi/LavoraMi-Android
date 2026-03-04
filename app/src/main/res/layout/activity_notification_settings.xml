@@ -75,6 +75,20 @@
             android:textSize="16sp"
             android:textAlignment="center"
             android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/openSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_medium"
+            android:text="Apri Impostazioni"
+            android:textAlignment="center"
+            android:textColor="@color/RE"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"/>
     </LinearLayout>
 
     <ScrollView
