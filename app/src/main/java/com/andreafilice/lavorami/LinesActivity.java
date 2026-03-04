@@ -37,6 +37,7 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout containerStav;
     LinearLayout containerAutoGuidovie;
     ShimmerFrameLayout loadingLayout;
+    boolean linesLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class LinesActivity extends AppCompatActivity {
         findViewById(R.id.main).post(() -> {
             findViewById(R.id.main).postDelayed(() -> {
                 loadLines();
+                linesLoaded = true;
                 findViewById(R.id.nestedLinesView).setVisibility(View.VISIBLE);
             }, 1000);
         });
@@ -123,6 +125,8 @@ public class LinesActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!linesLoaded) return;
+
                 String query = s.toString().toLowerCase().trim();
 
                 LinearLayout titleMetro = findViewById(R.id.headerMetro);
@@ -176,20 +180,12 @@ public class LinesActivity extends AppCompatActivity {
                 titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                 containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
 
-                if (tvNoResults != null) {
-                    if (!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto)
-                        tvNoResults.setVisibility(View.VISIBLE);
-                    else
-                        tvNoResults.setVisibility(View.GONE);
-                }
-
+                if (tvNoResults != null)
+                    tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
                 if (s.length() > 0)
-                    searchLines.setCompoundDrawablesWithIntrinsicBounds(
-                            android.R.drawable.ic_menu_search, 0,
-                            R.drawable.ic_close, 0);
+                    searchLines.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_search_small, 0, R.drawable.ic_close, 0);
                 else
-                    searchLines.setCompoundDrawablesWithIntrinsicBounds(
-                            android.R.drawable.ic_menu_search, 0, 0, 0);
+                    searchLines.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_search_small, 0, 0, 0);
             }
 
             @Override
@@ -342,7 +338,7 @@ public class LinesActivity extends AppCompatActivity {
                 String bText = badge.getText().toString().toLowerCase();
                 String nText = name.getText().toString().toLowerCase();
 
-                if (bText.contains(query) || nText.contains(query)) {
+                if ((bText.contains(query) || nText.contains(query)) || query.isEmpty()) {
                     row.setVisibility(View.VISIBLE);
                     trovatoAtLeastOne = true;
                 } else

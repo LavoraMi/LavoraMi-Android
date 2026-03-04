@@ -37,7 +37,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             android:background="@color/background_app"
-            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawableStart="@drawable/ic_search_small"
             android:drawableTint="@color/text_primary"
             android:drawablePadding="10dp"
             android:hint="Cerca per tipo o numero..."
