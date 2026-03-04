@@ -3,6 +3,7 @@ import java.io.File
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.services)
 }
 
 //DOT ENV INTEGRATION
@@ -76,4 +77,6 @@ dependencies {
     implementation(libs.androidx.browser)
     implementation(libs.shimmer)
     implementation(libs.play.services.auth)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.messaging)
 }

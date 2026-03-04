@@ -59,6 +59,7 @@ public class NotificationSettings extends AppCompatActivity {
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchStartWorks = findViewById(R.id.switchStartWork);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchEndWorks = findViewById(R.id.switchEndWork);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchStrikeNotifications = findViewById(R.id.switchStrike);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchPushNotifications = findViewById(R.id.switchPushNotifications);
 
         //*LOAD FROM LOCAL SAVES
         /// Load the boolean datas from the DataManager for every toggle.
@@ -66,12 +67,14 @@ public class NotificationSettings extends AppCompatActivity {
         boolean notificationsStartWorks = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
         boolean notificationsEndWorks = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
         boolean notificationsStrikes = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_STRIKES, true);
+        boolean notificationsPush = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_PUSH, true);
 
         /// Cast the type from the boolean to the Switch Value.
         switchNotificationsGeneral.setChecked(notificationsEnabled);
         switchStartWorks.setChecked(notificationsStartWorks);
         switchEndWorks.setChecked(notificationsEndWorks);
         switchStrikeNotifications.setChecked(notificationsStrikes);
+        switchPushNotifications.setChecked(notificationsPush);
 
         /// In this section of the code, we will be setting up the UI if the notificationGeneral
         /// Switch is disabled.
@@ -81,6 +84,7 @@ public class NotificationSettings extends AppCompatActivity {
             switchStartWorks.setChecked(checked);
             switchEndWorks.setChecked(checked);
             switchStrikeNotifications.setChecked(checked);
+            switchPushNotifications.setChecked(checked);
         }
 
         switchStartWorks.setClickable(checked);
@@ -89,6 +93,7 @@ public class NotificationSettings extends AppCompatActivity {
         switchStartWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchEndWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchStrikeNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchPushNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
 
         //*CHECK FOR MAIN SWITCH DISABLED
         switchNotificationsGeneral.setOnClickListener(v -> {
@@ -96,21 +101,25 @@ public class NotificationSettings extends AppCompatActivity {
             switchStartWorks.setChecked(isChecked);
             switchEndWorks.setChecked(isChecked);
             switchStrikeNotifications.setChecked(isChecked);
+            switchPushNotifications.setChecked(isChecked);
 
             switchStartWorks.setClickable(isChecked);
             switchEndWorks.setClickable(isChecked);
             switchStrikeNotifications.setClickable(isChecked);
+            switchPushNotifications.setClickable(isChecked);
 
             switchStartWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchEndWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchStrikeNotifications.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);
+            switchPushNotifications.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);
         });
 
         /// Set the OnClickListener for ALL the Switches.
-        switchStartWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);});
-        switchEndWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);});
-        switchStrikeNotifications.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications);});
+        switchStartWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
+        switchEndWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
+        switchStrikeNotifications.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
+        switchPushNotifications.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
 
         //*TIME PICKER
         /// In this section of the code, we let the user decide at what time
@@ -133,8 +142,7 @@ public class NotificationSettings extends AppCompatActivity {
         int hoursSaved = DataManager.getIntData(this, DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
         int minutesSaved = DataManager.getIntData(this, DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
 
-        String formattedTextUI = ((hoursSaved < 10) ? ("0" + hoursSaved) : String.valueOf(hoursSaved))
-                + ":" + ((minutesSaved < 10) ? ("0" + minutesSaved) : String.valueOf(minutesSaved));
+        String formattedTextUI = ((hoursSaved < 10) ? ("0" + hoursSaved) : String.valueOf(hoursSaved)) + ":" + ((minutesSaved < 10) ? ("0" + minutesSaved) : String.valueOf(minutesSaved));
         textHoursNotifications.setText(formattedTextUI);
 
         btnHourNotifications.setOnClickListener(v -> {
@@ -163,7 +171,7 @@ public class NotificationSettings extends AppCompatActivity {
         });
     }
 
-    public void saveDatas(Switch switchNotificationsGeneral, Switch switchStartWorks, Switch switchEndWorks, Switch switchStrikeNotifications){
+    public void saveDatas(Switch switchNotificationsGeneral, Switch switchStartWorks, Switch switchEndWorks, Switch switchStrikeNotifications, Switch switchPushNotifications){
         /// In this Method, we will save the current configuration of the switches from the Settings
         /// After the save data process, we apply the new configuration with the NotificationScheduler
         /// @PARAMETER All the current parameters are the Switch Objects from the XML file.
@@ -172,10 +180,12 @@ public class NotificationSettings extends AppCompatActivity {
         DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, switchStartWorks.isChecked());
         DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_ENDWORKS, switchEndWorks.isChecked());
         DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STRIKES, switchStrikeNotifications.isChecked());
+        DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_PUSH, switchPushNotifications.isChecked());
 
         switchStartWorks.setTrackTintMode((switchStartWorks.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchEndWorks.setTrackTintMode((switchEndWorks.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchStrikeNotifications.setTrackTintMode((switchStrikeNotifications.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchPushNotifications.setTrackTintMode((switchPushNotifications.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
 
         NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
     }
@@ -183,12 +193,8 @@ public class NotificationSettings extends AppCompatActivity {
     private boolean areNotificationsEnabled() {
         /// In this method, we return if the user allow Notifications or not.
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            return ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED;
-        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+            return ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED;
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         return notificationManager.areNotificationsEnabled();
