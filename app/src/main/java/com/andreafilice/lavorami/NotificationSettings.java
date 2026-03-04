@@ -76,6 +76,12 @@ public class NotificationSettings extends AppCompatActivity {
         switchStrikeNotifications.setChecked(notificationsStrikes);
         switchPushNotifications.setChecked(notificationsPush);
 
+        /// Set the current tint mode when loading datas.
+        switchStartWorks.setTrackTintMode((notificationsStartWorks) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchEndWorks.setTrackTintMode((notificationsEndWorks) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchStrikeNotifications.setTrackTintMode((notificationsStrikes) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        switchPushNotifications.setTrackTintMode((notificationsPush) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
         /// In this section of the code, we will be setting up the UI if the notificationGeneral
         /// Switch is disabled.
 
@@ -85,15 +91,16 @@ public class NotificationSettings extends AppCompatActivity {
             switchEndWorks.setChecked(checked);
             switchStrikeNotifications.setChecked(checked);
             switchPushNotifications.setChecked(checked);
-        }
 
-        switchStartWorks.setClickable(checked);
-        switchEndWorks.setClickable(checked);
-        switchStrikeNotifications.setClickable(checked);
-        switchStartWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        switchEndWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        switchStrikeNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        switchPushNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            /// Set the default TrackTintMode.
+            switchStartWorks.setClickable(checked);
+            switchEndWorks.setClickable(checked);
+            switchStrikeNotifications.setClickable(checked);
+            switchStartWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            switchEndWorks.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            switchStrikeNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            switchPushNotifications.setTrackTintMode((checked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        }
 
         //*CHECK FOR MAIN SWITCH DISABLED
         switchNotificationsGeneral.setOnClickListener(v -> {
