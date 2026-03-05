@@ -39,6 +39,11 @@ jobs:
           config-file: ./.github/codeql/codeql-config.yml
           tools: latest
 
+      - name: Create google-services.json
+        env:
+          GOOGLE_SERVICES_CONTENT: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: echo "$GOOGLE_SERVICES_CONTENT" > app/google-services.json
+
       - name: Build Android App
         run: |
           chmod +x gradlew
