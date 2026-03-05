@@ -433,6 +433,7 @@ public class MainActivity extends AppCompatActivity {
                     eventsDisplay.clear();
                     eventsDisplay = response.body();
                     EventData.listaEventiCompleta = events;
+                    EventData.networkError = false;
                     NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
 
                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -454,6 +455,7 @@ public class MainActivity extends AppCompatActivity {
 
                     errorDeps.setText(t.getMessage());
                     errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
+                    EventData.networkError = true;
 
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
@@ -541,11 +543,12 @@ public class MainActivity extends AppCompatActivity {
         NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
     }
 
-    private void checkForEmptyList(List<EventDescriptor> list) {
+    private void checkForEmptyList(List<EventDescriptor> list, String searchInfo) {
         TextView noWorkFounds = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
 
         noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
+        noWorkFounds.setText((searchInfo.equals("null") ? "Nessun lavoro trovato per il filtro selezionato." : String.format("Nessun lavoro trovato per: \"%s\".", searchInfo)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
 
@@ -564,7 +567,7 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter.setFilteredList(listaFiltrata);
 
-            checkForEmptyList(events);
+            checkForEmptyList(events, testo);
             return;
         }
 
@@ -588,7 +591,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         adapter.setFilteredList(listaFiltrata);
-        checkForEmptyList(listaFiltrata);
+        checkForEmptyList(listaFiltrata, testo);
     }
 
     private void applicaFiltroCategoria(String categoria) {
@@ -665,7 +668,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         adapter.setFilteredList(filtrata);
-        checkForEmptyList(filtrata);
+        checkForEmptyList(filtrata, "null");
     }
 
     private int calcolaPercentuale(EventDescriptor item) {

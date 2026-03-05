@@ -540,7 +540,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
-        emptyView.setText("Non ci sono lavori su questa linea.");
+        emptyView.setText((EventData.networkError) ? "Nessuna connessione ad Internet." : "Non ci sono lavori su questa linea.");
     }
 
     private void caricaInterscambiLinee() {

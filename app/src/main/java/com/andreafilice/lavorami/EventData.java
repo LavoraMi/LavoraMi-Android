@@ -4,4 +4,5 @@ import java.util.ArrayList;
 
 public class EventData {
     public static ArrayList<EventDescriptor> listaEventiCompleta = new ArrayList<>();
+    public static boolean networkError;
 }
