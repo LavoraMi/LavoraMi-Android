@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Mostra messaggi di errore quando fallisce il Download dei dati."
+                android:text="Mostra messaggi di errore quando fallisce il Download dei dati dal server."
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
