@@ -89,8 +89,11 @@ public class AccountManagement extends AppCompatActivity {
                         Toast.makeText(this, "Sign-in con Google fallito.", Toast.LENGTH_SHORT).show();
                     }
                 }
-                else
+                else{
                     Log.e("GOOGLE", "Finestra chiusa o annullata. Result Code: " + result.getResultCode());
+                    loggingInWithGoogle = false;
+                    updateUI();
+                }
             }
     );
 
@@ -187,8 +190,8 @@ public class AccountManagement extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v -> {
             login(emailLogin.getText().toString(), passwordLogin.getText().toString());
-            passwordLogin.setText("");
-            emailLogin.setText("");
+            passwordLogin.setEnabled(false);
+            emailLogin.setEnabled(false);
         });
 
         //*LOGGED IN VIEW
@@ -318,9 +321,23 @@ public class AccountManagement extends AppCompatActivity {
                     Toast.makeText(AccountManagement.this, "Bentornato!", Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
                     loggingInWithGoogle = false;
+
+                    //*UI UPDATE
+                    EditText etLoginPassword = findViewById(R.id.etLoginPassword);
+                    EditText etLoginEmail = findViewById(R.id.etLoginEmail);
+
+                    etLoginEmail.setEnabled(true);
+                    etLoginPassword.setEnabled(true);
                     updateUI();
-                } else
+                }
+                else{
                     Toast.makeText(AccountManagement.this, "Errore Login: Credenziali errate", Toast.LENGTH_SHORT).show();
+                    EditText etLoginPassword = findViewById(R.id.etLoginPassword);
+                    EditText etLoginEmail = findViewById(R.id.etLoginEmail);
+
+                    etLoginEmail.setEnabled(true);
+                    etLoginPassword.setEnabled(true);
+                }
             }
 
             @Override
