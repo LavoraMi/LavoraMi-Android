@@ -261,6 +261,21 @@ public class MainActivity extends AppCompatActivity {
         //* SEARCH BAR
         EditText editSearch = findViewById(R.id.editSearch);
         editSearch.setBackgroundResource(R.drawable.bg_edittext_search);
+
+        int iconSize = (int) (22 * getResources().getDisplayMetrics().density);
+
+        Drawable searchIcon = ContextCompat.getDrawable(this, R.drawable.ic_search_small);
+        if (searchIcon != null) searchIcon.setBounds(0, 0, iconSize, iconSize);
+
+        Drawable deleteIcon = ContextCompat.getDrawable(this, R.drawable.ic_delete_small);
+        if (deleteIcon != null) deleteIcon.setBounds(0, 0, iconSize, iconSize);
+
+        editSearch.setCompoundDrawables(searchIcon, null, null, null);
+
+        int hPadding = (int) (4 * getResources().getDisplayMetrics().density);
+        int iconWithPadding = iconSize + hPadding;
+        editSearch.setPadding(editSearch.getPaddingLeft(), editSearch.getPaddingTop(), iconWithPadding, editSearch.getPaddingBottom());
+
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -269,14 +284,10 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 0 && filterGroup != null) {
                     filterGroup.clearCheck();
-                    editSearch.setCompoundDrawablesWithIntrinsicBounds(
-                            android.R.drawable.ic_menu_search, 0,
-                            R.drawable.ic_close, 0);
+                    editSearch.setCompoundDrawables(searchIcon, null, deleteIcon, null);
                 }
-                else{
-                    editSearch.setCompoundDrawablesWithIntrinsicBounds(
-                            android.R.drawable.ic_menu_search, 0, 0, 0);
-                }
+                else
+                    editSearch.setCompoundDrawables(searchIcon, null, null, null);
                 String testoRicerca = s.toString().toLowerCase().trim();
                 filtra(testoRicerca);
             }
@@ -290,7 +301,9 @@ public class MainActivity extends AppCompatActivity {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 Drawable drawableEnd = editSearch.getCompoundDrawables()[2];
                 if (drawableEnd != null) {
-                    if (event.getRawX() >= (editSearch.getRight() - drawableEnd.getBounds().width())) {
+                    int rightBoundary = editSearch.getRight() - editSearch.getPaddingRight();
+                    int leftBoundary = rightBoundary - drawableEnd.getBounds().width();
+                    if (event.getRawX() >= leftBoundary && event.getRawX() <= rightBoundary) {
                         editSearch.setText("");
                         return true;
                     }

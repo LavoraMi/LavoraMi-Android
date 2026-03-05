@@ -119,6 +119,21 @@ public class LinesActivity extends AppCompatActivity {
 
         //* SEARCH BAR
         searchLines.setBackgroundResource(R.drawable.bg_edittext_search);
+
+        int iconSize = (int) (22 * getResources().getDisplayMetrics().density);
+
+        Drawable searchIcon = ContextCompat.getDrawable(this, R.drawable.ic_search_small);
+        if (searchIcon != null) searchIcon.setBounds(0, 0, iconSize, iconSize);
+
+        Drawable deleteIcon = ContextCompat.getDrawable(this, R.drawable.ic_delete_small);
+        if (deleteIcon != null) deleteIcon.setBounds(0, 0, iconSize, iconSize);
+
+        searchLines.setCompoundDrawables(searchIcon, null, null, null);
+
+        int hPadding = (int) (4 * getResources().getDisplayMetrics().density);
+        int iconWithPadding = iconSize + hPadding;
+        searchLines.setPadding(searchLines.getPaddingLeft(), searchLines.getPaddingTop(), iconWithPadding, searchLines.getPaddingBottom());
+
         searchLines.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -183,9 +198,9 @@ public class LinesActivity extends AppCompatActivity {
                 if (tvNoResults != null)
                     tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
                 if (s.length() > 0)
-                    searchLines.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_search_small, 0, R.drawable.ic_close, 0);
+                    searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);
                 else
-                    searchLines.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_search_small, 0, 0, 0);
+                    searchLines.setCompoundDrawables(searchIcon, null, null, null);
             }
 
             @Override
@@ -197,7 +212,9 @@ public class LinesActivity extends AppCompatActivity {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 Drawable drawableEnd = searchLines.getCompoundDrawables()[2];
                 if (drawableEnd != null) {
-                    if (event.getRawX() >= (searchLines.getRight() - drawableEnd.getBounds().width())) {
+                    int rightBoundary = searchLines.getRight() - searchLines.getPaddingRight();
+                    int leftBoundary = rightBoundary - drawableEnd.getBounds().width();
+                    if (event.getRawX() >= leftBoundary && event.getRawX() <= rightBoundary) {
                         searchLines.setText("");
                         return true;
                     }

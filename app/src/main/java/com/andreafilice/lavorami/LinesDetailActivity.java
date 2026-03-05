@@ -235,10 +235,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         mMap = googleMap;
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        if (isDarkMode())
-            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
-        else
-            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style_light));
+        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, (isDarkMode()) ? R.raw.map_style : R.raw.map_style_light));
 
         for (MetroStation stazione : StationDB.getAllStations()) {
             if (stazione.getLine().trim().equalsIgnoreCase(nomeLinea.trim())) {
