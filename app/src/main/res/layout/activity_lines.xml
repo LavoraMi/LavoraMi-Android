@@ -42,7 +42,7 @@
             android:drawablePadding="10dp"
             android:hint="Cerca per tipo o numero..."
             android:paddingStart="15dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/text_primary"
             android:textColorHint="#666666"
             android:inputType="text"
             app:layout_constraintTop_toBottomOf="@id/textView"

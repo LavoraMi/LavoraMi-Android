@@ -236,7 +236,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Email del tuo Account"
                             android:inputType="textEmailAddress"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

@@ -105,7 +105,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Email"
                             android:inputType="textEmailAddress"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -139,7 +139,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Password"
                             android:inputType="textPassword"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -295,7 +295,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Email"
                             android:inputType="textEmailAddress"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -568,7 +568,6 @@
 
                 </LinearLayout>
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -768,7 +767,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Nome completo"
                             android:inputType="textPersonName"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -802,7 +801,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Email"
                             android:inputType="textEmailAddress"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -836,7 +835,7 @@
                             android:fontFamily="@font/archivo_medium"
                             android:hint="Password"
                             android:inputType="textPassword"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
