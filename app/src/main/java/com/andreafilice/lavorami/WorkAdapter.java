@@ -140,6 +140,10 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_bolt));
                         chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
                     }
+                    else if(nomePulito.contains("N")){
+                        chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_dark));
+                        chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                    }
 
                     chip.setShapeAppearanceModel(cornerRadius);
                     chip.setEnsureMinTouchTargetSize(false);
@@ -284,6 +288,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     return R.color.BUS;
                 else if(nomeLinea.contains("Filobus"))
                     return R.color.FILOBUS;
+                else if(nomeLinea.contains("N"))
+                    return R.color.NIGHTLINES;
                 else if(nomeLinea.contains("R") && !nomeLinea.contains("RE"))
                     return R.color.REGIONAL;
                 else if(nomeLinea.contains("RE"))
@@ -293,7 +299,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 else if(nomeLinea.contains("P"))
                     return R.color.AUTOGUIDOVIE;
                 else
-                    return R.color.OTHER;
+                    return R.color.OTHER_LINES;
         }
     }
 

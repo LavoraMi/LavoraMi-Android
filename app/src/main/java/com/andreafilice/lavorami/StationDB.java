@@ -913,6 +913,8 @@ public class StationDB {
                     return R.color.BUS;
                 else if (nomeLinea.contains("Filobus"))
                     return R.color.FILOBUS;
+                else if(nomeLinea.contains("N"))
+                    return R.color.NIGHTLINES;
                 else if(nomeLinea.equals("RE80"))
                     return R.color.RE80;
                 else if (nomeLinea.contains("R") && !nomeLinea.contains("RE"))
@@ -926,7 +928,7 @@ public class StationDB {
                 else if(nomeLinea.startsWith("MXP"))
                     return R.color.MXP;
                 else
-                    return R.color.OTHER;
+                    return R.color.OTHER_LINES;
         }
     }
 }
