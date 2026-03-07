@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -38,6 +39,8 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
         MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
         MaterialButton btnRequestDatas = findViewById(R.id.btnRequestDatas);
+        MaterialButton btnInstagram = findViewById(R.id.btnInstagram);
+        MaterialButton btnTikTok = findViewById(R.id.btnTikTok);
         ImageButton btnBack = findViewById(R.id.backBtn);
 
         btnReportBug.setOnClickListener(new View.OnClickListener() {
@@ -49,18 +52,21 @@ public class SourcesDevelopment extends AppCompatActivity {
                 intent.setData(Uri.parse("mailto:info@lavorami.it"));
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);
 
-                try {
-                    startActivity(Intent.createChooser(intent, "Invia segnalazione bug"));
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
+                try {startActivity(Intent.createChooser(intent, "Invia segnalazione bug"));}
+                catch (Exception e) {e.printStackTrace();}
             }
         });
 
-        btnWebsite.setOnClickListener(v -> {ActivityManager.openURL(this, "https://lavorami.it");});
-        btnPatreon.setOnClickListener(v -> {ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi");});
-        btnRequestDatas.setOnClickListener(v -> {ActivityManager.changeActivity(this, RequestUserDatas.class);});
-        btnBack.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
+        btnInstagram.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
+        btnTikTok.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.tiktok.com/@applavorami.official"));
+        btnPatreon.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi"));
+        btnRequestDatas.setOnClickListener(v -> ActivityManager.changeActivity(this, RequestUserDatas.class));
+        btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
+        btnWebsite.setOnClickListener(v -> {
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+
+            CustomTabsIntent customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(this, Uri.parse("https://lavorami.it"));
+        });
     }
 }
