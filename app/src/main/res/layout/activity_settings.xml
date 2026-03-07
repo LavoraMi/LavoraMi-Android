@@ -109,8 +109,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:rotation="180"
-                        android:src="@drawable/ic_dropdown"
-                        app:tint="#48484A" />
+                        android:src="@drawable/ic_back"
+                        app:tint="@color/text_primary"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -171,7 +171,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
@@ -270,7 +270,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
@@ -521,7 +521,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
@@ -571,7 +571,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
@@ -621,7 +621,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
@@ -659,7 +659,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 
@@ -724,7 +724,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:rotation="180"
-                            android:src="@drawable/ic_dropdown"
+                            android:src="@drawable/ic_back"
                             app:tint="@color/text_primary" />
                     </RelativeLayout>
 

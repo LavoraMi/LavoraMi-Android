@@ -383,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerView = findViewById(R.id.recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-            adapter = new WorkAdapter(eventsDisplay, DataManager.getBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, false));
+            adapter = new WorkAdapter(eventsDisplay);
             adapter.setFilteredList(eventsDisplay);
             recyclerView.setAdapter(adapter);
 
@@ -446,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
 
                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    adapter = new WorkAdapter(eventsDisplay, DataManager.getBoolData(MainActivity.this, DataKeys.KEY_SHOW_MORE_DETAILS, false));
+                    adapter = new WorkAdapter(eventsDisplay);
                     adapter.setFilteredList(eventsDisplay);
                     recyclerView.setAdapter(adapter);
 

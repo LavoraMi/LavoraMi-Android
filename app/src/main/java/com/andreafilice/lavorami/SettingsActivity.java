@@ -276,10 +276,9 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
-                    DataManager.saveBoolData(this, DataKeys.KEY_SHOW_MORE_DETAILS, false);
                     DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
                     Toast.makeText(this, "Impostazioni ripristinate correttamente!", Toast.LENGTH_SHORT).show();
-
+                    favorites.clear();
                     reloadDatas();
                     setTheme();
                     loadFavorites(images, lines);

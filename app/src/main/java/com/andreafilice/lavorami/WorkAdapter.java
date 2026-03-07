@@ -34,11 +34,9 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_FOOTER = 1;
 
     private List<EventDescriptor> eventList;
-    private static boolean isMoreDetails = false;
 
-    public WorkAdapter(List<EventDescriptor> eventList, boolean isMoreDetails){
+    public WorkAdapter(List<EventDescriptor> eventList){
         this.eventList = (eventList!=null) ? eventList : new ArrayList<>();
-        this.isMoreDetails = isMoreDetails;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -79,106 +77,85 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        if (viewType == VIEW_TYPE_FOOTER && isMoreDetails) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_footer, parent, false);
-            return new FooterViewHolder(view);
-        }
-        else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lavoro, parent, false);
-            return new ViewHolder(view);
-        }
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lavoro, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
-        if (holder instanceof FooterViewHolder) {
-            FooterViewHolder footerHolder = (FooterViewHolder) holder;
-            footerHolder.txtTotaleLavori.setText("Totale lavori caricati: " + eventList.size());
-        }
-        else if (holder instanceof ViewHolder) {
-            ViewHolder itemHolder = (ViewHolder) holder;
-            boolean showDetails = DataManager.getBoolData(itemHolder.itemView.getContext(),
-                    DataKeys.KEY_SHOW_DETAILS,
-                    true);
-            EventDescriptor item = eventList.get(position);
+        ViewHolder itemHolder = (ViewHolder) holder;
+        EventDescriptor item = eventList.get(position);
 
-            String finalStartDate = formattaData(item.getStartDate());
-            String finalEndDate = formattaData(item.getEndDate());
+        String finalStartDate = formattaData(item.getStartDate());
+        String finalEndDate = formattaData(item.getEndDate());
 
-            int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
+        int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
 
-            ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
-            itemHolder.cardImage.setImageResource(item.getCardImageID());
+        ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
+        itemHolder.cardImage.setImageResource(item.getCardImageID());
 
-            itemHolder.titleText.setText(item.getTitle());
-            itemHolder.trattaText.setText(item.getRoads());
-            itemHolder.startDateText.setText("Dal: " + finalStartDate);
-            itemHolder.endDateText.setText("Al: " + finalEndDate);
-            itemHolder.companyText.setText(item.getCompany());
-            itemHolder.descriptionText.setText(item.getDetails());
-            itemHolder.descriptionText.setVisibility((showDetails) ? View.VISIBLE : View.GONE);
+        itemHolder.titleText.setText(item.getTitle());
+        itemHolder.trattaText.setText(item.getRoads());
+        itemHolder.startDateText.setText("Dal: " + finalStartDate);
+        itemHolder.endDateText.setText("Al: " + finalEndDate);
+        itemHolder.companyText.setText(item.getCompany());
+        itemHolder.descriptionText.setText(item.getDetails());
 
-            int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
-            itemHolder.progressBar.setProgress(progressPercentage);
+        int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
+        itemHolder.progressBar.setProgress(progressPercentage);
 
-            itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
+        itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
 
-            itemHolder.chipGroupLinee.removeAllViews();
-            List<String> lineeRaw = Arrays.asList(item.getLines());
-            if (!lineeRaw.isEmpty()) {
-                for (String nome : lineeRaw) {
-                    String nomePulito = nome.trim();
-                    Chip chip = new Chip(itemHolder.itemView.getContext());
-                    chip.setText(nomePulito);
+        itemHolder.chipGroupLinee.removeAllViews();
+        List<String> lineeRaw = Arrays.asList(item.getLines());
+        if (!lineeRaw.isEmpty()) {
+            for (String nome : lineeRaw) {
+                String nomePulito = nome.trim();
+                Chip chip = new Chip(itemHolder.itemView.getContext());
+                chip.setText(nomePulito);
 
-                    ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
-                            .toBuilder()
-                            .setAllCornerSizes(10f)
-                            .build();
+                ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
+                        .toBuilder()
+                        .setAllCornerSizes(10f)
+                        .build();
 
-                    if(nomePulito.contains("Filobus")){
-                        chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_bolt));
-                        chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
-                    }
-                    else if(nomePulito.contains("N")){
-                        chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_dark));
-                        chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
-                    }
-
-                    chip.setShapeAppearanceModel(cornerRadius);
-                    chip.setEnsureMinTouchTargetSize(false);
-                    chip.setChipMinHeight(0f);
-
-                    chip.setChipStartPadding(10f);
-                    chip.setChipEndPadding(10f);
-
-                    chip.setTextSize(14f);
-                    chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
-                    chip.setTextColor(Color.WHITE);
-
-                    int coloreLinea = getColorForLinea(nomePulito);
-                    int coloreTestoEffettivo = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.White);
-                    int coloreEffettivo = ContextCompat.getColor(itemHolder.itemView.getContext(), coloreLinea);
-                    chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
-                    chip.setTextColor(coloreTestoEffettivo);
-
-                    chip.setCloseIconVisible(false);
-                    chip.setClickable(false);
-                    chip.setCheckable(false);
-
-                    itemHolder.chipGroupLinee.addView(chip);
+                if(nomePulito.contains("Filobus")){
+                    chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_bolt));
+                    chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
                 }
+                else if(nomePulito.contains("N")){
+                    chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_dark));
+                    chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                }
+
+                chip.setShapeAppearanceModel(cornerRadius);
+                chip.setEnsureMinTouchTargetSize(false);
+                chip.setChipMinHeight(0f);
+
+                chip.setChipStartPadding(10f);
+                chip.setChipEndPadding(10f);
+
+                chip.setTextSize(14f);
+                chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
+                chip.setTextColor(Color.WHITE);
+
+                int coloreLinea = getColorForLinea(nomePulito);
+                int coloreTestoEffettivo = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.White);
+                int coloreEffettivo = ContextCompat.getColor(itemHolder.itemView.getContext(), coloreLinea);
+                chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
+                chip.setTextColor(coloreTestoEffettivo);
+
+                chip.setCloseIconVisible(false);
+                chip.setClickable(false);
+                chip.setCheckable(false);
+
+                itemHolder.chipGroupLinee.addView(chip);
             }
         }
     }
 
     @Override
-    public int getItemCount(){
-        if(isMoreDetails)
-            return eventList.size()+1;
-        else
-            return eventList.size();
-    }
+    public int getItemCount(){return eventList.size();}
 
     private int calcolaPercentuale(String startDateStr, String endDateStr) {
         long start = getDateMillis(startDateStr);
