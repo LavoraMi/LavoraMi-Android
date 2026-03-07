@@ -262,7 +262,6 @@ public class MainActivity extends AppCompatActivity {
         //* SEARCH BAR
         EditText editSearch = findViewById(R.id.editSearch);
         editSearch.setBackgroundResource(R.drawable.bg_edittext_search);
-
         int iconSize = (int) (22 * getResources().getDisplayMetrics().density);
 
         Drawable searchIcon = ContextCompat.getDrawable(this, R.drawable.ic_search_small);
@@ -335,10 +334,8 @@ public class MainActivity extends AppCompatActivity {
 
         //*MODAL ON ALPHA VERSION
         /// This section of the code will be eliminated on release, this provides some Feedbacks of the app from the Testers.
-        if(!DataManager.getBoolData(this, DataKeys.KEY_MODAL_ALPHA, false)){
-            ModalUtils.showCustomAlert(this, "Come ti trovi?", "Vorremmo sapere la tua riguardo LavoraMi! Se hai trovato qualche bug oppure hai dei suggerimenti, saranno ben accetti! Scrivici a: info@lavorami.it!", "Chiudi", null);
-            DataManager.saveBoolData(this, DataKeys.KEY_MODAL_ALPHA, true);
-        }
+        if(!DataManager.getBoolData(this, DataKeys.KEY_MODAL_ALPHA, false) && hasCompletedSetup)
+            ModalUtils.showCustomAlert(this, "Come ti trovi?", "Vorremmo sapere la tua riguardo LavoraMi! Se hai trovato qualche bug oppure hai dei suggerimenti, saranno ben accetti! Scrivici a: info@lavorami.it!", "Chiudi", () -> {DataManager.saveBoolData(this, DataKeys.KEY_MODAL_ALPHA, true);});
     }
 
     private void askForNotificationPermission(){

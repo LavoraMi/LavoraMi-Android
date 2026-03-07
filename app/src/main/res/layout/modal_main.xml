@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="12dp"
-            android:background="@color/redMetro"
+            android:background="@color/text_primary"
             android:alpha="0.3"
             app:layout_constraintTop_toBottomOf="@+id/dialogTitle"
             app:layout_constraintStart_toStartOf="parent"
