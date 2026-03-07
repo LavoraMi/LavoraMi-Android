@@ -89,7 +89,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="visible"/>
                     </RelativeLayout>
 
@@ -120,7 +120,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -152,7 +152,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -184,7 +184,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -216,7 +216,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -248,7 +248,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -280,7 +280,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -312,7 +312,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -344,7 +344,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -376,7 +376,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -408,7 +408,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
 
@@ -440,7 +440,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/check"
-                            app:tint="@color/text_primary"
+                            app:tint="@color/redMetro"
                             android:visibility="gone"/>
                     </RelativeLayout>
                 </LinearLayout>

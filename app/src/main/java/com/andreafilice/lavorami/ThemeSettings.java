@@ -79,6 +79,9 @@ public class ThemeSettings extends AppCompatActivity {
 
         /// Set the Theme
         setTheme();
+
+        /// Back to Settings screen
+        finish();
     }
 
     private void setTheme(){
