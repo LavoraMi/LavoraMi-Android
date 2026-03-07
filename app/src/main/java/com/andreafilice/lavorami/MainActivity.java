@@ -332,6 +332,13 @@ public class MainActivity extends AppCompatActivity {
 
         //*DOWNLOADING EVENTS
         downloadJSONData(defaultCategory, false);
+
+        //*MODAL ON ALPHA VERSION
+        /// This section of the code will be eliminated on release, this provides some Feedbacks of the app from the Testers.
+        if(!DataManager.getBoolData(this, DataKeys.KEY_MODAL_ALPHA, false)){
+            ModalUtils.showCustomAlert(this, "Come ti trovi?", "Vorremmo sapere la tua riguardo LavoraMi! Se hai trovato qualche bug oppure hai dei suggerimenti, saranno ben accetti! Scrivici a: info@lavorami.it!", "Chiudi", null);
+            DataManager.saveBoolData(this, DataKeys.KEY_MODAL_ALPHA, true);
+        }
     }
 
     private void askForNotificationPermission(){
