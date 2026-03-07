@@ -74,7 +74,7 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_account_circle"/>
+                        android:src="@drawable/ic_account_circle" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
 
                         <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />
 
-                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout android:id="@+id/sLinesLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconS"
                                 android:layout_width="28dp"
@@ -197,7 +197,7 @@
                             <ImageView android:focusable="true" android:id="@+id/sLinesFavorites" android:clickable="true" android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout android:id="@+id/rLinesLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconR"
                                 android:layout_width="28dp"
@@ -209,7 +209,7 @@
                             <ImageView android:focusable="true" android:id="@+id/rLinesFavorites" android:clickable="true" android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout android:id="@+id/reLinesLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconRE"
                                 android:layout_width="28dp"
@@ -284,7 +284,7 @@
 
                         <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />
 
-                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout android:id="@+id/busLinesATMLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconMetro"
                                 android:layout_width="28dp"
@@ -296,7 +296,7 @@
                             <ImageView android:focusable="true" android:id="@+id/metroLinesFavorites" android:clickable="true" android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout android:id="@+id/tramLinesATMLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconTram"
                                 android:layout_width="28dp"
@@ -308,7 +308,7 @@
                             <ImageView android:focusable="true" android:id="@+id/tramLinesFavorites" android:clickable="true" android:layout_width="18dp" android:layout_height="18dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout android:id="@+id/metroLinesATMLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
                             <ImageView
                                 android:id="@+id/iconBus"
                                 android:layout_width="28dp"
@@ -889,5 +889,4 @@
             app:srcCompat="@drawable/ic_setting"
             app:tint="#FD272D" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

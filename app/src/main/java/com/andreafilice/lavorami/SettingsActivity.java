@@ -111,6 +111,18 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
         };
 
+        RelativeLayout[] starButtons = {
+            findViewById(R.id.sLinesLayout),
+            findViewById(R.id.rLinesLayout),
+            findViewById(R.id.reLinesLayout),
+            findViewById(R.id.busLinesATMLayout),
+            findViewById(R.id.tramLinesATMLayout),
+            findViewById(R.id.metroLinesATMLayout),
+            findViewById(R.id.disclosureHeaderMovibus),
+            findViewById(R.id.disclosureHeaderStav),
+            findViewById(R.id.disclosureHeaderAutoguidovie)
+        };
+
         String[] lineCodes = {
             "S",
             "R",
@@ -126,7 +138,7 @@ public class SettingsActivity extends AppCompatActivity {
         favorites = new HashSet<>(DataManager.getStringArray(this, DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
         Log.d("DATA", favorites.toString());
 
-        setStarIcons(starIcons, lineCodes);
+        setStarIcons(starIcons, starButtons, lineCodes);
         loadFavorites(starIcons, lineCodes);
 
         //*SET THE VERSION TEXT
@@ -165,6 +177,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
+        /// In this section of the code, we reload the datas of the SettingsActivity for updating it to the latest versions.
+
         super.onResume();
         reloadDatas();
     }
@@ -196,10 +210,25 @@ public class SettingsActivity extends AppCompatActivity {
             profileImage.clearColorFilter();
     }
 
-    public void setStarIcons(ImageView[] icons, String[] lineCodes){
+    public void setStarIcons(ImageView[] icons, RelativeLayout[] layouts, String[] lineCodes){
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;
             icons[i].setOnClickListener(v -> {
+                Integer currentTag = (Integer) icons[finalI].getTag();
+                int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
+                int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
+                icons[finalI].setImageResource(newRes);
+                icons[finalI].setTag(newRes);
+
+                if (newRes == R.drawable.ic_star_fill)
+                    favorites.add(lineCodes[finalI]);
+                else
+                    favorites.remove(lineCodes[finalI]);
+
+                NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
+                DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, favorites);
+            });
+            layouts[i].setOnClickListener(v -> {
                 Integer currentTag = (Integer) icons[finalI].getTag();
                 int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
                 int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;

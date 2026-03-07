@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             /// In this section, we ask the permission of notifications to the user, beacuse in this Index there is the "Notification" page.
-            if(currentPage == 2)
+            if(currentPage == 3)
                 askForNotificationPermission();
         });
 
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 btnSetupNext.setText((position == pages.size() -1) ? "Fine" : "Avanti");
                 btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
 
-                if(currentPage == 2)
+                if(currentPage == 3)
                     askForNotificationPermission();
             }
         });

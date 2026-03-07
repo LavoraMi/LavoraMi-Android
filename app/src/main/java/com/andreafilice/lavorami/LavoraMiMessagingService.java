@@ -28,14 +28,13 @@ public class LavoraMiMessagingService extends FirebaseMessagingService {
             manager.createNotificationChannel(new NotificationChannel("lavorami_notifications", "Avvisi LavoraMi", NotificationManager.IMPORTANCE_HIGH));
 
         manager.notify((int) System.currentTimeMillis(),
-                new NotificationCompat.Builder(this, "lavorami_notifications")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentTitle(title)
-                    .setContentText(message)
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-
-                    .setAutoCancel(true)
-                    .build()
+            new NotificationCompat.Builder(this, "lavorami_notifications")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true)
+                .build()
         );
     }
 }
