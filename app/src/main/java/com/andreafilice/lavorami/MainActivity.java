@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -452,6 +453,7 @@ public class MainActivity extends AppCompatActivity {
                 if (loadingLayout != null) {
                     boolean showErrorMessage = DataManager.getBoolData(MainActivity.this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                     TextView errorDeps = findViewById(R.id.errorDeps);
+                    ImageView iconWiFi = findViewById(R.id.iconWifi);
 
                     errorDeps.setText(t.getMessage());
                     errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
@@ -461,6 +463,13 @@ public class MainActivity extends AppCompatActivity {
                     errorLayout.setVisibility(View.VISIBLE);
                     strikeBanner.setVisibility(View.GONE);
                     progressBarRefresh.setVisibility(View.GONE);
+
+                    /// In this section of the code, we check the android version and adapt the style to that version.
+                    iconWiFi.setImageResource(
+                        (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+                            ? R.drawable.ic_wifi_slash_android11_later
+                            : R.drawable.ic_wifi_slash_android10_previous
+                    );
                 }
             }
         });

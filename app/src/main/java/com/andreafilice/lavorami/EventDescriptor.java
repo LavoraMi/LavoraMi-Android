@@ -39,19 +39,21 @@ public class EventDescriptor {
     public int getTitleIconID(String swiftIconName){
         switch(swiftIconName) {
             case "arrow.branch":
-                return R.drawable.baseline_alt_route_24;
+                return R.drawable.ic_branch;
             case "clock.fill":
-                return R.drawable.baseline_access_time_filled_24;
+                return R.drawable.ic_clock;
             case "clock.badge.fill":
-                return R.drawable.baseline_access_alarm_24;
+                return R.drawable.ic_clock_badge;
             case "clock.badge.exclamationmark.fill":
-                return R.drawable.baseline_crisis_alert_24;
+                return R.drawable.ic_clock_exclamation;
             case "exclamationmark.triangle.fill":
                 return R.drawable.warning_triangle_filled;
             case "hand.raised.fill":
                 return R.drawable.baseline_back_hand_24;
             case "door.sliding.left.hand.closed":
                 return R.drawable.baseline_door_sliding_24;
+            case "arrow.trianglehead.2.counterclockwise":
+                return R.drawable.ic_counterclockwise;
             default:
                 return R.drawable.empty_image;
         }

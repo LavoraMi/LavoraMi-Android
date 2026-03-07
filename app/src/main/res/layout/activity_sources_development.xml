@@ -334,7 +334,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_arrow"
+        app:srcCompat="@drawable/ic_back"
         app:tint="?attr/colorControlNormal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

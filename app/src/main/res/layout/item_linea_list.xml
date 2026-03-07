@@ -59,7 +59,8 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:alpha="0.3"
-            android:src="@drawable/baseline_arrow_forward_ios_24"
+            android:src="@drawable/ic_back"
+            android:rotation="180"
             app:tint="?android:attr/textColorPrimary"/>
     </LinearLayout>
 
