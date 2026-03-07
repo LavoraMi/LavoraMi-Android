@@ -98,7 +98,6 @@ public class RequestUserDatas extends AppCompatActivity {
                     String body = "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato " + selectedFileFormat + " dell'Account con mail: " + etEmailAccount.getText() + "\nMessaggio inviato dall'App LavoraMi.";
 
                     String encodedBody = Uri.encode(body);
-
                     String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
                     Intent intent = new Intent(Intent.ACTION_SENDTO);

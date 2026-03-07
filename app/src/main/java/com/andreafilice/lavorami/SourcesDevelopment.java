@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -46,13 +47,16 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnReportBug.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String subject = "Segnalazione Bug LavoraMI";
+                String subject = "Segnalazione bug LavoraMi su Android";
+                String body = String.format("INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG):\nID Telefono: %s\nVersione Android: %s\nModello e manufacture: %s, %s", Build.DEVICE.toString(), Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER);
+
+                String encodedBody = Uri.encode(body);
+                String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:info@lavorami.it"));
-                intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                intent.setData(Uri.parse(mailtoUri));
 
-                try {startActivity(Intent.createChooser(intent, "Invia segnalazione bug"));}
+                try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
                 catch (Exception e) {e.printStackTrace();}
             }
         });
