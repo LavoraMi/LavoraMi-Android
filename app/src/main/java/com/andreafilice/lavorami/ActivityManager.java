@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+
+import androidx.core.app.ActivityOptionsCompat;
 
 public class ActivityManager {
     public static void changeActivity(Context context, Class<?> destinationLayout) {
@@ -11,12 +14,14 @@ public class ActivityManager {
         /// Class<?> destinationLayout is a destination activity which this function change.
 
         //*CHANGE LAYOUT
-        Intent layoutChange = new Intent(context, destinationLayout); //*CREATE THE INTENT WITH THE DESTINATION
-        context.startActivity(layoutChange); //*CHANGE LAYOUT
+        Intent layoutChange = new Intent(context, destinationLayout);
+        layoutChange.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
-        /// In this section, we check if the context is an Activity and then we apply the animation.
-        if (context instanceof Activity)
-            ((Activity) context).overridePendingTransition(0, 0);
+        Bundle animOptions = ActivityOptionsCompat
+                .makeCustomAnimation(context, 0, 0)
+                .toBundle();
+
+        context.startActivity(layoutChange, animOptions);
     }
 
     public static void openURL(Context context, String url) {

@@ -219,7 +219,7 @@
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="32dp"
                     android:clickable="true"
                     android:focusable="true"
