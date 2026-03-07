@@ -275,7 +275,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/lineDetailPage"
@@ -298,14 +298,13 @@
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
-    <!-- INTERSCAMBI SECTION: fills remaining screen height dynamically -->
     <LinearLayout
         android:id="@+id/interscambiWrapper"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/lineDetailPage"
