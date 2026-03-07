@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
+    <!--Font Size original: 32dp (CHANGE IN RELEASE)-->
     <TextView
         android:id="@+id/appName"
         android:layout_width="0dp"
@@ -26,8 +27,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/archivo_medium"
-        android:text="@string/app_name"
-        android:textSize="32sp"
+        android:text="LavoraMi (Alpha)"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
