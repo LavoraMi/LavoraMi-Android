@@ -213,8 +213,15 @@ public class AccountManagement extends AppCompatActivity {
         /// In this section of the code, we set the button triggers and more for the RESET PASSWORD View.
         CardView btnRequest = findViewById(R.id.btnRequest);
         EditText etEmailReset = findViewById(R.id.etEmailReset);
+        TextView tvGoBackToLogin = findViewById(R.id.tvGoBackToLogin);
 
         btnRequest.setOnClickListener(v -> {sendResetPasswordEmail(etEmailReset.getText().toString());});
+        tvGoBackToLogin.setOnClickListener(v -> {
+            loginView.setVisibility(View.VISIBLE);
+            loggedInView.setVisibility(View.GONE);
+            resetPasswordView.setVisibility(View.GONE);
+            signUpView.setVisibility(View.GONE);
+        });
 
         etEmailReset.addTextChangedListener(new TextWatcher() {
             @Override
