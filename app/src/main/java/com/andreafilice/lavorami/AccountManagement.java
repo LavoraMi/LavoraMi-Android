@@ -611,7 +611,7 @@ public class AccountManagement extends AppCompatActivity {
             loggedInView.setVisibility(View.VISIBLE);
             lockedScreen.setVisibility(View.GONE);
 
-            fullNameTextLoginPage.setText("Ciao " + sessionManager.getUserName());
+            fullNameTextLoginPage.setText("Ciao " + getNameFromFullName(sessionManager.getUserName()));
             tvProfileName.setText(sessionManager.getUserName());
             tvProfileEmail.setText(sessionManager.getUserEmail());
             signingInWithGoogleView.setVisibility(View.GONE);
@@ -644,6 +644,13 @@ public class AccountManagement extends AppCompatActivity {
         //*UPDATE GOOGLE UI
         /// Update the Google UI for show if the account is created with Google or not.
         createdWithGoogle.setVisibility((sessionManager.isLoggedInWithGoogle()) ? View.VISIBLE : View.GONE);
+    }
+
+    private String getNameFromFullName(String name){
+        /// This method splits the name ("Andrea Filice") to get the User Name and not the surname.
+
+        String[] names = name.split(" ");
+        return names[0];
     }
 
     private String getMetaData(String key){

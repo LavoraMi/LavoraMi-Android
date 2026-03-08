@@ -69,7 +69,7 @@ public class LinesActivity extends AppCompatActivity {
                 loadLines();
                 linesLoaded = true;
                 findViewById(R.id.nestedLinesView).setVisibility(View.VISIBLE);
-            }, 1000);
+            }, 100);
         });
 
         EditText searchLines = findViewById(R.id.editSearch);

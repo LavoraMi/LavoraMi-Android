@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -249,16 +250,18 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="#1C1C1E"
+        app:cardBackgroundColor="@color/background_app"
         app:layout_constraintTop_toBottomOf="@id/lineDetailPage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <FrameLayout
+            android:id="@+id/googleMapsFrameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
             <fragment
                 android:id="@+id/map"
@@ -267,6 +270,43 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center" />
         </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/loadingMapsFragmentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="24dp"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <com.andreafilice.lavorami.DotsLoaderView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_google_maps"
+                    android:scaleType="fitCenter" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/archivo_medium"
+                android:text="Caricamento Mappa"
+                android:textAlignment="center"
+                android:textColor="@color/text_primary"
+                android:textSize="25sp" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout

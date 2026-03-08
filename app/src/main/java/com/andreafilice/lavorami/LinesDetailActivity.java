@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -101,14 +102,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
 
         aggiornaUI();
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        if (mapFragment != null)
-            mapFragment.getMapAsync(this);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Dettaglio " + nomeLinea);
-        }
+
+        findViewById(android.R.id.content).post(() -> {
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            if (mapFragment != null)
+                mapFragment.getMapAsync(this);
+        });
 
         chipMappa.setChipStrokeWidth(3f);
         chipMappa.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
@@ -232,6 +231,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
+        LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
         mMap = googleMap;
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
@@ -278,6 +279,14 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             disegnaM2(tutteLeStazioni, coloreLinea);
         else
             disegnaPolilinea(tutteLeStazioni, coloreLinea);
+
+        layoutMaps.setVisibility(View.VISIBLE);
+        layoutMaps.setAlpha(0f);
+
+        mMap.setOnMapLoadedCallback(() -> {
+            layoutMaps.animate().alpha(1f).setDuration(300).start();
+            layoutLoadingMap.setVisibility(View.GONE);
+        });
     }
 
     private void disegnaPolilinea(List<MetroStation> stazioni, int colore) {
