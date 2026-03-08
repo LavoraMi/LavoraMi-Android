@@ -27,6 +27,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     private StrikeDescriptor strikeCDNResponse;
     private ProgressBar progressBarRefresh;
     private ImageButton btnRefresh;
-
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if(isGranted){
@@ -331,6 +331,10 @@ public class MainActivity extends AppCompatActivity {
 
         //*DOWNLOADING EVENTS
         downloadJSONData(defaultCategory, false);
+
+        String categoriaFinale = defaultCategory;
+        if (filterGroup != null)
+            filterGroup.post(() -> applicaFiltroCategoria(categoriaFinale));
 
         //*MODAL ON ALPHA VERSION
         /// This section of the code will be eliminated on release, this provides some Feedbacks of the app from the Testers.
