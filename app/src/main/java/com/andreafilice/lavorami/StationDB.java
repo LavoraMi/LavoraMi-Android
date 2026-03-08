@@ -697,7 +697,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
                 "Abbiategrasso V. Veneto",
                 new String[]{"z551", "z552", "z553", "z555", "z556", "z560"},
-                new String[] {"z555"},
+                new String[] {"z555", "z556"},
                 "bus.fill"
         ));
 
@@ -724,7 +724,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Gessate M2",
-                new String[]{"M2", "z405", "z406"},
+                new String[]{"M2", "z404", "z405", "z406"},
                 new String[] {"z404", "z405", "z406"},
                 "tram.fill.tunnel"
         ));

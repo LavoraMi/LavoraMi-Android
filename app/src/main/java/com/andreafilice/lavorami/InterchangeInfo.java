@@ -38,6 +38,8 @@ public class InterchangeInfo {
                 return R.drawable.ic_walking;
             case "airplane.departure":
                 return R.drawable.ic_plane;
+            case "bus.fill":
+                return R.drawable.ic_bus;
             default:
                 return R.drawable.empty_image;
         }

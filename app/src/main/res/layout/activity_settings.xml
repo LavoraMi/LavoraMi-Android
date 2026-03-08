@@ -119,7 +119,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/archivo_medium"
                 android:text="Preferiti"
                 android:textColor="#8E8E93"
