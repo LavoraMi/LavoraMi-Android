@@ -44,5 +44,6 @@
     <color name="disclosureBg">#F6EFEF</color>
     <color name="airport">#66C4C4</color>
     <color name="GRAY">#595858</color>
+    <color name="subtitle">#918D8D</color>
     <color name="NIGHTLINES">#021B81</color>
 </resources>

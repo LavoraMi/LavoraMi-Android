@@ -756,38 +756,32 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         Log.d("LINEA", nomeLinea);
 
-        if (nomeLinea.startsWith("M"))
-            tvAttesa.setText(getFrequenza(nomeLinea));
-        else if (nomeLinea.startsWith("S"))
+        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80"))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
             tvAttesa.setText("Frequenza media: 5-20 min.");
-        else if(nomeLinea.startsWith("MXP"))
-            tvAttesa.setText("Frequenza media: 30 min.");
-        else if(nomeLinea.equals("S10")||nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("S50")||nomeLinea.equals("RE80"))
-            tvAttesa.setText("Freqeunza media: 30 min.");
         else
             tvAttesa.setText("Frequenza variabile");
 
-        int numeroLavori = 0;
+        int numeroLavoriProgrammati = 0, numeroLavoriAttuali = 0, numeroLavori = 0;
         for (EventDescriptor e : EventData.listaEventiCompleta) {
+            long start = getDateMillis(e.getStartDate());
+            long end = getDateMillis(e.getEndDate());
+            long oggi = System.currentTimeMillis();
+
             for (String l : e.getLines()) {
-                if (l.equalsIgnoreCase(nomeLinea)) { numeroLavori++; break; }
+                if (l.equalsIgnoreCase(nomeLinea)) {
+                    numeroLavori++;
+                    if(start > 0 && end > 0 && oggi >= start && oggi <= end) numeroLavoriAttuali++;
+                    else numeroLavoriProgrammati++;
+                    break;
+                }
             }
         }
 
-        if (numeroLavori > 1) {
-            tvLavori.setText(numeroLavori + " segnalazioni attive.");
-            tvLavori.setTextColor(Color.parseColor("#FF5252"));
-        }
-        else if(numeroLavori == 1){
-            tvLavori.setText(numeroLavori + " segnalazione attiva.");
-            tvLavori.setTextColor(Color.parseColor("#FF5252"));
-        }
-        else {
-            tvLavori.setText("Stato linea: Regolare.");
-            tvLavori.setTextColor(Color.GREEN);
-        }
+        tvLavori.setText((numeroLavori > 0)
+                ? String.format("%s attuali, %s programmati.", numeroLavoriAttuali, numeroLavoriProgrammati)
+                : "0 attuali, 0 programmati.");
     }
 
     private boolean isDarkMode() {
@@ -932,6 +926,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M3": return "4-5 min.";
             case "M4": return "2-3 min.";
             case "M5": return "4 min.";
+            case "S10": return "1 ora - 45 min.";
+            case "S30": return "2 ore.";
+            case "RE80": return "30 min - 1 ora.";
             case "S1":
             case "S2":
             case "S3":

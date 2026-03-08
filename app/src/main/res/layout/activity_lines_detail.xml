@@ -66,8 +66,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Direzioni:"
-            android:textColor="@color/text_primary"
+            android:text="DIREZIONI:"
+            android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="25dp"
             android:textStyle="bold" />
@@ -85,8 +85,8 @@
             android:id="@+id/txtMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tempo di attesa:"
-            android:textColor="@color/text_primary"
+            android:text="TEMPO DI ATTESA:"
+            android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
             android:textStyle="bold"
@@ -96,9 +96,9 @@
             android:id="@+id/txtInterscambio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fermata di interscambio:"
-            android:textColor="@color/text_primary"
-            android:textSize="25sp"
+            android:text="FERMATA DI INTERSCAMBIO:"
+            android:textColor="@color/subtitle"
+            android:textSize="15sp"
             android:layout_marginTop="15dp"
             android:textStyle="bold"
             android:visibility="gone"/>
@@ -176,8 +176,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stato linea"
-            android:textColor="@color/text_primary"
+            android:text="LAVORI SULLA LINEA:"
+            android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
             android:textStyle="bold" />
