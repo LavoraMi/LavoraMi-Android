@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
 
         editSearch.setCompoundDrawables(searchIcon, null, null, null);
 
-        int hPadding = (int) (4 * getResources().getDisplayMetrics().density);
+        int hPadding = (int) (0 * getResources().getDisplayMetrics().density);
         int iconWithPadding = iconSize + hPadding;
         editSearch.setPadding(editSearch.getPaddingLeft(), editSearch.getPaddingTop(), iconWithPadding, editSearch.getPaddingBottom());
 

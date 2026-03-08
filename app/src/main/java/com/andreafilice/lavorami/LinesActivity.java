@@ -130,7 +130,7 @@ public class LinesActivity extends AppCompatActivity {
 
         searchLines.setCompoundDrawables(searchIcon, null, null, null);
 
-        int hPadding = (int) (4 * getResources().getDisplayMetrics().density);
+        int hPadding = (int) (0 * getResources().getDisplayMetrics().density);
         int iconWithPadding = iconSize + hPadding;
         searchLines.setPadding(searchLines.getPaddingLeft(), searchLines.getPaddingTop(), iconWithPadding, searchLines.getPaddingBottom());
 
@@ -195,8 +195,10 @@ public class LinesActivity extends AppCompatActivity {
                 titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                 containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
 
-                if (tvNoResults != null)
+                if (tvNoResults != null){
                     tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
+                    tvNoResults.setText(String.format("Nessun risultato per: \"%s\".", query));
+                }
                 if (s.length() > 0)
                     searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);
                 else
