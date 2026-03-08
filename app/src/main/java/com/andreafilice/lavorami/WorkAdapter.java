@@ -96,8 +96,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         itemHolder.titleText.setText(item.getTitle());
         itemHolder.trattaText.setText(item.getRoads());
-        itemHolder.startDateText.setText("Dal: " + finalStartDate);
-        itemHolder.endDateText.setText("Al: " + finalEndDate);
+        itemHolder.startDateText.setText(finalStartDate);
+        itemHolder.endDateText.setText(finalEndDate);
         itemHolder.companyText.setText(item.getCompany());
         itemHolder.descriptionText.setText(item.getDetails());
 

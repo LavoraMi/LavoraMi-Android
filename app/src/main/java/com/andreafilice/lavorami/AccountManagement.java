@@ -546,6 +546,8 @@ public class AccountManagement extends AppCompatActivity {
         /// @Header Authorization is the SessionBearerToken that let us safely delete the user from his session without touching other user Accounts and
         /// Grant safe permissions.
 
+        loggingInWithGoogle = false;
+
         new AlertDialog.Builder(this)
                 .setTitle("Sei sicuro?")
                 .setMessage("Sei sicuro di voler Eliminare Definitivamente il tuo Account?")
