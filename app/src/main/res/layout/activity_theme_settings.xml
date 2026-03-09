@@ -8,7 +8,7 @@
     android:background="@color/background_app"
     tools:context=".ThemeSettings">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,20 +23,25 @@
             android:layout_height="32dp"
             android:background="@color/background_app"
             android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="?attr/colorControlNormal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_back"
-            app:tint="?attr/colorControlNormal" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="Aspetto"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
-            android:textSize="20sp" />
-    </RelativeLayout>
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ScrollView
         android:id="@+id/scrollView"
