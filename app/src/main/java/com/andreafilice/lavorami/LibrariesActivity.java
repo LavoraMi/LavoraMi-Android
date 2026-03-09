@@ -2,19 +2,31 @@ package com.andreafilice.lavorami;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.widget.NestedScrollView;
+
+import com.facebook.shimmer.ShimmerFrameLayout;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class LibrariesActivity extends AppCompatActivity {
+
+    private ShimmerFrameLayout layoutLoading;
+    private NestedScrollView nestedLinesView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +39,40 @@ public class LibrariesActivity extends AppCompatActivity {
             return insets;
         });
 
+        layoutLoading = findViewById(R.id.loadingLayout);
+        nestedLinesView = findViewById(R.id.nestedLinesView);
+
         ImageButton backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> ActivityManager.changeActivity(this, SourcesDevelopment.class));
+    }
 
-        LibraryModel[] libraries = {
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        layoutLoading.startShimmer();
+        layoutLoading.setVisibility(View.VISIBLE);
+        nestedLinesView.setVisibility(View.GONE);
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() -> {
+            LibraryModel[] libraries = buildLibraries();
+
+            handler.post(() -> {
+                for (LibraryModel item : libraries) {
+                    aggiungiLibreria(item);
+                }
+                layoutLoading.stopShimmer();
+                layoutLoading.setVisibility(View.GONE);
+                nestedLinesView.setVisibility(View.VISIBLE);
+            });
+        });
+    }
+
+    private LibraryModel[] buildLibraries() {
+        return new LibraryModel[]{
                 new LibraryModel(
                         "Retrofit",
                         "3.0.0",
@@ -385,11 +427,9 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "limitations under the License."
                 ),
         };
-
-        for(LibraryModel item: libraries) {aggiungiLibreria(item);}
     }
 
-    public void aggiungiLibreria(LibraryModel item){
+    public void aggiungiLibreria(LibraryModel item) {
         LinearLayout groupLibraries = findViewById(R.id.groupLibraries);
         View row = getLayoutInflater().inflate(R.layout.item_library, groupLibraries, false);
 
@@ -403,7 +443,7 @@ public class LibrariesActivity extends AppCompatActivity {
         txtLicense.setText(item.getLicenseType());
         textCopyright.setText(item.getCopyright());
 
-        row.setOnClickListener(v ->{
+        row.setOnClickListener(v -> {
             Intent intent = new Intent(this, DetailsLibrariesActivity.class);
             intent.putExtra("ITEM", item);
             startActivity(intent);

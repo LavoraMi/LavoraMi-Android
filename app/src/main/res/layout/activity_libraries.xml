@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".LibrariesActivity">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,27 +22,31 @@
             android:layout_height="32dp"
             android:background="@color/background_app"
             android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="?attr/colorControlNormal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_back"
-            app:tint="?attr/colorControlNormal" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="Riconoscimenti"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
-            android:textSize="20sp" />
-    </RelativeLayout>
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedLinesView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,4 +61,30 @@
             android:orientation="vertical"
             android:showDividers="middle" />
     </androidx.core.widget.NestedScrollView>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shimmer_auto_start="true"
+        android:visibility="visible"
+        app:shimmer_duration="1000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            app:shimmer_auto_start="true">
+
+            <include layout="@layout/item_library"/>
+            <include layout="@layout/item_library"/>
+            <include layout="@layout/item_library"/>
+            <include layout="@layout/item_library"/>
+            <include layout="@layout/item_library"/>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
