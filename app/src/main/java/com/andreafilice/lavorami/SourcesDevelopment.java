@@ -42,6 +42,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnRequestDatas = findViewById(R.id.btnRequestDatas);
         MaterialButton btnInstagram = findViewById(R.id.btnInstagram);
         MaterialButton btnTikTok = findViewById(R.id.btnTikTok);
+        MaterialButton btnRiconoscimenti = findViewById(R.id.btnLibraries);
         ImageButton btnBack = findViewById(R.id.backBtn);
 
         btnReportBug.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnPatreon.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi"));
         btnRequestDatas.setOnClickListener(v -> ActivityManager.changeActivity(this, RequestUserDatas.class));
         btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
+        btnRiconoscimenti.setOnClickListener(v ->{ActivityManager.changeActivity(this, LibrariesActivity.class);});
         btnWebsite.setOnClickListener(v -> {
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
 
