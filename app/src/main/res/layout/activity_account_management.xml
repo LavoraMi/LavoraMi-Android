@@ -595,7 +595,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/iconGoogle"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Account creato con Google."
+                        android:text="Account creato con Google"
                         android:textColor="#8E8E93"
                         android:textSize="16sp" />
 

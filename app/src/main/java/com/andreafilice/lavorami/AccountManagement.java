@@ -646,6 +646,7 @@ public class AccountManagement extends AppCompatActivity {
         //*UPDATE GOOGLE UI
         /// Update the Google UI for show if the account is created with Google or not.
         createdWithGoogle.setVisibility((sessionManager.isLoggedInWithGoogle()) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.btnChangePassword).setVisibility((sessionManager.isLoggedInWithGoogle()) ? View.GONE : View.VISIBLE);
     }
 
     private String getNameFromFullName(String name){
