@@ -246,9 +246,7 @@ public class MainActivity extends AppCompatActivity {
         if(filterGroup != null){
             filterGroup.setSaveEnabled(false);
 
-            for (int i = 0; i < filterGroup.getChildCount(); i++) {
-                filterGroup.getChildAt(i).setSaveEnabled(false);
-            }
+            for (int i = 0; i < filterGroup.getChildCount(); i++) {filterGroup.getChildAt(i).setSaveEnabled(false);}
 
             switch(defaultCategory){
                 case "Tutti":
@@ -300,7 +298,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //* SEARCH BAR
-        EditText editSearch = findViewById(R.id.editSearch);
         editSearch.setBackgroundResource(R.drawable.bg_edittext_search);
         int iconSize = (int) (22 * getResources().getDisplayMetrics().density);
 
