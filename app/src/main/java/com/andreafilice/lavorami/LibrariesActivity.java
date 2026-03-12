@@ -44,12 +44,9 @@ public class LibrariesActivity extends AppCompatActivity {
 
         ImageButton backBtn = findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> ActivityManager.changeActivity(this, SourcesDevelopment.class));
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
+        //*POPULATE THE VIEW
+        /// In this section of the code, we populate the View with the 'buildLibraries' method
         layoutLoading.startShimmer();
         layoutLoading.setVisibility(View.VISIBLE);
         nestedLinesView.setVisibility(View.GONE);
@@ -88,7 +85,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Retrofit Converter Gson",
                         "3.0.0",
@@ -104,7 +100,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "OkHttp",
                         "5.3.2",
@@ -120,7 +115,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "OkHttp Logging Interceptor",
                         "5.3.2",
@@ -136,7 +130,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Gson",
                         "2.13.2",
@@ -152,7 +145,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX AppCompat",
                         "1.7.1",
@@ -168,7 +160,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Material Components for Android",
                         "1.13.0",
@@ -184,7 +175,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX Activity",
                         "1.12.4",
@@ -200,7 +190,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX ConstraintLayout",
                         "2.2.1",
@@ -216,7 +205,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX Fragment",
                         "1.8.9",
@@ -232,7 +220,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX RecyclerView",
                         "1.4.0",
@@ -248,7 +235,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX CardView",
                         "1.0.0",
@@ -264,7 +250,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX Browser",
                         "1.9.0",
@@ -280,7 +265,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "AndroidX Biometric",
                         "1.1.0",
@@ -296,7 +280,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Google Play Services Maps",
                         "20.0.0",
@@ -305,7 +288,6 @@ public class LibrariesActivity extends AppCompatActivity {
                         "Use of the Google Play Services Maps SDK is subject to the Google APIs Terms of Service.\n" +
                                 "See https://developers.google.com/maps/terms for details."
                 ),
-
                 new LibraryModel(
                         "Google Play Services Auth",
                         "21.5.1",
@@ -314,7 +296,6 @@ public class LibrariesActivity extends AppCompatActivity {
                         "Use of the Google Play Services Auth SDK is subject to the Google APIs Terms of Service.\n" +
                                 "See https://developers.google.com/terms for details."
                 ),
-
                 new LibraryModel(
                         "Firebase BOM",
                         "34.10.0",
@@ -330,7 +311,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Firebase Cloud Messaging",
                         "34.10.0",
@@ -346,7 +326,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Shimmer for Android",
                         "0.5.0",
@@ -368,7 +347,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n" +
                                 "ARE DISCLAIMED."
                 ),
-
                 new LibraryModel(
                         "dotenv-java",
                         "3.2.0",
@@ -384,7 +362,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "JUnit",
                         "4.13.2",
@@ -394,7 +371,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "terms of the Eclipse Public License 1.0 which is available at\n" +
                                 "https://www.eclipse.org/legal/epl-v10.html"
                 ),
-
                 new LibraryModel(
                         "AndroidX Test JUnit",
                         "1.3.0",
@@ -410,7 +386,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See the License for the specific language governing permissions and\n" +
                                 "limitations under the License."
                 ),
-
                 new LibraryModel(
                         "Espresso",
                         "3.7.0",
@@ -430,6 +405,10 @@ public class LibrariesActivity extends AppCompatActivity {
     }
 
     public void aggiungiLibreria(LibraryModel item) {
+        /// In this method, we add the Library from the item to the UI Elements
+        /// @PARAMETERS:
+        /// LibraryModel item is the iterator item from the 'buildLibraries' method.
+
         LinearLayout groupLibraries = findViewById(R.id.groupLibraries);
         View row = getLayoutInflater().inflate(R.layout.item_library, groupLibraries, false);
 

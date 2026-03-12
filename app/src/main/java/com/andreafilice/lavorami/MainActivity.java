@@ -6,20 +6,27 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -71,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
     private StrikeDescriptor strikeCDNResponse;
     private ProgressBar progressBarRefresh;
     private ImageButton btnRefresh;
+
+    //*HINT VARIABLES
+    /// In this section of the code, we will create the variables for our HintAnimations
+    private String[] hints = {"Cerca nei lavori...", "Scopri qualcosa di nuovo...", "Cerca la tua linea...", "Cerca ciò che ami...", "Non essere l'ultimo a sapere...", "Scopri le novità...", "Lavori della settimana..."};
+    private TextSwitcher hintSwitcher;
+    private EditText editSearch;
+    private int indexHintAnimation;
+    private final Handler handler = new Handler();
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if(isGranted){
@@ -167,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //*INITIALIZE THE LOADING LAYOUT
+        /// In this section of the code, we will initialize the loading layout of the Application.
         loadingLayout = findViewById(R.id.loadingLayout);
         errorLayout = findViewById(R.id.errorNetwork);
         progressBarRefresh = findViewById(R.id.progressBarRefresh);
@@ -185,6 +201,30 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //*SEARCHBAR HINT ANIMATION
+        /// In this section of the code, we set-up the Animation for our Hint in searchEditText.
+        editSearch = findViewById(R.id.editSearch);
+        hintSwitcher = findViewById(R.id.hintSwitcher);
+
+        hintSwitcher.setFactory(() -> {
+            TextView title = new TextView(MainActivity.this);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            title.setLayoutParams(params);
+            title.setGravity(Gravity.CENTER_VERTICAL);
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
+            title.setTextColor(Color.parseColor("#666666"));
+            title.setPadding(5, 0, 0, 0);
+            title.setTypeface(null, Typeface.BOLD);
+            return title;
+        });
+
+        hintSwitcher.setCurrentText("Cerca nei lavori...");
+
+        hintSwitcher.setInAnimation(this, R.anim.slide_up_in);
+        hintSwitcher.setOutAnimation(this, R.anim.slide_up_out);
+
+        startHintLoop();
 
         //*NAVBAR
         ImageButton btnLines = findViewById(R.id.linesButton);
@@ -282,6 +322,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                hintSwitcher.setVisibility(s.length() > 0 ? View.GONE : View.VISIBLE);
                 if (s.length() > 0 && filterGroup != null) {
                     filterGroup.clearCheck();
                     editSearch.setCompoundDrawables(searchIcon, null, deleteIcon, null);
@@ -340,6 +381,17 @@ public class MainActivity extends AppCompatActivity {
         /// This section of the code will be eliminated on release, this provides some Feedbacks of the app from the Testers.
         if(!DataManager.getBoolData(this, DataKeys.KEY_MODAL_ALPHA, false) && hasCompletedSetup)
             ModalUtils.showCustomAlert(this, "Come ti trovi?", "Vorremmo sapere la tua riguardo LavoraMi! Se hai trovato qualche bug oppure hai dei suggerimenti, saranno ben accetti! Scrivici a: info@lavorami.it!", "Chiudi", () -> {DataManager.saveBoolData(this, DataKeys.KEY_MODAL_ALPHA, true);});
+    }
+
+    private void startHintLoop(){
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                hintSwitcher.setText(hints[indexHintAnimation]);
+                indexHintAnimation = (indexHintAnimation + 1) % hints.length;
+                handler.postDelayed(this, 5000);
+            }
+        });
     }
 
     private void askForNotificationPermission(){
