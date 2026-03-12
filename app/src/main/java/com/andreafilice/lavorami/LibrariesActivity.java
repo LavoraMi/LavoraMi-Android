@@ -177,7 +177,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "AndroidX Activity",
-                        "1.12.4",
+                        "1.13.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
