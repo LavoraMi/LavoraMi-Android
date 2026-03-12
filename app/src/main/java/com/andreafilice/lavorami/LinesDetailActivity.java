@@ -250,7 +250,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
         }
 
-        int coloreLinea = ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
+        int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? R.color.GRAY : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
 
         for (MetroStation s : StationDB.getAllStations()) {
@@ -805,12 +805,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S4": return "Camnago-Lentate - Milano Cadorna";
             case "S5": return "Varese - Treviglio";
             case "S6": return "Novara - Pioltello-Limito / Treviglio";
-            case "S7": return "Lecco - Milano Porta Garibaldi (via Molteno)";
-            case "S8": return "Lecco - Milano Porta Garibaldi (via Carnate)";
+            case "S7": return "Lecco - Milano Pta Garibaldi";
+            case "S8": return "Lecco - Carnate - Milano Pta Garibaldi";
             case "S9": return "Saronno - Albairate-Vermezzo";
-            case "S11": return "Chiasso - Milano Porta Garibaldi / Rho";
-            case "S12": return "Cormano-Cusano - Melegnano";
-            case "S13": return "Milano Bovisa - Pavia";
+            case "S11": return "Rho - Como S. Giovanni";
+            case "S12": return "Melegnano - Cormano";
+            case "S13": return "Pavia - Milano Bovisa";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 
@@ -824,23 +824,23 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
             case "RE80": return "Locarno - Milano Centrale";
 
-            case "1": return "Greco (Via Martiri Oscuri) - Roserio";
-            case "2": return "Piazza Bausan - Piazzale Negrelli";
-            case "3": return "Duomo (Via Cantù) - Gratosoglio";
-            case "4": return "Piazza Castello - Parco Nord (Niguarda)";
-            case "5": return "Ospedale Maggiore (Niguarda) - Ortica (Via Milesi)";
-            case "7": return "Piazzale Lagosta - Precotto (Via Anassagora)";
-            case "9": return "Stazione Centrale (Piazza IV Novembre) - Porta Genova FS";
-            case "10": return "Viale Lunigiana - Piazza 24 Maggio";
-            case "12": return "Roserio - Viale Molise";
-            case "14": return "Piazzale Cimitero Maggiore - Lorenteggio (Via Segneri)";
-            case "15": return "Duomo (Via Dogana) - Rozzano (Via Guido Rossa)";
-            case "16": return "Stadio San Siro (Piazzale Axum) - Via Monte Velino";
-            case "19": return "Lambrate FS - Piazza Castelli";
-            case "24": return "Duomo (Via Dogana) - Vigentino (Via Selvanesco)";
-            case "27": return "Piazza Fontana - Viale Ungheria";
-            case "31": return "Bicocca M5 - Cinisello (Via Monte Ortigara)";
-            case "33": return "Piazzale Lagosta - Viale Rimembranze di Lambrate";
+            case "1": return "Roserio - Greco";
+            case "2": return "P.Le Negrelli - P.Za Bausan";
+            case "3": return "Duomo M1 M3 - Gratosoglio";
+            case "4": return "Cairoli M1 - Niguarda (Parco Nord)";
+            case "5": return "Niguarda (Ospedale) - Ortica";
+            case "7": return "P.Le Lagosta - Q.Re Adriano";
+            case "9": return "Centrale FS M2 M3 - P.Ta Genova M2";
+            case "10": return "P.Za 24 Maggio - V.Le Lunigiana";
+            case "12": return "P.Za Ovidio - Roserio";
+            case "14": return "Lorenteggio - Cimitero Maggiore";
+            case "15": return "Duomo M1 M3 - Rozzano (Via G. Rossa)";
+            case "16": return "Stadio San Siro M5 - Via Monte Velino";
+            case "19": return "P.Za Castelli - Lambrate FS M2";
+            case "24": return "Duomo M1 M3 - Vigentino";
+            case "27": return "V.Le Ungheria - Duomo M1 M3";
+            case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
+            case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
 
             case "Z601": return "Legnano - Molino Dorino M1";
             case "Z602": return "Milano Cadorna - Legnano";
@@ -928,7 +928,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M5": return "4 min.";
             case "S10": return "1 ora - 45 min.";
             case "S30": return "2 ore.";
-            case "RE80": return "30 min - 1 ora.";
+            case "RE80":
+            case "S7":
+                return "30 min - 1 ora.";
             case "S1":
             case "S2":
             case "S3":

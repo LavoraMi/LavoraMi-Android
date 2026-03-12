@@ -769,7 +769,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isBus(EventDescriptor item) {
         for (String l : item.getLines()) {
-            if (l.matches("^[0-9]+$") || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
+            if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
         }
         return false;
     }
