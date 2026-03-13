@@ -512,7 +512,7 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/setupViewPager"
@@ -560,9 +560,21 @@
                 android:textAllCaps="false"
                 android:textColor="@color/White"
                 android:textSize="18sp"
+
                 app:cornerRadius="12dp" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgSetupSkip"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="-18dp"
+            android:src="@drawable/ic_skip"
+            app:tint="#FD272D"
+            app:layout_constraintEnd_toStartOf="@id/btnSetupSkip"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnSetupSkip"

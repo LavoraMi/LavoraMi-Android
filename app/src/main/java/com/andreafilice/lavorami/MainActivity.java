@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
-    private String[] hints = {"Cerca nei lavori...", "Scopri qualcosa di nuovo...", "Cerca la tua linea...", "Cerca ciò che ami...", "Non essere l'ultimo a sapere...", "Scopri le novità...", "Lavori della settimana..."};
+    private String[] hints = {"Cerca nei lavori...", "Scopri qualcosa di nuovo...", "Cerca la tua linea...", "Cerca ciò che ami...", "Non essere l'ultimo a saperlo...", "Scopri le novità...", "Lavori della settimana..."};
     private TextSwitcher hintSwitcher;
     private EditText editSearch;
     private int indexHintAnimation;
