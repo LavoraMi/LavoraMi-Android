@@ -334,9 +334,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 .geodesic(true)
                 .zIndex(1000f);
 
-        for (MetroStation s : stazioni) {
-            polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));
-        }
+        for (MetroStation s : stazioni) {polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));}
 
         mMap.addPolyline(polylineOptions);
     }
@@ -804,12 +802,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             long start = getDateMillis(e.getStartDate());
             long end = getDateMillis(e.getEndDate());
             long oggi = System.currentTimeMillis();
+            long startP = getDateMillis(e.getStartDate());
 
             for (String l : e.getLines()) {
                 if (l.equalsIgnoreCase(nomeLinea)) {
                     numeroLavori++;
                     if(start > 0 && end > 0 && oggi >= start && oggi <= end) numeroLavoriAttuali++;
-                    else numeroLavoriProgrammati++;
+                    else if(startP > 0 && oggi < startP) numeroLavoriProgrammati++;
                     break;
                 }
             }

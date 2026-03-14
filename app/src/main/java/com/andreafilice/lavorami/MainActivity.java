@@ -614,7 +614,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView view = findViewById(R.id.recyclerView);
 
         noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        noWorkFounds.setText((searchInfo.equals("null") ? "Nessun lavoro trovato per il filtro selezionato." : String.format("Nessun lavoro trovato per: \"%s\".", searchInfo)));
+        noWorkFounds.setText((searchInfo.equals("null") ? "Nessun lavoro trovato per questo filtro." : String.format("Nessun lavoro trovato per: \"%s\".", searchInfo)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
 
