@@ -103,10 +103,9 @@ public class RequestUserDatas extends AppCompatActivity {
                     Intent intent = new Intent(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse(mailtoUri));
 
-                    try {
-                        startActivity(Intent.createChooser(intent, "Invia richiesta dati"));
-                    }
+                    try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
                     catch (Exception e) {
+                        Toast.makeText(RequestUserDatas.this, "Si è verificato un errore imprevisto, riprova.", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 }
@@ -114,5 +113,5 @@ public class RequestUserDatas extends AppCompatActivity {
         });
     }
 
-    public boolean validateEmail(String mail){return (mail.contains("@") && !mail.isEmpty());}
+    public boolean validateEmail(String mail){return (mail.matches("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"));}
 }

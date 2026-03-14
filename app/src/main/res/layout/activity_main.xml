@@ -512,7 +512,7 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/setupViewPager"

@@ -226,7 +226,7 @@
                     android:layout_marginBottom="32dp"
                     android:clickable="true"
                     android:focusable="true"
-                    app:cardBackgroundColor="@color/redMetro"
+                    app:cardBackgroundColor="@color/GRAY"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 
@@ -941,7 +941,7 @@
                     android:layout_marginBottom="32dp"
                     android:clickable="true"
                     android:focusable="true"
-                    app:cardBackgroundColor="@color/redMetro"
+                    app:cardBackgroundColor="@color/GRAY"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 

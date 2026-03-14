@@ -223,26 +223,6 @@ public class AccountManagement extends AppCompatActivity {
             signUpView.setVisibility(View.GONE);
         });
 
-        etEmailReset.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {}
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                btnRequest.setBackgroundTintList((validateEmail(etEmailReset.getText().toString())
-                        ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                        : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                ));
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btnRequest.setBackgroundTintList((validateEmail(etEmailReset.getText().toString())
-                        ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                        : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                ));
-            }
-        });
-
         //*SIGNUP VIEW
         /// In this section of the code, we set the button triggers and more for the SIGN UP View.
         TextView tvGoToLogin = findViewById(R.id.tvGoToLogin);
@@ -258,8 +238,9 @@ public class AccountManagement extends AppCompatActivity {
         EditText passwordSignUp = findViewById(R.id.etSignupPassword);
         EditText nameSignUp = findViewById(R.id.etSignupName);
         CardView btnSignup = findViewById(R.id.btnSignup);
+
         btnSignup.setOnClickListener(v -> {
-            if(emailSignUp.getText().toString().length() < 8)
+            if(passwordSignUp.getText().toString().length() < 8)
                 Toast.makeText(this, "Errore: Password troppo corta (minimo 8 caratteri).", Toast.LENGTH_SHORT).show();
             else
                 signUp(nameSignUp.getText().toString(), emailSignUp.getText().toString(), passwordSignUp.getText().toString());
@@ -273,6 +254,12 @@ public class AccountManagement extends AppCompatActivity {
             screenUnlocked = true;
             updateUI();
         }
+
+        //*EMAIL VALIDATIONS
+        /// In this section of the code, we setup the callbacks for InputFields in ALL Screens: PASSWORD RESET, LOGIN and SIGNUP
+        setUpEmailValidation(etEmailReset, null, btnRequest, InputValidationType.EMAIL_ONLY);
+        setUpEmailValidation(emailSignUp, passwordSignUp, btnSignup, InputValidationType.EMAIL_AND_PASSWORD);
+        setUpEmailValidation(emailLogin, passwordLogin, btnLogin, InputValidationType.EMAIL_AND_PASSWORD);
     }
 
     private void initializeGoogleIntent(){
@@ -727,5 +714,78 @@ public class AccountManagement extends AppCompatActivity {
         biometricPrompt.authenticate(promptInfo);
     }
 
-    public boolean validateEmail(String mail){return (mail.contains("@") && !mail.isEmpty());}
+    public boolean validateEmail(String mail){return (mail.matches("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"));}
+    public void setUpEmailValidation(EditText emailField, EditText passwordField, CardView btnToApply, InputValidationType type) {
+        /// This method is a refactor one, this method is for appply the email validation to all screens without writing hundreds of lines.
+        /// @PARAMETERS
+        /// EditText emailField is the Input Field for the email. Cannot be @null
+        /// EditText passwordField is the Input Field for the password. Can be @null
+        /// CardView btnToApply is the button to apply this effect of disable-enable.
+        /// InputValidationType type is the type of validation to perform, can ben ONLY_EMAIL or EMAIL_AND_PASSWORD.
+
+        if(type == InputValidationType.EMAIL_AND_PASSWORD) {
+            emailField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {}
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
+                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+                    ));
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
+                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+                    ));
+                }
+            });
+            passwordField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {}
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
+                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+                    ));
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
+                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+                    ));
+                }
+            });
+        }
+        else if(type == InputValidationType.EMAIL_ONLY) {
+            emailField.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {}
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString())
+                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+                    ));
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString())
+                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+                    ));
+                }
+            });
+        }
+    }
 }
