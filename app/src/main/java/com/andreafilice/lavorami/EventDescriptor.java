@@ -51,7 +51,7 @@ public class EventDescriptor {
             case "hand.raised.fill":
                 return R.drawable.baseline_back_hand_24;
             case "door.sliding.left.hand.closed":
-                return R.drawable.baseline_door_sliding_24;
+                return R.drawable.ic_elevator;
             case "arrow.trianglehead.2.counterclockwise":
                 return R.drawable.ic_counterclockwise;
             case "point.topleft.down.to.point.bottomright.curvepath.fill":
