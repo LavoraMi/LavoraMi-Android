@@ -190,6 +190,42 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
+
+        //*CHIP BACKGROUND COLOR
+        /// In this section of the code we setup the Chip Background color when selected and when is not selected.
+        int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.GRAY) : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
+        int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
+        ColorStateList chipColor = new ColorStateList(
+            new int[][]{
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
+            },
+            new int[]{
+                coloreLinea,
+                coloreDefault
+            }
+        );
+        chipMappa.setChipBackgroundColor(chipColor);
+        chipLavori.setChipBackgroundColor(chipColor);
+        chipInterscambi.setChipBackgroundColor(chipColor);
+
+        //*CHIP TEXT COLOR
+        /// In this section of the code we setup the Chip Text color when selected and when is not selected.
+        int bianco = ContextCompat.getColor(this, R.color.White);
+        int testoDefault = ContextCompat.getColor(this, R.color.text_primary);
+        ColorStateList chipTextColor = new ColorStateList(
+            new int[][]{
+                    new int[]{ android.R.attr.state_checked },
+                    new int[]{ -android.R.attr.state_checked }
+            },
+            new int[]{
+                    bianco,
+                    testoDefault
+            }
+        );
+        chipMappa.setTextColor(chipTextColor);
+        chipLavori.setTextColor(chipTextColor);
+        chipInterscambi.setTextColor(chipTextColor);
     }
 
     @Override
@@ -310,8 +346,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         List<MetroStation> ramoBisceglie = new ArrayList<>();
 
         List<String> nomiRamoBisceglie = Arrays.asList(
-                "Wagner", "De Angeli", "Gambara", "Bande Nere",
-                "Primaticcio", "Inganni", "Bisceglie"
+            "Wagner", "De Angeli", "Gambara", "Bande Nere",
+            "Primaticcio", "Inganni", "Bisceglie"
         );
 
         MetroStation snodoPagano = null;
