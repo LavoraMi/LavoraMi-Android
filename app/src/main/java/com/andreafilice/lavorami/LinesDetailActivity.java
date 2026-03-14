@@ -30,10 +30,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Dash;
+import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -328,11 +331,27 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private void disegnaPolilinea(List<MetroStation> stazioni, int colore) {
         if (stazioni.size() < 2) return;
 
-        PolylineOptions polylineOptions = new PolylineOptions()
-                .width(10)
-                .color(colore)
-                .geodesic(true)
-                .zIndex(1000f);
+        List<PatternItem> pattern = Arrays.asList(
+                new Dash(20f),
+                new Gap(20f)
+        );
+
+        PolylineOptions polylineOptions = null;
+        if(stazioni.getLast().getBranch().equalsIgnoreCase("Bisceglie - New")){
+            polylineOptions = new PolylineOptions()
+                    .width(10)
+                    .color(colore)
+                    .geodesic(true)
+                    .zIndex(1000f)
+                    .pattern(pattern);
+        }
+        else {
+            polylineOptions = new PolylineOptions()
+                    .width(10)
+                    .color(colore)
+                    .geodesic(true)
+                    .zIndex(1000f);
+        }
 
         for (MetroStation s : stazioni) {polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));}
 
@@ -342,6 +361,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private void disegnaM1(List<MetroStation> stazioni, int colore) {
         List<MetroStation> troncoPrincipale = new ArrayList<>();
         List<MetroStation> ramoBisceglie = new ArrayList<>();
+        List<MetroStation> ramoLavori = new ArrayList<>();
 
         List<String> nomiRamoBisceglie = Arrays.asList(
             "Wagner", "De Angeli", "Gambara", "Bande Nere",
@@ -349,11 +369,14 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         );
 
         MetroStation snodoPagano = null;
+        MetroStation snodoLavoriBisceglie = null;
 
         for (MetroStation s : stazioni) {
             String nome = s.getName();
             if (nome.contains("Pagano"))
                 snodoPagano = s;
+            else if (nome.contains("Bisceglie"))
+                snodoLavoriBisceglie = s;
 
             boolean isRamo = false;
             for (String nomeRamo : nomiRamoBisceglie) {
@@ -365,12 +388,16 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
             if (isRamo)
                 ramoBisceglie.add(s);
-            else
+            else if(!isRamo && !s.getBranch().equalsIgnoreCase("Bisceglie - New"))
                 troncoPrincipale.add(s);
+            else if(!isRamo && s.getBranch().equalsIgnoreCase("Bisceglie - New"))
+                ramoLavori.add(s);
         }
         disegnaPolilinea(troncoPrincipale, colore);
         if (snodoPagano != null) ramoBisceglie.add(0, snodoPagano);
         disegnaPolilinea(ramoBisceglie, colore);
+        if (snodoLavoriBisceglie != null) ramoLavori.add(0, snodoLavoriBisceglie);
+        disegnaPolilinea(ramoLavori, colore);
     }
 
     private void disegnaM2(List<MetroStation> stazioni, int colore) {

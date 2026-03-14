@@ -54,6 +54,8 @@ public class EventDescriptor {
                 return R.drawable.baseline_door_sliding_24;
             case "arrow.trianglehead.2.counterclockwise":
                 return R.drawable.ic_counterclockwise;
+            case "point.topleft.down.to.point.bottomright.curvepath.fill":
+                return R.drawable.ic_extension_line;
             default:
                 return R.drawable.empty_image;
         }

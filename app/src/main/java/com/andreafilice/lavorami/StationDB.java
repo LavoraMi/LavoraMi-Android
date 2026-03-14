@@ -46,6 +46,9 @@ public class StationDB {
         stations.add(new MetroStation("Primaticcio", 45.45952, 9.12961, "Bisceglie", "M1"));
         stations.add(new MetroStation("Inganni", 45.45756, 9.12225, "Bisceglie", "M1"));
         stations.add(new MetroStation("Bisceglie", 45.45531, 9.11335, "Bisceglie", "M1"));
+        stations.add(new MetroStation("Parri", 45.45188, 9.09925, "Bisceglie - New", "M1"));
+        stations.add(new MetroStation("Baggio", 45.4553, 9.08892, "Bisceglie - New", "M1"));
+        stations.add(new MetroStation("Olmi", 45.45642, 9.08226, "Bisceglie - New", "M1"));
         return stations;
     }
 
