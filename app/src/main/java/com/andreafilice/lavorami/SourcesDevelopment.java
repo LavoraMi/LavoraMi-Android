@@ -39,6 +39,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnReportBug = findViewById(R.id.btnReportBug);
         MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
         MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
+        MaterialButton btnCofee = findViewById(R.id.btnCofee);
         MaterialButton btnRequestDatas = findViewById(R.id.btnRequestDatas);
         MaterialButton btnInstagram = findViewById(R.id.btnInstagram);
         MaterialButton btnTikTok = findViewById(R.id.btnTikTok);
@@ -65,6 +66,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnInstagram.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
         btnTikTok.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.tiktok.com/@applavorami.official"));
         btnPatreon.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi"));
+        btnCofee.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.buymeacoffee.com/lavorami"));
         btnRequestDatas.setOnClickListener(v -> ActivityManager.changeActivity(this, RequestUserDatas.class));
         btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
         btnRiconoscimenti.setOnClickListener(v ->{ActivityManager.changeActivity(this, LibrariesActivity.class);});
