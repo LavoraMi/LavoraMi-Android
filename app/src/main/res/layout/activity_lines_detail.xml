@@ -82,6 +82,17 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/deviazioneLinea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/subtitle"
+            android:textSize="12sp"
+            android:paddingTop="10dp"
+            android:text="QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI."
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <TextView
             android:id="@+id/txtMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -625,6 +625,105 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram1() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Roserio (Ospedale Sacco)", 45.51736, 9.11962, "Main", "1"));
+        stations.add(new MetroStation("Roserio", 45.51762, 9.11984, "Main", "1"));
+        stations.add(new MetroStation("Via Grassi", 45.51379, 9.12571, "Main", "1"));
+        stations.add(new MetroStation("Largo Boccioni", 45.51168, 9.12797, "Main", "1"));
+        stations.add(new MetroStation("Via Mambretti", 45.50948, 9.13137, "Main", "1"));
+        stations.add(new MetroStation("Certosa FS", 45.50778, 9.13729, "Main", "1"));
+        stations.add(new MetroStation("V.Le Espinasse Via Palizzi", 45.50281, 9.1387, "Main", "1"));
+        stations.add(new MetroStation("P.Le Santorre Di Santarosa", 45.50038, 9.14012, "Main", "1"));
+        stations.add(new MetroStation("V.Le Espinasse Via Nuvolone", 45.49788, 9.14188, "Main", "1"));
+        stations.add(new MetroStation("V.Le Espinasse Via Casella", 45.4956, 9.14347, "Main", "1"));
+        stations.add(new MetroStation("V.Le Espinasse P.Le Accursio", 45.49413, 9.14448, "Main", "1"));
+        stations.add(new MetroStation("P.Le Accursio", 45.49282, 9.14537, "Main", "1"));
+        stations.add(new MetroStation("V.Le Certosa Via Grosotto", 45.4916, 9.14805, "Main", "1"));
+        stations.add(new MetroStation("V.Le Certosa V.Le Serra", 45.49016, 9.15104, "Main", "1"));
+        stations.add(new MetroStation("Piazza Firenze", 45.48781, 9.15631, "Main", "1"));
+        stations.add(new MetroStation("C.So Sempione Via E. Filiberto", 45.48616, 9.15844, "Main", "1"));
+        stations.add(new MetroStation("C.So Sempione Via Arona", 45.48396, 9.16105, "Main", "1"));
+        stations.add(new MetroStation("Domodossola FN M5", 45.48209, 9.16358, "Main", "1"));
+        stations.add(new MetroStation("C.So Sempione Via Procaccini", 45.48016, 9.16612, "Main", "1"));
+        stations.add(new MetroStation("C.So Sempione Via Villasanta", 45.47916, 9.16743, "Main", "1"));
+        stations.add(new MetroStation("C.So Sempione Via Canova", 45.47827, 9.1686, "Main", "1"));
+        stations.add(new MetroStation("Arco Della Pace", 45.47639, 9.1714, "Main", "1"));
+        stations.add(new MetroStation("Via Pagano Via Canova", 45.47422, 9.17002, "Main", "1"));
+        stations.add(new MetroStation("L.Go Quinto Alpini", 45.47264, 9.16761, "Main", "1"));
+        stations.add(new MetroStation("Via XX Settembre", 45.4703, 9.16988, "Main", "1"));
+        stations.add(new MetroStation("Piazza Virgilio", 45.46851, 9.17237, "Main", "1"));
+        stations.add(new MetroStation("Cadorna FN M1 M2", 45.46796, 9.17648, "Main", "1"));
+        stations.add(new MetroStation("Foro Buonaparte Via Ricasoli", 45.46747, 9.17914, "Main", "1"));
+        stations.add(new MetroStation("Cairoli M1", 45.46831, 9.18257, "Main", "1"));
+        stations.add(new MetroStation("Via Cusani", 45.46884, 9.18483, "Main", "1"));
+        stations.add(new MetroStation("Cordusio M1", 45.46566, 9.18691, "Main", "1"));
+        stations.add(new MetroStation("Teatro Alla Scala", 45.46757, 9.19004, "Main", "1"));
+        stations.add(new MetroStation("Montenapoleone M3", 45.4693, 9.192, "Main", "1"));
+        stations.add(new MetroStation("Piazza Cavour", 45.47274, 9.19523, "Main", "1"));
+        stations.add(new MetroStation("Turati M3", 45.47557, 9.19474, "Main", "1"));
+        stations.add(new MetroStation("Repubblica M3", 45.47788, 9.19775, "Main", "1"));
+        stations.add(new MetroStation("V.Le Vittorio Veneto", 45.47691, 9.20113, "Main", "1"));
+        stations.add(new MetroStation("V.Le Tunisia", 45.47885, 9.20292, "Main", "1"));
+        stations.add(new MetroStation("Via Vitruvio", 45.48217, 9.20646, "Main", "1"));
+        stations.add(new MetroStation("Via Settembrini", 45.48376, 9.20803, "Main", "1"));
+        stations.add(new MetroStation("Caiazzo M2", 45.48509, 9.20943, "Main", "1"));
+        stations.add(new MetroStation("V.Le Brianza", 45.48764, 9.21222, "Main", "1"));
+        stations.add(new MetroStation("Via Venini Via Battaglia", 45.48975, 9.21431, "Main", "1"));
+        stations.add(new MetroStation("Piazza Morbegno", 45.49259, 9.21644, "Main", "1"));
+        stations.add(new MetroStation("Greco Rovereto", 45.49495, 9.21625, "Main", "1"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsTram3() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Gratosoglio", 45.40365, 9.17444, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia", 45.40652, 9.17481, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Saponaro", 45.41018, 9.17447, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via De Ruggiero", 45.4182, 9.17546, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia (Isola Anita)", 45.42281, 9.17698, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via S. Abbondio", 45.42443, 9.17711, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Boifava", 45.42655, 9.17728, "Main", "3"));
+        stations.add(new MetroStation("Piazza Abbiategrasso M2", 45.42924, 9.17747, "Main", "3"));
+        stations.add(new MetroStation("Via Montegani Via Neera", 45.43284, 9.17777, "Main", "3"));
+        stations.add(new MetroStation("Via Montegani Via Palmieri", 45.43463, 9.17799, "Main", "3"));
+        stations.add(new MetroStation("Via Montegani V.Le Da Cermenate", 45.43718, 9.1783, "Main", "3"));
+        stations.add(new MetroStation("Via Meda Via Spaventa", 45.44006, 9.17863, "Main", "3"));
+        stations.add(new MetroStation("V.Le Tibaldi Via Meda", 45.44315, 9.17902, "Main", "3"));
+        stations.add(new MetroStation("Largo Mahler", 45.44579, 9.17926, "Main", "3"));
+        stations.add(new MetroStation("C.So S. Gottardo Via Lagrange", 45.44861, 9.17974, "Main", "3"));
+        stations.add(new MetroStation("Piazza XXIV Maggio", 45.45177, 9.18015, "Main", "3"));
+        stations.add(new MetroStation("Piazza XXIV Maggio", 45.4524, 9.17969, "Main", "3"));
+        stations.add(new MetroStation("Via Vigevano V.Le Gorizia", 45.45272, 9.1763, "Main", "3"));
+        stations.add(new MetroStation("Via Vigevano Via Corsico", 45.45308, 9.17344, "Main", "3"));
+        stations.add(new MetroStation("Porta Genova M2", 45.45322, 9.17065, "Main", "3"));
+        stations.add(new MetroStation("P.Le Cantore", 45.45491, 9.17225, "Main", "3"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsTram24() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Vigentino", 45.42196, 9.20354, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Chopin", 45.42577, 9.20336, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Val Di Sole", 45.42863, 9.20246, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Noto", 45.43143, 9.20178, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Dell'Assunta", 45.43338, 9.20105, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Quaranta", 45.43555, 9.20065, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Rutilia", 45.43976, 9.19983, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Lorenzini", 45.44309, 9.19892, "Main", "24"));
+        stations.add(new MetroStation("V.Le Isonzo Via Ripamonti", 45.44677, 9.19801, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Bellezza", 45.44833, 9.1976, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti V.Le Sabotino", 45.45076, 9.19695, "Main", "24"));
+        stations.add(new MetroStation("C.So Porta Vigentina", 45.45364, 9.19607, "Main", "24"));
+        stations.add(new MetroStation("Crocetta M3", 45.45537, 9.19561, "Main", "24"));
+        stations.add(new MetroStation("Sforza - Policlinico M4", 45.4582, 9.19246, "Main", "24"));
+        stations.add(new MetroStation("Missori M3", 45.4604, 9.18866, "Main", "24"));
+        stations.add(new MetroStation("Piazza Missori", 45.46092, 9.18993, "Main", "24"));
+        stations.add(new MetroStation("Via Larga", 45.46237, 9.19372, "Main", "24"));
+        stations.add(new MetroStation("Piazza Fontana", 45.46337, 9.19405, "Main", "24"));
+        return stations;
+    }
+
     public static List<InterchangeInfo> getBusInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
         interchanges.add(new InterchangeInfo(
@@ -783,6 +882,60 @@ public class StationDB {
         return interchanges;
     }
 
+    public static List<InterchangeInfo> getInterchangesTrams() {
+        return Arrays.asList(
+                new InterchangeInfo("Certosa FS", new String[]{"1", "12", "RE13", "S5", "S6", "S11"}, "lightrail"),
+                new InterchangeInfo("Piazza Firenze", new String[]{"1", "14", "19"}, "tram.fill"),
+                new InterchangeInfo("Domodossola FN", new String[]{"M5", "1", "19", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "S3", "S4"}, "lightrail"),
+                new InterchangeInfo("Cadorna FN", new String[]{"M1", "M2", "1", "2", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "MXP1"}, "lightrail"),
+                new InterchangeInfo("Cairoli M1", new String[]{"M1", "1", "2", "4"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Cordusio M1", new String[]{"M1", "1", "12", "14", "16", "19"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Montenapoleone M3", new String[]{"M3", "1"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Turati M3", new String[]{"M3", "1"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Repubblica M3", new String[]{"M3", "1", "9", "33", "S1", "S2", "S5", "S6", "S12", "S13"}, "lightrail"),
+                new InterchangeInfo("V.Le Tunisia", new String[]{"1", "5", "33"}, "tram.fill"),
+                new InterchangeInfo("Caiazzo M2", new String[]{"M2", "1"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Porta Genova M2", new String[]{"M2", "2", "3", "9", "10"}, "tram.fill.tunnel"),
+                new InterchangeInfo("V.Le Coni Zugna Via Solari", new String[]{"2", "10", "14"}, "tram.fill"),
+                new InterchangeInfo("Conciliazione M1", new String[]{"M1", "2", "10"}, "tram.fill"),
+                new InterchangeInfo("Largo Quinto Alpini", new String[]{"1", "2", "10", "19"}, "tram.fill"),
+                new InterchangeInfo("Lanza M2", new String[]{"M2", "2", "4", "12", "14"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Via Farini Via Ferrari", new String[]{"2", "4", "10", "33"}, "tram.fill"),
+                new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"M2", "3", "15"}, "tram.fill.tunnel"),
+                new InterchangeInfo("P.Le Cantore", new String[]{"2", "3", "9", "10", "14"}, "tram.fill"),
+                new InterchangeInfo("Maciachini M3", new String[]{"M3", "4"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Ca'Granda M5", new String[]{"M5", "4", "5", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Bicocca M5", new String[]{"M5", "4", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Ponale M5", new String[]{"M5", "4", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Bignami M5", new String[]{"M5", "4", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Istria M5", new String[]{"M5", "5", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Marche M5", new String[]{"M5", "5", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Centrale FS", new String[]{"M2", "M3", "5", "9", "10", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "MXP1"}, "lightrail"),
+                new InterchangeInfo("Zara M3 M5", new String[]{"M3", "M5", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Precotto M1", new String[]{"M1", "7"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Porta Romana M3", new String[]{"M3", "9"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Porta Venezia M1", new String[]{"M1", "9", "S1", "S2", "S5", "S6", "S12", "S13"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Garibaldi FS", new String[]{"M2", "M5", "9", "33", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13"}, "lightrail"),
+                new InterchangeInfo("Monumentale M5", new String[]{"M5", "10"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Coni Zugna M4", new String[]{"M4", "10"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Repetti M4", new String[]{"M4", "12", "27"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Stazione Forlanini FS", new String[]{"M4", "12", "27", "R38", "RE8", "RE13", "S5", "S6", "S9"}, "lightrail"),
+                new InterchangeInfo("Piazza Cinque Giornate", new String[]{"9", "12", "19", "27"}, "tram.fill"),
+                new InterchangeInfo("Missori M3", new String[]{"M3", "12", "15", "16", "19", "24"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Duomo M1 M3", new String[]{"M1", "M3", "2", "3", "12", "14", "15", "16", "19"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Cenisio M5", new String[]{"M5", "12", "14"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Santa Sofia M4", new String[]{"M4", "15"}, "tram.fill.tunnel"),
+                new InterchangeInfo("S. Siro Stadio M5", new String[]{"M5", "16"}, "tram.fill.tunnel"),
+                new InterchangeInfo("S. Siro Ippodromo M5", new String[]{"M5", "16"}, "tram.fill.tunnel"),
+                new InterchangeInfo("De Angeli M1", new String[]{"M1", "16"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Sforza - Policlinico M4", new String[]{"M4", "16", "24"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Crocetta M3", new String[]{"M3", "16", "24"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Lambrate FS", new String[]{"M2", "19", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9"}, "lightrail"),
+                new InterchangeInfo("Via Larga", new String[]{"12", "19", "24"}, "tram.fill"),
+                new InterchangeInfo("P.Le Lagosta", new String[]{"17", "31", "33"}, "tram.fill")
+        );
+    }
+
     public static List<InterchangeInfo> getInterchanges() {
         return Arrays.asList(
                 new InterchangeInfo("Rho Fiera-Milano", new String[]{"M1", "AV", "R21", "R23", "RE4", "RE5", "S5", "S6", "S11"}, "lightrail"),
@@ -849,6 +1002,9 @@ public class StationDB {
         allStations.addAll(getStationsRE80());
         allStations.addAll(getStationsMXP1());
         allStations.addAll(getStationsMXP2());
+        allStations.addAll(getStationsTram1());
+        allStations.addAll(getStationsTram3());
+        allStations.addAll(getStationsTram24());
         return allStations;
     }
 

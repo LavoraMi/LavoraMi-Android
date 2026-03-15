@@ -88,7 +88,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         /// Check if the line is a TRAM, else do not display the Map View.
         if (nomeLinea == null) nomeLinea = "M1";
-        if (tipoDiLinea.contains("Tram") || nomeLinea.contains("z")){
+        if ((tipoDiLinea.contains("Tram") && !nomeLinea.equalsIgnoreCase("1") && !nomeLinea.equalsIgnoreCase("3") && !nomeLinea.equalsIgnoreCase("24")) || nomeLinea.contains("z")){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -193,6 +193,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
+
+        String[] lineeDeviate = {"2", "3", "4", "10", "12", "14"};
+
+        for(String linea : lineeDeviate){
+            if(linea.equalsIgnoreCase(nomeLinea))
+                findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
+        }
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
@@ -304,8 +311,20 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
             LatLngBounds bounds = builder.build();
 
-            int padding = 150;
-            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+            int padding = (tipoDiLinea.contains("Tram") ? 0 : 120);
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding),
+                    new GoogleMap.CancelableCallback() {
+                        @Override
+                        public void onFinish() {
+                            if (tipoDiLinea.contains("Tram")) {
+                                LatLng center = bounds.getCenter();
+                                float currentZoom = mMap.getCameraPosition().zoom;
+                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(center, currentZoom + 1.5f));
+                            }
+                        }
+                        @Override
+                        public void onCancel() {}
+                    });
         }
         else {
             LatLng milano = new LatLng(45.4642, 9.1900);
@@ -625,7 +644,14 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         String searchTag = nomeLinea.trim().toUpperCase();
 
-        for (InterchangeInfo evento : StationDB.getInterchanges()) {
+        List<InterchangeInfo> interchanges = new ArrayList<>();
+
+        if(tipoDiLinea.contains("Tram"))
+            interchanges = StationDB.getInterchangesTrams();
+        else
+            interchanges =StationDB.getInterchanges();
+
+        for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;
 
             boolean matchFound = false;
@@ -899,7 +925,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "15": return "Duomo M1 M3 - Rozzano (Via G. Rossa)";
             case "16": return "Stadio San Siro M5 - Via Monte Velino";
             case "19": return "P.Za Castelli - Lambrate FS M2";
-            case "24": return "Duomo M1 M3 - Vigentino";
+            case "24": return "Piazza Fontana - Vigentino";
             case "27": return "V.Le Ungheria - Duomo M1 M3";
             case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";

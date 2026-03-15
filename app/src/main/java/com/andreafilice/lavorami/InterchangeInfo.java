@@ -40,6 +40,8 @@ public class InterchangeInfo {
                 return R.drawable.ic_plane;
             case "bus.fill":
                 return R.drawable.ic_bus;
+            case "tram.fill":
+                return R.drawable.ic_tram;
             default:
                 return R.drawable.empty_image;
         }
