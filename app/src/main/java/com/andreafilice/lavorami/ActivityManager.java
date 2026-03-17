@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
 
 public class ActivityManager {
     public static void changeActivity(Context context, Class<?> destinationLayout) {
@@ -30,5 +32,14 @@ public class ActivityManager {
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         context.startActivity(browserIntent);
+    }
+
+    public static void openURLWithTabBuilder(Context context, String url) {
+        ///@PARAMETER
+        /// String url is the URL to open in-app Browser.
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.launchUrl(context, Uri.parse(url));
     }
 }

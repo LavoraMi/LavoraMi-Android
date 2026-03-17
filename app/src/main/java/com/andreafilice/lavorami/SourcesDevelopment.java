@@ -66,18 +66,13 @@ public class SourcesDevelopment extends AppCompatActivity {
         });
 
         btnInstagram.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
-        btnTikTok.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.tiktok.com/@applavorami.official"));
-        btnPatreon.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi"));
-        btnPrivacyPolicy.setOnClickListener(v -> ActivityManager.openURL(this, "https://lavorami.it/privacypolicy"));
-        btnTermsOfService.setOnClickListener(v -> ActivityManager.openURL(this, "https://lavorami.it/termsofservice"));
+        btnTikTok.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.tiktok.com/@applavorami.official"));
+        btnPatreon.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.patreon.com/cw/LavoraMi"));
+        btnPrivacyPolicy.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it/privacypolicy"));
+        btnTermsOfService.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it/termsofservice"));
         btnRequestDatas.setOnClickListener(v -> ActivityManager.changeActivity(this, RequestUserDatas.class));
         btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
         btnRiconoscimenti.setOnClickListener(v ->{ActivityManager.changeActivity(this, LibrariesActivity.class);});
-        btnWebsite.setOnClickListener(v -> {
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-
-            CustomTabsIntent customTabsIntent = builder.build();
-            customTabsIntent.launchUrl(this, Uri.parse("https://lavorami.it"));
-        });
+        btnWebsite.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it"));
     }
 }

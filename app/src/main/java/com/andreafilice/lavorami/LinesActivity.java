@@ -109,12 +109,7 @@ public class LinesActivity extends AppCompatActivity {
 
         for (int i = 0; i < infoButtons.length; i++) {
             int finalI = i;
-            infoButtons[i].setOnClickListener(v -> {
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-
-                CustomTabsIntent customTabsIntent = builder.build();
-                customTabsIntent.launchUrl(this, Uri.parse(infoUrls[finalI]));
-            });
+            infoButtons[i].setOnClickListener(v -> {ActivityManager.openURLWithTabBuilder(this, infoUrls[finalI]);});
         }
 
         //* SEARCH BAR
