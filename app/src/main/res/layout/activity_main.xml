@@ -170,6 +170,7 @@
         android:paddingStart="15dp"
         android:textColor="@color/text_primary"
         android:textColorHint="#666666"
+        android:imeOptions="actionDone"
         app:layout_constraintTop_toBottomOf="@id/strikeBanner" />
 
     <TextSwitcher

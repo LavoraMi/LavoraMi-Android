@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -18,6 +19,8 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -312,6 +315,17 @@ public class MainActivity extends AppCompatActivity {
         int hPadding = (int) (0 * getResources().getDisplayMetrics().density);
         int iconWithPadding = iconSize + hPadding;
         editSearch.setPadding(editSearch.getPaddingLeft(), editSearch.getPaddingTop(), iconWithPadding, editSearch.getPaddingBottom());
+
+        editSearch.setOnEditorActionListener((v, actionID, event) -> {
+            if(actionID == EditorInfo.IME_ACTION_DONE){
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                editSearch.clearFocus();
+                return true;
+            }
+
+            return false;
+        });
 
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
