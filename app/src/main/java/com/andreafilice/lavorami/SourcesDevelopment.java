@@ -44,6 +44,8 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnInstagram = findViewById(R.id.btnInstagram);
         MaterialButton btnTikTok = findViewById(R.id.btnTikTok);
         MaterialButton btnRiconoscimenti = findViewById(R.id.btnLibraries);
+        MaterialButton btnPrivacyPolicy = findViewById(R.id.btnPrivacyPolicy);
+        MaterialButton btnTermsOfService = findViewById(R.id.btnTermsService);
         ImageButton btnBack = findViewById(R.id.backBtn);
 
         btnReportBug.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +68,8 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnInstagram.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
         btnTikTok.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.tiktok.com/@applavorami.official"));
         btnPatreon.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.patreon.com/cw/LavoraMi"));
-        btnCofee.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.buymeacoffee.com/lavorami"));
+        btnPrivacyPolicy.setOnClickListener(v -> ActivityManager.openURL(this, "https://lavorami.it/privacypolicy"));
+        btnTermsOfService.setOnClickListener(v -> ActivityManager.openURL(this, "https://lavorami.it/termsofservice"));
         btnRequestDatas.setOnClickListener(v -> ActivityManager.changeActivity(this, RequestUserDatas.class));
         btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
         btnRiconoscimenti.setOnClickListener(v ->{ActivityManager.changeActivity(this, LibrariesActivity.class);});
