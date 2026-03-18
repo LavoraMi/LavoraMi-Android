@@ -3,6 +3,8 @@ package com.andreafilice.lavorami;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -17,6 +19,7 @@ public class LavoraMiMessagingService extends FirebaseMessagingService {
 
         String title = "LavoraMi";
         String message = "";
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
 
         if (remoteMessage.getNotification() != null) {
             title = remoteMessage.getNotification().getTitle();
@@ -30,6 +33,7 @@ public class LavoraMiMessagingService extends FirebaseMessagingService {
         manager.notify((int) System.currentTimeMillis(),
             new NotificationCompat.Builder(this, "lavorami_notifications")
                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(largeIcon)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
