@@ -169,6 +169,15 @@ public class AccountManagement extends AppCompatActivity {
         /// In this section of the code, we set the button triggers and more of the SIGN IN View (also called LOGIN).
         TextView tvGoToSignup = findViewById(R.id.tvGoToSignup);
         TextView tvResetPassword = findViewById(R.id.tvResetPassword);
+        TextView termsBtnLogin = findViewById(R.id.termsBtnLogin);
+        TextView policyBtnLogin = findViewById(R.id.policyBtnLogin);
+
+        EditText emailLogin = findViewById(R.id.etLoginEmail);
+        EditText passwordLogin = findViewById(R.id.etLoginPassword);
+        CardView btnLogin = findViewById(R.id.btnLogin);
+
+        termsBtnLogin.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/termsofservice"));
+        policyBtnLogin.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/privacypolicy"));
 
         tvGoToSignup.setOnClickListener(v -> {
             loginView.setVisibility(View.GONE);
@@ -183,10 +192,6 @@ public class AccountManagement extends AppCompatActivity {
             resetPasswordView.setVisibility(View.VISIBLE);
             signUpView.setVisibility(View.GONE);
         });
-
-        EditText emailLogin = findViewById(R.id.etLoginEmail);
-        EditText passwordLogin = findViewById(R.id.etLoginPassword);
-        CardView btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(v -> {
             login(emailLogin.getText().toString(), passwordLogin.getText().toString());
@@ -226,6 +231,16 @@ public class AccountManagement extends AppCompatActivity {
         //*SIGNUP VIEW
         /// In this section of the code, we set the button triggers and more for the SIGN UP View.
         TextView tvGoToLogin = findViewById(R.id.tvGoToLogin);
+        TextView btnTermsSignup = findViewById(R.id.termsBtnSignUp);
+        TextView btnPolicySignup = findViewById(R.id.policyBtnSignUp);
+
+        btnTermsSignup.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/termsofservice"));
+        btnPolicySignup.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/privacypolicy"));
+
+        EditText emailSignUp = findViewById(R.id.etSignupEmail);
+        EditText passwordSignUp = findViewById(R.id.etSignupPassword);
+        EditText nameSignUp = findViewById(R.id.etSignupName);
+        CardView btnSignup = findViewById(R.id.btnSignup);
 
         tvGoToLogin.setOnClickListener(v -> {
             loginView.setVisibility(View.VISIBLE);
@@ -233,11 +248,6 @@ public class AccountManagement extends AppCompatActivity {
             resetPasswordView.setVisibility(View.GONE);
             signUpView.setVisibility(View.GONE);
         });
-
-        EditText emailSignUp = findViewById(R.id.etSignupEmail);
-        EditText passwordSignUp = findViewById(R.id.etSignupPassword);
-        EditText nameSignUp = findViewById(R.id.etSignupName);
-        CardView btnSignup = findViewById(R.id.btnSignup);
 
         btnSignup.setOnClickListener(v -> {
             if(passwordSignUp.getText().toString().length() < 8)

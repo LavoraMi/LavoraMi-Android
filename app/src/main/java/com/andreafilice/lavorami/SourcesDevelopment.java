@@ -66,7 +66,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         });
 
         btnInstagram.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
-        btnTikTok.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.tiktok.com/@applavorami.official"));
+        btnTikTok.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.tiktok.com/@applavorami.official"));
         btnPatreon.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.patreon.com/cw/LavoraMi"));
         btnPrivacyPolicy.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it/privacypolicy"));
         btnTermsOfService.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it/termsofservice"));

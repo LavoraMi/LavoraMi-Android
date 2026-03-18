@@ -180,6 +180,50 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Continuando, accetti i "
+                        android:textColor="@color/subtitle" />
+
+                    <TextView
+                        android:id="@+id/termsBtnLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Termini"
+                        android:textColor="@color/redMetro" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text=" e la "
+                        android:textColor="@color/subtitle" />
+
+                    <TextView
+                        android:id="@+id/policyBtnLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Privacy Policy."
+                        android:textColor="@color/redMetro" />
+                </LinearLayout>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btnGoogleLogin"
                     android:layout_width="match_parent"
@@ -440,7 +484,7 @@
                 android:gravity="center"
                 android:paddingBottom="70dp"
                 android:paddingHorizontal="24dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -758,7 +802,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -894,6 +938,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Continuando, accetti i "
+                        android:textColor="@color/subtitle" />
+
+                    <TextView
+                        android:id="@+id/termsBtnSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Termini"
+                        android:textColor="@color/redMetro" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text=" e la "
+                        android:textColor="@color/subtitle" />
+
+                    <TextView
+                        android:id="@+id/policyBtnSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Privacy Policy."
+                        android:textColor="@color/redMetro" />
+                </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btnGoogleSignUp"
