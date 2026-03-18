@@ -400,6 +400,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        downloadJSONData(defaultCategory, false);
+    }
+
     private void askForNotificationPermission(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
@@ -442,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerView = findViewById(R.id.recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-            adapter = new WorkAdapter(eventsDisplay);
+            adapter = new WorkAdapter(this, eventsDisplay);
             adapter.setFilteredList(eventsDisplay);
             recyclerView.setAdapter(adapter);
 
@@ -505,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
 
                     RecyclerView recyclerView = findViewById(R.id.recyclerView);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    adapter = new WorkAdapter(eventsDisplay);
+                    adapter = new WorkAdapter(MainActivity.this, eventsDisplay);
                     adapter.setFilteredList(eventsDisplay);
                     recyclerView.setAdapter(adapter);
 

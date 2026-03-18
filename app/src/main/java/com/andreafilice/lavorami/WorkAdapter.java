@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.EventDescriptor.formattaData;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -32,10 +33,11 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_TYPE_ITEM = 0;
     private static final int VIEW_TYPE_FOOTER = 1;
-
+    static Context context;
     private List<EventDescriptor> eventList;
 
-    public WorkAdapter(List<EventDescriptor> eventList){
+    public WorkAdapter(Context context, List<EventDescriptor> eventList){
+        this.context = context;
         this.eventList = (eventList!=null) ? eventList : new ArrayList<>();
     }
 
@@ -82,13 +84,14 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder itemHolder = (ViewHolder) holder;
         EventDescriptor item = eventList.get(position);
 
         String finalStartDate = formattaData(item.getStartDate());
         String finalEndDate = formattaData(item.getEndDate());
 
+        boolean isShowDetails = DataManager.getBoolData(context, DataKeys.KEY_SHOW_DETAILS, true);
         int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
 
         ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
@@ -100,6 +103,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.endDateText.setText(finalEndDate);
         itemHolder.companyText.setText(item.getCompany());
         itemHolder.descriptionText.setText(item.getDetails());
+
+        itemHolder.descriptionText.setVisibility((isShowDetails) ? View.VISIBLE : View.GONE);
 
         int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
         itemHolder.progressBar.setProgress(progressPercentage);
