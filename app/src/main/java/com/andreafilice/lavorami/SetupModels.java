@@ -43,7 +43,7 @@ public class SetupModels {
             holder.tvTitle.setText(page.title);
             holder.tvDesc.setText(page.description);
 
-            if(page.smallDescription.trim() != "") {
+            if(!page.smallDescription.trim().isEmpty()) {
                 holder.tvSetupSmallDesc.setVisibility(View.VISIBLE);
                 holder.tvSetupSmallDesc.setText(page.smallDescription);
             }
