@@ -123,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
-        pages.add(new SetupModels.SetupPage("Benvenuto su LavoraMi", "Tieniti informato. Prima e durante il tuo viaggio.", "ic_ticket"));
-        pages.add(new SetupModels.SetupPage("Pianifica il Viaggio", "Pianifica il tuo viaggio sapendo dei disagi, ben prima di partire.", "ic_map"));
-        pages.add(new SetupModels.SetupPage("Tieni sott'occhio i lavori", "Seleziona una linea da poter mostrare nel Widget dell'app per tenerla sempre sott'occhio.", "ic_star_fill"));
-        pages.add(new SetupModels.SetupPage("Tieniti Aggiornato", "Attiva le notifiche per rimanere al passo coi lavori.", "ic_bell_fill"));
-        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.", "ic_lock"));
+        pages.add(new SetupModels.SetupPage("Benvenuto su LavoraMi", "Tieniti informato. Prima e durante il tuo viaggio.", "ic_train", ""));
+        pages.add(new SetupModels.SetupPage("Pianifica il Viaggio", "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire.", "ic_map", ""));
+        pages.add(new SetupModels.SetupPage("Tieni sott'occhio i lavori", "Seleziona le tue linee preferite nelle impostazioni. Non essere l'ultimo a sapere le cose.", "ic_star_fill", ""));
+        pages.add(new SetupModels.SetupPage("Tieniti Aggiornato", "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese.", "ic_bell_fill", ""));
+        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.", "ic_lock", "Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più."));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
