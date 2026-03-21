@@ -21,7 +21,7 @@ benMaves = "0.53.0"
 playServicesAuth = "21.5.1"
 biometricAuth = "1.1.0"
 googleServices = "4.4.4"
-firebaseBom = "34.10.0"
+firebaseBom = "34.11.0"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
