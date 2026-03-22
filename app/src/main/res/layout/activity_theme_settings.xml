@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aspetto"
+            android:text="@string/appearance"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="Sistema"
+                            android:text="@string/sistemaTheme"
                             android:layout_toEndOf="@id/iconSystem"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -137,7 +137,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconDark"
-                            android:text="Scuro"
+                            android:text="@string/darkTheme"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -179,7 +179,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="Chiaro"
+                            android:text="@string/lightTheme"
                             android:layout_toEndOf="@id/iconLight"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -205,7 +205,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="L'applicazione delle modifiche può richiede alcuni secondi."
+                android:text="@string/themeDisclaimer"
                 android:textColor="#8E8E93"
                 android:textSize="14sp" />
 
