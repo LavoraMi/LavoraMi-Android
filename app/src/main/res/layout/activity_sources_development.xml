@@ -236,9 +236,9 @@
                 android:fontFamily="@font/archivo_medium"
                 android:text="Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi effettuarci una donazione qui sotto!"
                 android:textAlignment="center"
-                android:textSize="17sp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp" />
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPatreon"
