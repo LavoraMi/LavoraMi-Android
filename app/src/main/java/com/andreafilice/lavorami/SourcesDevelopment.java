@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -51,8 +52,8 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnReportBug.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String subject = "Segnalazione bug LavoraMi su Android";
-                String body = String.format("INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG):\nID Telefono: %s\nVersione Android: %s\nModello e manufacture: %s, %s", Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER);
+                String subject = ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentSubject);
+                String body = String.format(ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentBody), Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER);
 
                 String encodedBody = Uri.encode(body);
                 String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;

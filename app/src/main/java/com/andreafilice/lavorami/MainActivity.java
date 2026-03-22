@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
-    private String[] hints = {"Cerca nei lavori...", "Scopri qualcosa di nuovo...", "Cerca la tua linea...", "Cerca ciò che ami...", "Non essere l'ultimo a saperlo...", "Scopri le novità...", "Lavori della settimana..."};
     private TextSwitcher hintSwitcher;
     private EditText editSearch;
     private int indexHintAnimation;
@@ -110,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        String[] hints = {getLocalizedString(R.string.hintMain1), getLocalizedString(R.string.hintMain2), getLocalizedString(R.string.hintMain3), getLocalizedString(R.string.hintMain4), getLocalizedString(R.string.hintMain5), getLocalizedString(R.string.hintMain6), getLocalizedString(R.string.hintMain7)};
 
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
@@ -223,12 +224,12 @@ public class MainActivity extends AppCompatActivity {
             return title;
         });
 
-        hintSwitcher.setCurrentText("Cerca nei lavori...");
+        hintSwitcher.setCurrentText(getLocalizedString(R.string.hintMain1));
 
         hintSwitcher.setInAnimation(this, R.anim.slide_up_in);
         hintSwitcher.setOutAnimation(this, R.anim.slide_up_out);
 
-        startHintLoop();
+        startHintLoop(hints);
 
         //*NAVBAR
         ImageButton btnLines = findViewById(R.id.linesButton);
@@ -425,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
             filterGroup.post(() -> applicaFiltroCategoria(categoriaFinale));
     }
 
-    private void startHintLoop(){
+    private void startHintLoop(String[] hints){
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -869,4 +870,6 @@ public class MainActivity extends AppCompatActivity {
         if (AppCompatDelegate.getDefaultNightMode() != modeSelected)
             AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
+
+    public String getLocalizedString(int ID) {return ContextCompat.getString(this, ID);}
 }

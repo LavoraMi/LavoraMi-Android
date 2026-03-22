@@ -495,5 +495,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back"
         app:tint="?attr/colorControlNormal" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

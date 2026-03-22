@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notifiche"
+            android:text="@string/notificationTitle"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/archivo_medium"
-            android:text="Permesso Negato"
+            android:text="@string/deniedPermissionError"
             android:textColor="@color/text_primary"
             android:textSize="34sp"
             android:textAlignment="center"
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/archivo_medium"
-            android:text="Non hai dato il permesso a LavoraMi di inviare notifiche. Vai su Impostazioni > Applicazioni > LavoraMi ed attiva il permesso."
+            android:text="@string/permissionsErrorMessage"
             android:textColor="#8E8E93"
             android:textSize="16sp"
             android:textAlignment="center"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/archivo_medium"
-            android:text="Apri Impostazioni"
+            android:text="@string/openSettingsLink"
             android:textAlignment="center"
             android:textColor="@color/RE"
             android:textSize="20sp"
@@ -140,7 +140,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconMaster"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Notifiche"
+                        android:text="@string/notificationTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Imposta tutte le notifiche su uno stato."
+                android:text="@string/setAllNotificationsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -174,7 +174,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Notifiche Lavori"
+                android:text="@string/workNotificationsTitle"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
@@ -210,7 +210,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconStartWork"
-                            android:text="Notifiche Inizio Lavori"
+                            android:text="@string/notificationStartWorks"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -252,7 +252,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconEndWork"
-                            android:text="Notifiche Fine Lavori"
+                            android:text="@string/notificationEndWorks"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -278,7 +278,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Altre Notifiche"
+                android:text="@string/otherNotificationsTitle"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
@@ -314,7 +314,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconStrike"
-                            android:text="Notifiche Scioperi"
+                            android:text="@string/strikeNotifications"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -356,7 +356,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconPushNotifications"
-                            android:text="Notifiche Push"
+                            android:text="@string/pushNotifications"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -382,7 +382,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Impostazioni Notifiche"
+                android:text="@string/notificationSettingsTitle"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
@@ -416,7 +416,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconTime"
-                        android:text="Orario Notifiche"
+                        android:text="@string/notificationScheduled"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -441,10 +441,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Modifica l'orario di arrivo delle notifiche."
+                android:text="@string/notificationTimeDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

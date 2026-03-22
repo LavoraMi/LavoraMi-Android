@@ -43,7 +43,6 @@ public class ThemeSettings extends AppCompatActivity {
 
         //*UI ELEMENTS
         /// In this section of the code, we declared RelativeLayouts and ImageResources for the Tick icon.
-
         systemSelected = findViewById(R.id.system);
         darkSelected = findViewById(R.id.dark);
         ligthSelected = findViewById(R.id.light);
