@@ -31,7 +31,7 @@
             android:id="@+id/txtHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome Libreria"
+            android:text="@string/libraryName"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informazioni sul componente"
+                android:text="@string/libraryInfos"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nome:"
+                        android:text="@string/libraryInfoName"
                         android:textColor="@color/desc"
                         android:textSize="14sp"
                         android:fontFamily="@font/archivo_medium" />
@@ -103,7 +103,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Versione:"
+                        android:text="@string/libraryInfoVersion"
                         android:textColor="@color/desc"
                         android:textSize="14sp"
                         android:fontFamily="@font/archivo_medium" />
@@ -122,7 +122,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Licenza:"
+                        android:text="@string/libraryInfoLicense"
                         android:textColor="@color/desc"
                         android:textSize="14sp"
                         android:fontFamily="@font/archivo_medium" />
@@ -173,7 +173,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Testo della licenza"
+                android:text="@string/libraryLicenseText"
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold"

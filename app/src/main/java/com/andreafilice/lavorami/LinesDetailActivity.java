@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -256,8 +257,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Suburbano " + nomeLinea);
         if(nomeLinea.matches("^[1-9][0-9]?$"))
             detTitolo.setText("Tram "+nomeLinea);
-        if(nomeLinea.equals("S10")||nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("RE80"))
-            detTitolo.setText("Transfrontaliere: "+ nomeLinea);
+        if(nomeLinea.equals("S10") || nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("RE80"))
+            detTitolo.setText("TILO "+ nomeLinea);
         if(nomeLinea.startsWith("MXP"))
             detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
@@ -629,7 +630,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
-        emptyView.setText((EventData.networkError) ? "Nessuna connessione ad Internet." : "Non ci sono lavori su questa linea.");
+        emptyView.setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
     }
 
     private void caricaInterscambiLinee() {
@@ -738,7 +739,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         interscambiNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
-        emptyView.setText("Nessun interscambio con questa linea.");
+        emptyView.setText(ContextCompat.getString(this, R.string.noInterchanges));
     }
 
     private void caricaFermateInterscambio() {
@@ -846,7 +847,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80"))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
-            tvAttesa.setText("Frequenza media: 5-20 min.");
+            tvAttesa.setText(ContextCompat.getString(this, R.string.averageWaitingTimeTitle) + "5-20 min.");
         else
             tvAttesa.setText("Frequenza variabile");
 
@@ -868,8 +869,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
 
         tvLavori.setText((numeroLavori > 0)
-                ? String.format("%s attuali, %s programmati.", numeroLavoriAttuali, numeroLavoriProgrammati)
-                : "0 attuali, 0 programmati.");
+                ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle))
+                : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
 
     private boolean isDarkMode() {
@@ -1014,11 +1015,11 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M3": return "4-5 min.";
             case "M4": return "2-3 min.";
             case "M5": return "4 min.";
-            case "S10": return "1 ora - 45 min.";
-            case "S30": return "2 ore.";
+            case "S10": return "1 h - 45 min.";
+            case "S30": return "2 h.";
             case "RE80":
             case "S7":
-                return "30 min - 1 ora.";
+                return "30 min - 1 h.";
             case "S1":
             case "S2":
             case "S3":
@@ -1037,7 +1038,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S31":
             case "S40":
             case "S50":
-                return "1 ora.";
+                return "1 h.";
             default: return "Errore";
         }
     }

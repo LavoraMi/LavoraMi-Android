@@ -40,7 +40,7 @@
             android:drawableStart="@drawable/ic_search_small"
             android:drawableTint="@color/text_primary"
             android:drawablePadding="10dp"
-            android:hint="Cerca per tipo o numero..."
+            android:hint="@string/linesSearchBar"
             android:paddingStart="15dp"
             android:textColor="@color/text_primary"
             android:textColorHint="#666666"
@@ -129,7 +129,7 @@
                         android:id="@+id/subTitleMM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee Metropolitane"
+                        android:text="@string/metroLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium" />
@@ -189,7 +189,7 @@
                         android:id="@+id/subTitleS"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee Suburbane"
+                        android:text="@string/suburbanLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium" />
@@ -249,7 +249,7 @@
                         android:id="@+id/subTitleTR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee Transfrontaliere"
+                        android:text="@string/tiloLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium"/>
@@ -309,7 +309,7 @@
                         android:id="@+id/subTitleMalpensa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee Malpensa Express"
+                        android:text="@string/malpensaExpressLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium"/>
@@ -369,7 +369,7 @@
                         android:id="@+id/subTitleTm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee Tramviarie"
+                        android:text="@string/tramLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium"/>
@@ -429,7 +429,7 @@
                         android:id="@+id/subTitleMovi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee di Bus"
+                        android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium"/>
@@ -489,7 +489,7 @@
                         android:id="@+id/subTitleSV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee di Bus"
+                        android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium"/>
@@ -550,7 +550,7 @@
                         android:id="@+id/subTitleAutoguidovie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee di Bus"
+                        android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/archivo_medium"/>
@@ -636,5 +636,4 @@
             app:srcCompat="@drawable/ic_setting"
             app:tint="?attr/colorControlNormal" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

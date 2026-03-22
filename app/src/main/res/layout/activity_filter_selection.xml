@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Filtro Predefinito"
+            android:text="@string/defaultFilterTitle"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="Tutti"
+                            android:text="@string/allFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -177,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="Metropolitana"
+                            android:text="@string/metroFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -209,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="Treno"
+                            android:text="@string/trainFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -241,7 +241,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="In Corso"
+                            android:text="@string/inProgressFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -273,7 +273,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="Programmati"
+                            android:text="@string/scheduledFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -305,7 +305,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="di ATM"
+                            android:text="@string/atmFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -337,7 +337,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="di Trenord"
+                            android:text="@string/trenordFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -369,7 +369,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="di Movibus"
+                            android:text="@string/movibusFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -401,7 +401,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="di STAV"
+                            android:text="@string/stavFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -433,7 +433,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
-                            android:text="di Autoguidovie"
+                            android:text="@string/autoguidovieFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 

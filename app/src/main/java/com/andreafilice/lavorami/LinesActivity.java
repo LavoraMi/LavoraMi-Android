@@ -248,7 +248,7 @@ public class LinesActivity extends AppCompatActivity {
                 R.color.S12, R.color.S13, R.color.S19, R.color.S31};
         for (int i = 0; i < suburbanLines.length; i++) {
             int finalI = i;
-            aggiungiLinea(containerSub, suburbanLines[finalI], suburbanColors[finalI], "Suburbano");
+            aggiungiLinea(containerSub, suburbanLines[finalI], suburbanColors[finalI], ContextCompat.getString(this, R.string.suburban));
         }
 
         // TILO
@@ -256,7 +256,7 @@ public class LinesActivity extends AppCompatActivity {
         int[] tiloColors = {R.color.S10, R.color.S30, R.color.S40, R.color.S50, R.color.RE80};
         for (int i = 0; i < tiloLines.length; i++) {
             int finalI = i;
-            aggiungiLinea(containerTILO, tiloLines[finalI], tiloColors[finalI], "Transfrontaliera");
+            aggiungiLinea(containerTILO, tiloLines[finalI], tiloColors[finalI], ContextCompat.getString(this, R.string.tilo));
         }
 
         // MXP
