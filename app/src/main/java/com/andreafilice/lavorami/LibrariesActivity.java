@@ -313,7 +313,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Firebase Cloud Messaging",
-                        "34.10.0",
+                        "34.11.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
