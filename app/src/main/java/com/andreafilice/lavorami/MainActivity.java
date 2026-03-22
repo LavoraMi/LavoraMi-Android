@@ -42,6 +42,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorKt;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -379,6 +380,41 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+
+        //*CHIP COLORS
+        /// In this section of the code, we define the Chip colors for better visibility.
+        Chip[] filterChips = {
+            findViewById(R.id.chipAll),
+            findViewById(R.id.chipBus),
+            findViewById(R.id.chipTram),
+            findViewById(R.id.chipMetro),
+            findViewById(R.id.chipTreno),
+            findViewById(R.id.chipInCorso),
+            findViewById(R.id.chipProgrammati),
+            findViewById(R.id.chipATM),
+            findViewById(R.id.chipTrenord),
+            findViewById(R.id.chipMovibus),
+            findViewById(R.id.chipStav),
+            findViewById(R.id.chipAutoguidovie)
+        };
+        int colorChecked = ContextCompat.getColor(this, R.color.background_app);
+        int colorUncecked = ContextCompat.getColor(this, R.color.text_primary);
+
+        ColorStateList chipColors = new ColorStateList(
+            new int[][]{
+                    new int[]{ android.R.attr.state_checked },
+                    new int[]{ -android.R.attr.state_checked }
+            },
+            new int[]{
+                    colorChecked,
+                    colorUncecked
+            }
+        );
+
+        for(Chip chip : filterChips) {
+            chip.setTextColor(chipColors);
+            chip.setChipIconTint(chipColors);
         }
 
         //*DOWNLOADING EVENTS
