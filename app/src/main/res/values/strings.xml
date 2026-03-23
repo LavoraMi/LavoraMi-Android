@@ -190,4 +190,22 @@
     <string name="hintMain6">Scopri le novità...</string>
     <string name="hintMain7">Lavori della settimana...</string>
     <string name="yourAccountSettingsTitle">Il tuo Account</string>
+    <string name="setupTitle1">Benvenuto su LavoraMi</string>
+    <string name="setupTitle2">Pianifica il Viaggio</string>
+    <string name="setupTitle3">Tieni sott\'occhio i lavori</string>
+    <string name="setupTitle4">Tieniti Aggiornato</string>
+    <string name="setupTitle5">Tu ed ancora Tu.</string>
+    <string name="setupDeps1">Tieniti informato. Prima e durante il tuo viaggio.</string>
+    <string name="setupDeps2">Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire.</string>
+    <string name="setupDeps3">Seleziona le tue linee preferite nelle impostazioni. Non essere l\'ultimo a sapere le cose.</string>
+    <string name="setupDeps4">Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese.</string>
+    <string name="setupDeps5">I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.</string>
+    <string name="setupMiniDetails">Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più.</string>
+    <string name="skipConfigDeps">Sei sicuro di voler saltare la parte di configurazione?</string>
+    <string name="endPages">Fine</string>
+    <string name="nextPages">Avanti</string>
+    <string name="strikeBannerTitle">Sciopero proclamato il %s.</string>
+    <string name="strikeBannerGuaranteed">Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) %s</string>
+    <string name="strikeBannerAderenti">ADERENTI: %s</string>
+    <string name="noWorksFoundInput">Nessun lavoro trovato per: \\\"%s\\\".</string>
 </resources>

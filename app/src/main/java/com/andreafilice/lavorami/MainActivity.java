@@ -125,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
-        pages.add(new SetupModels.SetupPage("Benvenuto su LavoraMi", "Tieniti informato. Prima e durante il tuo viaggio.", "ic_train", ""));
-        pages.add(new SetupModels.SetupPage("Pianifica il Viaggio", "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire.", "ic_map", ""));
-        pages.add(new SetupModels.SetupPage("Tieni sott'occhio i lavori", "Seleziona le tue linee preferite nelle impostazioni. Non essere l'ultimo a sapere le cose.", "ic_star_fill", ""));
-        pages.add(new SetupModels.SetupPage("Tieniti Aggiornato", "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese.", "ic_bell_fill", ""));
-        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.", "ic_lock", "Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più."));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle1), getLocalizedString(R.string.setupDeps1), "ic_train", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle2), getLocalizedString(R.string.setupDeps2), "ic_map", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle3), getLocalizedString(R.string.setupDeps3), "ic_star_fill", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle4), getLocalizedString(R.string.setupDeps4), "ic_bell_fill", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle5), getLocalizedString(R.string.setupDeps5), "ic_lock", getLocalizedString(R.string.setupMiniDetails)));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
@@ -159,10 +159,10 @@ public class MainActivity extends AppCompatActivity {
         btnSetupSkip.setOnClickListener(v ->{
             /// In this section of the code, we ask the user if he wants to skip the Setup.
             new AlertDialog.Builder(this)
-                    .setTitle("Sei sicuro?")
-                    .setMessage("Sei sicuro di voler saltare la parte di configurazione?")
-                    .setNegativeButton("Annulla", null)
-                    .setPositiveButton("Continua", ((dialog, which) -> {
+                    .setTitle(getLocalizedString(R.string.areYouSurePopUp))
+                    .setMessage(getLocalizedString(R.string.skipConfigDeps))
+                    .setNegativeButton(getLocalizedString(R.string.cancelPopUp), null)
+                    .setPositiveButton(getLocalizedString(R.string.confirmPopUp), ((dialog, which) -> {
                         DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
                         setupOverlay.setVisibility(View.GONE);
                         askForNotificationPermission();
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageSelected(position);
                 int currentPage = viewPager.getCurrentItem();
 
-                btnSetupNext.setText((position == pages.size() -1) ? "Fine" : "Avanti");
+                btnSetupNext.setText((position == pages.size() -1) ? getLocalizedString(R.string.endPages) : getLocalizedString(R.string.nextPages));
                 btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
 
                 if(currentPage == 3)
@@ -651,9 +651,9 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
-            strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
-            strikeGuaranteed.setText(String.format("Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) %s", strikeDescriptor.getStrikeGuaranteed()));
-            strikeCompanies.setText(String.format("ADERENTI: %s", strikeDescriptor.getStrikeCompanies()));
+            strikeDesc.setText(String.format(getLocalizedString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
+            strikeGuaranteed.setText(String.format(getLocalizedString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
+            strikeCompanies.setText(String.format(getLocalizedString(R.string.strikeBannerAderenti), strikeDescriptor.getStrikeCompanies()));
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
         }
@@ -666,7 +666,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView view = findViewById(R.id.recyclerView);
 
         noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        noWorkFounds.setText((searchInfo.equals("null") ? "Nessun lavoro trovato per questo filtro." : String.format("Nessun lavoro trovato per: \"%s\".", searchInfo)));
+        noWorkFounds.setText((searchInfo.equals("null") ? getLocalizedString(R.string.noWorkOnFilter) : String.format(getLocalizedString(R.string.noWorksFoundInput), searchInfo)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
 

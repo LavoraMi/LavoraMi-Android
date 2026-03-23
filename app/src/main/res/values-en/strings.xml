@@ -191,4 +191,22 @@
     <string name="hintMain6">Check out what\'s new...</string>
     <string name="hintMain7">This week\'s works...</string>
     <string name="yourAccountSettingsTitle">Your Account</string>
+    <string name="setupTitle1">Welcome to LavoraMi</string>
+    <string name="setupTitle2">Plan Your Trip</string>
+    <string name="setupTitle3">Keep an eye on the work</string>
+    <string name="setupTitle4">Stay Updated</string>
+    <string name="setupTitle5">You, and you again.</string>
+    <string name="setupDeps1">Stay informed. Before and during your trip.</string>
+    <string name="setupDeps2">Plan your trip with an awareness of any potential delays along the way, well before you leave.</string>
+    <string name="setupDeps3">Select your favorite channels in the settings. Don\'t be the last to know.</string>
+    <string name="setupDeps4">Turn on notifications to stay up to date on the work. Don\'t miss out on any surprises.</string>
+    <string name="setupDeps5">Your information is secure. Create an account to sign up for our LavoraMi club.</string>
+    <string name="setupMiniDetails">By creating a LavoraMi account, you agree to the Terms of Service and Privacy Policy. Go to Settings > Account to learn more.</string>
+    <string name="skipConfigDeps">Are you sure you want to skip the setup?</string>
+    <string name="endPages">End</string>
+    <string name="nextPages">Next</string>
+    <string name="strikeBannerTitle">A strike has been called for %s.</string>
+    <string name="strikeBannerGuaranteed">Guaranteed service hours (6:00 AM – 9:00 AM, 6:00 PM – 9:00 PM) %s</string>
+    <string name="strikeBannerAderenti">MEMBERS: %s</string>
+    <string name="noWorksFoundInput">No jobs found for: “%s”.</string>
 </resources>
