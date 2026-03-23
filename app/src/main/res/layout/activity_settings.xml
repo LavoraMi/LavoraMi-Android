@@ -602,17 +602,6 @@
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
 
-                        <TextView
-                            android:id="@+id/themeText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="8dp"
-                            android:layout_toStartOf="@id/arrowTheme"
-                            android:text="Tutti"
-                            android:textColor="#8E8E93"
-                            android:textSize="16sp" />
-
                         <ImageView
                             android:id="@+id/arrowTheme"
                             android:layout_width="16dp"

@@ -128,7 +128,7 @@
     <string name="webSite">Sito Web</string>
     <string name="credits">Riconoscimenti</string>
     <string name="terminiDiServizio">Termini di servizio</string>
-    <string name="appearance">Aspetto</string>
+    <string name="appearance">Aspetto e Lingua</string>
     <string name="sistemaTheme">Sistema</string>
     <string name="darkTheme">Scuro</string>
     <string name="lightTheme">Chiaro</string>
@@ -208,4 +208,8 @@
     <string name="strikeBannerGuaranteed">Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) %s</string>
     <string name="strikeBannerAderenti">ADERENTI: %s</string>
     <string name="noWorksFoundInput">Nessun lavoro trovato per: \\\"%s\\\".</string>
+    <string name="italianSettings">🇮🇹 Italiano</string>
+    <string name="englishLanguage">🇬🇧 Inglese</string>
+    <string name="languageDeps">Lingua</string>
+    <string name="themeDeps">Tema</string>
 </resources>

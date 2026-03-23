@@ -194,18 +194,6 @@ public class SettingsActivity extends AppCompatActivity {
         String selectedFilterLocalized = getLocalizedMessage(selectedFilter);
         filterSelectedText.setText(selectedFilterLocalized);
 
-        String selectedTheme = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
-        TextView themeSelectedText = findViewById(R.id.themeText);
-
-        String selectedThemeLocalized = "";
-        switch(selectedTheme) {
-            case "Sistema": selectedThemeLocalized = getLocalizedString(R.string.sistemaTheme); break;
-            case "Scuro": selectedThemeLocalized = getLocalizedString(R.string.darkTheme); break;
-            case "Chiaro": selectedThemeLocalized = getLocalizedString(R.string.lightTheme); break;
-            default: selectedThemeLocalized = "Errore"; break;
-        }
-        themeSelectedText.setText(selectedThemeLocalized);
-
         TextView nameSettingsText = findViewById(R.id.nameSettingsText);
         nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : getLocalizedString(R.string.yourAccountSettingsTitle));
 

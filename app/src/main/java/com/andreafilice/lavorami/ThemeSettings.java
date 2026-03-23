@@ -12,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
@@ -43,6 +44,32 @@ public class ThemeSettings extends AppCompatActivity {
 
         //*UI ELEMENTS
         /// In this section of the code, we declared RelativeLayouts and ImageResources for the Tick icon.
+        ImageView[] languageTicks = {findViewById(R.id.checkItalian), findViewById(R.id.checkEnglish)};
+        RelativeLayout[] languageLayouts = {findViewById(R.id.italian), findViewById(R.id.english)};
+
+        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+
+        languageTicks[0].setVisibility(savedLang.contains("Italiano") ? View.VISIBLE : View.GONE);
+        languageTicks[1].setVisibility(savedLang.contains("English") ? View.VISIBLE : View.GONE);
+
+        AppCompatDelegate.setApplicationLocales(
+                LocaleListCompat.forLanguageTags(savedLang.contains("English") ? "en" : "it")
+        );
+
+        languageLayouts[0].setOnClickListener(v -> {
+            DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+            languageTicks[0].setVisibility(View.VISIBLE);
+            languageTicks[1].setVisibility(View.GONE);
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("it"));
+        });
+
+        languageLayouts[1].setOnClickListener(v -> {
+            DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "English");
+            languageTicks[0].setVisibility(View.GONE);
+            languageTicks[1].setVisibility(View.VISIBLE);
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"));
+        });
+
         systemSelected = findViewById(R.id.system);
         darkSelected = findViewById(R.id.dark);
         ligthSelected = findViewById(R.id.light);

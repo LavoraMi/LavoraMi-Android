@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -29,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
@@ -44,6 +47,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorKt;
 import androidx.core.graphics.Insets;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -57,8 +61,10 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -382,6 +388,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+        //*SETUP LANGUAGE
+        /// Setting up the language of the application base from the Data saved
+        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String langCode = savedLang.contains("English") ? "en" : "it";
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(langCode));
 
         //*CHIP COLORS
         /// In this section of the code, we define the Chip colors for better visibility.

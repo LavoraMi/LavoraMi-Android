@@ -129,7 +129,7 @@
     <string name="webSite">Web Site</string>
     <string name="credits">Credits</string>
     <string name="terminiDiServizio">Terms of services</string>
-    <string name="appearance">Appearance</string>
+    <string name="appearance">Appearance and Language</string>
     <string name="sistemaTheme">System</string>
     <string name="darkTheme">Dark</string>
     <string name="lightTheme">Light</string>
@@ -209,4 +209,8 @@
     <string name="strikeBannerGuaranteed">Guaranteed service hours (6:00 AM – 9:00 AM, 6:00 PM – 9:00 PM) %s</string>
     <string name="strikeBannerAderenti">MEMBERS: %s</string>
     <string name="noWorksFoundInput">No jobs found for: “%s”.</string>
+    <string name="italianSettings">🇮🇹 Italian</string>
+    <string name="englishLanguage">🇬🇧 English</string>
+    <string name="languageDeps">Language</string>
+    <string name="themeDeps">Theme</string>
 </resources>
