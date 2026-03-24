@@ -67,13 +67,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="0dp"
         android:layout_marginBottom="8dp"
         android:visibility="gone"
         app:cardBackgroundColor="@color/disclosureBg"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="0dp"
-        app:strokeWidth="0dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:strokeColor="@color/redMetro"
+        app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerLayout"
@@ -82,76 +82,139 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@drawable/ic_info"
-                app:tint="@color/text_primary" />
-
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="11dp"
+                android:background="@color/RE">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/warning_triangle_filled"
+                    app:tint="@android:color/white" />
 
                 <TextView
                     android:id="@+id/strikeTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/archivo_medium"
                     android:text="AVVISO SCIOPERO"
-                    android:textColor="@color/text_primary"
-                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:letterSpacing="0.03" />
 
-                <TextView
-                    android:id="@+id/strikeDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
-                    android:text="Sciopero proclamato il date."
-                    android:textColor="@color/text_primary"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/strikeGuaranteed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
-                    android:text="Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) value."
-                    android:textColor="@color/text_primary"
-                    android:textSize="14sp"
-                    android:textAlignment="center"/>
-
-                <TextView
-                    android:id="@+id/strikeCompanies"
-                    android:layout_width="291dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
-                    android:text="ADERENTI: Trenord, ATM, Movibus"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_primary"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
+                <ImageView
                     android:id="@+id/closeBtn"
-                    android:layout_width="291dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
-                    android:text="X Chiudi"
-                    android:textAlignment="center"
-                    android:textColor="@color/RE"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_close_banner"
+                    android:padding="8dp"
                     android:clickable="true"
-                    android:focusable="true"/>
+                    android:focusable="true"
+                    app:tint="@android:color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="9dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_calendar"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:id="@+id/strikeDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Sciopero proclamato per il date"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="top"
+                    android:layout_marginBottom="9dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_clock"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:id="@+id/strikeGuaranteed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Le fasce garantite (06:00 - 09:00, 18:00 - 21:00) non sono presenti."
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="4dp"
+                    android:background="@color/GRAY" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_company"
+                        app:tint="@color/RE" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="Aderenti:"
+                        android:textColor="@color/text_primary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/strikeCompanies"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/archivo_medium"
+                        android:text="ATM"
+                        android:textColor="@color/text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

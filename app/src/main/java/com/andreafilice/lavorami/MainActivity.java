@@ -645,14 +645,14 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeDesc = findViewById(R.id.strikeDesc);
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
-            TextView closeBtn = findViewById(R.id.closeBtn);
+            ImageView closeBtn = findViewById(R.id.closeBtn);
 
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
             strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
-            strikeGuaranteed.setText(String.format("Le fasce di garanzia (06:00 - 09:00, 18:00 - 21:00) %s", strikeDescriptor.getStrikeGuaranteed()));
-            strikeCompanies.setText(String.format("ADERENTI: %s", strikeDescriptor.getStrikeCompanies()));
+            strikeGuaranteed.setText(String.format("Le fasce di garanzia %s", strikeDescriptor.getStrikeGuaranteed()));
+            strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
         }
