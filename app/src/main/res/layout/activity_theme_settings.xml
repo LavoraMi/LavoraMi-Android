@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aspetto"
+            android:text="@string/appearance"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -42,7 +42,6 @@
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -51,164 +50,279 @@
         android:paddingTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerLayout">
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/favoritesSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginHorizontal="16dp"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/themeDeps"
+                    android:textColor="#8E8E93"
+                    android:textSize="18sp" />
 
-                    <RelativeLayout
-                        android:id="@+id/system"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    app:cardBackgroundColor="@color/disclosureBg"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/iconSystem"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_setting"
-                            app:tint="@color/redMetro"
-                            android:visibility="visible"/>
+                        <RelativeLayout
+                            android:id="@+id/system"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:paddingHorizontal="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:text="Sistema"
-                            android:layout_toEndOf="@id/iconSystem"
-                            android:textColor="@color/text_primary"
-                            android:textSize="17sp" />
+                            <ImageView
+                                android:id="@+id/iconSystem"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_setting"
+                                app:tint="@color/redMetro"
+                                android:visibility="visible"/>
 
-                        <ImageView
-                            android:id="@+id/checkSystem"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/check"
-                            app:tint="@color/redMetro"
-                            android:visibility="visible"/>
-                    </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/sistemaTheme"
+                                android:layout_toEndOf="@id/iconSystem"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginStart="60dp"
-                        android:background="#38383A" />
+                            <ImageView
+                                android:id="@+id/checkSystem"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/check"
+                                app:tint="@color/redMetro"
+                                android:visibility="visible"/>
+                        </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/dark"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginStart="60dp"
+                            android:background="#38383A" />
 
-                        <ImageView
-                            android:id="@+id/iconDark"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_dark"
-                            app:tint="@color/redMetro"
-                            android:visibility="visible"/>
+                        <RelativeLayout
+                            android:id="@+id/dark"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:paddingHorizontal="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:layout_toEndOf="@id/iconDark"
-                            android:text="Scuro"
-                            android:textColor="@color/text_primary"
-                            android:textSize="17sp" />
+                            <ImageView
+                                android:id="@+id/iconDark"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_dark"
+                                app:tint="@color/redMetro"
+                                android:visibility="visible"/>
 
-                        <ImageView
-                            android:id="@+id/checkDark"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/check"
-                            app:tint="@color/redMetro"
-                            android:visibility="gone"/>
-                    </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="16dp"
+                                android:layout_toEndOf="@id/iconDark"
+                                android:text="@string/darkTheme"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginStart="60dp"
-                        android:background="#38383A" />
+                            <ImageView
+                                android:id="@+id/checkDark"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/check"
+                                app:tint="@color/redMetro"
+                                android:visibility="gone"/>
+                        </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/light"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:paddingHorizontal="16dp">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginStart="60dp"
+                            android:background="#38383A" />
 
-                        <ImageView
-                            android:id="@+id/iconLight"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_light"
-                            app:tint="@color/redMetro"
-                            android:visibility="visible"/>
+                        <RelativeLayout
+                            android:id="@+id/light"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:paddingHorizontal="16dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:text="Chiaro"
-                            android:layout_toEndOf="@id/iconLight"
-                            android:textColor="@color/text_primary"
-                            android:textSize="17sp" />
+                            <ImageView
+                                android:id="@+id/iconLight"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_light"
+                                app:tint="@color/redMetro"
+                                android:visibility="visible"/>
 
-                        <ImageView
-                            android:id="@+id/checkLight"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/check"
-                            app:tint="@color/redMetro"
-                            android:visibility="gone"/>
-                    </RelativeLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="16dp"
+                                android:text="@string/lightTheme"
+                                android:layout_toEndOf="@id/iconLight"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp" />
 
-            <TextView
-                android:id="@+id/infoText"
+                            <ImageView
+                                android:id="@+id/checkLight"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/check"
+                                app:tint="@color/redMetro"
+                                android:visibility="gone"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/infoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="23dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/themeDisclaimer"
+                    android:textColor="#8E8E93"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="23dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/archivo_medium"
-                android:text="L'applicazione delle modifiche può richiede alcuni secondi."
-                android:textColor="#8E8E93"
-                android:textSize="14sp" />
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
 
+                <TextView
+                    android:id="@+id/languageSelection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/languageDeps"
+                    android:textColor="#8E8E93"
+                    android:textSize="18sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    app:cardBackgroundColor="@color/disclosureBg"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/italian"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:paddingHorizontal="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/italianSettings"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp"/>
+
+                            <ImageView
+                                android:id="@+id/checkItalian"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/check"
+                                app:tint="@color/redMetro"
+                                android:visibility="visible"/>
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginStart="60dp"
+                            android:background="#38383A" />
+
+                        <RelativeLayout
+                            android:id="@+id/english"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:paddingHorizontal="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/englishLanguage"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp" />
+
+                            <ImageView
+                                android:id="@+id/checkEnglish"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/check"
+                                app:tint="@color/redMetro"
+                                android:visibility="gone"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="23dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/themeDisclaimer"
+                    android:textColor="#8E8E93"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

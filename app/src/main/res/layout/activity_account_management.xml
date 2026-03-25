@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Bentornato"
+                    android:text="@string/bentornatoAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp" />
 
@@ -76,7 +76,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Accedi al tuo account per continuare."
+                    android:text="@string/accediDepsAccount"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
 
@@ -160,7 +160,7 @@
                         android:layout_gravity="end"
                         android:clickable="true"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Password Dimenticata?"
+                        android:text="@string/passwordDimenticataAccount"
                         android:textColor="#FF3B30" />
 
                     <TextView
@@ -171,7 +171,7 @@
                         android:clickable="true"
                         android:paddingLeft="10dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Non hai un account?"
+                        android:text="@string/nonHaiAccount"
                         android:textColor="#FF3B30" />
                 </LinearLayout>
 
@@ -191,7 +191,7 @@
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Continuando, accetti i "
+                        android:text="@string/termsPart1"
                         android:textColor="@color/subtitle" />
 
                     <TextView
@@ -200,8 +200,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginEnd="1dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Termini"
+                        android:text="@string/termini"
                         android:textColor="@color/redMetro" />
 
                     <TextView
@@ -210,7 +212,7 @@
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:fontFamily="@font/archivo_medium"
-                        android:text=" e la "
+                        android:text="@string/termsPart2"
                         android:textColor="@color/subtitle" />
 
                     <TextView
@@ -253,7 +255,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Accedi con Google"
+                            android:text="@string/googleLogin"
                             android:textColor="#757575"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -292,7 +294,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Accedi"
+                            android:text="@string/accediAccount"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
 
@@ -458,7 +460,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Accesso in corso"
+                    android:text="@string/logginInGoogleTitle"
                     android:textAlignment="center"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp" />
@@ -468,7 +470,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Stiamo facendo l'accesso con il tuo Account Google, attendi."
+                    android:text="@string/logginInGoogleDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp"
                     android:textAlignment="center"
@@ -498,7 +500,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Schermo Bloccato"
+                    android:text="@string/schermoBloccatoAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp"
                     android:textAlignment="center"
@@ -509,7 +511,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Scannerizza l'impronta o il viso per continuare"
+                    android:text="@string/scannerizzaImpronta"
                     android:textColor="#8E8E93"
                     android:textSize="16sp"
                     android:textAlignment="center"
@@ -544,7 +546,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Ciao full_name"
+                        android:text="@string/welcomeAccountLoggedIn"
                         android:textColor="@color/text_primary"
                         android:textSize="30sp" />
                 </LinearLayout>
@@ -556,7 +558,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Qua puoi gestire il tuo account e le tue informazioni."
+                    android:text="@string/gestisciDepsAccount"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
 
@@ -565,7 +567,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Informazioni"
+                    android:text="@string/infoAccount"
                     android:textColor="#8E8E93"
                     android:textSize="18sp" />
 
@@ -639,7 +641,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/iconGoogle"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Account creato con Google"
+                        android:text="@string/creatoConGoogle"
                         android:textColor="#8E8E93"
                         android:textSize="16sp" />
 
@@ -650,7 +652,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Gestisci"
+                    android:text="@string/gestisciAccount"
                     android:textColor="#8E8E93"
                     android:textSize="18sp" />
 
@@ -681,7 +683,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Modifica Password"
+                            android:text="@string/editPasswordAccount"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -714,7 +716,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Elimina Account"
+                            android:text="@string/deleteAccount"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -746,7 +748,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Richiedi i tuoi dati"
+                            android:text="@string/richiediDati"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -787,7 +789,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Esci"
+                            android:text="@string/logoutAccount"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -808,7 +810,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Crea account"
+                    android:text="@string/createAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp" />
 
@@ -818,7 +820,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Registrati per iniziare."
+                    android:text="@string/createAccountDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
 
@@ -849,7 +851,7 @@
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/archivo_medium"
-                            android:hint="Nome completo"
+                            android:hint="@string/fullNameAccount"
                             android:inputType="textPersonName"
                             android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
@@ -931,7 +933,7 @@
                     android:layout_gravity="end"
                     android:clickable="true"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Hai già un account?"
+                    android:text="@string/haiAccountButton"
                     android:textColor="#FF3B30" />
 
                 <Space
@@ -950,7 +952,7 @@
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Continuando, accetti i "
+                        android:text="@string/termsPart1"
                         android:textColor="@color/subtitle" />
 
                     <TextView
@@ -959,8 +961,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginEnd="1dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Termini"
+                        android:text="@string/termini"
                         android:textColor="@color/redMetro" />
 
                     <TextView
@@ -969,7 +973,7 @@
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:fontFamily="@font/archivo_medium"
-                        android:text=" e la "
+                        android:text="@string/termsPart2"
                         android:textColor="@color/subtitle" />
 
                     <TextView
@@ -1012,7 +1016,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Registrati con Google"
+                            android:text="@string/signUpWithGoogle"
                             android:textColor="#757575"
                             android:textSize="16sp"
                             android:textStyle="bold"
@@ -1051,7 +1055,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Registrati"
+                            android:text="@string/signUpAccount"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
                     </LinearLayout>

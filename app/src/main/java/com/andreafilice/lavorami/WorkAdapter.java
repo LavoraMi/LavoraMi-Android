@@ -32,7 +32,6 @@ import java.util.TimeZone;
 public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int VIEW_TYPE_ITEM = 0;
-    private static final int VIEW_TYPE_FOOTER = 1;
     static Context context;
     private List<EventDescriptor> eventList;
 
@@ -61,19 +60,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    public static class FooterViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTotaleLavori;
-
-        public FooterViewHolder(View itemView) {
-            super(itemView);
-            txtTotaleLavori = itemView.findViewById(R.id.txtTotaleLavori);
-        }
-    }
-
     @Override
     public int getItemViewType(int position) {
-        if (position == eventList.size())
-            return VIEW_TYPE_FOOTER;
         return VIEW_TYPE_ITEM;
     }
 

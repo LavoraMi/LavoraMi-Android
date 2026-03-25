@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Aiuto"
+            android:text="@string/helpTitle"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Richiedi i tuoi Dati"
+                        android:text="@string/requestDataTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="34sp"
                         android:layout_marginStart="10dp"
@@ -94,7 +94,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Invia una richiesta al nostro Team per scaricare i tuoi dati."
+                    android:text="@string/requestDataDeps"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />
 
@@ -131,7 +131,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="36dp"
-                            android:text="Formato del File:"
+                            android:text="@string/fileFormatTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
                     </RelativeLayout>
@@ -202,7 +202,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="Seleziona il formato in cui i tuoi dati verrano esportati."
+                    android:text="@string/fileFormatDeps"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />
 
@@ -238,7 +238,7 @@
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/archivo_medium"
-                            android:hint="Email del tuo Account"
+                            android:hint="@string/accountEmailHint"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/text_primary"
                             android:textColorHint="#8E8E93" />
@@ -253,7 +253,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="-8dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="L'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite."
+                    android:text="@string/detailsRequestData"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />
 
@@ -294,14 +294,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/archivo_medium"
-                            android:text="Richiedi Dati"
+                            android:text="@string/requestDataBtn"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
-
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
-
             </LinearLayout>
         </FrameLayout>
     </ScrollView>

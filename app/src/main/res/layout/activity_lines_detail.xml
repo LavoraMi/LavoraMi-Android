@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:padding="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DIREZIONI:"
+            android:text="@string/linesDirectionsTitle"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="25dp"
@@ -89,7 +89,7 @@
             android:textColor="@color/subtitle"
             android:textSize="12sp"
             android:paddingTop="10dp"
-            android:text="QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI."
+            android:text="@string/tramDeviationsTitle"
             android:textStyle="bold"
             android:visibility="gone"/>
 
@@ -97,7 +97,7 @@
             android:id="@+id/txtMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TEMPO DI ATTESA:"
+            android:text="@string/waitingTimeLinesDetails"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
@@ -108,7 +108,7 @@
             android:id="@+id/txtInterscambio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FERMATA DI INTERSCAMBIO:"
+            android:text="@string/interchangeStopLinesDetails"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_primary"
             android:textSize="17sp"
-            android:text="Nessuna fermata di interscambio."
+            android:text="@string/noInterchangeStationTitle"
             android:visibility="gone"/>
 
         <HorizontalScrollView
@@ -182,13 +182,13 @@
             android:textColor="@color/subtitle"
             android:textSize="12sp"
             android:paddingTop="10dp"
-            android:text="LA LINEA É ATTIVA SOLO NEI GIORNI LAVORATIVI."
+            android:text="@string/onlyOnWorkingDaysTitle"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LAVORI SULLA LINEA:"
+            android:text="@string/worksLineDetails"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
@@ -216,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
-                android:text="Mappa"
+                android:text="@string/mapChip"
                 app:chipBackgroundColor="@color/selector_chip_filter"/>
 
             <com.google.android.material.chip.Chip
@@ -225,7 +225,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
-                android:text="Lavori linea"
+                android:text="@string/lineWorksChip"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
@@ -234,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
-                android:text="Interscambi"
+                android:text="@string/interchangesChip"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
         </com.google.android.material.chip.ChipGroup>
 
@@ -244,7 +244,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:text="Non ci sono lavori su questa linea."
+            android:text="@string/noWorksOnThisLine"
             android:textSize="16sp"
             android:textColor="@color/text_primary"
             android:alpha="0.7"
@@ -313,7 +313,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Caricamento Mappa"
+                android:text="@string/loadingMapDetails"
                 android:textAlignment="center"
                 android:textColor="@color/text_primary"
                 android:textSize="25sp" />

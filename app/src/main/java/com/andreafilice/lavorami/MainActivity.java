@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -29,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
@@ -44,6 +47,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorKt;
 import androidx.core.graphics.Insets;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -57,8 +61,10 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -85,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
-    private String[] hints = {"Cerca nei lavori...", "Scopri qualcosa di nuovo...", "Cerca la tua linea...", "Cerca ciò che ami...", "Non essere l'ultimo a saperlo...", "Scopri le novità...", "Lavori della settimana..."};
     private TextSwitcher hintSwitcher;
     private EditText editSearch;
     private int indexHintAnimation;
@@ -111,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        String[] hints = {getLocalizedString(R.string.hintMain1), getLocalizedString(R.string.hintMain2), getLocalizedString(R.string.hintMain3), getLocalizedString(R.string.hintMain4), getLocalizedString(R.string.hintMain5), getLocalizedString(R.string.hintMain6), getLocalizedString(R.string.hintMain7)};
+
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -124,11 +131,11 @@ public class MainActivity extends AppCompatActivity {
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
-        pages.add(new SetupModels.SetupPage("Benvenuto su LavoraMi", "Tieniti informato. Prima e durante il tuo viaggio.", "ic_train", ""));
-        pages.add(new SetupModels.SetupPage("Pianifica il Viaggio", "Pianifica il tuo viaggio sapendo dei disagi sul tragitto, ben prima di partire.", "ic_map", ""));
-        pages.add(new SetupModels.SetupPage("Tieni sott'occhio i lavori", "Seleziona le tue linee preferite nelle impostazioni. Non essere l'ultimo a sapere le cose.", "ic_star_fill", ""));
-        pages.add(new SetupModels.SetupPage("Tieniti Aggiornato", "Attiva le notifiche per rimanere al passo coi lavori. Senza perderti sorprese.", "ic_bell_fill", ""));
-        pages.add(new SetupModels.SetupPage("Tu ed ancora Tu.", "I tuoi dati sono al sicuro. Crea un Account per registrarti al nostro club LavoraMi.", "ic_lock", "Creando un Account LavoraMi, accetti i Termini di Servizio e la Privacy Policy. Vai in Impostazioni > Account per saperne di più."));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle1), getLocalizedString(R.string.setupDeps1), "ic_train", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle2), getLocalizedString(R.string.setupDeps2), "ic_map", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle3), getLocalizedString(R.string.setupDeps3), "ic_star_fill", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle4), getLocalizedString(R.string.setupDeps4), "ic_bell_fill", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle5), getLocalizedString(R.string.setupDeps5), "ic_lock", getLocalizedString(R.string.setupMiniDetails)));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
@@ -158,10 +165,10 @@ public class MainActivity extends AppCompatActivity {
         btnSetupSkip.setOnClickListener(v ->{
             /// In this section of the code, we ask the user if he wants to skip the Setup.
             new AlertDialog.Builder(this)
-                    .setTitle("Sei sicuro?")
-                    .setMessage("Sei sicuro di voler saltare la parte di configurazione?")
-                    .setNegativeButton("Annulla", null)
-                    .setPositiveButton("Continua", ((dialog, which) -> {
+                    .setTitle(getLocalizedString(R.string.areYouSurePopUp))
+                    .setMessage(getLocalizedString(R.string.skipConfigDeps))
+                    .setNegativeButton(getLocalizedString(R.string.cancelPopUp), null)
+                    .setPositiveButton(getLocalizedString(R.string.confirmPopUp), ((dialog, which) -> {
                         DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
                         setupOverlay.setVisibility(View.GONE);
                         askForNotificationPermission();
@@ -177,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageSelected(position);
                 int currentPage = viewPager.getCurrentItem();
 
-                btnSetupNext.setText((position == pages.size() -1) ? "Fine" : "Avanti");
+                btnSetupNext.setText((position == pages.size() -1) ? getLocalizedString(R.string.endPages) : getLocalizedString(R.string.nextPages));
                 btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
 
                 if(currentPage == 3)
@@ -223,12 +230,12 @@ public class MainActivity extends AppCompatActivity {
             return title;
         });
 
-        hintSwitcher.setCurrentText("Cerca nei lavori...");
+        hintSwitcher.setCurrentText(getLocalizedString(R.string.hintMain1));
 
         hintSwitcher.setInAnimation(this, R.anim.slide_up_in);
         hintSwitcher.setOutAnimation(this, R.anim.slide_up_out);
 
-        startHintLoop();
+        startHintLoop(hints);
 
         //*NAVBAR
         ImageButton btnLines = findViewById(R.id.linesButton);
@@ -382,6 +389,12 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        //*SETUP LANGUAGE
+        /// Setting up the language of the application base from the Data saved
+        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String langCode = savedLang.contains("English") ? "en" : "it";
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(langCode));
+
         //*CHIP COLORS
         /// In this section of the code, we define the Chip colors for better visibility.
         Chip[] filterChips = {
@@ -425,7 +438,7 @@ public class MainActivity extends AppCompatActivity {
             filterGroup.post(() -> applicaFiltroCategoria(categoriaFinale));
     }
 
-    private void startHintLoop(){
+    private void startHintLoop(String[] hints){
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -693,6 +706,9 @@ public class MainActivity extends AppCompatActivity {
             strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
             strikeGuaranteed.setText(String.format("Le fasce di garanzia %s", strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
+            strikeDesc.setText(String.format(getLocalizedString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
+            strikeGuaranteed.setText(String.format(getLocalizedString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
+            strikeCompanies.setText(String.format(getLocalizedString(R.string.strikeBannerAderenti), strikeDescriptor.getStrikeCompanies()));
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
         }
@@ -705,7 +721,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView view = findViewById(R.id.recyclerView);
 
         noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        noWorkFounds.setText((searchInfo.equals("null") ? "Nessun lavoro trovato per questo filtro." : String.format("Nessun lavoro trovato per: \"%s\".", searchInfo)));
+        noWorkFounds.setText((searchInfo.equals("null") ? getLocalizedString(R.string.noWorkOnFilter) : String.format(getLocalizedString(R.string.noWorksFoundInput), searchInfo)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
 
@@ -909,4 +925,6 @@ public class MainActivity extends AppCompatActivity {
         if (AppCompatDelegate.getDefaultNightMode() != modeSelected)
             AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
+
+    public String getLocalizedString(int ID) {return ContextCompat.getString(this, ID);}
 }
