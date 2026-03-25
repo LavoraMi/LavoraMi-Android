@@ -182,7 +182,7 @@
             android:textColor="@color/subtitle"
             android:textSize="12sp"
             android:paddingTop="10dp"
-            android:text="LA LINEA É ATTIVA SOLO NEI GIORNI SETTIMANALI."
+            android:text="LA LINEA É ATTIVA SOLO NEI GIORNI LAVORATIVI."
             android:textStyle="bold" />
 
         <TextView
