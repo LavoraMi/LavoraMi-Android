@@ -9,4 +9,7 @@ public interface APIWorks {
 
     @GET("_vars.json")
     Call<StrikeDescriptor> getStrike();
+
+    @GET("requirements.json")
+    Call<RequirementsDescriptor> getRequirements();
 }

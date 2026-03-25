@@ -632,6 +632,46 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        apiworks.getRequirements().enqueue(new Callback<RequirementsDescriptor> () {
+
+            @Override
+            public void onResponse(Call<RequirementsDescriptor> call, Response<RequirementsDescriptor> response) {
+                if(response.isSuccessful())
+                    updateRequirements(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RequirementsDescriptor> call, Throwable t) {
+                Log.d("REQUIREMENTS_GET", "Errore durante il retrieve del Requirements.json");
+            }
+        });
+    }
+
+    private void updateRequirements(RequirementsDescriptor descriptor) {
+        /// In this method, we update the Requirements backend, with the details catched before from the CDN.
+        /// @PARAMETER
+        /// RequirementsDescriptor descriptor is the response body from the CDN Request executed before this method.
+
+        String versionMinimum = descriptor.getMinimumVersionAndroid();
+        String currentVersion = ContextCompat.getString(this, R.string.app_version);
+
+        int responseComparable = RequirementsDescriptor.compareSemanticVersions(currentVersion, versionMinimum);
+
+        if(responseComparable < 0){
+            new AlertDialog.Builder(this)
+                    .setTitle("Nuova versione disponibile!")
+                    .setMessage("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
+                    .setPositiveButton("Aggiorna", ((dialog, which) -> {
+                        String packageName = getPackageName();
+                        String link = "https://play.google.com/store/apps/details?id=" + packageName;
+
+                        ActivityManager.openURL(this, link);
+                    }))
+                    .setCancelable(false)
+                    .create()
+                    .show();
+        }
     }
 
     private void updateStrike(StrikeDescriptor strikeDescriptor) {
