@@ -786,7 +786,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconShare"
-                            android:text="Condividi LavoraMi"
+                            android:text="@string/shareLavoraMi"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
                     </RelativeLayout>

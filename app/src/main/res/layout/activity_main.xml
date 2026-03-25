@@ -105,7 +105,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="AVVISO SCIOPERO"
+                    android:text="@string/avvisoSciopero"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -200,7 +200,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Aderenti:"
+                        android:text="@string/strikeBannerAderenti"
                         android:textColor="@color/text_primary"
                         android:textSize="13sp" />
 

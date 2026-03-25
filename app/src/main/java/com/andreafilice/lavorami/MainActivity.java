@@ -647,7 +647,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         apiworks.getRequirements().enqueue(new Callback<RequirementsDescriptor> () {
-
             @Override
             public void onResponse(Call<RequirementsDescriptor> call, Response<RequirementsDescriptor> response) {
                 if(response.isSuccessful())
@@ -673,9 +672,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(responseComparable < 0){
             new AlertDialog.Builder(this)
-                    .setTitle("Nuova versione disponibile!")
-                    .setMessage("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
-                    .setPositiveButton("Aggiorna", ((dialog, which) -> {
+                    .setTitle(getLocalizedString(R.string.newVersionAvailableTitle))
+                    .setMessage(getLocalizedString(R.string.newVersionAvailableDeps))
+                    .setPositiveButton(getLocalizedString(R.string.updateButton), ((dialog, which) -> {
                         String packageName = getPackageName();
                         String link = "https://play.google.com/store/apps/details?id=" + packageName;
 
@@ -703,12 +702,9 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
-            strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
-            strikeGuaranteed.setText(String.format("Le fasce di garanzia %s", strikeDescriptor.getStrikeGuaranteed()));
-            strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
             strikeDesc.setText(String.format(getLocalizedString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
             strikeGuaranteed.setText(String.format(getLocalizedString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
-            strikeCompanies.setText(String.format(getLocalizedString(R.string.strikeBannerAderenti), strikeDescriptor.getStrikeCompanies()));
+            strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
         }

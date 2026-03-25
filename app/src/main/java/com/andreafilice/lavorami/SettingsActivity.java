@@ -181,9 +181,9 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "LavoraMi");
-            intent.putExtra(Intent.EXTRA_TEXT, "Scarica LavoraMi: " + link);
+            intent.putExtra(Intent.EXTRA_TEXT, ContextCompat.getString(this, R.string.shareContentLavoraMi) + link);
 
-            startActivity(Intent.createChooser(intent, "Condividi LavoraMi"));
+            startActivity(Intent.createChooser(intent, ContextCompat.getString(this, R.string.shareLavoraMi)));
         });
 
         //*RESET SETTINGS

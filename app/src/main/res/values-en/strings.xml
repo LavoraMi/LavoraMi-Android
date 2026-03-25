@@ -206,11 +206,16 @@
     <string name="endPages">End</string>
     <string name="nextPages">Next</string>
     <string name="strikeBannerTitle">A strike has been called for %s.</string>
-    <string name="strikeBannerGuaranteed">Guaranteed service hours (6:00 AM – 9:00 AM, 6:00 PM – 9:00 PM) %s</string>
-    <string name="strikeBannerAderenti">MEMBERS: %s</string>
+    <string name="strikeBannerGuaranteed">Guaranteed service hours %s</string>
     <string name="noWorksFoundInput">No jobs found for: “%s”.</string>
     <string name="italianSettings">🇮🇹 Italian</string>
     <string name="englishLanguage">🇬🇧 English</string>
     <string name="languageDeps">Language</string>
     <string name="themeDeps">Theme</string>
+    <string name="strikeBannerAderenti">Members:</string>
+    <string name="shareLavoraMi">Share LavoraMi</string>
+    <string name="shareContentLavoraMi">"Download LavoraMi: "</string>
+    <string name="newVersionAvailableTitle">New Version Available!</string>
+    <string name="newVersionAvailableDeps">A new version of LavoraMi is available! To continue browsing, please update the app.</string>
+    <string name="updateButton">Update</string>
 </resources>
