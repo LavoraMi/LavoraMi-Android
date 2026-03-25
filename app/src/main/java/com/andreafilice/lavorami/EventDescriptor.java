@@ -56,6 +56,8 @@ public class EventDescriptor {
                 return R.drawable.ic_counterclockwise;
             case "point.topleft.down.to.point.bottomright.curvepath.fill":
                 return R.drawable.ic_extension_line;
+            case "mappin.slash":
+                return R.drawable.ic_map_slash;
             default:
                 return R.drawable.empty_image;
         }

@@ -645,6 +645,46 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        apiworks.getRequirements().enqueue(new Callback<RequirementsDescriptor> () {
+
+            @Override
+            public void onResponse(Call<RequirementsDescriptor> call, Response<RequirementsDescriptor> response) {
+                if(response.isSuccessful())
+                    updateRequirements(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RequirementsDescriptor> call, Throwable t) {
+                Log.d("REQUIREMENTS_GET", "Errore durante il retrieve del Requirements.json");
+            }
+        });
+    }
+
+    private void updateRequirements(RequirementsDescriptor descriptor) {
+        /// In this method, we update the Requirements backend, with the details catched before from the CDN.
+        /// @PARAMETER
+        /// RequirementsDescriptor descriptor is the response body from the CDN Request executed before this method.
+
+        String versionMinimum = descriptor.getMinimumVersionAndroid();
+        String currentVersion = ContextCompat.getString(this, R.string.app_version);
+
+        int responseComparable = RequirementsDescriptor.compareSemanticVersions(currentVersion, versionMinimum);
+
+        if(responseComparable < 0){
+            new AlertDialog.Builder(this)
+                    .setTitle("Nuova versione disponibile!")
+                    .setMessage("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
+                    .setPositiveButton("Aggiorna", ((dialog, which) -> {
+                        String packageName = getPackageName();
+                        String link = "https://play.google.com/store/apps/details?id=" + packageName;
+
+                        ActivityManager.openURL(this, link);
+                    }))
+                    .setCancelable(false)
+                    .create()
+                    .show();
+        }
     }
 
     private void updateStrike(StrikeDescriptor strikeDescriptor) {
@@ -658,11 +698,14 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeDesc = findViewById(R.id.strikeDesc);
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
-            TextView closeBtn = findViewById(R.id.closeBtn);
+            ImageView closeBtn = findViewById(R.id.closeBtn);
 
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
+            strikeDesc.setText(String.format("Sciopero proclamato il %s.", strikeDescriptor.getStrikeDate()));
+            strikeGuaranteed.setText(String.format("Le fasce di garanzia %s", strikeDescriptor.getStrikeGuaranteed()));
+            strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
             strikeDesc.setText(String.format(getLocalizedString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
             strikeGuaranteed.setText(String.format(getLocalizedString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format(getLocalizedString(R.string.strikeBannerAderenti), strikeDescriptor.getStrikeCompanies()));

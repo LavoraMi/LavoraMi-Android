@@ -5,6 +5,7 @@ import static com.andreafilice.lavorami.ActivityManager.changeActivity;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -167,6 +168,22 @@ public class SettingsActivity extends AppCompatActivity {
             Toast.makeText(this, getLocalizedString(R.string.versionAppCopied), Toast.LENGTH_LONG).show();
 
             return true;
+        });
+
+        //*SHARE LAVORAMI
+        /// In this section, we add the listener to the "Share" button
+        RelativeLayout shareBtn = findViewById(R.id.btnShare);
+
+        shareBtn.setOnClickListener(v -> {
+            String packageName = getPackageName();
+            String link = "https://play.google.com/store/apps/details?id=" + packageName;
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "LavoraMi");
+            intent.putExtra(Intent.EXTRA_TEXT, "Scarica LavoraMi: " + link);
+
+            startActivity(Intent.createChooser(intent, "Condividi LavoraMi"));
         });
 
         //*RESET SETTINGS
