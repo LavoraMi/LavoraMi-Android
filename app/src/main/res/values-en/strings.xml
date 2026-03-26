@@ -218,4 +218,5 @@
     <string name="newVersionAvailableTitle">New Version Available!</string>
     <string name="newVersionAvailableDeps">A new version of LavoraMi is available! To continue browsing, please update the app.</string>
     <string name="updateButton">Update</string>
+    <string name="howAppWorks">How this app works</string>
 </resources>

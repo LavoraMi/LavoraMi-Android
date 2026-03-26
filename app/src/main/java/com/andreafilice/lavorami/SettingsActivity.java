@@ -76,6 +76,9 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout advancedOptionsButton = findViewById(R.id.btnAdvanced);
         advancedOptionsButton.setOnClickListener(v -> {changeActivity(this, AdvancedOptions.class);});
 
+        RelativeLayout howAppWorksButton = findViewById(R.id.btnHowWorks);
+        howAppWorksButton.setOnClickListener(v -> {changeActivity(this, HowAppWorks.class);});
+
         //*FAVORITES LINES
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {

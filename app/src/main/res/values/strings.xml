@@ -217,4 +217,5 @@
     <string name="newVersionAvailableTitle">Nuova versione disponibile!</string>
     <string name="newVersionAvailableDeps">Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l\'app.</string>
     <string name="updateButton">Aggiorna</string>
+    <string name="howAppWorks">Come funziona l\'app</string>
 </resources>
