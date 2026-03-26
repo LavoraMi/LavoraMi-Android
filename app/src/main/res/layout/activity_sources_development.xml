@@ -234,13 +234,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi effettuarci una donazione qui sotto!"
+                android:text="Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l'app qui sotto!"
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShare"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/archivo_medium"
+                android:text="Condividi LavoraMi"
+                android:textColor="#FF5252"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_share"
+                app:iconSize="30dp"
+                app:iconPadding="12dp"
+                app:iconTint="#FF5252"
+                app:iconGravity="textStart" />
+
+           <!-- <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPatreon"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
@@ -276,7 +295,7 @@
                 app:iconSize="30dp"
                 app:iconPadding="12dp"
                 app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconGravity="textStart" />-->
 
             <View
                 android:layout_width="150dp"

@@ -23,7 +23,7 @@
             android:id="@+id/iconWifi"
             android:layout_width="88dp"
             android:layout_height="59dp"
-            android:src="@drawable/ic_wifi_slash_android11_later"
+            android:src="@drawable/ic_wifi_maintenance"
             app:tint="@color/text_primary" />
 
         <TextView
@@ -31,18 +31,35 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/archivo_medium"
-            android:text="LavoraMi è in Manutenzione."
+            android:text="Manutenzione in corso."
             android:textColor="@color/text_primary"
-            android:textSize="20sp" />
+            android:textSize="33sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:fontFamily="@font/archivo_medium"
-            android:text="deps"
+            android:text="I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio."
+            android:textAlignment="center"
             android:textColor="@color/text_primary"
-            android:textSize="16sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
+
+        <TextView
+            android:id="@+id/maintenanceDeps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/archivo_medium"
+            android:text="deps"
+            android:textAlignment="center"
+            android:textColor="@color/GRAY"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
 
         <Button
             android:id="@+id/btnRefreshOnError"
@@ -50,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/redMetro"
-            android:text="@string/retry"
+            android:text="Riprova"
             android:textColor="@color/White"
             app:icon="@drawable/ic_refresh"
             app:iconGravity="textStart"

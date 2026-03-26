@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBarRefresh;
     private ImageButton btnRefresh;
 
+    static String maintenanceDetails = "";
+
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
     private String[] hints = {"Cerca nei lavori...", "Scopri qualcosa di nuovo...", "Cerca la tua linea...", "Cerca ciò che ami...", "Non essere l'ultimo a saperlo...", "Scopri le novità...", "Lavori della settimana..."};
@@ -657,6 +659,14 @@ public class MainActivity extends AppCompatActivity {
         String currentVersion = ContextCompat.getString(this, R.string.app_version);
 
         int responseComparable = RequirementsDescriptor.compareSemanticVersions(currentVersion, versionMinimum);
+
+        //*CHECK FOR MAINTENANCE
+        /// Check if LavoraMi is in maintenance mode and get the details from the CDN.
+        boolean isInMaintenanceMode = descriptor.isMaintenanceEnabled();
+        maintenanceDetails = descriptor.getMaintenanceDeps();
+
+        if(isInMaintenanceMode)
+            ActivityManager.changeActivity(this, MaintenanceActivity.class);
 
         if(responseComparable < 0){
             new AlertDialog.Builder(this)
