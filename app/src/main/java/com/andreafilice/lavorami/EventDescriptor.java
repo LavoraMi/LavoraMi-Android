@@ -58,6 +58,8 @@ public class EventDescriptor {
                 return R.drawable.ic_extension_line;
             case "mappin.slash":
                 return R.drawable.ic_map_slash;
+            case "point.bottomleft.forward.to.arrow.triangle.uturn.scurvepath":
+                return R.drawable.ic_variazione_corse;
             default:
                 return R.drawable.empty_image;
         }
