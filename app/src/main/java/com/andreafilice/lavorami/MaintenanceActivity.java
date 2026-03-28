@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -41,9 +42,13 @@ public class MaintenanceActivity extends AppCompatActivity {
             return insets;
         });
 
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {}
+        });
+
         //*SETUP DETAILS
         /// Get the UI setted-up with details and more.
-
         TextView maintenanceDeps = findViewById(R.id.maintenanceDeps);
         maintenanceDeps.setText(MainActivity.maintenanceDetails);
 
