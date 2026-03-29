@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">LavoraMi</string>
-    <string name="lavoriInCorso">Lavori in corso</string>
+    <string name="lavoriInCorso">In corso</string>
     <string name="settings">Impostazioni</string>
     <string name="general">Generali</string>
     <string name="lines">Linee</string>
@@ -218,4 +218,5 @@
     <string name="newVersionAvailableDeps">Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l\'app.</string>
     <string name="updateButton">Aggiorna</string>
     <string name="howAppWorks">Come funziona l\'app</string>
+    <string name="lavoriInCorsoTitle">Lavori in corso</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LavoraMi</string>
-    <string name="lavoriInCorso">Work in progess</string>
+    <string name="lavoriInCorso">In progress</string>
     <string name="settings">Settings</string>
     <string name="general">General</string>
     <string name="lines">Lines</string>
@@ -117,7 +117,7 @@
     <string name="dataDisclaimer">This application aggregates public data, accessible to everyone, for easy consultation.</string>
     <string name="teamSviluppo">Development Team</string>
     <string name="iosDeveloper">iOS Developer:</string>
-    <string name="androidDeveloper">Android Dvelepoers:</string>
+    <string name="androidDeveloper">Android Developers:</string>
     <string name="webDeveloper">Web Developer:</string>
     <string name="support">Support us</string>
     <string name="supportText">If you like LavoraMi and you want to keep it advertising-free, you can make us a donation below!</string>
@@ -219,4 +219,5 @@
     <string name="newVersionAvailableDeps">A new version of LavoraMi is available! To continue browsing, please update the app.</string>
     <string name="updateButton">Update</string>
     <string name="howAppWorks">How this app works</string>
+    <string name="lavoriInCorsoTitle">Work in progress</string>
 </resources>
