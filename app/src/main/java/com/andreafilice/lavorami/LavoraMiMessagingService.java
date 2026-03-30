@@ -32,7 +32,7 @@ public class LavoraMiMessagingService extends FirebaseMessagingService {
 
         manager.notify((int) System.currentTimeMillis(),
             new NotificationCompat.Builder(this, "lavorami_notifications")
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_icon_small)
                 .setLargeIcon(largeIcon)
                 .setContentTitle(title)
                 .setContentText(message)

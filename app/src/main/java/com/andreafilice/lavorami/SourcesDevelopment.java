@@ -39,8 +39,9 @@ public class SourcesDevelopment extends AppCompatActivity {
         /// In this section of the code, we initialize the end-screen buttons for the redirects.
         MaterialButton btnReportBug = findViewById(R.id.btnReportBug);
         MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
-        MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
-        MaterialButton btnCofee = findViewById(R.id.btnCofee);
+        //MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
+        //MaterialButton btnCofee = findViewById(R.id.btnCofee);
+        MaterialButton btnShare = findViewById(R.id.btnShare);
         MaterialButton btnRequestDatas = findViewById(R.id.btnRequestDatas);
         MaterialButton btnInstagram = findViewById(R.id.btnInstagram);
         MaterialButton btnTikTok = findViewById(R.id.btnTikTok);
@@ -68,13 +69,25 @@ public class SourcesDevelopment extends AppCompatActivity {
 
         btnInstagram.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
         btnTikTok.setOnClickListener(v -> ActivityManager.openURL(this, "https://www.tiktok.com/@applavorami.official"));
-        btnPatreon.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.patreon.com/cw/LavoraMi"));
-        btnCofee.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.buymeacoffee.com/lavorami"));
+        //btnPatreon.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.patreon.com/cw/LavoraMi"));
+        //btnCofee.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.buymeacoffee.com/lavorami"));
         btnPrivacyPolicy.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it/privacypolicy"));
         btnTermsOfService.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it/termsofservice"));
         btnRequestDatas.setOnClickListener(v -> ActivityManager.changeActivity(this, RequestUserDatas.class));
         btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
         btnRiconoscimenti.setOnClickListener(v ->{ActivityManager.changeActivity(this, LibrariesActivity.class);});
         btnWebsite.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://lavorami.it"));
+
+        btnShare.setOnClickListener(v -> {
+            String packageName = getPackageName();
+            String link = "https://play.google.com/store/apps/details?id=" + packageName;
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "LavoraMi");
+            intent.putExtra(Intent.EXTRA_TEXT, "Scarica LavoraMi: " + link);
+
+            startActivity(Intent.createChooser(intent, "Condividi LavoraMi"));
+        });
     }
 }

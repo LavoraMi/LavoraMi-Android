@@ -272,6 +272,13 @@ public class AccountManagement extends AppCompatActivity {
         setUpEmailValidation(emailLogin, passwordLogin, btnLogin, InputValidationType.EMAIL_AND_PASSWORD);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        screenUnlocked = !DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+        updateUI();
+    }
+
     private void initializeGoogleIntent(){
         /// This function is a refactored function and is used by Google Sign-In buttons in the .xml file.
         /// This function simplify the core-logic and avoid repetitions into the code.

@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
         <activity
+            android:name=".MaintenanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailsLibrariesActivity"
             android:exported="false" />
         <activity
