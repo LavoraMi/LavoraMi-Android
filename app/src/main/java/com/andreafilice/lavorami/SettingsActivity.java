@@ -160,6 +160,14 @@ public class SettingsActivity extends AppCompatActivity {
             appVersionText.setText((isFullVersion) ? R.string.app_version : R.string.appVersionFull);
         });
 
+        appVersionText.setOnClickListener(v -> {
+            String currentText = appVersionText.getText().toString();
+            String fullVersionText = getString(R.string.appVersionFull);
+            boolean isFullVersion = currentText.equals(fullVersionText);
+
+            appVersionText.setText((isFullVersion) ? R.string.app_version : R.string.appVersionFull);
+        });
+
         /// In this section of the code, we handle the LongClick of the versionButton and copy the
         /// Current version of the application.
         versionButton.setOnLongClickListener(v -> {
