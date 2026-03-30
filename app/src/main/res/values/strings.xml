@@ -217,9 +217,13 @@
     <string name="newVersionAvailableTitle">Nuova versione disponibile!</string>
     <string name="newVersionAvailableDeps">Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l\'app.</string>
     <string name="updateButton">Aggiorna</string>
-    <string name="howAppWorks">Come funziona l\'app</string>
     <string name="lavoriInCorsoTitle">Lavori in corso</string>
     <string name="forgotPasswordDeps">Hai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui.</string>
     <string name="backToLogin">Torna al Login</string>
     <string name="sendEmailButton">Invia Email</string>
+    <string name="howAppWorks">Funzioni dell\'app</string>
+    <string name="progressBar">Barra di progresso</string>
+    <string name="progressBarText">Vedi visivamente a che punto sono i lavori e quando è prevista la fine del disagio (basato su data di inizio e fine lavori PREVISTI).</string>
+    <string name="updateYourself">Aggiornato, Sempre.</string>
+    <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no.</string>
 </resources>

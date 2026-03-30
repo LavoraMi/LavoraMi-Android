@@ -4,6 +4,7 @@ package com.andreafilice.lavorami;
 import android.content.pm.ActivityInfo;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 
 import androidx.activity.EdgeToEdge;
@@ -28,6 +29,8 @@ public class HowAppWorks extends AppCompatActivity {
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ImageButton btnBack = findViewById(R.id.backBtn);
+        btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
     }
 
 }

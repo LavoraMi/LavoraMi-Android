@@ -218,9 +218,13 @@
     <string name="newVersionAvailableTitle">New Version Available!</string>
     <string name="newVersionAvailableDeps">A new version of LavoraMi is available! To continue browsing, please update the app.</string>
     <string name="updateButton">Update</string>
-    <string name="howAppWorks">How this app works</string>
+    <string name="howAppWorks">App\'s functions</string>
     <string name="lavoriInCorsoTitle">Work in progress</string>
     <string name="forgotPasswordDeps">Forgot your password? Don\'t worry, you can reset it here.</string>
     <string name="backToLogin">Back to Login</string>
     <string name="sendEmailButton">Send Email</string>
+    <string name="progressBar">Progress bar</string>
+    <string name="progressBarText">You can isually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work).</string>
+    <string name="updateYourself">Updated, Always.</string>
+    <string name="updateYourselfText">We\'ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it\'s a bad Friday.</string>
 </resources>
