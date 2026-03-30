@@ -120,7 +120,7 @@
     <string name="androidDeveloper">Android Developers:</string>
     <string name="webDeveloper">Web Developer:</string>
     <string name="support">Support us</string>
-    <string name="supportText">If you like LavoraMi and you want to keep it advertising-free, you can make us a donation below!</string>
+    <string name="supportText">If you like LavoraMi and you want to keep it advertising-free, you can share the app downHai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui. below!</string>
     <string name="parteonSupport">Support us on Patreon</string>
     <string name="buyACoffeSupport">Support us on Buy Me A Coffee</string>
     <string name="followOn">Follow us on:</string>
@@ -220,4 +220,7 @@
     <string name="updateButton">Update</string>
     <string name="howAppWorks">How this app works</string>
     <string name="lavoriInCorsoTitle">Work in progress</string>
+    <string name="forgotPasswordDeps">Forgot your password? Don\'t worry, you can reset it here.</string>
+    <string name="backToLogin">Back to Login</string>
+    <string name="sendEmailButton">Send Email</string>
 </resources>

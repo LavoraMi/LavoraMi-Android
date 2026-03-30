@@ -119,7 +119,7 @@
     <string name="androidDeveloper">Sviluppatori Android:</string>
     <string name="webDeveloper">Sviluppatori Web:</string>
     <string name="support">Supportaci</string>
-    <string name="supportText">Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi effettuarci una donazione qui sotto!</string>
+    <string name="supportText">Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l\'app qui sotto!</string>
     <string name="parteonSupport">Supportaci su Patreon</string>
     <string name="buyACoffeSupport">Supportaci su Buy Me A Coffee</string>
     <string name="followOn">Seguici su:</string>
@@ -219,4 +219,7 @@
     <string name="updateButton">Aggiorna</string>
     <string name="howAppWorks">Come funziona l\'app</string>
     <string name="lavoriInCorsoTitle">Lavori in corso</string>
+    <string name="forgotPasswordDeps">Hai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui.</string>
+    <string name="backToLogin">Torna al Login</string>
+    <string name="sendEmailButton">Invia Email</string>
 </resources>
