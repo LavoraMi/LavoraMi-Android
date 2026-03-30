@@ -156,6 +156,101 @@
                     android:progressTint="#FD272D" />
 
             </RelativeLayout>
+            <View android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="#38383A" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/iconStar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_star_fill"
+                    app:tint="#E41414" />
+
+                <TextView
+                    android:id="@+id/update_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-1dp"
+                    android:layout_toEndOf="@+id/iconStar"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/choseLine"
+                    android:textColor="#E41414"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/updateYourselfText"
+                    android:textAlignment="center" />
+            </RelativeLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardBackgroundColor="@color/disclosureBg">
+            <RelativeLayout
+
+                android:id="@+id/disclosureHeaderMovibus"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:paddingHorizontal="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:id="@+id/iconMainMovibus"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_bus"
+                    app:tint="#E41414" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@+id/iconMainMovibus"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/movibusLines"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:id="@+id/movibusLinesFavorites"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_star_empty"
+                    app:tint="#FF9F0A" />
+            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <View android:layout_width="match_parent"
                 android:layout_margin="20dp"
@@ -206,12 +301,7 @@
                     android:text="@string/updateYourselfText"
                     android:textAlignment="center" />
             </RelativeLayout>
-            <View android:layout_width="match_parent"
-                android:layout_margin="20dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="#38383A" />
+
         </LinearLayout>
     </ScrollView>
 

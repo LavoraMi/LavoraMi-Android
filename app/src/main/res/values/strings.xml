@@ -226,4 +226,5 @@
     <string name="progressBarText">Vedi visivamente a che punto sono i lavori e quando è prevista la fine del disagio (basato su data di inizio e fine lavori PREVISTI).</string>
     <string name="updateYourself">Aggiornato, Sempre.</string>
     <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no.</string>
+    <string name="choseLine">Scegli la tua linea</string>
 </resources>

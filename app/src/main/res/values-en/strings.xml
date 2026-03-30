@@ -227,4 +227,5 @@
     <string name="progressBarText">You can isually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work).</string>
     <string name="updateYourself">Updated, Always.</string>
     <string name="updateYourselfText">We\'ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it\'s a bad Friday.</string>
+    <string name="choseLine">Chose your line</string>
 </resources>
