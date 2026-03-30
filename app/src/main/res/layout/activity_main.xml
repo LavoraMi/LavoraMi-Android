@@ -25,12 +25,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/archivo_medium"
-            android:text="@string/lavoriInCorso"
+            android:text="@string/lavoriInCorsoTitle"
             android:textColor="@color/text_primary"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintWidth_percent="0.7" />
 
         <ImageButton
@@ -105,7 +106,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/archivo_medium"
-                    android:text="AVVISO SCIOPERO"
+                    android:text="@string/avvisoSciopero"
                     android:textColor="@android:color/white"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -200,7 +201,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Aderenti:"
+                        android:text="@string/strikeBannerAderenti"
                         android:textColor="@color/text_primary"
                         android:textSize="13sp" />
 
@@ -272,7 +273,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tutti"
+                android:text="@string/allFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_filters"
@@ -314,7 +315,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Metropolitana"
+                android:text="@string/metroFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_metro"
@@ -328,7 +329,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Treno"
+                android:text="@string/trainFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_train"
@@ -342,7 +343,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="In Corso"
+                android:text="@string/lavoriInCorso"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_incorso"
@@ -356,7 +357,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Programmati"
+                android:text="@string/scheduledFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_calendar"
@@ -370,7 +371,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="di ATM"
+                android:text="@string/atmFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -379,7 +380,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="di Trenord"
+                android:text="@string/trenordFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -388,7 +389,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="di Movibus"
+                android:text="@string/movibusFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -397,7 +398,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="di STAV"
+                android:text="@string/stavFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -406,7 +407,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="di Autoguidovie"
+                android:text="@string/autoguidovieFilter"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
@@ -418,7 +419,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_medium"
-        android:text="Nessun lavoro trovato per questo filtro."
+        android:text="@string/noWorkOnFilter"
         android:textColor="@color/text_primary"
         android:textSize="18sp"
         android:visibility="gone"
@@ -484,7 +485,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/archivo_medium"
-            android:text="Impossibile caricare i dati dal server."
+            android:text="@string/downloadDataError"
             android:textColor="@color/text_primary"
             android:textSize="20sp" />
 
@@ -493,7 +494,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:fontFamily="@font/archivo_medium"
-            android:text="Controlla la tua connessione e riprova."
+            android:text="@string/noInternetConnectionError"
             android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
@@ -503,7 +504,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/redMetro"
-            android:text="Riprova"
+            android:text="@string/retry"
             android:textColor="@color/White"
             app:icon="@drawable/ic_refresh"
             app:iconGravity="textStart"
@@ -620,13 +621,12 @@
                 android:layout_height="55dp"
                 android:backgroundTint="#FD272D"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Avanti"
+                android:text="@string/next"
                 android:textAllCaps="false"
                 android:textColor="@color/White"
                 android:textSize="18sp"
 
                 app:cornerRadius="12dp" />
-
         </LinearLayout>
 
         <ImageView
@@ -647,11 +647,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-            android:text="Salta"
+            android:text="@string/skipButton"
             android:textColor="#FD272D"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

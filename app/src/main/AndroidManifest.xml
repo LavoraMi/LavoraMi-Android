@@ -60,6 +60,9 @@
             android:name=".SourcesDevelopment"
             android:exported="false" />
         <activity
+            android:name=".HowAppWorks"
+            android:exported="false"/>
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity

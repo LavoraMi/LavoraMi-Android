@@ -139,10 +139,10 @@ public class AdvancedOptions extends AppCompatActivity {
         CardView btnCacheMemory = findViewById(R.id.btnCacheMemory);
         btnCacheMemory.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Sei sicuro?")
-                    .setMessage("Sei sicuro di voler eliminare la memoria Cache dell'app?")
-                    .setNegativeButton("Annulla", null)
-                    .setPositiveButton("Conferma", (dialog, which) -> {
+                    .setTitle(R.string.areYouSurePopUp)
+                    .setMessage(R.string.cacheMemoryPopUpDeps)
+                    .setNegativeButton(R.string.cancelPopUp, null)
+                    .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
                         deleteCache(this);
                     }).show();
         });
@@ -254,8 +254,8 @@ public class AdvancedOptions extends AppCompatActivity {
 
         if(biometricsSwitch.isChecked()){
             BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                    .setTitle("Modifica impostazioni")
-                    .setSubtitle("Usa l'impronta o il viso per modificare questa impostazione.")
+                    .setTitle(ContextCompat.getString(this, R.string.editSettingsPopUpTitle))
+                    .setSubtitle(ContextCompat.getString(this, R.string.editSettingsPopUpDeps))
                     .setAllowedAuthenticators(authenticators)
                     .build();
 

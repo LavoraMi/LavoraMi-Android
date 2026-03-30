@@ -94,8 +94,8 @@ public class RequestUserDatas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validateEmail(etEmailAccount.getText().toString())){
-                    String subject = "Richiesta dei miei dati";
-                    String body = "Buongiorno,\nVorrei richiedere l'invio dei miei dati in formato " + selectedFileFormat + " dell'Account con mail: " + etEmailAccount.getText() + "\nMessaggio inviato dall'App LavoraMi.";
+                    String subject = ContextCompat.getString(RequestUserDatas.this, R.string.requestDataIntentSubject);
+                    String body = getLocalizedString(R.string.requestDataIntentPart1) + selectedFileFormat + getLocalizedString(R.string.requestDataIntentPart2) + etEmailAccount.getText() + getLocalizedString(R.string.requestDataIntentPart3);
 
                     String encodedBody = Uri.encode(body);
                     String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
@@ -112,6 +112,8 @@ public class RequestUserDatas extends AppCompatActivity {
             }
         });
     }
+
+    public String getLocalizedString(int ID) {return ContextCompat.getString(this, ID);}
 
     public boolean validateEmail(String mail){return (mail.matches("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"));}
 }

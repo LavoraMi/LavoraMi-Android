@@ -92,7 +92,7 @@
                 android:fontFamily="@font/archivo_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:text="Questa applicazione aggrega dati pubblici, accessibili a tutti, per facilitarne la consultazione."
+                android:text="@string/dataDisclaimer"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="italic" />
@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Team di Sviluppo"
+                android:text="@string/teamSviluppo"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Sviluppatore iOS:"
+                android:text="@string/iosDeveloper"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Sviluppatori Android:"
+                android:text="@string/androidDeveloper"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Sviluppatori Web:"
+                android:text="@string/webDeveloper"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
@@ -224,7 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Supportaci"
+                android:text="@string/support"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -234,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l'app qui sotto!"
+                android:text="@string/supportText"
                 android:textAlignment="center"
                 android:textSize="14sp"
                 android:layout_marginStart="20dp"
@@ -267,7 +267,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Supportaci su Patreon"
+                android:text="@string/parteonSupport"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -286,7 +286,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Supportaci su Buy Me A Coffee"
+                android:text="@string/buyACoffeSupport"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -309,7 +309,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Seguici su"
+                android:text="@string/followOn"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -364,7 +364,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Contatti"
+                android:text="@string/contacts"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -377,7 +377,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Segnala un bug"
+                android:text="@string/bugReport"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -396,7 +396,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Sito web"
+                android:text="@string/webSite"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -415,7 +415,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Riconoscimenti"
+                android:text="@string/credits"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -434,7 +434,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Richiedi i tuoi dati"
+                android:text="@string/richiediDati"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -457,7 +457,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Informazioni"
+                android:text="@string/infoAccount"
                 android:textAlignment="center"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -489,7 +489,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/archivo_medium"
-                android:text="Termini di Servizio"
+                android:text="@string/terminiDiServizio"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -514,5 +514,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back"
         app:tint="?attr/colorControlNormal" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

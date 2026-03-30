@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Opzioni Avanzate"
+            android:text="@string/advancedOptionsTitle"
             android:fontFamily="@font/archivo_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
@@ -86,7 +86,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconMaster"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Mostra messaggi di Errore"
+                        android:text="@string/errorMessagesOptions"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Mostra messaggi di errore quando fallisce il Download dei dati dal server."
+                android:text="@string/showErrorsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -142,7 +142,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconBanner"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Mostra banner Scioperi"
+                        android:text="@string/bannerStrikesOptions"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Mostra il banner di scioperi nella Home quando sono presenti."
+                android:text="@string/bannerStrikesDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -198,7 +198,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconBiometrics"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Richiedi Biometria"
+                        android:text="@string/requireBiometricAuth"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -221,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Richiedi la Biometria per sbloccare la sezione del tuo Account."
+                android:text="@string/requireBiometricAuthDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -254,7 +254,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconDetails"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Mostra dettagli Lavori"
+                        android:text="@string/showWorkDetails"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -277,7 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Mostra la descrizione del lavoro che si sta eseguendo, sotto alla barra di progresso."
+                android:text="@string/showWorkDetailsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -311,7 +311,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconCacheMemory"
                         android:fontFamily="@font/archivo_medium"
-                        android:text="Pulisci memoria Cache"
+                        android:text="@string/cleanCache"
                         android:textColor="@color/redMetro"
                         android:textSize="17sp" />
                 </RelativeLayout>
@@ -322,7 +322,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:text="Elimina la memoria Cache dal dispositivo, liberando spazio su disco."
+                android:text="@string/cacheMemoryDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
         </LinearLayout>

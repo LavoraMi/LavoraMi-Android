@@ -76,6 +76,9 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout advancedOptionsButton = findViewById(R.id.btnAdvanced);
         advancedOptionsButton.setOnClickListener(v -> {changeActivity(this, AdvancedOptions.class);});
 
+        RelativeLayout howAppWorksButton = findViewById(R.id.btnHowWorks);
+        howAppWorksButton.setOnClickListener(v -> {changeActivity(this, HowAppWorks.class);});
+
         //*FAVORITES LINES
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {
@@ -165,7 +168,7 @@ public class SettingsActivity extends AppCompatActivity {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(this.CLIPBOARD_SERVICE);
             ClipData clipData = ClipData.newPlainText("Versione App", textToCopy);
             clipboard.setPrimaryClip(clipData);
-            Toast.makeText(this, "Versione app copiata!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getLocalizedString(R.string.versionAppCopied), Toast.LENGTH_LONG).show();
 
             return true;
         });
@@ -181,9 +184,9 @@ public class SettingsActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "LavoraMi");
-            intent.putExtra(Intent.EXTRA_TEXT, "Scarica LavoraMi: " + link);
+            intent.putExtra(Intent.EXTRA_TEXT, ContextCompat.getString(this, R.string.shareContentLavoraMi) + link);
 
-            startActivity(Intent.createChooser(intent, "Condividi LavoraMi"));
+            startActivity(Intent.createChooser(intent, ContextCompat.getString(this, R.string.shareLavoraMi)));
         });
 
         //*RESET SETTINGS
@@ -206,14 +209,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         TextView filterSelectedText = findViewById(R.id.filterText);
-        filterSelectedText.setText(selectedFilter);
 
-        String selectedTheme = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
-        TextView themeSelectedText = findViewById(R.id.themeText);
-        themeSelectedText.setText(selectedTheme);
+        /// Localize the current filter to the correct language
+        String selectedFilterLocalized = getLocalizedMessage(selectedFilter);
+        filterSelectedText.setText(selectedFilterLocalized);
 
         TextView nameSettingsText = findViewById(R.id.nameSettingsText);
-        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : "Il tuo Account");
+        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : getLocalizedString(R.string.yourAccountSettingsTitle));
 
         ImageView profileImage = findViewById(R.id.profileImage);
         profileImage.setImageResource((!sessionManager.isLoggedInWithGoogle())
@@ -225,6 +227,24 @@ public class SettingsActivity extends AppCompatActivity {
             profileImage.setColorFilter(ContextCompat.getColor(this, R.color.redMetro));
         else if(sessionManager.isLoggedInWithGoogle())
             profileImage.clearColorFilter();
+    }
+
+    public String getLocalizedMessage(String toCompare){
+        switch(toCompare) {
+            case "Tutti": return getLocalizedString(R.string.allFilter);
+            case "Bus": return "Bus";
+            case "Tram": return "Tram";
+            case "Metropolitana": return getLocalizedString(R.string.metroFilter);
+            case "Treno": return getLocalizedString(R.string.trainFilter);
+            case "In Corso": return getLocalizedString(R.string.inProgressFilter);
+            case "Programmati": return getLocalizedString(R.string.scheduledFilter);
+            case "di ATM": return getLocalizedString(R.string.atmFilter);
+            case "di Trenord": return getLocalizedString(R.string.trenordFilter);
+            case "di Movibus": return getLocalizedString(R.string.movibusFilter);
+            case "di STAV": return getLocalizedString(R.string.stavFilter);
+            case "di Autoguidovie": return getLocalizedString(R.string.autoguidovieFilter);
+            default: return "Errore";
+        }
     }
 
     public void setStarIcons(ImageView[] icons, RelativeLayout[] layouts, String[] lineCodes){
@@ -277,10 +297,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void resetSettings(ImageView[] images, String[] lines){
         new AlertDialog.Builder(this)
-                .setTitle("Sei sicuro?")
-                .setMessage("Sei sicuro di voler ripristinare le impostazioni?")
-                .setNegativeButton("Annulla", null)
-                .setPositiveButton("Conferma", (dialog, which) -> {
+                .setTitle(getLocalizedString(R.string.areYouSurePopUp))
+                .setMessage(getLocalizedString(R.string.resetSettingsPopUp))
+                .setNegativeButton(getLocalizedString(R.string.cancelPopUp), null)
+                .setPositiveButton(getLocalizedString(R.string.confirmPopUp), (dialog, which) -> {
                     DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
                     DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
@@ -294,7 +314,7 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
                     DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
-                    Toast.makeText(this, "Impostazioni ripristinate correttamente!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getLocalizedString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                     favorites.clear();
                     reloadDatas();
                     setTheme();
@@ -327,4 +347,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
+
+    public String getLocalizedString(int ID) {return ContextCompat.getString(this, ID);}
 }

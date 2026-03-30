@@ -433,9 +433,9 @@ public class AccountManagement extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
                     new AlertDialog.Builder(AccountManagement.this)
-                            .setTitle("Conferma Mail")
-                            .setMessage("Verifica il tuo indirizzo Email con la mail che ti abbiamo inviato per continuare.")
-                            .setNegativeButton("Chiudi", null)
+                            .setTitle(R.string.popUpConfirmEmail)
+                            .setMessage(R.string.emailPopUpDeps)
+                            .setNegativeButton(R.string.closePopUp, null)
                             .create()
                             .show();
 
@@ -460,10 +460,10 @@ public class AccountManagement extends AppCompatActivity {
         /// If the answer of the user is 'YES', we call the 'logout()' function, otherwise do nothing.
 
         new AlertDialog.Builder(this)
-                .setTitle("Sei sicuro?")
-                .setMessage("Sei sicuro di voler uscire dall'Account?")
-                .setNegativeButton("Annulla", null)
-                .setPositiveButton("Esci", (dialog, which) -> {
+                .setTitle(R.string.areYouSurePopUp)
+                .setMessage(R.string.logoutConfirmationPopUp)
+                .setNegativeButton(R.string.cancelPopUp, null)
+                .setPositiveButton(R.string.logoutAccount, (dialog, which) -> {
                     logout();
                 }).show();
     }
@@ -523,8 +523,8 @@ public class AccountManagement extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     new AlertDialog.Builder(AccountManagement.this)
-                            .setTitle("Email inviata!")
-                            .setMessage("Email inviata a " + email + "!")
+                            .setTitle(R.string.emailSentTitle)
+                            .setMessage(R.string.emailSentDeps + email + "!")
                             .setNegativeButton("Chiudi", null)
                             .create()
                             .show();
@@ -553,10 +553,10 @@ public class AccountManagement extends AppCompatActivity {
         loggingInWithGoogle = false;
 
         new AlertDialog.Builder(this)
-                .setTitle("Sei sicuro?")
-                .setMessage("Sei sicuro di voler Eliminare Definitivamente il tuo Account?")
-                .setNegativeButton("Annulla", null)
-                .setPositiveButton("Conferma", (dialog, which) -> {
+                .setTitle(R.string.areYouSurePopUp)
+                .setMessage(R.string.deleteAccountTitlePopUp)
+                .setNegativeButton(R.string.cancelPopUp, null)
+                .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
                     String tokenKey = sessionManager.getToken();
 
                     if(tokenKey == null){
@@ -595,10 +595,10 @@ public class AccountManagement extends AppCompatActivity {
         /// String email is the user Email for send the mail, catched by the method 'sessionManager.getUserEmail()'
 
         new AlertDialog.Builder(this)
-                .setTitle("Modifica Password")
-                .setMessage("Ti invieremo una mail per modificare la tua password, vuoi continuare?")
-                .setNegativeButton("Annulla", null)
-                .setPositiveButton("Continua", (dialog, which) -> {
+                .setTitle(R.string.editPasswordAccount)
+                .setMessage(R.string.ediPasswordPopUpTitle)
+                .setNegativeButton(R.string.cancelPopUp, null)
+                .setPositiveButton(R.string.continueButtonPopUp, (dialog, which) -> {
                     String userEmail = sessionManager.getUserEmail();
                     sendResetPasswordEmail(userEmail);
                 }).show();
@@ -617,7 +617,7 @@ public class AccountManagement extends AppCompatActivity {
             loggedInView.setVisibility(View.VISIBLE);
             lockedScreen.setVisibility(View.GONE);
 
-            fullNameTextLoginPage.setText("Ciao " + getNameFromFullName(sessionManager.getUserName()));
+            fullNameTextLoginPage.setText(ContextCompat.getString(this, R.string.welcomeAccountLoggedIn) + getNameFromFullName(sessionManager.getUserName()));
             tvProfileName.setText(sessionManager.getUserName());
             tvProfileEmail.setText(sessionManager.getUserEmail());
             signingInWithGoogleView.setVisibility(View.GONE);
@@ -723,8 +723,8 @@ public class AccountManagement extends AppCompatActivity {
         });
 
         BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Accedi al tuo Account")
-                .setSubtitle("Usa l'impronta o il viso per accedere.")
+                .setTitle(ContextCompat.getString(this, R.string.signInPopUpTitle))
+                .setSubtitle(ContextCompat.getString(this, R.string.biometricAuthPopUpDeps))
                 .setAllowedAuthenticators(authenticators)
                 .build();
 
