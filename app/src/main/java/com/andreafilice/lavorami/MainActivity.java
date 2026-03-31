@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle2), getLocalizedString(R.string.setupDeps2), "ic_map", ""));
         pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle3), getLocalizedString(R.string.setupDeps3), "ic_star_fill", ""));
         pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle4), getLocalizedString(R.string.setupDeps4), "ic_bell_fill", ""));
+        pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitleTranslate), getLocalizedString(R.string.setupDepsTranslate), "ic_translate", getLocalizedString(R.string.setupMiniDepsTranslate)));
         pages.add(new SetupModels.SetupPage(getLocalizedString(R.string.setupTitle5), getLocalizedString(R.string.setupDeps5), "ic_lock", getLocalizedString(R.string.setupMiniDetails)));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
