@@ -227,4 +227,5 @@
     <string name="updateYourself">Aggiornato, Sempre.</string>
     <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no.</string>
     <string name="choseLine">Scegli la tua linea</string>
+    <string name="exampleDate1">15 Dic 2026</string>
 </resources>

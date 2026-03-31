@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -169,7 +171,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'+01:00'";
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat(serverFormat, Locale.getDefault());
+            SimpleDateFormat sdf = new SimpleDateFormat(serverFormat, Locale.ENGLISH);
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 
             Date date = sdf.parse(dateString);

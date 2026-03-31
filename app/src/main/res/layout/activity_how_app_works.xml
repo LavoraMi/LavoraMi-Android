@@ -53,7 +53,7 @@
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,6 +113,7 @@
                     android:fontFamily="@font/archivo_medium"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
                     android:text="@string/progressBarText"
                     android:textAlignment="center" />
 
@@ -137,12 +138,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:text="15 Dec 2026"
+                    android:text="@string/exampleDate1"
                     android:textColor="@color/text_primary"
                     android:textSize="12sp" />
 
                 <ProgressBar
-
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
@@ -202,17 +202,20 @@
                     android:fontFamily="@font/archivo_medium"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
                     android:text="@string/updateYourselfText"
                     android:textAlignment="center" />
             </RelativeLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="16dp"
                 app:cardBackgroundColor="@color/disclosureBg">
-            <RelativeLayout
 
+            <RelativeLayout
                 android:id="@+id/disclosureHeaderMovibus"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -240,7 +243,7 @@
                     android:textSize="17sp" />
 
                 <ImageView
-                    android:id="@+id/movibusLinesFavorites"
+                    android:id="@+id/favIcon"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_alignParentEnd="true"
@@ -250,6 +253,7 @@
                     android:src="@drawable/ic_star_empty"
                     app:tint="#FF9F0A" />
             </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
             <View android:layout_width="match_parent"
@@ -289,7 +293,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/textView6"
@@ -298,10 +303,10 @@
                     android:fontFamily="@font/archivo_medium"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
                     android:text="@string/updateYourselfText"
                     android:textAlignment="center" />
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
 

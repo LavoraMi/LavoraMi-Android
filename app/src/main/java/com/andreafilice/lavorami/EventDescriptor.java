@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami;
 
+import static java.security.AccessController.getContext;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -123,7 +125,7 @@ public class EventDescriptor {
             inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 
             Date finalDate = inputFormat.parse(initialDate);
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", Locale.ITALY);
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
 
             return outputFormat.format(finalDate);
         } catch (Exception e) {

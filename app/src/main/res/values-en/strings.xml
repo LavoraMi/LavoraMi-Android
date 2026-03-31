@@ -228,4 +228,5 @@
     <string name="updateYourself">Updated, Always.</string>
     <string name="updateYourselfText">We\'ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it\'s a bad Friday.</string>
     <string name="choseLine">Chose your line</string>
+    <string name="exampleDate1">15 Dec 2026</string>
 </resources>
