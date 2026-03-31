@@ -1,36 +1,30 @@
 package com.andreafilice.lavorami;
 
-
-import android.content.pm.ActivityInfo;
-
 import android.os.Bundle;
 import android.widget.ImageButton;
 
-
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class HowAppWorks extends AppCompatActivity {
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_how_app_works);
+        setContentView(R.layout.activity_filter_selection);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //*LOCK THE ORIENTATION
-        /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        ImageButton btnBack = findViewById(R.id.backBtn);
-        btnBack.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
-    }
 
+        //*BUTTONS
+        /// In this section of the code, we create the actions to go back to Settings menu.
+        ImageButton backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
+    }
 }
