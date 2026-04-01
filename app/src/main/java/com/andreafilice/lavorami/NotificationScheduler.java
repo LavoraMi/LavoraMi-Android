@@ -119,20 +119,61 @@ public class NotificationScheduler {
                     if (startMillis > now) {
                         long notifTime = getSelectedTime(context, startMillis);
                         if (notifTime > now) {
-                            schedule(context, alarmManager, idStart, notifTime,
-                                    "Lavori Iniziati!",
-                                    String.format("I lavori in %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
-                                            event.roads, event.getStringLines(), event.company));
+                            if(event.roads.toLowerCase().contains("via")) {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idStart, notifTime,
+                                            "Lavori Iniziati!",
+                                            String.format("I lavori in %s della linea %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idStart, notifTime,
+                                            "Lavori Iniziati!",
+                                            String.format("I lavori in %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
+                            else {
+                                if(event.getLines().length <= 1) {
+                                    schedule(context, alarmManager, idStart, notifTime,
+                                            "Lavori Iniziati!",
+                                            String.format("I lavori a %s della linea %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                }
+                                else
+                                    schedule(context, alarmManager, idStart, notifTime,
+                                            "Lavori Iniziati!",
+                                            String.format("I lavori a %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
                         }
                     }
                     long startDayBefore = startMillis - oneDayMillis;
                     if (startDayBefore > now) {
                         long notifTimePre = getSelectedTime(context, startDayBefore);
                         if (notifTimePre > now) {
-                            schedule(context, alarmManager, idPreStart, notifTimePre,
-                                    "⚠\uFE0F I lavori iniziano domani!",
-                                    String.format("Domani iniziano i lavori in %s per %s. Consulta il sito di %s per maggiori info.",
-                                            event.roads, event.getStringLines(), event.company));
+                            if(event.roads.toLowerCase().contains("via")) {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idPreStart, notifTimePre,
+                                            "⚠\uFE0F I lavori iniziano domani!",
+                                            String.format("Domani iniziano i lavori in %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idPreStart, notifTimePre,
+                                            "⚠\uFE0F I lavori iniziano domani!",
+                                            String.format("Domani iniziano i lavori in %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
+                            else {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idPreStart, notifTimePre,
+                                            "⚠\uFE0F I lavori iniziano domani!",
+                                            String.format("Domani iniziano i lavori a %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idPreStart, notifTimePre,
+                                            "⚠\uFE0F I lavori iniziano domani!",
+                                            String.format("Domani iniziano i lavori a %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
                         }
                     }
                 }
@@ -141,20 +182,60 @@ public class NotificationScheduler {
                     if (endMillis > now) {
                         long notifTimeEnd = getSelectedTime(context, endMillis);
                         if (notifTimeEnd > now) {
-                            schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                    "Lavori terminati!",
-                                    String.format("I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
-                                            event.roads, event.getStringLines(), event.company));
+                            if(event.roads.toLowerCase().contains("via")) {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idEnd, notifTimeEnd,
+                                            "Lavori terminati!",
+                                            String.format("I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idEnd, notifTimeEnd,
+                                            "Lavori terminati!",
+                                            String.format("I lavori in %s della linea %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
+                            else {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idEnd, notifTimeEnd,
+                                            "Lavori terminati!",
+                                            String.format("I lavori a %s della linea %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idEnd, notifTimeEnd,
+                                            "Lavori terminati!",
+                                            String.format("I lavori a %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
                         }
                     }
                     long endDayBefore = endMillis - oneDayMillis;
                     if (endDayBefore > now) {
                         long notifTimePreEnd = getSelectedTime(context, endDayBefore);
                         if (notifTimePreEnd > now) {
-                            schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                    "⚠\uFE0F I lavori finiscono domani!",
-                                    String.format("Domani terminano i lavori in %s per %s. Consulta il sito di %s per maggiori info.",
-                                            event.roads, event.getStringLines(), event.company));
+                            if(event.roads.toLowerCase().contains("via")) {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
+                                            "⚠\uFE0F I lavori finiscono domani!",
+                                            String.format("Domani terminano i lavori in %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
+                                            "⚠\uFE0F I lavori finiscono domani!",
+                                            String.format("Domani terminano i lavori in %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
+                            else {
+                                if(event.getLines().length <= 1)
+                                    schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
+                                            "⚠\uFE0F I lavori finiscono domani!",
+                                            String.format("Domani terminano i lavori a %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                                else
+                                    schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
+                                            "⚠\uFE0F I lavori finiscono domani!",
+                                            String.format("Domani terminano i lavori a %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                                    event.roads, event.getStringLines(), event.company));
+                            }
                         }
                     }
                 }
