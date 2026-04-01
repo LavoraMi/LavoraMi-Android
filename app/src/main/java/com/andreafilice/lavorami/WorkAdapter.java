@@ -97,8 +97,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         boolean isShowDetails = DataManager.getBoolData(context, DataKeys.KEY_SHOW_DETAILS, true);
         int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
 
-        String stringToTranslate = "Title: " + item.getTitle() + "\n" + "Depscription: " + item.getDetails();
-
         ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
         itemHolder.cardImage.setImageResource(item.getCardImageID());
 
