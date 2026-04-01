@@ -79,4 +79,6 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)
+    implementation(libs.google.play.review)
+    implementation(libs.google.play.review.ktx)
 }

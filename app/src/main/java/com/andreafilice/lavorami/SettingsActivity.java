@@ -25,6 +25,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -195,6 +200,26 @@ public class SettingsActivity extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_TEXT, ContextCompat.getString(this, R.string.shareContentLavoraMi) + link);
 
             startActivity(Intent.createChooser(intent, ContextCompat.getString(this, R.string.shareLavoraMi)));
+        });
+
+        //*RATE LAVORAMI
+        /// In this section, we add a listener to the "Rate us" button
+        RelativeLayout rateUsBtn = findViewById(R.id.btnRateUs);
+
+        rateUsBtn.setOnClickListener(v -> {
+            ReviewManager manager = ReviewManagerFactory.create(this);
+            Task<ReviewInfo> request = manager.requestReviewFlow();
+
+            request.addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    ReviewInfo infos = task.getResult();
+                    Task<Void> flow = manager.launchReviewFlow(this, infos);
+
+                    flow.addOnCompleteListener(reviewTask -> {Log.d("REVIEWS", "Recensione completata con successo.");});
+                }
+                else
+                    Toast.makeText(this, "Si è verificato un errore sconosciuto, riprova.", Toast.LENGTH_SHORT).show();
+            });
         });
 
         //*RESET SETTINGS
