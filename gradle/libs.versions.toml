@@ -23,6 +23,7 @@ biometricAuth = "1.1.0"
 googleServices = "4.4.4"
 firebaseBom = "34.11.0"
 play-review = "2.0.2"
+mlkitTranslate = "17.0.3"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -50,6 +51,7 @@ firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.r
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
 google-play-review = { group = "com.google.android.play", name = "review", version.ref = "play-review" }
 google-play-review-ktx = { group = "com.google.android.play", name = "review-ktx", version.ref = "play-review" }
+google-mlkit-translate = { group = "com.google.mlkit", name = "translate", version.ref = "mlkitTranslate" }
 
 [plugins]
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }

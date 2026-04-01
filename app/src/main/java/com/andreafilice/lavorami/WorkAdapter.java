@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,9 +20,15 @@ import androidx.core.os.LocaleListCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.google.mlkit.common.model.DownloadConditions;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,6 +54,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView titleText, trattaText, startDateText, endDateText,companyText, descriptionText;
         ChipGroup chipGroupLinee;
         ProgressBar progressBar;
+        Button translateBtn;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -59,6 +67,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             descriptionText = itemView.findViewById(R.id.txtDescription);
             chipGroupLinee = itemView.findViewById(R.id.chipGroupLinee);
             progressBar = itemView.findViewById(R.id.progressBarDate);
+            translateBtn = itemView.findViewById(R.id.btnTranslate);
         }
     }
 
@@ -84,6 +93,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         boolean isShowDetails = DataManager.getBoolData(context, DataKeys.KEY_SHOW_DETAILS, true);
         int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
 
+        String stringToTranslate = "Title: " + item.getTitle() + "\n" + "Depscription: " + item.getDetails();
+
         ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
         itemHolder.cardImage.setImageResource(item.getCardImageID());
 
@@ -102,6 +113,48 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
 
         itemHolder.chipGroupLinee.removeAllViews();
+
+        itemHolder.translateBtn.setOnClickListener(v -> {
+            Context context = v.getContext();
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+            View sheetView = LayoutInflater.from(context).inflate(R.layout.item_sheet_translated, null);
+            bottomSheetDialog.setContentView(sheetView);
+
+            TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
+
+            TranslatorOptions options = new TranslatorOptions.Builder()
+                    .setSourceLanguage(TranslateLanguage.ITALIAN)
+                    .setTargetLanguage(TranslateLanguage.ENGLISH)
+                    .build();
+
+            Translator translator = Translation.getClient(options);
+
+            DownloadConditions conditions = new DownloadConditions.Builder()
+                    .build();
+
+            bottomSheetDialog.show();
+
+            translator.downloadModelIfNeeded(conditions)
+                    .addOnSuccessListener(unused -> {
+                        translator.translate(item.getTitle()).addOnSuccessListener(title -> {
+                            translator.translate(item.getDetails()).addOnSuccessListener(details -> {
+                                String finalText = title.toUpperCase() + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
+                                translatedTxt.setText(finalText);
+                            });
+                        }).addOnFailureListener(e -> {
+                            translatedTxt.setText("ERRORE DURANTE LA TRADUZIONE.");
+                        });
+                    });
+
+            Button btnCopy = sheetView.findViewById(R.id.btn_copy);
+            btnCopy.setOnClickListener(viewClick -> {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText("traduzione", translatedTxt.getText());
+                clipboard.setPrimaryClip(clip);
+                android.widget.Toast.makeText(context, "Copiato!", android.widget.Toast.LENGTH_SHORT).show();
+            });
+        });
+
         List<String> lineeRaw = Arrays.asList(item.getLines());
         if (!lineeRaw.isEmpty()) {
             for (String nome : lineeRaw) {

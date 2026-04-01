@@ -122,6 +122,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtOperator" />
 
+        <Button
+            android:id="@+id/btnTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:backgroundTint="@color/redMetro"
+            android:text="Traduci"
+            android:textColor="@color/White"
+            app:icon="@drawable/ic_translate"
+            app:iconPadding="10dp"
+            app:iconTint="@color/White"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+            tools:layout_editor_absoluteX="-4dp"
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </com.google.android.material.card.MaterialCardView>
