@@ -1,6 +1,5 @@
 package com.andreafilice.lavorami;
 
-import android.animation.TypeEvaluator;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;

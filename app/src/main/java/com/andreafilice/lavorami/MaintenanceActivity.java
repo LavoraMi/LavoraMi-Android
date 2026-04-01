@@ -1,10 +1,7 @@
 package com.andreafilice.lavorami;
 
-import static androidx.core.util.TypedValueCompat.dpToPx;
 
 import android.app.AlertDialog;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -18,8 +15,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;

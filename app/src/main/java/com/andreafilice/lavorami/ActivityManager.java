@@ -1,6 +1,5 @@
 package com.andreafilice.lavorami;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
 
 public class ActivityManager {
     public static void changeActivity(Context context, Class<?> destinationLayout) {

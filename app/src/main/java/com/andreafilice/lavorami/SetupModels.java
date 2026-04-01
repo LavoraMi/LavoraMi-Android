@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class SetupModels {
 
