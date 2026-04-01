@@ -230,7 +230,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 .addOnSuccessListener(unused -> {
                     translator.translate(item.getTitle()).addOnSuccessListener(title -> {
                         translator.translate(item.getDetails()).addOnSuccessListener(details -> {
-                            String finalText = title.toUpperCase() + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
+                            String finalText = title + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
                             loadingLayout.setVisibility(View.GONE);
                             translatedTxt.setVisibility(View.VISIBLE);
                             translatedTxt.setText(finalText);
