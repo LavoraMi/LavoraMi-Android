@@ -106,7 +106,7 @@ public class RequestUserDatas extends AppCompatActivity {
 
                     try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
                     catch (Exception e) {
-                        Toast.makeText(RequestUserDatas.this, "Si è verificato un errore imprevisto, riprova.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RequestUserDatas.this, getLocalizedString(RequestUserDatas.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 }

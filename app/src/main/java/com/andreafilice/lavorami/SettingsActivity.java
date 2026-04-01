@@ -219,7 +219,7 @@ public class SettingsActivity extends AppCompatActivity {
                     flow.addOnCompleteListener(reviewTask -> {Log.d("REVIEWS", "Recensione completata con successo.");});
                 }
                 else
-                    Toast.makeText(this, "Si è verificato un errore sconosciuto, riprova.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getLocalizedString(this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             });
         });
 

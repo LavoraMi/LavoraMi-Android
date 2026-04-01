@@ -262,4 +262,22 @@
     <string name="strikeNotificationDeps">Oggi è previsto uno sciopero di %s, le fascie garantite %s</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F Sciopero domani!</string>
     <string name="strikeTomorrowNotificationDeps">Domani c\'è sciopero per %s, le fascie garantite %s</string>
+    <string name="cacheMemoryToast">Cache pulite correttamente!</string>
+    <string name="googleSignInFailedToast">Sign-in con Google fallito.</string>
+    <string name="unknownErrorToast">Si è verificato un errore imprevisto, riprova.</string>
+    <string name="authFailedToast">Autenticazione non riuscita.</string>
+    <string name="verifyBiometricsToast">Impossibile verificare l\'autenticazione biometrica.</string>
+    <string name="connectionErrorToast">Errore durante la connessione al Server.</string>
+    <string name="passwordLengthToast">Errore: Password troppo corta (minimo 8 caratteri).</string>
+    <string name="loginErrorCredentialsToast">Errore Login: Credenziali errate</string>
+    <string name="networkErrorToast">Errore Rete:</string>
+    <string name="googleSignInSuccesfulToast">Accesso con Google riuscito!</string>
+    <string name="loginErrorToast">Errore Login:</string>
+    <string name="registrationErrorToast">Si è verificato un errore durante la registrazione. Riprova.</string>
+    <string name="signOutSuccesfulToast">Account disconnesso!</string>
+    <string name="signOutFailedToast">Errore durante la disconnesione</string>
+    <string name="errorUserNotFoundToast">Errore: utente non trovato o troppe richieste.Errore: utente non trovato o troppe richieste.</string>
+    <string name="mailErrorToast">Errore durante l\'invio della Mail, riprova.</string>
+    <string name="deleteAccountSuccesfullToast">Account eliminato correttamente!</string>
+    <string name="maintenanceToast">LavoraMi è ancora in manutenzione.</string>
 </resources>

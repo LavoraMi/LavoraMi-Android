@@ -263,4 +263,22 @@
     <string name="strikeNotificationDeps">A strike is scheduled for today of %s, services will be maintained %s</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F Strike tomorrow!</string>
     <string name="strikeTomorrowNotificationDeps">There will be a strike tomorrow for %s, the guaranteed service hours are %s</string>
+    <string name="cacheMemoryToast">Cache cleaned succesfully!</string>
+    <string name="googleSignInFailedToast">Sign-in with Google failed.</string>
+    <string name="unknownErrorToast">An unexpected error has occurred. Please try again.</string>
+    <string name="authFailedToast">Authentication failed.</string>
+    <string name="verifyBiometricsToast">Unable to verify biometric authentication.</string>
+    <string name="connectionErrorToast">Error connecting to the server.</string>
+    <string name="passwordLengthToast">Error: Password is too short (minimum 8 characters).</string>
+    <string name="loginErrorCredentialsToast">Login Error: Incorrect credentials</string>
+    <string name="networkErrorToast">"Network Error: "</string>
+    <string name="googleSignInSuccesfulToast">Login with Google successful!</string>
+    <string name="loginErrorToast">"Login Error: "</string>
+    <string name="registrationErrorToast">An error occurred during registration. Please try again.</string>
+    <string name="signOutSuccesfulToast">Account disconnected!</string>
+    <string name="signOutFailedToast">Error while disconnecting</string>
+    <string name="errorUserNotFoundToast">Error: User not found or too many requests.</string>
+    <string name="mailErrorToast">An error occurred while sending the email. Please try again.</string>
+    <string name="deleteAccountSuccesfullToast">Account successfully deleted!</string>
+    <string name="maintenanceToast">LavoraMi is still undergoing maintenance.</string>
 </resources>

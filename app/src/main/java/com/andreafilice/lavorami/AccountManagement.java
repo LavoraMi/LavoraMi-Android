@@ -31,6 +31,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.widget.TextView;
 import android.widget.Toast;
+import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,7 +84,7 @@ public class AccountManagement extends AppCompatActivity {
                     }
                     catch(ApiException e){
                         Log.e("GOOGLE", "Login fallito. Status Code: " + e.getStatusCode());
-                        Toast.makeText(this, "Sign-in con Google fallito.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getLocalizedString(this, R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
@@ -138,7 +139,7 @@ public class AccountManagement extends AppCompatActivity {
             api = retrofit.create(SupabaseAPI.class);
         }
         else
-            Toast.makeText(this, "Errore durante la connessione al Server.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getLocalizedString(this, R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
         //*BACK BUTTON
         /// In this section of the code, we initialize the Back Button and his action.
@@ -248,7 +249,7 @@ public class AccountManagement extends AppCompatActivity {
 
         btnSignup.setOnClickListener(v -> {
             if(passwordSignUp.getText().toString().length() < 8)
-                Toast.makeText(this, "Errore: Password troppo corta (minimo 8 caratteri).", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getLocalizedString(this, R.string.passwordLengthToast), Toast.LENGTH_SHORT).show();
             else
                 signUp(nameSignUp.getText().toString(), emailSignUp.getText().toString(), passwordSignUp.getText().toString());
         });
@@ -289,7 +290,7 @@ public class AccountManagement extends AppCompatActivity {
             googleLoginLauncher.launch(signInIntent);
         }
         else
-            Toast.makeText(this, "Errore durante il Login con Google.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getLocalizedString(this, R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
     }
 
     private void login(String email, String password) {
@@ -326,7 +327,7 @@ public class AccountManagement extends AppCompatActivity {
 
                     sessionManager.saveSession(token, email, nameUser, false);
 
-                    Toast.makeText(AccountManagement.this, "Bentornato!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
                     loggingInWithGoogle = false;
 
@@ -339,7 +340,7 @@ public class AccountManagement extends AppCompatActivity {
                     updateUI();
                 }
                 else{
-                    Toast.makeText(AccountManagement.this, "Errore Login: Credenziali errate", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.loginErrorCredentialsToast), Toast.LENGTH_SHORT).show();
                     EditText etLoginPassword = findViewById(R.id.etLoginPassword);
                     EditText etLoginEmail = findViewById(R.id.etLoginEmail);
 
@@ -350,7 +351,7 @@ public class AccountManagement extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SupabaseModels.AuthResponse> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, "Errore Rete: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.networkErrorToast) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -390,19 +391,19 @@ public class AccountManagement extends AppCompatActivity {
                     sessionManager.saveSession(token, email, nameUser, true);
 
                     updateUI();
-                    Toast.makeText(AccountManagement.this, "Accesso con Google riuscito!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.googleSignInSuccesfulToast), Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
                     updateUI();
                 }
                 else
-                    Toast.makeText(AccountManagement.this, "Errore Login: " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.loginErrorToast) + response.code(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<SupabaseModels.AuthResponse> call, Throwable t) {
                 loggingInWithGoogle = false;
                 updateUI();
-                Toast.makeText(AccountManagement.this, "Errore di connessione", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -440,14 +441,14 @@ public class AccountManagement extends AppCompatActivity {
                     updateUI();
                 }
                 else{
-                    Toast.makeText(AccountManagement.this, "Si è verificato un errore durante la registrazione. Riprova.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
                     Log.d("ERRORE_REG", response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, "Si è verificato un errore durante la registrazione. Riprova.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -486,13 +487,13 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 sessionManager.logout();
-                Toast.makeText(AccountManagement.this, "Account disconnesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.signOutSuccesfulToast), Toast.LENGTH_SHORT).show();
                 updateUI();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, "Errore durante la disconnesione", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.signOutFailedToast), Toast.LENGTH_SHORT).show();
                 Log.d("DISCONNECTING_ERROR", t.getMessage());
             }
         });
@@ -529,12 +530,12 @@ public class AccountManagement extends AppCompatActivity {
                 }
                 else {
                     Log.e("SUPABASE_AUTH", "Error: " + response.code());
-                    Toast.makeText(AccountManagement.this, "Errore: utente non trovato o troppe richieste.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.errorUserNotFoundToast), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(AccountManagement.this, "Errore durante l'invio della Mail, riprova.", Toast.LENGTH_SHORT).show();}
+            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.mailErrorToast), Toast.LENGTH_SHORT).show();}
         });
     }
 
@@ -557,7 +558,7 @@ public class AccountManagement extends AppCompatActivity {
                     String tokenKey = sessionManager.getToken();
 
                     if(tokenKey == null){
-                        Toast.makeText(this, "Errore: Utente non loggato.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getLocalizedString(this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                         return;
                     }
 
@@ -567,10 +568,10 @@ public class AccountManagement extends AppCompatActivity {
                             if(response.isSuccessful()){
                                 sessionManager.logout();
                                 updateUI();
-                                Toast.makeText(AccountManagement.this, "Account eliminato correttamente!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.deleteAccountSuccesfullToast), Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                Toast.makeText(AccountManagement.this, "Si è verificato un errore sconosciuto. Riprova", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                                 try {
                                     Log.e("DELETE_ERR", response.errorBody().string());
                                 } catch (Exception e) {}
@@ -579,7 +580,7 @@ public class AccountManagement extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(AccountManagement.this, "Si è verificato un errore sconosciuto. Riprova", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }).show();

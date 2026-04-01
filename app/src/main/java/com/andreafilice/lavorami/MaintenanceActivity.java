@@ -95,7 +95,7 @@ public class MaintenanceActivity extends AppCompatActivity {
                     maintenanceDeps.setText(maintenanceDetails);
 
                     if(isInMaintenanceMode)
-                        Toast.makeText(MaintenanceActivity.this, "LavoraMi è ancora in manutenzione.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MaintenanceActivity.this, getLocalizedString(MaintenanceActivity.this, R.string.maintenanceToast), Toast.LENGTH_SHORT).show();
                     else
                         ActivityUtils.changeActivity(MaintenanceActivity.this, MainActivity.class);
 

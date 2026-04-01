@@ -21,6 +21,8 @@ import androidx.core.view.ViewCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.WindowInsetsCompat;
 
+import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
+
 import java.io.File;
 import java.security.KeyStore;
 import java.util.concurrent.Executor;
@@ -155,7 +157,7 @@ public class AdvancedOptions extends AppCompatActivity {
         try {
             File dir = context.getCacheDir();
             deleteDir(dir);
-            Toast.makeText(context, "Cache pulite correttamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getLocalizedString(context, R.string.cacheMemoryToast), Toast.LENGTH_SHORT).show();
         }
         catch (Exception e) {e.printStackTrace();}
     }
@@ -220,7 +222,7 @@ public class AdvancedOptions extends AppCompatActivity {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(AdvancedOptions.this, "Autenticazione non riuscita.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdvancedOptions.this, getLocalizedString(AdvancedOptions.this, R.string.authFailedToast), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -237,11 +239,11 @@ public class AdvancedOptions extends AppCompatActivity {
                             biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
                         }
                     } else {
-                        Toast.makeText(AdvancedOptions.this, "Impossibile verificare l'autenticazione biometrica.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdvancedOptions.this, getLocalizedString(AdvancedOptions.this, R.string.verifyBiometricsToast), Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     Log.e("AdvancedOptions", "Errore durante l'operazione crittografica biometrica", e);
-                    Toast.makeText(AdvancedOptions.this, "Errore di sicurezza durante l'autenticazione.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvancedOptions.this, getLocalizedString(AdvancedOptions.this, R.string.authFailedToast), Toast.LENGTH_SHORT).show();
                 }
             }
 
