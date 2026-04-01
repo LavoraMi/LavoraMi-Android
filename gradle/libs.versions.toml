@@ -22,7 +22,7 @@ playServicesAuth = "21.5.1"
 biometricAuth = "1.1.0"
 googleServices = "4.4.4"
 firebaseBom = "34.11.0"
-play-review = "2.0.1"
+play-review = "2.0.2"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
