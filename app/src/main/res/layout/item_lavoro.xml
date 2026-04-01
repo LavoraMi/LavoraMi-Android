@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:backgroundTint="@color/redMetro"
-            android:text="Traduci"
+            android:text="@string/translateBtnText"
             android:textColor="@color/White"
             app:icon="@drawable/ic_translate"
             app:iconPadding="10dp"

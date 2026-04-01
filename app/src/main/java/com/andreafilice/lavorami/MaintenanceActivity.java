@@ -97,7 +97,7 @@ public class MaintenanceActivity extends AppCompatActivity {
 
                     if(responseComparable < 0){
                         new AlertDialog.Builder(MaintenanceActivity.this)
-                                .setTitle("Nuova versione disponibile!")
+                                .setTitle("Nuova versione")
                                 .setMessage("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
                                 .setPositiveButton("Aggiorna", ((dialog, which) -> {
                                     String packageName = getPackageName();

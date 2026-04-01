@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="Traduzione:"
+            android:text="@string/translateTitle"
             android:textSize="14sp"
             android:textColor="@color/subtitle" />
     </LinearLayout>
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Traduzione in corso..."
+        android:text=""
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/text_primary"
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Copia Traduzione"
+        android:text="@string/copyTranslation"
         android:backgroundTint="#FFE5E5"
         android:textColor="@color/redMetro" />
 </LinearLayout>

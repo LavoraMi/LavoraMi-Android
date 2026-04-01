@@ -233,4 +233,10 @@
     <string name="setupDepsTranslate">To translate job details into other languages, simply click on the job details and then click “Translate”</string>
     <string name="setupMiniDepsTranslate">This feature is available only when English is selected as the language. Go to Settings > Appearance and Language to select it.</string>
     <string name="rateUsTitle">Rate LavoraMi!</string>
+    <string name="translateTitle">Translation:</string>
+    <string name="copyTranslation">Copy Translation</string>
+    <string name="translateBtnText">Translate</string>
+    <string name="maintenanceTitle">Maintenance in progress.</string>
+    <string name="maintenanceDeps">The LavoraMi servers are currently unavailable. We apologize for the inconvenience.</string>
+    <string name="retryMaintenanceBtn">Refresh</string>
 </resources>
