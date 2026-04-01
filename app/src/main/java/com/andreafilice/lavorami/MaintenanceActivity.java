@@ -1,6 +1,5 @@
 package com.andreafilice.lavorami;
 
-
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +14,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
@@ -100,9 +101,9 @@ public class MaintenanceActivity extends AppCompatActivity {
 
                     if(responseComparable < 0){
                         new AlertDialog.Builder(MaintenanceActivity.this)
-                                .setTitle("Nuova versione")
-                                .setMessage("Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l'app.")
-                                .setPositiveButton("Aggiorna", ((dialog, which) -> {
+                                .setTitle(getLocalizedString(MaintenanceActivity.this, R.string.newVersionAvailableTitle))
+                                .setMessage(getLocalizedString(MaintenanceActivity.this, R.string.maintenanceDeps))
+                                .setPositiveButton(getLocalizedString(MaintenanceActivity.this, R.string.updateButton), ((dialog, which) -> {
                                     String packageName = getPackageName();
                                     String link = "https://play.google.com/store/apps/details?id=" + packageName;
 

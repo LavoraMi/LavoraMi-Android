@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -122,26 +124,26 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            "Lavori Iniziati!",
-                                            String.format("I lavori in %s della linea %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            "Lavori Iniziati!",
-                                            String.format("I lavori in %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1) {
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            "Lavori Iniziati!",
-                                            String.format("I lavori a %s della linea %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 }
                                 else
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            "Lavori Iniziati!",
-                                            String.format("I lavori a %s delle linee %s sono iniziati oggi. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -153,25 +155,25 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            "⚠\uFE0F I lavori iniziano domani!",
-                                            String.format("Domani iniziano i lavori in %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            "⚠\uFE0F I lavori iniziano domani!",
-                                            String.format("Domani iniziano i lavori in %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            "⚠\uFE0F I lavori iniziano domani!",
-                                            String.format("Domani iniziano i lavori a %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            "⚠\uFE0F I lavori iniziano domani!",
-                                            String.format("Domani iniziano i lavori a %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -185,25 +187,25 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            "Lavori terminati!",
-                                            String.format("I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            "Lavori terminati!",
-                                            String.format("I lavori in %s della linea %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            "Lavori terminati!",
-                                            String.format("I lavori a %s della linea %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            "Lavori terminati!",
-                                            String.format("I lavori a %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.",
+                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -215,25 +217,25 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            "⚠\uFE0F I lavori finiscono domani!",
-                                            String.format("Domani terminano i lavori in %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            "⚠\uFE0F I lavori finiscono domani!",
-                                            String.format("Domani terminano i lavori in %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            "⚠\uFE0F I lavori finiscono domani!",
-                                            String.format("Domani terminano i lavori a %s per la linea %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            "⚠\uFE0F I lavori finiscono domani!",
-                                            String.format("Domani terminano i lavori a %s per le linee %s. Consulta il sito di %s per maggiori info.",
+                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
+                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -271,8 +273,8 @@ public class NotificationScheduler {
             long notifTime = getSelectedTime(context, strikeMillis);
             if (notifTime > now) {
                 schedule(context, alarmManager, idStrike, notifTime,
-                        "\uD83D\uDEAB Oggi Sciopero!",
-                        String.format("Oggi è previsto uno sciopero di %s, le fascie garantite %s",
+                        getLocalizedString(context, R.string.strikeNotificationTitle),
+                        String.format(getLocalizedString(context, R.string.strikeNotificationDeps),
                                 strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
             }
         }
@@ -282,8 +284,8 @@ public class NotificationScheduler {
             long notifTimePre = getSelectedTime(context, strikeDayBefore);
             if (notifTimePre > now) {
                 schedule(context, alarmManager, idPreStrike, notifTimePre,
-                        "⚠\uFE0F Sciopero domani!",
-                        String.format("Domani c'è sciopero per %s, le fascie garantite %s",
+                        getLocalizedString(context, R.string.strikeTomorrowNotificationTitle),
+                        String.format(getLocalizedString(context, R.string.strikeTomorrowNotificationDeps),
                                 strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
             }
         }
