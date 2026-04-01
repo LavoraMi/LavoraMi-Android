@@ -44,6 +44,6 @@ public class DetailsLibrariesActivity extends AppCompatActivity {
         detailLicenseText.setText(item.getLicenseText());
 
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> ActivityManager.changeActivity(this, LibrariesActivity.class));
+        backBtn.setOnClickListener(v -> ActivityUtils.changeActivity(this, LibrariesActivity.class));
     }
 }

@@ -143,7 +143,7 @@ public class AccountManagement extends AppCompatActivity {
         //*BACK BUTTON
         /// In this section of the code, we initialize the Back Button and his action.
         ImageView backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
+        backBtn.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
 
         //*SIGN-IN WITH GOOGLE
         /// In this section we initialize all of the elements needed for the Google Sign-Up.
@@ -173,8 +173,8 @@ public class AccountManagement extends AppCompatActivity {
         EditText passwordLogin = findViewById(R.id.etLoginPassword);
         CardView btnLogin = findViewById(R.id.btnLogin);
 
-        termsBtnLogin.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/termsofservice"));
-        policyBtnLogin.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/privacypolicy"));
+        termsBtnLogin.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.lavorami.it/termsofservice"));
+        policyBtnLogin.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.lavorami.it/privacypolicy"));
 
         tvGoToSignup.setOnClickListener(v -> {
             loginView.setVisibility(View.GONE);
@@ -209,7 +209,7 @@ public class AccountManagement extends AppCompatActivity {
         btnLogout.setOnClickListener(v -> {showConfirmLogout();});
         btnChangePassword.setOnClickListener(v -> {changePassword();});
         btnDeleteAccount.setOnClickListener(v -> {deleteAccount();});
-        btnRequestYourDatas.setOnClickListener(v -> {ActivityManager.changeActivity(this, RequestUserDatas.class);});
+        btnRequestYourDatas.setOnClickListener(v -> {ActivityUtils.changeActivity(this, RequestUserDatas.class);});
 
         //*RESET PASSWORD VIEW
         /// In this section of the code, we set the button triggers and more for the RESET PASSWORD View.
@@ -231,8 +231,8 @@ public class AccountManagement extends AppCompatActivity {
         TextView btnTermsSignup = findViewById(R.id.termsBtnSignUp);
         TextView btnPolicySignup = findViewById(R.id.policyBtnSignUp);
 
-        btnTermsSignup.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/termsofservice"));
-        btnPolicySignup.setOnClickListener(v -> ActivityManager.openURLWithTabBuilder(this, "https://www.lavorami.it/privacypolicy"));
+        btnTermsSignup.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.lavorami.it/termsofservice"));
+        btnPolicySignup.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.lavorami.it/privacypolicy"));
 
         EditText emailSignUp = findViewById(R.id.etSignupEmail);
         EditText passwordSignUp = findViewById(R.id.etSignupPassword);
@@ -703,7 +703,7 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                ActivityManager.changeActivity(AccountManagement.this, SettingsActivity.class);
+                ActivityUtils.changeActivity(AccountManagement.this, SettingsActivity.class);
             }
 
             @Override

@@ -33,7 +33,7 @@ public class HowAppWorks extends AppCompatActivity {
         //*BUTTONS
         /// In this section of the code, we create the actions to go back to Settings menu.
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> ActivityManager.changeActivity(this, SettingsActivity.class));
+        backBtn.setOnClickListener(v -> ActivityUtils.changeActivity(this, SettingsActivity.class));
 
         //*ANIMATIONS
         /// In this section of the code, we set up some animations in this screen.

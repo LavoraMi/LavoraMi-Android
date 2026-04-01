@@ -7,8 +7,9 @@ import android.os.Bundle;
 
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
 
-public class ActivityManager {
+public class ActivityUtils {
     public static void changeActivity(Context context, Class<?> destinationLayout) {
         ///@PARAMETER
         /// Class<?> destinationLayout is a destination activity which this function change.
@@ -39,5 +40,12 @@ public class ActivityManager {
 
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(context, Uri.parse(url));
+    }
+
+    public static String getLocalizedString(Context context, int ID) {
+        ///@PARAMETER
+        /// int ID is the String Translation ID to convert.
+
+        return ContextCompat.getString(context, ID);
     }
 }

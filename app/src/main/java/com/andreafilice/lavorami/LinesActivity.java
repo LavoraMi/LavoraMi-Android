@@ -107,7 +107,7 @@ public class LinesActivity extends AppCompatActivity {
 
         for (int i = 0; i < infoButtons.length; i++) {
             int finalI = i;
-            infoButtons[i].setOnClickListener(v -> {ActivityManager.openURLWithTabBuilder(this, infoUrls[finalI]);});
+            infoButtons[i].setOnClickListener(v -> {ActivityUtils.openURLWithTabBuilder(this, infoUrls[finalI]);});
         }
 
         //* SEARCH BAR
@@ -220,10 +220,10 @@ public class LinesActivity extends AppCompatActivity {
 
         //*NAVBAR
         ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton);
-        btnHome.setOnClickListener(v -> {ActivityManager.changeActivity(this, MainActivity.class);});
+        btnHome.setOnClickListener(v -> {ActivityUtils.changeActivity(this, MainActivity.class);});
 
         ImageButton btnSettings = (ImageButton) findViewById(R.id.settingsButton);
-        btnSettings.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
+        btnSettings.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
     }
 
     private void loadLines(){

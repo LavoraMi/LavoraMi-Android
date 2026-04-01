@@ -43,7 +43,7 @@ public class LibrariesActivity extends AppCompatActivity {
         nestedLinesView = findViewById(R.id.nestedLinesView);
 
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> ActivityManager.changeActivity(this, SourcesDevelopment.class));
+        backBtn.setOnClickListener(v -> ActivityUtils.changeActivity(this, SourcesDevelopment.class));
 
         //*POPULATE THE VIEW
         /// In this section of the code, we populate the View with the 'buildLibraries' method

@@ -89,7 +89,7 @@ public class AdvancedOptions extends AppCompatActivity {
 
         //*BUTTONS
         ImageButton backButton = findViewById(R.id.backBtn);
-        backButton.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
+        backButton.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
 
         //*LOAD DATAS
         /// Load the value of the Switch from the DataManager.

@@ -46,7 +46,7 @@ public class NotificationSettings extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ImageButton backButton = findViewById(R.id.backBtn);
-        backButton.setOnClickListener(v -> {ActivityManager.changeActivity(this, SettingsActivity.class);});
+        backButton.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
 
         TextView openSettings = findViewById(R.id.openSettings);
         openSettings.setOnClickListener(v -> {

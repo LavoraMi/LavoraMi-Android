@@ -36,7 +36,7 @@ public class FilterSelection extends AppCompatActivity {
         //*BUTTONS
         ImageButton backBtn = (ImageButton) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> {
-            ActivityManager.changeActivity(this, SettingsActivity.class);
+            ActivityUtils.changeActivity(this, SettingsActivity.class);
         });
 
         //*FILTERS

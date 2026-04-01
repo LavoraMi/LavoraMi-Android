@@ -96,7 +96,7 @@ public class MaintenanceActivity extends AppCompatActivity {
                     if(isInMaintenanceMode)
                         Toast.makeText(MaintenanceActivity.this, "LavoraMi è ancora in manutenzione.", Toast.LENGTH_SHORT).show();
                     else
-                        ActivityManager.changeActivity(MaintenanceActivity.this, MainActivity.class);
+                        ActivityUtils.changeActivity(MaintenanceActivity.this, MainActivity.class);
 
                     if(responseComparable < 0){
                         new AlertDialog.Builder(MaintenanceActivity.this)
@@ -106,7 +106,7 @@ public class MaintenanceActivity extends AppCompatActivity {
                                     String packageName = getPackageName();
                                     String link = "https://play.google.com/store/apps/details?id=" + packageName;
 
-                                    ActivityManager.openURL(MaintenanceActivity.this, link);
+                                    ActivityUtils.openURL(MaintenanceActivity.this, link);
                                 }))
                                 .setCancelable(false)
                                 .create()
