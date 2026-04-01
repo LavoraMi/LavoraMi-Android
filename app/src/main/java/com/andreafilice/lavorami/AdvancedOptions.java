@@ -160,6 +160,7 @@ public class AdvancedOptions extends AppCompatActivity {
             Toast.makeText(context, getLocalizedString(context, R.string.cacheMemoryToast), Toast.LENGTH_SHORT).show();
         }
         catch (Exception e) {e.printStackTrace();}
+        DataManager.saveBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, true);
     }
 
     public static boolean deleteDir(File dir) {
