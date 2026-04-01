@@ -664,12 +664,15 @@ public class MainActivity extends AppCompatActivity {
         String versionMinimum = descriptor.getMinimumVersionAndroid();
         String currentVersion = ContextCompat.getString(this, R.string.app_version);
 
+        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String langCode = savedLang.contains("English") ? "en" : "it";
+
         int responseComparable = RequirementsDescriptor.compareSemanticVersions(currentVersion, versionMinimum);
 
         //*CHECK FOR MAINTENANCE
         /// Check if LavoraMi is in maintenance mode and get the details from the CDN.
         boolean isInMaintenanceMode = descriptor.isMaintenanceEnabled();
-        maintenanceDetails = descriptor.getMaintenanceDeps();
+        maintenanceDetails = (langCode.equalsIgnoreCase("en")) ? descriptor.getMaintenanceDepsEnglish() : descriptor.getMaintenanceDeps();
 
         if(isInMaintenanceMode)
             ActivityManager.changeActivity(this, MaintenanceActivity.class);

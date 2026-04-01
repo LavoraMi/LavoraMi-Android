@@ -20,6 +20,9 @@ public class RequirementsDescriptor {
     @SerializedName("maintenanceDeps")
     public String maintenanceDeps;
 
+    @SerializedName("maintenanceDepsEn")
+    public String maintenanceDepsEnglish;
+
     public RequirementsDescriptor(String minimumVersionAndroid){this.minimumVersionAndroid = minimumVersionAndroid;}
 
     //*GETTER
@@ -27,6 +30,7 @@ public class RequirementsDescriptor {
     public String getMinimumVersionAndroid(){return this.minimumVersionAndroid;}
     public boolean isMaintenanceEnabled(){return maintenanceModeEnabled.equalsIgnoreCase("true");}
     public String getMaintenanceDeps(){return this.maintenanceDeps;}
+    public String getMaintenanceDepsEnglish(){return this.maintenanceDepsEnglish;}
 
     public static int compareSemanticVersions(String version1, String version2) {
         List<Integer> version1Components = Arrays.stream(version1.split("\\."))
