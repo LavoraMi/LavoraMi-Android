@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="24dp"
     android:background="@drawable/rounded_sheet_background">
@@ -11,7 +11,7 @@
         android:layout_width="40dp"
         android:layout_height="4dp"
         android:layout_gravity="center_horizontal"
-        android:background="#D1D1D6"
+        android:background="@drawable/drag_handle"
         android:layout_marginBottom="16dp" />
 
     <TextView
@@ -33,7 +33,26 @@
         android:textColor="@color/text_primary"
         android:singleLine="false"
         android:maxLines="100"
+        android:visibility="gone"
         android:inputType="textMultiLine" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:shimmer_auto_start="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <include layout="@layout/shimmer_text_loading" />
+            <include layout="@layout/shimmer_text_loading" />
+            <include layout="@layout/shimmer_text_loading_short" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <Button
         android:id="@+id/btn_copy"
@@ -43,5 +62,8 @@
         android:layout_marginTop="24dp"
         android:text="Copia Traduzione"
         android:backgroundTint="#FFE5E5"
+        app:icon="@drawable/ic_clipboard"
+        app:iconTint="@color/subtitle"
+        app:iconGravity="textStart"
         android:textColor="@color/redMetro" />
 </LinearLayout>

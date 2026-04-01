@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import androidx.core.os.LocaleListCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -86,6 +88,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder itemHolder = (ViewHolder) holder;
         EventDescriptor item = eventList.get(position);
+        String savedLang = DataManager.getStringData(context, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String langCode = savedLang.contains("English") ? "en" : "it";
 
         String finalStartDate = formattaData(item.getStartDate());
         String finalEndDate = formattaData(item.getEndDate());
@@ -113,11 +117,14 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
 
         itemHolder.chipGroupLinee.removeAllViews();
+        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en")) ? View.VISIBLE : View.GONE);
 
         itemHolder.translateBtn.setOnClickListener(v -> {
             Context context = v.getContext();
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
             View sheetView = LayoutInflater.from(context).inflate(R.layout.item_sheet_translated, null);
+            ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
+            loadingLayout.startShimmer();
             bottomSheetDialog.setContentView(sheetView);
 
             TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
@@ -139,9 +146,13 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         translator.translate(item.getTitle()).addOnSuccessListener(title -> {
                             translator.translate(item.getDetails()).addOnSuccessListener(details -> {
                                 String finalText = title.toUpperCase() + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
+                                loadingLayout.setVisibility(View.GONE);
+                                translatedTxt.setVisibility(View.VISIBLE);
                                 translatedTxt.setText(finalText);
                             });
                         }).addOnFailureListener(e -> {
+                            loadingLayout.setVisibility(View.GONE);
+                            translatedTxt.setVisibility(View.VISIBLE);
                             translatedTxt.setText("ERRORE DURANTE LA TRADUZIONE.");
                         });
                     });
@@ -151,7 +162,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
                 android.content.ClipData clip = android.content.ClipData.newPlainText("traduzione", translatedTxt.getText());
                 clipboard.setPrimaryClip(clip);
-                android.widget.Toast.makeText(context, "Copiato!", android.widget.Toast.LENGTH_SHORT).show();
             });
         });
 
