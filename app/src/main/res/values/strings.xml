@@ -280,4 +280,8 @@
     <string name="mailErrorToast">Errore durante l\'invio della Mail, riprova.</string>
     <string name="deleteAccountSuccesfullToast">Account eliminato correttamente!</string>
     <string name="maintenanceToast">LavoraMi è ancora in manutenzione.</string>
+    <string name="optionalDownloadDeps">Per poter continuare con la traduzione dei lavori, dovrai accettare il Download di elementi aggiuntivi. Vuoi continuare?</string>
+    <string name="confirmOptionalDownload">Conferma Download</string>
+    <string name="downloadAssets">Download degli elementi necessari...</string>
+    <string name="errorTranslating">Si è verificato un errore durante la traduzione.</string>
 </resources>

@@ -6,13 +6,20 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.ImageViewCompat;
@@ -39,7 +46,6 @@ import java.util.TimeZone;
 
 public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int VIEW_TYPE_ITEM = 0;
     static Context context;
     private List<EventDescriptor> eventList;
 
@@ -72,7 +78,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return VIEW_TYPE_ITEM;
+        return 0;
     }
 
     @Override
@@ -115,49 +121,46 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en")) ? View.VISIBLE : View.GONE);
 
         itemHolder.translateBtn.setOnClickListener(v -> {
+            //*VARIABLES
+            /// In this section of the code, we initialize some components that we will user later in the code.
             Context context = v.getContext();
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
             View sheetView = LayoutInflater.from(context).inflate(R.layout.item_sheet_translated, null);
             ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
+            LinearLayout layoutDefault = sheetView.findViewById(R.id.layoutDefault);
+            LinearLayout layoutTerms = sheetView.findViewById(R.id.layoutPrivacy);
+            Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
+            Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
+            TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
+            boolean isAcceptingTerms = DataManager.getBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, false);
+
             loadingLayout.startShimmer();
             bottomSheetDialog.setContentView(sheetView);
 
-            TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
-
-            TranslatorOptions options = new TranslatorOptions.Builder()
-                    .setSourceLanguage(TranslateLanguage.ITALIAN)
-                    .setTargetLanguage(TranslateLanguage.ENGLISH)
-                    .build();
-
-            Translator translator = Translation.getClient(options);
-
-            DownloadConditions conditions = new DownloadConditions.Builder()
-                    .build();
-
             bottomSheetDialog.show();
 
-            translator.downloadModelIfNeeded(conditions)
-                    .addOnSuccessListener(unused -> {
-                        translator.translate(item.getTitle()).addOnSuccessListener(title -> {
-                            translator.translate(item.getDetails()).addOnSuccessListener(details -> {
-                                String finalText = title.toUpperCase() + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
-                                loadingLayout.setVisibility(View.GONE);
-                                translatedTxt.setVisibility(View.VISIBLE);
-                                translatedTxt.setText(finalText);
-                            });
-                        }).addOnFailureListener(e -> {
-                            loadingLayout.setVisibility(View.GONE);
-                            translatedTxt.setVisibility(View.VISIBLE);
-                            translatedTxt.setText("ERRORE DURANTE LA TRADUZIONE.");
-                        });
-                    });
+            if(isAcceptingTerms) {
+                layoutTerms.setVisibility(View.GONE);
+                layoutDefault.setVisibility(View.VISIBLE);
+                downloadingText.setVisibility(View.GONE);
 
-            Button btnCopy = sheetView.findViewById(R.id.btn_copy);
-            btnCopy.setOnClickListener(viewClick -> {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("traduzione", translatedTxt.getText());
-                clipboard.setPrimaryClip(clip);
-            });
+                translateStrings(sheetView, item, loadingLayout);
+            }
+            else {
+                layoutDefault.setVisibility(View.GONE);
+                layoutTerms.setVisibility(View.VISIBLE);
+
+                acceptTerms.setOnClickListener(view -> {
+                    layoutDefault.setVisibility(View.VISIBLE);
+                    layoutTerms.setVisibility(View.GONE);
+                    downloadingText.setVisibility(View.VISIBLE);
+                    DataManager.saveBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, true);
+
+                    translateStrings(sheetView, item, loadingLayout);
+                });
+
+                cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});
+            }
         });
 
         List<String> lineeRaw = Arrays.asList(item.getLines());
@@ -205,6 +208,46 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 itemHolder.chipGroupLinee.addView(chip);
             }
         }
+    }
+
+    public static void translateStrings(View sheetView, EventDescriptor item, ShimmerFrameLayout loadingLayout){
+        Button btnCopy = sheetView.findViewById(R.id.btn_copy);
+        TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
+
+        btnCopy.setVisibility(View.GONE);
+
+        TranslatorOptions options = new TranslatorOptions.Builder()
+                .setSourceLanguage(TranslateLanguage.ITALIAN)
+                .setTargetLanguage(TranslateLanguage.ENGLISH)
+                .build();
+
+        Translator translator = Translation.getClient(options);
+
+        DownloadConditions conditions = new DownloadConditions.Builder()
+                .build();
+
+        translator.downloadModelIfNeeded(conditions)
+                .addOnSuccessListener(unused -> {
+                    translator.translate(item.getTitle()).addOnSuccessListener(title -> {
+                        translator.translate(item.getDetails()).addOnSuccessListener(details -> {
+                            String finalText = title.toUpperCase() + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
+                            loadingLayout.setVisibility(View.GONE);
+                            translatedTxt.setVisibility(View.VISIBLE);
+                            translatedTxt.setText(finalText);
+                            btnCopy.setVisibility(View.VISIBLE);
+                        });
+                    }).addOnFailureListener(e -> {
+                        loadingLayout.setVisibility(View.GONE);
+                        translatedTxt.setVisibility(View.VISIBLE);
+                        translatedTxt.setText(getLocalizedString(context, R.string.errorTranslating));
+                    });
+                });
+
+        btnCopy.setOnClickListener(viewClick -> {
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("traduzione", translatedTxt.getText());
+            clipboard.setPrimaryClip(clip);
+        });
     }
 
     @Override

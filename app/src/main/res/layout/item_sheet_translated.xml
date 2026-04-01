@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="24dp"
     android:background="@drawable/rounded_sheet_background">
@@ -15,67 +15,161 @@
         android:layout_marginBottom="16dp" />
 
     <LinearLayout
+        android:id="@+id/layoutDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:spacing="6dp">
-
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_translate"
-            app:tint="@color/subtitle" />
-
-        <TextView
-            android:id="@+id/original_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="@string/translateTitle"
-            android:textSize="14sp"
-            android:textColor="@color/subtitle" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/translated_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text=""
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/text_primary"
-        android:singleLine="false"
-        android:maxLines="100"
-        android:visibility="gone"
-        android:inputType="textMultiLine" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/loadingLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:shimmer_auto_start="true">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <include layout="@layout/shimmer_text_loading" />
-            <include layout="@layout/shimmer_text_loading" />
-            <include layout="@layout/shimmer_text_loading_short" />
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_translate"
+                app:tint="@color/subtitle" />
+
+            <TextView
+                android:id="@+id/original_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/archivo_medium"
+                android:text="@string/translateTitle"
+                android:textSize="14sp"
+                android:textColor="@color/subtitle" />
         </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <Button
-        android:id="@+id/btn_copy"
-        style="@style/Widget.Material3.Button.TonalButton"
+        <TextView
+            android:id="@+id/translated_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:fontFamily="@font/archivo_medium"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:singleLine="false"
+            android:maxLines="100"
+            android:visibility="gone"
+            android:inputType="textMultiLine" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:shimmer_auto_start="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <include layout="@layout/shimmer_text_loading" />
+                <include layout="@layout/shimmer_text_loading" />
+                <include layout="@layout/shimmer_text_loading_short" />
+
+                <TextView
+                    android:id="@+id/textDownloading"
+                    android:fontFamily="@font/archivo_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:inputType="textMultiLine"
+                    android:maxLines="100"
+                    android:singleLine="false"
+                    android:textAlignment="center"
+                    android:text="@string/downloadAssets"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <Button
+            android:id="@+id/btn_copy"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/copyTranslation"
+            android:backgroundTint="#FFE5E5"
+            android:fontFamily="@font/archivo_medium"
+            android:textColor="@color/redMetro" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPrivacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/copyTranslation"
-        android:backgroundTint="#FFE5E5"
-        android:textColor="@color/redMetro" />
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_download"
+                app:tint="@color/subtitle" />
+
+            <TextView
+                android:id="@+id/original_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="@string/confirmOptionalDownload"
+                android:fontFamily="@font/archivo_medium"
+                android:textSize="14sp"
+                android:textColor="@color/subtitle" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/translated_text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:inputType="textMultiLine"
+            android:maxLines="100"
+            android:singleLine="false"
+            android:fontFamily="@font/archivo_medium"
+            android:text="@string/optionalDownloadDeps"
+            android:textAlignment="center"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnContinue"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/continueButtonPopUp"
+            android:backgroundTint="#66BD87"
+            android:fontFamily="@font/archivo_medium"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/cancelPopUp"
+            android:backgroundTint="#E82828"
+            android:fontFamily="@font/archivo_medium"
+            android:textColor="@color/White" />
+    </LinearLayout>
 </LinearLayout>

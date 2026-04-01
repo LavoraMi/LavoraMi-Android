@@ -281,4 +281,8 @@
     <string name="mailErrorToast">An error occurred while sending the email. Please try again.</string>
     <string name="deleteAccountSuccesfullToast">Account successfully deleted!</string>
     <string name="maintenanceToast">LavoraMi is still undergoing maintenance.</string>
+    <string name="optionalDownloadDeps">To continue translating the documents, you must agree to download additional items. Do you want to continue?</string>
+    <string name="confirmOptionalDownload">Confirm Download</string>
+    <string name="downloadAssets">Downloading necessary files...</string>
+    <string name="errorTranslating">An error occurs while translating.</string>
 </resources>
