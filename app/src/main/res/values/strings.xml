@@ -287,4 +287,9 @@
     <string name="choseYourLineText">Salva fra i preferiti la linea che usi ogni giorno e quando ci sarà un lavoro su di essa, sarai già aggiornato.</string>
     <string name="viewInterchanges">Visualizza gli Interscambi</string>
     <string name="viewInterchangesText">Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio.</string>
+    <string name="worksiteStop">Fermata Cantiere</string>
+    <string name="worksiteStopText">Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)</string>
+    <string name="fermataExample">Lavori di potenziamento infrastrutture nella tratta Palazzolo, Camnago Lenate, Seveso con modifiche alla circolazione dei treni</string>
+    <string name="rallentamento">Rallentamento</string>
+    <string name="disclaimerAppFunctions">Tutti gli esempi riportati sono a puramente scopo esemplificativo, eventi passati o non più attuali</string>
 </resources>

@@ -288,4 +288,8 @@
     <string name="choseYourLineText">" Save the line you use every day as a favorite and when there's work on it, you will be updated."</string>
     <string name="viewInterchanges">" View interchanges"</string>
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
+    <string name="worksiteStop">Worksite Stop</string>
+    <string name="worksiteStopText">Not just \"work in progress\" we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc.).</string>
+    <string name="fermataExample">Infrastructure upgrade works on the Palazzolo, Camnago Lenate, and Seveso sections, with changes to train traffic</string>
+    <string name="rallentamento">Slowdown</string>
 </resources>
