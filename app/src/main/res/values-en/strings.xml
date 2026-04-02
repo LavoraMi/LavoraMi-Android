@@ -285,4 +285,7 @@
     <string name="confirmOptionalDownload">Confirm Download</string>
     <string name="downloadAssets">Downloading necessary files...</string>
     <string name="errorTranslating">An error occurs while translating.</string>
+    <string name="choseYourLineText">" Save the line you use every day as a favorite and when there's work on it, you will be updated."</string>
+    <string name="viewInterchanges">" View interchanges"</string>
+    <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
 </resources>

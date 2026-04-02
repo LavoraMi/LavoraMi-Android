@@ -175,7 +175,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="12dp"
-                    android:src="@drawable/ic_star_fill"
+                    android:src="@drawable/ic_arrow_left_right"
                     app:tint="#E41414" />
 
                 <TextView
@@ -196,14 +196,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/depsPoint2"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/archivo_medium"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
                     android:paddingTop="10dp"
-                    android:text="@string/updateYourselfText"
+                    android:text="@string/choseYourLineText"
                     android:textAlignment="center" />
             </RelativeLayout>
 
@@ -219,7 +219,7 @@
                 android:id="@+id/disclosureHeaderMovibus"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:paddingHorizontal="16dp"
+                android:paddingHorizontal="6dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp">
 
@@ -253,6 +253,193 @@
                     android:src="@drawable/ic_star_empty"
                     app:tint="#FF9F0A" />
             </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View android:layout_width="match_parent"
+                android:layout_margin="20dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="#38383A" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/iconInterscambi"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_transfer"
+                    app:tint="#E41414" />
+
+                <TextView
+                    android:id="@+id/interscambi_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-1dp"
+                    android:layout_toEndOf="@+id/iconInterscambi"
+                    android:fontFamily="@font/archivo_medium"
+                    android:text="@string/viewInterchanges"
+                    android:textColor="#E41414"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/archivo_medium"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/viewInterchangesText"
+                    android:textAlignment="center" />
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="16dp"
+                app:cardBackgroundColor="@color/disclosureBg">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iconEvent"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="Icon"
+                        app:tint="@color/text_primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:src="@drawable/ic_arrow_left_right" />
+
+                    <TextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Duomo"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/iconEvent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iconEvent"
+                        app:layout_constraintTop_toTopOf="@id/iconEvent" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutSubInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtTitle">
+
+                        <TextView
+                            android:id="@+id/txtLineCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="M1"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iconTransport"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_metro"
+                            app:tint="@color/text_primary"
+                             />
+
+                        <TextView
+                            android:id="@+id/txtStationSubtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Duomo"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/layoutDetInterscambio"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layoutSubInfo">
+
+                        <TextView
+                            android:id="@+id/shimmerLineBadge"
+                            android:layout_width="40dp"
+                            android:layout_height="26dp"
+                            android:background="@drawable/bg_badge_line_shimmer"
+                            android:gravity="center"
+                            android:textColor="@color/White"
+                            android:textStyle="bold"
+                            android:text="M1"
+                            android:backgroundTint="@color/M1"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/shimmerLineBadge2"
+                            android:layout_marginStart="7dp"
+                            android:layout_width="40dp"
+                            android:layout_height="26dp"
+                            android:background="@drawable/bg_badge_line_shimmer"
+                            android:backgroundTint="@color/M3"
+                            android:gravity="center"
+                            android:text="M3"
+                            android:textColor="@color/White"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <HorizontalScrollView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:scrollbars="none"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layoutSubInfo">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupLinee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:chipSpacingHorizontal="6dp"
+                            app:singleLine="true" />
+                    </HorizontalScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 

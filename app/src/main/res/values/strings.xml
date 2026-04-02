@@ -284,4 +284,7 @@
     <string name="confirmOptionalDownload">Conferma Download</string>
     <string name="downloadAssets">Download degli elementi necessari...</string>
     <string name="errorTranslating">Si è verificato un errore durante la traduzione.</string>
+    <string name="choseYourLineText">Salva fra i preferiti la linea che usi ogni giorno e quando ci sarà un lavoro su di essa, sarai già aggiornato.</string>
+    <string name="viewInterchanges">Visualizza gli Interscambi</string>
+    <string name="viewInterchangesText">Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio.</string>
 </resources>
