@@ -291,5 +291,7 @@
     <string name="worksiteStopText">Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)</string>
     <string name="fermataExample">Lavori di potenziamento infrastrutture nella tratta Palazzolo, Camnago Lenate, Seveso con modifiche alla circolazione dei treni</string>
     <string name="rallentamento">Rallentamento</string>
-    <string name="disclaimerAppFunctions">Tutti gli esempi riportati sono a puramente scopo esemplificativo, eventi passati o non più attuali</string>
+    <string name="disclaimerAppFunctions">Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati.</string>
+    <string name="viewLinesOnMap">Visualizza le linee sulla Mappa</string>
+    <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che prefersci sulla mappa, per non predersi e per sapere sempre dove vai.</string>
 </resources>

@@ -37,7 +37,7 @@ public class HowAppWorks extends AppCompatActivity {
 
         //*ANIMATIONS
         /// In this section of the code, we set up some animations in this screen.
-        ImageView favIcon = findViewById(R.id.favIcon);
+        ImageView favIcon = findViewById(R.id.iconFavorite);
         Animation scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
         Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
 
