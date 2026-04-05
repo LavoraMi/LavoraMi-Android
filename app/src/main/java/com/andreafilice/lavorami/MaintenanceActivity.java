@@ -58,7 +58,7 @@ public class MaintenanceActivity extends AppCompatActivity {
         btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.GRAY));
 
         CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn.lavorami.it", "sha256/VMw18sAhS/3iF/FDknmBakQ123t+OXJqqVG9NWkti/o=")
+                .add("cdn.lavorami.it", "sha256/2TqXtGY4cfrozPgm14tFiCDbxU89L2k/Za9b1wSY8O4=")
                 .build();
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
