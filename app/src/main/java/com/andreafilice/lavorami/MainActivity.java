@@ -510,7 +510,7 @@ public class MainActivity extends AppCompatActivity {
         /// The value of the Checksum is get by CMD tools.
 
         CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn.lavorami.it", "sha256/VMw18sAhS/3iF/FDknmBakQ123t+OXJqqVG9NWkti/o=")
+                .add("cdn.lavorami.it", "sha256/2TqXtGY4cfrozPgm14tFiCDbxU89L2k/Za9b1wSY8O4=")
                 .build();
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -591,7 +591,7 @@ public class MainActivity extends AppCompatActivity {
         /// In this section of the code, we GET the '_vars.json' file from our CDN and load the Strikes Configuration.
 
         CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn.lavorami.it", "sha256/VMw18sAhS/3iF/FDknmBakQ123t+OXJqqVG9NWkti/o=")
+                .add("cdn.lavorami.it", "sha256/2TqXtGY4cfrozPgm14tFiCDbxU89L2k/Za9b1wSY8O4=")
                 .build();
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -662,7 +662,7 @@ public class MainActivity extends AppCompatActivity {
 
         //*CHECK FOR MAINTENANCE
         /// Check if LavoraMi is in maintenance mode and get the details from the CDN.
-        boolean isInMaintenanceMode = descriptor.isMaintenanceEnabled();
+        boolean isInMaintenanceMode = !descriptor.isMaintenanceEnabled();
         maintenanceDetails = descriptor.getMaintenanceDeps();
 
         if(isInMaintenanceMode)
