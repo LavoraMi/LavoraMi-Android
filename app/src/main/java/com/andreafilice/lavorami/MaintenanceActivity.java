@@ -61,18 +61,11 @@ public class MaintenanceActivity extends AppCompatActivity {
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
         btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.GRAY));
 
-        CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn.lavorami.it", "sha256/2TqXtGY4cfrozPgm14tFiCDbxU89L2k/Za9b1wSY8O4=")
-                .build();
-
-        OkHttpClient httpClient = new OkHttpClient.Builder()
-                .certificatePinner(certificatePinner)
-                .build();
+        OkHttpClient httpClient = new OkHttpClient.Builder().build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://cdn.lavorami.it/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient)
                 .build();
 
         APIWorks apiworks = retrofit.create(APIWorks.class);
