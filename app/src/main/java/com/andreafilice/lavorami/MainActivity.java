@@ -662,7 +662,7 @@ public class MainActivity extends AppCompatActivity {
 
         //*CHECK FOR MAINTENANCE
         /// Check if LavoraMi is in maintenance mode and get the details from the CDN.
-        boolean isInMaintenanceMode = !descriptor.isMaintenanceEnabled();
+        boolean isInMaintenanceMode = descriptor.isMaintenanceEnabled();
         maintenanceDetails = descriptor.getMaintenanceDeps();
 
         if(isInMaintenanceMode)
