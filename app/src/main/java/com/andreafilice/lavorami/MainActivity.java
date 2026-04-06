@@ -513,8 +513,6 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility(View.GONE);
         }
 
-        OkHttpClient httpClient = new OkHttpClient.Builder().build();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://cdn.lavorami.it/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -586,8 +584,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkForStrikes(){
         /// In this section of the code, we GET the '_vars.json' file from our CDN and load the Strikes Configuration.
-
-        OkHttpClient httpClient = new OkHttpClient.Builder().build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://cdn.lavorami.it/")

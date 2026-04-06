@@ -57,8 +57,6 @@ public class MaintenanceActivity extends AppCompatActivity {
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
         btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.GRAY));
 
-        OkHttpClient httpClient = new OkHttpClient.Builder().build();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://cdn.lavorami.it/")
                 .addConverterFactory(GsonConverterFactory.create())
