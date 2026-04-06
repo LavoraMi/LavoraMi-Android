@@ -68,8 +68,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:orientation="vertical">
 
                 <include layout="@layout/shimmer_text_loading" />
                 <include layout="@layout/shimmer_text_loading" />
@@ -100,9 +99,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/copyTranslation"
-            android:backgroundTint="#FFE5E5"
+            android:backgroundTint="#FF0000"
             android:fontFamily="@font/archivo_medium"
-            android:textColor="@color/redMetro" />
+            app:icon="@drawable/ic_clipboard"
+            app:iconTint="@color/White"
+            app:iconGravity="textStart"
+            android:textColor="@color/White" />
     </LinearLayout>
 
     <LinearLayout
