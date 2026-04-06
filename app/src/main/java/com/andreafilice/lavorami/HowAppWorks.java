@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -53,5 +54,12 @@ public class HowAppWorks extends AppCompatActivity {
                 },500);
             }
         });
+
+        //*MAP THEME
+        /// In this section of the code, we setup the map image based from the Value of Theme Saved
+        boolean isNightMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+        ImageView mapImage = findViewById(R.id.imgLineOnMap);
+
+        mapImage.setImageResource((isNightMode) ? R.drawable.ic_line_on_map : R.drawable.ic_line_on_map_light);
     }
 }
