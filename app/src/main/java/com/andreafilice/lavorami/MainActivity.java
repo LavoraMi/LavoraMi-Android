@@ -513,22 +513,11 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility(View.GONE);
         }
 
-        //*URL VERIFY SHA-256 CHECKSUM
-        /// For better security measures, we check the CDN SHA-256 Checksum.
-        /// The value of the Checksum is get by CMD tools.
-
-        CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn.lavorami.it", "sha256/2TqXtGY4cfrozPgm14tFiCDbxU89L2k/Za9b1wSY8O4=")
-                .build();
-
-        OkHttpClient httpClient = new OkHttpClient.Builder()
-                .certificatePinner(certificatePinner)
-                .build();
+        OkHttpClient httpClient = new OkHttpClient.Builder().build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://cdn.lavorami.it/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient)
                 .build();
 
         APIWorks apiworks = retrofit.create(APIWorks.class);
@@ -598,18 +587,11 @@ public class MainActivity extends AppCompatActivity {
     private void checkForStrikes(){
         /// In this section of the code, we GET the '_vars.json' file from our CDN and load the Strikes Configuration.
 
-        CertificatePinner certificatePinner = new CertificatePinner.Builder()
-                .add("cdn.lavorami.it", "sha256/2TqXtGY4cfrozPgm14tFiCDbxU89L2k/Za9b1wSY8O4=")
-                .build();
-
-        OkHttpClient httpClient = new OkHttpClient.Builder()
-                .certificatePinner(certificatePinner)
-                .build();
+        OkHttpClient httpClient = new OkHttpClient.Builder().build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://cdn.lavorami.it/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient)
                 .build();
 
         APIWorks apiworks = retrofit.create(APIWorks.class);
