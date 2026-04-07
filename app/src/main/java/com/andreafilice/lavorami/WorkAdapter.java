@@ -118,7 +118,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
 
         itemHolder.chipGroupLinee.removeAllViews();
-        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en")) ? View.VISIBLE : View.GONE);
+        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(context, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
         itemHolder.translateBtn.setOnClickListener(v -> {
             //*VARIABLES

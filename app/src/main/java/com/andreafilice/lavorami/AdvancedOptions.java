@@ -6,8 +6,10 @@ import android.content.pm.ActivityInfo;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -85,6 +87,10 @@ public class AdvancedOptions extends AppCompatActivity {
             return insets;
         });
 
+        //*VARIABLES
+        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String langCode = savedLang.contains("English") ? "en" : "it";
+
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -99,11 +105,13 @@ public class AdvancedOptions extends AppCompatActivity {
         boolean isBannerActive = DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
         boolean isRequireBiometrics = DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
         boolean isShowDetails = DataManager.getBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
+        boolean isShowTranslateButton = DataManager.getBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
 
         Switch errorMessagesSwitch = findViewById(R.id.switchErrors);
         Switch strikeBannersSwitch = findViewById(R.id.switchBanner);
         Switch biometricsSwitch = findViewById(R.id.switchBiometrics);
         Switch detailsSwitch = findViewById(R.id.switchDetails);
+        Switch translateButtonSwitch = findViewById(R.id.switchTranslation);
 
         errorMessagesSwitch.setChecked(isErrorActive);
         errorMessagesSwitch.setTrackTintMode((errorMessagesSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
@@ -116,6 +124,9 @@ public class AdvancedOptions extends AppCompatActivity {
 
         detailsSwitch.setChecked(isShowDetails);
         detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
+        translateButtonSwitch.setChecked(isShowTranslateButton);
+        translateButtonSwitch.setTrackTintMode((translateButtonSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
 
         //*SAVE DATAS
         /// Save the value from the Switch Checked status to DataManager.
@@ -136,7 +147,13 @@ public class AdvancedOptions extends AppCompatActivity {
             detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         });
 
+        translateButtonSwitch.setOnClickListener(v -> {
+            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, translateButtonSwitch.isChecked());
+            translateButtonSwitch.setTrackTintMode((translateButtonSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        });
+
         //*CACHE MEMORY
+        /// In this section of the code, we set-up the code to delete the Cache Memory.
         CardView btnCacheMemory = findViewById(R.id.btnCacheMemory);
         btnCacheMemory.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
@@ -147,6 +164,13 @@ public class AdvancedOptions extends AppCompatActivity {
                         deleteCache(this);
                     }).show();
         });
+
+        //*TRANSLATE OPTION
+        /// In this section of the code, we catch if the language is Italian and, if it is, we activate the card with the option.
+        CardView translateButtonCard = findViewById(R.id.cardButtonTranslate);
+        TextView descButtonTranslate = findViewById(R.id.descButtonTranslate);
+        translateButtonCard.setVisibility((langCode.equalsIgnoreCase("it")) ? View.VISIBLE : View.GONE);
+        descButtonTranslate.setVisibility(translateButtonCard.getVisibility());
     }
 
     public static void deleteCache(Context context) {
