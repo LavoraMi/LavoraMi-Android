@@ -19,6 +19,8 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -46,6 +48,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.dynamicanimation.animation.AnimationHandler;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -80,9 +83,8 @@ public class MainActivity extends AppCompatActivity {
     private String defaultCategory;
     private boolean hasCompletedSetup;
     private StrikeDescriptor strikeCDNResponse;
-    private ProgressBar progressBarRefresh;
     private ImageButton btnRefresh;
-
+    private Animation animSpin;
     static String maintenanceDetails = "";
 
     //*HINT VARIABLES
@@ -193,14 +195,16 @@ public class MainActivity extends AppCompatActivity {
         /// In this section of the code, we will initialize the loading layout of the Application.
         loadingLayout = findViewById(R.id.loadingLayout);
         errorLayout = findViewById(R.id.errorNetwork);
-        progressBarRefresh = findViewById(R.id.progressBarRefresh);
+        animSpin = AnimationUtils.loadAnimation(this, R.anim.rotate_360);
+        btnRefresh = findViewById(R.id.buttonRefresh);
 
         if(loadingLayout != null)
             loadingLayout.startShimmer();
 
         if(loadingLayout != null){
             loadingLayout.setVisibility(View.VISIBLE);
-            progressBarRefresh.setVisibility(View.VISIBLE);
+            btnRefresh.setVisibility(View.VISIBLE);
+            btnRefresh.startAnimation(animSpin);
             findViewById(R.id.recyclerView).setVisibility(View.GONE);
         }
 
@@ -242,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
 
         //*REFRESH BUTTON
-        btnRefresh = findViewById(R.id.buttonRefresh);
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
 
         btnRefresh.setOnClickListener(v -> {downloadJSONData(getCategory(), true);});
@@ -483,8 +486,7 @@ public class MainActivity extends AppCompatActivity {
         if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty() && !reloadingDatas) {
             if (loadingLayout != null) {
                 loadingLayout.setVisibility(View.GONE);
-                progressBarRefresh.setVisibility(View.GONE);
-                btnRefresh.setVisibility(View.VISIBLE);
+                btnRefresh.clearAnimation();
                 errorLayout.setVisibility(View.GONE);
                 findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
             }
@@ -507,8 +509,7 @@ public class MainActivity extends AppCompatActivity {
             loadingLayout.setVisibility(View.VISIBLE);
             errorLayout.setVisibility(View.GONE);
             loadingLayout.startShimmer();
-            progressBarRefresh.setVisibility(View.VISIBLE);
-            btnRefresh.setVisibility(View.GONE);
+            btnRefresh.startAnimation(animSpin);
             recyclerView.setVisibility(View.GONE);
             strikeBanner.setVisibility(View.GONE);
         }
@@ -528,8 +529,7 @@ public class MainActivity extends AppCompatActivity {
                 if (loadingLayout != null) {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.GONE);
-                    btnRefresh.setVisibility(View.VISIBLE);
-                    progressBarRefresh.setVisibility(View.GONE);
+                    btnRefresh.clearAnimation();
                     findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
                 }
 
@@ -567,7 +567,7 @@ public class MainActivity extends AppCompatActivity {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                     strikeBanner.setVisibility(View.GONE);
-                    progressBarRefresh.setVisibility(View.GONE);
+                    btnRefresh.clearAnimation();
 
                     /// In this section of the code, we check the android version and adapt the style to that version.
                     iconWiFi.setImageResource(

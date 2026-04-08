@@ -501,7 +501,7 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/ic_bell"
+                            android:src="@drawable/ic_bell_fill"
                             app:tint="@color/redMetro"/>
 
                         <TextView
@@ -845,7 +845,7 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/ic_rate_us"
+                            android:src="@drawable/ic_star_fill"
                             app:tint="@color/redMetro"/>
 
                         <TextView
