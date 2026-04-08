@@ -8,6 +8,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,9 +28,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.Task;
-import com.google.android.play.core.review.ReviewInfo;
-import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -208,19 +206,13 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout rateUsBtn = findViewById(R.id.btnRateUs);
 
         rateUsBtn.setOnClickListener(v -> {
-            ReviewManager manager = ReviewManagerFactory.create(this);
-            Task<ReviewInfo> request = manager.requestReviewFlow();
+            final String appPackageName = getPackageName();
 
-            request.addOnCompleteListener(task -> {
-                if(task.isSuccessful()){
-                    ReviewInfo infos = task.getResult();
-                    Task<Void> flow = manager.launchReviewFlow(this, infos);
-
-                    flow.addOnCompleteListener(reviewTask -> {Log.d("REVIEWS", "Recensione completata con successo.");});
-                }
-                else
-                    Toast.makeText(this, getLocalizedString(this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-            });
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                startActivity(intent);
+            } catch (android.content.ActivityNotFoundException anfe) {startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));}
         });
 
         //*RESET SETTINGS
@@ -232,7 +224,6 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         /// In this section of the code, we reload the datas of the SettingsActivity for updating it to the latest versions.
-
         super.onResume();
         reloadDatas();
     }
@@ -252,10 +243,7 @@ public class SettingsActivity extends AppCompatActivity {
         nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : getLocalizedString(this, R.string.yourAccountSettingsTitle));
 
         ImageView profileImage = findViewById(R.id.profileImage);
-        profileImage.setImageResource((!sessionManager.isLoggedInWithGoogle())
-                ? R.drawable.ic_account_circle
-                : R.drawable.ic_google_logo
-        );
+        profileImage.setImageResource((!sessionManager.isLoggedInWithGoogle()) ? R.drawable.ic_account_circle : R.drawable.ic_google_logo);
 
         if(!sessionManager.isLoggedInWithGoogle())
             profileImage.setColorFilter(ContextCompat.getColor(this, R.color.redMetro));

@@ -22,7 +22,6 @@ playServicesAuth = "21.5.1"
 biometricAuth = "1.1.0"
 googleServices = "4.4.4"
 firebaseBom = "34.11.0"
-play-review = "2.0.2"
 mlkitTranslate = "17.0.3"
 
 [libraries]
@@ -49,8 +48,6 @@ okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
-google-play-review = { group = "com.google.android.play", name = "review", version.ref = "play-review" }
-google-play-review-ktx = { group = "com.google.android.play", name = "review-ktx", version.ref = "play-review" }
 google-mlkit-translate = { group = "com.google.mlkit", name = "translate", version.ref = "mlkitTranslate" }
 
 [plugins]
