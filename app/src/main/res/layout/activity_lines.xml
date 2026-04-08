@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:text="@string/lines"
             android:textColor="@color/text_primary"
             android:textSize="36sp"
@@ -105,7 +105,7 @@
                 android:textColor="@color/text_primary"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:visibility="gone"/>
 
             <LinearLayout
@@ -132,7 +132,7 @@
                         android:text="@string/metroLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:id="@+id/subTitleMetroDesc"
@@ -141,7 +141,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -192,7 +192,7 @@
                         android:text="@string/suburbanLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:id="@+id/subTitleSuburbaneDesc"
@@ -201,7 +201,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -252,7 +252,7 @@
                         android:text="@string/tiloLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium"/>
+                        android:fontFamily="@font/work_sans_medium"/>
 
                     <TextView
                         android:id="@+id/subTitleTransDesc"
@@ -261,7 +261,7 @@
                         android:text="TILO"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -312,7 +312,7 @@
                         android:text="@string/malpensaExpressLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium"/>
+                        android:fontFamily="@font/work_sans_medium"/>
 
                     <TextView
                         android:id="@+id/subTitleMXPDesc"
@@ -321,7 +321,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -372,7 +372,7 @@
                         android:text="@string/tramLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium"/>
+                        android:fontFamily="@font/work_sans_medium"/>
 
                     <TextView
                         android:id="@+id/subTitleTramDesc"
@@ -381,7 +381,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -432,7 +432,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium"/>
+                        android:fontFamily="@font/work_sans_medium"/>
 
                     <TextView
                         android:id="@+id/subTitleMovibusDesc"
@@ -441,7 +441,7 @@
                         android:text="Movibus"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -492,7 +492,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium"/>
+                        android:fontFamily="@font/work_sans_medium"/>
 
                     <TextView
                         android:id="@+id/subTitleStavDesc"
@@ -501,7 +501,7 @@
                         android:text="STAV"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 
@@ -553,7 +553,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/archivo_medium"/>
+                        android:fontFamily="@font/work_sans_medium"/>
 
                     <TextView
                         android:id="@+id/subTitleAutoguidovieDesc"
@@ -562,7 +562,7 @@
                         android:text="Autoguidovie"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
 

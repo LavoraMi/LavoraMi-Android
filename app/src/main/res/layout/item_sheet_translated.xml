@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:text="@string/translateTitle"
                 android:textSize="14sp"
                 android:textColor="@color/subtitle" />
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text=""
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"
@@ -76,7 +76,7 @@
 
                 <TextView
                     android:id="@+id/textDownloading"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -100,7 +100,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/copyTranslation"
             android:backgroundTint="#FF0000"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             app:icon="@drawable/ic_clipboard"
             app:iconTint="@color/White"
             app:iconGravity="textStart"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:text="@string/confirmOptionalDownload"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:textSize="14sp"
                 android:textColor="@color/subtitle" />
         </LinearLayout>
@@ -145,7 +145,7 @@
             android:inputType="textMultiLine"
             android:maxLines="100"
             android:singleLine="false"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:text="@string/optionalDownloadDeps"
             android:textAlignment="center"
             android:textColor="@color/text_primary"
@@ -160,7 +160,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/continueButtonPopUp"
             android:backgroundTint="#66BD87"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/White" />
 
         <Button
@@ -171,7 +171,7 @@
             android:layout_marginTop="2dp"
             android:text="@string/cancelPopUp"
             android:backgroundTint="#E82828"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/White" />
     </LinearLayout>
 </LinearLayout>

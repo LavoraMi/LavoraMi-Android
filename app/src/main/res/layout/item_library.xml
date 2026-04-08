@@ -23,7 +23,7 @@
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             app:layout_constraintEnd_toStartOf="@id/txtVersion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +40,7 @@
             android:paddingBottom="4dp"
             android:textColor="@color/White"
             android:textSize="13sp"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,7 +51,7 @@
             android:layout_marginTop="12dp"
             android:textColor="@color/text_primary"
             android:textSize="15sp"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             app:layout_constraintTop_toBottomOf="@id/txtVersion"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/imgChevron"
@@ -77,7 +77,7 @@
             android:layout_marginTop="12dp"
             android:textColor="@color/desc"
             android:textSize="13sp"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             app:layout_constraintTop_toBottomOf="@id/txtLicense"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

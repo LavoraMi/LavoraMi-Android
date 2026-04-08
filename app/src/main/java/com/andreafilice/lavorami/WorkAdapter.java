@@ -192,7 +192,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 chip.setChipEndPadding(10f);
 
                 chip.setTextSize(14f);
-                chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
+                chip.setTypeface(Typeface.create("@font/work_sans_medium",Typeface.BOLD));
                 chip.setTextColor(Color.WHITE);
 
                 int coloreLinea = getColorForLinea(nomePulito);

@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/advancedOptionsTitle"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconMaster"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/errorMessagesOptions"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -141,7 +141,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconBanner"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/bannerStrikesOptions"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -197,7 +197,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconBiometrics"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/requireBiometricAuth"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -255,7 +255,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconTranslate"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="Mostra Pulsante Traduci"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -312,7 +312,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconDetails"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/showWorkDetails"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -369,7 +369,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconCacheMemory"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/cleanCache"
                         android:textColor="@color/redMetro"
                         android:textSize="17sp" />

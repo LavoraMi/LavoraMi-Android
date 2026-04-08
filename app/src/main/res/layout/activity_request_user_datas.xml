@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/helpTitle"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/requestDataTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="34sp"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/requestDataDeps"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />
@@ -201,7 +201,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/fileFormatDeps"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />
@@ -247,7 +247,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/requestDataBtn"
                             android:textColor="@color/White"
                             android:textSize="18sp" />

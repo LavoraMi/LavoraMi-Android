@@ -604,7 +604,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setChipEndPadding(10f);
 
                         chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
+                        chip.setTypeface(Typeface.create("@font/work_sans_medium",Typeface.BOLD));
                         chip.setTextColor(Color.WHITE);
 
 
@@ -714,7 +714,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setChipEndPadding(10f);
 
                         chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/archivo_medium",Typeface.BOLD));
+                        chip.setTypeface(Typeface.create("@font/work_sans_medium",Typeface.BOLD));
                         chip.setTextColor(Color.WHITE);
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
@@ -792,7 +792,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setChipStartPadding(10f);
                         chip.setChipEndPadding(10f);
                         chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/archivo_medium", Typeface.BOLD));
+                        chip.setTypeface(Typeface.create("@font/work_sans_medium", Typeface.BOLD));
                         chip.setTextColor(Color.WHITE);
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);

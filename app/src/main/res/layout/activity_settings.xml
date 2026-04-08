@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="16dp"
-        android:fontFamily="@font/archivo_medium"
+        android:fontFamily="@font/work_sans_medium"
         android:text="@string/settings"
         android:textColor="@color/text_primary"
         android:textSize="32sp"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:text="Account"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
@@ -89,7 +89,7 @@
                             android:id="@+id/nameSettingsText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="account_name"
                             android:textColor="@color/text_primary"
                             android:textSize="20sp" />
@@ -99,6 +99,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/manageAccountDeps"
                             android:textColor="#8E8E93"
+                            android:fontFamily="@font/inter_medium"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -119,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:text="@string/favoritesDeps"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
@@ -158,7 +159,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconMain"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/trenordLines"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -257,7 +258,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/iconMainAtm"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/atmLines"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -351,7 +352,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainMovibus"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/movibusLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -398,7 +399,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainStav"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/stavLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -445,7 +446,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainAutoguidovie"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/autoguidovieLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -470,7 +471,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:text="@string/general"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
@@ -510,6 +511,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconNotif"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/notificationTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -548,6 +550,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconFiltro"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/defaultFilterTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -558,6 +561,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/inter_medium"
                             android:layout_toStartOf="@id/arrowFiltro"
                             android:text="Tutti"
                             android:textColor="#8E8E93"
@@ -598,6 +602,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconTheme"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/appearance"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -637,6 +642,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconAdvanced"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/advancedOptionsTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -661,7 +667,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:text="Aiuto"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
@@ -702,6 +708,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconFonts"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/sourcesDevelopment"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -742,6 +749,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconHowWorks"
                             android:text="@string/howAppWorks"
+                            android:fontFamily="@font/work_sans_medium"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
 
@@ -779,6 +787,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
+                            android:fontFamily="@font/work_sans_medium"
                             android:layout_toEndOf="@id/iconVersion"
                             android:text="@string/versionTitle"
                             android:textColor="@color/text_primary"
@@ -791,6 +800,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="12dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/app_version"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
@@ -825,6 +835,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconShare"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/shareLavoraMi"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
@@ -855,6 +866,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconRate"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/rateUsTitle"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
@@ -869,7 +881,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="0dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:text=""
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
@@ -911,6 +923,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconRefresh"
                             android:text="@string/resetSettingsTitle"
+                            android:fontFamily="@font/work_sans_medium"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
 
@@ -924,7 +937,7 @@
                 android:layout_marginHorizontal="23dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/resetSettingsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="14sp" />

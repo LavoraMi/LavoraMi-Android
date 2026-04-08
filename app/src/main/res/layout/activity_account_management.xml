@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Account"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/bentornatoAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp" />
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/accediDepsAccount"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -106,7 +106,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:hint="Email"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/text_primary"
@@ -140,7 +140,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:hint="Password"
                             android:inputType="textPassword"
                             android:textColor="@color/text_primary"
@@ -159,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/passwordDimenticataAccount"
                         android:textColor="#FF3B30" />
 
@@ -170,7 +170,7 @@
                         android:layout_gravity="end"
                         android:clickable="true"
                         android:paddingLeft="10dp"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/nonHaiAccount"
                         android:textColor="#FF3B30" />
                 </LinearLayout>
@@ -190,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="@string/termsPart1"
                         android:textColor="@color/subtitle" />
 
@@ -202,7 +202,7 @@
                         android:clickable="true"
                         android:layout_marginStart="1dp"
                         android:layout_marginEnd="1dp"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="@string/termini"
                         android:textColor="@color/redMetro" />
 
@@ -211,7 +211,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="@string/termsPart2"
                         android:textColor="@color/subtitle" />
 
@@ -221,7 +221,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="Privacy Policy."
                         android:textColor="@color/redMetro" />
                 </LinearLayout>
@@ -293,7 +293,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/accediAccount"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
@@ -314,7 +314,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/editPasswordAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp" />
@@ -324,7 +324,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/forgotPasswordDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -355,7 +355,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:hint="Email"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/text_primary"
@@ -374,7 +374,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/backToLogin"
                         android:textColor="#FF3B30" />
                 </LinearLayout>
@@ -415,7 +415,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/sendEmailButton"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
@@ -459,7 +459,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/logginInGoogleTitle"
                     android:textAlignment="center"
                     android:textColor="@color/text_primary"
@@ -469,7 +469,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/logginInGoogleDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp"
@@ -486,7 +486,7 @@
                 android:gravity="center"
                 android:paddingBottom="70dp"
                 android:paddingHorizontal="24dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -499,7 +499,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/schermoBloccatoAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp"
@@ -510,7 +510,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/scannerizzaImpronta"
                     android:textColor="#8E8E93"
                     android:textSize="16sp"
@@ -526,7 +526,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -545,7 +545,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/welcomeAccountLoggedIn"
                         android:textColor="@color/text_primary"
                         android:textSize="30sp" />
@@ -557,7 +557,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/gestisciDepsAccount"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -566,7 +566,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/infoAccount"
                     android:textColor="#8E8E93"
                     android:textSize="18sp" />
@@ -589,7 +589,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="full_name"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
@@ -613,7 +613,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="user_email"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
@@ -640,7 +640,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/iconGoogle"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:text="@string/creatoConGoogle"
                         android:textColor="#8E8E93"
                         android:textSize="16sp" />
@@ -651,7 +651,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/gestisciAccount"
                     android:textColor="#8E8E93"
                     android:textSize="18sp" />
@@ -682,7 +682,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/editPasswordAccount"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
@@ -715,7 +715,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/deleteAccount"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
@@ -747,7 +747,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/richiediDati"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
@@ -788,7 +788,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/logoutAccount"
                             android:textColor="@color/White"
                             android:textSize="18sp" />
@@ -809,7 +809,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/createAccount"
                     android:textColor="@color/text_primary"
                     android:textSize="34sp" />
@@ -819,7 +819,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/createAccountDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -850,7 +850,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:hint="@string/fullNameAccount"
                             android:inputType="textPersonName"
                             android:textColor="@color/text_primary"
@@ -884,7 +884,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:hint="Email"
                             android:inputType="textEmailAddress"
                             android:textColor="@color/text_primary"
@@ -918,7 +918,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:hint="Password"
                             android:inputType="textPassword"
                             android:textColor="@color/text_primary"
@@ -932,7 +932,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:clickable="true"
-                    android:fontFamily="@font/archivo_medium"
+                    android:fontFamily="@font/work_sans_medium"
                     android:text="@string/haiAccountButton"
                     android:textColor="#FF3B30" />
 
@@ -951,7 +951,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/termsPart1"
                         android:textColor="@color/subtitle" />
 
@@ -963,7 +963,7 @@
                         android:clickable="true"
                         android:layout_marginStart="1dp"
                         android:layout_marginEnd="1dp"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/termini"
                         android:textColor="@color/redMetro" />
 
@@ -972,7 +972,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="@string/termsPart2"
                         android:textColor="@color/subtitle" />
 
@@ -982,7 +982,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/archivo_medium"
+                        android:fontFamily="@font/work_sans_medium"
                         android:text="Privacy Policy."
                         android:textColor="@color/redMetro" />
                 </LinearLayout>
@@ -1054,7 +1054,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/archivo_medium"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/signUpAccount"
                             android:textColor="@color/White"
                             android:textSize="18sp" />

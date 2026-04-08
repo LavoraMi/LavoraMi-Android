@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/libraryName"
-            android:fontFamily="@font/archivo_medium"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -64,7 +64,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:layout_marginBottom="10dp" />
 
             <androidx.cardview.widget.CardView
@@ -87,7 +87,7 @@
                         android:text="@string/libraryInfoName"
                         android:textColor="@color/desc"
                         android:textSize="14sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:id="@+id/detailName"
@@ -98,7 +98,7 @@
                         android:text="—"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                         android:text="@string/libraryInfoVersion"
                         android:textColor="@color/desc"
                         android:textSize="14sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:id="@+id/detailVersion"
@@ -117,7 +117,7 @@
                         android:text="—"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                         android:text="@string/libraryInfoLicense"
                         android:textColor="@color/desc"
                         android:textSize="14sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                     <TextView
                         android:id="@+id/detailLicenseType"
@@ -135,7 +135,7 @@
                         android:text="—"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
-                        android:fontFamily="@font/archivo_medium" />
+                        android:fontFamily="@font/work_sans_medium" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -147,7 +147,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:layout_marginBottom="10dp" />
 
             <androidx.cardview.widget.CardView
@@ -177,7 +177,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/archivo_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:layout_marginBottom="10dp" />
 
             <androidx.cardview.widget.CardView

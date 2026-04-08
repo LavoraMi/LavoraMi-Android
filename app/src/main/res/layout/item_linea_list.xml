@@ -50,10 +50,11 @@
             android:id="@+id/lineName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_medium"
             android:textColor="@color/text_primary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:layout_width="12dp"
