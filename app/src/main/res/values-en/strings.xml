@@ -156,13 +156,11 @@
     <string name="requestDataDeps">Submit a request to our team to download your data.</string>
     <string name="fileFormatTitle">File Format:</string>
     <string name="fileFormatDeps">Select the format in which your data will be exported.</string>
-    <string name="accountEmailHint">Your Account Email</string>
-    <string name="detailsRequestData">It may take 5 to 20 business days for the requested data to be sent. Please check your email within this timeframe.</string>
     <string name="requestDataBtn">Request Datas</string>
     <string name="requestDataIntentSubject">Request for my information</string>
-    <string name="requestDataIntentPart1">"Good morning, I would like to request that my data be sent in "</string>
+    <string name="requestDataIntentPart1">"Good morning, I would like to request that my data be sent in  "</string>
     <string name="requestDataIntentPart2">" of the account via email: "</string>
-    <string name="requestDataIntentPart3">"\\nMessage sent via the LavoraMi app. "</string>
+    <string name="requestDataIntentPart3">"Message sent via the LavoraMi app. "</string>
     <string name="manageAccountDeps">Manage your Account</string>
     <string name="favoritesDeps">Favorites</string>
     <string name="trenordLines">Trenord Lines</string>

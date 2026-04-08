@@ -155,13 +155,11 @@
     <string name="requestDataDeps">Invia una richiesta al nostro Team per scaricare i tuoi dati.</string>
     <string name="fileFormatTitle">Formato del File:</string>
     <string name="fileFormatDeps">Seleziona il formato in cui i tuoi dati verrano esportati.</string>
-    <string name="accountEmailHint">Email del tuo Account</string>
-    <string name="detailsRequestData">L\'Invio dei dati richiesti può impiegare dai 5 ai 20 giorni lavorativi. Controlla la mail entro questo limite.</string>
     <string name="requestDataBtn">Richiedi Dati</string>
     <string name="requestDataIntentSubject">Richiesta dei miei dati</string>
-    <string name="requestDataIntentPart1">"Buongiorno,\\nVorrei richiedere l'invio dei miei dati in formato "</string>
+    <string name="requestDataIntentPart1">"Buongiorno, Vorrei richiedere l'invio dei miei dati in formato "</string>
     <string name="requestDataIntentPart2">" dell'Account con mail: "</string>
-    <string name="requestDataIntentPart3">\\nMessaggio inviato dall\'App LavoraMi.</string>
+    <string name="requestDataIntentPart3">Messaggio inviato dall\'App LavoraMi.</string>
     <string name="manageAccountDeps">Gestisci il tuo Account</string>
     <string name="favoritesDeps">Preferiti</string>
     <string name="trenordLines">Linee Trenord</string>

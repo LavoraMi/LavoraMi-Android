@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -41,6 +42,7 @@ public class RequestUserDatas extends AppCompatActivity {
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        SessionManager sessionManager = new SessionManager(this);
 
         //*BACK BUTTON
         /// In this section of the code, we come back to the previous Activity with the 'finish()' instruction.
@@ -69,46 +71,24 @@ public class RequestUserDatas extends AppCompatActivity {
         //*SEND THE REQUEST
         /// In this section of the code, we create the objects from the ActivityFile for send the email with the Request.
         CardView btnRequestDatas = findViewById(R.id.btnRequestDatas);
-        EditText etEmailAccount = findViewById(R.id.etEmailAccount);
-
-        etEmailAccount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {}
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                btnRequestDatas.setBackgroundTintList((validateEmail(etEmailAccount.getText().toString())
-                        ? ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.redMetro))
-                        : ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.GRAY))
-                ));
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                btnRequestDatas.setBackgroundTintList((validateEmail(etEmailAccount.getText().toString())
-                        ? ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.redMetro))
-                        : ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.GRAY))
-                ));
-            }
-        });
+        btnRequestDatas.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.redMetro)));
 
         btnRequestDatas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateEmail(etEmailAccount.getText().toString())){
-                    String subject = ContextCompat.getString(RequestUserDatas.this, R.string.requestDataIntentSubject);
-                    String body = getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart1) + selectedFileFormat + getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart2) + etEmailAccount.getText() + getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart3);
+                String subject = ContextCompat.getString(RequestUserDatas.this, R.string.requestDataIntentSubject);
+                String body = getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart1) + selectedFileFormat + "\n" + getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart2) + sessionManager.getUserEmail() + "\n" + getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart3);
 
-                    String encodedBody = Uri.encode(body);
-                    String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
+                String encodedBody = Uri.encode(body);
+                String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
-                    Intent intent = new Intent(Intent.ACTION_SENDTO);
-                    intent.setData(Uri.parse(mailtoUri));
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse(mailtoUri));
 
-                    try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
-                    catch (Exception e) {
-                        Toast.makeText(RequestUserDatas.this, getLocalizedString(RequestUserDatas.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                    }
+                try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
+                catch (Exception e) {
+                    Toast.makeText(RequestUserDatas.this, getLocalizedString(RequestUserDatas.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
             }
         });
