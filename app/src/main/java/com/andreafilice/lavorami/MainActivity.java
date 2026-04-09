@@ -181,14 +181,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                int currentPage = viewPager.getCurrentItem();
+            super.onPageSelected(position);
+            int currentPage = viewPager.getCurrentItem();
 
-                btnSetupNext.setText((position == pages.size() -1) ? getLocalizedString(MainActivity.this, R.string.endPages) : getLocalizedString(MainActivity.this, R.string.nextPages));
-                btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
+            btnSetupNext.setText((position == pages.size() -1) ? getLocalizedString(MainActivity.this, R.string.endPages) : getLocalizedString(MainActivity.this, R.string.nextPages));
+            btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
 
-                if(currentPage == 3)
-                    askForNotificationPermission();
+            if(currentPage == 3)
+                askForNotificationPermission();
             }
         });
 
@@ -199,10 +199,8 @@ public class MainActivity extends AppCompatActivity {
         animSpin = AnimationUtils.loadAnimation(this, R.anim.rotate_360);
         btnRefresh = findViewById(R.id.buttonRefresh);
 
-        if(loadingLayout != null)
-            loadingLayout.startShimmer();
-
         if(loadingLayout != null){
+            loadingLayout.startShimmer();
             loadingLayout.setVisibility(View.VISIBLE);
             btnRefresh.setVisibility(View.VISIBLE);
             btnRefresh.startAnimation(animSpin);

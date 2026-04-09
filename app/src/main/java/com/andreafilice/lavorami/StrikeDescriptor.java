@@ -19,12 +19,15 @@ public class StrikeDescriptor {
     private String strikeCompanies;
     @SerializedName("guaranteed")
     private String strikeGuaranteed;
+    @SerializedName("linesAffectedbyDeviation")
+    private String[] linesDeviation;
 
-    public StrikeDescriptor(String isStrikeEnabled, String strikeDate, String strikeCompanies, String strikeGuaranteed) {
+    public StrikeDescriptor(String isStrikeEnabled, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.strikeDate = strikeDate;
         this.strikeCompanies = strikeCompanies;
         this.strikeGuaranteed = strikeGuaranteed;
+        this.linesDeviation = linesDeviation;
     }
 
     //*GETTERS
@@ -33,4 +36,5 @@ public class StrikeDescriptor {
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}
+    public String[] getLinesDeviation() {return linesDeviation;}
 }

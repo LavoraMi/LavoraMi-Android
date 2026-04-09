@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -48,6 +49,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class LinesDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private String nomeLinea;
@@ -56,6 +63,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private View interscambiNested;
     private View lavoriWrapper;
     private View interscambiWrapper;
+    private StrikeDescriptor strikeCDNResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,13 +204,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
-
-        String[] lineeDeviate = {"2", "3", "4", "10", "12", "14"};
-
-        for(String linea : lineeDeviate){
-            if(linea.equalsIgnoreCase(nomeLinea))
-                findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
-        }
+        fetchDeviations();
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
@@ -872,6 +874,35 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         tvLavori.setText((numeroLavori > 0)
                 ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle))
                 : ContextCompat.getString(this, R.string.fallbackNoWorks));
+    }
+
+    public void fetchDeviations() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://cdn.lavorami.it/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIWorks apiworks = retrofit.create(APIWorks.class);
+
+        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
+            @Override
+            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+                if(response.isSuccessful()){
+                    strikeCDNResponse = response.body();
+                    String[] lineeDeviate = strikeCDNResponse.getLinesDeviation();
+
+                    for(String linea : lineeDeviate){
+                        if(linea.equalsIgnoreCase(nomeLinea))
+                            findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
+                Toast.makeText(LinesDetailActivity.this, ActivityUtils.getLocalizedString(LinesDetailActivity.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private boolean isDarkMode() {
