@@ -78,6 +78,7 @@
                         android:paddingHorizontal="16dp">
 
                         <TextView
+                            android:fontFamily="@font/inter_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -110,6 +111,7 @@
                         android:paddingHorizontal="16dp">
 
                         <TextView
+                            android:fontFamily="@font/inter_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -117,6 +119,7 @@
                             android:text="Bus"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
+
                         <ImageView
                             android:id="@+id/checkBus"
                             android:layout_width="28dp"
@@ -145,6 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="Tram"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -177,6 +181,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/metroFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -209,6 +214,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/trainFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -241,6 +247,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/inProgressFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -273,6 +280,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/scheduledFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -305,6 +313,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/atmFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -337,6 +346,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/trenordFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -369,6 +379,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/movibusFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -401,6 +412,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/stavFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -433,6 +445,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="@string/autoguidovieFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />

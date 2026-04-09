@@ -163,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/setAllNotificationsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -210,6 +211,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconStartWork"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/notificationStartWorks"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -252,6 +254,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconEndWork"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/notificationEndWorks"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -314,6 +317,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconStrike"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/strikeNotifications"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -356,6 +360,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconPushNotifications"
+                            android:fontFamily="@font/work_sans_medium"
                             android:text="@string/pushNotifications"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -417,6 +422,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconTime"
                         android:text="@string/notificationScheduled"
+                        android:fontFamily="@font/work_sans_medium"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -441,6 +447,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/notificationTimeDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />

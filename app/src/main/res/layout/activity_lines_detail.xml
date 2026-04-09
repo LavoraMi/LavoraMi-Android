@@ -47,6 +47,7 @@
                 android:background="@drawable/bg_badge_line"
                 android:text=""
                 android:textColor="#FFFFFF"
+                android:fontFamily="@font/inter_medium"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
@@ -58,6 +59,7 @@
                 android:layout_marginStart="15dp"
                 android:text=""
                 android:textColor="@color/text_primary"
+                android:fontFamily="@font/work_sans_medium"
                 android:textSize="30sp"
                 android:ellipsize="end"
                 android:textStyle="bold"
@@ -67,6 +69,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/work_sans_medium"
             android:text="@string/linesDirectionsTitle"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
@@ -78,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:fontFamily="@font/inter_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -98,6 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/waitingTimeLinesDetails"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
@@ -109,6 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/interchangeStopLinesDetails"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
@@ -138,6 +144,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:text=""
+                android:fontFamily="@font/inter_medium"
                 android:textStyle="bold"/>
         </LinearLayout>
 
@@ -148,6 +155,7 @@
             android:textColor="@color/text_primary"
             android:textSize="17sp"
             android:text="@string/noInterchangeStationTitle"
+            android:fontFamily="@font/inter_medium"
             android:visibility="gone"/>
 
         <HorizontalScrollView
@@ -172,6 +180,7 @@
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:text=""
+            android:fontFamily="@font/inter_medium"
             android:textStyle="bold"
             android:visibility="visible"/>
 
@@ -183,12 +192,14 @@
             android:textSize="12sp"
             android:paddingTop="10dp"
             android:text="@string/onlyOnWorkingDaysTitle"
+            android:fontFamily="@font/work_sans_medium"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/worksLineDetails"
+            android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
             android:layout_marginTop="15dp"
@@ -199,6 +210,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:fontFamily="@font/inter_medium"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -248,7 +260,7 @@
             android:textSize="16sp"
             android:textColor="@color/text_primary"
             android:alpha="0.7"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/inter_medium"
             android:visibility="gone" />
 
     </LinearLayout>

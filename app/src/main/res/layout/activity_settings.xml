@@ -940,7 +940,7 @@
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/resetSettingsDeps"
                 android:textColor="#8E8E93"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </LinearLayout>
     </ScrollView>
     <LinearLayout

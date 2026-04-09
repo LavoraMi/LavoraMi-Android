@@ -44,6 +44,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
@@ -227,7 +228,10 @@ public class MainActivity extends AppCompatActivity {
             title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
             title.setTextColor(Color.parseColor("#666666"));
             title.setPadding(5, 0, 0, 0);
-            title.setTypeface(null, Typeface.BOLD);
+
+            Typeface tf = ResourcesCompat.getFont(MainActivity.this, R.font.inter_medium);
+            title.setTypeface(tf, Typeface.BOLD);
+
             return title;
         });
 
@@ -416,18 +420,19 @@ public class MainActivity extends AppCompatActivity {
 
         ColorStateList chipColors = new ColorStateList(
             new int[][]{
-                    new int[]{ android.R.attr.state_checked },
-                    new int[]{ -android.R.attr.state_checked }
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
             },
             new int[]{
-                    colorChecked,
-                    colorUncecked
+                colorChecked,
+                colorUncecked
             }
         );
 
         for(Chip chip : filterChips) {
             chip.setTextColor(chipColors);
             chip.setChipIconTint(chipColors);
+            chip.setTypeface(Typeface.create("@font/inter_medium", Typeface.BOLD));
         }
 
         //*DOWNLOADING EVENTS

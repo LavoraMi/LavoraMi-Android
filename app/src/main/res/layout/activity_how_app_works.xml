@@ -113,7 +113,7 @@
                 android:id="@+id/txtProgressBarDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/inter_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingTop="10dp"
@@ -140,6 +140,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/inter_medium"
                         android:text="12 Nov 2025"
                         android:textColor="@color/text_primary"
                         android:textSize="12sp" />
@@ -151,6 +152,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/inter_medium"
                         android:text="@string/exampleDate1"
                         android:textColor="@color/text_primary"
                         android:textSize="12sp" />
@@ -206,7 +208,7 @@
                 android:id="@+id/txtChooseLineDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/inter_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingTop="10dp"
@@ -281,6 +283,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="12dp"
+                    android:layout_marginStart="55dp"
                     android:src="@drawable/ic_transfer"
                     app:tint="#E41414" />
 
@@ -292,6 +295,8 @@
                     android:text="@string/viewInterchanges"
                     android:textColor="#E41414"
                     android:textSize="30sp"
+                    android:layout_marginEnd="55dp"
+                    android:gravity="center"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -299,7 +304,7 @@
                 android:id="@+id/txtInterchangesDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/inter_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingTop="10dp"
@@ -331,6 +336,7 @@
 
                     <TextView
                         android:id="@+id/txtInterchangeStationName"
+                        android:fontFamily="@font/work_sans_medium"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -356,6 +362,7 @@
 
                         <TextView
                             android:id="@+id/txtInterchangeLineCode"
+                            android:fontFamily="@font/inter_medium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="M2"
@@ -376,6 +383,7 @@
                             android:id="@+id/txtInterchangeStationSubtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_medium"
                             android:text="Romolo"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -406,6 +414,7 @@
                                 android:backgroundTint="@color/M2"
                                 android:gravity="center"
                                 android:text="M2"
+                                android:fontFamily="@font/inter_medium"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -419,6 +428,7 @@
                                 android:backgroundTint="@color/RE80"
                                 android:gravity="center"
                                 android:text="R31"
+                                android:fontFamily="@font/inter_medium"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -432,6 +442,7 @@
                                 android:backgroundTint="@color/S9"
                                 android:gravity="center"
                                 android:text="S9"
+                                android:fontFamily="@font/inter_medium"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -445,6 +456,7 @@
                                 android:backgroundTint="@color/S19"
                                 android:gravity="center"
                                 android:text="S19"
+                                android:fontFamily="@font/inter_medium"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -489,7 +501,7 @@
                 android:id="@+id/txtWorksiteDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/inter_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingTop="10dp"
@@ -527,6 +539,7 @@
 
                         <TextView
                             android:id="@+id/txtWorksiteCardTitle"
+                            android:fontFamily="@font/work_sans_medium"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -543,6 +556,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="28dp"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/inter_medium"
                         android:text="Palazzolo, Cammanago Lenate, Seveso"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
@@ -567,6 +581,7 @@
                                 android:background="@drawable/bg_badge_line_shimmer"
                                 android:backgroundTint="@color/S2"
                                 android:gravity="center"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="S2"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
@@ -580,6 +595,7 @@
                                 android:background="@drawable/bg_badge_line_shimmer"
                                 android:backgroundTint="@color/RE80"
                                 android:gravity="center"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="R16"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
@@ -593,6 +609,7 @@
                                 android:background="@drawable/bg_badge_line_shimmer"
                                 android:backgroundTint="@color/S4"
                                 android:gravity="center"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="S4"
                                 android:textColor="@color/White"
                                 android:textSize="13sp"
@@ -611,6 +628,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="23 Feb 2026"
                             android:textColor="@color/text_primary"
                             android:textSize="12sp" />
@@ -621,6 +639,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/inter_medium"
                             android:text="30 Apr 2026"
                             android:textColor="@color/text_primary"
                             android:textSize="12sp" />
@@ -653,7 +672,7 @@
                         android:id="@+id/txtWorksiteStopExample"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:text="@string/fermataExample"
@@ -701,7 +720,7 @@
                 android:id="@+id/txtMapDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/inter_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingTop="10dp"
@@ -762,7 +781,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/inter_medium"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:paddingTop="10dp"

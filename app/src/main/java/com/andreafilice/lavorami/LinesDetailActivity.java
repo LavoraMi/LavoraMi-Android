@@ -103,6 +103,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             chipInterscambi.setChecked(false);
         }
 
+        chipMappa.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
+        chipLavori.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
+        chipInterscambi.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
+
         aggiornaUI();
 
         findViewById(android.R.id.content).post(() -> {
@@ -604,9 +608,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setChipEndPadding(10f);
 
                         chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/work_sans_medium",Typeface.BOLD));
+                        chip.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
                         chip.setTextColor(Color.WHITE);
-
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
                         int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);

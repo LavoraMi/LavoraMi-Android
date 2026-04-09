@@ -109,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/showErrorsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -165,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/bannerStrikesDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -221,6 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/requireBiometricAuthDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -280,6 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="Mostra il pulsante per tradurre i lavori anche nella lingua Italiana."
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -336,6 +340,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/showWorkDetailsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -381,6 +386,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/cacheMemoryDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
