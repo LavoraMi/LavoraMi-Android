@@ -70,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:fontFamily="@font/work_sans_medium"
+                    android:paddingBottom="5dp"
                     android:text="@string/themeDeps"
                     android:textColor="#8E8E93"
                     android:textSize="18sp" />
@@ -107,6 +108,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
+                                android:fontFamily="@font/inter_medium"
                                 android:layout_marginStart="16dp"
                                 android:text="@string/sistemaTheme"
                                 android:layout_toEndOf="@id/iconSystem"
@@ -153,6 +155,7 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_toEndOf="@id/iconDark"
                                 android:text="@string/darkTheme"
+                                android:fontFamily="@font/inter_medium"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
 
@@ -195,6 +198,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="16dp"
                                 android:text="@string/lightTheme"
+                                android:fontFamily="@font/inter_medium"
                                 android:layout_toEndOf="@id/iconLight"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
@@ -219,7 +223,7 @@
                     android:layout_marginHorizontal="23dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="@font/work_sans_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/themeDisclaimer"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />
@@ -236,6 +240,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
+                    android:paddingBottom="5dp"
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/languageDeps"
                     android:textColor="#8E8E93"
@@ -260,10 +265,22 @@
                             android:layout_height="56dp"
                             android:paddingHorizontal="16dp">
 
+                            <ImageView
+                                android:id="@+id/iconItaly"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_italy"
+                                android:visibility="visible"/>
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
+                                android:fontFamily="@font/inter_medium"
+                                android:layout_toEndOf="@id/iconItaly"
+                                android:layout_marginStart="10dp"
                                 android:text="@string/italianSettings"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp"/>
@@ -291,10 +308,22 @@
                             android:layout_height="56dp"
                             android:paddingHorizontal="16dp">
 
+                            <ImageView
+                                android:id="@+id/iconGB"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_uk"
+                                android:visibility="visible"/>
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
+                                android:layout_toEndOf="@id/iconGB"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="@string/englishLanguage"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
@@ -318,7 +347,7 @@
                     android:layout_marginHorizontal="23dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="@font/work_sans_medium"
+                    android:fontFamily="@font/inter_medium"
                     android:text="@string/themeDisclaimer"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />

@@ -206,8 +206,8 @@
     <string name="strikeBannerTitle">A strike has been called for %s.</string>
     <string name="strikeBannerGuaranteed">Guaranteed service hours %s</string>
     <string name="noWorksFoundInput">No jobs found for: “%s”.</string>
-    <string name="italianSettings">🇮🇹 Italian</string>
-    <string name="englishLanguage">🇬🇧 English</string>
+    <string name="italianSettings">" Italian"</string>
+    <string name="englishLanguage">" English"</string>
     <string name="languageDeps">Language</string>
     <string name="themeDeps">Theme</string>
     <string name="strikeBannerAderenti">Members:</string>
