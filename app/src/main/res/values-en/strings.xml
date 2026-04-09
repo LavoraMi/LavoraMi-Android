@@ -50,15 +50,15 @@
     <string name="signInPopUpTitle">Sign in to your account</string>
     <string name="biometricAuthPopUpDeps">Use your fingerprint or face to log in.</string>
     <string name="advancedOptionsTitle">Advanced Options</string>
-    <string name="errorMessagesOptions">Show error messages</string>
+    <string name="errorMessagesOptions">Show Error Messages</string>
     <string name="showErrorsDeps">Displays error messages when data download from the server fails.</string>
-    <string name="bannerStrikesOptions">Show strike banners</string>
+    <string name="bannerStrikesOptions">Show Strike Banners</string>
     <string name="bannerStrikesDeps">Display the strike banner on the Home page when strikes are taking place.</string>
     <string name="requireBiometricAuth">Request Biometrics</string>
     <string name="requireBiometricAuthDeps">Request biometric verification to unlock your account section.</string>
-    <string name="showWorkDetails">Show work details</string>
+    <string name="showWorkDetails">Show Work Details</string>
     <string name="showWorkDetailsDeps">Display a description of the task currently being performed below the progress bar.</string>
-    <string name="cleanCache">Clean Cache memory</string>
+    <string name="cleanCache">Clean Cache Memory</string>
     <string name="cacheMemoryDeps">Clear the cache from your device to free up disk space.</string>
     <string name="cacheMemoryPopUpDeps">Are you sure you want to clear the app\'s cache?</string>
     <string name="editSettingsPopUpTitle">Edit settings</string>
@@ -225,13 +225,13 @@
     <string name="progressBarText">You can isually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work).</string>
     <string name="updateYourself">Updated, Always.</string>
     <string name="updateYourselfText">We\'ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it\'s a bad Friday.</string>
-    <string name="choseLine">Chose your line</string>
+    <string name="choseLine">Choose your line</string>
     <string name="exampleDate1">15 Dec 2026</string>
     <string name="setupTitleTranslate">Translate the works into the language you select.</string>
     <string name="setupDepsTranslate">To translate job details into other languages, simply click on the job details and then click “Translate”</string>
     <string name="setupMiniDepsTranslate">This feature is available only when English is selected as the language. Go to Settings > Appearance and Language to select it.</string>
     <string name="rateUsTitle">Rate LavoraMi</string>
-    <string name="translateTitle">Translation:</string>
+    <string name="translateTitle">Translation (it-en):</string>
     <string name="copyTranslation">Copy Translation</string>
     <string name="translateBtnText">Translate</string>
     <string name="maintenanceTitle">Maintenance in progress.</string>
@@ -283,7 +283,7 @@
     <string name="confirmOptionalDownload">Confirm Download</string>
     <string name="downloadAssets">Downloading necessary files...</string>
     <string name="errorTranslating">An error occurs while translating.</string>
-    <string name="choseYourLineText">" Save the line you use every day as a favorite and when there's work on it, you will be updated."</string>
+    <string name="choseYourLineText">Save the line you use every day as a favorite and when there\'s work on it, you will be updated.</string>
     <string name="viewInterchanges">View interchanges</string>
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
     <string name="worksiteStop">Worksite Stop</string>
@@ -291,6 +291,6 @@
     <string name="fermataExample">Infrastructure upgrade works on the Palazzolo, Camnago Lenate, and Seveso sections, with changes to train traffic</string>
     <string name="rallentamento">Slowdown</string>
     <string name="disclaimerAppFunctions">All examples given are for illustrative purposes only and may be current or past events.</string>
-    <string name="viewLinesOnMap">View the lines on the Map</string>
+    <string name="viewLinesOnMap">View lines on the Map</string>
     <string name="viewLinesOnMapText">View the routes of your favorite lines on the map, so you don\'t get lost and always know where you are going.</string>
 </resources>

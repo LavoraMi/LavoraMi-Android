@@ -252,8 +252,20 @@ public class MainActivity extends AppCompatActivity {
         //*REFRESH BUTTON
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
 
-        btnRefresh.setOnClickListener(v -> {downloadJSONData(getCategory(), true);});
-        btnRefreshOnError.setOnClickListener(v -> {downloadJSONData(getCategory(), true);});
+        btnRefresh.setOnClickListener(v -> {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            editSearch.clearFocus();
+            editSearch.setText("");
+            downloadJSONData(getCategory(), true);}
+        );
+        btnRefreshOnError.setOnClickListener(v -> {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            editSearch.clearFocus();
+            editSearch.setText("");
+            downloadJSONData(getCategory(), true);
+        });
 
         //* CHIP GROUP (FILTERS)
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
