@@ -451,6 +451,13 @@ public class MainActivity extends AppCompatActivity {
         String categoriaFinale = defaultCategory;
         if (filterGroup != null)
             filterGroup.post(() -> applicaFiltroCategoria(categoriaFinale));
+
+        //*UI REFINEMENTS
+        /// In this section of the code, we fix the bug of the "Work in Progress" dimensions.
+        TextView mainTextView = findViewById(R.id.mainTextView);
+
+        if(mainTextView.getText().toString().contains("Work in progress"))
+            mainTextView.setTextSize(30);
     }
 
     private void startHintLoop(String[] hints){
