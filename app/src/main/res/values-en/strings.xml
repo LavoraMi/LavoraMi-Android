@@ -293,4 +293,5 @@
     <string name="disclaimerAppFunctions">All examples given are for illustrative purposes only and may be current or past events.</string>
     <string name="viewLinesOnMap">View lines on the Map</string>
     <string name="viewLinesOnMapText">View the routes of your favorite lines on the map, so you don\'t get lost and always know where you are going.</string>
+    <string name="lineaAttesta">"THE LINE CURRENTLY TERMINATES AT: "</string>
 </resources>

@@ -91,9 +91,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/subtitle"
+            android:fontFamily="@font/inter_medium"
             android:textSize="12sp"
             android:paddingTop="10dp"
             android:text="@string/tramDeviationsTitle"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/attestazioneLinea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/subtitle"
+            android:fontFamily="@font/inter_medium"
+            android:textSize="12sp"
+            android:paddingTop="10dp"
+            android:text=""
             android:textStyle="bold"
             android:visibility="gone"/>
 

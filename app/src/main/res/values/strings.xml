@@ -292,4 +292,5 @@
     <string name="disclaimerAppFunctions">Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati.</string>
     <string name="viewLinesOnMap">Visualizza le linee sulla Mappa</string>
     <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che prefersci sulla mappa, per non predersi e per sapere sempre dove vai.</string>
+    <string name="lineaAttesta">"ATTUALMENTE LA LINEA ATTESTA A: "</string>
 </resources>

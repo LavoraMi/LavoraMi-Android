@@ -206,6 +206,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         aggiornaInfoSuperiori();
         fetchDeviations();
 
+        //*S12 LIMITATION
+        /// In this section of the code, we compose the phrase for S12 line limitation.
+        TextView attestazioneLinea = findViewById(R.id.attestazioneLinea);
+
+        attestazioneLinea.setText(ActivityUtils.getLocalizedString(this, R.string.lineaAttesta) + "MILANO BOVISA.");
+        attestazioneLinea.setVisibility((nomeLinea.equals("S12")) ? View.VISIBLE : View.GONE);
+
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
         int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.GRAY) : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
