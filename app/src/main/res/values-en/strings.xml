@@ -20,7 +20,7 @@
     <string name="accediAccount">Sign in</string>
     <string name="welcomeAccountLoggedIn">"Hi "</string>
     <string name="gestisciDepsAccount">Here you can manage your account and your information.</string>
-    <string name="infoAccount">Informations</string>
+    <string name="infoAccount">Information</string>
     <string name="creatoConGoogle">Account created with Google</string>
     <string name="gestisciAccount">Manage</string>
     <string name="editPasswordAccount">Edit Password</string>
@@ -33,7 +33,7 @@
     <string name="signUpWithGoogle">Sign Up with Google</string>
     <string name="signUpAccount">Sign Up</string>
     <string name="haiAccountButton">"Do you already have an account? "</string>
-    <string name="logginInGoogleTitle">Loggin in</string>
+    <string name="logginInGoogleTitle">Logging in</string>
     <string name="logginInGoogleDeps">We\'re signing in with your Google Account. Please wait.</string>
     <string name="popUpConfirmEmail">Mail Confirmation</string>
     <string name="emailPopUpDeps">Please verify your email address using the email we sent you to continue.</string>
@@ -85,7 +85,7 @@
     <string name="metroLinesTitle">Metro Lines</string>
     <string name="suburbanLinesTitle">Suburban Lines</string>
     <string name="tiloLinesTitle">TILO Lines</string>
-    <string name="malpensaExpressLinesTitle">Malpenssa Express Lines</string>
+    <string name="malpensaExpressLinesTitle">Malpensa Express Lines</string>
     <string name="tramLinesTitle">Tram Lines</string>
     <string name="busLinesTitle">Bus Lines</string>
     <string name="linesDirectionsTitle">DIRECTIONS:</string>
@@ -120,7 +120,7 @@
     <string name="androidDeveloper">Android Developers:</string>
     <string name="webDeveloper">Web Developer:</string>
     <string name="support">Support us</string>
-    <string name="supportText">If you like LavoraMi and you want to keep it advertising-free, you can share the app downHai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui. below!</string>
+    <string name="supportText">If you like LavoraMi and you want to keep it advertising-free, you can share the app down below!</string>
     <string name="parteonSupport">Support us on Patreon</string>
     <string name="buyACoffeSupport">Support us on Buy Me A Coffee</string>
     <string name="followOn">Follow us on:</string>
@@ -128,7 +128,7 @@
     <string name="bugReport">Report a bug</string>
     <string name="webSite">Web Site</string>
     <string name="credits">Credits</string>
-    <string name="terminiDiServizio">Terms of services</string>
+    <string name="terminiDiServizio">Terms of Service</string>
     <string name="appearance">Appearance and Language</string>
     <string name="sistemaTheme">System</string>
     <string name="darkTheme">Dark</string>
@@ -152,11 +152,11 @@
     <string name="bugIntentSubject">Report a bug with LavoraMi on Android</string>
     <string name="bugIntentBody">DEVICE INFORMATION (DO NOT DELETE; USE FOR DEBUGGING PURPOSES): Phone ID: %s Android version: %s Model and manufacturer: %s, %s</string>
     <string name="helpTitle">Help</string>
-    <string name="requestDataTitle">Request Your Datas</string>
+    <string name="requestDataTitle">Request Your Data</string>
     <string name="requestDataDeps">Submit a request to our team to download your data.</string>
     <string name="fileFormatTitle">File Format:</string>
     <string name="fileFormatDeps">Select the format in which your data will be exported.</string>
-    <string name="requestDataBtn">Request Datas</string>
+    <string name="requestDataBtn">Request Data</string>
     <string name="requestDataIntentSubject">Request for my information</string>
     <string name="requestDataIntentPart1">"Good morning, I would like to request that my data be sent in  "</string>
     <string name="requestDataIntentPart2">" of the account via email: "</string>
@@ -222,7 +222,7 @@
     <string name="backToLogin">Back to Login</string>
     <string name="sendEmailButton">Send Email</string>
     <string name="progressBar">Progress bar</string>
-    <string name="progressBarText">You can isually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work).</string>
+    <string name="progressBarText">You can visually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work).</string>
     <string name="updateYourself">Updated, Always.</string>
     <string name="updateYourselfText">We\'ll notify you the day before work is due to end, when new construction sites appear on your favorite line, and even when it\'s a bad Friday.</string>
     <string name="choseLine">Choose your line</string>
@@ -261,7 +261,7 @@
     <string name="strikeNotificationDeps">A strike is scheduled for today of %s, services will be maintained %s</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F Strike tomorrow!</string>
     <string name="strikeTomorrowNotificationDeps">There will be a strike tomorrow for %s, the guaranteed service hours are %s</string>
-    <string name="cacheMemoryToast">Cache cleaned succesfully!</string>
+    <string name="cacheMemoryToast">Cache cleaned successfully!</string>
     <string name="googleSignInFailedToast">Sign-in with Google failed.</string>
     <string name="unknownErrorToast">An unexpected error has occurred. Please try again.</string>
     <string name="authFailedToast">Authentication failed.</string>
@@ -282,7 +282,7 @@
     <string name="optionalDownloadDeps">To continue translating the documents, you must agree to download additional items. Do you want to continue?</string>
     <string name="confirmOptionalDownload">Confirm Download</string>
     <string name="downloadAssets">Downloading necessary files...</string>
-    <string name="errorTranslating">An error occurs while translating.</string>
+    <string name="errorTranslating">An error occurred while translating.</string>
     <string name="choseYourLineText">Save the line you use every day as a favorite and when there\'s work on it, you will be updated.</string>
     <string name="viewInterchanges">View interchanges</string>
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
