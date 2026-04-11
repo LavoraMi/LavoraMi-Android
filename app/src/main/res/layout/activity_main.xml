@@ -42,9 +42,9 @@
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintBottom_toBottomOf="@+id/mainTextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/mainTextView"
             app:srcCompat="@drawable/ic_refresh"
             app:tint="@color/redMetro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
