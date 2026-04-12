@@ -81,6 +81,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
+        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "24"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -95,7 +96,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         /// Check if the line is a TRAM, else do not display the Map View.
         if (nomeLinea == null) nomeLinea = "M1";
-        if ((tipoDiLinea.contains("Tram") && !nomeLinea.equalsIgnoreCase("1") && !nomeLinea.equalsIgnoreCase("3") && !nomeLinea.equalsIgnoreCase("24")) || nomeLinea.contains("z")){
+        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || nomeLinea.contains("z")){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -255,6 +256,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         TextView accessibilityText = findViewById(R.id.accessibilityText);
         ImageView iconAccessibility = findViewById(R.id.iconAccessibility);
         ImageView infoIconMetro = findViewById(R.id.infoIconMetro);
+        LinearLayout lineAccessibilityLayout = findViewById(R.id.lineAccessibilityLayout);
 
         accessibilityText.setText(rate);
 
@@ -270,8 +272,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             iconAccessibility.setImageResource(R.drawable.ic_xmark);
             iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.redMetro));
         }
-
         infoIconMetro.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoAccessibility.class));
+
+        //*DISABLE THIS FEATURE FOR BUS LINES.
+        if(nomeLinea.contains("z")){
+            lineAccessibilityLayout.setVisibility(View.GONE);
+            findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -870,6 +877,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detInterscambio.setTypeface(detInterscambio.getTypeface(), Typeface.NORMAL);
             layoutDetInterscambio.setVisibility(View.GONE);
             findViewById(R.id.detInterscambioEmpty).setVisibility(View.VISIBLE);
+            findViewById(R.id.viewChipGroup).setVisibility(View.GONE);
         }
     }
 
