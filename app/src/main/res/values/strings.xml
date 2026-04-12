@@ -293,4 +293,17 @@
     <string name="viewLinesOnMap">Visualizza le linee sulla Mappa</string>
     <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che prefersci sulla mappa, per non predersi e per sapere sempre dove vai.</string>
     <string name="lineaAttesta">"ATTUALMENTE LA LINEA ATTESTA A: "</string>
+    <string name="accessibilityTitle">ACCESSIBILITÀ LINEA:</string>
+    <string name="fullyAccessible">Completamente accessibile.</string>
+    <string name="partiallyTitle">Parzialmente accessibile.</string>
+    <string name="nonAccessible">Non accessibile.</string>
+    <string name="accessibilityInfoTitle">Accessibilità</string>
+    <string name="accessibilityInfoDeps">Informazioni sull\'Accessibilità</string>
+    <string name="accessibilityInfoDeps2">LavoraMi mostra l\'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato.</string>
+    <string name="fullyAccessibleDeps">Completamente Accessibile</string>
+    <string name="partiallyAccessibleDeps">Parzialmente Accessibile</string>
+    <string name="nonAccessibleDeps">Non Accessibile</string>
+    <string name="accessibilityPart1">Tutti i mezzi impiegati su questa linea sono dotati di pedane (manuali o elettriche) e posto riservato. Inoltre, la quasi totalità delle fermate (oltre il 90%) dispone di banchine rialzate che permettono l\'incarrozzamento in autonomia o con assistenza minima.</string>
+    <string name="accessibilityPart2">La linea presenta delle limitazioni. Sebbene i bus siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l\'accessibilità è garantita solo su alcune corse specifiche.</string>
+    <string name="accessibilityPart3">Questa linea non garantisce i requisiti minimi di accessibilità. I mezzi potrebbero presentare gradini all\'ingresso del mezzo oppure le infrastrutture stradali del percorso rendono impossibile la discesa della pedana in sicurezza.</string>
 </resources>

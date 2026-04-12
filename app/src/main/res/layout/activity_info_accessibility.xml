@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Accessibilità"
+                android:text="@string/accessibilityInfoTitle"
                 android:fontFamily="@font/work_sans_medium"
                 android:textColor="@color/text_primary"
                 android:textSize="20sp"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/work_sans_medium"
-                android:text="Informazioni sull'Accessibilità"
+                android:text="@string/accessibilityInfoDeps"
                 android:textAlignment="center"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="LavoraMi mostra l'accessibilità di una linea in base agli impianti nelle stazioni ed alla tipologia di mezzo utilizzato."
+                android:text="@string/accessibilityInfoDeps2"
                 android:textAlignment="center"
                 android:textColor="@color/subtitle"
                 android:textSize="16sp" />
@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/work_sans_medium"
-                            android:text="Completamente Accessibile"
+                            android:text="@string/fullyAccessibleDeps"
                             android:textColor="@color/M2"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="Tutti i mezzi impiegati su questa linea sono dotati di pedane (manuali o elettriche) e posto riservato. Inoltre, la quasi totalità delle fermate (oltre il 90%) dispone di banchine rialzate che permettono l'incarrozzamento in autonomia o con assistenza minima."
+                        android:text="@string/accessibilityPart1"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -177,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/work_sans_medium"
-                            android:text="Parzialmente Accessibile"
+                            android:text="@string/partiallyAccessibleDeps"
                             android:textColor="@color/M3"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -187,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="La linea presenta delle limitazioni. Sebbene i bus siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l'accessibilità è garantita solo su alcune corse specifiche."
+                        android:text="@string/accessibilityPart2"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -227,7 +227,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/work_sans_medium"
-                            android:text="Non Accessibile"
+                            android:text="@string/nonAccessibleDeps"
                             android:textColor="@color/redMetro"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/inter_medium"
-                        android:text="Questa linea non garantisce i requisiti minimi di accessibilità. I mezzi potrebbero presentare gradini all'ingresso del mezzo oppure le infrastrutture stradali del percorso rendono impossibile la discesa della pedana in sicurezza."
+                        android:text="@string/accessibilityPart3"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
                 </LinearLayout>

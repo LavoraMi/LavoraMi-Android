@@ -294,4 +294,17 @@
     <string name="viewLinesOnMap">View lines on the Map</string>
     <string name="viewLinesOnMapText">View the routes of your favorite lines on the map, so you don\'t get lost and always know where you are going.</string>
     <string name="lineaAttesta">"THE LINE CURRENTLY TERMINATES AT: "</string>
+    <string name="accessibilityTitle">LINE ACCESSIBILITY:</string>
+    <string name="fullyAccessible">Fully accessible.</string>
+    <string name="partiallyTitle">Partially accessible.</string>
+    <string name="nonAccessible">Not accessible.</string>
+    <string name="accessibilityInfoTitle">Accessibility</string>
+    <string name="accessibilityInfoDeps">Accessibility Information</string>
+    <string name="accessibilityInfoDeps2">LavoraMi shows the accessibility of a line based on the facilities at stations and the type of transport used.</string>
+    <string name="fullyAccessibleDeps">Fully Accessible</string>
+    <string name="partiallyAccessibleDeps">Partially Accessible</string>
+    <string name="nonAccessibleDeps">Not Accessible</string>
+    <string name="accessibilityPart1">All vehicles operating on this route are equipped with boarding ramps (manual or electric) and reserved seating. Furthermore, almost all stops (over 90%) have raised platforms, enabling passengers to board independently or with minimal assistance.</string>
+    <string name="accessibilityPart2">The route has some limitations. Although the buses are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services.</string>
+    <string name="accessibilityPart3">This route does not meet the minimum accessibility requirements. There may be steps at the entrance to the vehicle, or the road infrastructure along the route may make it impossible to lower the ramp safely.</string>
 </resources>

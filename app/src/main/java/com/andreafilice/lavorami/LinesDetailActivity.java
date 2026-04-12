@@ -260,11 +260,11 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         accessibilityText.setText(rate);
 
-        if(rate.contains("Completamente")) {
+        if(rate.equalsIgnoreCase(ActivityUtils.getLocalizedString(this, R.string.fullyAccessible))) {
             iconAccessibility.setImageResource(R.drawable.ic_checkmark);
             iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.M2));
         }
-        else if(rate.contains("Parzialmente")) {
+        else if(rate.equalsIgnoreCase(ActivityUtils.getLocalizedString(this, R.string.partiallyTitle))) {
             iconAccessibility.setImageResource(R.drawable.ic_warning);
             iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.M3));
         }
@@ -1149,7 +1149,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE80":
             case "MXP1":
             case "MXP2":
-                return "Completamente accessibile.";
+                return ActivityUtils.getLocalizedString(this, R.string.fullyAccessible);
             case "S7":
             case "S8":
             case "S9":
@@ -1158,9 +1158,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "10":
             case "19":
             case "33":
-                return "Non accessibile.";
+                return ActivityUtils.getLocalizedString(this, R.string.nonAccessible);
             default:
-                return "Parzialmente accessibile.";
+                return ActivityUtils.getLocalizedString(this, R.string.partiallyTitle);
         }
     }
 }

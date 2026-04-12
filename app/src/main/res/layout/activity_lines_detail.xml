@@ -233,7 +233,7 @@
             android:id="@+id/titleAccessibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACCESSIBILITÀ LINEA:"
+            android:text="@string/accessibilityTitle"
             android:fontFamily="@font/work_sans_medium"
             android:textColor="@color/subtitle"
             android:textSize="15sp"
