@@ -228,6 +228,64 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ACCESSIBILITÀ LINEA:"
+            android:fontFamily="@font/work_sans_medium"
+            android:textColor="@color/subtitle"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_accessibility"
+                android:scaleType="fitCenter"
+                app:tint="@color/text_primary"/>
+
+            <ImageView
+                android:id="@+id/iconAccessibility"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_checkmark"
+                app:tint="@color/M2"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/accessibilityText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="3dp"
+                android:text="Completamente accessibile."
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/work_sans_medium"
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:maxLines="1"/>
+
+            <ImageView
+                android:id="@+id/infoIconMetro"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_info"
+                app:tint="@color/desc"
+                android:contentDescription="Info"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/detActionGroup"
             android:layout_width="match_parent"

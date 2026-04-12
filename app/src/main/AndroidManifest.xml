@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
         <activity
+            android:name=".InfoAccessibility"
+            android:exported="false" />
+        <activity
             android:name=".MaintenanceActivity"
             android:exported="false" />
         <activity
@@ -61,7 +64,7 @@
             android:exported="false" />
         <activity
             android:name=".HowAppWorks"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />

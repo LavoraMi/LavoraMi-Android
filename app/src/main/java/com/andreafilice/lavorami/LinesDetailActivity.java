@@ -248,6 +248,30 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipMappa.setTextColor(chipTextColor);
         chipLavori.setTextColor(chipTextColor);
         chipInterscambi.setTextColor(chipTextColor);
+
+        //*ACCESSIBILITY RATE
+        /// In this section of the code, we get the current accessibility rate of the line in question.
+        String rate = getAccessibility(nomeLinea);
+        TextView accessibilityText = findViewById(R.id.accessibilityText);
+        ImageView iconAccessibility = findViewById(R.id.iconAccessibility);
+        ImageView infoIconMetro = findViewById(R.id.infoIconMetro);
+
+        accessibilityText.setText(rate);
+
+        if(rate.contains("Completamente")) {
+            iconAccessibility.setImageResource(R.drawable.ic_checkmark);
+            iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.M2));
+        }
+        else if(rate.contains("Parzialmente")) {
+            iconAccessibility.setImageResource(R.drawable.ic_warning);
+            iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.M3));
+        }
+        else {
+            iconAccessibility.setImageResource(R.drawable.ic_xmark);
+            iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.redMetro));
+        }
+
+        infoIconMetro.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoAccessibility.class));
     }
 
     @Override
@@ -1099,6 +1123,36 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S50":
                 return "1 h.";
             default: return "Errore";
+        }
+    }
+
+    public String getAccessibility(String line) {
+        switch (line){
+            case "M1":
+            case "M2":
+            case "M4":
+            case "M5":
+            case "S5":
+            case "S6":
+            case "S12":
+            case "S13":
+            case "S40":
+            case "S50":
+            case "RE80":
+            case "MXP1":
+            case "MXP2":
+                return "Completamente accessibile.";
+            case "S7":
+            case "S8":
+            case "S9":
+            case "1":
+            case "5":
+            case "10":
+            case "19":
+            case "33":
+                return "Non accessibile.";
+            default:
+                return "Parzialmente accessibile.";
         }
     }
 }

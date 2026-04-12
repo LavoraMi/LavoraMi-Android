@@ -142,7 +142,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -202,7 +202,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -262,7 +262,7 @@
                         android:text="TILO"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -322,7 +322,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -382,7 +382,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -442,7 +442,7 @@
                         android:text="Movibus"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -502,7 +502,7 @@
                         android:text="STAV"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 
@@ -563,7 +563,7 @@
                         android:text="Autoguidovie"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/inter_medium" />
 
                 </LinearLayout>
 

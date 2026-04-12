@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
             title.setPadding(5, 0, 0, 0);
 
             Typeface tf = ResourcesCompat.getFont(MainActivity.this, R.font.inter_medium);
-            title.setTypeface(tf, Typeface.BOLD);
+            title.setTypeface(tf);
 
             return title;
         });
