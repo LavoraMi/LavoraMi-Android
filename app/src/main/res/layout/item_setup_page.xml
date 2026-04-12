@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/work_sans_medium"
+        android:fontFamily="@font/inter_medium"
         android:gravity="center"
         android:alpha="0.7"
         android:textColor="@color/text_primary"
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/work_sans_medium"
+        android:fontFamily="@font/inter_medium"
         android:gravity="center"
         android:alpha="0.7"
         android:textColor="@color/subtitle"
@@ -54,5 +54,6 @@
         android:layout_marginTop="24dp"
         android:padding="12dp"
         android:fontFamily="@font/work_sans_medium"
+        android:background="@drawable/bg_spinner"
         android:textSize="16sp" />
 </LinearLayout>

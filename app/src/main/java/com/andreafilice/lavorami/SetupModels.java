@@ -31,7 +31,6 @@ public class SetupModels {
     }
 
     public static class SetupAdapter extends RecyclerView.Adapter<SetupAdapter.ViewHolder> {
-
         private List<SetupPage> pages;
 
         public SetupAdapter(List<SetupPage> pages) {
@@ -66,30 +65,39 @@ public class SetupModels {
             if (position == 0) {
                 holder.spinnerSetup.setVisibility(View.VISIBLE);
 
-                List<String> languages = Arrays.asList("🇮🇹 Italiano", "🇬🇧 English");
-                ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(
-                        holder.itemView.getContext(),
-                        android.R.layout.simple_spinner_item,
-                        languages
-                );
+                String[] languageNames = {"Italiano", "English"};
+                int[] languageFlags = {R.drawable.ic_italy, R.drawable.ic_uk};
+                String[] languageCodes = {"it", "en"};
 
-                String savedLanguage = DataManager.getStringData(holder.itemView.getContext(), DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+                ArrayAdapter<String> languageAdapter = new ArrayAdapter<String>(holder.itemView.getContext(), R.layout.spinner_item_language, R.id.languageText, Arrays.asList(languageNames)) {
+                    @Override
+                    public View getView(int pos, View convertView, ViewGroup parent) {
+                        View v = super.getView(pos, convertView, parent);
+                        ((ImageView) v.findViewById(R.id.flagIcon)).setImageResource(languageFlags[pos]);
+                        return v;
+                    }
 
-                languageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    @Override
+                    public View getDropDownView(int pos, View convertView, ViewGroup parent) {
+                        View v = super.getDropDownView(pos, convertView, parent);
+                        ((ImageView) v.findViewById(R.id.flagIcon)).setImageResource(languageFlags[pos]);
+                        return v;
+                    }
+                };
+
+                String savedLanguage = DataManager.getStringData(holder.itemView.getContext(), DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+                languageAdapter.setDropDownViewResource(R.layout.spinner_item_language);
                 holder.spinnerSetup.setAdapter(languageAdapter);
 
-                int savedPosition = languages.indexOf(savedLanguage);
+                int savedPosition = Arrays.asList(languageNames).indexOf(savedLanguage);
                 if (savedPosition >= 0)
                     holder.spinnerSetup.setSelection(savedPosition, false);
 
                 holder.spinnerSetup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        String[] languageSupported = {"it", "en"};
-                        String selected = languages.get(pos);
-                        DataManager.saveStringData(holder.itemView.getContext(), DataKeys.KEY_DEFAULT_LANGUAGE, selected);
-
-                        LocaleListCompat localeList = LocaleListCompat.forLanguageTags(languageSupported[pos]);
+                        DataManager.saveStringData(holder.itemView.getContext(), DataKeys.KEY_DEFAULT_LANGUAGE, languageNames[pos]);
+                        LocaleListCompat localeList = LocaleListCompat.forLanguageTags(languageCodes[pos]);
                         AppCompatDelegate.setApplicationLocales(localeList);
                     }
 
