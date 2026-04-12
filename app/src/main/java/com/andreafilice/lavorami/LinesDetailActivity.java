@@ -608,17 +608,23 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                                 .toBuilder()
                                 .setAllCornerSizes(10f)
                                 .build();
-
                         chip.setShapeAppearanceModel(cornerRadius);
+
+                        float density = getResources().getDisplayMetrics().density;
+                        int heightPx = (int) (26 * density);
                         chip.setEnsureMinTouchTargetSize(false);
-                        chip.setChipMinHeight(0f);
+                        chip.setChipMinHeight((float) heightPx);
+                        chip.setMinHeight(heightPx);
 
-                        chip.setChipStartPadding(10f);
-                        chip.setChipEndPadding(10f);
+                        chip.setChipStartPadding(0f);
+                        chip.setChipEndPadding(0f);
+                        chip.setTextStartPadding(15f);
+                        chip.setTextEndPadding(15f);
+                        chip.setChipStrokeWidth(0f);
 
-                        chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
-                        chip.setTextColor(Color.WHITE);
+                        chip.setTextSize(13f);
+                        Typeface interMedium = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter_medium);
+                        chip.setTypeface(Typeface.create(interMedium, Typeface.BOLD));
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
                         int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
@@ -717,17 +723,23 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                                 .toBuilder()
                                 .setAllCornerSizes(10f)
                                 .build();
-
                         chip.setShapeAppearanceModel(cornerRadius);
+
+                        float density = getResources().getDisplayMetrics().density;
+                        int heightPx = (int) (26 * density);
                         chip.setEnsureMinTouchTargetSize(false);
-                        chip.setChipMinHeight(0f);
+                        chip.setChipMinHeight((float) heightPx);
+                        chip.setMinHeight(heightPx);
 
-                        chip.setChipStartPadding(10f);
-                        chip.setChipEndPadding(10f);
+                        chip.setChipStartPadding(0f);
+                        chip.setChipEndPadding(0f);
+                        chip.setTextStartPadding(15f);
+                        chip.setTextEndPadding(15f);
+                        chip.setChipStrokeWidth(0f);
 
-                        chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/work_sans_medium",Typeface.BOLD));
-                        chip.setTextColor(Color.WHITE);
+                        chip.setTextSize(13f);
+                        Typeface interMedium = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter_medium);
+                        chip.setTypeface(Typeface.create(interMedium, Typeface.BOLD));
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
                         int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
@@ -739,7 +751,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         chip.setClickable(false);
                         chip.setCheckable(false);
 
-                        chipGroup.addView(chip);
+                        chipGroup.addView(chip);;
                     }
                 }
                 container.addView(card);
@@ -797,15 +809,23 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                                 .toBuilder()
                                 .setAllCornerSizes(10f)
                                 .build();
-
                         chip.setShapeAppearanceModel(cornerRadius);
+
+                        float density = getResources().getDisplayMetrics().density;
+                        int heightPx = (int) (26 * density);
                         chip.setEnsureMinTouchTargetSize(false);
-                        chip.setChipMinHeight(0f);
-                        chip.setChipStartPadding(10f);
-                        chip.setChipEndPadding(10f);
-                        chip.setTextSize(14f);
-                        chip.setTypeface(Typeface.create("@font/work_sans_medium", Typeface.BOLD));
-                        chip.setTextColor(Color.WHITE);
+                        chip.setChipMinHeight((float) heightPx);
+                        chip.setMinHeight(heightPx);
+
+                        chip.setChipStartPadding(0f);
+                        chip.setChipEndPadding(0f);
+                        chip.setTextStartPadding(15f);
+                        chip.setTextEndPadding(15f);
+                        chip.setChipStrokeWidth(0f);
+
+                        chip.setTextSize(13f);
+                        Typeface workSans = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.work_sans_medium);
+                        chip.setTypeface(Typeface.create(workSans, Typeface.BOLD));
 
                         int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
                         int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);

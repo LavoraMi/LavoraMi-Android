@@ -22,6 +22,7 @@ import android.widget.TextView;
 import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -167,7 +168,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (!lineeRaw.isEmpty()) {
             for (String nome : lineeRaw) {
                 String nomePulito = nome.trim();
-                Chip chip = new Chip(itemHolder.itemView.getContext());
+                Context context = itemHolder.itemView.getContext();
+                Chip chip = new Chip(context);
                 chip.setText(nomePulito);
 
                 ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
@@ -176,28 +178,37 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         .build();
 
                 if(nomePulito.contains("Filobus")){
-                    chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_bolt));
+                    chip.setChipIcon(ContextCompat.getDrawable(context, R.drawable.ic_bolt));
                     chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
                 }
                 else if(nomePulito.contains("N")){
-                    chip.setChipIcon(ContextCompat.getDrawable(itemHolder.itemView.getContext(), R.drawable.ic_dark));
+                    chip.setChipIcon(ContextCompat.getDrawable(context, R.drawable.ic_dark));
                     chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
                 }
 
                 chip.setShapeAppearanceModel(cornerRadius);
+
+                float density = context.getResources().getDisplayMetrics().density;
+                int heightPx = (int) (26 * density);
                 chip.setEnsureMinTouchTargetSize(false);
-                chip.setChipMinHeight(0f);
+                chip.setChipMinHeight((float) heightPx);
+                chip.setMinHeight(heightPx);
 
-                chip.setChipStartPadding(10f);
-                chip.setChipEndPadding(10f);
+                chip.setChipStartPadding(0f);
+                chip.setChipEndPadding(0f);
+                chip.setTextStartPadding(15f);
+                chip.setTextEndPadding(15f);
+                chip.setChipStrokeWidth(0f);
 
-                chip.setTextSize(14f);
-                chip.setTypeface(Typeface.create("@font/inter_medium", Typeface.BOLD));
-                chip.setTextColor(Color.WHITE);
+                chip.setTextSize(13f);
+                Typeface interMedium = ResourcesCompat.getFont(context, R.font.inter_medium);
+                Typeface interMediumBold = Typeface.create(interMedium, Typeface.BOLD);
+                chip.setTypeface(interMediumBold);
 
                 int coloreLinea = getColorForLinea(nomePulito);
-                int coloreTestoEffettivo = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.White);
-                int coloreEffettivo = ContextCompat.getColor(itemHolder.itemView.getContext(), coloreLinea);
+                int coloreEffettivo = ContextCompat.getColor(context, coloreLinea);
+                int coloreTestoEffettivo = ContextCompat.getColor(context, R.color.White);
+
                 chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
                 chip.setTextColor(coloreTestoEffettivo);
 
