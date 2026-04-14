@@ -163,30 +163,37 @@ public class LinesActivity extends AppCompatActivity {
                 //*SUBURBAN LINES
                 titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
                 containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+                setUpMargin(titleSub, hasSub);
 
                 //*MXP LINES
                 titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
                 containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+                setUpMargin(titleMXP, hasMXP);
 
                 //*TRANSFRONTALIERE LINES
                 titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
                 containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+                setUpMargin(titleTrans, hasTrans);
 
                 //*TRAM LINES
                 titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
                 containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                setUpMargin(titleTram, hasTram);
 
                 //*MOVIBUS LINES
                 titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
                 containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+                setUpMargin(titleMovibus, hasMovibus);
 
                 //*STAV LINES
                 titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
                 containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                setUpMargin(titleStav, hasStav);
 
                 //*AUTOGUIDOVIE LINES
                 titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                 containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                setUpMargin(titleAutoGuidoVie, hasAuto);
 
                 if (tvNoResults != null){
                     tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
@@ -358,5 +365,16 @@ public class LinesActivity extends AppCompatActivity {
             }
         }
         return trovatoAtLeastOne;
+    }
+
+    private void setUpMargin(LinearLayout layout, boolean isActive) {
+        /// In this method, we adjust the Layout Margins when searching for a transport category.
+        /// @PARAMETERS
+        /// LinearLayout layout is the Header of the transport category.
+        /// boolean isActive is the bool variable that define if a Header is enable (the user is searching for that) or not.
+
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) layout.getLayoutParams();
+
+        lp.topMargin = !isActive ? (int)(20 * getResources().getDisplayMetrics().density) : 0;
     }
 }
