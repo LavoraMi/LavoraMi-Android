@@ -204,7 +204,7 @@
     <string name="nextPages">Avanti</string>
     <string name="strikeBannerTitle">Sciopero proclamato il %s.</string>
     <string name="strikeBannerGuaranteed">Le fasce di garanzia %s</string>
-    <string name="noWorksFoundInput">Nessun lavoro trovato per: \\\"%s\\\".</string>
+    <string name="noWorksFoundInput">Nessun lavoro trovato per: \"%s\".</string>
     <string name="italianSettings">" Italiano"</string>
     <string name="englishLanguage">" Inglese"</string>
     <string name="languageDeps">Lingua</string>
@@ -306,4 +306,5 @@
     <string name="accessibilityPart1">Tutti i mezzi impiegati su questa linea sono dotati di pedane (manuali o elettriche) e posto riservato. Inoltre, la quasi totalità delle fermate (oltre il 90%) dispone di banchine rialzate che permettono l\'incarrozzamento in autonomia o con assistenza minima.</string>
     <string name="accessibilityPart2">La linea presenta delle limitazioni. Sebbene i bus siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l\'accessibilità è garantita solo su alcune corse specifiche.</string>
     <string name="accessibilityPart3">Questa linea non garantisce i requisiti minimi di accessibilità. I mezzi potrebbero presentare gradini all\'ingresso del mezzo oppure le infrastrutture stradali del percorso rendono impossibile la discesa della pedana in sicurezza.</string>
+    <string name="noLinesFound">Nessun risultato per: \"%s\"</string>
 </resources>

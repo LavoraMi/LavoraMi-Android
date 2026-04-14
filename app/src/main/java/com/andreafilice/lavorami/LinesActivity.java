@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -197,7 +198,7 @@ public class LinesActivity extends AppCompatActivity {
 
                 if (tvNoResults != null){
                     tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
-                    tvNoResults.setText(String.format("Nessun risultato per: \"%s\".", query));
+                    tvNoResults.setText(String.format(ActivityUtils.getLocalizedString(LinesActivity.this, R.string.noLinesFound), s));
                 }
                 if (s.length() > 0)
                     searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);
@@ -332,7 +333,6 @@ public class LinesActivity extends AppCompatActivity {
                 badge.getBackground().mutate().setTint(colore);
             else
                 badge.setBackgroundColor(R.color.White);
-
 
             row.setOnClickListener(v -> {
                 Intent intent = new Intent(this, LinesDetailActivity.class);
