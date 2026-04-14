@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -56,10 +57,11 @@ public class HowAppWorks extends AppCompatActivity {
         });
 
         //*MAP THEME
-        /// In this section of the code, we setup the map image based from the Value of Theme Saved
-        boolean isNightMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
-        ImageView mapImage = findViewById(R.id.imgLineOnMap);
+        /// In this section of the code, we set up the map image based from the Value of Theme Saved
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        boolean isNightMode = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
 
-        mapImage.setImageResource((isNightMode) ? R.drawable.ic_line_on_map : R.drawable.ic_line_on_map_light);
+        ImageView mapImage = findViewById(R.id.imgLineOnMap);
+        mapImage.setImageResource(isNightMode ? R.drawable.ic_line_on_map : R.drawable.ic_line_on_map_light);
     }
 }
