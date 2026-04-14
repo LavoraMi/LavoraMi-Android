@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami;
 
+import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
+
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -10,7 +12,9 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,6 +28,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.ImageViewCompat;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -38,6 +43,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
@@ -588,6 +594,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 foundAtLeastOne = true;
 
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
+                String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+                String langCode = savedLang.contains("English") ? "en" : "it";
 
                 ImageView icona = card.findViewById(R.id.iconEvent);
                 if (icona != null) {
@@ -604,6 +612,52 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
                 TextView companyTxt = card.findViewById(R.id.txtOperator);
                 TextView roadsTxt = card.findViewById(R.id.txtRoute);
+
+                //*TRANSLATE BUTTON
+                Button btnTranslate = card.findViewById(R.id.btnTranslate);
+                btnTranslate.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
+
+                btnTranslate.setOnClickListener(v -> {
+                    //*VARIABLES
+                    /// In this section of the code, we initialize some components that we will user later in the code.
+                    BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+                    View sheetView = LayoutInflater.from(this).inflate(R.layout.item_sheet_translated, null);
+                    ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
+                    LinearLayout layoutDefault = sheetView.findViewById(R.id.layoutDefault);
+                    LinearLayout layoutTerms = sheetView.findViewById(R.id.layoutPrivacy);
+                    Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
+                    Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
+                    TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
+                    boolean isAcceptingTerms = DataManager.getBoolData(this, DataKeys.KEY_DOWNLOAD_POLICIES, false);
+
+                    loadingLayout.startShimmer();
+                    bottomSheetDialog.setContentView(sheetView);
+
+                    bottomSheetDialog.show();
+
+                    if(isAcceptingTerms) {
+                        layoutTerms.setVisibility(View.GONE);
+                        layoutDefault.setVisibility(View.VISIBLE);
+                        downloadingText.setVisibility(View.GONE);
+
+                        translateStrings(sheetView, evento, loadingLayout);
+                    }
+                    else {
+                        layoutDefault.setVisibility(View.GONE);
+                        layoutTerms.setVisibility(View.VISIBLE);
+
+                        acceptTerms.setOnClickListener(view -> {
+                            layoutDefault.setVisibility(View.VISIBLE);
+                            layoutTerms.setVisibility(View.GONE);
+                            downloadingText.setVisibility(View.VISIBLE);
+                            DataManager.saveBoolData(this, DataKeys.KEY_DOWNLOAD_POLICIES, true);
+
+                            translateStrings(sheetView, evento, loadingLayout);
+                        });
+
+                        cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});
+                    }
+                });
 
                 int color = ContextCompat.getColor(this, R.color.text_primary);
                 ImageViewCompat.setImageTintList(card.findViewById(R.id.iconEvent), ColorStateList.valueOf(color));
