@@ -105,7 +105,7 @@
     <string name="currentWorksTitle">attuali</string>
     <string name="scheduledWorksTitle">programmati</string>
     <string name="fallbackNoWorks">0 attuali, 0 programmati.</string>
-    <string name="tilo">Transfrontaliera</string>
+    <string name="tilo">TILO</string>
     <string name="suburban">Suburbano</string>
     <string name="avvisoSciopero">AVVISO SCIOPERO</string>
     <string name="dateSciopero">Sciopero proclamato il:</string>

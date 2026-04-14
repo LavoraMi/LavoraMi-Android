@@ -305,7 +305,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Suburbano " + nomeLinea);
         if(nomeLinea.matches("^[1-9][0-9]?$"))
             detTitolo.setText("Tram "+nomeLinea);
-        if(nomeLinea.equals("S10") || nomeLinea.equals("S30")||nomeLinea.equals("S40")||nomeLinea.equals("RE80"))
+        if(nomeLinea.equals("S10") || nomeLinea.equals("S30") || nomeLinea.equals("S40") || nomeLinea.equals("S50") || nomeLinea.equals("RE80"))
             detTitolo.setText("TILO "+ nomeLinea);
         if(nomeLinea.startsWith("MXP"))
             detTitolo.setText("Malpensa Express");
