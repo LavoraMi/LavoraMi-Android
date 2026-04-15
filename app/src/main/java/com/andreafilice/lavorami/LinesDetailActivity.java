@@ -1003,10 +1003,21 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 if(response.isSuccessful()){
                     strikeCDNResponse = response.body();
                     String[] lineeDeviate = strikeCDNResponse.getLinesDeviation();
+                    String[] linkLinee = strikeCDNResponse.getLinesDeviationLinks();
+                    int i = 0;
 
-                    for(String linea : lineeDeviate){
-                        if(linea.equalsIgnoreCase(nomeLinea))
+                    ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
+
+                    for(String linea : lineeDeviate) {
+                        if(linea.equalsIgnoreCase(nomeLinea)){
+                            String lineLink = linkLinee[i];
+                            
                             findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
+                            mapDeviationBtn.setVisibility((lineLink.equalsIgnoreCase("null")) ? View.GONE : View.VISIBLE);
+                            mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURL(LinesDetailActivity.this, lineLink));
+                        }
+
+                        i++;
                     }
                 }
             }
