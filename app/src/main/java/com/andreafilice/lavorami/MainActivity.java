@@ -474,6 +474,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+        editSearch.clearFocus();
+        editSearch.setText("");
         downloadJSONData(defaultCategory, false);
     }
 
