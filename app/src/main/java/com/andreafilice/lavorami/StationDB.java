@@ -701,6 +701,29 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram7() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("P.Le Lagosta", 45.48975, 9.19152, "Main", "7"));
+        stations.add(new MetroStation("Zara M3 M5", 45.49231, 9.19296, "Main", "7"));
+        stations.add(new MetroStation("Marche M5", 45.49617, 9.19514, "Main", "7"));
+        stations.add(new MetroStation("V.Le Zara Via Laurana", 45.49907, 9.19678, "Main", "7"));
+        stations.add(new MetroStation("Istria M5", 45.50183, 9.19836, "Main", "7"));
+        stations.add(new MetroStation("V.Le Testi Via Dolcebuono", 45.5039, 9.19949, "Main", "7"));
+        stations.add(new MetroStation("Ca' Granda M5", 45.50687, 9.20119, "Main", "7"));
+        stations.add(new MetroStation("V.Le Testi Via Pianell", 45.50814, 9.20191, "Main", "7"));
+        stations.add(new MetroStation("V.Le Testi Via S. Marcellina", 45.51167, 9.20394, "Main", "7"));
+        stations.add(new MetroStation("Via Pulci V.le Sarca", 45.51431, 9.20744, "Main", "7"));
+        stations.add(new MetroStation("Università Bicocca Scienza", 45.51372, 9.21127, "Main", "7"));
+        stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Main", "7"));
+        stations.add(new MetroStation("Arcimboldi Ateneo Nuovo", 45.51598, 9.21386, "Main", "7"));
+        stations.add(new MetroStation("L.Go Mattei", 45.51395, 9.22123, "Main", "7"));
+        stations.add(new MetroStation("Precotto M1", 45.51364, 9.22439, "Main", "7"));
+        stations.add(new MetroStation("Tremelloni", 45.51395, 9.2276, "Main", "7"));
+        stations.add(new MetroStation("Via Tremelloni Via Anassagora", 45.51429, 9.23108, "Main", "7"));
+        stations.add(new MetroStation("Precotto Interno Deposito", 45.51786, 9.2329, "Main", "7"));
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram24() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Vigentino", 45.42196, 9.20354, "Main", "24"));
@@ -1004,6 +1027,7 @@ public class StationDB {
         allStations.addAll(getStationsMXP2());
         allStations.addAll(getStationsTram1());
         allStations.addAll(getStationsTram3());
+        allStations.addAll(getStationsTram7());
         allStations.addAll(getStationsTram24());
         return allStations;
     }

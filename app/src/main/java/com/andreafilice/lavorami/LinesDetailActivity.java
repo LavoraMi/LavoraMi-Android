@@ -87,7 +87,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
-        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "24"));
+        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "7", "24"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -1011,7 +1011,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     for(String linea : lineeDeviate) {
                         if(linea.equalsIgnoreCase(nomeLinea)){
                             String lineLink = linkLinee[i];
-                            
+
                             findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
                             mapDeviationBtn.setVisibility((lineLink.equalsIgnoreCase("null")) ? View.GONE : View.VISIBLE);
                             mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURL(LinesDetailActivity.this, lineLink));
