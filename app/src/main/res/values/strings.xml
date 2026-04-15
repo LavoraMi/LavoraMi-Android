@@ -132,7 +132,7 @@
     <string name="sistemaTheme">Sistema</string>
     <string name="darkTheme">Scuro</string>
     <string name="lightTheme">Chiaro</string>
-    <string name="themeDisclaimer">L\'applicazione delle modifiche può richiede alcuni secondi.</string>
+    <string name="themeDisclaimer">L\'applicazione delle modifiche può richiedere alcuni secondi.</string>
     <string name="skipButton">Salta</string>
     <string name="notificationTitle">Notifiche</string>
     <string name="deniedPermissionError">Permesso Negato</string>
@@ -154,7 +154,7 @@
     <string name="requestDataTitle">Richiedi i tuoi Dati</string>
     <string name="requestDataDeps">Invia una richiesta al nostro Team per scaricare i tuoi dati.</string>
     <string name="fileFormatTitle">Formato del File:</string>
-    <string name="fileFormatDeps">Seleziona il formato in cui i tuoi dati verrano esportati.</string>
+    <string name="fileFormatDeps">Seleziona il formato in cui i tuoi dati verranno esportati.</string>
     <string name="requestDataBtn">Richiedi Dati</string>
     <string name="requestDataIntentSubject">Richiesta dei miei dati</string>
     <string name="requestDataIntentPart1">"Buongiorno, Vorrei richiedere l'invio dei miei dati in formato "</string>
@@ -223,11 +223,11 @@
     <string name="progressBar">Barra di progresso</string>
     <string name="progressBarText">Vedi visivamente a che punto sono i lavori e quando è prevista la fine del disagio (basato su data di inizio e fine lavori PREVISTI).</string>
     <string name="updateYourself">Aggiornato, Sempre.</string>
-    <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no.</string>
+    <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita e anche quando sarà un Venerdì no.</string>
     <string name="choseLine">Scegli la tua linea</string>
     <string name="exampleDate1">15 Dic 2026</string>
     <string name="setupTitleTranslate">Traduci i lavori, nella lingua che vuoi tu.</string>
-    <string name="setupDepsTranslate">Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\"</string>
+    <string name="setupDepsTranslate">Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\".</string>
     <string name="setupMiniDepsTranslate">Funzionalità disponibile solo con la lingua Inglese selezionata. Vai in Impostazioni > Aspetto e Lingua per selezionarla.</string>
     <string name="rateUsTitle">Valuta LavoraMi</string>
     <string name="translateTitle">Traduzione (it-en):</string>
@@ -257,9 +257,9 @@
     <string name="startWorkTomorrowVar3">Domani iniziano i lavori a %s per la linea %s. Consulta il sito di %s per maggiori info.</string>
     <string name="startWorkTomorrowVar4">Domani iniziano i lavori a %s per le linee %s. Consulta il sito di %s per maggiori info.</string>
     <string name="strikeNotificationTitle">\uD83D\uDEAB Oggi Sciopero!</string>
-    <string name="strikeNotificationDeps">Oggi è previsto uno sciopero di %s, le fascie garantite %s</string>
+    <string name="strikeNotificationDeps">Oggi è previsto uno sciopero di %s, le fasce garantite %s</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F Sciopero domani!</string>
-    <string name="strikeTomorrowNotificationDeps">Domani c\'è sciopero per %s, le fascie garantite %s</string>
+    <string name="strikeTomorrowNotificationDeps">Domani c\'è sciopero per %s, le fasce garantite %s</string>
     <string name="cacheMemoryToast">Cache pulite correttamente!</string>
     <string name="googleSignInFailedToast">Sign-in con Google fallito.</string>
     <string name="unknownErrorToast">Si è verificato un errore imprevisto, riprova.</string>
@@ -273,8 +273,8 @@
     <string name="loginErrorToast">Errore Login:</string>
     <string name="registrationErrorToast">Si è verificato un errore durante la registrazione. Riprova.</string>
     <string name="signOutSuccesfulToast">Account disconnesso!</string>
-    <string name="signOutFailedToast">Errore durante la disconnesione</string>
-    <string name="errorUserNotFoundToast">Errore: utente non trovato o troppe richieste.Errore: utente non trovato o troppe richieste.</string>
+    <string name="signOutFailedToast">Errore durante la disconnessione</string>
+    <string name="errorUserNotFoundToast">Errore: utente non trovato o troppe richieste.</string>
     <string name="mailErrorToast">Errore durante l\'invio della Mail, riprova.</string>
     <string name="deleteAccountSuccesfullToast">Account eliminato correttamente!</string>
     <string name="maintenanceToast">LavoraMi è ancora in manutenzione.</string>
@@ -291,7 +291,7 @@
     <string name="rallentamento">Rallentamento</string>
     <string name="disclaimerAppFunctions">Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati.</string>
     <string name="viewLinesOnMap">Visualizza le linee sulla Mappa</string>
-    <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che prefersci sulla mappa, per non predersi e per sapere sempre dove vai.</string>
+    <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che preferisci sulla mappa, per non perdersi e per sapere sempre dove vai.</string>
     <string name="lineaAttesta">"ATTUALMENTE LA LINEA ATTESTA A: "</string>
     <string name="accessibilityTitle">ACCESSIBILITÀ LINEA:</string>
     <string name="fullyAccessible">Completamente accessibile.</string>
