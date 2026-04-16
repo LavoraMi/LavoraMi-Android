@@ -222,7 +222,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
-        int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.GRAY) : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
+        int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.text_primary) : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
         ColorStateList chipColor = new ColorStateList(
             new int[][]{
@@ -240,16 +240,16 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         //*CHIP TEXT COLOR
         /// In this section of the code we setup the Chip Text color when selected and when is not selected.
-        int bianco = ContextCompat.getColor(this, R.color.White);
+        int bianco = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.BlackS12) : ContextCompat.getColor(this, R.color.text_primary);
         int testoDefault = ContextCompat.getColor(this, R.color.text_primary);
         ColorStateList chipTextColor = new ColorStateList(
             new int[][]{
-                    new int[]{ android.R.attr.state_checked },
-                    new int[]{ -android.R.attr.state_checked }
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
             },
             new int[]{
-                    bianco,
-                    testoDefault
+                bianco,
+                testoDefault
             }
         );
         chipMappa.setTextColor(chipTextColor);
