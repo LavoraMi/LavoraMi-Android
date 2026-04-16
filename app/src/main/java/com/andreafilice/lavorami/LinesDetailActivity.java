@@ -1009,14 +1009,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
 
                     for(String linea : lineeDeviate) {
-                        if(linea.equalsIgnoreCase(nomeLinea)){
+                        if(linea.equals(nomeLinea)){
                             String lineLink = linkLinee[i];
 
                             findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
                             mapDeviationBtn.setVisibility((lineLink.equalsIgnoreCase("null")) ? View.GONE : View.VISIBLE);
                             mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURL(LinesDetailActivity.this, lineLink));
                         }
-
                         i++;
                     }
                 }
