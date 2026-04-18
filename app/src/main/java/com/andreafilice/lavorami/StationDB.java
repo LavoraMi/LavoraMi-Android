@@ -149,7 +149,7 @@ public class StationDB {
         stations.add(new MetroStation("Bignami", 45.52653, 9.21227, "Main", "M5"));
         stations.add(new MetroStation("Ponale", 45.52186, 9.20939, "Main", "M5"));
         stations.add(new MetroStation("Bicocca", 45.51429, 9.20549, "Main", "M5"));
-        stations.add(new MetroStation("Ca'Granda", 45.50733, 9.20121, "Main", "M5"));
+        stations.add(new MetroStation("Ca' Granda", 45.50733, 9.20121, "Main", "M5"));
         stations.add(new MetroStation("Istria", 45.50163, 9.19792, "Main", "M5"));
         stations.add(new MetroStation("Marche", 45.49639, 9.19499, "Main", "M5"));
         stations.add(new MetroStation("Zara", 45.49225, 9.19246, "Main", "M5"));
@@ -704,10 +704,10 @@ public class StationDB {
     public static List<MetroStation> getStationsTram5() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Niguarda Ospedale", 45.50855, 9.18961, "Main", "5"));
-        stations.add(new MetroStation("V.Le Ca'Granda Via Cherasco", 45.50839, 9.19179, "Main", "5"));
-        stations.add(new MetroStation("V.Le Ca'Granda Via Val Furva", 45.50768, 9.19473, "Main", "5"));
-        stations.add(new MetroStation("V.Le Ca'Granda V.Le Suzzani", 45.50695, 9.1978, "Main", "5"));
-        stations.add(new MetroStation("V.Le Testi V.Le Ca'Granda", 45.50643, 9.19989, "Main", "5"));
+        stations.add(new MetroStation("V.Le Ca' Granda Via Cherasco", 45.50839, 9.19179, "Main", "5"));
+        stations.add(new MetroStation("V.Le Ca' Granda Via Val Furva", 45.50768, 9.19473, "Main", "5"));
+        stations.add(new MetroStation("V.Le Ca' Granda V.Le Suzzani", 45.50695, 9.1978, "Main", "5"));
+        stations.add(new MetroStation("Ca' Granda M5", 45.50643, 9.19989, "Main", "5"));
         stations.add(new MetroStation("V.Le Testi Via Dolcebuono", 45.50384, 9.19893, "Main", "5"));
         stations.add(new MetroStation("Istria M5", 45.50161, 9.19763, "Main", "5"));
         stations.add(new MetroStation("V.Le Zara Via Laurana", 45.49944, 9.19637, "Main", "5"));
@@ -962,7 +962,7 @@ public class StationDB {
                 new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"M2", "3", "15"}, "tram.fill.tunnel"),
                 new InterchangeInfo("P.Le Cantore", new String[]{"2", "3", "9", "10", "14"}, "tram.fill"),
                 new InterchangeInfo("Maciachini M3", new String[]{"M3", "4"}, "tram.fill.tunnel"),
-                new InterchangeInfo("Ca'Granda M5", new String[]{"M5", "4", "5", "7", "31"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Ca' Granda M5", new String[]{"M5", "4", "5", "7", "31"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Bicocca M5", new String[]{"M5", "4", "7", "31"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Ponale M5", new String[]{"M5", "4", "7", "31"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Bignami M5", new String[]{"M5", "4", "7", "31"}, "tram.fill.tunnel"),
@@ -973,6 +973,9 @@ public class StationDB {
                 new InterchangeInfo("Precotto M1", new String[]{"M1", "7"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Porta Romana M3", new String[]{"M3", "9"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Porta Venezia M1", new String[]{"M1", "9", "S1", "S2", "S5", "S6", "S12", "S13"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Porta Venezia V.Le Tunisia", new String[]{"M1", "5", "33"}, "tram.fill.tunnel"),
+                new InterchangeInfo("P.Za Otto Novembre", new String[]{"5", "33", "S1", "S2", "S5", "S6", "S12", "S13"}, "lightrail"),
+                new InterchangeInfo("Piazza Ascoli", new String[]{"5", "19", "33"}, "lightrail"),
                 new InterchangeInfo("Garibaldi FS", new String[]{"M2", "M5", "9", "33", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13"}, "lightrail"),
                 new InterchangeInfo("Monumentale M5", new String[]{"M5", "10"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Coni Zugna M4", new String[]{"M4", "10"}, "tram.fill.tunnel"),
