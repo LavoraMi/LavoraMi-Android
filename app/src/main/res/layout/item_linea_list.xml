@@ -62,7 +62,7 @@
             android:layout_height="15dp"
             android:alpha="0.3"
             android:src="@drawable/ic_chevron"
-            app:tint="?android:attr/textColorPrimary"/>
+            app:tint="@color/text_primary"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -389,6 +389,8 @@ public class MainActivity extends AppCompatActivity {
         //* LISTENER PER I FILTRI (CHIP)
         if (filterGroup != null) {
             filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
+                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
                 if (checkedId == View.NO_ID)
                     filterGroup.check(R.id.chipAll);
                 else {
@@ -400,6 +402,8 @@ public class MainActivity extends AppCompatActivity {
                         applicaFiltroCategoria(categoria);
                     }
                 }
+
+                recyclerView.scrollToPosition(0);
             });
         }
 
