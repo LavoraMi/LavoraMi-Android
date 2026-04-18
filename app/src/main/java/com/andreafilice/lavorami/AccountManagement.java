@@ -273,7 +273,7 @@ public class AccountManagement extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        screenUnlocked = !DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+        if(!screenUnlocked) showBiometricPrompt();
         updateUI();
     }
 
