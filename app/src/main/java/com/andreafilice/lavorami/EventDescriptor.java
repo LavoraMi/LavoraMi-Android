@@ -60,6 +60,8 @@ public class EventDescriptor {
                 return R.drawable.ic_map_slash;
             case "point.bottomleft.forward.to.arrow.triangle.uturn.scurvepath":
                 return R.drawable.ic_variazione_corse;
+            case "bolt.horizontal.fill":
+                return R.drawable.ic_bolt_horizontal;
             default:
                 return R.drawable.empty_image;
         }
