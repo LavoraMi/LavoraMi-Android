@@ -289,14 +289,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "See https://developers.google.com/maps/terms for details."
                 ),
                 new LibraryModel(
-                        "Google Play In-App Reviews",
-                        "2.0.2",
-                        "Google APIs Terms of Service",
-                        "Copyright Google LLC",
-                        "Use of the Google Play Services Maps SDK is subject to the Google APIs Terms of Service.\n" +
-                                "See https://developers.google.com/maps/terms for details."
-                ),
-                new LibraryModel(
                         "Google Play Services Auth",
                         "21.5.1",
                         "Google APIs Terms of Service",
