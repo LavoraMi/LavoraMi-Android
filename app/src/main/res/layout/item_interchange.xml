@@ -27,7 +27,7 @@
             app:tint="@color/text_primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_arrow_left_right" />
+            android:src="@drawable/ic_transfer" />
 
         <TextView
             android:id="@+id/txtTitle"
