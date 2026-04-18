@@ -240,7 +240,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         //*CHIP TEXT COLOR
         /// In this section of the code we setup the Chip Text color when selected and when is not selected.
-        int bianco = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.BlackS12) : ContextCompat.getColor(this, R.color.text_primary);
+        int bianco = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.BlackS12) : ContextCompat.getColor(this, R.color.White);
         int testoDefault = ContextCompat.getColor(this, R.color.text_primary);
         ColorStateList chipTextColor = new ColorStateList(
             new int[][]{
@@ -782,13 +782,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
 
                 if(txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
-                if (titolo != null) {
-                    //! IMPROVE THIS LOGIC
-                    if(!evento.getKey().equals("Lodi TIBB"))
-                        titolo.setText(evento.getKey());
-                    else
-                        titolo.setText("Milano Scalo Romana");
-                }
+                if (titolo != null)
+                    titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
                 if (desc != null) desc.setText(nomeLinea);
 
                 int color = ContextCompat.getColor(this, R.color.text_primary);

@@ -20,3 +20,4 @@ app/google-services.json
 
 *.env
 *env
+.idea/deploymentTargetSelector.xml
