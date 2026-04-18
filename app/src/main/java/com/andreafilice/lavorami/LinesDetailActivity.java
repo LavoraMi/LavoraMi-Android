@@ -973,7 +973,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80"))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
-            tvAttesa.setText(ContextCompat.getString(this, R.string.averageWaitingTimeTitle) + "5-20 min.");
+            tvAttesa.setText("5-20 min.");
         else
             tvAttesa.setText("Frequenza variabile");
 
