@@ -87,7 +87,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
-        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "7", "24"));
+        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "5", "7", "24"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -360,15 +360,23 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
             LatLngBounds bounds = builder.build();
 
-            int padding = (tipoDiLinea.contains("Tram") ? 0 : 120);
+            int padding = (tipoDiLinea.contains("Tram") ? 100 : 120);
             mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding),
                     new GoogleMap.CancelableCallback() {
                         @Override
                         public void onFinish() {
                             if (tipoDiLinea.contains("Tram")) {
-                                LatLng center = bounds.getCenter();
+                                double latMedia = 0, lngMedia = 0;
+                                for (MetroStation s : tutteLeStazioni) {
+                                    latMedia += s.getLatitude();
+                                    lngMedia += s.getLongitude();
+                                }
+                                latMedia /= tutteLeStazioni.size();
+                                lngMedia /= tutteLeStazioni.size();
+
                                 float currentZoom = mMap.getCameraPosition().zoom;
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(center, currentZoom + 1.5f));
+                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(latMedia, lngMedia), currentZoom + 1.5f));
                             }
                         }
                         @Override
