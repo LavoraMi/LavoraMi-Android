@@ -80,7 +80,7 @@
     <string name="movibusFilter">by Movibus</string>
     <string name="stavFilter">by STAV</string>
     <string name="autoguidovieFilter">by Autoguidovie</string>
-    <string name="acknowledgmentsTitle">Acknowledgments</string>
+    <string name="acknowledgmentsTitle">Open-Source Libraries</string>
     <string name="linesSearchBar">Search by type or number...</string>
     <string name="metroLinesTitle">Metro Lines</string>
     <string name="suburbanLinesTitle">Suburban Lines</string>
@@ -127,7 +127,7 @@
     <string name="contacts">Contacts:</string>
     <string name="bugReport">Report a bug</string>
     <string name="webSite">Web Site</string>
-    <string name="credits">Credits</string>
+    <string name="credits">Open-Source Libraries</string>
     <string name="terminiDiServizio">Terms of Service</string>
     <string name="appearance">Appearance and Language</string>
     <string name="sistemaTheme">System</string>

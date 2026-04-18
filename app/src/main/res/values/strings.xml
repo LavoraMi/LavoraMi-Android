@@ -79,7 +79,7 @@
     <string name="movibusFilter">di Movibus</string>
     <string name="stavFilter">di STAV</string>
     <string name="autoguidovieFilter">di Autoguidovie</string>
-    <string name="acknowledgmentsTitle">Riconoscimenti</string>
+    <string name="acknowledgmentsTitle">Librerie Open-Source</string>
     <string name="linesSearchBar">Cerca per tipo o numero...</string>
     <string name="metroLinesTitle">Linee Metropolitane</string>
     <string name="suburbanLinesTitle">Linee Suburbane</string>
@@ -126,7 +126,7 @@
     <string name="contacts">Contatti:</string>
     <string name="bugReport">Segnala un bug</string>
     <string name="webSite">Sito Web</string>
-    <string name="credits">Riconoscimenti</string>
+    <string name="credits">Librerie Open-Source</string>
     <string name="terminiDiServizio">Termini di servizio</string>
     <string name="appearance">Aspetto e Lingua</string>
     <string name="sistemaTheme">Sistema</string>
