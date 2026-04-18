@@ -399,31 +399,38 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private void disegnaPolilinea(List<MetroStation> stazioni, int colore) {
         if (stazioni.size() < 2) return;
 
-        List<PatternItem> pattern = Arrays.asList(
-                new Dash(20f),
-                new Gap(20f)
-        );
+        List<PatternItem> pattern = Arrays.asList(new Dash(20f), new Gap(20f));
 
-        PolylineOptions polylineOptions = null;
-        if(stazioni.getLast().getBranch().equalsIgnoreCase("Bisceglie - New")){
-            polylineOptions = new PolylineOptions()
-                    .width(10)
-                    .color(colore)
-                    .geodesic(true)
-                    .zIndex(1000f)
-                    .pattern(pattern);
-        }
-        else {
-            polylineOptions = new PolylineOptions()
-                    .width(10)
-                    .color(colore)
-                    .geodesic(true)
-                    .zIndex(1000f);
+        List<MetroStation> troncoPrincipale = new ArrayList<>();
+        List<MetroStation> troncoNew = new ArrayList<>();
+        boolean inNewSection = false;
+
+        for (MetroStation s : stazioni) {
+            if (s.getBranch().contains("New")) {
+                if (!inNewSection && !troncoPrincipale.isEmpty())
+                    troncoNew.add(troncoPrincipale.get(troncoPrincipale.size() - 1));
+                inNewSection = true;
+                troncoNew.add(s);
+            } else {
+                troncoPrincipale.add(s);
+            }
         }
 
-        for (MetroStation s : stazioni) {polylineOptions.add(new LatLng(s.getLatitude(), s.getLongitude()));}
+        if (!troncoPrincipale.isEmpty()) {
+            PolylineOptions opts = new PolylineOptions()
+                    .width(10).color(colore).geodesic(true).zIndex(1000f);
+            for (MetroStation s : troncoPrincipale)
+                opts.add(new LatLng(s.getLatitude(), s.getLongitude()));
+            mMap.addPolyline(opts);
+        }
 
-        mMap.addPolyline(polylineOptions);
+        if (!troncoNew.isEmpty()) {
+            PolylineOptions opts = new PolylineOptions()
+                    .width(10).color(colore).geodesic(true).zIndex(1000f).pattern(pattern);
+            for (MetroStation s : troncoNew)
+                opts.add(new LatLng(s.getLatitude(), s.getLongitude()));
+            mMap.addPolyline(opts);
+        }
     }
 
     private void disegnaM1(List<MetroStation> stazioni, int colore) {

@@ -726,24 +726,25 @@ public class StationDB {
 
     public static List<MetroStation> getStationsTram24() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Vigentino", 45.42196, 9.20354, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Chopin", 45.42577, 9.20336, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Val Di Sole", 45.42863, 9.20246, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Noto", 45.43143, 9.20178, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Dell'Assunta", 45.43338, 9.20105, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Quaranta", 45.43555, 9.20065, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Rutilia", 45.43976, 9.19983, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Lorenzini", 45.44309, 9.19892, "Main", "24"));
-        stations.add(new MetroStation("V.Le Isonzo Via Ripamonti", 45.44677, 9.19801, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti Via Bellezza", 45.44833, 9.1976, "Main", "24"));
-        stations.add(new MetroStation("Via Ripamonti V.Le Sabotino", 45.45076, 9.19695, "Main", "24"));
-        stations.add(new MetroStation("C.So Porta Vigentina", 45.45364, 9.19607, "Main", "24"));
-        stations.add(new MetroStation("Crocetta M3", 45.45537, 9.19561, "Main", "24"));
-        stations.add(new MetroStation("Sforza - Policlinico M4", 45.4582, 9.19246, "Main", "24"));
-        stations.add(new MetroStation("Missori M3", 45.4604, 9.18866, "Main", "24"));
-        stations.add(new MetroStation("Piazza Missori", 45.46092, 9.18993, "Main", "24"));
-        stations.add(new MetroStation("Via Larga", 45.46237, 9.19372, "Main", "24"));
         stations.add(new MetroStation("Piazza Fontana", 45.46337, 9.19405, "Main", "24"));
+        stations.add(new MetroStation("Via Larga", 45.46237, 9.19372, "Main", "24"));
+        stations.add(new MetroStation("Piazza Missori", 45.46092, 9.18993, "Main", "24"));
+        stations.add(new MetroStation("Missori M3", 45.4604, 9.18866, "Main", "24"));
+        stations.add(new MetroStation("Sforza - Policlinico M4", 45.4582, 9.19246, "Main", "24"));
+        stations.add(new MetroStation("Crocetta M3", 45.45537, 9.19561, "Main", "24"));
+        stations.add(new MetroStation("C.So Porta Vigentina", 45.45364, 9.19607, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti V.Le Sabotino", 45.45076, 9.19695, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Bellezza", 45.44833, 9.1976, "Main", "24"));
+        stations.add(new MetroStation("V.Le Isonzo Via Ripamonti", 45.44677, 9.19801, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Lorenzini", 45.44309, 9.19892, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Rutilia", 45.43976, 9.19983, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Quaranta", 45.43555, 9.20065, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Dell'Assunta", 45.43338, 9.20105, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Noto", 45.43143, 9.20178, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Val Di Sole", 45.42863, 9.20246, "Main", "24"));
+        stations.add(new MetroStation("Via Ripamonti Via Chopin", 45.42577, 9.20336, "Main", "24"));
+        stations.add(new MetroStation("Vigentino", 45.42196, 9.20354, "Main", "24"));
+        stations.add(new MetroStation("IEO", 45.41376, 9.20629, "Main - New", "24"));
         return stations;
     }
 
