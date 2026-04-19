@@ -19,8 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
-
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.ImageViewCompat;
@@ -250,7 +248,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }).addOnFailureListener(e -> {
                         loadingLayout.setVisibility(View.GONE);
                         translatedTxt.setVisibility(View.VISIBLE);
-                        translatedTxt.setText(getLocalizedString(context, R.string.errorTranslating));
+                        translatedTxt.setText(context.getString(R.string.errorTranslating));
                     });
                 });
 

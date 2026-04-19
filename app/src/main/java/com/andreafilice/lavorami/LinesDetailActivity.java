@@ -217,7 +217,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         /// In this section of the code, we compose the phrase for S12 line limitation.
         TextView attestazioneLinea = findViewById(R.id.attestazioneLinea);
 
-        attestazioneLinea.setText(ActivityUtils.getLocalizedString(this, R.string.lineaAttesta) + "MILANO BOVISA.");
+        attestazioneLinea.setText(getString(R.string.lineaAttesta) + "MILANO BOVISA.");
         attestazioneLinea.setVisibility((nomeLinea.equals("S12")) ? View.VISIBLE : View.GONE);
 
         //*CHIP BACKGROUND COLOR
@@ -266,11 +266,11 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         accessibilityText.setText(rate);
 
-        if(rate.equalsIgnoreCase(ActivityUtils.getLocalizedString(this, R.string.fullyAccessible))) {
+        if(rate.equalsIgnoreCase(getString(R.string.fullyAccessible))) {
             iconAccessibility.setImageResource(R.drawable.ic_checkmark);
             iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.M2));
         }
-        else if(rate.equalsIgnoreCase(ActivityUtils.getLocalizedString(this, R.string.partiallyTitle))) {
+        else if(rate.equalsIgnoreCase(getString(R.string.partiallyTitle))) {
             iconAccessibility.setImageResource(R.drawable.ic_warning);
             iconAccessibility.setImageTintList(ContextCompat.getColorStateList(this, R.color.M3));
         }
@@ -1033,7 +1033,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
             @Override
             public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
-                Toast.makeText(LinesDetailActivity.this, ActivityUtils.getLocalizedString(LinesDetailActivity.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -1223,7 +1223,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE80":
             case "MXP1":
             case "MXP2":
-                return ActivityUtils.getLocalizedString(this, R.string.fullyAccessible);
+                return getString(R.string.fullyAccessible);
             case "S7":
             case "S8":
             case "S9":
@@ -1232,9 +1232,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "10":
             case "19":
             case "33":
-                return ActivityUtils.getLocalizedString(this, R.string.nonAccessible);
+                return getString(R.string.nonAccessible);
             default:
-                return ActivityUtils.getLocalizedString(this, R.string.partiallyTitle);
+                return getString(R.string.partiallyTitle);
         }
     }
 }

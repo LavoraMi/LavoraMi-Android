@@ -43,7 +43,7 @@ public class LibrariesActivity extends AppCompatActivity {
         nestedLinesView = findViewById(R.id.nestedLinesView);
 
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> ActivityUtils.changeActivity(this, SourcesDevelopment.class));
+        backBtn.setOnClickListener(v -> finish());
 
         //*POPULATE THE VIEW
         /// In this section of the code, we populate the View with the 'buildLibraries' method
@@ -51,21 +51,12 @@ public class LibrariesActivity extends AppCompatActivity {
         layoutLoading.setVisibility(View.VISIBLE);
         nestedLinesView.setVisibility(View.GONE);
 
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
+        LibraryModel[] items = buildLibraries();
+        for (LibraryModel item : items) {aggiungiLibreria(item);}
 
-        executor.execute(() -> {
-            LibraryModel[] libraries = buildLibraries();
-
-            handler.post(() -> {
-                for (LibraryModel item : libraries) {
-                    aggiungiLibreria(item);
-                }
-                layoutLoading.stopShimmer();
-                layoutLoading.setVisibility(View.GONE);
-                nestedLinesView.setVisibility(View.VISIBLE);
-            });
-        });
+        layoutLoading.stopShimmer();
+        layoutLoading.setVisibility(View.GONE);
+        nestedLinesView.setVisibility(View.VISIBLE);
     }
 
     private LibraryModel[] buildLibraries() {

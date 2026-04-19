@@ -23,7 +23,6 @@ import androidx.core.view.ViewCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.WindowInsetsCompat;
 
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import java.io.File;
 import java.security.KeyStore;
@@ -101,56 +100,31 @@ public class AdvancedOptions extends AppCompatActivity {
 
         //*LOAD DATAS
         /// Load the value of the Switch from the DataManager.
-        boolean isErrorActive = DataManager.getBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
-        boolean isBannerActive = DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
-        boolean isRequireBiometrics = DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
-        boolean isShowDetails = DataManager.getBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
-        boolean isShowTranslateButton = DataManager.getBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
+        boolean[] switchesStatus = {
+            DataManager.getBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false),
+            DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true),
+            DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true),
+            DataManager.getBoolData(this, DataKeys.KEY_SHOW_DETAILS, true),
+            DataManager.getBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)
+        };
 
-        Switch errorMessagesSwitch = findViewById(R.id.switchErrors);
-        Switch strikeBannersSwitch = findViewById(R.id.switchBanner);
-        Switch biometricsSwitch = findViewById(R.id.switchBiometrics);
-        Switch detailsSwitch = findViewById(R.id.switchDetails);
-        Switch translateButtonSwitch = findViewById(R.id.switchTranslation);
+        Switch[] switches = {
+            findViewById(R.id.switchErrors),
+            findViewById(R.id.switchBanner),
+            findViewById(R.id.switchBiometrics),
+            findViewById(R.id.switchDetails),
+            findViewById(R.id.switchTranslation)
+        };
 
-        errorMessagesSwitch.setChecked(isErrorActive);
-        errorMessagesSwitch.setTrackTintMode((errorMessagesSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+        DataKeys[] switchesKey = {
+            DataKeys.KEY_SHOW_ERROR_MESSAGES,
+            DataKeys.KEY_SHOW_BANNERS,
+            DataKeys.KEY_REQUIRE_BIOMETRICS,
+            DataKeys.KEY_SHOW_DETAILS,
+            DataKeys.KEY_SHOW_TRANSLATE_BUTTON
+        };
 
-        strikeBannersSwitch.setChecked(isBannerActive);
-        strikeBannersSwitch.setTrackTintMode((strikeBannersSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-
-        biometricsSwitch.setChecked(isRequireBiometrics);
-        biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-
-        detailsSwitch.setChecked(isShowDetails);
-        detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-
-        translateButtonSwitch.setChecked(isShowTranslateButton);
-        translateButtonSwitch.setTrackTintMode((translateButtonSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-
-        //*SAVE DATAS
-        /// Save the value from the Switch Checked status to DataManager.
-        errorMessagesSwitch.setOnClickListener(v -> {
-            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, errorMessagesSwitch.isChecked());
-            errorMessagesSwitch.setTrackTintMode((errorMessagesSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        });
-
-        strikeBannersSwitch.setOnClickListener(v -> {
-            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_BANNERS, strikeBannersSwitch.isChecked());
-            strikeBannersSwitch.setTrackTintMode((strikeBannersSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        });
-
-        biometricsSwitch.setOnClickListener(v -> {showBiometricPrompt(biometricsSwitch);});
-
-        detailsSwitch.setOnClickListener(v -> {
-            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, detailsSwitch.isChecked());
-            detailsSwitch.setTrackTintMode((detailsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        });
-
-        translateButtonSwitch.setOnClickListener(v -> {
-            DataManager.saveBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, translateButtonSwitch.isChecked());
-            translateButtonSwitch.setTrackTintMode((translateButtonSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
-        });
+        for (int i = 0; i < switches.length; i++) {setupSwitch(switches[i], switchesStatus[i], switchesKey[i]);}
 
         //*CACHE MEMORY
         /// In this section of the code, we set-up the code to delete the Cache Memory.
@@ -161,7 +135,7 @@ public class AdvancedOptions extends AppCompatActivity {
                     .setMessage(R.string.cacheMemoryPopUpDeps)
                     .setNegativeButton(R.string.cancelPopUp, null)
                     .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
-                        deleteCache(this);
+                        new Thread(() -> {deleteCache(this);}).start();
                     }).show();
         });
 
@@ -173,6 +147,31 @@ public class AdvancedOptions extends AppCompatActivity {
         descButtonTranslate.setVisibility(translateButtonCard.getVisibility());
     }
 
+
+    public void setupSwitch(Switch currentSwitch, boolean isActive, DataKeys dataToSave) {
+        /// This method is a refactor one, we set up the swithes to avoid unusued memoryAllocation and better performance.
+        /// @PARAMETERS
+        /// Switch currentSwitch is the switch to apply the changes
+        /// boolean isActive checks if the Switch is currently active or not.
+        /// DataKeys dataToSave is the key to save the value of the Switch.
+
+        //*INIT VALUES
+        /// Initialize the current status of the Switch from the Data saved.
+        currentSwitch.setChecked(isActive);
+        currentSwitch.setTrackTintMode((currentSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
+        //*SAVE DATAS
+        /// Save the value from the Switch Checked status to DataManager.
+        currentSwitch.setOnClickListener(v -> {
+            if(dataToSave == DataKeys.KEY_REQUIRE_BIOMETRICS)
+                showBiometricPrompt(currentSwitch);
+            else {
+                DataManager.saveBoolData(this, dataToSave, currentSwitch.isChecked());
+                currentSwitch.setTrackTintMode((currentSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            }
+        });
+    }
+
     public static void deleteCache(Context context) {
         /// In this method, we catch from the Context the current CacheDirectory.
         /// @PARAMETERS
@@ -181,7 +180,9 @@ public class AdvancedOptions extends AppCompatActivity {
         try {
             File dir = context.getCacheDir();
             deleteDir(dir);
-            Toast.makeText(context, getLocalizedString(context, R.string.cacheMemoryToast), Toast.LENGTH_SHORT).show();
+
+            if (context instanceof AppCompatActivity)
+                ((AppCompatActivity) context).runOnUiThread(() -> {Toast.makeText(context, context.getString(R.string.cacheMemoryToast), Toast.LENGTH_SHORT).show();});
         }
         catch (Exception e) {e.printStackTrace();}
         DataManager.saveBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, true);
@@ -247,7 +248,7 @@ public class AdvancedOptions extends AppCompatActivity {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(AdvancedOptions.this, getLocalizedString(AdvancedOptions.this, R.string.authFailedToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdvancedOptions.this, AdvancedOptions.this.getString(R.string.authFailedToast), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -255,27 +256,28 @@ public class AdvancedOptions extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 try {
                     Cipher cipher = result.getCryptoObject() != null ? result.getCryptoObject().getCipher() : null;
+
                     if (cipher != null) {
                         byte[] payload = "biometric_toggle".getBytes("UTF-8");
                         byte[] encrypted = cipher.doFinal(payload);
+
                         if (encrypted != null && encrypted.length > 0) {
                             biometricsSwitch.setChecked(false);
                             DataManager.saveBoolData(AdvancedOptions.this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
                             biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
                         }
-                    } else {
-                        Toast.makeText(AdvancedOptions.this, getLocalizedString(AdvancedOptions.this, R.string.verifyBiometricsToast), Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e) {
+                    else
+                        Toast.makeText(AdvancedOptions.this, getString(R.string.verifyBiometricsToast), Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e) {
                     Log.e("AdvancedOptions", "Errore durante l'operazione crittografica biometrica", e);
-                    Toast.makeText(AdvancedOptions.this, getLocalizedString(AdvancedOptions.this, R.string.authFailedToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdvancedOptions.this, getString(R.string.authFailedToast), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onAuthenticationFailed() {
-                super.onAuthenticationFailed();
-            }
+            public void onAuthenticationFailed() {super.onAuthenticationFailed();}
         });
 
         if(biometricsSwitch.isChecked()){

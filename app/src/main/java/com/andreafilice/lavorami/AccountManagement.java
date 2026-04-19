@@ -31,7 +31,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.widget.TextView;
 import android.widget.Toast;
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,16 +84,21 @@ public class AccountManagement extends AppCompatActivity {
                     }
                     catch(ApiException e){
                         Log.e("GOOGLE", "Login fallito. Status Code: " + e.getStatusCode());
-                        Toast.makeText(this, getLocalizedString(this, R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
                     }
                 }
-                else{
+                else {
                     Log.e("GOOGLE", "Finestra chiusa o annullata. Result Code: " + result.getResultCode());
+                    Toast.makeText(this, getString(R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
                     loggingInWithGoogle = false;
                     updateUI();
                 }
             }
     );
+
+    //*MEMORY ALLOCATION
+    /// In this code, we set-up the variables of MetaData to avoid multiple calls to getMetaData function that slows down the execution.
+    String SupabaseANON, SupabaseURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +115,11 @@ public class AccountManagement extends AppCompatActivity {
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //*GET METADATA
+        /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
+        SupabaseANON = getMetaData("supabaseANON");
+        SupabaseURL = getMetaData("supabaseURL");
+
         ///In this section of the code, we initialize the SessionManager for save the credentials of the Logged Account.
         sessionManager = new SessionManager(this);
 
@@ -125,14 +134,13 @@ public class AccountManagement extends AppCompatActivity {
         googleClient = GoogleSignIn.getClient(this, gso);
 
         /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
-        String supabaseURL = getMetaData("supabaseURL");
-        if(supabaseURL != null){
+        if(SupabaseURL != null){
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
             retrofitAPI = new Retrofit.Builder()
-                    .baseUrl(supabaseURL)
+                    .baseUrl(SupabaseURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();
@@ -140,7 +148,7 @@ public class AccountManagement extends AppCompatActivity {
             api = retrofitAPI.create(SupabaseAPI.class);
         }
         else
-            Toast.makeText(this, getLocalizedString(this, R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
         //*BACK BUTTON
         /// In this section of the code, we initialize the Back Button and his action.
@@ -250,7 +258,7 @@ public class AccountManagement extends AppCompatActivity {
 
         btnSignup.setOnClickListener(v -> {
             if(passwordSignUp.getText().toString().length() < 8)
-                Toast.makeText(this, getLocalizedString(this, R.string.passwordLengthToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.passwordLengthToast), Toast.LENGTH_SHORT).show();
             else
                 signUp(nameSignUp.getText().toString(), emailSignUp.getText().toString(), passwordSignUp.getText().toString());
         });
@@ -291,7 +299,7 @@ public class AccountManagement extends AppCompatActivity {
             googleLoginLauncher.launch(signInIntent);
         }
         else
-            Toast.makeText(this, getLocalizedString(this, R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
     }
 
     private void login(String email, String password) {
@@ -308,7 +316,7 @@ public class AccountManagement extends AppCompatActivity {
         loggingInWithGoogle = false;
         updateUI();
 
-        api.login(getMetaData("supabaseANON"), req).enqueue(new Callback<SupabaseModels.AuthResponse>() {
+        api.login(SupabaseANON, req).enqueue(new Callback<SupabaseModels.AuthResponse>() {
             @Override
             public void onResponse(Call<SupabaseModels.AuthResponse> call, Response<SupabaseModels.AuthResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -328,7 +336,7 @@ public class AccountManagement extends AppCompatActivity {
 
                     sessionManager.saveSession(token, email, nameUser, false);
 
-                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
                     loggingInWithGoogle = false;
 
@@ -341,7 +349,7 @@ public class AccountManagement extends AppCompatActivity {
                     updateUI();
                 }
                 else{
-                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.loginErrorCredentialsToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.loginErrorCredentialsToast), Toast.LENGTH_SHORT).show();
                     EditText etLoginPassword = findViewById(R.id.etLoginPassword);
                     EditText etLoginEmail = findViewById(R.id.etLoginEmail);
 
@@ -352,7 +360,7 @@ public class AccountManagement extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SupabaseModels.AuthResponse> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.networkErrorToast) + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getString(R.string.networkErrorToast) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -371,7 +379,7 @@ public class AccountManagement extends AppCompatActivity {
         loggingInWithGoogle = true;
         updateUI();
 
-        api.loginWithGoogle(getMetaData("supabaseANON"), req).enqueue(new Callback<SupabaseModels.AuthResponse>() {
+        api.loginWithGoogle(SupabaseANON, req).enqueue(new Callback<SupabaseModels.AuthResponse>() {
             @Override
             public void onResponse(Call<SupabaseModels.AuthResponse> call, Response<SupabaseModels.AuthResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -392,19 +400,19 @@ public class AccountManagement extends AppCompatActivity {
                     sessionManager.saveSession(token, email, nameUser, true);
 
                     updateUI();
-                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.googleSignInSuccesfulToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.googleSignInSuccesfulToast), Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
                     updateUI();
                 }
                 else
-                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.loginErrorToast) + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.loginErrorToast) + response.code(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<SupabaseModels.AuthResponse> call, Throwable t) {
                 loggingInWithGoogle = false;
                 updateUI();
-                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -426,7 +434,7 @@ public class AccountManagement extends AppCompatActivity {
 
         SupabaseModels.AuthRequest req = new SupabaseModels.AuthRequest(email, password, userMetadata);
 
-        api.signup(getMetaData("supabaseANON"), req).enqueue(new Callback<Void>(){
+        api.signup(SupabaseANON, req).enqueue(new Callback<Void>(){
 
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -442,14 +450,14 @@ public class AccountManagement extends AppCompatActivity {
                     updateUI();
                 }
                 else{
-                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
                     Log.d("ERRORE_REG", response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getString(R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -484,17 +492,17 @@ public class AccountManagement extends AppCompatActivity {
             return;
         }
 
-        api.logout(getMetaData("supabaseANON"), "Bearer " + token).enqueue(new Callback<Void>() {
+        api.logout(SupabaseANON, "Bearer " + token).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 sessionManager.logout();
-                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.signOutSuccesfulToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getString(R.string.signOutSuccesfulToast), Toast.LENGTH_SHORT).show();
                 updateUI();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.signOutFailedToast), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountManagement.this, getString(R.string.signOutFailedToast), Toast.LENGTH_SHORT).show();
                 Log.d("DISCONNECTING_ERROR", t.getMessage());
             }
         });
@@ -512,13 +520,13 @@ public class AccountManagement extends AppCompatActivity {
         SupabaseAPI api = retrofitAPI.create(SupabaseAPI.class);
         SupabaseModels.ResetPasswordRequest request = new SupabaseModels.ResetPasswordRequest(email);
 
-        api.resetPassword(getMetaData("supabaseANON"), request).enqueue(new Callback<Void>() {
+        api.resetPassword(SupabaseANON, request).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     new AlertDialog.Builder(AccountManagement.this)
                             .setTitle(R.string.emailSentTitle)
-                            .setMessage(getLocalizedString(AccountManagement.this, R.string.emailSentDeps) + email + "!")
+                            .setMessage(getString(R.string.emailSentDeps) + email + "!")
                             .setNegativeButton("Chiudi", null)
                             .create()
                             .show();
@@ -526,12 +534,12 @@ public class AccountManagement extends AppCompatActivity {
                 }
                 else {
                     Log.e("SUPABASE_AUTH", "Error: " + response.code());
-                    Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.errorUserNotFoundToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.errorUserNotFoundToast), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.mailErrorToast), Toast.LENGTH_SHORT).show();}
+            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(AccountManagement.this, getString(R.string.mailErrorToast), Toast.LENGTH_SHORT).show();}
         });
     }
 
@@ -554,20 +562,20 @@ public class AccountManagement extends AppCompatActivity {
                     String tokenKey = sessionManager.getToken();
 
                     if(tokenKey == null){
-                        Toast.makeText(this, getLocalizedString(this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    api.deleteAccount(getMetaData("supabaseANON"), "Bearer " + tokenKey).enqueue(new Callback<Void>() {
+                    api.deleteAccount(SupabaseANON, "Bearer " + tokenKey).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if(response.isSuccessful()){
                                 sessionManager.logout();
                                 updateUI();
-                                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.deleteAccountSuccesfullToast), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountManagement.this, getString(R.string.deleteAccountSuccesfullToast), Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                                 try {
                                     Log.e("DELETE_ERR", response.errorBody().string());
                                 } catch (Exception e) {}
@@ -576,7 +584,7 @@ public class AccountManagement extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(AccountManagement.this, getLocalizedString(AccountManagement.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }).show();
@@ -659,7 +667,7 @@ public class AccountManagement extends AppCompatActivity {
         /// @PARAMETER
         /// String key is the actual key of the value that we need to grab from the manifest file.
 
-        try{
+        try {
             ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = info.metaData;
 
@@ -667,7 +675,8 @@ public class AccountManagement extends AppCompatActivity {
                 return bundle.getString(key);
         }
         catch (PackageManager.NameNotFoundException e) {
-            Log.d("ERROR", "Impossibile trovare questo valore. ERR: " + e.getMessage());
+            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
         }
         return null;
     }
@@ -726,6 +735,7 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     public boolean validateEmail(String mail){return (mail.matches("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"));}
+
     public void setUpEmailValidation(EditText emailField, EditText passwordField, CardView btnToApply, InputValidationType type) {
         /// This method is a refactor one, this method is for appply the email validation to all screens without writing hundreds of lines.
         /// @PARAMETERS

@@ -35,7 +35,6 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        String[] hints = {getLocalizedString(this, R.string.hintMain1), getLocalizedString(this, R.string.hintMain2), getLocalizedString(this, R.string.hintMain3), getLocalizedString(this, R.string.hintMain4), getLocalizedString(this, R.string.hintMain5), getLocalizedString(this, R.string.hintMain6), getLocalizedString(this, R.string.hintMain7)};
+        String[] hints = {getString(R.string.hintMain1), getString(R.string.hintMain2), getString(R.string.hintMain3), getString(R.string.hintMain4), getString(R.string.hintMain5), getString(R.string.hintMain6), getString(R.string.hintMain7)};
 
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
@@ -130,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
-        pages.add(new SetupModels.SetupPage(getLocalizedString(this, R.string.setupTitle1), getLocalizedString(this, R.string.setupDeps1), "ic_train", ""));
-        pages.add(new SetupModels.SetupPage(getLocalizedString(this, R.string.setupTitle2), getLocalizedString(this, R.string.setupDeps2), "ic_map", ""));
-        pages.add(new SetupModels.SetupPage(getLocalizedString(this, R.string.setupTitle3), getLocalizedString(this, R.string.setupDeps3), "ic_star_fill", ""));
-        pages.add(new SetupModels.SetupPage(getLocalizedString(this, R.string.setupTitle4), getLocalizedString(this, R.string.setupDeps4), "ic_bell_fill", ""));
-        pages.add(new SetupModels.SetupPage(getLocalizedString(this, R.string.setupTitleTranslate), getLocalizedString(this, R.string.setupDepsTranslate), "ic_translate", getLocalizedString(this, R.string.setupMiniDepsTranslate)));
-        pages.add(new SetupModels.SetupPage(getLocalizedString(this, R.string.setupTitle5), getLocalizedString(this, R.string.setupDeps5), "ic_lock", getLocalizedString(this, R.string.setupMiniDetails)));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle1), getString(R.string.setupDeps1), "ic_train", ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle2), getString(R.string.setupDeps2), "ic_map", ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle3), getString(R.string.setupDeps3), "ic_star_fill", ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle4), getString(R.string.setupDeps4), "ic_bell_fill", ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitleTranslate), getString(R.string.setupDepsTranslate), "ic_translate", getString(R.string.setupMiniDepsTranslate)));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle5), getString(R.string.setupDeps5), "ic_lock", getString(R.string.setupMiniDetails)));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
@@ -165,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
         btnSetupSkip.setOnClickListener(v ->{
             /// In this section of the code, we ask the user if he wants to skip the Setup.
             new AlertDialog.Builder(this)
-                    .setTitle(getLocalizedString(this, R.string.areYouSurePopUp))
-                    .setMessage(getLocalizedString(this, R.string.skipConfigDeps))
-                    .setNegativeButton(getLocalizedString(this, R.string.cancelPopUp), null)
-                    .setPositiveButton(getLocalizedString(this, R.string.confirmPopUp), ((dialog, which) -> {
+                    .setTitle(getString(R.string.areYouSurePopUp))
+                    .setMessage(getString(R.string.skipConfigDeps))
+                    .setNegativeButton(getString(R.string.cancelPopUp), null)
+                    .setPositiveButton(getString(R.string.confirmPopUp), ((dialog, which) -> {
                         DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
                         setupOverlay.setVisibility(View.GONE);
                         askForNotificationPermission();
@@ -184,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             super.onPageSelected(position);
             int currentPage = viewPager.getCurrentItem();
 
-            btnSetupNext.setText((position == pages.size() -1) ? getLocalizedString(MainActivity.this, R.string.endPages) : getLocalizedString(MainActivity.this, R.string.nextPages));
+            btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
             btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
 
             if(currentPage == 3)
@@ -233,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
             return title;
         });
 
-        hintSwitcher.setCurrentText(getLocalizedString(this, R.string.hintMain1));
+        hintSwitcher.setCurrentText(getString(R.string.hintMain1));
 
         hintSwitcher.setInAnimation(this, R.anim.slide_up_in);
         hintSwitcher.setOutAnimation(this, R.anim.slide_up_out);
@@ -692,9 +691,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(responseComparable < 0){
             new AlertDialog.Builder(this)
-                    .setTitle(getLocalizedString(this, R.string.newVersionAvailableTitle))
-                    .setMessage(getLocalizedString(this, R.string.newVersionAvailableDeps))
-                    .setPositiveButton(getLocalizedString(this, R.string.updateButton), ((dialog, which) -> {
+                    .setTitle(getString(R.string.newVersionAvailableTitle))
+                    .setMessage(getString(R.string.newVersionAvailableDeps))
+                    .setPositiveButton(getString(R.string.updateButton), ((dialog, which) -> {
                         String packageName = getPackageName();
                         String link = "https://play.google.com/store/apps/details?id=" + packageName;
 
@@ -722,8 +721,8 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
-            strikeDesc.setText(String.format(getLocalizedString(this, R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
-            strikeGuaranteed.setText(String.format(getLocalizedString(this, R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
+            strikeDesc.setText(String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
+            strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 
             closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
@@ -737,7 +736,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView view = findViewById(R.id.recyclerView);
 
         noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        noWorkFounds.setText((searchInfo.equals("null") ? getLocalizedString(this, R.string.noWorkOnFilter) : String.format(getLocalizedString(this, R.string.noWorksFoundInput), searchDefault)));
+        noWorkFounds.setText((searchInfo.equals("null") ? getString(R.string.noWorkOnFilter) : String.format(getString(R.string.noWorksFoundInput), searchDefault)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
 

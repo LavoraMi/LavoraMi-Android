@@ -14,9 +14,9 @@ public class ActivityUtils {
         ///@PARAMETER
         /// Class<?> destinationLayout is a destination activity which this function change.
 
-        //*CHANGE LAYOUT
         Intent layoutChange = new Intent(context, destinationLayout);
         layoutChange.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        layoutChange.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         Bundle animOptions = ActivityOptionsCompat
                 .makeCustomAnimation(context, 0, 0)
@@ -40,12 +40,5 @@ public class ActivityUtils {
 
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(context, Uri.parse(url));
-    }
-
-    public static String getLocalizedString(Context context, int ID) {
-        ///@PARAMETER
-        /// int ID is the String Translation ID to convert.
-
-        return ContextCompat.getString(context, ID);
     }
 }

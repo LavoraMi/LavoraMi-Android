@@ -24,7 +24,7 @@ public class DetailsLibrariesActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        
         item = getIntent().getParcelableExtra("ITEM");
 
         //*UI SET-UP
@@ -44,6 +44,6 @@ public class DetailsLibrariesActivity extends AppCompatActivity {
         detailLicenseText.setText(item.getLicenseText());
 
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> ActivityUtils.changeActivity(this, LibrariesActivity.class));
+        backBtn.setOnClickListener(v -> finish());
     }
 }

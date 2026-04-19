@@ -198,7 +198,7 @@ public class LinesActivity extends AppCompatActivity {
 
                 if (tvNoResults != null){
                     tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
-                    tvNoResults.setText(String.format(ActivityUtils.getLocalizedString(LinesActivity.this, R.string.noLinesFound), s));
+                    tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
                 }
                 if (s.length() > 0)
                     searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);

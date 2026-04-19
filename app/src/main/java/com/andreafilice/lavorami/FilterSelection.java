@@ -15,8 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class FilterSelection extends AppCompatActivity {
 
-    public static int indexFilterSelected = 0;
-    public static String nameFilterSelected = "Tutti";
+    public int indexFilterSelected = 0;
+    public String nameFilterSelected = "Tutti";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,7 @@ public class FilterSelection extends AppCompatActivity {
 
         //*BUTTONS
         ImageButton backBtn = (ImageButton) findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> {
-            ActivityUtils.changeActivity(this, SettingsActivity.class);
-        });
+        backBtn.setOnClickListener(v -> finish());
 
         //*FILTERS
         ImageView[] filterIcons = {
@@ -110,8 +108,6 @@ public class FilterSelection extends AppCompatActivity {
     }
 
     public String getCurrentFilterSelected(String[] filters, int currentIndex){
-        Log.d("INFO", filters[currentIndex]);
-
         /// INFO: Update the Global Variables
         nameFilterSelected = filters[currentIndex];
         indexFilterSelected = currentIndex;
@@ -120,14 +116,12 @@ public class FilterSelection extends AppCompatActivity {
     }
 
     public void setCheckImage(ImageView[] filterIcons){
-        /// In this Method, the Check Image will be displayed correclty for the current selected filter.
+        /// In this Method, the Check Image will be displayed correctly for the current selected filter.
         ///
         ///@PARAMETER
         /// ImageView[] filterIcons is the array containing the icons with correct IDs
 
-        for (int i = 0; i < filterIcons.length; i++) {
-            filterIcons[i].setVisibility((i == indexFilterSelected) ? ImageView.VISIBLE : ImageView.GONE);
-        }
+        for (int i = 0; i < filterIcons.length; i++) {filterIcons[i].setVisibility((i == indexFilterSelected) ? ImageView.VISIBLE : ImageView.GONE);}
     }
 
     public int getIndexFilterSaved(String[] filters, String data){
@@ -142,7 +136,6 @@ public class FilterSelection extends AppCompatActivity {
                 return i;
         }
 
-        //*FALLBACK VALUE
         return -1;
     }
 

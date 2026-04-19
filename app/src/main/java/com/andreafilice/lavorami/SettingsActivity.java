@@ -1,7 +1,6 @@
 package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.ActivityUtils.changeActivity;
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
 
 import android.app.AlertDialog;
 import android.content.ClipData;
@@ -180,7 +179,7 @@ public class SettingsActivity extends AppCompatActivity {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(this.CLIPBOARD_SERVICE);
             ClipData clipData = ClipData.newPlainText("Versione App", textToCopy);
             clipboard.setPrimaryClip(clipData);
-            Toast.makeText(this, getLocalizedString(this, R.string.versionAppCopied), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.versionAppCopied), Toast.LENGTH_LONG).show();
 
             return true;
         });
@@ -240,7 +239,7 @@ public class SettingsActivity extends AppCompatActivity {
         filterSelectedText.setText(selectedFilterLocalized);
 
         TextView nameSettingsText = findViewById(R.id.nameSettingsText);
-        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : getLocalizedString(this, R.string.yourAccountSettingsTitle));
+        nameSettingsText.setText((sessionManager.isLoggedIn()) ? sessionManager.getUserName() : getString(R.string.yourAccountSettingsTitle));
 
         ImageView profileImage = findViewById(R.id.profileImage);
         profileImage.setImageResource((!sessionManager.isLoggedInWithGoogle()) ? R.drawable.ic_account_circle : R.drawable.ic_google_logo);
@@ -253,18 +252,18 @@ public class SettingsActivity extends AppCompatActivity {
 
     public String getLocalizedMessage(String toCompare){
         switch(toCompare) {
-            case "Tutti": return getLocalizedString(this, R.string.allFilter);
+            case "Tutti": return getString(R.string.allFilter);
             case "Bus": return "Bus";
             case "Tram": return "Tram";
-            case "Metropolitana": return getLocalizedString(this, R.string.metroFilter);
-            case "Treno": return getLocalizedString(this, R.string.trainFilter);
-            case "In Corso": return getLocalizedString(this, R.string.inProgressFilter);
-            case "Programmati": return getLocalizedString(this, R.string.scheduledFilter);
-            case "di ATM": return getLocalizedString(this, R.string.atmFilter);
-            case "di Trenord": return getLocalizedString(this, R.string.trenordFilter);
-            case "di Movibus": return getLocalizedString(this, R.string.movibusFilter);
-            case "di STAV": return getLocalizedString(this, R.string.stavFilter);
-            case "di Autoguidovie": return getLocalizedString(this, R.string.autoguidovieFilter);
+            case "Metropolitana": return getString(R.string.metroFilter);
+            case "Treno": return getString(R.string.trainFilter);
+            case "In Corso": return getString(R.string.inProgressFilter);
+            case "Programmati": return getString(R.string.scheduledFilter);
+            case "di ATM": return getString(R.string.atmFilter);
+            case "di Trenord": return getString(R.string.trenordFilter);
+            case "di Movibus": return getString(R.string.movibusFilter);
+            case "di STAV": return getString(R.string.stavFilter);
+            case "di Autoguidovie": return getString(R.string.autoguidovieFilter);
             default: return "Errore";
         }
     }
@@ -319,10 +318,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void resetSettings(ImageView[] images, String[] lines){
         new AlertDialog.Builder(this)
-                .setTitle(getLocalizedString(this, R.string.areYouSurePopUp))
-                .setMessage(getLocalizedString(this, R.string.resetSettingsPopUp))
-                .setNegativeButton(getLocalizedString(this, R.string.cancelPopUp), null)
-                .setPositiveButton(getLocalizedString(this, R.string.confirmPopUp), (dialog, which) -> {
+                .setTitle(getString(R.string.areYouSurePopUp))
+                .setMessage(getString(R.string.resetSettingsPopUp))
+                .setNegativeButton(getString(R.string.cancelPopUp), null)
+                .setPositiveButton(getString(R.string.confirmPopUp), (dialog, which) -> {
                     DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
                     DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
@@ -336,7 +335,7 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
                     DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
                     DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
-                    Toast.makeText(this, getLocalizedString(this, R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                     favorites.clear();
                     reloadDatas();
                     setTheme();

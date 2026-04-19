@@ -23,11 +23,9 @@ public class InterchangeInfo {
     public String[] getLines() {return lines;}
     public String[] getLinesToShow() {return linesToShow;}
     public String getTypeOfInterchange() {return typeOfInterchange;}
-
     public int getCardImageID() {return getTitleIconID(this.typeOfInterchange);}
 
     public int getTitleIconID(String iconName){
-        Log.d("ID", iconName);
         switch(iconName) {
             case "lightrail":
             case "train.side.front.car":

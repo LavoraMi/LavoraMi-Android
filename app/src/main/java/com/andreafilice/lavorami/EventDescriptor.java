@@ -18,6 +18,10 @@ public class EventDescriptor {
     protected String details;
     protected String company;
     protected boolean eventTerminated;
+    private static final SimpleDateFormat SERVER_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault());
+    private static final SimpleDateFormat DISPLAY_FORMAT = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+
+    static {SERVER_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));}
 
     public EventDescriptor(String title, String titleIcon, String typeOfTransport, String roads, String[] lines, String startDate, String endDate, String details, String company) {
         this.title = title;
@@ -67,68 +71,25 @@ public class EventDescriptor {
         }
     }
 
-    public int getTypeOfTransportID(String swiftIconName){
-        switch(swiftIconName) {
-            case "train.side.front.car":
-                return R.drawable.outline_train_24;
-            case "bus.fill":
-                return R.drawable.outline_directions_bus_24;
-            case "tram.fill":
-                return R.drawable.outline_tram_24;
-            default:
-                return R.drawable.empty_image;
-        }
-    }
-
-    public String getTitle() {
-        return title;
-    }
-    public String getTitleIcon() {
-        return titleIcon;
-    }
-    public String getTypeOfTransport() {
-        return typeOfTransport;
-    }
-    public String getRoads() {
-        return roads;
-    }
-
-    public String[] getLines() {
-        return lines;
-    }
-
-    public String getStringLines(){
-        if(this.lines == null)
-            return "";
-
-        return Arrays.stream(this.lines)
-                .collect(Collectors.joining(", "));
-    }
-    public String getStartDate() {
-        return startDate;
-    }
-    public String getEndDate() {
-        return endDate;
-    }
-    public String getDetails() {
-        return details;
-    }
-    public String getCompany() {
-        return company;
-    }
+    public String getTitle() {return title;}
+    public String getTypeOfTransport() {return typeOfTransport;}
+    public String getRoads() {return roads;}
+    public String[] getLines() {return lines;}
+    public String getStringLines(){return String.join(", ", lines);}
+    public String getStartDate() {return startDate;}
+    public String getEndDate() {return endDate;}
+    public String getDetails() {return details;}
+    public String getCompany() {return company;}
     public boolean isEventTerminated() {return eventTerminated;}
-    public void setEventTerminated(boolean eventTerminated) {this.eventTerminated = eventTerminated;}
 
     public static String formattaData(String initialDate) {
+        if (initialDate == null) return null;
+
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+01:00'", Locale.getDefault());
-            inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            Date finalDate = inputFormat.parse(initialDate);
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
-
-            return outputFormat.format(finalDate);
-        } catch (Exception e) {
+            Date finalDate = SERVER_FORMAT.parse(initialDate);
+            return DISPLAY_FORMAT.format(finalDate);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             return initialDate;
         }
@@ -150,16 +111,13 @@ public class EventDescriptor {
 
     public long getDateMillis(String dateString) {
         if (dateString == null) return 0;
-        String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'+01:00'";
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat(serverFormat, Locale.getDefault());
-            sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-            Date date = sdf.parse(dateString);
+            Date date = SERVER_FORMAT.parse(dateString);
             return (date != null) ? date.getTime() : 0;
-
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
+            e.printStackTrace();
             return 0;
         }
     }

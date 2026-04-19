@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class HowAppWorks extends AppCompatActivity {
 
     private final Handler handler = new Handler();
+    private Runnable starAnimation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class HowAppWorks extends AppCompatActivity {
         //*BUTTONS
         /// In this section of the code, we create the actions to go back to Settings menu.
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> ActivityUtils.changeActivity(this, SettingsActivity.class));
+        backBtn.setOnClickListener(v -> finish());
 
         //*ANIMATIONS
         /// In this section of the code, we set up some animations in this screen.
@@ -43,7 +44,7 @@ public class HowAppWorks extends AppCompatActivity {
         Animation scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
         Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
 
-        handler.post(new Runnable() {
+        starAnimation = new Runnable() {
             @Override
             public void run() {
                 favIcon.setImageResource(R.drawable.ic_star_empty);
@@ -54,7 +55,8 @@ public class HowAppWorks extends AppCompatActivity {
                 handler.postDelayed(this, 5000);
                 },500);
             }
-        });
+        };
+        handler.post(starAnimation);
 
         //*MAP THEME
         /// In this section of the code, we set up the map image based from the Value of Theme Saved
@@ -63,5 +65,17 @@ public class HowAppWorks extends AppCompatActivity {
 
         ImageView mapImage = findViewById(R.id.imgLineOnMap);
         mapImage.setImageResource(isNightMode ? R.drawable.ic_line_on_map : R.drawable.ic_line_on_map_light);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //*DESTROY HANDLER
+        /// In this section of the code, we will destroy the handler to avoid error loops.
+        if(handler != null && starAnimation != null) {
+            handler.removeCallbacks(starAnimation);
+            handler.removeCallbacksAndMessages(null);
+        }
     }
 }

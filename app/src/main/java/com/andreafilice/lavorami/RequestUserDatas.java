@@ -15,8 +15,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -77,7 +75,7 @@ public class RequestUserDatas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String subject = ContextCompat.getString(RequestUserDatas.this, R.string.requestDataIntentSubject);
-                String body = getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart1) + selectedFileFormat + "\n" + getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart2) + sessionManager.getUserEmail() + "\n" + getLocalizedString(RequestUserDatas.this, R.string.requestDataIntentPart3);
+                String body = getString(R.string.requestDataIntentPart1) + selectedFileFormat + "\n" + getString(R.string.requestDataIntentPart2) + sessionManager.getUserEmail() + "\n" + getString(R.string.requestDataIntentPart3);
 
                 String encodedBody = Uri.encode(body);
                 String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
@@ -87,7 +85,7 @@ public class RequestUserDatas extends AppCompatActivity {
 
                 try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
                 catch (Exception e) {
-                    Toast.makeText(RequestUserDatas.this, getLocalizedString(RequestUserDatas.this, R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RequestUserDatas.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }

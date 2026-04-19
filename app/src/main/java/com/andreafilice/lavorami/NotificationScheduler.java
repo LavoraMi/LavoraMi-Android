@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -124,26 +122,26 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar1),
+                                            context.getString(R.string.startWorkNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkNotificationVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar2),
+                                            context.getString(R.string.startWorkNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkNotificationVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1) {
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar3),
+                                            context.getString(R.string.startWorkNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkNotificationVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 }
                                 else
                                     schedule(context, alarmManager, idStart, notifTime,
-                                            getLocalizedString(context, R.string.startWorkNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkNotificationVar4),
+                                            context.getString(R.string.startWorkNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkNotificationVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -155,25 +153,25 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar1),
+                                            context.getString(R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkTomorrowVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar2),
+                                            context.getString(R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkTomorrowVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar3),
+                                            context.getString(R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkTomorrowVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
-                                            getLocalizedString(context, R.string.startWorkTomorrowNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.startWorkTomorrowVar4),
+                                            context.getString(R.string.startWorkTomorrowNotificationTitle),
+                                            String.format(context.getString(R.string.startWorkTomorrowVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -187,25 +185,25 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar1),
+                                            context.getString(R.string.endWorksNotificationTitle),
+                                            String.format(context.getString(R.string.endWorksNotificationDepsVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar2),
+                                            context.getString(R.string.endWorksNotificationTitle),
+                                            String.format(context.getString(R.string.endWorksNotificationDepsVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar3),
+                                            context.getString(R.string.endWorksNotificationTitle),
+                                            String.format(context.getString(R.string.endWorksNotificationDepsVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
-                                            getLocalizedString(context, R.string.endWorksNotificationTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksNotificationDepsVar4),
+                                            context.getString(R.string.endWorksNotificationTitle),
+                                            String.format(context.getString(R.string.endWorksNotificationDepsVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -217,25 +215,25 @@ public class NotificationScheduler {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar1),
+                                            context.getString(R.string.endWorksTomorrowTitle),
+                                            String.format(context.getString(R.string.endWorksTomorrowNotificationDepsVar1),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar2),
+                                            context.getString(R.string.endWorksTomorrowTitle),
+                                            String.format(context.getString(R.string.endWorksTomorrowNotificationDepsVar2),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                             else {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar3),
+                                            context.getString(R.string.endWorksTomorrowTitle),
+                                            String.format(context.getString(R.string.endWorksTomorrowNotificationDepsVar3),
                                                     event.roads, event.getStringLines(), event.company));
                                 else
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
-                                            getLocalizedString(context, R.string.endWorksTomorrowTitle),
-                                            String.format(getLocalizedString(context, R.string.endWorksTomorrowNotificationDepsVar4),
+                                            context.getString(R.string.endWorksTomorrowTitle),
+                                            String.format(context.getString(R.string.endWorksTomorrowNotificationDepsVar4),
                                                     event.roads, event.getStringLines(), event.company));
                             }
                         }
@@ -273,8 +271,8 @@ public class NotificationScheduler {
             long notifTime = getSelectedTime(context, strikeMillis);
             if (notifTime > now) {
                 schedule(context, alarmManager, idStrike, notifTime,
-                        getLocalizedString(context, R.string.strikeNotificationTitle),
-                        String.format(getLocalizedString(context, R.string.strikeNotificationDeps),
+                        context.getString(R.string.strikeNotificationTitle),
+                        String.format(context.getString(R.string.strikeNotificationDeps),
                                 strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
             }
         }
@@ -284,8 +282,8 @@ public class NotificationScheduler {
             long notifTimePre = getSelectedTime(context, strikeDayBefore);
             if (notifTimePre > now) {
                 schedule(context, alarmManager, idPreStrike, notifTimePre,
-                        getLocalizedString(context, R.string.strikeTomorrowNotificationTitle),
-                        String.format(getLocalizedString(context, R.string.strikeTomorrowNotificationDeps),
+                        context.getString(R.string.strikeTomorrowNotificationTitle),
+                        String.format(context.getString(R.string.strikeTomorrowNotificationDeps),
                                 strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
             }
         }

@@ -15,10 +15,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import static com.andreafilice.lavorami.ActivityUtils.getLocalizedString;
-
-import okhttp3.CertificatePinner;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -86,15 +82,15 @@ public class MaintenanceActivity extends AppCompatActivity {
                     maintenanceDeps.setText(maintenanceDetails);
 
                     if(isInMaintenanceMode)
-                        Toast.makeText(MaintenanceActivity.this, getLocalizedString(MaintenanceActivity.this, R.string.maintenanceToast), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MaintenanceActivity.this, getString(R.string.maintenanceToast), Toast.LENGTH_SHORT).show();
                     else
                         ActivityUtils.changeActivity(MaintenanceActivity.this, MainActivity.class);
 
                     if(responseComparable < 0){
                         new AlertDialog.Builder(MaintenanceActivity.this)
-                                .setTitle(getLocalizedString(MaintenanceActivity.this, R.string.newVersionAvailableTitle))
-                                .setMessage(getLocalizedString(MaintenanceActivity.this, R.string.maintenanceDeps))
-                                .setPositiveButton(getLocalizedString(MaintenanceActivity.this, R.string.updateButton), ((dialog, which) -> {
+                                .setTitle(getString(R.string.newVersionAvailableTitle))
+                                .setMessage(getString(R.string.maintenanceDeps))
+                                .setPositiveButton(getString(R.string.updateButton), ((dialog, which) -> {
                                     String packageName = getPackageName();
                                     String link = "https://play.google.com/store/apps/details?id=" + packageName;
 

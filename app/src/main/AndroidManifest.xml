@@ -12,6 +12,7 @@
         android:required="true" />
 
     <application
+        android:name=".App"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,6 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
+
         <activity
             android:name=".InfoAccessibility"
             android:exported="false" />
