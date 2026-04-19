@@ -21,3 +21,5 @@ app/google-services.json
 *.env
 *env
 .idea/deploymentTargetSelector.xml
+.idea/misc.xml
+.idea/vcs.xml

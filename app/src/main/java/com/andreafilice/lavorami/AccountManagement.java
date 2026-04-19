@@ -57,6 +57,7 @@ public class AccountManagement extends AppCompatActivity {
     SessionManager sessionManager;
     GoogleSignInClient googleClient;
     SupabaseAPI api;
+    Retrofit retrofitAPI;
     LinearLayout loginView;
     LinearLayout loggedInView;
     LinearLayout signUpView;
@@ -130,13 +131,13 @@ public class AccountManagement extends AppCompatActivity {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
-            Retrofit retrofit = new Retrofit.Builder()
+            retrofitAPI = new Retrofit.Builder()
                     .baseUrl(supabaseURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build();
 
-            api = retrofit.create(SupabaseAPI.class);
+            api = retrofitAPI.create(SupabaseAPI.class);
         }
         else
             Toast.makeText(this, getLocalizedString(this, R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
@@ -508,12 +509,7 @@ public class AccountManagement extends AppCompatActivity {
         /// @Header apiKey is the ANON key of the Supabase DB from the .env file.
         /// @Body supabaseModels.ResetPasswordRequest is the body request for catch errors and send the Email.
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(getMetaData("supabaseURL"))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        SupabaseAPI api = retrofit.create(SupabaseAPI.class);
+        SupabaseAPI api = retrofitAPI.create(SupabaseAPI.class);
         SupabaseModels.ResetPasswordRequest request = new SupabaseModels.ResetPasswordRequest(email);
 
         api.resetPassword(getMetaData("supabaseANON"), request).enqueue(new Callback<Void>() {
@@ -522,7 +518,7 @@ public class AccountManagement extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     new AlertDialog.Builder(AccountManagement.this)
                             .setTitle(R.string.emailSentTitle)
-                            .setMessage(R.string.emailSentDeps + email + "!")
+                            .setMessage(getLocalizedString(AccountManagement.this, R.string.emailSentDeps) + email + "!")
                             .setNegativeButton("Chiudi", null)
                             .create()
                             .show();
