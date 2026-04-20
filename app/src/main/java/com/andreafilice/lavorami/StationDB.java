@@ -813,6 +813,26 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram31() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Bicocca M5", 45.51498, 9.2058, "Main", "31"));
+        stations.add(new MetroStation("V.Le Testi Via La Farina", 45.51612, 9.20643, "Main", "31"));
+        stations.add(new MetroStation("V.Le Testi Via S. Glicerio", 45.5189, 9.20802, "Main", "31"));
+        stations.add(new MetroStation("Ponale M5", 45.52224, 9.20991, "Main", "31"));
+        stations.add(new MetroStation("Bignami M5", 45.5258, 9.21192, "Main", "31"));
+        stations.add(new MetroStation("Parco Nord (Torretta)", 45.5258, 9.21192, "Main", "31"));
+        stations.add(new MetroStation("Parco Nord Clerici (Sesto S.G.)", 45.53379, 9.21564, "Main", "31"));
+        stations.add(new MetroStation("Parco Nord Ist. Tecnico (Cinisello B.)", 45.53763, 9.2178, "Main", "31"));
+        stations.add(new MetroStation("Parco Nord Osp. Bassini (Cinisello B.)", 45.54571, 9.21812, "Main", "31"));
+        stations.add(new MetroStation("Gorky Monfalcone (Cinisello B.)", 45.55119, 9.21771, "Main", "31"));
+        stations.add(new MetroStation("Libertà (Cinisello B.)", 45.55336, 9.21663, "Main", "31"));
+        stations.add(new MetroStation("Gramsci (Cinisello B.)", 45.55579, 9.21562, "Main", "31"));
+        stations.add(new MetroStation("Villa Ghirlanda (Cinisello B.)", 45.55802, 9.21467, "Main", "31"));
+        stations.add(new MetroStation("Monte Ortigara (Cinisello B.)", 45.5594, 9.21405, "Main", "31"));
+        stations.add(new MetroStation("Cinisello (Primo Maggio)", 45.56002, 9.21108, "Main", "31"));
+        return stations;
+    }
+
     public static List<InterchangeInfo> getBusInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
         interchanges.add(new InterchangeInfo(
@@ -1024,7 +1044,9 @@ public class StationDB {
                 new InterchangeInfo("Crocetta M3", new String[]{"M3", "16", "24"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Lambrate FS", new String[]{"M2", "19", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9"}, "lightrail"),
                 new InterchangeInfo("Via Larga", new String[]{"12", "19", "24"}, "tram.fill"),
-                new InterchangeInfo("P.Le Lagosta", new String[]{"17", "31", "33"}, "tram.fill")
+                new InterchangeInfo("P.Le Lagosta", new String[]{"17", "31", "33"}, "tram.fill"),
+                new InterchangeInfo("Porta Romana M3", new String[]{"M3", "9"}, "tram.fill.tunnel"),
+                new InterchangeInfo("Tricolore M4", new String[]{"M4", "9", "19"}, "tram.fill.tunnel")
         );
     }
 
@@ -1100,6 +1122,7 @@ public class StationDB {
         allStations.addAll(getStationsTram7());
         allStations.addAll(getStationsTram9());
         allStations.addAll(getStationsTram24());
+        allStations.addAll(getStationsTram31());
         return allStations;
     }
 

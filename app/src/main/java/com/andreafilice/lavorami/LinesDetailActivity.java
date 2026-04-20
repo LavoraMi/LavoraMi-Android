@@ -87,7 +87,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
-        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "5", "7", "24"));
+        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "5", "7", "9", "24", "31"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
