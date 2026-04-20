@@ -21,17 +21,17 @@ public class NotificationScheduler {
     private static final String TAG = "Scheduler_Log";
 
     public static void scheduleWorkNotifications(Context context, ArrayList<EventDescriptor> eventList) {
-        boolean isEnabled = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_SWITCH, true);
+        boolean isEnabled = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
 
         if (!isEnabled) return;
 
-        Set<String> favorites = DataManager.getStringArray(context, DataKeys.KEY_FAVORITE_LINES, null);
+        Set<String> favorites = DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, null);
         if (favorites == null || favorites.isEmpty()) return;
         if (eventList == null || eventList.isEmpty()) return;
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        boolean notifyStart = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
-        boolean notifyEnd = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
+        boolean notifyStart = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
+        boolean notifyEnd = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
 
         for (EventDescriptor event : eventList) {
             boolean isMatch = false;
@@ -244,10 +244,10 @@ public class NotificationScheduler {
     }
 
     public static void scheduleStrikeNotification(Context context, StrikeDescriptor strike) {
-        boolean isEnabled = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_SWITCH, true);
+        boolean isEnabled = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
         if (!isEnabled) return;
 
-        boolean notifyStrikes = DataManager.getBoolData(context, DataKeys.KEY_NOTIFICATION_STRIKES, true);
+        boolean notifyStrikes = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
         if (!notifyStrikes) return;
 
         if (strike == null || strike.getStrikeDate() == null) return;
@@ -353,8 +353,8 @@ public class NotificationScheduler {
     private static long getSelectedTime(Context context, long eventDateMillis) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(eventDateMillis);
-        calendar.set(Calendar.HOUR_OF_DAY, DataManager.getIntData(context, DataKeys.KEY_HOURS_NOTIFICATIONS, 10));
-        calendar.set(Calendar.MINUTE, DataManager.getIntData(context, DataKeys.KEY_MINUTES_NOTIFICATIONS, 0));
+        calendar.set(Calendar.HOUR_OF_DAY, DataManager.getIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10));
+        calendar.set(Calendar.MINUTE, DataManager.getIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 0));
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTimeInMillis();

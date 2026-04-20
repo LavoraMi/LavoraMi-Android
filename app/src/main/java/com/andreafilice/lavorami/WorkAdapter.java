@@ -90,13 +90,13 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder itemHolder = (ViewHolder) holder;
         EventDescriptor item = eventList.get(position);
-        String savedLang = DataManager.getStringData(context, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : "it";
 
         String finalStartDate = formattaData(item.getStartDate());
         String finalEndDate = formattaData(item.getEndDate());
 
-        boolean isShowDetails = DataManager.getBoolData(context, DataKeys.KEY_SHOW_DETAILS, true);
+        boolean isShowDetails = DataManager.getBoolData(DataKeys.KEY_SHOW_DETAILS, true);
         int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
 
         ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
@@ -117,7 +117,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
 
         itemHolder.chipGroupLinee.removeAllViews();
-        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(context, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
+        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
         itemHolder.translateBtn.setOnClickListener(v -> {
             //*VARIABLES
@@ -131,7 +131,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
             Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
             TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
-            boolean isAcceptingTerms = DataManager.getBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, false);
+            boolean isAcceptingTerms = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
 
             loadingLayout.startShimmer();
             bottomSheetDialog.setContentView(sheetView);
@@ -153,7 +153,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     layoutDefault.setVisibility(View.VISIBLE);
                     layoutTerms.setVisibility(View.GONE);
                     downloadingText.setVisibility(View.VISIBLE);
-                    DataManager.saveBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, true);
+                    DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
 
                     translateStrings(sheetView, item, loadingLayout);
                 });

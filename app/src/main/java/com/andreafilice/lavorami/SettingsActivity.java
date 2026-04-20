@@ -142,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
             "Autoguidovie"
         };
 
-        favorites = new HashSet<>(DataManager.getStringArray(this, DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
+        favorites = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
         Log.d("DATA", favorites.toString());
 
         setStarIcons(starIcons, starButtons, lineCodes);
@@ -231,7 +231,7 @@ public class SettingsActivity extends AppCompatActivity {
         //*LOADING DATAS
         /// In this section of the code, we will loading the datas from the DataManager file also AFTER the Back Gesture.
 
-        String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        String selectedFilter = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         TextView filterSelectedText = findViewById(R.id.filterText);
 
         /// Localize the current filter to the correct language
@@ -284,7 +284,7 @@ public class SettingsActivity extends AppCompatActivity {
                     favorites.remove(lineCodes[finalI]);
 
                 NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
-                DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, favorites);
+                DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
             });
             layouts[i].setOnClickListener(v -> {
                 Integer currentTag = (Integer) icons[finalI].getTag();
@@ -299,7 +299,7 @@ public class SettingsActivity extends AppCompatActivity {
                     favorites.remove(lineCodes[finalI]);
 
                 NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
-                DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, favorites);
+                DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
             });
         }
     }
@@ -322,19 +322,19 @@ public class SettingsActivity extends AppCompatActivity {
                 .setMessage(getString(R.string.resetSettingsPopUp))
                 .setNegativeButton(getString(R.string.cancelPopUp), null)
                 .setPositiveButton(getString(R.string.confirmPopUp), (dialog, which) -> {
-                    DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
-                    DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, true);
-                    DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
-                    DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
-                    DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STRIKES, true);
-                    DataManager.saveIntData(this, DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
-                    DataManager.saveIntData(this, DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
-                    DataManager.saveArrayStringsData(this, DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
-                    DataManager.saveBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
-                    DataManager.saveBoolData(this, DataKeys.KEY_SHOW_BANNERS, true);
-                    DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true);
-                    DataManager.saveBoolData(this, DataKeys.KEY_SHOW_DETAILS, true);
-                    DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+                    DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
+                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
+                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
+                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
+                    DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
+                    DataManager.saveIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
+                    DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
+                    DataManager.saveBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
+                    DataManager.saveBoolData(DataKeys.KEY_SHOW_BANNERS, true);
+                    DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+                    DataManager.saveBoolData(DataKeys.KEY_SHOW_DETAILS, true);
+                    DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
                     Toast.makeText(this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                     favorites.clear();
                     reloadDatas();
@@ -348,7 +348,7 @@ public class SettingsActivity extends AppCompatActivity {
         /// @PARAMETERS
         /// There are no parameters.
 
-        String typeLoaded = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+        String typeLoaded = DataManager.getStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
         int modeSelected;
 
         switch (typeLoaded){

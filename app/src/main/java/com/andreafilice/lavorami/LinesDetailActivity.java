@@ -609,7 +609,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 foundAtLeastOne = true;
 
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
-                String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+                String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
                 String langCode = savedLang.contains("English") ? "en" : "it";
 
                 ImageView icona = card.findViewById(R.id.iconEvent);
@@ -630,7 +630,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
                 //*TRANSLATE BUTTON
                 Button btnTranslate = card.findViewById(R.id.btnTranslate);
-                btnTranslate.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
+                btnTranslate.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
                 btnTranslate.setOnClickListener(v -> {
                     //*VARIABLES
@@ -643,7 +643,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
                     Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
                     TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
-                    boolean isAcceptingTerms = DataManager.getBoolData(this, DataKeys.KEY_DOWNLOAD_POLICIES, false);
+                    boolean isAcceptingTerms = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
 
                     loadingLayout.startShimmer();
                     bottomSheetDialog.setContentView(sheetView);
@@ -665,7 +665,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                             layoutDefault.setVisibility(View.VISIBLE);
                             layoutTerms.setVisibility(View.GONE);
                             downloadingText.setVisibility(View.VISIBLE);
-                            DataManager.saveBoolData(this, DataKeys.KEY_DOWNLOAD_POLICIES, true);
+                            DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
 
                             translateStrings(sheetView, evento, loadingLayout);
                         });

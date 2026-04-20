@@ -265,7 +265,7 @@ public class AccountManagement extends AppCompatActivity {
 
         //*SET THE BASE VIEW AND ASK THE CREDENTIALS
         /// If the user is Logged In and the Option in Advanced Options is enable, require the Biometric Auth to continue.
-        if(sessionManager.isLoggedIn() && DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true))
+        if(sessionManager.isLoggedIn() && DataManager.getBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true))
             showBiometricPrompt();
         else {
             screenUnlocked = true;

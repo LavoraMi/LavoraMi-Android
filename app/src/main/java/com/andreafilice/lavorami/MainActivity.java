@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        defaultCategory = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        defaultCategory = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         setTheme();
 
         EdgeToEdge.enable(this);
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
         /// This method is also used into the iOS version of LavoraMi.
-        hasCompletedSetup = DataManager.getBoolData(this, DataKeys.KEY_END_SETUP, false);
+        hasCompletedSetup = DataManager.getBoolData(DataKeys.KEY_END_SETUP, false);
 
         ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             if(currentPage < pages.size() - 1)
                 viewPager.setCurrentItem(currentPage + 1);
             else {
-                DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
+                DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
                 setupOverlay.setVisibility(View.GONE);
             }
 
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                     .setMessage(getString(R.string.skipConfigDeps))
                     .setNegativeButton(getString(R.string.cancelPopUp), null)
                     .setPositiveButton(getString(R.string.confirmPopUp), ((dialog, which) -> {
-                        DataManager.saveBoolData(this, DataKeys.KEY_END_SETUP, true);
+                        DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
                         setupOverlay.setVisibility(View.GONE);
                         askForNotificationPermission();
                     }))
@@ -408,7 +408,7 @@ public class MainActivity extends AppCompatActivity {
 
         //*SETUP LANGUAGE
         /// Setting up the language of the application base from the Data saved
-        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : "it";
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(langCode));
 
@@ -589,7 +589,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
                 //* ON FAILURE, ACTIVATE THE "ERROR" LAYOUT
                 if (loadingLayout != null) {
-                    boolean showErrorMessage = DataManager.getBoolData(MainActivity.this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
+                    boolean showErrorMessage = DataManager.getBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                     TextView errorDeps = findViewById(R.id.errorDeps);
                     ImageView iconWiFi = findViewById(R.id.iconWifi);
 
@@ -641,7 +641,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
                 if (loadingLayout != null) {
-                    boolean showErrorMessage = DataManager.getBoolData(MainActivity.this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
+                    boolean showErrorMessage = DataManager.getBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                     TextView errorDeps = findViewById(R.id.errorDeps);
 
                     errorDeps.setText(t.getMessage());
@@ -676,7 +676,7 @@ public class MainActivity extends AppCompatActivity {
         String versionMinimum = descriptor.getMinimumVersionAndroid();
         String currentVersion = ContextCompat.getString(this, R.string.app_version);
 
-        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : "it";
 
         int responseComparable = RequirementsDescriptor.compareSemanticVersions(currentVersion, versionMinimum);
@@ -711,7 +711,7 @@ public class MainActivity extends AppCompatActivity {
         /// @PARAMETER
         /// StrikeDescriptor strikeDescriptor is the response body from the CDN Request executed before this method.
 
-        if(DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true)){
+        if(DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true)){
             MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
             TextView strikeDesc = findViewById(R.id.strikeDesc);
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
@@ -919,7 +919,7 @@ public class MainActivity extends AppCompatActivity {
         /// @PARAMETERS
         /// There are no parameters.
 
-        String typeLoaded = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, "Sistema");
+        String typeLoaded = DataManager.getStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
         int modeSelected;
 
         switch (typeLoaded){

@@ -14,8 +14,8 @@ public class LavoraMiMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        if (!DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_PUSH, true)) return;
-        if (!DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, true)) return;
+        if (!DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true)) return;
+        if (!DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true)) return;
 
         String title = "LavoraMi";
         String message = "";

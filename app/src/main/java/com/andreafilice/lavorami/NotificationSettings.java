@@ -63,11 +63,11 @@ public class NotificationSettings extends AppCompatActivity {
 
         //*LOAD FROM LOCAL SAVES
         /// Load the boolean datas from the DataManager for every toggle.
-        boolean notificationsEnabled = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, true);
-        boolean notificationsStartWorks = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
-        boolean notificationsEndWorks = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
-        boolean notificationsStrikes = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_STRIKES, true);
-        boolean notificationsPush = DataManager.getBoolData(this, DataKeys.KEY_NOTIFICATION_PUSH, true);
+        boolean notificationsEnabled = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
+        boolean notificationsStartWorks = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
+        boolean notificationsEndWorks = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
+        boolean notificationsStrikes = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
+        boolean notificationsPush = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true);
 
         /// Cast the type from the boolean to the Switch Value.
         switchNotificationsGeneral.setChecked(notificationsEnabled);
@@ -146,8 +146,8 @@ public class NotificationSettings extends AppCompatActivity {
         permissionDeniedLayout.setVisibility((areNotificationsEnabled()) ? View.GONE : View.VISIBLE);
         scrollView.setVisibility((areNotificationsEnabled()) ? View.VISIBLE : View.GONE);
 
-        int hoursSaved = DataManager.getIntData(this, DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
-        int minutesSaved = DataManager.getIntData(this, DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
+        int hoursSaved = DataManager.getIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
+        int minutesSaved = DataManager.getIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
 
         String formattedTextUI = ((hoursSaved < 10) ? ("0" + hoursSaved) : String.valueOf(hoursSaved)) + ":" + ((minutesSaved < 10) ? ("0" + minutesSaved) : String.valueOf(minutesSaved));
         textHoursNotifications.setText(formattedTextUI);
@@ -165,8 +165,8 @@ public class NotificationSettings extends AppCompatActivity {
                             + ":" + ((selectedMinute < 10) ? ("0" + selectedMinute) : String.valueOf(selectedMinute));
                     textHoursNotifications.setText(formattedText);
 
-                    DataManager.saveIntData(this, DataKeys.KEY_HOURS_NOTIFICATIONS, hourOfDay);
-                    DataManager.saveIntData(this, DataKeys.KEY_MINUTES_NOTIFICATIONS, selectedMinute);
+                    DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, hourOfDay);
+                    DataManager.saveIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, selectedMinute);
                 },
                 hours,
                 minutes,
@@ -183,11 +183,11 @@ public class NotificationSettings extends AppCompatActivity {
         /// After the save data process, we apply the new configuration with the NotificationScheduler
         /// @PARAMETER All the current parameters are the Switch Objects from the XML file.
 
-        DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_SWITCH, switchNotificationsGeneral.isChecked());
-        DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STARTWORKS, switchStartWorks.isChecked());
-        DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_ENDWORKS, switchEndWorks.isChecked());
-        DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_STRIKES, switchStrikeNotifications.isChecked());
-        DataManager.saveBoolData(this, DataKeys.KEY_NOTIFICATION_PUSH, switchPushNotifications.isChecked());
+        DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, switchNotificationsGeneral.isChecked());
+        DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, switchStartWorks.isChecked());
+        DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, switchEndWorks.isChecked());
+        DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, switchStrikeNotifications.isChecked());
+        DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_PUSH, switchPushNotifications.isChecked());
 
         switchStartWorks.setTrackTintMode((switchStartWorks.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         switchEndWorks.setTrackTintMode((switchEndWorks.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);

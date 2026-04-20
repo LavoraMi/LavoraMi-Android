@@ -89,7 +89,7 @@ public class FilterSelection extends AppCompatActivity {
         /// The steps are: Load the Datas, Get the data from DataManager, get the CurrentIndex,
         /// Set global variables so we can set the Tickimage with the Method 'setCheckImage'
 
-        String selectedFilter = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        String selectedFilter = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
         setGlobalVariables(filterValues, selectedFilter);
         setCheckImage(filterIcons);
 
@@ -101,7 +101,7 @@ public class FilterSelection extends AppCompatActivity {
             filterLayouts[i].setOnClickListener(v -> {
                 getCurrentFilterSelected(filterValues, index);
                 setCheckImage(filterIcons);
-                DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_FILTER, getCurrentFilterSelected(filterValues, index));
+                DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, getCurrentFilterSelected(filterValues, index));
                 finish();
             });
         }

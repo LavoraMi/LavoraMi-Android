@@ -87,7 +87,7 @@ public class AdvancedOptions extends AppCompatActivity {
         });
 
         //*VARIABLES
-        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : "it";
 
         //*LOCK THE ORIENTATION
@@ -101,11 +101,11 @@ public class AdvancedOptions extends AppCompatActivity {
         //*LOAD DATAS
         /// Load the value of the Switch from the DataManager.
         boolean[] switchesStatus = {
-            DataManager.getBoolData(this, DataKeys.KEY_SHOW_ERROR_MESSAGES, false),
-            DataManager.getBoolData(this, DataKeys.KEY_SHOW_BANNERS, true),
-            DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true),
-            DataManager.getBoolData(this, DataKeys.KEY_SHOW_DETAILS, true),
-            DataManager.getBoolData(this, DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)
+            DataManager.getBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false),
+            DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true),
+            DataManager.getBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true),
+            DataManager.getBoolData(DataKeys.KEY_SHOW_DETAILS, true),
+            DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)
         };
 
         Switch[] switches = {
@@ -166,7 +166,7 @@ public class AdvancedOptions extends AppCompatActivity {
             if(dataToSave == DataKeys.KEY_REQUIRE_BIOMETRICS)
                 showBiometricPrompt(currentSwitch);
             else {
-                DataManager.saveBoolData(this, dataToSave, currentSwitch.isChecked());
+                DataManager.saveBoolData(dataToSave, currentSwitch.isChecked());
                 currentSwitch.setTrackTintMode((currentSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             }
         });
@@ -185,7 +185,7 @@ public class AdvancedOptions extends AppCompatActivity {
                 ((AppCompatActivity) context).runOnUiThread(() -> {Toast.makeText(context, context.getString(R.string.cacheMemoryToast), Toast.LENGTH_SHORT).show();});
         }
         catch (Exception e) {e.printStackTrace();}
-        DataManager.saveBoolData(context, DataKeys.KEY_DOWNLOAD_POLICIES, true);
+        DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
     }
 
     public static boolean deleteDir(File dir) {
@@ -222,10 +222,10 @@ public class AdvancedOptions extends AppCompatActivity {
 
         int authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL;
         int canAuthenticate = biometricManager.canAuthenticate(authenticators);
-        biometricsSwitch.setChecked(DataManager.getBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, true));
+        biometricsSwitch.setChecked(DataManager.getBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true));
 
         if (canAuthenticate != BiometricManager.BIOMETRIC_SUCCESS) {
-            DataManager.saveBoolData(this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
+            DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
             biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             return;
         }
@@ -263,7 +263,7 @@ public class AdvancedOptions extends AppCompatActivity {
 
                         if (encrypted != null && encrypted.length > 0) {
                             biometricsSwitch.setChecked(false);
-                            DataManager.saveBoolData(AdvancedOptions.this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
+                            DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
                             biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
                         }
                     }
@@ -294,7 +294,7 @@ public class AdvancedOptions extends AppCompatActivity {
         }
         else {
             biometricsSwitch.setChecked(true);
-            DataManager.saveBoolData(AdvancedOptions.this, DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
+            DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, biometricsSwitch.isChecked());
             biometricsSwitch.setTrackTintMode((biometricsSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
         }
     }

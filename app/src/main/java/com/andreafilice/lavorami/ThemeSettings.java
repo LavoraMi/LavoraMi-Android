@@ -46,7 +46,7 @@ public class ThemeSettings extends AppCompatActivity {
         ImageView[] languageTicks = {findViewById(R.id.checkItalian), findViewById(R.id.checkEnglish)};
         RelativeLayout[] languageLayouts = {findViewById(R.id.italian), findViewById(R.id.english)};
 
-        String savedLang = DataManager.getStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
 
         languageTicks[0].setVisibility(savedLang.contains("Italiano") ? View.VISIBLE : View.GONE);
         languageTicks[1].setVisibility(savedLang.contains("English") ? View.VISIBLE : View.GONE);
@@ -56,14 +56,14 @@ public class ThemeSettings extends AppCompatActivity {
         );
 
         languageLayouts[0].setOnClickListener(v -> {
-            DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+            DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
             languageTicks[0].setVisibility(View.VISIBLE);
             languageTicks[1].setVisibility(View.GONE);
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("it"));
         });
 
         languageLayouts[1].setOnClickListener(v -> {
-            DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_LANGUAGE, "English");
+            DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "English");
             languageTicks[0].setVisibility(View.GONE);
             languageTicks[1].setVisibility(View.VISIBLE);
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"));
@@ -100,7 +100,7 @@ public class ThemeSettings extends AppCompatActivity {
         lightTick.setVisibility((type == TypeSelected.Chiaro) ? View.VISIBLE : View.GONE);
 
         /// Save the data to the DataManager
-        DataManager.saveStringData(this, DataKeys.KEY_DEFAULT_THEME, type.toString());
+        DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, type.toString());
 
         /// Set the Theme
         setTheme();
@@ -114,7 +114,7 @@ public class ThemeSettings extends AppCompatActivity {
         /// @PARAMETERS
         /// There are no parameters.
 
-        TypeSelected typeLoaded = TypeSelected.valueOf(DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, TypeSelected.Sistema.toString()));
+        TypeSelected typeLoaded = TypeSelected.valueOf(DataManager.getStringData(DataKeys.KEY_DEFAULT_THEME, TypeSelected.Sistema.toString()));
         int modeSelected;
 
         switch (typeLoaded){
@@ -140,7 +140,7 @@ public class ThemeSettings extends AppCompatActivity {
         /// @PARAMETERS
         /// No parameters in this method.
 
-        TypeSelected typeLoaded = TypeSelected.valueOf(DataManager.getStringData(this, DataKeys.KEY_DEFAULT_THEME, TypeSelected.Sistema.toString()));
+        TypeSelected typeLoaded = TypeSelected.valueOf(DataManager.getStringData(DataKeys.KEY_DEFAULT_THEME, TypeSelected.Sistema.toString()));
 
         systemTick.setVisibility((typeLoaded == TypeSelected.Sistema) ? View.VISIBLE : View.GONE);
         darkTick.setVisibility((typeLoaded == TypeSelected.Scuro) ? View.VISIBLE : View.GONE);

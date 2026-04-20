@@ -85,7 +85,7 @@ public class SetupModels {
                     }
                 };
 
-                String savedLanguage = DataManager.getStringData(holder.itemView.getContext(), DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+                String savedLanguage = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
                 languageAdapter.setDropDownViewResource(R.layout.spinner_item_language);
                 holder.spinnerSetup.setAdapter(languageAdapter);
 
@@ -96,7 +96,7 @@ public class SetupModels {
                 holder.spinnerSetup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                        DataManager.saveStringData(holder.itemView.getContext(), DataKeys.KEY_DEFAULT_LANGUAGE, languageNames[pos]);
+                        DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, languageNames[pos]);
                         LocaleListCompat localeList = LocaleListCompat.forLanguageTags(languageCodes[pos]);
                         AppCompatDelegate.setApplicationLocales(localeList);
                     }
