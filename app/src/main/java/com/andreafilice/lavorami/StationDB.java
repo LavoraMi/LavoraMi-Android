@@ -758,6 +758,37 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram9() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Stazione Centrale M2 M3", 45.48699, 9.20277, "Main", "9"));
+        stations.add(new MetroStation("Via Filzi Via Pirelli", 45.48431, 9.20018, "Main", "9"));
+        stations.add(new MetroStation("Via Filzi Via Adda", 45.48316, 9.19939, "Main", "9"));
+        stations.add(new MetroStation("P.Za S. Gioachimo", 45.48146, 9.19805, "Main", "9"));
+        stations.add(new MetroStation("V.Le Monte Santo", 45.47978, 9.19489, "Main", "9"));
+        stations.add(new MetroStation("Repubblica M3", 45.47788, 9.19775, "Main", "9"));
+        stations.add(new MetroStation("V.Le Vittorio Veneto", 45.47678, 9.20024, "Main", "9"));
+        stations.add(new MetroStation("Porta Venezia M1", 45.47418, 9.20594, "Main", "9"));
+        stations.add(new MetroStation("V.Le Piave", 45.47225, 9.20654, "Main", "9"));
+        stations.add(new MetroStation("Tricolore M4", 45.46831, 9.2069, "Main", "9"));
+        stations.add(new MetroStation("V.Le Premuda", 45.46545, 9.20717, "Main", "9"));
+        stations.add(new MetroStation("P.Za 5 Giornate", 45.46279, 9.20746, "Main", "9"));
+        stations.add(new MetroStation("V.Le Monte Nero Via Spartaco", 45.46, 9.20727, "Main", "9"));
+        stations.add(new MetroStation("V.Le Monte Nero Via Bergamo", 45.45741, 9.20542, "Main", "9"));
+        stations.add(new MetroStation("V.Le Monte Nero Via Pier Lombardo", 45.45535, 9.2043, "Main", "9"));
+        stations.add(new MetroStation("Porta Romana M3", 45.45139, 9.20241, "Main", "9"));
+        stations.add(new MetroStation("V.Le Sabotino", 45.45098, 9.20052, "Main", "9"));
+        stations.add(new MetroStation("Via Ripamonti V.Le Sabotino", 45.45102, 9.19707, "Main", "9"));
+        stations.add(new MetroStation("V.Le Bigny", 45.45098, 9.1944, "Main", "9"));
+        stations.add(new MetroStation("Via Bocconi", 45.45097, 9.19069, "Main", "9"));
+        stations.add(new MetroStation("P.Ta Lodovica", 45.45178, 9.18711, "Main", "9"));
+        stations.add(new MetroStation("V.Le Col Di Lana", 45.45213, 9.18346, "Main", "9"));
+        stations.add(new MetroStation("Piazza XXIV Maggio", 45.4524, 9.17969, "Main", "9"));
+        stations.add(new MetroStation("Via Vigevano V.Le Gorizia", 45.45272, 9.1763, "Main", "9"));
+        stations.add(new MetroStation("P.Le Cantore", 45.45491, 9.17225, "Main", "9"));
+        stations.add(new MetroStation("Porta Genova M2", 45.45341, 9.17002, "Main", "9"));
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram24() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Piazza Fontana", 45.46337, 9.19405, "Main", "24"));
@@ -1067,6 +1098,7 @@ public class StationDB {
         allStations.addAll(getStationsTram3());
         allStations.addAll(getStationsTram5());
         allStations.addAll(getStationsTram7());
+        allStations.addAll(getStationsTram9());
         allStations.addAll(getStationsTram24());
         return allStations;
     }
