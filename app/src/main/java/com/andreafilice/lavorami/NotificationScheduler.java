@@ -117,7 +117,7 @@ public class NotificationScheduler {
 
                 if (notifyStart) {
                     if (startMillis > now) {
-                        long notifTime = getSelectedTime(context, startMillis);
+                        long notifTime = getSelectedTime(startMillis);
                         if (notifTime > now) {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
@@ -148,7 +148,7 @@ public class NotificationScheduler {
                     }
                     long startDayBefore = startMillis - oneDayMillis;
                     if (startDayBefore > now) {
-                        long notifTimePre = getSelectedTime(context, startDayBefore);
+                        long notifTimePre = getSelectedTime(startDayBefore);
                         if (notifTimePre > now) {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
@@ -180,7 +180,7 @@ public class NotificationScheduler {
 
                 if (notifyEnd) {
                     if (endMillis > now) {
-                        long notifTimeEnd = getSelectedTime(context, endMillis);
+                        long notifTimeEnd = getSelectedTime(endMillis);
                         if (notifTimeEnd > now) {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
@@ -210,7 +210,7 @@ public class NotificationScheduler {
                     }
                     long endDayBefore = endMillis - oneDayMillis;
                     if (endDayBefore > now) {
-                        long notifTimePreEnd = getSelectedTime(context, endDayBefore);
+                        long notifTimePreEnd = getSelectedTime(endDayBefore);
                         if (notifTimePreEnd > now) {
                             if(event.roads.toLowerCase().contains("via")) {
                                 if(event.getLines().length <= 1)
@@ -268,7 +268,7 @@ public class NotificationScheduler {
         int idPreStrike = baseId * 10 + 21;
 
         if (strikeMillis > now) {
-            long notifTime = getSelectedTime(context, strikeMillis);
+            long notifTime = getSelectedTime(strikeMillis);
             if (notifTime > now) {
                 schedule(context, alarmManager, idStrike, notifTime,
                         context.getString(R.string.strikeNotificationTitle),
@@ -279,7 +279,7 @@ public class NotificationScheduler {
 
         long strikeDayBefore = strikeMillis - oneDayMillis;
         if (strikeDayBefore > now) {
-            long notifTimePre = getSelectedTime(context, strikeDayBefore);
+            long notifTimePre = getSelectedTime(strikeDayBefore);
             if (notifTimePre > now) {
                 schedule(context, alarmManager, idPreStrike, notifTimePre,
                         context.getString(R.string.strikeTomorrowNotificationTitle),
@@ -350,7 +350,7 @@ public class NotificationScheduler {
         }
     }
 
-    private static long getSelectedTime(Context context, long eventDateMillis) {
+    private static long getSelectedTime(long eventDateMillis) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(eventDateMillis);
         calendar.set(Calendar.HOUR_OF_DAY, DataManager.getIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10));
