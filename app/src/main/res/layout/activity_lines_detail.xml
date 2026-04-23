@@ -520,8 +520,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Scegli una fermata..."
-                    app:startIconDrawable="@android:drawable/ic_menu_mylocation"
+                    android:hint="Scegli una fermata"
+                    app:startIconDrawable="@drawable/ic_location"
                     app:boxBackgroundColor="@color/background_app"
                     app:boxCornerRadiusTopStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -542,13 +542,15 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:background="#1A000000" /> <ProgressBar
-                android:id="@+id/arriviProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:visibility="gone" />
+                    android:background="#1A000000" />
+
+                <ProgressBar
+                    android:id="@+id/arriviProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/arriviEmptyState"
@@ -562,7 +564,7 @@
                     <ImageView
                         android:layout_width="44dp"
                         android:layout_height="44dp"
-                        android:src="@android:drawable/ic_dialog_map"
+                        android:src="@drawable/ic_clock_slash"
                         app:tint="@color/subtitle" />
 
                     <TextView
@@ -584,9 +586,7 @@
                     android:nestedScrollingEnabled="false"
                     android:clipToPadding="false"
                     android:visibility="visible" />
-
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

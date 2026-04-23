@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="12dp"
         android:layout_height="12dp"
-        android:src="@drawable/ic_info"
+        android:src="@drawable/ic_clock"
         app:tint="@color/subtitle" />
 
     <TextView
