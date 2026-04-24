@@ -345,7 +345,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
                 android:text="Arrivi"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
 
         <TextView

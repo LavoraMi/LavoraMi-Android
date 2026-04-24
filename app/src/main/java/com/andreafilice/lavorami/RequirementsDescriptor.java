@@ -13,13 +13,10 @@ public class RequirementsDescriptor {
     /// @String minimumVersionAndroid -> is the minimum version to have for using the application.
     @SerializedName("minVersionAndroid")
     public String minimumVersionAndroid;
-
     @SerializedName("maintenanceMode")
     public String maintenanceModeEnabled;
-
     @SerializedName("maintenanceDeps")
     public String maintenanceDeps;
-
     @SerializedName("maintenanceDepsEn")
     public String maintenanceDepsEnglish;
 

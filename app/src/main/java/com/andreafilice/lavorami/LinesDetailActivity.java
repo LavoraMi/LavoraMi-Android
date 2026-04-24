@@ -230,7 +230,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
                 chipMappa.setChecked(false);
                 chipLavori.setChecked(true);
-                if (chipArrivi != null) chipArrivi.setChecked(false);
+                chipArrivi.setChecked(false);
                 cardMappa.setVisibility(View.GONE);
                 containerLavori.setVisibility(View.VISIBLE);
                 containerInterscambi.setVisibility(View.GONE);
@@ -239,7 +239,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
                 chipMappa.setChecked(true);
                 chipLavori.setChecked(false);
-                if (chipArrivi != null) chipArrivi.setChecked(false);
+                chipArrivi.setChecked(false);
                 cardMappa.setVisibility(View.VISIBLE);
                 containerLavori.setVisibility(View.GONE);
                 containerInterscambi.setVisibility(View.GONE);
@@ -247,27 +247,25 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
         });
 
-        if (chipArrivi != null) {
-            chipArrivi.setOnClickListener(v -> {
-                cardMappa.setVisibility(View.GONE);
-                containerLavori.setVisibility(View.GONE);
-                containerInterscambi.setVisibility(View.GONE);
-                lavoriWrapper.setVisibility(View.GONE);
-                lavoriNested.setVisibility(View.GONE);
-                interscambiWrapper.setVisibility(View.GONE);
-                interscambiNested.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.GONE);
-                if (arriviWrapper != null) arriviWrapper.setVisibility(View.VISIBLE);
-                if (arriviNested != null) arriviNested.setVisibility(View.VISIBLE);
+        chipArrivi.setOnClickListener(v -> {
+            cardMappa.setVisibility(View.GONE);
+            containerLavori.setVisibility(View.GONE);
+            containerInterscambi.setVisibility(View.GONE);
+            lavoriWrapper.setVisibility(View.GONE);
+            lavoriNested.setVisibility(View.GONE);
+            interscambiWrapper.setVisibility(View.GONE);
+            interscambiNested.setVisibility(View.GONE);
+            findViewById(R.id.emptyView).setVisibility(View.GONE);
+            arriviWrapper.setVisibility(View.VISIBLE);
+            arriviNested.setVisibility(View.VISIBLE);
 
-                if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !chipArrivi.isChecked()){
-                    chipArrivi.setChecked(true);
-                    chipMappa.setChecked(false);
-                    chipLavori.setChecked(false);
-                    chipInterscambi.setChecked(false);
-                }
-            });
-        }
+            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !chipArrivi.isChecked()){
+                chipArrivi.setChecked(true);
+                chipMappa.setChecked(false);
+                chipLavori.setChecked(false);
+                chipInterscambi.setChecked(false);
+            }
+        });
 
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
@@ -1091,7 +1089,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         i++;
                     }
 
-                    if(gtfsSupportedLines.equals(nomeLinea) && nomeLinea.contains("z")) {
+                    if(Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
                         findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
                         loadGTFSData();
                     }
@@ -1101,9 +1099,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
 
             @Override
-            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
-                Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-            }
+            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
         });
     }
 
