@@ -13,6 +13,8 @@ public class StrikeDescriptor {
 
     @SerializedName("enableStrike")
     private String isStrikeEnabled;
+    @SerializedName("enableStrikeDebug")
+    private String enableStrikeDebug;
     @SerializedName("date")
     private String strikeDate;
     @SerializedName("companies")
@@ -26,8 +28,9 @@ public class StrikeDescriptor {
     @SerializedName("linesSupportedGTFS")
     private String[] supportedGTFSLines;
 
-    public StrikeDescriptor(String isStrikeEnabled, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines) {
+    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines) {
         this.isStrikeEnabled = isStrikeEnabled;
+        this.enableStrikeDebug = enableStrikeDebug;
         this.strikeDate = strikeDate;
         this.strikeCompanies = strikeCompanies;
         this.strikeGuaranteed = strikeGuaranteed;
@@ -39,6 +42,7 @@ public class StrikeDescriptor {
     //*GETTERS
     /// Set-up the Getters to use into MainActivity.java for get some values.
     public String isStrikeEnabled() {return isStrikeEnabled;}
+    public String isStrikeEnabledDebug() {return enableStrikeDebug;}
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}

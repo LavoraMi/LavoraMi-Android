@@ -1014,10 +1014,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
             Date date = sdf.parse(dateString);
             return (date != null) ? date.getTime() : 0;
-        } catch (Exception e) {
-            Log.e("DATA_ERROR", "Impossibile leggere: " + dateString + " | Errore: " + e.getMessage());
-            return 0;
         }
+        catch (Exception e) {return 0;}
     }
 
     private void aggiornaInfoSuperiori() {

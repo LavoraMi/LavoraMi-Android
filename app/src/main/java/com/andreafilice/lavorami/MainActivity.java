@@ -153,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
             else {
                 DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
                 setupOverlay.setVisibility(View.GONE);
+                hasCompletedSetup = true;
+                downloadJSONData(defaultCategory, false);
             }
 
             /// In this section, we ask the permission of notifications to the user, beacuse in this Index there is the "Notification" page.
@@ -629,7 +631,6 @@ public class MainActivity extends AppCompatActivity {
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor> () {
             @Override
             public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
-                Log.d("RESPONSE_STRIKES", response.body().isStrikeEnabled());
                 if(response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     updateStrike(strikeCDNResponse);
@@ -711,7 +712,7 @@ public class MainActivity extends AppCompatActivity {
         /// @PARAMETER
         /// StrikeDescriptor strikeDescriptor is the response body from the CDN Request executed before this method.
 
-        if(DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true)){
+        if(DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true) && hasCompletedSetup){
             MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
             TextView strikeDesc = findViewById(R.id.strikeDesc);
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
