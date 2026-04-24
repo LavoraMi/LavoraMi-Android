@@ -8,29 +8,29 @@
     android:layout_marginEnd="16dp">
 
     <ImageView
-        android:layout_width="12dp"
-        android:layout_height="12dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/ic_clock"
         app:tint="@color/subtitle" />
 
     <TextView
-    android:id="@+id/txtSecMins"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:text="15 min"
-    android:textColor="@color/text_primary"
-    android:textSize="14sp"
-    android:fontFamily="@font/inter_medium"
-    android:textStyle="bold" />
+        android:id="@+id/txtSecMins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="15 min"
+        android:textColor="@color/text_primary"
+        android:textSize="17sp"
+        android:fontFamily="@font/inter_medium"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txtSecTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="14:45"
+        android:text=""
         android:textColor="@color/subtitle"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:fontFamily="@font/work_sans_medium" />
 </LinearLayout>
