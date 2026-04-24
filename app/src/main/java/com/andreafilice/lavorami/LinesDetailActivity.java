@@ -275,11 +275,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         fetchDeviations();
 
         //*S12 LIMITATION
+        /// In this section of the code, we compose the phrase for S12 line limitation.
         TextView attestazioneLinea = findViewById(R.id.attestazioneLinea);
         attestazioneLinea.setText(getString(R.string.lineaAttesta) + "MILANO BOVISA.");
         attestazioneLinea.setVisibility((nomeLinea.equals("S12")) ? View.VISIBLE : View.GONE);
 
         //*CHIP BACKGROUND COLOR
+        /// In this section of the code we setup the Chip Background color when selected and when is not selected.
         int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.text_primary) : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
         ColorStateList chipColor = new ColorStateList(
@@ -298,6 +300,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipArrivi.setChipBackgroundColor(chipColor);
 
         //*CHIP TEXT COLOR
+        /// In this section of the code we setup the Chip Text color when selected and when is not selected.
         int bianco = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.BlackS12) : ContextCompat.getColor(this, R.color.White);
         int testoDefault = ContextCompat.getColor(this, R.color.text_primary);
         ColorStateList chipTextColor = new ColorStateList(
@@ -316,6 +319,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipArrivi.setTextColor(chipTextColor);
 
         //*ACCESSIBILITY RATE
+        /// In this section of the code, we get the current accessibility rate of the line in question.
         String rate = getAccessibility(nomeLinea);
         TextView accessibilityText = findViewById(R.id.accessibilityText);
         ImageView iconAccessibility = findViewById(R.id.iconAccessibility);
@@ -338,6 +342,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
         infoIconMetro.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoAccessibility.class));
 
+        //*DISABLE THIS FEATURE FOR BUS LINES.
         if(nomeLinea.contains("z")){
             lineAccessibilityLayout.setVisibility(View.GONE);
             findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
@@ -476,9 +481,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     troncoNew.add(troncoPrincipale.get(troncoPrincipale.size() - 1));
                 inNewSection = true;
                 troncoNew.add(s);
-            } else {
-                troncoPrincipale.add(s);
             }
+            else
+                troncoPrincipale.add(s);
         }
 
         if (!troncoPrincipale.isEmpty()) {
@@ -504,8 +509,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         List<MetroStation> ramoLavori = new ArrayList<>();
 
         List<String> nomiRamoBisceglie = Arrays.asList(
-                "Wagner", "De Angeli", "Gambara", "Bande Nere",
-                "Primaticcio", "Inganni", "Bisceglie"
+            "Wagner", "De Angeli", "Gambara", "Bande Nere",
+            "Primaticcio", "Inganni", "Bisceglie"
         );
 
         MetroStation snodoPagano = null;
@@ -685,10 +690,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView companyTxt = card.findViewById(R.id.txtOperator);
                 TextView roadsTxt = card.findViewById(R.id.txtRoute);
 
+                //*TRANSLATE BUTTON
                 Button btnTranslate = card.findViewById(R.id.btnTranslate);
                 btnTranslate.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
                 btnTranslate.setOnClickListener(v -> {
+                    //*VARIABLES
+                    /// In this section of the code, we initialize some components that we will user later in the code.
                     BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
                     View sheetView = LayoutInflater.from(this).inflate(R.layout.item_sheet_translated, null);
                     ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
@@ -1113,6 +1121,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M3": return "San Donato - Comasina";
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
+
             case "S1": return "Saronno - Lodi";
             case "S2": return "Mariano Comense - Milano Rogoredo";
             case "S3": return "Saronno - Milano Cadorna";
@@ -1127,6 +1136,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S13": return "Pavia - Milano Bovisa";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
+
             case "MXP1": return "Gallarate - Malpensa - Milano Centrale";
             case "MXP2": return "Malpensa - Milano Cadorna";
             case "S10": return "Biasca - Como";
@@ -1135,6 +1145,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S40": return "Como - Varese";
             case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
             case "RE80": return "Locarno - Milano Centrale";
+
             case "1": return "Roserio - Greco";
             case "2": return "P.Le Negrelli - P.Za Bausan";
             case "3": return "Duomo M1 M3 - Gratosoglio";
@@ -1152,6 +1163,78 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "27": return "V.Le Ungheria - Duomo M1 M3";
             case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
+
+            case "Z601": return "Legnano - Molino Dorino M1";
+            case "Z602": return "Milano Cadorna - Legnano";
+            case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
+            case "Z6C3": return "San Vittore Olona - Cerro Maggiore - Milano Cadorna";
+            case "Z606": return "Molino Dorino M1 - Cerro Maggiore";
+            case "Z611": return "Legnano - Parabiago";
+            case "Z612": return "Legnano - Arese (Il CENTRO)";
+            case "Z616": return "Pregnana Milanese - Rho FS";
+            case "Z617": return "Molino Dorino M1 - Origgio / Lainate";
+            case "Z618": return "Rho FS - Vanzago";
+            case "Z619": return "Pogliano M. - Plesso IST Maggiolini";
+            case "Z620": return "Magenta - Molino Dorino M1";
+            case "Z621": return "Cuggiono - Molino Dorino M1";
+            case "Z622": return "Cuggiono - Ossona - Cornaredo";
+            case "Z625": return "Busto Arsizio - Busto Garolfo";
+            case "Z627": return "Castano Primo - Legnano";
+            case "Z636": return "Nosate - Legnano";
+            case "Z641": return "Castano Primo - Magenta FS";
+            case "Z642": return "Magenta - Legnano";
+            case "Z643": return "Vittuone - Parabiago";
+            case "Z644": return "Arconate - Parabiago";
+            case "Z646": return "Castano Primo - Magenta FS";
+            case "Z647": return "Cornaredo - Castano Primo";
+            case "Z648": return "Arconate - Busto Garolfo - Molino Dorino M1";
+            case "Z649": return "Magenta - Arluno - Molino Dorino M1";
+
+            case "Z551": return "Abbiategrasso - Bisceglie M1";
+            case "Z552": return "Abbiategrasso - S. Stefano FS";
+            case "Z553": return "Abbiategrasso - Milano Romolo M2";
+            case "Z554": return "Albairate - Bubbiano";
+            case "Z555": return "Abbiategrasso - Casorate/Binasco";
+            case "Z556": return "Abbiategrasso FS - Motta Visconti";
+            case "Z557": return "Gaggiano (De Gasperi) - San Vito";
+            case "Z559": return "Magenta FS - Abbiategrasso FS";
+            case "Z560": return "Abbiategrasso FS - Bisceglie M1";
+
+            case "Z401": return "Melzo FS - Vignate - Villa Fiorita M2";
+            case "Z402": return "Cernusco M2 - Pioltello FS - S.Felice";
+            case "Z403": return "Gorgonzola M2 - Melzo (Circolare)";
+            case "Z404": return "Melzo FS - Inzago - Gessate M2";
+            case "Z405": return "Gessate M2 - Cassano D'Adda - Treviglio";
+            case "Z406": return "Trecella - Bellinzago - Gessate M2";
+            case "Z407": return "Gorgonzola M2 - Truccazzano";
+            case "Z409": return "Rodano - S.Felice - Linate Aereoporto";
+            case "Z410": return "Pantigliate - Peschiera - S.Donato M3";
+            case "Z411": return "Melzo FS - Settala - S.Donato M3";
+            case "Z412": return "Zelo B.P - Paullo - S.Donato M3";
+            case "Z413": return "Tribiano - S.Donato M3";
+            case "Z415": return "Melegnano - Dresano - S.Donato M3";
+            case "Z418": return "S.Zenone FS - Casalmaiocco";
+            case "Z419": return "Paullo - Melzo - Gorgonzola M2";
+            case "Z420": return "Vizzolo - Melegnano - S.Donato M3";
+            case "Z431": return "Melegnano FS - Carpiano/Cerro L.";
+            case "Z432": return "Melegnano FS - Dresano - Vizzolo (Circolare)";
+            case "Z203": return "Muggiò - Monza FS - Cologno Nord M2";
+            case "Z205": return "Limbiate Mombello - Varedo - Monza FS";
+            case "Z209": return "Cesano FN - Desio - Lissone";
+            case "Z219": return "Monza FS - Muggiò - Paderno Dugnano";
+            case "Z221": return "Sesto S.G. - Monza FS - Carate";
+            case "Z222": return "Sesto S.G. - S. Fruttoso - Monza FS";
+            case "Z225": return "Sesto S.G. - Cinisello B. - Nova M.se";
+            case "Z227": return "Monza H/Lissone FS - Muggiò - Cinisello";
+            case "Z228": return "Seregno FS - Lissone - Monza FS";
+            case "Z229": return "Paderno ITC - Cusano - Cinisello B.";
+            case "Z231": return "Carate - Giussano - Seregno FS - Desio";
+            case "Z232": return "Desio - Seregno - Besana FS";
+            case "Z233": return "Triuggio - Albiate - Seregno FS";
+            case "Z234": return "Vedano Al L. - Lissone - Muggiò";
+            case "Z242": return "Desio - Seregno FS - Renate";
+            case "Z250": return "Lissone FS - Desio FS - Cesano FN";
+            case "Z251": return "Desio FS - Bovisio M. - Limbiate - Cesano FN";
             default: return "Direzioni non disponibili per " + linea;
         }
     }
