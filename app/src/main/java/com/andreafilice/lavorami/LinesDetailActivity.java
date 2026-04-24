@@ -342,9 +342,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             lineAccessibilityLayout.setVisibility(View.GONE);
             findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
         }
-
-        if (chipArrivi.getVisibility() == View.VISIBLE)
-            loadGTFSData();
     }
 
     @Override
@@ -1070,6 +1067,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     strikeCDNResponse = response.body();
                     String[] lineeDeviate = strikeCDNResponse.getLinesDeviation();
                     String[] linkLinee = strikeCDNResponse.getLinesDeviationLinks();
+                    String[] gtfsSupportedLines = strikeCDNResponse.getSupportedGTFSLines();
                     int i = 0;
 
                     ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
@@ -1084,6 +1082,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         }
                         i++;
                     }
+
+                    if(gtfsSupportedLines.equals(nomeLinea) && nomeLinea.contains("z")) {
+                        findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
+                        loadGTFSData();
+                    }
+                    else
+                        findViewById(R.id.chipArrivi).setVisibility(View.GONE);
                 }
             }
 
@@ -1108,7 +1113,6 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M3": return "San Donato - Comasina";
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
-            // ... (altri casi omessi qui per brevità della visualizzazione stringhe, ma intatti dal tuo file)
             case "S1": return "Saronno - Lodi";
             case "S2": return "Mariano Comense - Milano Rogoredo";
             case "S3": return "Saronno - Milano Cadorna";
