@@ -214,6 +214,12 @@ public class SettingsActivity extends AppCompatActivity {
             } catch (android.content.ActivityNotFoundException anfe) {startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));}
         });
 
+        //*SUPPORT LAVORAMI
+        /// In this section, we add a listener to the "Support Us" button in Settings view.
+        RelativeLayout supportBtn = findViewById(R.id.btnSupportUs);
+
+        supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.buymeacoffee.com/lavorami"));
+
         //*RESET SETTINGS
         /// In this section of the code we create the Listener for the Reset Settings button
         RelativeLayout btnRefresh = findViewById(R.id.btnRefresh);

@@ -120,7 +120,7 @@
     <string name="androidDeveloper">Android Developers:</string>
     <string name="webDeveloper">Web Developer:</string>
     <string name="support">Support us</string>
-    <string name="supportText">If you like LavoraMi and you want to keep it advertising-free, you can share the app down below!</string>
+    <string name="supportText">If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Patreon or Buy Me A Coffee!</string>
     <string name="parteonSupport">Support us on Patreon</string>
     <string name="buyACoffeSupport">Support us on Buy Me A Coffee</string>
     <string name="followOn">Follow us on:</string>
@@ -309,4 +309,7 @@
     <string name="accessibilityPart3">This route does not meet the minimum accessibility requirements. There may be steps at the entrance to the vehicle, or the road infrastructure along the route may make it impossible to lower the ramp safely.</string>
     <string name="noLinesFound">No results for: \"%s\"</string>
     <string name="accessibilityInfoDeps3">LavoraMi obtains this information from authoritative and reliable sources. However, the data may not be up to date.</string>
+    <string name="helpSettingsTitle">Help</string>
+    <string name="linksSettingsTitle">Links</string>
+    <string name="supportLavoraMiButtonSettings">Support LavoraMi</string>
 </resources>

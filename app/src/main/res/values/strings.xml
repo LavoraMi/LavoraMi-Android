@@ -119,7 +119,7 @@
     <string name="androidDeveloper">Sviluppatori Android:</string>
     <string name="webDeveloper">Sviluppatori Web:</string>
     <string name="support">Supportaci</string>
-    <string name="supportText">Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi condividere l\'app qui sotto!</string>
+    <string name="supportText">Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!</string>
     <string name="parteonSupport">Supportaci su Patreon</string>
     <string name="buyACoffeSupport">Supportaci su Buy Me A Coffee</string>
     <string name="followOn">Seguici su:</string>
@@ -308,4 +308,7 @@
     <string name="accessibilityPart3">Questa linea non garantisce i requisiti minimi di accessibilità. I mezzi potrebbero presentare gradini all\'ingresso del mezzo oppure le infrastrutture stradali del percorso rendono impossibile la discesa della pedana in sicurezza.</string>
     <string name="noLinesFound">Nessun risultato per: \"%s\"</string>
     <string name="accessibilityInfoDeps3">LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all\'ultimo minuto.</string>
+    <string name="helpSettingsTitle">Aiuto</string>
+    <string name="linksSettingsTitle">Collegamenti</string>
+    <string name="supportLavoraMiButtonSettings">Supporta LavoraMi</string>
 </resources>

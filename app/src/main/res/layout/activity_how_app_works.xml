@@ -96,7 +96,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_progress_bar"
-                    app:tint="#E41414" />
+                    app:tint="@color/redMetro" />
 
                 <TextView
                     android:id="@+id/txtProgressBarTitle"
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/progressBar"
-                    android:textColor="#E41414"
+                    android:textColor="@color/redMetro"
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -168,7 +168,7 @@
                         android:paddingStart="20dp"
                         android:paddingEnd="20dp"
                         android:progress="38"
-                        android:progressTint="#FD272D" />
+                        android:progressTint="@color/redMetro" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -191,7 +191,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_extension_line"
-                    app:tint="#E41414" />
+                    app:tint="@color/redMetro" />
 
                 <TextView
                     android:id="@+id/txtChooseLineTitle"
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/choseLine"
-                    android:textColor="#E41414"
+                    android:textColor="@color/redMetro"
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -238,7 +238,7 @@
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_bus"
-                        app:tint="#E41414" />
+                        app:tint="@color/redMetro" />
 
                     <TextView
                         android:id="@+id/txtMovibusLines"
@@ -285,7 +285,7 @@
                     android:layout_marginEnd="12dp"
                     android:layout_marginStart="55dp"
                     android:src="@drawable/ic_transfer"
-                    app:tint="#E41414" />
+                    app:tint="@color/redMetro" />
 
                 <TextView
                     android:id="@+id/txtInterchangesTitle"
@@ -293,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/viewInterchanges"
-                    android:textColor="#E41414"
+                    android:textColor="@color/redMetro"
                     android:textSize="30sp"
                     android:layout_marginEnd="55dp"
                     android:gravity="center"
@@ -484,7 +484,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_cone"
-                    app:tint="#E41414" />
+                    app:tint="@color/redMetro" />
 
                 <TextView
                     android:id="@+id/txtWorksiteTitle"
@@ -492,7 +492,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/worksiteStop"
-                    android:textColor="#E41414"
+                    android:textColor="@color/redMetro"
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -654,7 +654,7 @@
                             android:paddingStart="10dp"
                             android:paddingEnd="10dp"
                             android:progress="62"
-                            android:progressTint="#FD272D" />
+                            android:progressTint="@color/redMetro" />
                     </RelativeLayout>
 
                     <TextView
@@ -701,7 +701,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="top"
                     android:src="@drawable/ic_map"
-                    app:tint="#E41414" />
+                    app:tint="@color/redMetro" />
 
                 <TextView
                     android:id="@+id/txtMapTitle"
@@ -711,7 +711,7 @@
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/viewLinesOnMap"
                     android:textAlignment="center"
-                    android:textColor="#E41414"
+                    android:textColor="@color/redMetro"
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -763,7 +763,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/ic_bell"
-                    app:tint="#E41414" />
+                    app:tint="@color/redMetro" />
 
                 <TextView
                     android:id="@+id/txtUpdatesTitle"
@@ -771,7 +771,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/work_sans_medium"
                     android:text="@string/updateYourself"
-                    android:textColor="#E41414"
+                    android:textColor="@color/redMetro"
                     android:textSize="30sp"
                     android:textStyle="bold" />
             </LinearLayout>
