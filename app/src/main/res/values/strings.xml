@@ -228,7 +228,7 @@
     <string name="exampleDate1">15 Dic 2026</string>
     <string name="setupTitleTranslate">Traduci i lavori, nella lingua che vuoi tu.</string>
     <string name="setupDepsTranslate">Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\".</string>
-    <string name="setupMiniDepsTranslate">Funzionalità disponibile solo con la lingua Inglese selezionata. Vai in Impostazioni > Aspetto e Lingua per selezionarla.</string>
+    <string name="setupMiniDepsTranslate">Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\".</string>
     <string name="rateUsTitle">Valuta LavoraMi</string>
     <string name="translateTitle">Traduzione (it-en):</string>
     <string name="copyTranslation">Copia Traduzione</string>
