@@ -167,12 +167,25 @@
                     android:id="@+id/deleteIconRecent"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_info"
+                    android:src="@drawable/ic_delete_recent"
                     app:tint="@color/desc"
                     android:clickable="true"
-                    android:focusable="true"/>
+                    android:focusable="true"
+                    android:visibility="gone"/>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/emptyViewRecent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Non ci sono linee cercate di recente."
+                android:textColor="@color/desc"
+                android:textSize="17sp"
+                android:fontFamily="@font/inter_medium"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/groupRecent"

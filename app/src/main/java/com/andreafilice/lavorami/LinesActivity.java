@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -258,26 +259,45 @@ public class LinesActivity extends AppCompatActivity {
 
     public void reloadRecentLines() {
         /// In this function, we will reload the Recent Lines when the Activity is resumed.
+        ImageView deleteIconRecent = findViewById(R.id.deleteIconRecent);
 
         if (containerRecent != null)
             containerRecent.removeAllViews();
 
         recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
 
-        for (String entry : recentLinesSet) {
-            String[] parts = entry.split("\\|");
+        if(!recentLinesSet.isEmpty()){
+            deleteIconRecent.setVisibility(View.VISIBLE);
+            deleteIconRecent.setOnClickListener(v -> {
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.areYouSurePopUp)
+                        .setMessage("Sei sicuro di voler eliminare le ricerche?")
+                        .setNegativeButton(R.string.cancelPopUp, null)
+                        .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
+                            DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>());
+                            reloadRecentLines();
+                        }).show();
+            });
 
-            if (parts.length == 2) {
-                String title = parts[0];
-                String deps = parts[1];
-                int color = StationDB.getLineColor(title);
+            findViewById(R.id.emptyViewRecent).setVisibility(View.GONE);
 
-                if(deps.contains("Suburban"))
-                    deps = getString(R.string.suburban);
+            for (String entry : recentLinesSet) {
+                String[] parts = entry.split("\\|");
 
-                aggiungiLinea(containerRecent, title, color, deps);
+                if (parts.length == 2) {
+                    String title = parts[0];
+                    String deps = parts[1];
+                    int color = StationDB.getLineColor(title);
+
+                    if(deps.contains("Suburban"))
+                        deps = getString(R.string.suburban);
+
+                    aggiungiLinea(containerRecent, title, color, deps);
+                }
             }
         }
+        else
+            findViewById(R.id.emptyViewRecent).setVisibility(View.VISIBLE);
     }
 
     private void loadLines(){
@@ -359,8 +379,6 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void aggiungiLinea(LinearLayout container, String label, int colorHex, String description) {
-        findViewById(R.id.shimmerTextAnim).setVisibility(View.GONE);
-        findViewById(R.id.shimmerLineBadge).setVisibility(View.GONE);
         View row = getLayoutInflater().inflate(R.layout.item_linea_list, container, false);
 
         TextView badge = row.findViewById(R.id.lineBadge);
