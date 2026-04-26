@@ -24,8 +24,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class LinesActivity extends AppCompatActivity {
 
+    LinearLayout containerRecent;
     LinearLayout containerMetro;
     LinearLayout containerSub;
     LinearLayout containerTILO;
@@ -37,6 +43,7 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout containerAutoGuidovie;
     ShimmerFrameLayout loadingLayout;
     boolean linesLoaded = false;
+    private Set<String> recentLinesSet = new LinkedHashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,7 @@ public class LinesActivity extends AppCompatActivity {
 
         //*INITIALIZE COMPONENTS
         /// In this section of the code, we initialize all the containers for the sub-menus.
+        containerRecent = findViewById(R.id.groupRecent);
         containerMetro = findViewById(R.id.groupMetro);
         containerSub = findViewById(R.id.groupSub);
         containerTILO = findViewById(R.id.groupTrans);
@@ -77,6 +85,8 @@ public class LinesActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
 
         //*WEBSITE LINKS
         /// In this section of the code, we set the default action (OnClick) of the ImageView
@@ -138,6 +148,7 @@ public class LinesActivity extends AppCompatActivity {
 
                 String query = s.toString().toLowerCase().trim();
 
+                LinearLayout titleRecent = findViewById(R.id.headerRecentSearch);
                 LinearLayout titleMetro = findViewById(R.id.headerMetro);
                 LinearLayout titleSub = findViewById(R.id.headerSuburbane);
                 LinearLayout titleMXP = findViewById(R.id.headerMXP);
@@ -148,6 +159,7 @@ public class LinesActivity extends AppCompatActivity {
                 LinearLayout titleAutoGuidoVie= findViewById(R.id.headerAutoguidovie);
                 TextView tvNoResults = findViewById(R.id.emptyView);
 
+                boolean hasRecent = query.isEmpty();
                 boolean hasMetro = filtraContainer(containerMetro, query);
                 boolean hasSub = filtraContainer(containerSub, query);
                 boolean hasMXP = filtraContainer(containerMXP, query);
@@ -156,6 +168,10 @@ public class LinesActivity extends AppCompatActivity {
                 boolean hasMovibus = filtraContainer(containerMovibus, query);
                 boolean hasStav= filtraContainer(containerStav, query);
                 boolean hasAuto = filtraContainer(containerAutoGuidovie, query);
+
+                //*RECENT LINES
+                titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+                containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
 
                 //*METRO LINES
                 titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
@@ -234,9 +250,42 @@ public class LinesActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reloadRecentLines();
+    }
+
+    public void reloadRecentLines() {
+        /// In this function, we will reload the Recent Lines when the Activity is resumed.
+
+        if (containerRecent != null)
+            containerRecent.removeAllViews();
+
+        recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
+
+        for (String entry : recentLinesSet) {
+            String[] parts = entry.split("\\|");
+
+            if (parts.length == 2) {
+                String title = parts[0];
+                String deps = parts[1];
+                int color = StationDB.getLineColor(title);
+
+                if(deps.contains("Suburban"))
+                    deps = getString(R.string.suburban);
+
+                aggiungiLinea(containerRecent, title, color, deps);
+            }
+        }
+    }
+
     private void loadLines(){
         /// In this section of the code, we generate the Lines from the StationsDB file.
         /// Every type of line is sorted in order of importance.
+
+        //RECENT
+        reloadRecentLines();
 
         // METRO
         String[] metroLines = {"M1", "M2", "M3", "M4", "M5"};
@@ -338,6 +387,9 @@ public class LinesActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, LinesDetailActivity.class);
                 intent.putExtra("NOME_LINEA", label);
                 intent.putExtra("TIPO_DI_LINEA", (description + " " + label));
+
+                insertRecentLine(label, description);
+
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             });
@@ -364,6 +416,7 @@ public class LinesActivity extends AppCompatActivity {
                     row.setVisibility(View.GONE);
             }
         }
+
         return trovatoAtLeastOne;
     }
 
@@ -373,8 +426,26 @@ public class LinesActivity extends AppCompatActivity {
         /// LinearLayout layout is the Header of the transport category.
         /// boolean isActive is the bool variable that define if a Header is enable (the user is searching for that) or not.
 
-        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) layout.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) layout.getLayoutParams();
 
-        lp.topMargin = !isActive ? (int)(20 * getResources().getDisplayMetrics().density) : 0;
+        layoutParams.topMargin = !isActive ? (int)(20 * getResources().getDisplayMetrics().density) : 0;
+    }
+
+    private void insertRecentLine(String nameLine, String description) {
+        /// In this function, we add the line that the user have clicked to the recent researched ones.
+        /// @PARAMETERS
+        /// String nameLine is the name of the line, also called "title".
+        /// String description is the Company of the line, can be for example: "STAV".
+
+        String combinedEntry = nameLine + "|" + description;
+        recentLinesSet.remove(combinedEntry);
+
+        if(recentLinesSet.size() >= 5) {
+            String oldestEntry = recentLinesSet.iterator().next();
+            recentLinesSet.remove(oldestEntry);
+        }
+
+        recentLinesSet.add(combinedEntry);
+        DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, recentLinesSet);
     }
 }

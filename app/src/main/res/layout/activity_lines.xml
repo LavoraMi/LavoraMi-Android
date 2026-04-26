@@ -101,13 +101,88 @@
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nessuna corrispondenza trovata."
+                android:text=""
                 android:textSize="18sp"
                 android:textColor="@color/text_primary"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
                 android:fontFamily="@font/work_sans_medium"
                 android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/headerRecentSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp">
+
+                <LinearLayout
+                    android:id="@+id/subTitleSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iconSearched"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_recent_searches"
+                            app:tint="@color/desc"
+                            android:clickable="true"
+                            android:focusable="true"/>
+
+                        <TextView
+                            android:id="@+id/subTitleRecent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cercate di recente"
+                            android:textColor="@color/text_primary"
+                            android:layout_marginStart="8dp"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/work_sans_medium" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/subTitleRecentDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="In base alle tue ricerche"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_medium" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/deleteIconRecent"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupRecent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/headerMetro"
@@ -117,7 +192,8 @@
                 android:gravity="center_vertical"
                 android:layout_marginBottom="15dp"
                 android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp">
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
                     android:id="@+id/subTitleMetro"
