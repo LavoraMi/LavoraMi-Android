@@ -322,4 +322,6 @@
     <string name="basedOnSearchDeps">In base alle tue ricerche</string>
     <string name="noLinesSearched">Nessuna linea cercata di recente.</string>
     <string name="directionTitleArrivals">"DIREZIONE: "</string>
+    <string name="showRecentLinesTitle">Mostra Ricerche Recenti</string>
+    <string name="showRecentLinesDeps">Mostra le tue ricerche recenti in alto nella pagine delle Linee.</string>
 </resources>

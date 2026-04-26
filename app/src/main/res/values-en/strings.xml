@@ -323,4 +323,6 @@
     <string name="basedOnSearchDeps">Based on your research</string>
     <string name="noLinesSearched">No recently searched lines.</string>
     <string name="directionTitleArrivals">"DIRECTION: "</string>
+    <string name="showRecentLinesTitle">Show Recent Research</string>
+    <string name="showRecentLinesDeps">Display your recent searches at the top of the Guidelines pages.</string>
 </resources>

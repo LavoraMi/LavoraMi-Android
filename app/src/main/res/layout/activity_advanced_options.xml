@@ -319,7 +319,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconRecent"
                         android:fontFamily="@font/work_sans_medium"
-                        android:text="Mostra Ricerche Recenti"
+                        android:text="@string/showRecentLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -344,7 +344,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="Mostra le tue ricerche recenti in alto nella pagine delle Linee."
+                android:text="@string/showRecentLinesDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
