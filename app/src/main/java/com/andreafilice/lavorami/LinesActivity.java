@@ -160,7 +160,7 @@ public class LinesActivity extends AppCompatActivity {
                 LinearLayout titleAutoGuidoVie= findViewById(R.id.headerAutoguidovie);
                 TextView tvNoResults = findViewById(R.id.emptyView);
 
-                boolean hasRecent = query.isEmpty();
+                boolean hasRecent = (query.isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
                 boolean hasMetro = filtraContainer(containerMetro, query);
                 boolean hasSub = filtraContainer(containerSub, query);
                 boolean hasMXP = filtraContainer(containerMXP, query);
@@ -260,6 +260,13 @@ public class LinesActivity extends AppCompatActivity {
     public void reloadRecentLines() {
         /// In this function, we will reload the Recent Lines when the Activity is resumed.
         ImageView deleteIconRecent = findViewById(R.id.deleteIconRecent);
+
+        findViewById(R.id.subTitleSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.headerRecentSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.groupRecent).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
+
+        LinearLayout headerMetro = findViewById(R.id.headerMetro);
+        setUpMargin(headerMetro, !(DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)));
 
         if (containerRecent != null)
             containerRecent.removeAllViews();

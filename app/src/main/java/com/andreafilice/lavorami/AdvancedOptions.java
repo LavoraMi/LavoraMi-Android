@@ -105,7 +105,8 @@ public class AdvancedOptions extends AppCompatActivity {
             DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true),
             DataManager.getBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true),
             DataManager.getBoolData(DataKeys.KEY_SHOW_DETAILS, true),
-            DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)
+            DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false),
+            DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)
         };
 
         Switch[] switches = {
@@ -113,7 +114,8 @@ public class AdvancedOptions extends AppCompatActivity {
             findViewById(R.id.switchBanner),
             findViewById(R.id.switchBiometrics),
             findViewById(R.id.switchDetails),
-            findViewById(R.id.switchTranslation)
+            findViewById(R.id.switchTranslation),
+            findViewById(R.id.switchRecent)
         };
 
         DataKeys[] switchesKey = {
@@ -121,7 +123,8 @@ public class AdvancedOptions extends AppCompatActivity {
             DataKeys.KEY_SHOW_BANNERS,
             DataKeys.KEY_REQUIRE_BIOMETRICS,
             DataKeys.KEY_SHOW_DETAILS,
-            DataKeys.KEY_SHOW_TRANSLATE_BUTTON
+            DataKeys.KEY_SHOW_TRANSLATE_BUTTON,
+            DataKeys.KEY_SHOW_RECENT_LINES
         };
 
         for (int i = 0; i < switches.length; i++) {setupSwitch(switches[i], switchesStatus[i], switchesKey[i]);}
