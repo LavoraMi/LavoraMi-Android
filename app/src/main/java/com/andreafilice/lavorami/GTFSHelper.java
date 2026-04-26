@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -98,7 +100,7 @@ public class GTFSHelper {
         }).start();
     }
 
-    public static Map<String, List<Departure>> getDepartures(String stopId, GTFSRoute route, int limit) {
+    public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit) {
         GTFSStop stop = route.stops.get(stopId);
         if (stop == null) return null;
 
@@ -130,7 +132,7 @@ public class GTFSHelper {
                     int diff = depMins - nowMins;
 
                     if (diff >= 0) {
-                        String headsign = headsignIdx < route.headsigns.size() ? route.headsigns.get(headsignIdx) : "Direzione ignota";
+                        String headsign = headsignIdx < route.headsigns.size() ? route.headsigns.get(headsignIdx) : context.getString(R.string.unknownErrorToast) ;
                         dirDepartures.add(new Departure(timeStr, headsign, diff));
                     }
                     if (dirDepartures.size() >= limit) break;

@@ -1358,7 +1358,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private void updateArriviList() {
         if (routeData == null || selectedStopId == null) return;
 
-        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(selectedStopId, routeData, 3);
+        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 3);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             arriviRecyclerView.setVisibility(View.GONE);
@@ -1398,7 +1398,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
             if (deps != null && !deps.isEmpty()) {
                 GTFSHelper.Departure first = deps.get(0);
-                holder.txtDirectionHeadsign.setText("DIREZIONE: " + first.headsign.toUpperCase());
+                holder.txtDirectionHeadsign.setText(getString(R.string.linesDirectionsTitle) + " " + first.headsign.toUpperCase());
 
                 int colorFirst;
                 if (first.minutesFromNow < 10) {
@@ -1416,7 +1416,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
                 holder.iconFirstClock.setColorFilter(colorFirst);
                 holder.txtFirstMins.setTextColor(colorFirst);
-                holder.txtFirstMins.setText(first.minutesFromNow == 0 ? "In partenza" : first.minutesFromNow + " min");
+                holder.txtFirstMins.setText(first.minutesFromNow == 0 ? getString(R.string.leavingTitle) : first.minutesFromNow + " min");
                 holder.txtFirstTime.setText(first.time);
 
                 holder.containerOtherDepartures.removeAllViews();

@@ -344,7 +344,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
-                android:text="Arrivi"
+                android:text="@string/arrivalsChipText"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
@@ -521,7 +521,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Scegli una fermata"
+                    android:hint="@string/selectAStop"
                     app:startIconDrawable="@drawable/ic_location"
                     app:boxBackgroundColor="@color/background_app"
                     app:boxCornerRadiusTopStart="10dp"
@@ -572,7 +572,7 @@
                         android:id="@+id/arriviEmptyStateText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nessuna corsa disponibile per questa fermata oggi."
+                        android:text="@string/noRoutesToday"
                         android:textAlignment="center"
                         android:textColor="@color/subtitle"
                         android:fontFamily="@font/work_sans_medium"

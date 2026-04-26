@@ -311,4 +311,10 @@
     <string name="helpSettingsTitle">Aiuto</string>
     <string name="linksSettingsTitle">Collegamenti</string>
     <string name="supportLavoraMiButtonSettings">Supporta LavoraMi</string>
+    <string name="noRoutesToday">Nessuna corsa prevista per oggi.</string>
+    <string name="selectAStop">Scegli una fermata</string>
+    <string name="leavingTitle">In partenza</string>
+    <string name="nextDepartures">PROSSIME PARTENZE:</string>
+    <string name="busDisclaimerBadge">Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l\'orario programmato.</string>
+    <string name="arrivalsChipText">Arrivi</string>
 </resources>

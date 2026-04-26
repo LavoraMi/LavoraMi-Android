@@ -312,4 +312,10 @@
     <string name="helpSettingsTitle">Help</string>
     <string name="linksSettingsTitle">Links</string>
     <string name="supportLavoraMiButtonSettings">Support LavoraMi</string>
+    <string name="noRoutesToday">No routes scheduled for today.</string>
+    <string name="selectAStop">Select a stop</string>
+    <string name="leavingTitle">Leaving</string>
+    <string name="nextDepartures">NEXT DEPARTURES:</string>
+    <string name="busDisclaimerBadge">The bus may be 3 to 5 minutes late. This is the scheduled timetable.</string>
+    <string name="arrivalsChipText">Arrivals</string>
 </resources>

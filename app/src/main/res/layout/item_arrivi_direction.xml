@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:text="DIREZIONE: TEST"
+            android:text="null"
             android:textColor="@color/subtitle"
             android:textSize="12sp"
             android:fontFamily="@font/inter_medium"
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l'orario programmato."
+                android:text="@string/busDisclaimerBadge"
                 android:textColor="@color/subtitle"
                 android:textSize="10sp"
                 android:layout_marginTop="6dp"
@@ -99,7 +99,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PROSSIME PARTENZE:"
+                android:text="@string/nextDepartures"
                 android:textColor="@color/subtitle"
                 android:textSize="15sp"
                 android:layout_marginBottom="10dp"
