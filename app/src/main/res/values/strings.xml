@@ -317,4 +317,8 @@
     <string name="nextDepartures">PROSSIME PARTENZE:</string>
     <string name="busDisclaimerBadge">Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l\'orario programmato.</string>
     <string name="arrivalsChipText">Arrivi</string>
+    <string name="popUpDeleteRecentDeps">Sei sicuro di voler cancellare le ricerche recenti?</string>
+    <string name="recentSearchTitle">Cercate di recente</string>
+    <string name="basedOnSearchDeps">In base alle tue ricerche</string>
+    <string name="noLinesSearched">Nessuna linea cercata di recente.</string>
 </resources>

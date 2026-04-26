@@ -271,7 +271,7 @@ public class LinesActivity extends AppCompatActivity {
             deleteIconRecent.setOnClickListener(v -> {
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.areYouSurePopUp)
-                        .setMessage("Sei sicuro di voler eliminare le ricerche?")
+                        .setMessage(R.string.popUpDeleteRecentDeps)
                         .setNegativeButton(R.string.cancelPopUp, null)
                         .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
                             DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>());

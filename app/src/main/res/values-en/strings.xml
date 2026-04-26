@@ -318,4 +318,8 @@
     <string name="nextDepartures">NEXT DEPARTURES:</string>
     <string name="busDisclaimerBadge">The bus may be 3 to 5 minutes late. This is the scheduled timetable.</string>
     <string name="arrivalsChipText">Arrivals</string>
+    <string name="popUpDeleteRecentDeps">Are you sure you want to delete your recent searches?</string>
+    <string name="recentSearchTitle">Recently Searched</string>
+    <string name="basedOnSearchDeps">Based on your research</string>
+    <string name="noLinesSearched">No recently searched lines.</string>
 </resources>
