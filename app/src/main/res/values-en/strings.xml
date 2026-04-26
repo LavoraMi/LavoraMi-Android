@@ -322,4 +322,5 @@
     <string name="recentSearchTitle">Recently Searched</string>
     <string name="basedOnSearchDeps">Based on your research</string>
     <string name="noLinesSearched">No recently searched lines.</string>
+    <string name="directionTitleArrivals">"DIRECTION: "</string>
 </resources>

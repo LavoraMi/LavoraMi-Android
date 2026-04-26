@@ -88,6 +88,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private LinearLayout arriviEmptyState;
     private GTFSHelper.GTFSRoute routeData;
     private String selectedStopId;
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1372,6 +1373,16 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 arriviRecyclerView.setAdapter(new ArriviAdapter(departuresByDir));
             }
         }
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                handler.postDelayed(() -> {
+                    updateArriviList();
+                    handler.postDelayed(this, 10000);
+                },500);
+            }
+        });
     }
 
     private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ViewHolder> {
@@ -1398,7 +1409,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
             if (deps != null && !deps.isEmpty()) {
                 GTFSHelper.Departure first = deps.get(0);
-                holder.txtDirectionHeadsign.setText(getString(R.string.linesDirectionsTitle) + " " + first.headsign.toUpperCase());
+                holder.txtDirectionHeadsign.setText(getString(R.string.directionTitleArrivals) + first.headsign.toUpperCase());
 
                 int colorFirst;
                 if (first.minutesFromNow < 10) {

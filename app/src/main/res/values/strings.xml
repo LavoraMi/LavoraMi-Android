@@ -321,4 +321,5 @@
     <string name="recentSearchTitle">Cercate di recente</string>
     <string name="basedOnSearchDeps">In base alle tue ricerche</string>
     <string name="noLinesSearched">Nessuna linea cercata di recente.</string>
+    <string name="directionTitleArrivals">"DIREZIONE: "</string>
 </resources>
