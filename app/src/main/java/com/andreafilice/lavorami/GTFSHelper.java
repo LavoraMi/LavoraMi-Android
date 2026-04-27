@@ -46,7 +46,7 @@ public class GTFSHelper {
 
     public interface GTFSCallback {
         void onSuccess(GTFSRoute route);
-        void onError(Exception e);
+        void onError();
     }
 
     public static void load(String urlString, GTFSCallback callback) {
@@ -95,7 +95,7 @@ public class GTFSHelper {
                 callback.onSuccess(route);
             }
             catch (Exception e) {
-                callback.onError(e);
+                callback.onError();
             }
         }).start();
     }
@@ -136,7 +136,8 @@ public class GTFSHelper {
                         dirDepartures.add(new Departure(timeStr, headsign, diff));
                     }
                     if (dirDepartures.size() >= limit) break;
-                } catch (Exception ignored) {}
+                }
+                catch (Exception ignored) {}
             }
             if (!dirDepartures.isEmpty()) result.put(dirId, dirDepartures);
         }
@@ -144,9 +145,9 @@ public class GTFSHelper {
     }
 
     private static String todayString() {
-        SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-        f.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
-        return f.format(new Date());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
+        return simpleDateFormat.format(new Date());
     }
 
     private static int nowMinutes() {

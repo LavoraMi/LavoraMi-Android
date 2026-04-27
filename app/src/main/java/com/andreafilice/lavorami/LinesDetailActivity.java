@@ -1318,10 +1318,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             }
 
             @Override
-            public void onError(Exception e) {
+            public void onError() {
                 new Handler(Looper.getMainLooper()).post(() -> {
                     if (arriviProgressBar != null) arriviProgressBar.setVisibility(View.GONE);
-                    Toast.makeText(LinesDetailActivity.this, "Errore caricamento orari", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                 });
             }
         });
