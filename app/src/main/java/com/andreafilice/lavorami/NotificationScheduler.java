@@ -17,7 +17,6 @@ import java.util.Locale;
 import java.util.Set;
 
 public class NotificationScheduler {
-
     private static final String TAG = "Scheduler_Log";
 
     public static void scheduleWorkNotifications(Context context, ArrayList<EventDescriptor> eventList) {
@@ -268,7 +267,7 @@ public class NotificationScheduler {
         int idPreStrike = baseId * 10 + 21;
 
         if (strikeMillis > now) {
-            long notifTime = getSelectedTime(strikeMillis);
+            long notifTime = getStrikeNotificationTime(strikeMillis);
             if (notifTime > now) {
                 schedule(context, alarmManager, idStrike, notifTime,
                         context.getString(R.string.strikeNotificationTitle),
@@ -299,9 +298,10 @@ public class NotificationScheduler {
 
     private static long parseDateMillis(String dateStr) {
         String[] formats = { "yyyy-MM-dd", "dd/MM/yyyy", "dd-MM-yyyy" };
-        for (String fmt : formats) {
+
+        for (String format : formats) {
             try {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(fmt, Locale.getDefault());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, Locale.getDefault());
 
                 simpleDateFormat.setLenient(false);
                 Date date = simpleDateFormat.parse(dateStr);
@@ -309,62 +309,77 @@ public class NotificationScheduler {
                 if (date != null)
                     return date.getTime();
             }
-            catch (ParseException ignored) { }
+            catch (ParseException ignored) {Log.e(TAG, ignored.getLocalizedMessage());}
         }
         return -1;
     }
 
-
     @SuppressLint("ScheduleExactAlarm")
-    private static void schedule(Context context, AlarmManager am, int id, long time, String title, String msg) {
+    private static void schedule(Context context, AlarmManager alarmManager, int id, long time, String title, String msg) {
         try {
             Intent intent = new Intent(context, NotificationReceiver.class);
             intent.putExtra("title", title);
             intent.putExtra("message", msg);
             intent.putExtra("id", id);
 
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, id, intent,
-                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, id, intent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                if (am.canScheduleExactAlarms())
-                    am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+                if (alarmManager.canScheduleExactAlarms())
+                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
                 else
-                    am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+                    alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+            }
+            else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, time, pendingIntent);
             else
-                am.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
-
-            Log.d(TAG, "Schedulato ID=" + id + " | " + title + " | " + msg);
-
-        } catch (SecurityException se) {
-            Log.e(TAG, "Errore Permessi (SecurityException): " + se.getMessage());
+                alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        }
+        catch (SecurityException se) {
             try {
                 Intent intentFallback = new Intent(context, NotificationReceiver.class);
+
                 intentFallback.putExtra("title", title);
                 intentFallback.putExtra("message", msg);
                 intentFallback.putExtra("id", id);
-                PendingIntent piFallback = PendingIntent.getBroadcast(context, id, intentFallback,
-                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-                am.set(AlarmManager.RTC_WAKEUP, time, piFallback);
+
+                PendingIntent piFallback = PendingIntent.getBroadcast(context, id, intentFallback, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, time, piFallback);
             }
-            catch (Exception e2) {
-                e2.printStackTrace();
-            }
+            catch (Exception e2) {e2.printStackTrace();}
         }
-        catch (Exception e) {
-            Log.e(TAG, "Errore: " + e.getMessage());
-        }
+        catch (Exception e) {Log.e(TAG, "Errore: " + e.getMessage());}
     }
 
     private static long getSelectedTime(long eventDateMillis) {
+        /// In this method, we will get the current selected Time for deliver notifications, setted in Settings > Notifications.
+        /// @PARAMETERS
+        /// long eventDateMillis is the event date in milliseconds
+
         Calendar calendar = Calendar.getInstance();
+
         calendar.setTimeInMillis(eventDateMillis);
         calendar.set(Calendar.HOUR_OF_DAY, DataManager.getIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10));
         calendar.set(Calendar.MINUTE, DataManager.getIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 0));
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
+
+        return calendar.getTimeInMillis();
+    }
+
+    private static long getStrikeNotificationTime(long eventDateMillis) {
+        /// In this method, we will get the current selected Time for deliver notifications, but not setted in settings.
+        /// @PARAMETERS
+        /// long eventDateMillis is the event date in milliseconds
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.setTimeInMillis(eventDateMillis);
+        calendar.set(Calendar.HOUR_OF_DAY, 7);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
         return calendar.getTimeInMillis();
     }
 }
