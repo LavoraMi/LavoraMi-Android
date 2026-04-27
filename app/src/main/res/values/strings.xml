@@ -326,4 +326,6 @@
     <string name="showRecentLinesDeps">Mostra le tue ricerche recenti in alto nella pagine delle Linee.</string>
     <string name="setupAccessibilityTitle">Accessibile, sempre.</string>
     <string name="setupDepsAccessiblity">Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d\'occhio.</string>
+    <string name="hourPrefix">ora.</string>
+    <string name="hoursPrefix">ore.</string>
 </resources>

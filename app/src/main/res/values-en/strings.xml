@@ -327,4 +327,6 @@
     <string name="showRecentLinesDeps">Display your recent searches at the top of the Guidelines pages.</string>
     <string name="setupAccessibilityTitle">Accessible, always.</string>
     <string name="setupDepsAccessiblity">See whether a line is fully, partially or not at all accessible. All at a glance.</string>
+    <string name="hourPrefix">hour.</string>
+    <string name="hoursPrefix">hours.</string>
 </resources>
