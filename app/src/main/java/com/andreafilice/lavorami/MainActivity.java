@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             title.setLayoutParams(params);
             title.setGravity(Gravity.CENTER_VERTICAL);
-            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
             title.setTextColor(Color.parseColor("#666666"));
             title.setPadding(5, 0, 0, 0);
 
