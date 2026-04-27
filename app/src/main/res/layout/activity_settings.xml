@@ -152,7 +152,7 @@
                             android:layout_height="28dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_train"
-                            app:tint="#E41414" />
+                            app:tint="@color/redMetro" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -251,7 +251,7 @@
                             android:layout_height="28dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_tram"
-                            app:tint="#E41414" />
+                            app:tint="@color/redMetro" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -345,7 +345,7 @@
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_bus"
-                        app:tint="#E41414" />
+                        app:tint="@color/redMetro" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -392,7 +392,7 @@
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_bus"
-                        app:tint="#E41414" />
+                        app:tint="@color/redMetro" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -439,7 +439,7 @@
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_bus"
-                        app:tint="#E41414" />
+                        app:tint="@color/redMetro" />
 
                     <TextView
                         android:layout_width="wrap_content"
