@@ -119,7 +119,7 @@ public class NotificationScheduler {
                     if (startMillis > now) {
                         long notifTime = getSelectedTime(startMillis);
                         if (notifTime > now) {
-                            if(event.roads.toLowerCase().contains("via")) {
+                            if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idStart, notifTime,
                                             context.getString(R.string.startWorkNotificationTitle),
@@ -150,7 +150,7 @@ public class NotificationScheduler {
                     if (startDayBefore > now) {
                         long notifTimePre = getSelectedTime(startDayBefore);
                         if (notifTimePre > now) {
-                            if(event.roads.toLowerCase().contains("via")) {
+                            if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreStart, notifTimePre,
                                             context.getString(R.string.startWorkTomorrowNotificationTitle),
@@ -182,7 +182,7 @@ public class NotificationScheduler {
                     if (endMillis > now) {
                         long notifTimeEnd = getSelectedTime(endMillis);
                         if (notifTimeEnd > now) {
-                            if(event.roads.toLowerCase().contains("via")) {
+                            if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idEnd, notifTimeEnd,
                                             context.getString(R.string.endWorksNotificationTitle),
@@ -212,7 +212,7 @@ public class NotificationScheduler {
                     if (endDayBefore > now) {
                         long notifTimePreEnd = getSelectedTime(endDayBefore);
                         if (notifTimePreEnd > now) {
-                            if(event.roads.toLowerCase().contains("via")) {
+                            if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
                                     schedule(context, alarmManager, idPreEnd, notifTimePreEnd,
                                             context.getString(R.string.endWorksTomorrowTitle),
@@ -287,6 +287,14 @@ public class NotificationScheduler {
                                 strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
             }
         }
+    }
+
+    private static boolean isViaChecked(String value) {
+        /// In this method, we check if we had to insert "in" or "a" word when displaying a Notification.
+        /// @PARAMETERS
+        /// String value is the value passed lowercased.
+
+        return value.contains("via") || value.contains("corso") || value.contains("largo");
     }
 
     private static long parseDateMillis(String dateStr) {

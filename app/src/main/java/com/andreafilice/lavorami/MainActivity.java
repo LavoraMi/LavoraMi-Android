@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle3), getString(R.string.setupDeps3), "ic_star_fill", ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle4), getString(R.string.setupDeps4), "ic_bell_fill", ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitleTranslate), getString(R.string.setupDepsTranslate), "ic_translate", getString(R.string.setupMiniDepsTranslate)));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupAccessibilityTitle), getString(R.string.setupDepsAccessiblity), "ic_accessibility", ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle5), getString(R.string.setupDeps5), "ic_lock", getString(R.string.setupMiniDetails)));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
