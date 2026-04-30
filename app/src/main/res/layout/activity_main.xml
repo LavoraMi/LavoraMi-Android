@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/background_app"
         android:paddingTop="23dp"
-        android:paddingBottom="1dp"
+        android:paddingBottom="10dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp">
 
