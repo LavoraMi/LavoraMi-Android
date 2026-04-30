@@ -406,7 +406,7 @@ public class LinesActivity extends AppCompatActivity {
             if (badge.getBackground() != null)
                 badge.getBackground().mutate().setTint(colore);
             else
-                badge.setBackgroundColor(R.color.White);
+                badge.setBackgroundColor(getResources().getColor(R.color.GRAY));
 
             row.setOnClickListener(v -> {
                 Intent intent = new Intent(this, LinesDetailActivity.class);

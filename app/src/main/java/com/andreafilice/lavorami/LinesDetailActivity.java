@@ -167,7 +167,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipArrivi.setChipStrokeWidth(3f);
         chipArrivi.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
 
-        ///
+        ///In this section we manage chips activities
         Map<Chip, Runnable> chipActions = new LinkedHashMap<>();
 
         // Helper per nascondere tutto
