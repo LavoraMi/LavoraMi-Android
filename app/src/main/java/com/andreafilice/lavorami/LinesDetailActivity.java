@@ -61,6 +61,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -166,8 +167,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipArrivi.setChipStrokeWidth(3f);
         chipArrivi.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
 
-        chipMappa.setOnClickListener(v -> {
-            cardMappa.setVisibility(View.VISIBLE);
+        ///
+        Map<Chip, Runnable> chipActions = new LinkedHashMap<>();
+
+        // Helper per nascondere tutto
+        Runnable hideAll = () -> {
+            cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.GONE);
             lavoriWrapper.setVisibility(View.GONE);
@@ -178,95 +183,42 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             arriviNested.setVisibility(View.GONE);
             findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
             findViewById(R.id.emptyView).setVisibility(View.GONE);
+        };
 
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked()){
-                chipMappa.setChecked(true);
-                chipLavori.setChecked(false);
-                chipInterscambi.setChecked(false);
-                chipArrivi.setChecked(false);
-            }
+        chipActions.put(chipMappa, () -> {
+            cardMappa.setVisibility(View.VISIBLE);
         });
 
-        chipLavori.setOnClickListener(v -> {
-            cardMappa.setVisibility(View.GONE);
+        chipActions.put(chipLavori, () -> {
             containerLavori.setVisibility(View.VISIBLE);
-            containerInterscambi.setVisibility(View.GONE);
-            interscambiWrapper.setVisibility(View.GONE);
-            interscambiNested.setVisibility(View.GONE);
-            arriviWrapper.setVisibility(View.GONE);
-            arriviNested.setVisibility(View.GONE);
             caricaEventiFiltrati();
-
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
-                chipMappa.setChecked(true);
-                chipLavori.setChecked(false);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.VISIBLE);
-                containerLavori.setVisibility(View.GONE);
-                containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.GONE);
-            }
-            else if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
-                chipMappa.setChecked(false);
-                chipLavori.setChecked(true);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.GONE);
-                containerLavori.setVisibility(View.VISIBLE);
-                containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
-            }
         });
 
-        chipInterscambi.setOnClickListener(v -> {
-            cardMappa.setVisibility(View.GONE);
-            containerLavori.setVisibility(View.GONE);
+        chipActions.put(chipInterscambi, () -> {
             containerInterscambi.setVisibility(View.VISIBLE);
-            lavoriWrapper.setVisibility(View.GONE);
-            lavoriNested.setVisibility(View.GONE);
-            arriviWrapper.setVisibility(View.GONE);
-            arriviNested.setVisibility(View.GONE);
-            findViewById(R.id.emptyView).setVisibility(View.GONE);
             caricaInterscambiLinee();
-
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
-                chipMappa.setChecked(false);
-                chipLavori.setChecked(true);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.GONE);
-                containerLavori.setVisibility(View.VISIBLE);
-                containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
-            }
-            else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
-                chipMappa.setChecked(true);
-                chipLavori.setChecked(false);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.VISIBLE);
-                containerLavori.setVisibility(View.GONE);
-                containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.GONE);
-            }
         });
 
-        chipArrivi.setOnClickListener(v -> {
-            cardMappa.setVisibility(View.GONE);
-            containerLavori.setVisibility(View.GONE);
-            containerInterscambi.setVisibility(View.GONE);
-            lavoriWrapper.setVisibility(View.GONE);
-            lavoriNested.setVisibility(View.GONE);
-            interscambiWrapper.setVisibility(View.GONE);
-            interscambiNested.setVisibility(View.GONE);
-            findViewById(R.id.emptyView).setVisibility(View.GONE);
+        chipActions.put(chipArrivi, () -> {
             arriviWrapper.setVisibility(View.VISIBLE);
             arriviNested.setVisibility(View.VISIBLE);
-
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !chipArrivi.isChecked()){
-                chipArrivi.setChecked(true);
-                chipMappa.setChecked(false);
-                chipLavori.setChecked(false);
-                chipInterscambi.setChecked(false);
-            }
         });
+
+        // Applica lo stesso listener a tutti
+        for (Map.Entry<Chip, Runnable> selezionato : chipActions.entrySet()) {
+            Chip chip = selezionato.getKey();
+            Runnable action = selezionato.getValue();
+
+            chip.setOnClickListener(v -> {
+                // Deseleziona tutti, seleziona quello cliccato
+                chipActions.keySet().forEach(c -> c.setChecked(false));
+                chip.setChecked(true);
+
+                // Nascondi tutto, poi mostra la sezione corretta
+                hideAll.run();
+                action.run();
+            });
+        }
 
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
