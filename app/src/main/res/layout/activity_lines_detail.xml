@@ -318,7 +318,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
                 android:text="@string/mapChip"
-                app:chipBackgroundColor="@color/selector_chip_filter"/>
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_location"
+                app:fontFamily="@font/work_sans_medium"
+                app:chipIconSize="15dp"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="8dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipLavoriInCorso"
@@ -327,7 +333,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
                 android:text="@string/lineWorksChip"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_clock_exclamation"
+                app:fontFamily="@font/work_sans_medium"
+                app:chipIconSize="20dp"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="8dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipInterscambi"
@@ -336,7 +348,13 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_primary"
                 android:text="@string/interchangesChip"
-                app:chipBackgroundColor="@color/selector_chip_filter" />
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_transfer"
+                app:fontFamily="@font/work_sans_medium"
+                app:chipIconSize="20dp"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipArrivi"
@@ -346,6 +364,12 @@
                 android:textColor="@color/text_primary"
                 android:text="@string/arrivalsChipText"
                 app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_calendar"
+                app:fontFamily="@font/work_sans_medium"
+                app:chipIconSize="18dp"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp"
                 android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
 

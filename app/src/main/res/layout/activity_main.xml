@@ -266,7 +266,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_filters"
                 app:fontFamily="@font/work_sans_medium"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
@@ -281,7 +281,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_bus"
                 android:fontFamily="@font/work_sans_medium"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
@@ -296,7 +296,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:fontFamily="@font/work_sans_medium"
                 app:chipIcon="@drawable/ic_tram"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
@@ -311,7 +311,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:fontFamily="@font/work_sans_medium"
                 app:chipIcon="@drawable/ic_metro"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
@@ -326,7 +326,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:fontFamily="@font/work_sans_medium"
                 app:chipIcon="@drawable/ic_train"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
@@ -341,7 +341,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:fontFamily="@font/work_sans_medium"
                 app:chipIcon="@drawable/ic_incorso"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
@@ -356,7 +356,7 @@
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:fontFamily="@font/work_sans_medium"
                 app:chipIcon="@drawable/ic_calendar"
-                app:chipIconSize="15dp"
+                app:chipIconSize="18dp"
                 app:chipIconTint="@color/text_primary"
                 app:chipIconVisible="true"
                 app:iconStartPadding="10dp" />
