@@ -78,7 +78,7 @@ public class ThemeSettings extends AppCompatActivity {
         lightTick = findViewById(R.id.checkLight);
 
         ImageButton backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
+        backBtn.setOnClickListener(v -> finish());
 
         //*LOAD DATAs
         loadSavedData();

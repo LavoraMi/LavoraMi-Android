@@ -70,7 +70,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnCofee.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.buymeacoffee.com/lavorami"));
         btnPrivacyPolicy.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://lavorami.it/privacypolicy"));
         btnTermsOfService.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://lavorami.it/termsofservice"));
-        btnBack.setOnClickListener(v -> ActivityUtils.changeActivity(this, SettingsActivity.class));
+        btnBack.setOnClickListener(v -> finish());
         btnRiconoscimenti.setOnClickListener(v ->{ActivityUtils.changeActivity(this, LibrariesActivity.class);});
         btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://lavorami.it"));
     }
