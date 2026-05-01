@@ -44,6 +44,7 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout containerAutoGuidovie;
     ShimmerFrameLayout loadingLayout;
     boolean linesLoaded = false;
+    boolean isRecentEmpty = false;
     private Set<String> recentLinesSet = new LinkedHashSet<>();
 
     @Override
@@ -172,6 +173,7 @@ public class LinesActivity extends AppCompatActivity {
 
                 //*RECENT LINES
                 titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+                findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() &&  isRecentEmpty) ? View.VISIBLE : View.GONE);
                 containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
 
                 //*METRO LINES
@@ -273,7 +275,7 @@ public class LinesActivity extends AppCompatActivity {
 
         recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
 
-        if(!recentLinesSet.isEmpty() || !linesLoaded){
+        if(!recentLinesSet.isEmpty()){
             deleteIconRecent.setVisibility(View.VISIBLE);
             deleteIconRecent.setOnClickListener(v -> {
                 new AlertDialog.Builder(this)
@@ -303,8 +305,10 @@ public class LinesActivity extends AppCompatActivity {
                 }
             }
         }
-        else
+        else {
+            isRecentEmpty = true;
             findViewById(R.id.emptyViewRecent).setVisibility(View.VISIBLE);
+        }
     }
 
     private void loadLines(){
