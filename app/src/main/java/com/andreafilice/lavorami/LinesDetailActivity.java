@@ -429,16 +429,17 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                         public void onFinish() {
                             if (tipoDiLinea.contains("Tram")) {
                                 double latMedia = 0, lngMedia = 0;
+
                                 for (MetroStation s : tutteLeStazioni) {
                                     latMedia += s.getLatitude();
                                     lngMedia += s.getLongitude();
                                 }
+
                                 latMedia /= tutteLeStazioni.size();
                                 lngMedia /= tutteLeStazioni.size();
 
                                 float currentZoom = mMap.getCameraPosition().zoom;
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(latMedia, lngMedia), currentZoom + 1.5f));
+                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), currentZoom - 0.3f));
                             }
                         }
                         @Override
