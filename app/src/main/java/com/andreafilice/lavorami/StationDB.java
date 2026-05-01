@@ -911,6 +911,33 @@ public class StationDB {
         stations.add(new MetroStation("Cinisello (Primo Maggio)", 45.56002, 9.21108, "Main", "31"));
         return stations;
     }
+    public static List<MetroStation> getStationsTram33() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Rimembranze Di Lambrate", 45.48271, 9.24159, "Main", "33"));
+        stations.add(new MetroStation("Via Valvassori Peroni", 45.48146, 9.23683, "Main", "33"));
+        stations.add(new MetroStation("Via Bassini Via Golgi", 45.48057, 9.23466, "Main", "33"));
+        stations.add(new MetroStation("Via Bassini Via Ponzio", 45.47936, 9.23044, "Main", "33"));
+        stations.add(new MetroStation("P.za Leonardo Da Vinci (Politecnico)", 45.47933, 9.22674, "Main", "33"));
+        stations.add(new MetroStation("Via Pascoli P.za L. Da Vinci", 45.47716, 9.22571, "Main", "33"));
+        stations.add(new MetroStation("V.le Romagna Via Pascoli", 45.47636, 9.22421, "Main", "33"));
+        stations.add(new MetroStation("P.za Carlo Erba", 45.47531, 9.22165, "Main", "33"));
+        stations.add(new MetroStation("P.za Ascoli", 45.47383, 9.21799, "Main", "33"));
+        stations.add(new MetroStation("P.za Adelaide Di Savoia", 45.47303, 9.21531, "Main", "33"));
+        stations.add(new MetroStation("P.za Otto Novembre", 45.47463, 9.2114, "Main", "33"));
+        stations.add(new MetroStation("P.ta Venezia V.le Tunisia", 45.47647, 9.20739, "Main", "33"));
+        stations.add(new MetroStation("V.le Tunisia", 45.47831, 9.20258, "Main", "33"));
+        stations.add(new MetroStation("V.le Vittorio Veneto", 45.47691, 9.20113, "Main", "33"));
+        stations.add(new MetroStation("Repubblica M3", 45.47812, 9.19764, "Main", "33"));
+        stations.add(new MetroStation("V.le Monte Santo", 45.47928, 9.19506, "Main", "33"));
+        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48023, 9.19278, "Main", "33"));
+        stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48082, 9.18907, "Main", "33"));
+        stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.18671, "Main", "33"));
+        stations.add(new MetroStation("Via Farini Via Ferrari", 45.4856, 9.18277, "Main", "33"));
+        stations.add(new MetroStation("Via Ugo Bassi", 45.4887, 9.18337, "Main", "33"));
+        stations.add(new MetroStation("Via Porro Lambertenghi", 45.48923, 9.18628, "Main", "33"));
+        stations.add(new MetroStation("P.le Lagosta", 45.48975, 9.19151, "Main", "33"));
+        return stations;
+    }
 
     public static List<InterchangeInfo> getBusInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
@@ -1204,6 +1231,7 @@ public class StationDB {
         allStations.addAll(getStationsTram10());
         allStations.addAll(getStationsTram24());
         allStations.addAll(getStationsTram31());
+        allStations.addAll(getStationsTram33());
         return allStations;
     }
 
