@@ -95,7 +95,7 @@
     <string name="onlyOnWorkingDaysTitle">LA LINEA É ATTIVA SOLO NEI GIORNI LAVORATIVI.</string>
     <string name="worksLineDetails">LAVORI SULLA LINEA:</string>
     <string name="mapChip">Mappa</string>
-    <string name="lineWorksChip">Lavori linea</string>
+    <string name="lineWorksChip">Lavori</string>
     <string name="interchangesChip">Interscambi</string>
     <string name="noWorksOnThisLine">Non ci sono lavori su questa linea.</string>
     <string name="loadingMapDetails">Caricamento Mappa</string>

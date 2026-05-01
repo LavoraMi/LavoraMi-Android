@@ -96,7 +96,7 @@
     <string name="onlyOnWorkingDaysTitle">THE LINE IS AVAILABLE ONLY ON WORKING DAYS.</string>
     <string name="worksLineDetails">WORK ON THE LINE:</string>
     <string name="mapChip">Map</string>
-    <string name="lineWorksChip">Line works</string>
+    <string name="lineWorksChip">Works</string>
     <string name="interchangesChip">Interchanges</string>
     <string name="noWorksOnThisLine">There are no works on this line.</string>
     <string name="loadingMapDetails">Loading Map</string>
