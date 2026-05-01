@@ -273,7 +273,7 @@ public class LinesActivity extends AppCompatActivity {
 
         recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
 
-        if(!recentLinesSet.isEmpty()){
+        if(!recentLinesSet.isEmpty() || !linesLoaded){
             deleteIconRecent.setVisibility(View.VISIBLE);
             deleteIconRecent.setOnClickListener(v -> {
                 new AlertDialog.Builder(this)
@@ -310,9 +310,6 @@ public class LinesActivity extends AppCompatActivity {
     private void loadLines(){
         /// In this section of the code, we generate the Lines from the StationsDB file.
         /// Every type of line is sorted in order of importance.
-
-        //RECENT
-        reloadRecentLines();
 
         // METRO
         String[] metroLines = {"M1", "M2", "M3", "M4", "M5"};
@@ -380,6 +377,9 @@ public class LinesActivity extends AppCompatActivity {
         for (String line : autoguidovieLines) {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }
+
+        //RECENT
+        reloadRecentLines();
 
         //Stop the Shimmer animation.
         loadingLayout.setVisibility(View.GONE);
