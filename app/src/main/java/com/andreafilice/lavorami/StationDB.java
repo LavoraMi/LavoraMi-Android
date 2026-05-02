@@ -829,45 +829,47 @@ public class StationDB {
         stations.add(new MetroStation("Porta Genova M2", 45.45341, 9.17002, "Main", "9"));
         return stations;
     }
+
     public static List<MetroStation> getStationsTram10() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("V.le Lunigiana", 45.49136, 9.20558, "Main", "10"));
-        stations.add(new MetroStation("Via Schiaparelli Via P.te Seveso", 45.48963, 9.20482, "Main", "10"));
+        stations.add(new MetroStation("Via Schiaparelli Via P.te Seveso", 45.4897, 9.20476, "Main", "10"));
         stations.add(new MetroStation("Stazione Centrale Via Tonale", 45.48866, 9.20385, "Main", "10"));
         stations.add(new MetroStation("Stazione Centrale M2 M3", 45.48687, 9.20192, "Main", "10"));
-        stations.add(new MetroStation("Via Filzi Via Pirelli", 45.4839, 9.19998, "Main", "10"));
+        stations.add(new MetroStation("Via Filzi Via Pirelli", 45.48431, 9.20018, "Main", "10"));
         stations.add(new MetroStation("Via Filzi Via Adda", 45.48316, 9.19939, "Main", "10"));
-        stations.add(new MetroStation("P.za S. Gioachimo", 45.48083, 9.19729, "Main", "10"));
-        stations.add(new MetroStation("V.le Monte Santo", 45.47965, 9.19424, "Main", "10"));
-        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48031, 9.19257, "Main", "10"));
+        stations.add(new MetroStation("P.za S. Gioachimo", 45.48146, 9.19805, "Main", "10"));
+        stations.add(new MetroStation("V.le Monte Santo", 45.47978, 9.19489, "Main", "10"));
+        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48034, 9.19256, "Main", "33"));
         stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48082, 9.18907, "Main", "10"));
-        stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.4835, 9.18677, "Main", "10"));
-        stations.add(new MetroStation("Via Farini Via Ferrari", 45.4856, 9.18276, "Main", "10"));
+        stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.1867, "Main", "10"));
+        stations.add(new MetroStation("Via Farini Via Ferrari", 45.48573, 9.18262, "Main", "10"));
         stations.add(new MetroStation("Monumentale M5", 45.48459, 9.18042, "Main", "10"));
         stations.add(new MetroStation("P.le Cim. Monumentale Via Bramante", 45.48415, 9.17845, "Main", "10"));
-        stations.add(new MetroStation("Via Procaccini Via Nono", 45.48402, 9.17572, "Main", "10"));
-        stations.add(new MetroStation("Via Procaccini Via Lomazzo", 45.48336, 9.17018, "Main", "10"));
+        stations.add(new MetroStation("Via Procaccini Via Nono", 45.48403, 9.17567, "Main", "10"));
+        stations.add(new MetroStation("Via Procaccini Via Lomazzo", 45.48374, 9.17108, "Main", "10"));
         stations.add(new MetroStation("P.za Gramsci", 45.48202, 9.16815, "Main", "10"));
-        stations.add(new MetroStation("C.so Sempione Via Procaccini", 45.48016, 9.16612, "Main", "10"));
+        stations.add(new MetroStation("C.so Sempione Via Procaccini", 45.48098, 9.16637, "Main", "10"));
         stations.add(new MetroStation("C.so Sempione Via Villasanta", 45.47917, 9.16743, "Main", "10"));
         stations.add(new MetroStation("C.so Sempione Via Canova", 45.47826, 9.16858, "Main", "10"));
-        stations.add(new MetroStation("Arco Della Pace", 45.47692, 9.1708, "Main", "10"));
-        stations.add(new MetroStation("Via Pagano Via Canova", 45.47421, 9.17007, "Main", "10"));
-        stations.add(new MetroStation("L.go Quinto Alpini", 45.47214, 9.16699, "Main", "10"));
-        stations.add(new MetroStation("Via Ariosto", 45.46926, 9.1658, "Main", "10"));
-        stations.add(new MetroStation("Conciliazione M1", 45.46737, 9.16523, "Main", "10"));
-        stations.add(new MetroStation("P.le Baracca", 45.4666, 9.16495, "Main", "10"));
-        stations.add(new MetroStation("V.le S. Michele Del Carso P.za De Meis", 45.4634, 9.16409, "Main", "10"));
-        stations.add(new MetroStation("P.le Aquileia", 45.46129, 9.16329, "Main", "10"));
-        stations.add(new MetroStation("Coni Zugna M4", 45.45941, 9.16595, "Main", "10"));
-        stations.add(new MetroStation("V.le Coni Zugna Via Solari", 45.45735, 9.16906, "Main", "10"));
-        stations.add(new MetroStation("P.le Cantore", 45.45541, 9.17201, "Main", "10"));
-        stations.add(new MetroStation("P.ta Genova M2", 45.45321, 9.17065, "Main", "10"));
-        stations.add(new MetroStation("Via Vigevano Via Corsico", 45.453, 9.17341, "Main", "10"));
-        stations.add(new MetroStation("Via Vigevano V.le Gorizia", 45.45268, 9.17625, "Main", "10"));
+        stations.add(new MetroStation("Arco Della Pace", 45.47639, 9.1714, "Main", "10"));
+        stations.add(new MetroStation("Via Pagano Via Canova", 45.47422, 9.17002, "Main", "10"));
+        stations.add(new MetroStation("L.go Quinto Alpini", 45.47264, 9.16761, "Main", "10"));
+        stations.add(new MetroStation("Via Ariosto", 45.46995, 9.16591, "Main", "10"));
+        stations.add(new MetroStation("Conciliazione M1", 45.46787, 9.16528, "Main", "10"));
+        stations.add(new MetroStation("P.le Baracca", 45.46653, 9.16486, "Main", "10"));
+        stations.add(new MetroStation("V.le S. Michele Del Carso P.za De Meis", 45.46392, 9.1641, "Main", "10"));
+        stations.add(new MetroStation("P.le Aquileia", 45.46092, 9.16353, "Main", "10"));
+        stations.add(new MetroStation("Coni Zugna M4", 45.45965, 9.16546, "Main", "10"));
+        stations.add(new MetroStation("V.le Coni Zugna Via Solari", 45.4573, 9.16907, "Main", "10"));
+        stations.add(new MetroStation("P.le Cantore", 45.45538, 9.17199, "Main", "10"));
+        stations.add(new MetroStation("P.ta Genova M2", 45.45341, 9.17002, "Main", "10"));
+        stations.add(new MetroStation("Via Vigevano Via Corsico", 45.45296, 9.17294, "Main", "10"));
+        stations.add(new MetroStation("Via Vigevano V.le Gorizia", 45.45275, 9.17559, "Main", "10"));
         stations.add(new MetroStation("P.za Ventiquattro Maggio", 45.45199, 9.17941, "Main", "10"));
         return stations;
     }
+
     public static List<MetroStation> getStationsTram24() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Piazza Fontana", 45.46337, 9.19405, "Main", "24"));
@@ -911,6 +913,7 @@ public class StationDB {
         stations.add(new MetroStation("Cinisello (Primo Maggio)", 45.56002, 9.21108, "Main", "31"));
         return stations;
     }
+
     public static List<MetroStation> getStationsTram33() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Rimembranze Di Lambrate", 45.48271, 9.24159, "Main", "33"));
@@ -925,16 +928,16 @@ public class StationDB {
         stations.add(new MetroStation("P.za Adelaide Di Savoia", 45.47303, 9.21531, "Main", "33"));
         stations.add(new MetroStation("P.za Otto Novembre", 45.47463, 9.2114, "Main", "33"));
         stations.add(new MetroStation("P.ta Venezia V.le Tunisia", 45.47647, 9.20739, "Main", "33"));
-        stations.add(new MetroStation("V.le Tunisia", 45.47831, 9.20258, "Main", "33"));
+        stations.add(new MetroStation("V.le Tunisia", 45.47833, 9.20333, "Main", "33"));
         stations.add(new MetroStation("V.le Vittorio Veneto", 45.47691, 9.20113, "Main", "33"));
         stations.add(new MetroStation("Repubblica M3", 45.47812, 9.19764, "Main", "33"));
         stations.add(new MetroStation("V.le Monte Santo", 45.47928, 9.19506, "Main", "33"));
-        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48023, 9.19278, "Main", "33"));
+        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48034, 9.19256, "Main", "33"));
         stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48082, 9.18907, "Main", "33"));
         stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.18671, "Main", "33"));
-        stations.add(new MetroStation("Via Farini Via Ferrari", 45.4856, 9.18277, "Main", "33"));
-        stations.add(new MetroStation("Via Ugo Bassi", 45.4887, 9.18337, "Main", "33"));
-        stations.add(new MetroStation("Via Porro Lambertenghi", 45.48923, 9.18628, "Main", "33"));
+        stations.add(new MetroStation("Via Farini Via Ferrari", 45.48573, 9.18262, "Main", "33"));
+        stations.add(new MetroStation("Via Ugo Bassi", 45.48897, 9.18468, "Main", "33"));
+        stations.add(new MetroStation("Via Porro Lambertenghi", 45.48909, 9.18702, "Main", "33"));
         stations.add(new MetroStation("P.le Lagosta", 45.48975, 9.19151, "Main", "33"));
         return stations;
     }
