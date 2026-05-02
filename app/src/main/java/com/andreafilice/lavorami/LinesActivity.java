@@ -306,8 +306,9 @@ public class LinesActivity extends AppCompatActivity {
             }
         }
         else {
-            isRecentEmpty = true;
             findViewById(R.id.emptyViewRecent).setVisibility(View.VISIBLE);
+            deleteIconRecent.setVisibility(View.GONE);
+            isRecentEmpty = true;
         }
     }
 
