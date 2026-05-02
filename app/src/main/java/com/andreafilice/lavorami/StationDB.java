@@ -840,7 +840,7 @@ public class StationDB {
         stations.add(new MetroStation("Via Filzi Via Adda", 45.48316, 9.19939, "Main", "10"));
         stations.add(new MetroStation("P.za S. Gioachimo", 45.48146, 9.19805, "Main", "10"));
         stations.add(new MetroStation("V.le Monte Santo", 45.47978, 9.19489, "Main", "10"));
-        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48034, 9.19256, "Main", "33"));
+        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48034, 9.19256, "Main", "10"));
         stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48082, 9.18907, "Main", "10"));
         stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.1867, "Main", "10"));
         stations.add(new MetroStation("Via Farini Via Ferrari", 45.48573, 9.18262, "Main", "10"));
@@ -917,28 +917,30 @@ public class StationDB {
     public static List<MetroStation> getStationsTram33() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Rimembranze Di Lambrate", 45.48271, 9.24159, "Main", "33"));
-        stations.add(new MetroStation("Via Valvassori Peroni", 45.48146, 9.23683, "Main", "33"));
+        stations.add(new MetroStation("Via Valvassori Peroni", 45.48146, 9.23682, "Main", "33"));
         stations.add(new MetroStation("Via Bassini Via Golgi", 45.48057, 9.23466, "Main", "33"));
-        stations.add(new MetroStation("Via Bassini Via Ponzio", 45.47936, 9.23044, "Main", "33"));
-        stations.add(new MetroStation("P.za Leonardo Da Vinci (Politecnico)", 45.47933, 9.22674, "Main", "33"));
-        stations.add(new MetroStation("Via Pascoli P.za L. Da Vinci", 45.47716, 9.22571, "Main", "33"));
-        stations.add(new MetroStation("V.le Romagna Via Pascoli", 45.47636, 9.22421, "Main", "33"));
-        stations.add(new MetroStation("P.za Carlo Erba", 45.47531, 9.22165, "Main", "33"));
-        stations.add(new MetroStation("P.za Ascoli", 45.47383, 9.21799, "Main", "33"));
-        stations.add(new MetroStation("P.za Adelaide Di Savoia", 45.47303, 9.21531, "Main", "33"));
-        stations.add(new MetroStation("P.za Otto Novembre", 45.47463, 9.2114, "Main", "33"));
-        stations.add(new MetroStation("P.ta Venezia V.le Tunisia", 45.47647, 9.20739, "Main", "33"));
-        stations.add(new MetroStation("V.le Tunisia", 45.47833, 9.20333, "Main", "33"));
-        stations.add(new MetroStation("V.le Vittorio Veneto", 45.47691, 9.20113, "Main", "33"));
-        stations.add(new MetroStation("Repubblica M3", 45.47812, 9.19764, "Main", "33"));
-        stations.add(new MetroStation("V.le Monte Santo", 45.47928, 9.19506, "Main", "33"));
-        stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48034, 9.19256, "Main", "33"));
-        stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48082, 9.18907, "Main", "33"));
-        stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.18671, "Main", "33"));
+        stations.add(new MetroStation("Via Bassini Via Ponzio", 45.47935, 9.23044, "Main", "33"));
+        stations.add(new MetroStation("P.Za Leonardo Da Vinci (Politecnico)", 45.47934, 9.22674, "Main", "33"));
+        stations.add(new MetroStation("Via Pascoli P.Za L. Da Vinci", 45.47716, 9.22562, "Main", "33"));
+        stations.add(new MetroStation("P.Za Carlo Erba", 45.47531, 9.22164, "Main", "33"));
+        stations.add(new MetroStation("P.Za Ascoli", 45.47383, 9.21798, "Main", "33"));
+        stations.add(new MetroStation("P.Za Adelaide Di Savoia", 45.47303, 9.21531, "Main", "33"));
+        stations.add(new MetroStation("P.Za Otto Novembre", 45.47463, 9.2114, "Main", "33"));
+        stations.add(new MetroStation("P.Ta Venezia V.Le Tunisia", 45.47646, 9.20739, "Main", "33"));
+        stations.add(new MetroStation("V.Le Tunisia", 45.47833, 9.20333, "Main", "33"));
+        stations.add(new MetroStation("V.Le Vittorio Veneto", 45.47691, 9.20113, "Main", "33"));
+        stations.add(new MetroStation("Repubblica M3", 45.47812, 9.19744, "Main", "33"));
+        stations.add(new MetroStation("V.Le Monte Santo", 45.47928, 9.195, "Main", "33"));
+        stations.add(new MetroStation("P.Le Principessa Clotilde (Osp. FateBeneFratelli)", 45.48034, 9.19256, "Main", "33"));
+        stations.add(new MetroStation("V.Le Monte Grappa Via Gioia", 45.48083, 9.18907, "Main", "33"));
+        stations.add(new MetroStation("Garibaldi FS M2 M5", 45.48374, 9.1867, "Main", "33"));
         stations.add(new MetroStation("Via Farini Via Ferrari", 45.48573, 9.18262, "Main", "33"));
+        stations.add(new MetroStation("Intersection Point 1", 45.48576, 9.18211, "Intersection", "33"));
+        stations.add(new MetroStation("Intersection Point 2", 45.48838, 9.18258, "Intersection", "33"));
         stations.add(new MetroStation("Via Ugo Bassi", 45.48897, 9.18468, "Main", "33"));
         stations.add(new MetroStation("Via Porro Lambertenghi", 45.48909, 9.18702, "Main", "33"));
-        stations.add(new MetroStation("P.le Lagosta", 45.48975, 9.19151, "Main", "33"));
+        stations.add(new MetroStation("Intersection Point 3", 45.48903, 9.19041, "Intersection", "33"));
+        stations.add(new MetroStation("P.Le Lagosta", 45.48964, 9.19153, "Main", "33"));
         return stations;
     }
 
@@ -1226,7 +1228,6 @@ public class StationDB {
         allStations.addAll(getStationsMXP1());
         allStations.addAll(getStationsMXP2());
         allStations.addAll(getStationsTram1());
-        //allStations.addAll(getStationsTram2());
         allStations.addAll(getStationsTram3());
         allStations.addAll(getStationsTram5());
         allStations.addAll(getStationsTram7());

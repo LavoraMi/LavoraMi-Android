@@ -400,6 +400,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 int colorResId = StationDB.getLineColor(stazione.getLine());
                 int coloreEffettivo = ContextCompat.getColor(this, colorResId);
 
+                if (stazione.getBranch().equalsIgnoreCase("Intersection"))
+                    continue;
+
                 mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(stazione.getLatitude(), stazione.getLongitude()))
                         .anchor(0.5f, 0.5f)
