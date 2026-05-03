@@ -277,10 +277,13 @@ public class SettingsActivity extends AppCompatActivity {
     public void setStarIcons(ImageView[] icons, RelativeLayout[] layouts, String[] lineCodes){
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;
+
             icons[i].setOnClickListener(v -> {
                 Integer currentTag = (Integer) icons[finalI].getTag();
+
                 int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
                 int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
+
                 icons[finalI].setImageResource(newRes);
                 icons[finalI].setTag(newRes);
 
@@ -292,10 +295,13 @@ public class SettingsActivity extends AppCompatActivity {
                 NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
                 DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
             });
+
             layouts[i].setOnClickListener(v -> {
                 Integer currentTag = (Integer) icons[finalI].getTag();
+
                 int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
                 int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
+
                 icons[finalI].setImageResource(newRes);
                 icons[finalI].setTag(newRes);
 
@@ -315,7 +321,8 @@ public class SettingsActivity extends AppCompatActivity {
             if (favorites.contains(lineCodes[i])) {
                 starIcons[i].setImageResource(R.drawable.ic_star_fill);
                 starIcons[i].setTag(R.drawable.ic_star_fill);
-            } else {
+            }
+            else {
                 starIcons[i].setImageResource(R.drawable.ic_star_empty);
                 starIcons[i].setTag(R.drawable.ic_star_empty);
             }

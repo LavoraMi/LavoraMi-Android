@@ -254,16 +254,16 @@ public class MainActivity extends AppCompatActivity {
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
 
         btnRefresh.setOnClickListener(v -> {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             editSearch.clearFocus();
             editSearch.setText("");
             downloadJSONData(getCategory(), true);}
         );
 
         btnRefreshOnError.setOnClickListener(v -> {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             editSearch.clearFocus();
             editSearch.setText("");
             downloadJSONData(getCategory(), true);
@@ -483,8 +483,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+        InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
         editSearch.clearFocus();
         editSearch.setText("");
 

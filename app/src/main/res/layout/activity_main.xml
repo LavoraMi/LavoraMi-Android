@@ -619,13 +619,12 @@
                 android:id="@+id/btnSetupNext"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:backgroundTint="#FD272D"
+                android:backgroundTint="@color/redMetro"
                 android:fontFamily="@font/work_sans_medium"
                 android:text="@string/next"
                 android:textAllCaps="false"
                 android:textColor="@color/White"
                 android:textSize="18sp"
-
                 app:cornerRadius="12dp" />
         </LinearLayout>
 
