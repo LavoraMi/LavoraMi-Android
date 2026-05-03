@@ -1138,7 +1138,7 @@ public class StationDB {
                 new InterchangeInfo("Porta Venezia V.Le Tunisia", new String[]{"M1", "5", "33"}, "tram.fill.tunnel"),
                 new InterchangeInfo("P.Za Otto Novembre", new String[]{"5", "33", "S1", "S2", "S5", "S6", "S12", "S13"}, "lightrail"),
                 new InterchangeInfo("Piazza Ascoli", new String[]{"5", "19", "33"}, "lightrail"),
-                new InterchangeInfo("Garibaldi FS", new String[]{"M2", "M5", "9", "33", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13"}, "lightrail"),
+                new InterchangeInfo("Garibaldi FS", new String[]{"M2", "M5", "10", "33", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "MXP1", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13"}, "lightrail"),
                 new InterchangeInfo("Monumentale M5", new String[]{"M5", "10"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Coni Zugna M4", new String[]{"M4", "10"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Repetti M4", new String[]{"M4", "12", "27"}, "tram.fill.tunnel"),
@@ -1155,7 +1155,7 @@ public class StationDB {
                 new InterchangeInfo("Crocetta M3", new String[]{"M3", "16", "24"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Lambrate FS", new String[]{"M2", "19", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "S9"}, "lightrail"),
                 new InterchangeInfo("Via Larga", new String[]{"12", "19", "24"}, "tram.fill"),
-                new InterchangeInfo("P.Le Lagosta", new String[]{"17", "31", "33"}, "tram.fill"),
+                new InterchangeInfo("P.Le Lagosta", new String[]{"7", "31", "33"}, "tram.fill"),
                 new InterchangeInfo("Porta Romana M3", new String[]{"M3", "9"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Tricolore M4", new String[]{"M4", "9", "19"}, "tram.fill.tunnel")
         );
