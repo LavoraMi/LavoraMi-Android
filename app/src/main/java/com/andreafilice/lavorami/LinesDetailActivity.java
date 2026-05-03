@@ -299,6 +299,26 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         chipInterscambi.setChipBackgroundColor(chipColor);
         chipArrivi.setChipBackgroundColor(chipColor);
 
+        //*CHIP ICON COLOR
+        /// In this section of the code we setup the Chip Icon color when selected and when is not.
+        int coloreSelezionato = ContextCompat.getColor(this, R.color.White);
+        int coloreNonSelezionato = ContextCompat.getColor(this, R.color.text_primary);
+
+        ColorStateList chipIconColors = new ColorStateList(
+            new int[][] {
+                    new int[]{ android.R.attr.state_checked },
+                    new int[]{ -android.R.attr.state_checked }
+            },
+            new int[] {
+                    coloreSelezionato,
+                    coloreNonSelezionato
+            }
+        );
+        chipMappa.setChipIconTint(chipIconColors);
+        chipLavori.setChipIconTint(chipIconColors);
+        chipInterscambi.setChipIconTint(chipIconColors);
+        chipArrivi.setChipIconTint(chipIconColors);
+
         //*CHIP TEXT COLOR
         /// In this section of the code we setup the Chip Text color when selected and when is not selected.
         int bianco = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.BlackS12) : ContextCompat.getColor(this, R.color.White);
