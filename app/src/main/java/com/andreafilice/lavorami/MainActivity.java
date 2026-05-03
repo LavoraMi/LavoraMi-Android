@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnRefresh;
     private Animation animSpin;
     static String maintenanceDetails = "";
+    static boolean strikeBannerClosed = false;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -259,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
             editSearch.setText("");
             downloadJSONData(getCategory(), true);}
         );
+
         btnRefreshOnError.setOnClickListener(v -> {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
@@ -541,6 +543,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        strikeBannerClosed = (reloadingDatas) ? false : strikeBannerClosed;
+
         if (loadingLayout != null) {
             loadingLayout.setVisibility(View.VISIBLE);
             errorLayout.setVisibility(View.GONE);
@@ -720,14 +724,17 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
             ImageView closeBtn = findViewById(R.id.closeBtn);
 
-            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true")) ? View.VISIBLE : View.GONE);
+            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true") && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
             strikeDesc.setText(String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
             strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 
-            closeBtn.setOnClickListener(v -> {strikeBanner.setVisibility(View.GONE);});
+            closeBtn.setOnClickListener(v -> {
+                strikeBanner.setVisibility(View.GONE);
+                strikeBannerClosed = true;
+            });
         }
 
         NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
