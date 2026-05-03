@@ -433,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.chipStav),
             findViewById(R.id.chipAutoguidovie)
         };
-        int colorChecked = ContextCompat.getColor(this, R.color.text_primary);
+        int colorChecked = ContextCompat.getColor(this, R.color.White);
         int colorUnchecked = ContextCompat.getColor(this, R.color.text_primary);
 
         ColorStateList chipColors = new ColorStateList(

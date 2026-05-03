@@ -89,7 +89,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private LinearLayout arriviEmptyState;
     private GTFSHelper.GTFSRoute routeData;
     private String selectedStopId;
-    private final Handler handler = new Handler();
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable arriviRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1384,30 +1385,33 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     private void updateArriviList() {
         if (routeData == null || selectedStopId == null) return;
 
-        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 3);
+        Map<String, List<GTFSHelper.Departure>> departuresByDir =
+                GTFSHelper.getDepartures(this, selectedStopId, routeData, 3);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             arriviRecyclerView.setVisibility(View.GONE);
             arriviEmptyState.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             arriviEmptyState.setVisibility(View.GONE);
-
             if (arriviRecyclerView != null) {
                 arriviRecyclerView.setVisibility(View.VISIBLE);
                 arriviRecyclerView.setAdapter(new ArriviAdapter(departuresByDir));
             }
         }
 
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                handler.postDelayed(() -> {
-                    updateArriviList();
-                    handler.postDelayed(this, 10000);
-                },500);
-            }
-        });
+        scheduleArriviRefresh();
+    }
+
+    private void scheduleArriviRefresh() {
+        handler.removeCallbacks(arriviRunnable);
+        arriviRunnable = () -> updateArriviList();
+        handler.postDelayed(arriviRunnable, 10000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
     }
 
     private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ViewHolder> {
