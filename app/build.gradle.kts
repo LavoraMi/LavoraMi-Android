@@ -26,9 +26,9 @@ android {
         applicationId = "com.andreafilice.lavorami"
         minSdk = 24
         targetSdk = 36
-        versionCode = 33
-        versionName = "1.1.4"
-        var buildNumber = "03052026"
+        versionCode = 34
+        versionName = "1.1.5"
+        var buildNumber = "04052026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
         resValue("string", "appVersionFull", ("$versionName ($buildNumber)"))

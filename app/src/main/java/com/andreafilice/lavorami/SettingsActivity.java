@@ -250,10 +250,38 @@ public class SettingsActivity extends AppCompatActivity {
         ImageView profileImage = findViewById(R.id.profileImage);
         profileImage.setImageResource((!sessionManager.isLoggedInWithGoogle()) ? R.drawable.ic_account_circle : R.drawable.ic_google_logo);
 
+        LinearLayout layoutTextsAccount = findViewById(R.id.layoutTextsAccount);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) layoutTextsAccount.getLayoutParams();
+        TextView profileImageText = findViewById(R.id.profileImageText);
+
+        if(sessionManager.isLoggedIn()) {
+            profileImageText.setText(getAccountIcon(sessionManager));
+            profileImageText.setVisibility(View.VISIBLE);
+            profileImage.setVisibility(View.GONE);
+            params.addRule(RelativeLayout.END_OF, R.id.profileImageText);
+            layoutTextsAccount.setLayoutParams(params);
+        }
+        else {
+            profileImageText.setVisibility(View.GONE);
+            profileImage.setVisibility(View.VISIBLE);
+            params.addRule(RelativeLayout.END_OF, R.id.profileImage);
+            layoutTextsAccount.setLayoutParams(params);
+        }
+
         if(!sessionManager.isLoggedInWithGoogle())
             profileImage.setColorFilter(ContextCompat.getColor(this, R.color.redMetro));
         else if(sessionManager.isLoggedInWithGoogle())
             profileImage.clearColorFilter();
+    }
+
+    public String getAccountIcon(SessionManager manager) {
+        /// In this method, we get the user FullName value and split it to create an Account icon.
+        /// @PARAMETERS
+        /// SessionManager manager is the manager of the session which contains the FullName attribute.
+        
+        String[] values = manager.getUserName().split(" ");
+
+        return String.format("%s%s", values[0].charAt(0), values[1].charAt(0));
     }
 
     public String getLocalizedMessage(String toCompare){
