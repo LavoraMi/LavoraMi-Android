@@ -49,6 +49,7 @@
                 android:fontFamily="@font/work_sans_medium"
                 android:text="Account"
                 android:textColor="#8E8E93"
+                android:textStyle="bold"
                 android:textSize="18sp" />
 
             <androidx.cardview.widget.CardView
@@ -138,6 +139,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:fontFamily="@font/work_sans_medium"
                 android:text="@string/favoritesDeps"
+                android:textStyle="bold"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
@@ -489,6 +491,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/work_sans_medium"
                 android:text="@string/general"
+                android:textStyle="bold"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
@@ -686,6 +689,7 @@
                 android:fontFamily="@font/work_sans_medium"
                 android:text="@string/helpSettingsTitle"
                 android:textColor="#8E8E93"
+                android:textStyle="bold"
                 android:textSize="18sp" />
 
             <androidx.cardview.widget.CardView
@@ -837,6 +841,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/work_sans_medium"
                 android:text="@string/linksSettingsTitle"
+                android:textStyle="bold"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
