@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,11 @@ public class SetupModels {
 
             int resID = holder.itemView.getContext().getResources().getIdentifier(page.icon, "drawable", holder.itemView.getContext().getPackageName());
             holder.img.setImageResource(resID);
+
+            //*APP ICON
+            /// In this section of the code, we will check if the user is in the first slide and disable the color.
+
+            if(!page.icon.equals("ic_app")) holder.img.setImageTintList(ColorStateList.valueOf(holder.itemView.getContext().getColor(R.color.redMetro)));
 
             //*LANGUAGE DROPDOWN
             /// In this section of the code, we create a Dropdown for choose the starting Language of the application.

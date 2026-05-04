@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean hasCompletedSetup;
     private StrikeDescriptor strikeCDNResponse;
     private ImageButton btnRefresh;
+    private MaterialButton btnSetupNext;
     private Animation animSpin;
     static String maintenanceDetails = "";
     static boolean strikeBannerClosed = false;
@@ -103,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                     Log.e("PERMISSIONS", "Permesso notifiche rifiutato.");
+
+                if (btnSetupNext != null){
+                    btnSetupNext.setEnabled(true);
+                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+                }
             });
 
     @Override
@@ -130,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle1), getString(R.string.setupDeps1), "ic_train", ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle1), getString(R.string.setupDeps1), "ic_app", ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle2), getString(R.string.setupDeps2), "ic_map", ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle3), getString(R.string.setupDeps3), "ic_star_fill", ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle4), getString(R.string.setupDeps4), "ic_bell_fill", ""));
@@ -146,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {}).attach();
 
         /// In this section of the code, we set-up the "NEXT" and "SKIP" buttons from the view.
-        MaterialButton btnSetupNext = findViewById(R.id.btnSetupNext);
+        btnSetupNext = findViewById(R.id.btnSetupNext);
         btnSetupNext.setOnClickListener(v -> {
             int currentPage = viewPager.getCurrentItem();
 
@@ -184,14 +190,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-            super.onPageSelected(position);
-            int currentPage = viewPager.getCurrentItem();
+                super.onPageSelected(position);
+                int currentPage = viewPager.getCurrentItem();
 
-            btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
-            btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
+                btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
+                btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
 
-            if(currentPage == 3)
-                askForNotificationPermission();
+                if(position == 3)
+                    askForNotificationPermission();
             }
         });
 
@@ -344,8 +350,8 @@ public class MainActivity extends AppCompatActivity {
 
         editSearch.setOnEditorActionListener((v, actionID, event) -> {
             if(actionID == EditorInfo.IME_ACTION_DONE){
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+                InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
                 editSearch.clearFocus();
                 return true;
             }
@@ -366,6 +372,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                     editSearch.setCompoundDrawables(searchIcon, null, null, null);
+
                 String testoRicerca = s.toString().toLowerCase().trim();
                 filtra(testoRicerca, s.toString());
             }
@@ -495,8 +502,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void askForNotificationPermission(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.GRAY)));
+                btnSetupNext.setEnabled(false);
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+            else {
+                btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+                btnSetupNext.setEnabled(true);
+            }
         }
     }
 

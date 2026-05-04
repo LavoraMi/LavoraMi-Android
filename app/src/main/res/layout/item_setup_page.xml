@@ -11,8 +11,7 @@
         android:id="@+id/imgSetup"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_map"
-        app:tint="#FD272D" />
+        android:src="@drawable/ic_map"/>
 
     <TextView
         android:id="@+id/tvSetupTitle"
