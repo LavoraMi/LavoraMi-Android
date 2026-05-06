@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:text=""
                 android:textColor="@color/text_primary"
                 android:fontFamily="@font/work_sans_medium"
@@ -69,11 +70,11 @@
                 android:id="@+id/buttonAddLine"
                 android:layout_width="30dp"
                 android:layout_height="27dp"
-                android:layout_marginEnd="1dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginStart="5dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_star_empty"
+                app:srcCompat="@drawable/ic_heart_empty"
                 app:tint="@color/text_primary" />
         </LinearLayout>
 

@@ -407,6 +407,7 @@ public class MainActivity extends AppCompatActivity {
             filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
+                findViewById(R.id.boxYourLinesInfo).setVisibility((checkedId == R.id.chipYourLines) ? View.VISIBLE : View.GONE);
                 if (checkedId == View.NO_ID)
                     filterGroup.check(R.id.chipAll);
                 else {
@@ -760,11 +761,11 @@ public class MainActivity extends AppCompatActivity {
         NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
     }
 
-    private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault) {
+    private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault, String category) {
         TextView noWorkFounds = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
 
-        noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
+        noWorkFounds.setVisibility((list.isEmpty() && !category.equals("le tue linee")) ? View.VISIBLE : View.GONE);
         noWorkFounds.setText((searchInfo.equals("null") ? getString(R.string.noWorkOnFilter) : String.format(getString(R.string.noWorksFoundInput), searchDefault)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
@@ -784,7 +785,7 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter.setFilteredList(listaFiltrata);
 
-            checkForEmptyList(events, testo, testoOriginale);
+            checkForEmptyList(events, testo, testoOriginale, getCategory().toLowerCase());
             return;
         }
 
@@ -808,7 +809,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         adapter.setFilteredList(listaFiltrata);
-        checkForEmptyList(listaFiltrata, testo, testoOriginale);
+        checkForEmptyList(listaFiltrata, testo, testoOriginale, getCategory().toLowerCase());
     }
 
     private void applicaFiltroCategoria(String categoria) {
@@ -895,7 +896,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         adapter.setFilteredList(filtrata);
-        checkForEmptyList(filtrata, "null", "");
+        checkForEmptyList(filtrata, "null", "", categoria);
     }
 
     private int calcolaPercentuale(EventDescriptor item) {
