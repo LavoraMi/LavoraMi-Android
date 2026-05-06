@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -61,10 +63,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -275,6 +279,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         aggiornaInfoSuperiori();
         fetchDeviations();
 
+        //*SAVE TO "YOUR LINES"
+        /// In this section we save the line currently selected to the Array of "your lines".
+        updateSavedLines();
+
         //*S12 LIMITATION
         /// In this section of the code, we compose the phrase for S12 line limitation.
         TextView attestazioneLinea = findViewById(R.id.attestazioneLinea);
@@ -367,6 +375,43 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if(nomeLinea.contains("z")){
             lineAccessibilityLayout.setVisibility(View.GONE);
             findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
+        }
+    }
+
+    private void updateSavedLines() {
+        /// In this function, we apply the changes into the UI and also on the AppData folder.
+
+        Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
+        ImageButton buttonAddLine = findViewById(R.id.buttonAddLine);
+        Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_up_down);
+
+        if(linesSaved.contains(nomeLinea)) {
+            buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
+            buttonAddLine.setImageResource(R.drawable.ic_heart);
+
+            buttonAddLine.setOnClickListener(v -> {
+                linesSaved.remove(nomeLinea);
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
+
+                buttonAddLine.startAnimation(scaleUpDown);
+                buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+                buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
+                updateSavedLines();
+            });
+        }
+        else {
+            buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+            buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
+
+            buttonAddLine.setOnClickListener(v -> {
+                linesSaved.add(nomeLinea);
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
+
+                buttonAddLine.startAnimation(scaleUpDown);
+                buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
+                buttonAddLine.setImageResource(R.drawable.ic_heart);
+                updateSavedLines();
+            });
         }
     }
 

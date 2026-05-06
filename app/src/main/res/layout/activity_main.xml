@@ -257,6 +257,21 @@
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipYourLines"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Le tue linee"
+                android:textColor="@color/text_primary"
+                app:chipBackgroundColor="@color/selector_chip_filter"
+                app:chipIcon="@drawable/ic_your_lines"
+                app:fontFamily="@font/work_sans_medium"
+                app:chipIconSize="18dp"
+                app:chipIconTint="@color/text_primary"
+                app:chipIconVisible="true"
+                app:iconStartPadding="10dp" />
+
+            <com.google.android.material.chip.Chip
                 android:id="@+id/chipAll"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"

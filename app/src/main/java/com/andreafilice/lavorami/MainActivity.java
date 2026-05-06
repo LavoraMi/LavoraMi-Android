@@ -63,8 +63,10 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
@@ -284,6 +286,9 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < filterGroup.getChildCount(); i++) {filterGroup.getChildAt(i).setSaveEnabled(false);}
 
             switch(defaultCategory){
+                case "Le tue linee":
+                    filterGroup.check(R.id.chipYourLines);
+                    break;
                 case "Tutti":
                     filterGroup.check(R.id.chipAll);
                     break;
@@ -427,6 +432,7 @@ public class MainActivity extends AppCompatActivity {
         //*CHIP COLORS
         /// In this section of the code, we define the Chip colors for better visibility.
         Chip[] filterChips = {
+            findViewById(R.id.chipYourLines),
             findViewById(R.id.chipAll),
             findViewById(R.id.chipBus),
             findViewById(R.id.chipTram),
@@ -813,9 +819,10 @@ public class MainActivity extends AppCompatActivity {
             return;
 
         List<EventDescriptor> filtrata = new ArrayList<>();
+        Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         long oggi = System.currentTimeMillis();
 
-        /// NOTE: toLowerCase() for better switch-casing
+        //? NOTE: toLowerCase() for better switch-casing
         categoria = categoria.toLowerCase();
 
         long now = System.currentTimeMillis();
@@ -825,6 +832,15 @@ public class MainActivity extends AppCompatActivity {
             terminated = getDateMillis(item.getEndDate());
 
             switch (categoria) {
+                case "le tue linee":
+                    for(String line: item.lines) {
+                        if(linesSaved.contains(line)){
+                            filtrata.add(item);
+                            break;
+                        }
+                    }
+
+                    break;
                 case "tutti":
                     if (terminated > now)
                         filtrata.add(item);
