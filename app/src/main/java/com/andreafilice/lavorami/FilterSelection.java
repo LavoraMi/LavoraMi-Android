@@ -39,48 +39,51 @@ public class FilterSelection extends AppCompatActivity {
 
         //*FILTERS
         ImageView[] filterIcons = {
-                findViewById(R.id.checkedAll), //? "Tutti"
-                findViewById(R.id.checkBus), //? "Bus"
-                findViewById(R.id.checkTram), //? "Tram"
-                findViewById(R.id.checkMetro), //? "Metropolitana"
-                findViewById(R.id.checkTreno), //? "Treno"
-                findViewById(R.id.checkInCorso), //? "In Corso"
-                findViewById(R.id.checkProgrammati), //? "Programmati"
-                findViewById(R.id.checkdiATM), //? "di ATM"
-                findViewById(R.id.checkdiTrenord), //? "di Trenord"
-                findViewById(R.id.checkdiMovibus), //? "di Movibus"
-                findViewById(R.id.checkdiSTAV), //? "di STAV"
-                findViewById(R.id.checkdiAutoguidovie) //? "di Autoguidovie"
+            findViewById(R.id.checkedYourLines), //? "Le tue linee"
+            findViewById(R.id.checkedAll), //? "Tutti"
+            findViewById(R.id.checkBus), //? "Bus"
+            findViewById(R.id.checkTram), //? "Tram"
+            findViewById(R.id.checkMetro), //? "Metropolitana"
+            findViewById(R.id.checkTreno), //? "Treno"
+            findViewById(R.id.checkInCorso), //? "In Corso"
+            findViewById(R.id.checkProgrammati), //? "Programmati"
+            findViewById(R.id.checkdiATM), //? "di ATM"
+            findViewById(R.id.checkdiTrenord), //? "di Trenord"
+            findViewById(R.id.checkdiMovibus), //? "di Movibus"
+            findViewById(R.id.checkdiSTAV), //? "di STAV"
+            findViewById(R.id.checkdiAutoguidovie) //? "di Autoguidovie"
         };
 
         RelativeLayout[] filterLayouts = {
-                findViewById(R.id.all), //? "Tutti"
-                findViewById(R.id.bus), //? "Bus"
-                findViewById(R.id.tram), //? "Tram"
-                findViewById(R.id.metro), //? "Metropolitana"
-                findViewById(R.id.treno), //? "Treno"
-                findViewById(R.id.inCorso), //? "In Corso"
-                findViewById(R.id.programmati), //? "Programmati"
-                findViewById(R.id.diATM), //? "di ATM"
-                findViewById(R.id.diTrenord), //? "di Trenord"
-                findViewById(R.id.diMovibus), //? "di Movibus"
-                findViewById(R.id.diSTAV), //? "di STAV"
-                findViewById(R.id.diAutoguidovie) //? "di Autoguidovie"
+            findViewById(R.id.yourLines), //? "Le tue linee"
+            findViewById(R.id.all), //? "Tutti"
+            findViewById(R.id.bus), //? "Bus"
+            findViewById(R.id.tram), //? "Tram"
+            findViewById(R.id.metro), //? "Metropolitana"
+            findViewById(R.id.treno), //? "Treno"
+            findViewById(R.id.inCorso), //? "In Corso"
+            findViewById(R.id.programmati), //? "Programmati"
+            findViewById(R.id.diATM), //? "di ATM"
+            findViewById(R.id.diTrenord), //? "di Trenord"
+            findViewById(R.id.diMovibus), //? "di Movibus"
+            findViewById(R.id.diSTAV), //? "di STAV"
+            findViewById(R.id.diAutoguidovie) //? "di Autoguidovie"
         };
 
         String[] filterValues = {
-                "Tutti",
-                "Bus",
-                "Tram",
-                "Metropolitana",
-                "Treno",
-                "In Corso",
-                "Programmati",
-                "di ATM",
-                "di Trenord",
-                "di Movibus",
-                "di STAV",
-                "di Autoguidovie"
+            "Le tue linee",
+            "Tutti",
+            "Bus",
+            "Tram",
+            "Metropolitana",
+            "Treno",
+            "In Corso",
+            "Programmati",
+            "di ATM",
+            "di Trenord",
+            "di Movibus",
+            "di STAV",
+            "di Autoguidovie"
         };
 
         //*LOAD FROM DATAS
@@ -108,7 +111,11 @@ public class FilterSelection extends AppCompatActivity {
     }
 
     public String getCurrentFilterSelected(String[] filters, int currentIndex){
-        /// INFO: Update the Global Variables
+        /// This method returns the value of the current filter selected, is an helper to get values outside this script.
+        /// @PARAMETERS
+        /// String[] filters is the array of the total values of the filters
+        /// int currentIndex is the global variable that matches the current selected filter.
+
         nameFilterSelected = filters[currentIndex];
         indexFilterSelected = currentIndex;
 
@@ -117,7 +124,6 @@ public class FilterSelection extends AppCompatActivity {
 
     public void setCheckImage(ImageView[] filterIcons){
         /// In this Method, the Check Image will be displayed correctly for the current selected filter.
-        ///
         ///@PARAMETER
         /// ImageView[] filterIcons is the array containing the icons with correct IDs
 
@@ -126,7 +132,6 @@ public class FilterSelection extends AppCompatActivity {
 
     public int getIndexFilterSaved(String[] filters, String data){
         /// In this Method, we find the current index of the Filter currently saved as predefinite.
-        ///
         ///@PARAMETER
         /// String[] filters is the array containing the values that the default filter can be.
         /// String data is the DataManager variable taken from the sharedPreferences.
@@ -142,7 +147,6 @@ public class FilterSelection extends AppCompatActivity {
     public void setGlobalVariables(String[] filters, String data){
         /// In this Method, we modify the global variables with the loaded ones.
         /// Modifying this type of data is important for 'setCheckImage' Method.
-        ///
         ///@PARAMETER
         /// String[] filters is the array containing the values that the default filter can be.
         /// String data is the DataManager variable taken from sharedPreferences.

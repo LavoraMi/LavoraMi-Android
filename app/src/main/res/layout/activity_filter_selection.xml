@@ -72,6 +72,33 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/yourLines"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:fontFamily="@font/inter_medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:text="Le tue linee"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/checkedYourLines"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check"
+                            app:tint="@color/redMetro"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:id="@+id/all"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"

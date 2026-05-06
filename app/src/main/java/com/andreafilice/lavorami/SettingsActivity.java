@@ -285,7 +285,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public String getLocalizedMessage(String toCompare){
+        /// In this method, we return the value that the option "Default Filter" have as a value.
+        /// @PARAMETERS
+        /// String toCompare is the value taken from the Data folder.
+
         switch(toCompare) {
+            case "Le tue linee": return "Le tue linee";
             case "Tutti": return getString(R.string.allFilter);
             case "Bus": return "Bus";
             case "Tram": return "Tram";
