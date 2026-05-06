@@ -464,6 +464,7 @@
                 android:layout_marginBottom="6dp"
                 android:text="Le tue linee."
                 android:textColor="@color/text_primary"
+                android:fontFamily="@font/work_sans_medium"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -471,6 +472,7 @@
                 android:id="@+id/descriptionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
                 android:text="Per aggiungere una linea in questa sezione, vai nella scheda Linee, clicca sulla stella per aggiungerla. Puoi modificarla in qualsiasi momento."
                 android:textColor="@color/text_primary"
                 android:textSize="14sp" />

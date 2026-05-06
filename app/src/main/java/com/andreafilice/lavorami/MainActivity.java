@@ -424,6 +424,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        findViewById(R.id.boxYourLinesInfo).setVisibility((getCategory().toLowerCase().equals("le tue linee")) ? View.VISIBLE : View.GONE);
+
         //*SETUP LANGUAGE
         /// Setting up the language of the application base from the Data saved
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
