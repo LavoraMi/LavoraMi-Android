@@ -261,7 +261,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Le tue linee"
+                android:text="@string/yourLinesPrefix"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_your_lines"
@@ -462,7 +462,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Le tue linee."
+                android:text="@string/yourLinesDot"
                 android:textColor="@color/text_primary"
                 android:fontFamily="@font/work_sans_medium"
                 android:textSize="20sp"
@@ -473,7 +473,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
-                android:text="Per aggiungere una linea in questa sezione, vai nella scheda Linee, clicca sulla stella per aggiungerla. Puoi modificarla in qualsiasi momento."
+                android:text="@string/yourLinesDeps"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp" />
         </LinearLayout>

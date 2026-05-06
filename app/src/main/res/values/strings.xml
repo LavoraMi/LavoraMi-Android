@@ -328,4 +328,7 @@
     <string name="setupDepsAccessiblity">Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d\'occhio.</string>
     <string name="hourPrefix">ora.</string>
     <string name="hoursPrefix">ore.</string>
+    <string name="yourLinesPrefix">Le tue linee</string>
+    <string name="yourLinesDot">Le tue linee.</string>
+    <string name="yourLinesDeps">Per aggiungere una linea in questa sezione, vai nella scheda Linee, clicca sul cuoree per aggiungerla. Puoi modificarla in qualsiasi momento.</string>
 </resources>
