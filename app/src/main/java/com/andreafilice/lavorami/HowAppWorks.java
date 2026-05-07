@@ -46,7 +46,7 @@ public class HowAppWorks extends AppCompatActivity {
 
         Date dateToDisplay = calendar.getTime();
         TextView txtWorksiteEndDate = findViewById(R.id.txtWorksiteEndDate);
-        SimpleDateFormat simpleDate = new SimpleDateFormat("dd MMM yyyy", Locale.ITALY);
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
 
         txtWorksiteEndDate.setText(simpleDate.format(dateToDisplay));
 
