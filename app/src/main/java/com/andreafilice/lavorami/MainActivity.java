@@ -290,9 +290,11 @@ public class MainActivity extends AppCompatActivity {
 
             switch(defaultCategory){
                 case "Le tue linee":
+                case "Your Lines":
                     filterGroup.check(R.id.chipYourLines);
                     break;
                 case "Tutti":
+                case "All":
                     filterGroup.check(R.id.chipAll);
                     break;
                 case "Bus":
@@ -302,30 +304,39 @@ public class MainActivity extends AppCompatActivity {
                     filterGroup.check(R.id.chipTram);
                     break;
                 case "Metropolitana":
+                case "Metro":
                     filterGroup.check(R.id.chipMetro);
                     break;
                 case "Treno":
+                case "Train":
                     filterGroup.check(R.id.chipTreno);
                     break;
                 case "In Corso":
+                case "In progress":
                     filterGroup.check(R.id.chipInCorso);
                     break;
                 case "Programmati":
+                case "Scheduled":
                     filterGroup.check(R.id.chipProgrammati);
                     break;
                 case "di ATM":
+                case "by ATM":
                     filterGroup.check(R.id.chipATM);
                     break;
                 case "di Trenord":
+                case "by Trenord":
                     filterGroup.check(R.id.chipTrenord);
                     break;
                 case "di Movibus":
+                case "by Movibus":
                     filterGroup.check(R.id.chipMovibus);
                     break;
                 case "di STAV":
+                case "by STAV":
                     filterGroup.check(R.id.chipStav);
                     break;
                 case "di Autoguidovie":
+                case "by Autoguidovie":
                     filterGroup.check(R.id.chipAutoguidovie);
                     break;
             }
@@ -427,7 +438,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        findViewById(R.id.boxYourLinesInfo).setVisibility((getCategory().toLowerCase().equals("le tue linee")) ? View.VISIBLE : View.GONE);
+        findViewById(R.id.boxYourLinesInfo).setVisibility((getCategory().toLowerCase().equals("le tue linee") || getCategory().toLowerCase().equals("your lines")) ? View.VISIBLE : View.GONE);
 
         //*SETUP LANGUAGE
         /// Setting up the language of the application base from the Data saved
@@ -854,7 +865,8 @@ public class MainActivity extends AppCompatActivity {
             terminated = item.getEndDateMillis();
 
             switch (categoria) {
-                case "le tue linee":
+                case "Le tue linee":
+                case "your lines":
                     for(String line: item.lines) {
                         if(linesSaved.contains(line)){
                             filtrata.add(item);
@@ -864,6 +876,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case "tutti":
+                case "all":
                     if (terminated > now)
                         filtrata.add(item);
                     break;
@@ -877,41 +890,50 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case "metropolitana":
+                case "metro":
                     if (isMetro(item) && terminated > now) filtrata.add(item);
                     break;
 
                 case "treno":
+                case "train":
                     if (isTreno(item) && terminated > now) filtrata.add(item);
                     break;
 
                 case "in corso":
+                case "in progress":
                     long start = item.getStartDateMillis();
                     long end = item.getEndDateMillis();
                     if (start > 0 && end > 0 && oggi >= start && oggi <= end)  filtrata.add(item);
                     break;
 
                 case "programmati":
+                case "scheduled":
                     long startP = item.getStartDateMillis();
                     if (startP > 0 && oggi < startP)  filtrata.add(item);
                     break;
 
                 case "di atm":
+                case "by atm":
                     if(item.company.equalsIgnoreCase("ATM") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di trenord":
+                case "by trenord":
                     if(item.company.equalsIgnoreCase("Trenord") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di movibus":
+                case "by movibus":
                     if(item.company.equalsIgnoreCase("Movibus") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di stav":
+                case "by stav":
                     if(item.company.equalsIgnoreCase("STAV") && terminated > now) filtrata.add(item);
                     break;
 
                 case "di autoguidovie":
+                case "by autoguidovie":
                     if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > now) filtrata.add(item);
                     break;
             }

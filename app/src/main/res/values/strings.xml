@@ -330,5 +330,5 @@
     <string name="hoursPrefix">ore.</string>
     <string name="yourLinesPrefix">Le tue linee</string>
     <string name="yourLinesDot">Le tue linee.</string>
-    <string name="yourLinesDeps">Per aggiungere una linea in questa sezione, vai nella scheda Linee, clicca sul cuoree per aggiungerla. Puoi modificarla in qualsiasi momento.</string>
+    <string name="yourLinesDeps">Per aggiungere una linea in questa sezione, vai nella scheda Linee, clicca sul cuore per aggiungerla. Puoi modificarla in qualsiasi momento.</string>
 </resources>
