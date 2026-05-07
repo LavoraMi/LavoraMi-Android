@@ -428,6 +428,7 @@ public class MainActivity extends AppCompatActivity {
                     if (checkedId != R.id.chipAll)
                         editSearch.setText("");
                     Chip selectedChip = findViewById(checkedId);
+
                     if (selectedChip != null) {
                         String categoria = selectedChip.getText().toString().toLowerCase().trim();
                         applicaFiltroCategoria(categoria);
@@ -797,7 +798,7 @@ public class MainActivity extends AppCompatActivity {
         TextView noWorkFounds = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
 
-        noWorkFounds.setVisibility((list.isEmpty() && !category.equals("le tue linee")) ? View.VISIBLE : View.GONE);
+        noWorkFounds.setVisibility((list.isEmpty() && !category.equals("le tue linee") && !category.equals("your lines")) ? View.VISIBLE : View.GONE);
         noWorkFounds.setText((searchInfo.equals("null") ? getString(R.string.noWorkOnFilter) : String.format(getString(R.string.noWorksFoundInput), searchDefault)));
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
     }
@@ -865,7 +866,7 @@ public class MainActivity extends AppCompatActivity {
             terminated = item.getEndDateMillis();
 
             switch (categoria) {
-                case "Le tue linee":
+                case "le tue linee":
                 case "your lines":
                     for(String line: item.lines) {
                         if(linesSaved.contains(line)){
