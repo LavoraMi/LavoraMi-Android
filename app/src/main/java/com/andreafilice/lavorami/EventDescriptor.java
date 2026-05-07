@@ -18,6 +18,8 @@ public class EventDescriptor {
     protected String endDate;
     protected String details;
     protected String company;
+    private long startDateMillis;
+    private long endDateMillis;
 
     private static final SimpleDateFormat SERVER_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault());
     private static final SimpleDateFormat DISPLAY_FORMAT = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
@@ -81,6 +83,10 @@ public class EventDescriptor {
     public String getDetails() {return details;}
     public String getCompany() {return company;}
     public boolean isEventTerminated() {return calcolaPercentuale(startDate, endDate) == 100;}
+    public long getStartDateMillis() { return startDateMillis; }
+    public void setStartDateMillis(long startDateMillis) { this.startDateMillis = startDateMillis; }
+    public long getEndDateMillis() { return endDateMillis; }
+    public void setEndDateMillis(long endDateMillis) { this.endDateMillis = endDateMillis; }
 
     public static String formattaData(String initialDate) {
         if (initialDate == null) return null;

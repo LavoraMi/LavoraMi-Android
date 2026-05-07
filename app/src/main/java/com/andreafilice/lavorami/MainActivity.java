@@ -67,6 +67,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import okhttp3.CertificatePinner;
 import okhttp3.OkHttpClient;
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private WorkAdapter adapter;
     private String defaultCategory;
     private boolean hasCompletedSetup;
+    private static ExecutorService threadManager = Executors.newFixedThreadPool(8);
     private StrikeDescriptor strikeCDNResponse;
     private ImageButton btnRefresh;
     private MaterialButton btnSetupNext;
@@ -587,30 +591,50 @@ public class MainActivity extends AppCompatActivity {
         apiworks.getLavori().enqueue(new Callback<ArrayList<EventDescriptor>>() {
             @Override
             public void onResponse(Call<ArrayList<EventDescriptor>> call, Response<ArrayList<EventDescriptor>> response) {
-                //? DISABLE THE LOADING LAYOUT
-                if (loadingLayout != null) {
-                    loadingLayout.setVisibility(View.GONE);
-                    errorLayout.setVisibility(View.GONE);
-                    btnRefresh.clearAnimation();
-                    findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
-                }
-
                 if (response.isSuccessful() && response.body() != null) {
-                    events.clear();
-                    events = response.body();
-                    eventsDisplay.clear();
-                    eventsDisplay = response.body();
-                    EventData.listaEventiCompleta = events;
-                    EventData.networkError = false;
-                    NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
+                    ArrayList<EventDescriptor> datiRaw = response.body();
+                    int totale = datiRaw.size();
+                    if (totale == 0) {
+                        runOnUiThread(() -> {
+                            if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
+                            applicaFiltroCategoria(categoryToFilter);
+                        });
+                        return;
+                    }
 
-                    RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    adapter = new WorkAdapter(MainActivity.this, eventsDisplay);
-                    adapter.setFilteredList(eventsDisplay);
-                    recyclerView.setAdapter(adapter);
+                    AtomicInteger pronti = new AtomicInteger(0);
 
-                    applicaFiltroCategoria(categoryToFilter);
+                    for (EventDescriptor lavoro : datiRaw) {
+                        threadManager.submit(() -> {
+                            lavoro.setEndDateMillis(getDateMillis(lavoro.getEndDate()));
+                            lavoro.setStartDateMillis(getDateMillis(lavoro.getStartDate()));
+
+                            int attuali = pronti.incrementAndGet();
+
+                            if (attuali == totale) {
+                                runOnUiThread(() -> {
+                                    events = datiRaw;
+                                    EventData.listaEventiCompleta = events;
+
+                                    if (adapter == null) {
+                                        adapter = new WorkAdapter(MainActivity.this, new ArrayList<>(events));
+                                        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                                        recyclerView.setAdapter(adapter);
+                                    }
+
+                                    applicaFiltroCategoria(categoryToFilter);
+
+                                    if (loadingLayout != null) {
+                                        loadingLayout.stopShimmer();
+                                        loadingLayout.setVisibility(View.GONE);
+                                        btnRefresh.clearAnimation();
+                                        findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
+                                    }
+                                });
+                            }
+                        });
+                    }
                 }
             }
 
@@ -632,11 +656,7 @@ public class MainActivity extends AppCompatActivity {
                     btnRefresh.clearAnimation();
 
                     /// In this section of the code, we check the android version and adapt the style to that version.
-                    iconWiFi.setImageResource(
-                        (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
-                            ? R.drawable.ic_wifi_slash_android11_later
-                            : R.drawable.ic_wifi_slash_android10_previous
-                    );
+                    iconWiFi.setImageResource((Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) ? R.drawable.ic_wifi_slash_android11_later : R.drawable.ic_wifi_slash_android10_previous);
                 }
             }
         });
@@ -831,7 +851,7 @@ public class MainActivity extends AppCompatActivity {
         long terminated;
 
         for (EventDescriptor item : events) {
-            terminated = getDateMillis(item.getEndDate());
+            terminated = item.getEndDateMillis();
 
             switch (categoria) {
                 case "le tue linee":
@@ -865,13 +885,13 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case "in corso":
-                    long start = getDateMillis(item.getStartDate());
-                    long end = getDateMillis(item.getEndDate());
+                    long start = item.getStartDateMillis();
+                    long end = item.getEndDateMillis();
                     if (start > 0 && end > 0 && oggi >= start && oggi <= end)  filtrata.add(item);
                     break;
 
                 case "programmati":
-                    long startP = getDateMillis(item.getStartDate());
+                    long startP = item.getStartDateMillis();
                     if (startP > 0 && oggi < startP)  filtrata.add(item);
                     break;
 
