@@ -420,8 +420,13 @@ public class MainActivity extends AppCompatActivity {
         if (filterGroup != null) {
             filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
-                findViewById(R.id.boxYourLinesInfo).setVisibility((checkedId == R.id.chipYourLines) ? View.VISIBLE : View.GONE);
+                if (checkedId == R.id.chipYourLines){
+                    findViewById(R.id.boxYourLinesInfo).setVisibility(View.VISIBLE);
+                    ImageView closeBox = findViewById(R.id.closeYourLine);
+                    closeBox.setOnClickListener(v -> findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE));
+                }else{
+                    findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
+                }
                 if (checkedId == View.NO_ID)
                     filterGroup.check(R.id.chipAll);
                 else {

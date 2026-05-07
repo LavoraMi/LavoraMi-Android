@@ -458,15 +458,31 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:text="@string/yourLinesDot"
-                android:textColor="@color/text_primary"
-                android:fontFamily="@font/work_sans_medium"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/work_sans_medium"
+                    android:text="@string/yourLinesDot"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/closeYourLine"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_close_banner"
+                    app:tint="@color/redMetro" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/descriptionText"
@@ -476,6 +492,7 @@
                 android:text="@string/yourLinesDeps"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp" />
+
         </LinearLayout>
 
     </LinearLayout>
