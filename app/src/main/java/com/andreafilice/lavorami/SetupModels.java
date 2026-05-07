@@ -64,7 +64,14 @@ public class SetupModels {
             //*APP ICON
             /// In this section of the code, we will check if the user is in the first slide and disable the color.
 
-            if(!page.icon.equals("ic_app")) holder.img.setImageTintList(ColorStateList.valueOf(holder.itemView.getContext().getColor(R.color.redMetro)));
+            if(!page.icon.equals("ic_app")) {
+                holder.img.setVisibility(View.VISIBLE);
+                holder.imgFirstSlide.setVisibility(View.GONE);
+            }
+            else {
+                holder.img.setVisibility(View.GONE);
+                holder.imgFirstSlide.setVisibility(View.VISIBLE);
+            }
 
             //*LANGUAGE DROPDOWN
             /// In this section of the code, we create a Dropdown for choose the starting Language of the application.
@@ -119,7 +126,7 @@ public class SetupModels {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvTitle, tvDesc, tvSetupSmallDesc;
-            ImageView img;
+            ImageView img, imgFirstSlide;
             Spinner spinnerSetup;
 
             public ViewHolder(@NonNull View itemView) {
@@ -128,6 +135,7 @@ public class SetupModels {
                 tvDesc = itemView.findViewById(R.id.tvSetupDesc);
                 tvSetupSmallDesc = itemView.findViewById(R.id.tvSetupSmallDesc);
                 img = itemView.findViewById(R.id.imgSetup);
+                imgFirstSlide = itemView.findViewById(R.id.imgSetupFirst);
                 spinnerSetup = itemView.findViewById(R.id.spinnerSetup);
             }
         }
