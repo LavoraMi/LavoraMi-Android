@@ -7,6 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
@@ -16,6 +17,11 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class HowAppWorks extends AppCompatActivity {
 
@@ -32,6 +38,17 @@ public class HowAppWorks extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //*EXAMPLE WORK
+        /// In this section of the code, we add 20 days for the work to avoid the "End Work" animation in the example work.
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 20);
+
+        Date dateToDisplay = calendar.getTime();
+        TextView txtWorksiteEndDate = findViewById(R.id.txtWorksiteEndDate);
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd MMM yyyy", Locale.ITALY);
+
+        txtWorksiteEndDate.setText(simpleDate.format(dateToDisplay));
 
         //*BUTTONS
         /// In this section of the code, we create the actions to go back to Settings menu.
