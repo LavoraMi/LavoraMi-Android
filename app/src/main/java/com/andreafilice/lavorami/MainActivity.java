@@ -193,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                int currentPage = viewPager.getCurrentItem();
 
                 btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
                 btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
