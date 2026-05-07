@@ -18,15 +18,22 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.widget.NestedScrollView;
 
-import com.facebook.shimmer.ShimmerFrameLayout;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class LibrariesActivity extends AppCompatActivity {
 
-    private ShimmerFrameLayout layoutLoading;
     private NestedScrollView nestedLinesView;
+    private static final String APACHE_LICENSE_TEXT =
+            "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
+                    "you may not use this file except in compliance with the License.\n" +
+                    "You may obtain a copy of the License at\n\n" +
+                    "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
+                    "Unless required by applicable law or agreed to in writing, software\n" +
+                    "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
+                    "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
+                    "See the License for the specific language governing permissions and\n" +
+                    "limitations under the License.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,6 @@ public class LibrariesActivity extends AppCompatActivity {
             return insets;
         });
 
-        layoutLoading = findViewById(R.id.loadingLayout);
         nestedLinesView = findViewById(R.id.nestedLinesView);
 
         ImageButton backBtn = findViewById(R.id.backBtn);
@@ -47,15 +53,12 @@ public class LibrariesActivity extends AppCompatActivity {
 
         //*POPULATE THE VIEW
         /// In this section of the code, we populate the View with the 'buildLibraries' method
-        layoutLoading.startShimmer();
-        layoutLoading.setVisibility(View.VISIBLE);
         nestedLinesView.setVisibility(View.GONE);
 
         LibraryModel[] items = buildLibraries();
-        for (LibraryModel item : items) {aggiungiLibreria(item);}
+        LinearLayout groupLibraries = findViewById(R.id.groupLibraries);
+        for (LibraryModel item : items) {aggiungiLibreria(item, groupLibraries);}
 
-        layoutLoading.stopShimmer();
-        layoutLoading.setVisibility(View.GONE);
         nestedLinesView.setVisibility(View.VISIBLE);
     }
 
@@ -66,210 +69,98 @@ public class LibrariesActivity extends AppCompatActivity {
                         "3.0.0",
                         "Apache License 2.0",
                         "Copyright 2013 Square, Inc.",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Retrofit Converter Gson",
                         "3.0.0",
                         "Apache License 2.0",
                         "Copyright 2013 Square, Inc.",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "OkHttp",
                         "5.3.2",
                         "Apache License 2.0",
                         "Copyright 2019 Square, Inc.",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "OkHttp Logging Interceptor",
                         "5.3.2",
                         "Apache License 2.0",
                         "Copyright 2019 Square, Inc.",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Gson",
                         "2.14.0",
                         "Apache License 2.0",
                         "Copyright 2008 Google Inc.",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX AppCompat",
                         "1.7.1",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Material Components for Android",
                         "1.13.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX Activity",
                         "1.13.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX ConstraintLayout",
                         "2.2.1",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX Fragment",
                         "1.8.9",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX RecyclerView",
                         "1.4.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX CardView",
                         "1.0.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX Browser",
                         "1.10.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "AndroidX Biometric",
                         "1.1.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Google Play Services Maps",
@@ -292,30 +183,14 @@ public class LibrariesActivity extends AppCompatActivity {
                         "34.12.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Cloud Messaging",
                         "34.12.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Shimmer for Android",
@@ -343,15 +218,7 @@ public class LibrariesActivity extends AppCompatActivity {
                         "3.2.0",
                         "Apache License 2.0",
                         "Copyright (c) Carmine DiMascio OSS",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "JUnit",
@@ -367,40 +234,23 @@ public class LibrariesActivity extends AppCompatActivity {
                         "1.3.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Espresso",
                         "3.7.0",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
-                        "Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-                                "you may not use this file except in compliance with the License.\n" +
-                                "You may obtain a copy of the License at\n\n" +
-                                "    https://www.apache.org/licenses/LICENSE-2.0\n\n" +
-                                "Unless required by applicable law or agreed to in writing, software\n" +
-                                "distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                                "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                                "See the License for the specific language governing permissions and\n" +
-                                "limitations under the License."
+                        APACHE_LICENSE_TEXT
                 ),
         };
     }
 
-    public void aggiungiLibreria(LibraryModel item) {
+    public void aggiungiLibreria(LibraryModel item, LinearLayout groupLibraries) {
         /// In this method, we add the Library from the item to the UI Elements
         /// @PARAMETERS:
         /// LibraryModel item is the iterator item from the 'buildLibraries' method.
 
-        LinearLayout groupLibraries = findViewById(R.id.groupLibraries);
         View row = getLayoutInflater().inflate(R.layout.item_library, groupLibraries, false);
 
         TextView txtTitle = row.findViewById(R.id.txtTitle);

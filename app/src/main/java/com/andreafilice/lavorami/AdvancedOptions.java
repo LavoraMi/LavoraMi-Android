@@ -42,9 +42,9 @@ public class AdvancedOptions extends AppCompatActivity {
     private void generateSecretKey() throws Exception {
         KeyStore keyStore = KeyStore.getInstance("AndroidKeyStore");
         keyStore.load(null);
-        if (keyStore.containsAlias(BIOMETRIC_KEY_ALIAS)) {
+        if (keyStore.containsAlias(BIOMETRIC_KEY_ALIAS))
             return;
-        }
+
         KeyGenParameterSpec keyGenParameterSpec = new KeyGenParameterSpec.Builder(
                 BIOMETRIC_KEY_ALIAS,
                 KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
@@ -53,8 +53,10 @@ public class AdvancedOptions extends AppCompatActivity {
                 .setUserAuthenticationRequired(true)
                 .setInvalidatedByBiometricEnrollment(true)
                 .build();
+
         KeyGenerator keyGenerator = KeyGenerator.getInstance(
                 KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+
         keyGenerator.init(keyGenParameterSpec);
         keyGenerator.generateKey();
     }
@@ -70,8 +72,10 @@ public class AdvancedOptions extends AppCompatActivity {
                 KeyProperties.KEY_ALGORITHM_AES + "/" +
                         KeyProperties.BLOCK_MODE_CBC + "/" +
                         KeyProperties.ENCRYPTION_PADDING_PKCS7);
+
         SecretKey secretKey = getSecretKey();
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+
         return cipher;
     }
 

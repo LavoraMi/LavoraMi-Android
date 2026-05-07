@@ -12,6 +12,8 @@ public class DotsLoaderView extends View {
     private static final float BASE_R = 6f;
     private static final float PEAK_R = 10f;
     private static final float SPEED  = 0.012f;
+    private float cachedRadius, cachedBaseR, cachedPeakR;
+    private boolean dimensionsCached = false;
 
     private final int[] COLORS = {
         0xFF4285F4, 0xFFEA4335, 0xFFFBBC05, 0xFF34A853,
@@ -31,18 +33,22 @@ public class DotsLoaderView extends View {
 
         float cx = getWidth() / 2f;
         float cy = getHeight() / 2f;
-        float density = getResources().getDisplayMetrics().density;
-        float radius = RADIUS * density;
-        float baseR  = BASE_R * density;
-        float peakR  = PEAK_R * density;
+
+        if (!dimensionsCached) {
+            float density = getResources().getDisplayMetrics().density;
+            cachedRadius = RADIUS * density;
+            cachedBaseR  = BASE_R * density;
+            cachedPeakR  = PEAK_R * density;
+            dimensionsCached = true;
+        }
 
         for (int i = 0; i < N; i++) {
             double theta = angle + (i / (double) N) * Math.PI * 2;
-            float x = cx + (float)(Math.cos(theta) * radius);
-            float y = cy + (float)(Math.sin(theta) * radius);
+            float x = cx + (float)(Math.cos(theta) * cachedRadius);
+            float y = cy + (float)(Math.sin(theta) * cachedRadius);
             float phase = (float)(Math.sin(angle * 2 + i * (Math.PI * 2 / N)) + 1) / 2f;
             float eased = easeInOut(phase);
-            float r = baseR + (peakR - baseR) * eased;
+            float r = cachedBaseR + (cachedPeakR - cachedBaseR) * eased;
             float alpha = 0.45f + 0.55f * eased;
 
             paint.setColor(COLORS[i]);
@@ -54,5 +60,11 @@ public class DotsLoaderView extends View {
         postInvalidateOnAnimation();
     }
 
-    private float easeInOut(float t) {return t < 0.5f ? 2 * t * t : -1 + (4 - 2 * t) * t;}
+    private float easeInOut(float time) {return time < 0.5f ? 2 * time * time : -1 + (4 - 2 * time) * time;}
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        dimensionsCached = false;
+    }
 }

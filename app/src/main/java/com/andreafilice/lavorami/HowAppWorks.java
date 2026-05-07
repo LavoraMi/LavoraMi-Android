@@ -3,6 +3,7 @@ package com.andreafilice.lavorami;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -25,7 +26,7 @@ import java.util.Locale;
 
 public class HowAppWorks extends AppCompatActivity {
 
-    private final Handler handler = new Handler();
+    private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable starAnimation;
 
     @Override

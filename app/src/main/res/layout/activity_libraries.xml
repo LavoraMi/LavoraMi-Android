@@ -59,30 +59,4 @@
             android:orientation="vertical"
             android:showDividers="middle" />
     </androidx.core.widget.NestedScrollView>
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/loadingLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:shimmer_auto_start="true"
-        android:visibility="visible"
-        app:shimmer_duration="1000">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp"
-            app:shimmer_auto_start="true">
-
-            <include layout="@layout/item_library"/>
-            <include layout="@layout/item_library"/>
-            <include layout="@layout/item_library"/>
-            <include layout="@layout/item_library"/>
-            <include layout="@layout/item_library"/>
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

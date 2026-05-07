@@ -1,6 +1,5 @@
 package com.andreafilice.lavorami;
 
-import android.util.Log;
 
 public class InterchangeInfo {
     private String key;

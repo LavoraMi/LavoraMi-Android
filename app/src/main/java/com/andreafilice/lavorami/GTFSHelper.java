@@ -18,8 +18,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class GTFSHelper {
+
+    private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
+
     public static class GTFSRoute {
         public String route;
         public List<String> headsigns = new ArrayList<>();
@@ -50,10 +56,11 @@ public class GTFSHelper {
     }
 
     public static void load(String urlString, GTFSCallback callback) {
-        new Thread(() -> {
+        EXECUTOR.execute(() -> {
+            HttpURLConnection conn = null;
             try {
                 URL url = new URL(urlString);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn = (HttpURLConnection) url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
 
@@ -97,7 +104,10 @@ public class GTFSHelper {
             catch (Exception e) {
                 callback.onError();
             }
-        }).start();
+            finally {
+                if(conn != null) conn.disconnect();
+            }
+        });
     }
 
     public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit) {

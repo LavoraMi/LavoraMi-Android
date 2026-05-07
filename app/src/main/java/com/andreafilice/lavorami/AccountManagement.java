@@ -35,6 +35,7 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executor;
+import java.util.regex.Pattern;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -70,6 +71,7 @@ public class AccountManagement extends AppCompatActivity {
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
 
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$");
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -98,7 +100,7 @@ public class AccountManagement extends AppCompatActivity {
 
     //*MEMORY ALLOCATION
     /// In this code, we set-up the variables of MetaData to avoid multiple calls to getMetaData function that slows down the execution.
-    String SupabaseANON, SupabaseURL;
+    private String SupabaseANON, SupabaseURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +138,7 @@ public class AccountManagement extends AppCompatActivity {
         /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
         if(SupabaseURL != null){
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            logging.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
 
             retrofitAPI = new Retrofit.Builder()
@@ -734,7 +736,7 @@ public class AccountManagement extends AppCompatActivity {
         biometricPrompt.authenticate(promptInfo);
     }
 
-    public boolean validateEmail(String mail){return (mail.matches("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"));}
+    public boolean validateEmail(String mail){return EMAIL_PATTERN.matcher(mail).matches();}
 
     public void setUpEmailValidation(EditText emailField, EditText passwordField, CardView btnToApply, InputValidationType type) {
         /// This method is a refactor one, this method is for appply the email validation to all screens without writing hundreds of lines.
@@ -744,69 +746,39 @@ public class AccountManagement extends AppCompatActivity {
         /// CardView btnToApply is the button to apply this effect of disable-enable.
         /// InputValidationType type is the type of validation to perform, can ben ONLY_EMAIL or EMAIL_AND_PASSWORD.
 
-        if(type == InputValidationType.EMAIL_AND_PASSWORD) {
-            emailField.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void afterTextChanged(Editable s) {}
 
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
-                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                    ));
-                }
+        TextWatcher watcher = new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {}
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
-                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                    ));
-                }
-            });
-            passwordField.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void afterTextChanged(Editable s) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                boolean valid = type == InputValidationType.EMAIL_AND_PASSWORD ? validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8 : validateEmail(emailField.getText().toString());
+                updateButtonTint(btnToApply, valid);
+            }
 
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
-                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                    ));
-                }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                boolean valid = type == InputValidationType.EMAIL_AND_PASSWORD ? validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8 : validateEmail(emailField.getText().toString());
+                updateButtonTint(btnToApply, valid);
+            }
+        };
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString()) && passwordField.getText().toString().trim().length() >= 8
-                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                    ));
-                }
-            });
-        }
-        else if(type == InputValidationType.EMAIL_ONLY) {
-            emailField.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void afterTextChanged(Editable s) {}
+        emailField.addTextChangedListener(watcher);
 
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString())
-                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                    ));
-                }
+        if(type == InputValidationType.EMAIL_AND_PASSWORD)
+            passwordField.addTextChangedListener(watcher);
+    }
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    btnToApply.setBackgroundTintList((validateEmail(emailField.getText().toString())
-                            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-                            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-                    ));
-                }
-            });
-        }
+    public void updateButtonTint(CardView btnToApply, boolean isValid) {
+        /// This method is a refactor one and apply the colors to the CardViews.
+        /// @PARAMETERS
+        /// CardView btnToApply is the button to Apply this colors
+        /// boolean isValid is the actual value to apply, if is valid or not.
+
+        btnToApply.setBackgroundTintList(isValid
+            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
+            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
+        );
     }
 }

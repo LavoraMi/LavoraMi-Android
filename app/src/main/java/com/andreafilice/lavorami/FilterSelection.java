@@ -102,9 +102,10 @@ public class FilterSelection extends AppCompatActivity {
         for (int i = 0; i < filterLayouts.length; i++) {
             int index = i;
             filterLayouts[i].setOnClickListener(v -> {
-                getCurrentFilterSelected(filterValues, index);
+                String selected = getCurrentFilterSelected(filterValues, index);
                 setCheckImage(filterIcons);
-                DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, getCurrentFilterSelected(filterValues, index));
+
+                DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, selected);
                 finish();
             });
         }

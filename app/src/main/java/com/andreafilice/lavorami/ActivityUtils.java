@@ -30,7 +30,9 @@ public class ActivityUtils {
         ///String url is the URL to open in Browser.
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        context.startActivity(browserIntent);
+
+        if(browserIntent.resolveActivity(context.getPackageManager()) != null)
+            context.startActivity(browserIntent);
     }
 
     public static void openURLWithTabBuilder(Context context, String url) {
