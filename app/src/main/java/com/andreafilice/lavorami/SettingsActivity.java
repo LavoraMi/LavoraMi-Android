@@ -224,6 +224,16 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this section of the code we create the Listener for the Reset Settings button
         RelativeLayout btnRefresh = findViewById(R.id.btnRefresh);
         btnRefresh.setOnClickListener(v -> {resetSettings(starIcons, lineCodes);});
+
+        //*BOTTOM BAR
+        /// In this section of the code, we setup the buttons for the Bottom bar links.
+        ImageView btnInstagram = findViewById(R.id.btnInstagram);
+        ImageView btnTikTok = findViewById(R.id.btnTikTok);
+        ImageView btnWebsite = findViewById(R.id.btnWebsite);
+
+        btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
+        btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@applavorami.official"));
+        btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://lavorami.it"));
     }
 
     @Override
