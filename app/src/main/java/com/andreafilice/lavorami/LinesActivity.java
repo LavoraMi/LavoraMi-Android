@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
@@ -35,7 +37,6 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout containerRecent;
     LinearLayout containerMetro;
     LinearLayout containerSub;
-    LinearLayout containerTILO;
     LinearLayout containerMXP;
     LinearLayout containerTram;
     LinearLayout containerTrans;
@@ -46,6 +47,8 @@ public class LinesActivity extends AppCompatActivity {
     boolean linesLoaded = false;
     boolean isRecentEmpty = false;
     private Set<String> recentLinesSet = new LinkedHashSet<>();
+    private final Handler searchHandler = new Handler(Looper.getMainLooper());
+    private Runnable searchRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,6 @@ public class LinesActivity extends AppCompatActivity {
         containerRecent = findViewById(R.id.groupRecent);
         containerMetro = findViewById(R.id.groupMetro);
         containerSub = findViewById(R.id.groupSub);
-        containerTILO = findViewById(R.id.groupTrans);
         containerMXP = findViewById(R.id.groupMXP);
         containerTram = findViewById(R.id.groupTram);
         containerTrans = findViewById(R.id.groupTrans);
@@ -148,81 +150,85 @@ public class LinesActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!linesLoaded) return;
 
-                String query = s.toString().toLowerCase().trim();
+                searchHandler.removeCallbacks(searchRunnable);
+                searchRunnable = () -> {
+                    String query = s.toString().toLowerCase().trim();
 
-                LinearLayout titleRecent = findViewById(R.id.headerRecentSearch);
-                LinearLayout titleMetro = findViewById(R.id.headerMetro);
-                LinearLayout titleSub = findViewById(R.id.headerSuburbane);
-                LinearLayout titleMXP = findViewById(R.id.headerMXP);
-                LinearLayout titleTrans = findViewById(R.id.headerTransfrontaliere);
-                LinearLayout titleTram = findViewById(R.id.headerTram);
-                LinearLayout titleMovibus = findViewById(R.id.headerMovibus);
-                LinearLayout titleStav = findViewById(R.id.headerSTAV);
-                LinearLayout titleAutoGuidoVie= findViewById(R.id.headerAutoguidovie);
-                TextView tvNoResults = findViewById(R.id.emptyView);
+                    LinearLayout titleRecent = findViewById(R.id.headerRecentSearch);
+                    LinearLayout titleMetro = findViewById(R.id.headerMetro);
+                    LinearLayout titleSub = findViewById(R.id.headerSuburbane);
+                    LinearLayout titleMXP = findViewById(R.id.headerMXP);
+                    LinearLayout titleTrans = findViewById(R.id.headerTransfrontaliere);
+                    LinearLayout titleTram = findViewById(R.id.headerTram);
+                    LinearLayout titleMovibus = findViewById(R.id.headerMovibus);
+                    LinearLayout titleStav = findViewById(R.id.headerSTAV);
+                    LinearLayout titleAutoGuidoVie= findViewById(R.id.headerAutoguidovie);
+                    TextView tvNoResults = findViewById(R.id.emptyView);
 
-                boolean hasRecent = (query.isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
-                boolean hasMetro = filtraContainer(containerMetro, query);
-                boolean hasSub = filtraContainer(containerSub, query);
-                boolean hasMXP = filtraContainer(containerMXP, query);
-                boolean hasTrans = filtraContainer(containerTrans, query);
-                boolean hasTram = filtraContainer(containerTram, query);
-                boolean hasMovibus = filtraContainer(containerMovibus, query);
-                boolean hasStav= filtraContainer(containerStav, query);
-                boolean hasAuto = filtraContainer(containerAutoGuidovie, query);
+                    boolean hasRecent = (query.isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
+                    boolean hasMetro = filtraContainer(containerMetro, query);
+                    boolean hasSub = filtraContainer(containerSub, query);
+                    boolean hasMXP = filtraContainer(containerMXP, query);
+                    boolean hasTrans = filtraContainer(containerTrans, query);
+                    boolean hasTram = filtraContainer(containerTram, query);
+                    boolean hasMovibus = filtraContainer(containerMovibus, query);
+                    boolean hasStav= filtraContainer(containerStav, query);
+                    boolean hasAuto = filtraContainer(containerAutoGuidovie, query);
 
-                //*RECENT LINES
-                titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
-                findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() &&  isRecentEmpty) ? View.VISIBLE : View.GONE);
-                containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+                    //*RECENT LINES
+                    titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+                    findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() &&  isRecentEmpty) ? View.VISIBLE : View.GONE);
+                    containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
 
-                //*METRO LINES
-                titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
-                containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+                    //*METRO LINES
+                    titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+                    containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
 
-                //*SUBURBAN LINES
-                titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
-                containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
-                setUpMargin(titleSub, hasSub);
+                    //*SUBURBAN LINES
+                    titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+                    containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleSub, hasSub);
 
-                //*MXP LINES
-                titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
-                containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
-                setUpMargin(titleMXP, hasMXP);
+                    //*MXP LINES
+                    titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+                    containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleMXP, hasMXP);
 
-                //*TRANSFRONTALIERE LINES
-                titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
-                containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
-                setUpMargin(titleTrans, hasTrans);
+                    //*TRANSFRONTALIERE LINES
+                    titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+                    containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleTrans, hasTrans);
 
-                //*TRAM LINES
-                titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
-                containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
-                setUpMargin(titleTram, hasTram);
+                    //*TRAM LINES
+                    titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                    containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleTram, hasTram);
 
-                //*MOVIBUS LINES
-                titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
-                containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
-                setUpMargin(titleMovibus, hasMovibus);
+                    //*MOVIBUS LINES
+                    titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+                    containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleMovibus, hasMovibus);
 
-                //*STAV LINES
-                titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                setUpMargin(titleStav, hasStav);
+                    //*STAV LINES
+                    titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                    containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleStav, hasStav);
 
-                //*AUTOGUIDOVIE LINES
-                titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
-                containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
-                setUpMargin(titleAutoGuidoVie, hasAuto);
+                    //*AUTOGUIDOVIE LINES
+                    titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                    containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleAutoGuidoVie, hasAuto);
 
-                if (tvNoResults != null){
-                    tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
-                    tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
-                }
-                if (s.length() > 0)
-                    searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);
-                else
-                    searchLines.setCompoundDrawables(searchIcon, null, null, null);
+                    if (tvNoResults != null){
+                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
+                        tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
+                    }
+                    if (s.length() > 0)
+                        searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);
+                    else
+                        searchLines.setCompoundDrawables(searchIcon, null, null, null);
+                };
+                searchHandler.postDelayed(searchRunnable, 150);
             }
 
             @Override
@@ -340,7 +346,7 @@ public class LinesActivity extends AppCompatActivity {
         int[] tiloColors = {R.color.S10, R.color.S30, R.color.S40, R.color.S50, R.color.RE80};
         for (int i = 0; i < tiloLines.length; i++) {
             int finalI = i;
-            aggiungiLinea(containerTILO, tiloLines[finalI], tiloColors[finalI], ContextCompat.getString(this, R.string.tilo));
+            aggiungiLinea(containerTrans, tiloLines[finalI], tiloColors[finalI], ContextCompat.getString(this, R.string.tilo));
         }
 
         // MXP
