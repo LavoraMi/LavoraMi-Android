@@ -47,10 +47,16 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     static Context context;
     private List<EventDescriptor> eventList;
+    private final String langCode;
+    private final boolean isShowDetail;
 
-    public WorkAdapter(Context context, List<EventDescriptor> eventList){
+    public WorkAdapter(Context context, List<EventDescriptor> eventList) {
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
+
         this.context = context;
         this.eventList = (eventList!=null) ? eventList : new ArrayList<>();
+        this.langCode = savedLang.contains("English") ? "en" : "it";
+        this.isShowDetail = DataManager.getBoolData(DataKeys.KEY_SHOW_DETAILS, true);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -90,13 +96,10 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder itemHolder = (ViewHolder) holder;
         EventDescriptor item = eventList.get(position);
-        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-        String langCode = savedLang.contains("English") ? "en" : "it";
 
         String finalStartDate = formattaData(item.getStartDate());
         String finalEndDate = formattaData(item.getEndDate());
 
-        boolean isShowDetails = DataManager.getBoolData(DataKeys.KEY_SHOW_DETAILS, true);
         int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
 
         ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
@@ -109,7 +112,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.companyText.setText(item.getCompany());
         itemHolder.descriptionText.setText(item.getDetails());
 
-        itemHolder.descriptionText.setVisibility((isShowDetails) ? View.VISIBLE : View.GONE);
+        itemHolder.descriptionText.setVisibility((isShowDetail) ? View.VISIBLE : View.GONE);
 
         int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
         itemHolder.progressBar.setProgress(progressPercentage);
@@ -203,7 +206,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 Typeface interMediumBold = Typeface.create(interMedium, Typeface.BOLD);
                 chip.setTypeface(interMediumBold);
 
-                int coloreLinea = getColorForLinea(nomePulito);
+                int coloreLinea = StationDB.getLineColor(nomePulito);
                 int coloreEffettivo = ContextCompat.getColor(context, coloreLinea);
                 int coloreTestoEffettivo = ContextCompat.getColor(context, R.color.White);
 
@@ -290,98 +293,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         catch (Exception e) {
             return 0;
-        }
-    }
-
-    public static int getColorForLinea(String nomeLinea){
-        switch(nomeLinea){
-            //S LINES
-            case "S1":
-                return R.color.S1;
-            case "S2":
-                return R.color.S2;
-            case "S3":
-                return R.color.S3;
-            case "S4":
-                return R.color.S4;
-            case "S5":
-                return R.color.S5;
-            case "S6":
-                return R.color.S6;
-            case "S7":
-                return R.color.S7;
-            case "S8":
-                return R.color.S8;
-            case "S9":
-                return R.color.S9;
-            case "S11":
-                return R.color.S11;
-            case "S12":
-                return R.color.S12;
-            case "S13":
-                return R.color.S13;
-            case "S19":
-                return R.color.S19;
-            case "S31":
-                return R.color.S31;
-            case "MXP":
-                return R.color.MXP;
-            case "MXP1":
-                return R.color.MXP;
-            case "MXP2":
-                return R.color.MXP;
-            case "AV":
-                return R.color.AV;
-
-            //TILO LINES
-            case "S10":
-                return R.color.S10;
-            case "S30":
-                return R.color.S30;
-            case "S40":
-                return R.color.S40;
-            case "S50":
-                return R.color.S50;
-            case "RE80":
-                return R.color.RE80;
-
-            //METRO LINES
-            case "M1":
-            case "NM1":
-                return R.color.M1;
-            case "M2":
-            case "NM2":
-                return R.color.M2;
-            case "M3":
-            case "NM3":
-                return R.color.M3;
-            case "M4":
-            case "NM4":
-                return R.color.M4;
-            case "M5":
-            case "NM5":
-                return R.color.M5;
-
-            //OTHERS
-            case "Aereoporto":
-                return R.color.airport;
-            default:
-                if(nomeLinea.contains("z"))
-                    return R.color.BUS;
-                else if(nomeLinea.contains("Filobus"))
-                    return R.color.FILOBUS;
-                else if(nomeLinea.contains("N"))
-                    return R.color.NIGHTLINES;
-                else if(nomeLinea.contains("R") && !nomeLinea.contains("RE"))
-                    return R.color.REGIONAL;
-                else if(nomeLinea.contains("RE"))
-                    return R.color.RE;
-                else if(nomeLinea.matches("^([1-9]|[1-2][0-9]|3[0-3])$"))
-                    return R.color.TRAM;
-                else if(nomeLinea.contains("P"))
-                    return R.color.AUTOGUIDOVIE;
-                else
-                    return R.color.OTHER_LINES;
         }
     }
 

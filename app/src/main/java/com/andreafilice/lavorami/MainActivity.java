@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TypedValue;
@@ -93,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton btnSetupNext;
     private Animation animSpin;
     static String maintenanceDetails = "";
-    static boolean strikeBannerClosed = false;
+    private boolean strikeBannerClosed = false;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
     private TextSwitcher hintSwitcher;
     private EditText editSearch;
     private int indexHintAnimation;
-    private final Handler handler = new Handler();
+    private final Handler handler = new Handler(Looper.getMainLooper());
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if(isGranted){
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         defaultCategory = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
-        setTheme();
+        ThemeSettings.setTheme();
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -142,13 +143,13 @@ public class MainActivity extends AppCompatActivity {
         setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle1), getString(R.string.setupDeps1), "ic_app", ""));
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle2), getString(R.string.setupDeps2), "ic_map", ""));
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle3), getString(R.string.setupDeps3), "ic_star_fill", ""));
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle4), getString(R.string.setupDeps4), "ic_bell_fill", ""));
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitleTranslate), getString(R.string.setupDepsTranslate), "ic_translate", getString(R.string.setupMiniDepsTranslate)));
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupAccessibilityTitle), getString(R.string.setupDepsAccessiblity), "ic_accessibility", ""));
-        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle5), getString(R.string.setupDeps5), "ic_lock", getString(R.string.setupMiniDetails)));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle1), getString(R.string.setupDeps1), R.drawable.ic_app, ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle2), getString(R.string.setupDeps2), R.drawable.ic_map, ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle3), getString(R.string.setupDeps3), R.drawable.ic_star_fill, ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle4), getString(R.string.setupDeps4), R.drawable.ic_bell_fill, ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitleTranslate), getString(R.string.setupDepsTranslate), R.drawable.ic_translate, getString(R.string.setupMiniDepsTranslate)));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupAccessibilityTitle), getString(R.string.setupDepsAccessiblity), R.drawable.ic_accessibility, ""));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle5), getString(R.string.setupDeps5), R.drawable.ic_lock, getString(R.string.setupMiniDetails)));
 
         ViewPager2 viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
@@ -597,12 +598,7 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility(View.GONE);
         }
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://cdn.lavorami.it/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIWorks apiworks = retrofit.create(APIWorks.class);
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
 
         /// In this section of the code, we fetch the lavoriAttuali.json file from our CDN and, after the succesfull operation, we create the Event ArrayList.
         apiworks.getLavori().enqueue(new Callback<ArrayList<EventDescriptor>>() {
@@ -623,8 +619,8 @@ public class MainActivity extends AppCompatActivity {
 
                     for (EventDescriptor lavoro : datiRaw) {
                         threadManager.submit(() -> {
-                            lavoro.setEndDateMillis(getDateMillis(lavoro.getEndDate()));
-                            lavoro.setStartDateMillis(getDateMillis(lavoro.getStartDate()));
+                            lavoro.setEndDateMillis(DateUtils.toMillis(lavoro.getEndDate()));
+                            lavoro.setStartDateMillis(DateUtils.toMillis(lavoro.getStartDate()));
 
                             int attuali = pronti.incrementAndGet();
 
@@ -684,12 +680,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkForStrikes(){
         /// In this section of the code, we GET the '_vars.json' file from our CDN and load the Strikes Configuration.
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://cdn.lavorami.it/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIWorks apiworks = retrofit.create(APIWorks.class);
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
         MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
 
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor> () {
@@ -783,7 +774,7 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
             ImageView closeBtn = findViewById(R.id.closeBtn);
 
-            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled().equals("true") && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
+            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled() && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
             strikeDesc.setText(String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
@@ -817,7 +808,8 @@ public class MainActivity extends AppCompatActivity {
         if (testo == null || testo.trim().isEmpty()) {
             for (EventDescriptor item : events){
                 long now = System.currentTimeMillis();
-                long terminated = getDateMillis(item.getEndDate());
+                long terminated = DateUtils.toMillis(item.getEndDate());
+
                 if(terminated > now)
                     listaFiltrata.add(item);
             }
@@ -832,7 +824,7 @@ public class MainActivity extends AppCompatActivity {
         for (EventDescriptor item : events) {
             boolean found = false;
             long now = System.currentTimeMillis();
-            long terminated = getDateMillis(item.getEndDate());
+            long terminated = DateUtils.toMillis(item.getEndDate());
 
             if (!found && item.getLines() != null) {
                 for (String line : item.getLines()) {
@@ -948,20 +940,6 @@ public class MainActivity extends AppCompatActivity {
         checkForEmptyList(filtrata, "null", "", categoria);
     }
 
-    private int calcolaPercentuale(EventDescriptor item) {
-        long start = getDateMillis(item.startDate);
-        long end = getDateMillis(item.endDate);
-        long now = System.currentTimeMillis();
-
-        long totalDuration = end - start;
-        if (totalDuration <= 0) return 100;
-
-        long elapsed = now - start;
-        double fraction = (double) elapsed / totalDuration;
-        double clamped = Math.max(0.0, Math.min(fraction, 1.0));
-        return (int) (clamped * 100);
-    }
-
     private boolean isTram(EventDescriptor item) {return (item.typeOfTransport.contains("tram") && !item.typeOfTransport.equalsIgnoreCase("tram.fill.tunnel"));}
 
     private boolean isTreno(EventDescriptor item) {
@@ -983,50 +961,5 @@ public class MainActivity extends AppCompatActivity {
             if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
         }
         return false;
-    }
-
-    public long getDateMillis(String dateString) {
-        if (dateString == null) return 0;
-        String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'+01:00'";
-
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(serverFormat, Locale.getDefault());
-            sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
-
-            Date date = sdf.parse(dateString);
-            return (date != null) ? date.getTime() : 0;
-
-        }
-        catch (Exception e) {
-            Log.e("DATA_ERROR", "Impossibile leggere: " + dateString + " | Errore: " + e.getMessage());
-            return 0;
-        }
-    }
-
-    private void setTheme(){
-        /// This method apply the theme that the user have selected by Loading the Data and cased it.
-        /// @PARAMETERS
-        /// There are no parameters.
-
-        String typeLoaded = DataManager.getStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
-        int modeSelected;
-
-        switch (typeLoaded){
-            case "Sistema":
-                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                break;
-            case "Scuro":
-                modeSelected = AppCompatDelegate.MODE_NIGHT_YES;
-                break;
-            case "Chiaro":
-                modeSelected = AppCompatDelegate.MODE_NIGHT_NO;
-                break;
-            default:
-                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                break;
-        }
-
-        if (AppCompatDelegate.getDefaultNightMode() != modeSelected)
-            AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
 }

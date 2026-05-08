@@ -15,6 +15,8 @@ public class RequirementsDescriptor {
     public String minimumVersionAndroid;
     @SerializedName("maintenanceMode")
     public String maintenanceModeEnabled;
+    @SerializedName("maintenanceModeDebug")
+    public String maintenanceModeDebug;
     @SerializedName("maintenanceDeps")
     public String maintenanceDeps;
     @SerializedName("maintenanceDepsEn")
@@ -26,29 +28,23 @@ public class RequirementsDescriptor {
     /// Set-up the Getter to use into MainActivity.java for get some values.
     public String getMinimumVersionAndroid(){return this.minimumVersionAndroid;}
     public boolean isMaintenanceEnabled(){return maintenanceModeEnabled.equalsIgnoreCase("true");}
+    public boolean isMaintenanceDebugEnabled(){return maintenanceModeDebug.equalsIgnoreCase("true");}
     public String getMaintenanceDeps(){return this.maintenanceDeps;}
     public String getMaintenanceDepsEnglish(){return this.maintenanceDepsEnglish;}
 
     public static int compareSemanticVersions(String version1, String version2) {
-        List<Integer> version1Components = Arrays.stream(version1.split("\\."))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        List<Integer> version2Components = Arrays.stream(version2.split("\\."))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        //TODO: Comment better this code.
+        String[] p1 = version1.split("\\.");
+        String[] p2 = version2.split("\\.");
 
-        int maxLength = Math.max(version1Components.size(), version2Components.size());
+        int len = Math.max(p1.length, p2.length);
 
-        for (int i = 0; i < maxLength; i++) {
-            int v1Component = i < version1Components.size() ? version1Components.get(i) : 0;
-            int v2Component = i < version2Components.size() ? version2Components.get(i) : 0;
-
-            if (v1Component > v2Component)
-                return 1;
-            else if (v1Component < v2Component)
-                return -1;
+        for (int i = 0; i < len; i++) {
+            int n1 = i < p1.length ? Integer.parseInt(p1[i]) : 0;
+            int n2 = i < p2.length ? Integer.parseInt(p2[i]) : 0;
+            if (n1 > n2) return 1;
+            if (n1 < n2) return -1;
         }
-
         return 0;
     }
 }

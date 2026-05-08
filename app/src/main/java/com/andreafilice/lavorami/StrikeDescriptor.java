@@ -41,7 +41,7 @@ public class StrikeDescriptor {
 
     //*GETTERS
     /// Set-up the Getters to use into MainActivity.java for get some values.
-    public String isStrikeEnabled() {return isStrikeEnabled;}
+    public boolean isStrikeEnabled() {return isStrikeEnabled.equals("true");}
     public String isStrikeEnabledDebug() {return enableStrikeDebug;}
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}

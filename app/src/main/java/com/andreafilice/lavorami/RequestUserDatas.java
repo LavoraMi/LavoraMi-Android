@@ -5,7 +5,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -71,25 +70,21 @@ public class RequestUserDatas extends AppCompatActivity {
         CardView btnRequestDatas = findViewById(R.id.btnRequestDatas);
         btnRequestDatas.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(RequestUserDatas.this, R.color.redMetro)));
 
-        btnRequestDatas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String subject = ContextCompat.getString(RequestUserDatas.this, R.string.requestDataIntentSubject);
-                String body = getString(R.string.requestDataIntentPart1) + selectedFileFormat + "\n" + getString(R.string.requestDataIntentPart2) + sessionManager.getUserEmail() + "\n" + getString(R.string.requestDataIntentPart3);
+        btnRequestDatas.setOnClickListener(v -> {
+            String subject = ContextCompat.getString(RequestUserDatas.this, R.string.requestDataIntentSubject);
+            String body = getString(R.string.requestDataIntentPart1) + selectedFileFormat + "\n" + getString(R.string.requestDataIntentPart2) + sessionManager.getUserEmail() + "\n" + getString(R.string.requestDataIntentPart3);
 
-                String encodedBody = Uri.encode(body);
-                String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
+            String encodedBody = Uri.encode(body);
+            String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse(mailtoUri));
 
                 try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
                 catch (Exception e) {
-                    Toast.makeText(RequestUserDatas.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
+                Toast.makeText(RequestUserDatas.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
             }
         });
     }
-    public boolean validateEmail(String mail){return (mail.matches("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$"));}
 }

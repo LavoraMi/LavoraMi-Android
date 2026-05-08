@@ -18,35 +18,16 @@ public class MetroStation {
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getLatitude() {
         return latitude;
     }
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
     public double getLongitude() {
         return longitude;
     }
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
     public String getBranch() {
         return branch;
     }
-    public void setBranch(String branch) {
-        this.branch = branch;
-    }
-
     public String getLine() {
         return line;
-    }
-    public void setLine(String line) {
-        this.line = line;
     }
 }

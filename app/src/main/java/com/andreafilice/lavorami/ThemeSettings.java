@@ -18,13 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class ThemeSettings extends AppCompatActivity {
 
     //*GLOBAL VARIABLES
-    RelativeLayout systemSelected;
-    RelativeLayout darkSelected;
-    RelativeLayout ligthSelected;
-
-    ImageView systemTick;
-    ImageView darkTick;
-    ImageView lightTick;
+    RelativeLayout systemSelected, darkSelected, lightSelected;
+    ImageView systemTick, darkTick, lightTick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +70,7 @@ public class ThemeSettings extends AppCompatActivity {
 
         systemSelected = findViewById(R.id.system);
         darkSelected = findViewById(R.id.dark);
-        ligthSelected = findViewById(R.id.light);
+        lightSelected = findViewById(R.id.light);
 
         systemTick = findViewById(R.id.checkSystem);
         darkTick = findViewById(R.id.checkDark);
@@ -91,7 +86,7 @@ public class ThemeSettings extends AppCompatActivity {
         /// Set the default Trigger when changing the Theme Color
         systemSelected.setOnClickListener(v -> {changeTheme(TypeSelected.Sistema);});
         darkSelected.setOnClickListener(v -> {changeTheme(TypeSelected.Scuro);});
-        ligthSelected.setOnClickListener(v -> {changeTheme(TypeSelected.Chiaro);});
+        lightSelected.setOnClickListener(v -> {changeTheme(TypeSelected.Chiaro);});
     }
 
     private void changeTheme(TypeSelected type) {
@@ -113,7 +108,7 @@ public class ThemeSettings extends AppCompatActivity {
         finish();
     }
 
-    private void setTheme(){
+    public static void setTheme(){
         /// This method apply the theme that the user have selected by Loading the Data and cased it.
         /// @PARAMETERS
         /// There are no parameters.

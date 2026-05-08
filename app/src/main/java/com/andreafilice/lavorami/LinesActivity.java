@@ -34,15 +34,9 @@ import java.util.Set;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent;
-    LinearLayout containerMetro;
-    LinearLayout containerSub;
-    LinearLayout containerMXP;
-    LinearLayout containerTram;
-    LinearLayout containerTrans;
-    LinearLayout containerMovibus;
-    LinearLayout containerStav;
-    LinearLayout containerAutoGuidovie;
+    LinearLayout containerRecent, containerMetro, containerSub, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerAutoGuidovie;
+    LinearLayout titleRecent, titleMetro, titleSub, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleAutoguidovie;
+    TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     boolean linesLoaded = false;
     boolean isRecentEmpty = false;
@@ -72,6 +66,17 @@ public class LinesActivity extends AppCompatActivity {
         containerStav = findViewById(R.id.groupStav);
         containerAutoGuidovie = findViewById(R.id.groupAutoGuidoVie);
 
+        titleRecent = findViewById(R.id.headerRecentSearch);
+        titleMetro = findViewById(R.id.headerMetro);
+        titleSub = findViewById(R.id.headerSuburbane);
+        titleMXP = findViewById(R.id.headerMXP);
+        titleTrans = findViewById(R.id.headerTransfrontaliere);
+        titleTram = findViewById(R.id.headerTram);
+        titleMovibus = findViewById(R.id.headerMovibus);
+        titleStav = findViewById(R.id.headerSTAV);
+        titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
+        tvNoResults = findViewById(R.id.emptyView);
+
         loadingLayout = findViewById(R.id.loadingLayout);
         loadingLayout.startShimmer();
 
@@ -80,7 +85,7 @@ public class LinesActivity extends AppCompatActivity {
                 loadLines();
                 linesLoaded = true;
                 findViewById(R.id.nestedLinesView).setVisibility(View.VISIBLE);
-            }, 1000);
+            }, 500);
         });
 
         EditText searchLines = findViewById(R.id.editSearch);
@@ -154,17 +159,6 @@ public class LinesActivity extends AppCompatActivity {
                 searchRunnable = () -> {
                     String query = s.toString().toLowerCase().trim();
 
-                    LinearLayout titleRecent = findViewById(R.id.headerRecentSearch);
-                    LinearLayout titleMetro = findViewById(R.id.headerMetro);
-                    LinearLayout titleSub = findViewById(R.id.headerSuburbane);
-                    LinearLayout titleMXP = findViewById(R.id.headerMXP);
-                    LinearLayout titleTrans = findViewById(R.id.headerTransfrontaliere);
-                    LinearLayout titleTram = findViewById(R.id.headerTram);
-                    LinearLayout titleMovibus = findViewById(R.id.headerMovibus);
-                    LinearLayout titleStav = findViewById(R.id.headerSTAV);
-                    LinearLayout titleAutoGuidoVie= findViewById(R.id.headerAutoguidovie);
-                    TextView tvNoResults = findViewById(R.id.emptyView);
-
                     boolean hasRecent = (query.isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
                     boolean hasMetro = filtraContainer(containerMetro, query);
                     boolean hasSub = filtraContainer(containerSub, query);
@@ -215,18 +209,16 @@ public class LinesActivity extends AppCompatActivity {
                     setUpMargin(titleStav, hasStav);
 
                     //*AUTOGUIDOVIE LINES
-                    titleAutoGuidoVie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                    titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleAutoGuidoVie, hasAuto);
+                    setUpMargin(titleAutoguidovie, hasAuto);
 
                     if (tvNoResults != null){
                         tvNoResults.setVisibility((!hasMetro && !hasSub && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
                         tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
                     }
-                    if (s.length() > 0)
-                        searchLines.setCompoundDrawables(searchIcon, null, deleteIcon, null);
-                    else
-                        searchLines.setCompoundDrawables(searchIcon, null, null, null);
+
+                    searchLines.setCompoundDrawables(searchIcon, null, (s.length() > 0) ? deleteIcon : null, null);
                 };
                 searchHandler.postDelayed(searchRunnable, 150);
             }
@@ -390,7 +382,7 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         //RECENT
-        reloadRecentLines();
+        //reloadRecentLines();
 
         //Stop the Shimmer animation.
         loadingLayout.setVisibility(View.GONE);

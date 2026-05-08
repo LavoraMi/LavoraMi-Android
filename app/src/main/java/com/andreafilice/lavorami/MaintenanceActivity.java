@@ -53,12 +53,7 @@ public class MaintenanceActivity extends AppCompatActivity {
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
         btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.GRAY));
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://cdn.lavorami.it/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIWorks apiworks = retrofit.create(APIWorks.class);
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
 
         /// Get the JSON from the CDN server
         apiworks.getRequirements().enqueue(new Callback<RequirementsDescriptor>() {
@@ -101,14 +96,14 @@ public class MaintenanceActivity extends AppCompatActivity {
                                 .show();
                     }
                 }
+                btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.redMetro));
             }
 
             @Override
             public void onFailure(Call<RequirementsDescriptor> call, Throwable t) {
                 Log.d("REQUIREMENTS_GET", "Errore durante il retrieve del Requirements.json");
+                btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.redMetro));
             }
         });
-
-        btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.redMetro));
     }
 }

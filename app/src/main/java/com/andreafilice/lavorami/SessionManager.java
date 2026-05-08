@@ -16,7 +16,7 @@ public class SessionManager {
     private Context context;
 
     public SessionManager(Context context){
-        this.context = context;
+        this.context = context.getApplicationContext();
         prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = prefs.edit();
     }

@@ -26,8 +26,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.tasks.Task;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -289,7 +287,12 @@ public class SettingsActivity extends AppCompatActivity {
         /// @PARAMETERS
         /// SessionManager manager is the manager of the session which contains the FullName attribute.
         
-        String[] values = manager.getUserName().split(" ");
+        String[] values = manager.getUserName().split("\\s+");
+
+        //*STRING SPLIT VALIDATION
+        /// In this section of the code, we avoid some crashes with special cases
+        if(values.length == 0 || values[0].isEmpty()) return manager.getUserName();
+        if (values.length == 1) return String.valueOf(values[0].charAt(0));
 
         return String.format("%s%s", values[0].charAt(0), values[1].charAt(0));
     }
@@ -317,46 +320,33 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
-    public void setStarIcons(ImageView[] icons, RelativeLayout[] layouts, String[] lineCodes){
+    public void setStarIcons(ImageView[] icons, RelativeLayout[] layouts, String[] lineCodes) {
+        //TODO: Comment better this code.
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;
 
-            icons[i].setOnClickListener(v -> {
-                Integer currentTag = (Integer) icons[finalI].getTag();
-
-                int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
-                int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
-
-                icons[finalI].setImageResource(newRes);
-                icons[finalI].setTag(newRes);
-
-                if (newRes == R.drawable.ic_star_fill)
-                    favorites.add(lineCodes[finalI]);
-                else
-                    favorites.remove(lineCodes[finalI]);
-
-                NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
-                DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
-            });
-
-            layouts[i].setOnClickListener(v -> {
-                Integer currentTag = (Integer) icons[finalI].getTag();
-
-                int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
-                int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
-
-                icons[finalI].setImageResource(newRes);
-                icons[finalI].setTag(newRes);
-
-                if (newRes == R.drawable.ic_star_fill)
-                    favorites.add(lineCodes[finalI]);
-                else
-                    favorites.remove(lineCodes[finalI]);
-
-                NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
-                DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
-            });
+            icons[i].setOnClickListener(v -> toggleFavorite(icons[finalI], lineCodes[finalI]));
+            layouts[i].setOnClickListener(v -> toggleFavorite(icons[finalI], lineCodes[finalI]));
         }
+    }
+
+    private void toggleFavorite(ImageView icon, String lineCode) {
+        //TODO: Comment better this code.
+        Integer currentTag = (Integer) icon.getTag();
+
+        int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
+        int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
+
+        icon.setImageResource(newRes);
+        icon.setTag(newRes);
+
+        if (newRes == R.drawable.ic_star_fill)
+            favorites.add(lineCode);
+        else
+            favorites.remove(lineCode);
+
+        NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
+        DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
     }
 
     public void loadFavorites(ImageView[] starIcons, String[] lineCodes) {
@@ -394,34 +384,8 @@ public class SettingsActivity extends AppCompatActivity {
                     Toast.makeText(this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                     favorites.clear();
                     reloadDatas();
-                    setTheme();
+                    ThemeSettings.setTheme();
                     loadFavorites(images, lines);
                 }).show();
-    }
-
-    private void setTheme(){
-        /// This method apply the theme that the user have selected by Loading the Data and cased it.
-        /// @PARAMETERS
-        /// There are no parameters.
-
-        String typeLoaded = DataManager.getStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
-        int modeSelected;
-
-        switch (typeLoaded){
-            case "Sistema":
-                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                break;
-            case "Scuro":
-                modeSelected = AppCompatDelegate.MODE_NIGHT_YES;
-                break;
-            case "Chiaro":
-                modeSelected = AppCompatDelegate.MODE_NIGHT_NO;
-                break;
-            default:
-                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                break;
-        }
-
-        AppCompatDelegate.setDefaultNightMode(modeSelected);
     }
 }

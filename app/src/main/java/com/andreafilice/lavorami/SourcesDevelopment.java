@@ -47,21 +47,18 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnTermsOfService = findViewById(R.id.btnTermsService);
         ImageButton btnBack = findViewById(R.id.backBtn);
 
-        btnReportBug.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String subject = ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentSubject);
-                String body = String.format(ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentBody), Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER);
+        btnReportBug.setOnClickListener(v -> {
+            String subject = ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentSubject);
+            String body = String.format(ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentBody), Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER);
 
-                String encodedBody = Uri.encode(body);
-                String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
+            String encodedBody = Uri.encode(body);
+            String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse(mailtoUri));
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse(mailtoUri));
 
-                try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
-                catch (Exception e) {e.printStackTrace();}
-            }
+            try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
+            catch (Exception e) {e.printStackTrace();}
         });
 
         btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));

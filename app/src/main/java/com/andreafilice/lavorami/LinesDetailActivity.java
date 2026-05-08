@@ -34,6 +34,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -163,14 +164,16 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 mapFragment.getMapAsync(this);
         });
 
+        int chipStrokeColor = Color.parseColor("#CCCCCC");
+
         chipMappa.setChipStrokeWidth(3f);
-        chipMappa.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
+        chipMappa.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
         chipLavori.setChipStrokeWidth(3f);
-        chipLavori.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
+        chipLavori.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
         chipInterscambi.setChipStrokeWidth(3f);
-        chipInterscambi.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
+        chipInterscambi.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
         chipArrivi.setChipStrokeWidth(3f);
-        chipArrivi.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
+        chipArrivi.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
 
         chipMappa.setOnClickListener(v -> {
             cardMappa.setVisibility(View.VISIBLE);
@@ -429,19 +432,19 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         if(nomeLinea.startsWith("M"))
             detTitolo.setText("Metro " + nomeLinea);
-        if(nomeLinea.startsWith("S"))
+        else if(nomeLinea.startsWith("S"))
             detTitolo.setText("Suburbano " + nomeLinea);
-        if(nomeLinea.matches("^[1-9][0-9]?$"))
+        else if(nomeLinea.matches("^[1-9][0-9]?$"))
             detTitolo.setText("Tram "+nomeLinea);
-        if(nomeLinea.equals("S10") || nomeLinea.equals("S30") || nomeLinea.equals("S40") || nomeLinea.equals("S50") || nomeLinea.equals("RE80"))
+        else if(nomeLinea.equals("S10") || nomeLinea.equals("S30") || nomeLinea.equals("S40") || nomeLinea.equals("S50") || nomeLinea.equals("RE80"))
             detTitolo.setText("TILO "+ nomeLinea);
-        if(nomeLinea.startsWith("MXP"))
+        else if(nomeLinea.startsWith("MXP"))
             detTitolo.setText("Malpensa Express");
-        if(nomeLinea.startsWith("z6"))
+        else if(nomeLinea.startsWith("z6"))
             detTitolo.setText("Movibus " + nomeLinea);
-        if(nomeLinea.startsWith("z5"))
+        else if(nomeLinea.startsWith("z5"))
             detTitolo.setText("STAV " + nomeLinea);
-        if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
+        else if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie " + nomeLinea);
 
         detBadge.setText(nomeLinea);
@@ -831,45 +834,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 if (chipGroup != null && evento.getLines() != null) {
                     chipGroup.removeAllViews();
 
-                    for (String lineName : evento.getLines()) {
-                        String nomePulito = lineName.trim();
-                        Chip chip = new Chip(this);
-                        chip.setText(nomePulito);
-
-                        ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
-                                .toBuilder()
-                                .setAllCornerSizes(10f)
-                                .build();
-                        chip.setShapeAppearanceModel(cornerRadius);
-
-                        float density = getResources().getDisplayMetrics().density;
-                        int heightPx = (int) (26 * density);
-                        chip.setEnsureMinTouchTargetSize(false);
-                        chip.setChipMinHeight((float) heightPx);
-                        chip.setMinHeight(heightPx);
-
-                        chip.setChipStartPadding(0f);
-                        chip.setChipEndPadding(0f);
-                        chip.setTextStartPadding(15f);
-                        chip.setTextEndPadding(15f);
-                        chip.setChipStrokeWidth(0f);
-
-                        chip.setTextSize(13f);
-                        Typeface interMedium = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter_medium);
-                        chip.setTypeface(Typeface.create(interMedium, Typeface.BOLD));
-
-                        int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
-                        int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
-                        int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
-                        chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
-                        chip.setTextColor(coloreTestoEffettivo);
-
-                        chip.setCloseIconVisible(false);
-                        chip.setClickable(false);
-                        chip.setCheckable(false);
-
-                        chipGroup.addView(chip);
-                    }
+                    for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
                 }
                 container.addView(card);
             }
@@ -897,7 +862,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if(tipoDiLinea.contains("Tram"))
             interchanges = StationDB.getInterchangesTrams();
         else
-            interchanges =StationDB.getInterchanges();
+            interchanges = StationDB.getInterchanges();
 
         for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;
@@ -928,8 +893,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
 
                 if(txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+
                 if (titolo != null)
                     titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
+
                 if (desc != null) desc.setText(nomeLinea);
 
                 int color = ContextCompat.getColor(this, R.color.text_primary);
@@ -940,45 +907,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 if (chipGroup != null && evento.getLines() != null) {
                     chipGroup.removeAllViews();
 
-                    for (String lineName : evento.getLines()) {
-                        String nomePulito = lineName.trim();
-                        Chip chip = new Chip(this);
-                        chip.setText(nomePulito);
-
-                        ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
-                                .toBuilder()
-                                .setAllCornerSizes(10f)
-                                .build();
-                        chip.setShapeAppearanceModel(cornerRadius);
-
-                        float density = getResources().getDisplayMetrics().density;
-                        int heightPx = (int) (26 * density);
-                        chip.setEnsureMinTouchTargetSize(false);
-                        chip.setChipMinHeight((float) heightPx);
-                        chip.setMinHeight(heightPx);
-
-                        chip.setChipStartPadding(0f);
-                        chip.setChipEndPadding(0f);
-                        chip.setTextStartPadding(15f);
-                        chip.setTextEndPadding(15f);
-                        chip.setChipStrokeWidth(0f);
-
-                        chip.setTextSize(13f);
-                        Typeface interMedium = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter_medium);
-                        chip.setTypeface(Typeface.create(interMedium, Typeface.BOLD));
-
-                        int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
-                        int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
-                        int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
-                        chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
-                        chip.setTextColor(coloreTestoEffettivo);
-
-                        chip.setCloseIconVisible(false);
-                        chip.setClickable(false);
-                        chip.setCheckable(false);
-
-                        chipGroup.addView(chip);;
-                    }
+                    for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
                 }
                 container.addView(card);
             }
@@ -1026,45 +955,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     chipGroupLinee.removeAllViews();
                     iconInterchange.setImageResource(info.getCardImageID());
 
-                    for (String lineName : info.getLines()) {
-                        String nomePulito = lineName.trim();
-                        Chip chip = new Chip(this);
-                        chip.setText(nomePulito);
-
-                        ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel()
-                                .toBuilder()
-                                .setAllCornerSizes(10f)
-                                .build();
-                        chip.setShapeAppearanceModel(cornerRadius);
-
-                        float density = getResources().getDisplayMetrics().density;
-                        int heightPx = (int) (26 * density);
-                        chip.setEnsureMinTouchTargetSize(false);
-                        chip.setChipMinHeight((float) heightPx);
-                        chip.setMinHeight(heightPx);
-
-                        chip.setChipStartPadding(0f);
-                        chip.setChipEndPadding(0f);
-                        chip.setTextStartPadding(15f);
-                        chip.setTextEndPadding(15f);
-                        chip.setChipStrokeWidth(0f);
-
-                        chip.setTextSize(13f);
-                        Typeface workSans = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.work_sans_medium);
-                        chip.setTypeface(Typeface.create(workSans, Typeface.BOLD));
-
-                        int coloreLinea = WorkAdapter.getColorForLinea(nomePulito);
-                        int coloreTestoEffettivo = ContextCompat.getColor(this, R.color.White);
-                        int coloreEffettivo = ContextCompat.getColor(this, coloreLinea);
-                        chip.setChipBackgroundColor(ColorStateList.valueOf(coloreEffettivo));
-                        chip.setTextColor(coloreTestoEffettivo);
-
-                        chip.setCloseIconVisible(false);
-                        chip.setClickable(false);
-                        chip.setCheckable(false);
-
-                        chipGroupLinee.addView(chip);
-                    }
+                    for (String lineName : info.getLines()) {chipGroupLinee.addView(createChip(lineName));}
                 }
             }
         }
@@ -1076,18 +967,36 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         }
     }
 
-    public long getDateMillis(String dateString) {
-        if (dateString == null) return 0;
-        String serverFormat = "yyyy-MM-dd'T'HH:mm:ss'+01:00'";
+    private Chip createChip(String name) {
+        /// This method is a refactor one, helps handling the intense Chip creation process to the CPU.
+        /// @PARAMETERS
+        /// String name is the name of the line to display.
 
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(serverFormat, Locale.getDefault());
-            sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+        Chip chip = new Chip(this);
+        chip.setText(name);
 
-            Date date = sdf.parse(dateString);
-            return (date != null) ? date.getTime() : 0;
-        }
-        catch (Exception e) {return 0;}
+        ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build();
+        chip.setShapeAppearanceModel(cornerRadius);
+
+        float density = getResources().getDisplayMetrics().density;
+        int heightPx = (int) (26 * density);
+
+        chip.setEnsureMinTouchTargetSize(false);
+        chip.setChipMinHeight(heightPx);
+        chip.setMinHeight(heightPx);
+        chip.setChipStartPadding(0f); chip.setChipEndPadding(0f);
+        chip.setTextStartPadding(15f); chip.setTextEndPadding(15f);
+        chip.setChipStrokeWidth(0f);
+        chip.setTextSize(13f);
+        chip.setTypeface(Typeface.create(ResourcesCompat.getFont(this, R.font.inter_medium), Typeface.BOLD));
+
+        int colore = ContextCompat.getColor(this, StationDB.getLineColor(name));
+        chip.setChipBackgroundColor(ColorStateList.valueOf(colore));
+        chip.setTextColor(ContextCompat.getColor(this, R.color.White));
+        chip.setCloseIconVisible(false);
+        chip.setClickable(false);
+        chip.setCheckable(false);
+        return chip;
     }
 
     private void aggiornaInfoSuperiori() {
@@ -1107,34 +1016,30 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             tvAttesa.setText("Frequenza variabile");
 
         int numeroLavoriProgrammati = 0, numeroLavoriAttuali = 0, numeroLavori = 0;
-        for (EventDescriptor e : EventData.listaEventiCompleta) {
-            long start = getDateMillis(e.getStartDate());
-            long end = getDateMillis(e.getEndDate());
-            long oggi = System.currentTimeMillis();
-            long startP = getDateMillis(e.getStartDate());
 
-            for (String l : e.getLines()) {
-                if (l.equalsIgnoreCase(nomeLinea)) {
+        for (EventDescriptor event : EventData.listaEventiCompleta) {
+            long start = event.getStartDateMillis();
+            long end = event.getEndDateMillis();
+            long oggi = System.currentTimeMillis();
+            long startP = event.getStartDateMillis();
+
+            for (String line : event.getLines()) {
+                if (line.equalsIgnoreCase(nomeLinea)) {
                     numeroLavori++;
+
                     if(start > 0 && end > 0 && oggi >= start && oggi <= end) numeroLavoriAttuali++;
                     else if(startP > 0 && oggi < startP) numeroLavoriProgrammati++;
+
                     break;
                 }
             }
         }
 
-        tvLavori.setText((numeroLavori > 0)
-                ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle))
-                : ContextCompat.getString(this, R.string.fallbackNoWorks));
+        tvLavori.setText((numeroLavori > 0) ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
 
     public void fetchDeviations() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://cdn.lavorami.it/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIWorks apiworks = retrofit.create(APIWorks.class);
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
 
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
             @Override

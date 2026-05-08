@@ -33,7 +33,7 @@
             android:fontFamily="@font/work_sans_medium"
             android:text="@string/maintenanceTitle"
             android:textColor="@color/text_primary"
-            android:textSize="33sp"
+            android:textSize="30sp"
             android:textStyle="bold"/>
 
         <TextView

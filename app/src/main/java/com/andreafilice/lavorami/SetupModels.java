@@ -4,6 +4,8 @@ import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -21,9 +23,10 @@ import java.util.List;
 public class SetupModels {
 
     public static class SetupPage {
-        String title, description, icon, smallDescription;
+        String title, description, smallDescription;
+        int icon;
 
-        public SetupPage(String title, String description, String icon, String smallDescription) {
+        public SetupPage(String title, String description, int icon, String smallDescription) {
             this.title = title;
             this.description = description;
             this.icon = icon;
@@ -48,6 +51,7 @@ public class SetupModels {
         @Override
         public void onBindViewHolder(@NonNull SetupAdapter.ViewHolder holder, int position) {
             SetupPage page = pages.get(position);
+
             holder.tvTitle.setText(page.title);
             holder.tvDesc.setText(page.description);
 
@@ -58,13 +62,12 @@ public class SetupModels {
             else
                 holder.tvSetupSmallDesc.setVisibility(View.GONE);
 
-            int resID = holder.itemView.getContext().getResources().getIdentifier(page.icon, "drawable", holder.itemView.getContext().getPackageName());
-            holder.img.setImageResource(resID);
+            holder.img.setImageResource(page.icon);
 
             //*APP ICON
             /// In this section of the code, we will check if the user is in the first slide and disable the color.
 
-            if(!page.icon.equals("ic_app")) {
+            if(page.icon != R.drawable.ic_app) {
                 holder.img.setVisibility(View.VISIBLE);
                 holder.imgFirstSlide.setVisibility(View.GONE);
             }

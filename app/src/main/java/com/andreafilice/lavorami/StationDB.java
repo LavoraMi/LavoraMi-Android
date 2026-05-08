@@ -2,9 +2,12 @@ package com.andreafilice.lavorami;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class StationDB {
+    private static List<MetroStation> CACHED_STATIONS = null;
 
     public static List<MetroStation> getStationsM1() {
         List<MetroStation> stations = new ArrayList<>();
@@ -1200,43 +1203,47 @@ public class StationDB {
     }
 
     public static List<MetroStation> getAllStations() {
-        List<MetroStation> allStations = new ArrayList<>();
-        allStations.addAll(getStationsM1());
-        allStations.addAll(getStationsM2());
-        allStations.addAll(getStationsM3());
-        allStations.addAll(getStationsM4());
-        allStations.addAll(getStationsM5());
-        allStations.addAll(getStationsS1());
-        allStations.addAll(getStationsS2());
-        allStations.addAll(getStationsS3());
-        allStations.addAll(getStationsS4());
-        allStations.addAll(getStationsS5());
-        allStations.addAll(getStationsS6());
-        allStations.addAll(getStationsS7());
-        allStations.addAll(getStationsS8());
-        allStations.addAll(getStationsS9());
-        allStations.addAll(getStationsS11());
-        allStations.addAll(getStationsS12());
-        allStations.addAll(getStationsS13());
-        allStations.addAll(getStationsS19());
-        allStations.addAll(getStationsS31());
-        allStations.addAll(getStationsS10());
-        allStations.addAll(getStationsS30());
-        allStations.addAll(getStationsS40());
-        allStations.addAll(getStationsS50());
-        allStations.addAll(getStationsRE80());
-        allStations.addAll(getStationsMXP1());
-        allStations.addAll(getStationsMXP2());
-        allStations.addAll(getStationsTram1());
-        allStations.addAll(getStationsTram3());
-        allStations.addAll(getStationsTram5());
-        allStations.addAll(getStationsTram7());
-        allStations.addAll(getStationsTram9());
-        allStations.addAll(getStationsTram10());
-        allStations.addAll(getStationsTram24());
-        allStations.addAll(getStationsTram31());
-        allStations.addAll(getStationsTram33());
-        return allStations;
+        if(CACHED_STATIONS == null) {
+            List<MetroStation> allStations = new ArrayList<>();
+            allStations.addAll(getStationsM1());
+            allStations.addAll(getStationsM2());
+            allStations.addAll(getStationsM3());
+            allStations.addAll(getStationsM4());
+            allStations.addAll(getStationsM5());
+            allStations.addAll(getStationsS1());
+            allStations.addAll(getStationsS2());
+            allStations.addAll(getStationsS3());
+            allStations.addAll(getStationsS4());
+            allStations.addAll(getStationsS5());
+            allStations.addAll(getStationsS6());
+            allStations.addAll(getStationsS7());
+            allStations.addAll(getStationsS8());
+            allStations.addAll(getStationsS9());
+            allStations.addAll(getStationsS11());
+            allStations.addAll(getStationsS12());
+            allStations.addAll(getStationsS13());
+            allStations.addAll(getStationsS19());
+            allStations.addAll(getStationsS31());
+            allStations.addAll(getStationsS10());
+            allStations.addAll(getStationsS30());
+            allStations.addAll(getStationsS40());
+            allStations.addAll(getStationsS50());
+            allStations.addAll(getStationsRE80());
+            allStations.addAll(getStationsMXP1());
+            allStations.addAll(getStationsMXP2());
+            allStations.addAll(getStationsTram1());
+            allStations.addAll(getStationsTram3());
+            allStations.addAll(getStationsTram5());
+            allStations.addAll(getStationsTram7());
+            allStations.addAll(getStationsTram9());
+            allStations.addAll(getStationsTram10());
+            allStations.addAll(getStationsTram24());
+            allStations.addAll(getStationsTram31());
+            allStations.addAll(getStationsTram33());
+
+            CACHED_STATIONS = Collections.unmodifiableList(allStations);
+        }
+        return CACHED_STATIONS;
     }
 
     public static int getLineColor(String nomeLinea) {
