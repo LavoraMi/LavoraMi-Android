@@ -98,6 +98,12 @@
                             android:visibility="gone"/>
                     </RelativeLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="60dp"
+                        android:background="#38383A" />
+
                     <RelativeLayout
                         android:id="@+id/all"
                         android:layout_width="match_parent"
