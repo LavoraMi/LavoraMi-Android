@@ -17,6 +17,7 @@ public class EventDescriptor {
     protected String startDate;
     protected String endDate;
     protected String details;
+    protected String phases;
     protected String company;
     private long startDateMillis;
     private long endDateMillis;
@@ -26,7 +27,7 @@ public class EventDescriptor {
 
     static {SERVER_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));}
 
-    public EventDescriptor(String title, String titleIcon, String typeOfTransport, String roads, String[] lines, String startDate, String endDate, String details, String company) {
+    public EventDescriptor(String title, String titleIcon, String typeOfTransport, String roads, String[] lines, String startDate, String endDate, String phases, String details, String company) {
         this.title = title;
         this.titleIcon = titleIcon;
         this.typeOfTransport = typeOfTransport;
@@ -34,6 +35,7 @@ public class EventDescriptor {
         this.lines = lines;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.phases = phases;
         this.details = details;
         this.company = company;
     }
@@ -83,6 +85,7 @@ public class EventDescriptor {
     public String getStartDate() {return startDate;}
     public String getEndDate() {return endDate;}
     public String getDetails() {return details;}
+    public String getPhases() {return phases;}
     public String getCompany() {return company;}
     public boolean isEventTerminated() {return calcolaPercentuale(startDate, endDate) == 100;}
     public long getStartDateMillis() { return startDateMillis; }

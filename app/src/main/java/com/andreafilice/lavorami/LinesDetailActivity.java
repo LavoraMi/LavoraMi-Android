@@ -760,6 +760,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
                 TextView companyTxt = card.findViewById(R.id.txtOperator);
                 TextView roadsTxt = card.findViewById(R.id.txtRoute);
+                TextView phasesText = card.findViewById(R.id.badgePhases);
+
+                if(evento.getPhases() != null) phasesText.setText(evento.getPhases());
+                else phasesText.setVisibility(View.GONE);
 
                 //*TRANSLATE BUTTON
                 Button btnTranslate = card.findViewById(R.id.btnTranslate);
