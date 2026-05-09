@@ -294,7 +294,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
-        int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.text_primary) : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
+        int coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(nomeLinea)));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
         ColorStateList chipColor = new ColorStateList(
             new int[][]{
@@ -313,7 +313,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         //*CHIP ICON COLOR
         /// In this section of the code we setup the Chip Icon color when selected and when is not.
-        int coloreSelezionato = ContextCompat.getColor(this, R.color.White);
+        int coloreSelezionato = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.background_app : R.color.White));
         int coloreNonSelezionato = ContextCompat.getColor(this, R.color.text_primary);
 
         ColorStateList chipIconColors = new ColorStateList(
