@@ -499,20 +499,18 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                     new GoogleMap.CancelableCallback() {
                         @Override
                         public void onFinish() {
-                            if (tipoDiLinea.contains("Tram")) {
-                                double latMedia = 0, lngMedia = 0;
+                            double latMedia = 0, lngMedia = 0;
 
-                                for (MetroStation s : tutteLeStazioni) {
-                                    latMedia += s.getLatitude();
-                                    lngMedia += s.getLongitude();
-                                }
-
-                                latMedia /= tutteLeStazioni.size();
-                                lngMedia /= tutteLeStazioni.size();
-
-                                float currentZoom = mMap.getCameraPosition().zoom;
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), currentZoom - 0.3f));
+                            for (MetroStation s : tutteLeStazioni) {
+                                latMedia += s.getLatitude();
+                                lngMedia += s.getLongitude();
                             }
+
+                            latMedia /= tutteLeStazioni.size();
+                            lngMedia /= tutteLeStazioni.size();
+
+                            float currentZoom = mMap.getCameraPosition().zoom;
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), (tipoDiLinea.contains("Tram") ? currentZoom - 0.3f : currentZoom + 2f)));
                         }
                         @Override
                         public void onCancel() {}
