@@ -68,6 +68,8 @@ public class EventDescriptor {
                 return R.drawable.ic_variazione_corse;
             case "bolt.horizontal.fill":
                 return R.drawable.ic_bolt_horizontal;
+            case "party.popper.fill":
+                return R.drawable.ic_event;
             default:
                 return R.drawable.empty_image;
         }
