@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
@@ -495,26 +496,37 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             LatLngBounds bounds = builder.build();
 
             int padding = (tipoDiLinea.contains("Tram") ? 100 : 120);
-            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding),
-                    new GoogleMap.CancelableCallback() {
-                        @Override
-                        public void onFinish() {
-                            double latMedia = 0, lngMedia = 0;
+            View mapView = getSupportFragmentManager().findFragmentById(R.id.map).getView();
 
-                            for (MetroStation s : tutteLeStazioni) {
-                                latMedia += s.getLatitude();
-                                lngMedia += s.getLongitude();
+            if (mapView != null && mapView.getViewTreeObserver().isAlive()) {
+                mapView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        mapView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), new GoogleMap.CancelableCallback() {
+                            @Override
+                            public void onFinish() {
+                                double latMedia = 0, lngMedia = 0;
+                                for (MetroStation s : tutteLeStazioni) {
+                                    latMedia += s.getLatitude();
+                                    lngMedia += s.getLongitude();
+                                }
+                                latMedia /= tutteLeStazioni.size();
+                                lngMedia /= tutteLeStazioni.size();
+
+                                float currentZoom = mMap.getCameraPosition().zoom;
+                                float finalZoom = (tipoDiLinea.contains("Tram") ? currentZoom - 0.3f : currentZoom + 1f);
+
+                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), finalZoom));
                             }
 
-                            latMedia /= tutteLeStazioni.size();
-                            lngMedia /= tutteLeStazioni.size();
-
-                            float currentZoom = mMap.getCameraPosition().zoom;
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), (tipoDiLinea.contains("Tram") ? currentZoom - 0.3f : currentZoom + 1f)));
-                        }
-                        @Override
-                        public void onCancel() {}
-                    });
+                            @Override
+                            public void onCancel() {}
+                        });
+                    }
+                });
+            }
         }
         else {
             LatLng milano = new LatLng(45.4642, 9.1900);
