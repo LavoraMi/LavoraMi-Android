@@ -510,7 +510,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                             lngMedia /= tutteLeStazioni.size();
 
                             float currentZoom = mMap.getCameraPosition().zoom;
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), (tipoDiLinea.contains("Tram") ? currentZoom - 0.3f : currentZoom + 2f)));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), (tipoDiLinea.contains("Tram") ? currentZoom - 0.3f : currentZoom + 1f)));
                         }
                         @Override
                         public void onCancel() {}
