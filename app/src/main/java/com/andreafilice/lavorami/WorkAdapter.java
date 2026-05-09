@@ -61,7 +61,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView cardImage;
-        TextView titleText, trattaText, startDateText, endDateText,companyText, descriptionText, phasesText;
+        TextView titleText, trattaText, startDateText, endDateText,companyText, descriptionText;
         ChipGroup chipGroupLinee;
         ProgressBar progressBar;
         Button translateBtn;
@@ -75,7 +75,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             endDateText = itemView.findViewById(R.id.txtEndDate);
             companyText = itemView.findViewById(R.id.txtOperator);
             descriptionText = itemView.findViewById(R.id.txtDescription);
-            phasesText = itemView.findViewById(R.id.badgePhases);
             chipGroupLinee = itemView.findViewById(R.id.chipGroupLinee);
             progressBar = itemView.findViewById(R.id.progressBarDate);
             translateBtn = itemView.findViewById(R.id.btnTranslate);
@@ -112,13 +111,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.endDateText.setText(finalEndDate);
         itemHolder.companyText.setText(item.getCompany());
         itemHolder.descriptionText.setText(item.getDetails());
-
-        if(item.getPhases() != null) {
-            itemHolder.phasesText.setVisibility(View.VISIBLE);
-            itemHolder.phasesText.setText(item.getPhases());
-        }
-        else
-            itemHolder.phasesText.setVisibility(View.GONE);
 
         itemHolder.descriptionText.setVisibility((isShowDetail) ? View.VISIBLE : View.GONE);
 

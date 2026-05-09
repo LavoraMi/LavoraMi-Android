@@ -30,36 +30,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
             android:fontFamily="@font/work_sans_medium"
-            android:ellipsize="end"
-            android:maxLines="1"
-            app:layout_constraintEnd_toStartOf="@+id/badgePhases"
-            app:layout_constraintStart_toEndOf="@id/iconEvent"
-            app:layout_constraintTop_toTopOf="@id/iconEvent"
-            app:layout_constraintBottom_toBottomOf="@id/iconEvent"/>
-
-        <TextView
-            android:id="@+id/badgePhases"
-            android:layout_width="wrap_content"
-            android:minWidth="42dp"
-            android:layout_height="26dp"
-            android:background="@drawable/bg_badge_line_shimmer"
-            android:backgroundTint="@color/disclosureBg"
-            android:fontFamily="@font/inter_medium"
-            android:gravity="center"
-            android:paddingStart="6dp"
-            android:paddingEnd="6dp"
-            android:text=""
-            android:textColor="@color/text_primary"
-            android:textSize="12sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txtTitle"
-            app:layout_constraintBottom_toBottomOf="@id/txtTitle" />
+            app:layout_constraintStart_toEndOf="@id/iconEvent"
+            app:layout_constraintTop_toTopOf="@id/iconEvent" />
 
         <TextView
             android:id="@+id/txtRoute"
