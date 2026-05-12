@@ -34,7 +34,7 @@ import java.util.Set;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, containerMetro, containerSub, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerAutoGuidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerAutoGuidovie;
     LinearLayout titleRecent, titleMetro, titleSub, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleAutoguidovie;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
@@ -58,6 +58,7 @@ public class LinesActivity extends AppCompatActivity {
         //*INITIALIZE COMPONENTS
         /// In this section of the code, we initialize all the containers for the sub-menus.
         containerRecent = findViewById(R.id.groupRecent);
+        headerMetro = findViewById(R.id.headerMetro);
         containerMetro = findViewById(R.id.groupMetro);
         containerSub = findViewById(R.id.groupSub);
         containerMXP = findViewById(R.id.groupMXP);
@@ -178,6 +179,7 @@ public class LinesActivity extends AppCompatActivity {
                     //*METRO LINES
                     titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
                     containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+                    setUpMargin(headerMetro, (hasMetro && !query.isEmpty()));
 
                     //*SUBURBAN LINES
                     titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
@@ -266,13 +268,12 @@ public class LinesActivity extends AppCompatActivity {
         findViewById(R.id.headerRecentSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
         findViewById(R.id.groupRecent).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
 
-        LinearLayout headerMetro = findViewById(R.id.headerMetro);
         setUpMargin(headerMetro, !(DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)));
 
         boolean hasRecent = (searchLines.getText().toString().isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
         titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
         containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
-        
+
         if (containerRecent != null)
             containerRecent.removeAllViews();
 
