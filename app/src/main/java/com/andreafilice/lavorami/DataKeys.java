@@ -2,7 +2,7 @@ package com.andreafilice.lavorami;
 
 public enum DataKeys {
     /// This Enumerator is for Keep the KEYS all saved in a single file
-    /// And avoid mismatchs with Strings.
+    /// And avoid mismatches with Strings.
     /// @PARAMETER no Parameters in this Enumerator.
     /// @FALLBACK Fallback Rule: no Fallback rules.
 
