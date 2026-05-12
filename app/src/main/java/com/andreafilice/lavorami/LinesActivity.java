@@ -38,6 +38,7 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout titleRecent, titleMetro, titleSub, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleAutoguidovie;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
+    EditText searchLines;
     boolean linesLoaded = false;
     boolean isRecentEmpty = false;
     private Set<String> recentLinesSet = new LinkedHashSet<>();
@@ -88,7 +89,7 @@ public class LinesActivity extends AppCompatActivity {
             }, 500);
         });
 
-        EditText searchLines = findViewById(R.id.editSearch);
+        searchLines = findViewById(R.id.editSearch);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -268,6 +269,10 @@ public class LinesActivity extends AppCompatActivity {
         LinearLayout headerMetro = findViewById(R.id.headerMetro);
         setUpMargin(headerMetro, !(DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)));
 
+        boolean hasRecent = (searchLines.getText().toString().isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
+        titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+        containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+        
         if (containerRecent != null)
             containerRecent.removeAllViews();
 
@@ -381,14 +386,12 @@ public class LinesActivity extends AppCompatActivity {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }
 
-        //RECENT
-        //reloadRecentLines();
-
         //Stop the Shimmer animation.
         loadingLayout.setVisibility(View.GONE);
     }
 
     private void aggiungiLinea(LinearLayout container, String label, int colorHex, String description) {
+        //TODO: Comment better this code.
         View row = getLayoutInflater().inflate(R.layout.item_linea_list, container, false);
 
         TextView badge = row.findViewById(R.id.lineBadge);
