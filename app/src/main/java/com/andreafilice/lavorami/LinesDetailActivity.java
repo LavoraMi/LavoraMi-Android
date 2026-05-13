@@ -1161,10 +1161,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "M4": return "2-3 min.";
             case "M5": return "4 min.";
             case "S10": return String.format("1 %s - 45 min.", getString(R.string.hourPrefix));
-            case "S30": return String.format("2 %s", getString(R.string.hoursPrefix));
+            case "S30": return String.format("2 %s.", getString(R.string.hoursPrefix));
             case "RE80":
             case "S7":
-                return String.format("30 min - %s", getString(R.string.hourPrefix));
+                return String.format("30 min - %s.", getString(R.string.hourPrefix));
             case "S1":
             case "S2":
             case "S3":
@@ -1183,7 +1183,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S31":
             case "S40":
             case "S50":
-                return String.format("1 %s", getString(R.string.hourPrefix));
+                return String.format("1 %s.", getString(R.string.hourPrefix));
             case "RE1":
             case "RE8":
                 return String.format("1 %s - 30 min.", getString(R.string.hourPrefix));
@@ -1194,9 +1194,9 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE7":
             case "RE11":
             case "RE13":
-                return String.format("1 %s", getString(R.string.hourPrefix));
+                return String.format("1 %s.", getString(R.string.hourPrefix));
             case "RE3":
-                return String.format("1 %s - 2 %s", getString(R.string.hourPrefix), getString(R.string.hoursPrefix));
+                return String.format("1 %s - 2 %s.", getString(R.string.hourPrefix), getString(R.string.hoursPrefix));
             default: return "Errore";
         }
     }
