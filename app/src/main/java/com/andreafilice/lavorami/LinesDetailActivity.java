@@ -1205,7 +1205,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE13":
                 return String.format("1 %s.", getString(R.string.hourPrefix));
             case "RE3":
-                return String.format("1 %s - 2 %s.", getString(R.string.hourPrefix), getString(R.string.hoursPrefix));
+                return String.format("2 %s - 1 %s.", getString(R.string.hoursPrefix), getString(R.string.hourPrefix));
             default: return "Errore";
         }
     }
