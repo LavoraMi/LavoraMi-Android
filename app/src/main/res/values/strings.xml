@@ -332,4 +332,15 @@
     <string name="yourLinesDot">Le tue linee.</string>
     <string name="yourLinesDeps">Per aggiungere una linea in questa sezione, vai nella scheda Linee, clicca sul cuore per aggiungerla. Puoi modificarla in qualsiasi momento.</string>
     <string name="regioExpressLines">Linee Regio Express</string>
+    <string name="deviationInfoTitle">Mappe</string>
+    <string name="deviationInfoDeps">Informazioni sulle mappe</string>
+    <string name="deviationInfoDeps2">LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\" qui in basso!</string>
+    <string name="deviationInfoDeps3">LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nell\'apposita sezione.</string>
+    <string name="onBoardPersonal">Affidati al personale di bordo</string>
+    <string name="onBoardPersonalDeps">Se il tragitto del tuo treno continua attraverso un bus sostitutivo, il personale di bordo ti darà tutte le informazioni necessarie per continuare il tuo viaggio in tranquillità.</string>
+    <string name="seeWorks">Guarda i lavori</string>
+    <string name="seeWorksDeps">La mappa contiene il percorso originale della tratta, guarda le deviazioni di essa nella sezione: \"Lavori Linea\"!</string>
+    <string name="incorrectDetails">Segnala eventuali incorrettezze</string>
+    <string name="incorrectDetailsDeps">Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!</string>
+    <string name="deviationMapTxt">QUESTA LINEA É SOGGETTA A DEVIAZIONI.</string>
 </resources>

@@ -27,8 +27,10 @@ public class StrikeDescriptor {
     private String[] linesDeviationLinks;
     @SerializedName("linesSupportedGTFS")
     private String[] supportedGTFSLines;
+    @SerializedName("regioExpressLinesDeviated")
+    private String[] regioExpressLinesDeviated;
 
-    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines) {
+    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] regioExpressLinesDeviated) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeDate = strikeDate;
@@ -37,10 +39,11 @@ public class StrikeDescriptor {
         this.linesDeviation = linesDeviation;
         this.linesDeviationLinks = linesDeviationLinks;
         this.supportedGTFSLines = supportedGTFSLines;
+        this.regioExpressLinesDeviated = regioExpressLinesDeviated;
     }
 
     //*GETTERS
-    /// Set-up the Getters to use into MainActivity.java for get some values.
+    /// Set-up the Getters to use into activities for get some values.
     public boolean isStrikeEnabled() {return isStrikeEnabled.equals("true");}
     public String isStrikeEnabledDebug() {return enableStrikeDebug;}
     public String getStrikeDate() {return strikeDate;}
@@ -49,4 +52,5 @@ public class StrikeDescriptor {
     public String[] getLinesDeviation() {return linesDeviation;}
     public String[] getLinesDeviationLinks(){return linesDeviationLinks;}
     public String[] getSupportedGTFSLines() {return supportedGTFSLines;}
+    public String[] getRegioExpressLinesDeviated() {return regioExpressLinesDeviated;}
 }

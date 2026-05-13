@@ -21,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
-
+        <activity
+            android:name=".DeviationInfo"
+            android:exported="false" />
         <activity
             android:name=".InfoAccessibility"
             android:exported="false" />

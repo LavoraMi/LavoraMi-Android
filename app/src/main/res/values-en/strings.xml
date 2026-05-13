@@ -333,4 +333,7 @@
     <string name="yourLinesDot">Your Lines.</string>
     <string name="yourLinesDeps">To add a line in this section, go to the Lines tab, click on the heart icon to add it. You can edit it at any time.</string>
     <string name="regioExpressLines">Regio Express Lines</string>
+    <string name="deviationInfoTitle">Maps</string>
+    <string name="deviationInfoDeps">Info about maps</string>
+    <string name="deviationMapTxt">THIS LINE IS SUBJECT TO ROUTE CHANGES.</string>
 </resources>

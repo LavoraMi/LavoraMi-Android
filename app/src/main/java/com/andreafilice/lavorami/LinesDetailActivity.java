@@ -977,11 +977,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 if(response.isSuccessful()){
                     strikeCDNResponse = response.body();
                     String[] lineeDeviate = strikeCDNResponse.getLinesDeviation();
+                    String[] regioExpressLinesDeviated = strikeCDNResponse.getRegioExpressLinesDeviated();
                     String[] linkLinee = strikeCDNResponse.getLinesDeviationLinks();
                     String[] gtfsSupportedLines = strikeCDNResponse.getSupportedGTFSLines();
                     int i = 0;
 
                     ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
+                    ImageView mapDeviationDefBtn = findViewById(R.id.mapDeviationDefBtn);
 
                     for(String linea : lineeDeviate) {
                         if(linea.equals(nomeLinea)){
@@ -992,6 +994,13 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                             mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURL(LinesDetailActivity.this, lineLink));
                         }
                         i++;
+                    }
+
+                    for(String lineaDefault: regioExpressLinesDeviated) {
+                        if(lineaDefault.equals(nomeLinea)){
+                            findViewById(R.id.deviazioneMappa).setVisibility(View.VISIBLE);
+                            mapDeviationDefBtn.setOnClickListener(v -> ActivityUtils.changeActivity(LinesDetailActivity.this, DeviationInfo.class));
+                        }
                     }
 
                     if(Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
