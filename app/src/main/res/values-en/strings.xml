@@ -332,4 +332,5 @@
     <string name="yourLinesPrefix">Your Lines</string>
     <string name="yourLinesDot">Your Lines.</string>
     <string name="yourLinesDeps">To add a line in this section, go to the Lines tab, click on the heart icon to add it. You can edit it at any time.</string>
+    <string name="regioExpressLines">Regio Express Lines</string>
 </resources>
