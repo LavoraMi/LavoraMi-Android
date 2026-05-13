@@ -319,12 +319,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         ColorStateList chipIconColors = new ColorStateList(
             new int[][] {
-                    new int[]{ android.R.attr.state_checked },
-                    new int[]{ -android.R.attr.state_checked }
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
             },
             new int[] {
-                    coloreSelezionato,
-                    coloreNonSelezionato
+                coloreSelezionato,
+                coloreNonSelezionato
             }
         );
         chipMappa.setChipIconTint(chipIconColors);
@@ -447,6 +447,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("STAV " + nomeLinea);
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie " + nomeLinea);
+        if(nomeLinea.startsWith("RE"))
+            detTitolo.setText("Regio Express " + nomeLinea);
 
         detBadge.setText(nomeLinea);
         int colorResId = StationDB.getLineColor(nomeLinea);
@@ -470,7 +472,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
                 int colorResId = StationDB.getLineColor(stazione.getLine());
                 int coloreEffettivo = ContextCompat.getColor(this, colorResId);
 
-                if (stazione.getBranch().equalsIgnoreCase("Intersection"))
+                if (stazione.getName().equalsIgnoreCase("NO_DRAW"))
                     continue;
 
                 mMap.addMarker(new MarkerOptions()
@@ -490,9 +492,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         if (!tutteLeStazioni.isEmpty()) {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            for (MetroStation s : tutteLeStazioni) {
-                builder.include(new LatLng(s.getLatitude(), s.getLongitude()));
-            }
+            for (MetroStation s : tutteLeStazioni) {builder.include(new LatLng(s.getLatitude(), s.getLongitude()));}
             LatLngBounds bounds = builder.build();
 
             int padding = (tipoDiLinea.contains("Tram") ? 100 : 120);
@@ -533,12 +533,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(milano, 11f));
         }
 
-        if (nomeLinea.equalsIgnoreCase("M1"))
-            disegnaM1(tutteLeStazioni, coloreLinea);
-        else if (nomeLinea.equalsIgnoreCase("M2"))
-            disegnaM2(tutteLeStazioni, coloreLinea);
-        else
-            disegnaPolilinea(tutteLeStazioni, coloreLinea);
+        disegnaPolilinea(tutteLeStazioni, coloreLinea);
 
         layoutMaps.setVisibility(View.VISIBLE);
         layoutMaps.setAlpha(0f);
@@ -553,161 +548,86 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         if (stazioni.size() < 2) return;
 
         List<PatternItem> pattern = Arrays.asList(new Dash(20f), new Gap(20f));
+        Map<String, List<MetroStation>> branchMap = new LinkedHashMap<>();
 
-        List<MetroStation> troncoPrincipale = new ArrayList<>();
-        List<MetroStation> troncoNew = new ArrayList<>();
-        boolean inNewSection = false;
+        for (MetroStation station : stazioni) {
+            String branch = station.getBranch();
 
-        for (MetroStation s : stazioni) {
-            if (s.getBranch().contains("New")) {
-                if (!inNewSection && !troncoPrincipale.isEmpty())
-                    troncoNew.add(troncoPrincipale.get(troncoPrincipale.size() - 1));
-                inNewSection = true;
-                troncoNew.add(s);
-            }
-            else
-                troncoPrincipale.add(s);
+            if (!branchMap.containsKey(branch)) branchMap.put(branch, new ArrayList<>());
+            branchMap.get(branch).add(station);
         }
 
-        if (!troncoPrincipale.isEmpty()) {
+        List<MetroStation> mainStations = branchMap.containsKey("Main") ? branchMap.get("Main") : new ArrayList<>();
+
+        if (mainStations.size() >= 2) {
             PolylineOptions opts = new PolylineOptions()
                     .width(10).color(colore).geodesic(true).zIndex(1000f);
-            for (MetroStation s : troncoPrincipale)
-                opts.add(new LatLng(s.getLatitude(), s.getLongitude()));
+
+            for (MetroStation station : mainStations)
+                opts.add(new LatLng(station.getLatitude(), station.getLongitude()));
+
             mMap.addPolyline(opts);
         }
 
-        if (!troncoNew.isEmpty()) {
+        for (Map.Entry<String, List<MetroStation>> entry : branchMap.entrySet()) {
+            String branchName = entry.getKey();
+            if (branchName.equals("Main")) continue;
+
+            List<MetroStation> branchStations = entry.getValue();
+            if (branchStations.isEmpty()) continue;
+
+            boolean isPlanned = branchName.toLowerCase().contains("new") || branchName.toLowerCase().contains("nuova");
+
+            List<MetroStation> searchPool = new ArrayList<>();
+            if (isPlanned) {
+                for (MetroStation station : stazioni) {
+                    if (!station.getBranch().equals(branchName))
+                        searchPool.add(station);
+                }
+            }
+            else
+                searchPool.addAll(mainStations);
+
+            if (searchPool.isEmpty()) continue;
+
+            MetroStation firstS = branchStations.get(0);
+            MetroStation lastS  = branchStations.get(branchStations.size() - 1);
+            double firstMinDist = Double.MAX_VALUE, lastMinDist = Double.MAX_VALUE;
+
+            for (MetroStation station : searchPool) {
+                double d1 = Math.sqrt(Math.pow(firstS.getLatitude() - station.getLatitude(),  2) + Math.pow(firstS.getLongitude() - station.getLongitude(), 2));
+                double d2 = Math.sqrt(Math.pow(lastS.getLatitude() - station.getLatitude(),  2) + Math.pow(lastS.getLongitude() - station.getLongitude(), 2));
+
+                if (d1 < firstMinDist) firstMinDist = d1;
+                if (d2 < lastMinDist)  lastMinDist  = d2;
+            }
+
+            List<MetroStation> oriented = new ArrayList<>(branchStations);
+            if (lastMinDist < firstMinDist)
+                Collections.reverse(oriented);
+
+            MetroStation junctionEnd = oriented.get(0);
+            MetroStation junction = null;
+            double minDist = Double.MAX_VALUE;
+
+            for (MetroStation p : searchPool) {
+                double d = Math.sqrt(Math.pow(junctionEnd.getLatitude()  - p.getLatitude(),  2) + Math.pow(junctionEnd.getLongitude() - p.getLongitude(), 2));
+                if (d < minDist) { minDist = d; junction = p; }
+            }
+
+            if (junction == null) continue;
+
             PolylineOptions opts = new PolylineOptions()
-                    .width(10).color(colore).geodesic(true).zIndex(1000f).pattern(pattern);
-            for (MetroStation s : troncoNew)
-                opts.add(new LatLng(s.getLatitude(), s.getLongitude()));
+                    .width(10).color(colore).geodesic(true).zIndex(1000f);
+
+            if (isPlanned) opts.pattern(pattern);
+            opts.add(new LatLng(junction.getLatitude(), junction.getLongitude()));
+
+            for (MetroStation station : oriented)
+                opts.add(new LatLng(station.getLatitude(), station.getLongitude()));
+
             mMap.addPolyline(opts);
         }
-    }
-
-    private void disegnaM1(List<MetroStation> stazioni, int colore) {
-        List<MetroStation> troncoPrincipale = new ArrayList<>();
-        List<MetroStation> ramoBisceglie = new ArrayList<>();
-        List<MetroStation> ramoLavori = new ArrayList<>();
-
-        List<String> nomiRamoBisceglie = Arrays.asList(
-            "Wagner", "De Angeli", "Gambara", "Bande Nere",
-            "Primaticcio", "Inganni", "Bisceglie"
-        );
-
-        MetroStation snodoPagano = null;
-        MetroStation snodoLavoriBisceglie = null;
-
-        for (MetroStation s : stazioni) {
-            String nome = s.getName();
-            if (nome.contains("Pagano"))
-                snodoPagano = s;
-            else if (nome.contains("Bisceglie"))
-                snodoLavoriBisceglie = s;
-
-            boolean isRamo = false;
-            for (String nomeRamo : nomiRamoBisceglie) {
-                if (nome.contains(nomeRamo)) {
-                    isRamo = true;
-                    break;
-                }
-            }
-
-            if (isRamo)
-                ramoBisceglie.add(s);
-            else if(!isRamo && !s.getBranch().equalsIgnoreCase("Bisceglie - New"))
-                troncoPrincipale.add(s);
-            else if(!isRamo && s.getBranch().equalsIgnoreCase("Bisceglie - New"))
-                ramoLavori.add(s);
-        }
-        disegnaPolilinea(troncoPrincipale, colore);
-        if (snodoPagano != null) ramoBisceglie.add(0, snodoPagano);
-        disegnaPolilinea(ramoBisceglie, colore);
-        if (snodoLavoriBisceglie != null) ramoLavori.add(0, snodoLavoriBisceglie);
-        disegnaPolilinea(ramoLavori, colore);
-    }
-
-    private void disegnaM2(List<MetroStation> stazioni, int colore) {
-        List<MetroStation> troncoCentrale = new ArrayList<>();
-        List<MetroStation> ramoCologno = new ArrayList<>();
-        List<MetroStation> ramoGessate = new ArrayList<>();
-        List<MetroStation> ramoAssago = new ArrayList<>();
-        List<MetroStation> ramoAbbiategrasso = new ArrayList<>();
-
-        List<String> nomiCologno = Arrays.asList("Cologno");
-        List<String> nomiAssago = Arrays.asList("Assago");
-        List<String> nomiAbbiategrasso = Arrays.asList("Abbiategrasso");
-        List<String> nomiGessate = Arrays.asList("Vimodrone", "Cascina Burrona", "Cernusco", "Villa Fiorita", "Cassina", "Bussero", "Villa Pompea", "Gorgonzola", "Antonietta", "Gessate");
-
-        MetroStation snodoGobba = null;
-        MetroStation snodoFamagosta = null;
-
-        for (MetroStation s : stazioni) {
-            String nome = s.getName();
-            if (nome.contains("Cascina Gobba")) snodoGobba = s;
-            if (nome.contains("Famagosta")) snodoFamagosta = s;
-        }
-
-        for (MetroStation s : stazioni) {
-            String nome = s.getName();
-            boolean assegnata = false;
-
-            for (String n : nomiCologno) {
-                if (nome.contains(n)) {
-                    ramoCologno.add(s);
-                    assegnata = true;
-                    break;
-                }
-            }
-            if(assegnata) continue;
-
-            for (String n : nomiAssago) {
-                if (nome.contains(n)) {
-                    ramoAssago.add(s);
-                    assegnata = true;
-                    break;
-                }
-            }
-            if(assegnata) continue;
-
-            for (String n : nomiAbbiategrasso) {
-                if (nome.contains(n)) {
-                    ramoAbbiategrasso.add(s);
-                    assegnata = true;
-                    break;
-                }
-            }
-            if(assegnata) continue;
-
-            for (String n : nomiGessate) {
-                if (nome.contains(n)) {
-                    ramoGessate.add(s);
-                    assegnata = true;
-                    break;
-                }
-            }
-            if(assegnata) continue;
-
-            troncoCentrale.add(s);
-        }
-
-        disegnaPolilinea(troncoCentrale, colore);
-
-        if (snodoGobba != null) {
-            ramoCologno.add(0, snodoGobba);
-            ramoGessate.add(0, snodoGobba);
-        }
-
-        disegnaPolilinea(ramoCologno, colore);
-        disegnaPolilinea(ramoGessate, colore);
-
-        if (snodoFamagosta != null) {
-            ramoAssago.add(0, snodoFamagosta);
-            ramoAbbiategrasso.add(0, snodoFamagosta);
-        }
-        disegnaPolilinea(ramoAssago, colore);
-        disegnaPolilinea(ramoAbbiategrasso, colore);
     }
 
     private BitmapDescriptor creaPuntino(int colore) {
@@ -1018,7 +938,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         Log.d("LINEA", nomeLinea);
 
-        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80"))
+        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE"))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
             tvAttesa.setText("5-20 min.");
@@ -1117,6 +1037,17 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S13": return "Pavia - Milano Bovisa";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
+
+            case "RE1": return "Laveno - Saronno - Milano";
+            case "RE2": return "Milano - Bergamo";
+            case "RE3": return "Brescia - Iseo - Edolo";
+            case "RE4": return "Domodossola - Milano";
+            case "RE5": return "Porto Ceresio - Varese - Milano";
+            case "RE6": return "Verona - Brescia - Milano";
+            case "RE7": return "Como - Saronno - Milano";
+            case "RE8": return "Tirano - Lecco - Milano";
+            case "RE11": return "Mantova - Codogno - Milano";
+            case "RE13": return "Asti/Arquata - Pavia - Milano";
 
             case "MXP1": return "Gallarate - Malpensa - Milano Centrale";
             case "MXP2": return "Malpensa - Milano Cadorna";
@@ -1253,6 +1184,19 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S40":
             case "S50":
                 return String.format("1 %s", getString(R.string.hourPrefix));
+            case "RE1":
+            case "RE8":
+                return String.format("1 %s - 30 min.", getString(R.string.hourPrefix));
+            case "RE2":
+            case "RE4":
+            case "RE5":
+            case "RE6":
+            case "RE7":
+            case "RE11":
+            case "RE13":
+                return String.format("1 %s", getString(R.string.hourPrefix));
+            case "RE3":
+                return String.format("1 %s - 2 %s", getString(R.string.hourPrefix), getString(R.string.hoursPrefix));
             default: return "Errore";
         }
     }
@@ -1272,6 +1216,15 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE80":
             case "MXP1":
             case "MXP2":
+            case "RE1":
+            case "RE2":
+            case "RE4":
+            case "RE5":
+            case "RE6":
+            case "RE7":
+            case "RE8":
+            case "RE11":
+            case "RE13":
                 return getString(R.string.fullyAccessible);
             case "S7":
             case "S8":

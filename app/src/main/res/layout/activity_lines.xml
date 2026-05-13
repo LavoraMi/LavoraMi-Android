@@ -319,6 +319,66 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/headerRegioExpress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:id="@+id/subTitleRegio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/subTitleRE"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Linee Regio Express"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/work_sans_medium" />
+
+                    <TextView
+                        android:id="@+id/subTitleREDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trenord"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_medium" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconRegioExpress"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupRE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/headerTransfrontaliere"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
