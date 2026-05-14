@@ -636,7 +636,7 @@ public class MainActivity extends AppCompatActivity {
                                         recyclerView.setAdapter(adapter);
                                     }
 
-                                    applicaFiltroCategoria(categoryToFilter);
+                                    applicaFiltroCategoria(getCategory());
 
                                     if (loadingLayout != null) {
                                         loadingLayout.stopShimmer();
