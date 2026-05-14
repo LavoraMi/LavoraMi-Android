@@ -270,7 +270,9 @@ public class LinesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        reloadRecentLines();
+        if(searchLines.getText().toString().isEmpty()){
+            reloadRecentLines();
+        }
     }
 
     public void reloadRecentLines() {
