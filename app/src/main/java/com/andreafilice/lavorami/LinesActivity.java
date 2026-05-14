@@ -194,6 +194,11 @@ public class LinesActivity extends AppCompatActivity {
                     containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
                     setUpMargin(titleSub, hasSub);
 
+                    //*REGIO EXPRESS LINES
+                    titleRegio.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
+                    containerRegioExpress.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleRegio, hasRegioExpress);
+
                     //*MXP LINES
                     titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
                     containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
