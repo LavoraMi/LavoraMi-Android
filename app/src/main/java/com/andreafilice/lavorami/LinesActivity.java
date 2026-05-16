@@ -192,52 +192,52 @@ public class LinesActivity extends AppCompatActivity {
                     //*METRO LINES
                     titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
                     containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
-                    setUpMargin(headerMetro, (hasMetro && !query.isEmpty()));
+                    setUpMargin(headerMetro, (onlyOneActive() && !query.isEmpty()));
 
                     //*SUBURBAN LINES
                     titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
                     containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleSub, hasSub);
+                    setUpMargin(titleSub, onlyOneActive());
 
                     //*REGIO EXPRESS LINES
                     titleRegio.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
                     containerRegioExpress.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleRegio, hasRegioExpress);
+                    setUpMargin(titleRegio, onlyOneActive());
 
                     //*MXP LINES
                     titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
                     containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleMXP, hasMXP);
+                    setUpMargin(titleMXP, onlyOneActive());
 
                     //*TRANSFRONTALIERE LINES
                     titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
                     containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleTrans, hasTrans);
+                    setUpMargin(titleTrans, onlyOneActive());
 
                     //*TRAM LINES
                     titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
                     containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleTram, hasTram);
+                    setUpMargin(titleTram, onlyOneActive());
 
                     //*MOVIBUS LINES
                     titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
                     containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleMovibus, hasMovibus);
+                    setUpMargin(titleMovibus, onlyOneActive());
 
                     //*STAV LINES
                     titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
                     containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleStav, hasStav);
+                    setUpMargin(titleStav, onlyOneActive());
 
                     //*STAR LINES
                     titleSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
                     containerSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleSTAR, hasSTAR);
+                    setUpMargin(titleSTAR, onlyOneActive());
 
                     //*AUTOGUIDOVIE LINES
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleAutoguidovie, hasAuto);
+                    setUpMargin(titleAutoguidovie, onlyOneActive());
 
                     if (tvNoResults != null){
                         tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
@@ -280,9 +280,8 @@ public class LinesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(searchLines.getText().toString().isEmpty()){
+        if(searchLines.getText().toString().isEmpty())
             reloadRecentLines();
-        }
     }
 
     public void reloadRecentLines() {
@@ -519,5 +518,16 @@ public class LinesActivity extends AppCompatActivity {
 
         recentLinesSet.add(combinedEntry);
         DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, recentLinesSet);
+    }
+
+    private boolean onlyOneActive() {
+        /// This methods get all the values and return if only one value is active.
+
+        boolean[] values = {hasRecent, hasMetro, hasSub, hasRegioExpress, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto};
+        int totalActive = 0;
+
+        for(boolean value: values) {if (value) totalActive++;}
+
+        return totalActive == 1;
     }
 }
