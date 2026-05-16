@@ -57,6 +57,17 @@
             android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
+        <ImageButton
+            android:id="@+id/buttonAddLine"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_heart_empty"
+            app:tint="@color/text_primary" />
+
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"

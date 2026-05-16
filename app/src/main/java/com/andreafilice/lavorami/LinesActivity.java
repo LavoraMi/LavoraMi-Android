@@ -1,9 +1,9 @@
 package com.andreafilice.lavorami;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +12,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,7 +29,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -44,6 +45,7 @@ public class LinesActivity extends AppCompatActivity {
     private Set<String> recentLinesSet = new LinkedHashSet<>();
     private final Handler searchHandler = new Handler(Looper.getMainLooper());
     private Runnable searchRunnable;
+    private Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
     //* BOOLEAN VALUES
     boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto;
@@ -438,6 +440,8 @@ public class LinesActivity extends AppCompatActivity {
         TextView shimmerAnim = row.findViewById(R.id.shimmerTextAnim);
         TextView shimmerBadgeAnim = row.findViewById(R.id.shimmerLineBadge);
         TextView lineBadge = row.findViewById(R.id.lineBadge);
+        ImageButton buttonAddLine = row.findViewById(R.id.buttonAddLine);
+
 
         if (badge != null && name != null) {
             badge.setText(label);
@@ -464,6 +468,43 @@ public class LinesActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             });
             container.addView(row);
+            isSavedLine(label, buttonAddLine);
+        }
+    }
+
+    private void isSavedLine(String label, ImageButton buttonAddLine) {
+
+        Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
+
+        if(linesSaved.contains(label)) {
+            buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
+            buttonAddLine.setImageResource(R.drawable.ic_heart);
+
+            buttonAddLine.setOnClickListener(v -> {
+                linesSaved.remove(label);
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
+
+                buttonAddLine.startAnimation(scaleUpDown);
+                buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+                buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
+
+                isSavedLine(label, buttonAddLine);
+            });
+        }
+        else {
+            buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+            buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
+
+            buttonAddLine.setOnClickListener(v -> {
+                linesSaved.add(label);
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
+
+                buttonAddLine.startAnimation(scaleUpDown);
+                buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
+                buttonAddLine.setImageResource(R.drawable.ic_heart);
+
+                isSavedLine(label, buttonAddLine);
+            });
         }
     }
 
