@@ -284,6 +284,9 @@ public class LinesActivity extends AppCompatActivity {
         super.onResume();
         if(searchLines.getText().toString().isEmpty())
             reloadRecentLines();
+        //reload forzato del hashset
+        linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
+        reloadSavedLines();
     }
 
     public void reloadRecentLines() {
@@ -435,11 +438,14 @@ public class LinesActivity extends AppCompatActivity {
         //TODO: Comment better this code.
         View row = getLayoutInflater().inflate(R.layout.item_linea_list, container, false);
 
+        row.setTag(label);
+
         TextView badge = row.findViewById(R.id.lineBadge);
         TextView name = row.findViewById(R.id.lineName);
         TextView shimmerAnim = row.findViewById(R.id.shimmerTextAnim);
         TextView shimmerBadgeAnim = row.findViewById(R.id.shimmerLineBadge);
         TextView lineBadge = row.findViewById(R.id.lineBadge);
+
         ImageButton buttonAddLine = row.findViewById(R.id.buttonAddLine);
 
 
@@ -505,6 +511,23 @@ public class LinesActivity extends AppCompatActivity {
 
                 isSavedLine(label, buttonAddLine);
             });
+        }
+    }
+
+    public void reloadSavedLines(){
+        LinearLayout [] containers = {containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
+        for (LinearLayout container : containers) {
+            int numeroLinee = container.getChildCount();
+            for (int i = 0; i < numeroLinee; i++) {
+                View row = container.getChildAt(i);
+                String label = (String) row.getTag();
+                if (label != null) {
+                    ImageButton buttonAddLine = row.findViewById(R.id.buttonAddLine);
+                    if (buttonAddLine != null) {
+                        isSavedLine(label, buttonAddLine);
+                    }
+                }
+            }
         }
     }
 
