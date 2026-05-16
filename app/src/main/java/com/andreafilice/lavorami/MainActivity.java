@@ -47,6 +47,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
+import androidx.core.text.HtmlCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.dynamicanimation.animation.AnimationHandler;
@@ -777,7 +778,10 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled() && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
-            strikeDesc.setText(String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate()));
+            String rawTextDate = getString(R.string.strikeBannerTitle);
+            String formattedTextDate = String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate());
+
+            strikeDesc.setText(HtmlCompat.fromHtml(formattedTextDate, HtmlCompat.FROM_HTML_MODE_LEGACY));
             strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 

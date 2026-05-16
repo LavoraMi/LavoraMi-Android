@@ -203,7 +203,7 @@
     <string name="skipConfigDeps">Are you sure you want to skip the setup?</string>
     <string name="endPages">End</string>
     <string name="nextPages">Next</string>
-    <string name="strikeBannerTitle">A strike has been called for %s.</string>
+    <string name="strikeBannerTitle">A strike has been called for &lt;b&gt;%s&lt;/b&gt;.</string>
     <string name="strikeBannerGuaranteed">Guaranteed service hours %s</string>
     <string name="noWorksFoundInput">No works found for: “%s”.</string>
     <string name="italianSettings">" Italian"</string>
