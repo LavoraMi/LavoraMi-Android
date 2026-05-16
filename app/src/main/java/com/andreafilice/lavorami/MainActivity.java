@@ -778,7 +778,6 @@ public class MainActivity extends AppCompatActivity {
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled() && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
-            String rawTextDate = getString(R.string.strikeBannerTitle);
             String formattedTextDate = String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate());
 
             strikeDesc.setText(HtmlCompat.fromHtml(formattedTextDate, HtmlCompat.FROM_HTML_MODE_LEGACY));
