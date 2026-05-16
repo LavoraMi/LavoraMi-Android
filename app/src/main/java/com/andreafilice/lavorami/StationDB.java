@@ -1135,6 +1135,57 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram15() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Rozzano Via G. Rossa", 45.37693, 9.15001, "Main", "15"));
+        stations.add(new MetroStation("Rozzano Togliatti", 45.37861, 9.14921, "Main", "15"));
+        stations.add(new MetroStation("Rozzano Municipio", 45.38061, 9.15516, "Main", "15"));
+        stations.add(new MetroStation("Rozzano Lombardia", 45.38199, 9.15952, "Main", "15"));
+        stations.add(new MetroStation("Rozzano Romagna", 45.38283, 9.16199, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.38354, 9.16424, "Main", "15"));
+        stations.add(new MetroStation("V.Le Romagna Rozzano", 45.38344, 9.16727, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.38319, 9.16995, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.38337, 9.17044, "Main", "15"));
+        stations.add(new MetroStation("Via Grandi Via Buozzi Rozzano", 45.38393, 9.17061, "Main", "15"));
+        stations.add(new MetroStation("Via Curiel Viale Isonzo Rozzano", 45.38905, 9.17205, "Main", "15"));
+        stations.add(new MetroStation("Via Curiel Via Lambro Rozzano", 45.39426, 9.17302, "Main", "15"));
+        stations.add(new MetroStation("Via Curiel Via Maggi Rozzano", 45.39822, 9.17345, "Main", "15"));
+        stations.add(new MetroStation("Via dei Missaglia Via Baroni", 45.40383, 9.17463, "Main", "15"));
+        stations.add(new MetroStation("Via dei Missaglia Scuola Santarosa", 45.40652, 9.17481, "Main", "15"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Saponaro", 45.41018, 9.17447, "Main", "15"));
+        stations.add(new MetroStation("Via Dei Missaglia Via De Ruggiero", 45.4182, 9.17546, "Main", "15"));
+        stations.add(new MetroStation("Via Dei Missaglia (Isola Anita)", 45.42281, 9.17698, "Main", "15"));
+        stations.add(new MetroStation("Via Dei Missaglia Via S. Abbondio", 45.42443, 9.17711, "Main", "15"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Boifava", 45.42655, 9.17728, "Main", "15"));
+        stations.add(new MetroStation("Piazza Abbiategrasso M2", 45.42924, 9.17747, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.42992, 9.17769, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.43025, 9.1781, "Main", "15"));
+        stations.add(new MetroStation("Medeghino", 45.43142, 9.18049, "Main", "15"));
+        stations.add(new MetroStation("Agrippa", 45.43278, 9.18307, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.43326, 9.18388, "Main", "15"));
+        stations.add(new MetroStation("Volvino", 45.43462, 9.18371, "Main", "15"));
+        stations.add(new MetroStation("G. Da Cermenate", 45.43769, 9.18348, "Main", "15"));
+        stations.add(new MetroStation("Pezzotti", 45.44129, 9.18319, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.44409, 9.18274, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.44424, 9.18282, "Main", "15"));
+        stations.add(new MetroStation("Tibaldi", 45.44441, 9.18342, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.44469, 9.18428, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.44484, 9.18441, "Main", "15"));
+        stations.add(new MetroStation("Giambologna", 45.44567, 9.18466, "Main", "15"));
+        stations.add(new MetroStation("Castelbarco", 45.4488, 9.18564, "Main", "15"));
+        stations.add(new MetroStation("P.Ta Lodovica", 45.45152, 9.18658, "Main", "15"));
+        stations.add(new MetroStation("C.So Italia Via Lusardi", 45.45363, 9.18701, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.45562, 9.18732, "Main", "15"));
+        stations.add(new MetroStation("S. Sofia M4", 45.45591, 9.18745, "Main", "15"));
+        stations.add(new MetroStation("Missori M3", 45.46014, 9.18825, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.46158, 9.18854, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.46278, 9.18856, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.46323, 9.18918, "Main", "15"));
+        stations.add(new MetroStation("NO_DRAW", 45.46329, 9.18935, "Main", "15"));
+        stations.add(new MetroStation("Duomo M1 M3", 45.46326, 9.18971, "Main", "15"));
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram24() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Piazza Fontana", 45.46337, 9.19405, "Main", "24"));
@@ -1516,6 +1567,7 @@ public class StationDB {
             allStations.addAll(getStationsTram7());
             allStations.addAll(getStationsTram9());
             allStations.addAll(getStationsTram10());
+            allStations.addAll(getStationsTram15());
             allStations.addAll(getStationsTram24());
             allStations.addAll(getStationsTram31());
             allStations.addAll(getStationsTram33());
