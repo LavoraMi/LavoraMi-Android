@@ -443,8 +443,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
             detTitolo.setText("Movibus " + nomeLinea);
-        if(nomeLinea.startsWith("z5"))
+        if(nomeLinea.startsWith("z55") || nomeLinea.startsWith("z56"))
             detTitolo.setText("STAV " + nomeLinea);
+        if(nomeLinea.startsWith("z50") || nomeLinea.startsWith("z51"))
+            detTitolo.setText("STAR " + nomeLinea);
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie " + nomeLinea);
         if(nomeLinea.startsWith("RE"))
@@ -1110,6 +1112,12 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "Z647": return "Cornaredo - Castano Primo";
             case "Z648": return "Arconate - Busto Garolfo - Molino Dorino M1";
             case "Z649": return "Magenta - Arluno - Molino Dorino M1";
+
+            case "Z501": return "Milano Famagosta - Binasco";
+            case "Z509": return "Motta Visconti - Milano Famagosta";
+            case "Z510": return "Milano Famagosta - Lacchiarella - Giussano";
+            case "Z515": return "Milano Famagosta - Zibido";
+            case "Z516": return "Milano Famagosta - Rosate - Besate";
 
             case "Z551": return "Abbiategrasso - Bisceglie M1";
             case "Z552": return "Abbiategrasso - S. Stefano FS";

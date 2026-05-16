@@ -1364,6 +1364,13 @@ public class StationDB {
                 new String[] {"z250", "z251"},
                 "train.side.front.car"
         ));
+
+        interchanges.add(new InterchangeInfo(
+                "Famagosta M2",
+                new String[] {"M2", "z501", "z509", "z510", "z515", "z516"},
+                new String[]{"z501", "z509", "z510", "z515", "z516"},
+                "tram.fill.tunnel"
+        ));
         return interchanges;
     }
 
