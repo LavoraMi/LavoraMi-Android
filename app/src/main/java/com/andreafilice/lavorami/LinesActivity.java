@@ -34,8 +34,8 @@ import java.util.Set;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerAutoGuidovie;
-    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleAutoguidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
@@ -46,7 +46,7 @@ public class LinesActivity extends AppCompatActivity {
     private Runnable searchRunnable;
 
     //* BOOLEAN VALUES
-    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasAuto;
+    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,7 @@ public class LinesActivity extends AppCompatActivity {
         containerTrans = findViewById(R.id.groupTrans);
         containerMovibus = findViewById(R.id.groupMovibus);
         containerStav = findViewById(R.id.groupStav);
+        containerSTAR = findViewById(R.id.groupStar);
         containerAutoGuidovie = findViewById(R.id.groupAutoGuidoVie);
 
         titleRecent = findViewById(R.id.headerRecentSearch);
@@ -81,6 +82,7 @@ public class LinesActivity extends AppCompatActivity {
         titleTram = findViewById(R.id.headerTram);
         titleMovibus = findViewById(R.id.headerMovibus);
         titleStav = findViewById(R.id.headerSTAV);
+        titleSTAR = findViewById(R.id.headerSTAR);
         titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
         tvNoResults = findViewById(R.id.emptyView);
 
@@ -119,6 +121,7 @@ public class LinesActivity extends AppCompatActivity {
                 findViewById(R.id.infoIconTram),
                 findViewById(R.id.infoIconMovibus),
                 findViewById(R.id.infoIconStav),
+                findViewById(R.id.infoIconStar),
                 findViewById(R.id.infoIconAutoGuidoVie)
         };
 
@@ -131,6 +134,7 @@ public class LinesActivity extends AppCompatActivity {
                 "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
                 "https://movibus.it/news/",
                 "https://stavautolinee.it/reti-servite/",
+                "https://starmobility.it/orari-autobus/",
                 "https://autoguidovie.it/it/avvisi"
         };
 
@@ -177,6 +181,7 @@ public class LinesActivity extends AppCompatActivity {
                     hasTram = filtraContainer(containerTram, query);
                     hasMovibus = filtraContainer(containerMovibus, query);
                     hasStav = filtraContainer(containerStav, query);
+                    hasSTAR = filtraContainer(containerSTAR, query);
                     hasAuto = filtraContainer(containerAutoGuidovie, query);
 
                     //*RECENT LINES
@@ -224,13 +229,18 @@ public class LinesActivity extends AppCompatActivity {
                     containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
                     setUpMargin(titleStav, hasStav);
 
+                    //*STAR LINES
+                    titleSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
+                    containerSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleSTAR, hasSTAR);
+
                     //*AUTOGUIDOVIE LINES
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     setUpMargin(titleAutoguidovie, hasAuto);
 
                     if (tvNoResults != null){
-                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasAuto) ? View.VISIBLE : View.GONE);
+                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
                         tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
                     }
 
@@ -390,6 +400,12 @@ public class LinesActivity extends AppCompatActivity {
                 "z646", "z647", "z648", "z649"};
         for (String line : movibusLines) {
             aggiungiLinea(containerMovibus, line, R.color.BUS, "Movibus");
+        }
+
+        // STAR
+        String[] starLines = {"z501", "z509", "z510", "z515", "z516"};
+        for (String line : starLines) {
+            aggiungiLinea(containerSTAR, line, R.color.BUS, "STAR Mobility");
         }
 
         // STAV

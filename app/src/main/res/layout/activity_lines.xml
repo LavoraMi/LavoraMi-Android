@@ -619,6 +619,67 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/headerSTAR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/subTitleStar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/subTitleSR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/busLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/work_sans_medium"/>
+
+                    <TextView
+                        android:id="@+id/subTitleStarDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STAR Mobility"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter_medium" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconStar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:contentDescription="Info"
+                    android:focusable="true"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupStar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_line_group"
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/headerSTAV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
