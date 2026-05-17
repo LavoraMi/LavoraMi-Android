@@ -284,7 +284,7 @@ public class LinesActivity extends AppCompatActivity {
         super.onResume();
         if(searchLines.getText().toString().isEmpty())
             reloadRecentLines();
-        //reload forzato del hashset
+
         linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         reloadSavedLines();
     }
