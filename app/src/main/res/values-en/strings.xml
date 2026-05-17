@@ -97,11 +97,11 @@
     <string name="worksLineDetails">WORK ON THE LINE:</string>
     <string name="mapChip">Map</string>
     <string name="lineWorksChip">Works</string>
-    <string name="interchangesChip">Interchanges</string>
+    <string name="interchangesChip">Changes</string>
     <string name="noWorksOnThisLine">There are no works on this line.</string>
     <string name="loadingMapDetails">Loading Map</string>
     <string name="noInternetConnectionError">No internet connection.</string>
-    <string name="noInterchanges">No interchanges with this line.</string>
+    <string name="noInterchanges">No changes with this line.</string>
     <string name="averageWaitingTimeTitle">"Average frequency: "</string>
     <string name="currentWorksTitle">current</string>
     <string name="scheduledWorksTitle">scheduled</string>
@@ -284,7 +284,7 @@
     <string name="downloadAssets">Downloading necessary files...</string>
     <string name="errorTranslating">An error occurred while translating.</string>
     <string name="choseYourLineText">Save the line you use every day as a favorite and when there\'s work on it, you will be updated.</string>
-    <string name="viewInterchanges">View interchanges</string>
+    <string name="viewInterchanges">View changes</string>
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
     <string name="worksiteStop">Worksite Stop</string>
     <string name="worksiteStopText">Not just \"work in progress\" we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc.).</string>
