@@ -35,8 +35,8 @@ import java.util.Set;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
-    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
@@ -48,7 +48,7 @@ public class LinesActivity extends AppCompatActivity {
     private Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
     //* BOOLEAN VALUES
-    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto;
+    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class LinesActivity extends AppCompatActivity {
         containerMetro = findViewById(R.id.groupMetro);
         containerSub = findViewById(R.id.groupSub);
         containerRegioExpress = findViewById(R.id.groupRE);
+        containerRegional = findViewById(R.id.groupR);
         containerMXP = findViewById(R.id.groupMXP);
         containerTram = findViewById(R.id.groupTram);
         containerTrans = findViewById(R.id.groupTrans);
@@ -79,6 +80,7 @@ public class LinesActivity extends AppCompatActivity {
         titleMetro = findViewById(R.id.headerMetro);
         titleSub = findViewById(R.id.headerSuburbane);
         titleRegio = findViewById(R.id.headerRegioExpress);
+        titleRegional = findViewById(R.id.headerRegional);
         titleMXP = findViewById(R.id.headerMXP);
         titleTrans = findViewById(R.id.headerTransfrontaliere);
         titleTram = findViewById(R.id.headerTram);
@@ -118,6 +120,7 @@ public class LinesActivity extends AppCompatActivity {
                 findViewById(R.id.infoIconMetro),
                 findViewById(R.id.infoIconSuburbane),
                 findViewById(R.id.infoIconRegioExpress),
+                findViewById(R.id.infoIconRegional),
                 findViewById(R.id.infoIconTransfrontaliere),
                 findViewById(R.id.infoIconMXP),
                 findViewById(R.id.infoIconTram),
@@ -129,6 +132,7 @@ public class LinesActivity extends AppCompatActivity {
 
         String[] infoUrls = {
                 "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg",
+                "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
                 "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
                 "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
                 "https://www.tilo.ch",
@@ -178,6 +182,7 @@ public class LinesActivity extends AppCompatActivity {
                     hasMetro = filtraContainer(containerMetro, query);
                     hasSub = filtraContainer(containerSub, query);
                     hasRegioExpress = filtraContainer(containerRegioExpress, query);
+                    hasRegional = filtraContainer(containerRegional, query);
                     hasMXP = filtraContainer(containerMXP, query);
                     hasTrans = filtraContainer(containerTrans, query);
                     hasTram = filtraContainer(containerTram, query);
@@ -205,6 +210,11 @@ public class LinesActivity extends AppCompatActivity {
                     titleRegio.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
                     containerRegioExpress.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
                     setUpMargin(titleRegio, onlyOneActive());
+
+                    //*REGIONAL LINES
+                    titleRegional.setVisibility(hasRegional ? View.VISIBLE : View.GONE);
+                    containerRegional.setVisibility(hasRegional ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleRegional, onlyOneActive());
 
                     //*MXP LINES
                     titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
@@ -242,7 +252,7 @@ public class LinesActivity extends AppCompatActivity {
                     setUpMargin(titleAutoguidovie, onlyOneActive());
 
                     if (tvNoResults != null){
-                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
+                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
                         tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
                     }
 
@@ -370,10 +380,16 @@ public class LinesActivity extends AppCompatActivity {
 
         // REGIO EXPRESS
         String[] regioLines = {"RE1", "RE2", "RE3", "RE4", "RE5", "RE6", "RE7", "RE8", "RE11", "RE13"};
-        int[] regioColors = {R.color.RE, R.color.RE, R.color.RE, R.color.RE, R.color.RE, R.color.RE, R.color.RE, R.color.RE, R.color.RE, R.color.RE};
         for (int i = 0; i < regioLines.length; i++) {
             int finalI = i;
-            aggiungiLinea(containerRegioExpress, regioLines[finalI], regioColors[finalI], "Regio Express");
+            aggiungiLinea(containerRegioExpress, regioLines[finalI], R.color.RE, "Regio Express");
+        }
+
+        // REGIONAL
+        String[] regionalLines = {"R1", "R2", "R3", "R4", "R5", "R8", "R11", "R14", "R16", "R18", "R39"};
+        for (int i = 0; i < regionalLines.length; i++) {
+            int finalI = i;
+            aggiungiLinea(containerRegional, regionalLines[finalI], R.color.REGIONAL, "Regionale");
         }
 
         // TILO
@@ -587,7 +603,7 @@ public class LinesActivity extends AppCompatActivity {
     private boolean onlyOneActive() {
         /// This methods get all the values and return if only one value is active.
 
-        boolean[] values = {hasRecent, hasMetro, hasSub, hasRegioExpress, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto};
+        boolean[] values = {hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto};
         int totalActive = 0;
 
         for(boolean value: values) {if (value) totalActive++;}
