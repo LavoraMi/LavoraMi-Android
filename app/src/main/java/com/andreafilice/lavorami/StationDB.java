@@ -597,26 +597,6 @@ public class StationDB {
         return stations;
     }
 
-    public static List<MetroStation> getStationsR6() {
-        List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Treviglio", 45.51531, 9.58864, "Main", "R6"));
-        stations.add(new MetroStation("Caravaggio", 45.4913, 9.6378, "Main", "R6"));
-        stations.add(new MetroStation("Capralba", 45.44352, 9.64001, "Main", "R6"));
-        stations.add(new MetroStation("Casaletto Vaprio", 45.40864, 9.63164, "Main", "R6"));
-        stations.add(new MetroStation("Crema", 45.36669, 9.69408, "Main", "R6"));
-        stations.add(new MetroStation("Madignano", 45.34367, 9.73026, "Main", "R6"));
-        stations.add(new MetroStation("Castelleone", 45.30173, 9.7677, "Main", "R6"));
-        stations.add(new MetroStation("Soresina", 45.28319, 9.85666, "Main", "R6"));
-        stations.add(new MetroStation("Casalbuttano", 45.25543, 9.96243, "Main", "R6"));
-        stations.add(new MetroStation("Olmeneta", 45.23143, 10.03184, "Main", "R6"));
-        stations.add(new MetroStation("NO_DRAW", 45.14857, 10.03518, "Main", "R6"));
-        stations.add(new MetroStation("NO_DRAW", 45.14625, 10.03397, "Main", "R6"));
-        stations.add(new MetroStation("NO_DRAW", 45.1446, 10.03179, "Main", "R6"));
-        stations.add(new MetroStation("NO_DRAW", 45.14343, 10.02829, "Main", "R6"));
-        stations.add(new MetroStation("Cremona", 45.14322, 10.01796, "Main", "R6"));
-        return stations;
-    }
-
     public static List<MetroStation> getStationsR5() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Brescia", 45.53252, 10.21297, "Main", "R5"));
@@ -642,6 +622,40 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.1446, 10.03179, "Main", "R5"));
         stations.add(new MetroStation("NO_DRAW", 45.14343, 10.02829, "Main", "R5"));
         stations.add(new MetroStation("Cremona", 45.14322, 10.01796, "Main", "R5"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR6() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Treviglio", 45.51531, 9.58864, "Main", "R6"));
+        stations.add(new MetroStation("Caravaggio", 45.4913, 9.6378, "Main", "R6"));
+        stations.add(new MetroStation("Capralba", 45.44352, 9.64001, "Main", "R6"));
+        stations.add(new MetroStation("Casaletto Vaprio", 45.40864, 9.63164, "Main", "R6"));
+        stations.add(new MetroStation("Crema", 45.36669, 9.69408, "Main", "R6"));
+        stations.add(new MetroStation("Madignano", 45.34367, 9.73026, "Main", "R6"));
+        stations.add(new MetroStation("Castelleone", 45.30173, 9.7677, "Main", "R6"));
+        stations.add(new MetroStation("Soresina", 45.28319, 9.85666, "Main", "R6"));
+        stations.add(new MetroStation("Casalbuttano", 45.25543, 9.96243, "Main", "R6"));
+        stations.add(new MetroStation("Olmeneta", 45.23143, 10.03184, "Main", "R6"));
+        stations.add(new MetroStation("NO_DRAW", 45.14857, 10.03518, "Main", "R6"));
+        stations.add(new MetroStation("NO_DRAW", 45.14625, 10.03397, "Main", "R6"));
+        stations.add(new MetroStation("NO_DRAW", 45.1446, 10.03179, "Main", "R6"));
+        stations.add(new MetroStation("NO_DRAW", 45.14343, 10.02829, "Main", "R6"));
+        stations.add(new MetroStation("Cremona", 45.14322, 10.01796, "Main", "R6"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR7() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Lecco", 45.85637, 9.3934, "Main", "R7"));
+        stations.add(new MetroStation("Lecco Maggianico", 45.83102, 9.41205, "Main", "R7"));
+        stations.add(new MetroStation("Vercurago S. Girolamo", 45.81281, 9.42259, "Main", "R7"));
+        stations.add(new MetroStation("Calolziocorte Olginate", 45.80175, 9.42714, "Main", "R7"));
+        stations.add(new MetroStation("Cisano Caprino Bergamasco", 45.73972, 9.47441, "Main", "R7"));
+        stations.add(new MetroStation("Pontida", 45.73017, 9.51172, "Main", "R7"));
+        stations.add(new MetroStation("Ambivere Mapello", 45.72215, 9.55022, "Main", "R7"));
+        stations.add(new MetroStation("Ponte S. Pietro", 45.69904, 9.58446, "Main", "R7"));
+        stations.add(new MetroStation("Bergamo", 45.69043, 9.67504, "Main", "R7"));
         return stations;
     }
 
@@ -703,6 +717,31 @@ public class StationDB {
         stations.add(new MetroStation("S.Cassiano Valchiavenna", 46.27419, 9.39772, "Main", "R11"));
         stations.add(new MetroStation("Prata Camportaccio", 46.30778, 9.39772, "Main", "R11"));
         stations.add(new MetroStation("Chiavenna", 46.31961, 9.40493, "Main", "R11"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR13() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Lecco", 45.85637, 9.3934, "Main", "R13"));
+        stations.add(new MetroStation("Abbadia Lariana", 45.89578, 9.33506, "Main", "R13"));
+        stations.add(new MetroStation("Mandello del Lario", 45.91511, 9.32193, "Main", "R13"));
+        stations.add(new MetroStation("Olcio", 45.93804, 9.31401, "Main", "R13"));
+        stations.add(new MetroStation("Lierna", 45.96087, 9.30283, "Main", "R13"));
+        stations.add(new MetroStation("Fiumelatte", 45.99904, 9.29271, "Main", "R13"));
+        stations.add(new MetroStation("Varenna Esino", 46.01491, 9.2862, "Main", "R13"));
+        stations.add(new MetroStation("Bellano Tartavalle Terme", 46.03987, 9.30277, "Main", "R13"));
+        stations.add(new MetroStation("Dervio", 46.07764, 9.30622, "Main", "R13"));
+        stations.add(new MetroStation("Dorio", 46.10264, 9.31921, "Main", "R13"));
+        stations.add(new MetroStation("Piona", 46.12475, 9.35057, "Main", "R13"));
+        stations.add(new MetroStation("Colico", 46.13789, 9.37528, "Main", "R13"));
+        stations.add(new MetroStation("Delebio", 46.13853, 9.46118, "Main", "R13"));
+        stations.add(new MetroStation("Cosio Traona", 46.13548, 9.52552, "Main", "R13"));
+        stations.add(new MetroStation("Morbegno", 46.13658, 9.56877, "Main", "R13"));
+        stations.add(new MetroStation("Talamona", 46.13982, 9.60042, "Main", "R13"));
+        stations.add(new MetroStation("Ardenno Masino", 46.16159, 9.65066, "Main", "R13"));
+        stations.add(new MetroStation("S. Pietro Berbenno", 46.1612, 9.74049, "Main", "R13"));
+        stations.add(new MetroStation("Castione Andeveno", 46.16153, 9.80806, "Main", "R13"));
+        stations.add(new MetroStation("Sondrio", 46.1672, 9.87288, "Main", "R13"));
         return stations;
     }
 
@@ -819,6 +858,31 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsR21() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Luino",  45.9969,  8.73738,  "Main", "R21"));
+        stations.add(new MetroStation("Porto Valtraglia",  45.95836,  8.67402,  "Main","R21"));
+        stations.add(new MetroStation("Calde'",  45.9457,  8.66324,  "Main","R21"));
+        stations.add(new MetroStation("Laveno Mombello",  45.90326,  8.6244,  "Main","R21"));
+        stations.add(new MetroStation("Sangiano",  45.87449,  8.63087,  "Main","R21"));
+        stations.add(new MetroStation("Besozzo",  45.84233,  8.66322,  "Main","R21"));
+        stations.add(new MetroStation("Travedona Biandronno",  45.80976,  8.69615,  "Main","R21"));
+        stations.add(new MetroStation("Ternate Varano Borghi",  45.78183,  8.70069,  "Main","R21"));
+        stations.add(new MetroStation("Mornago Cimbro",  45.72985,  8.73441,  "Main","R21"));
+        stations.add(new MetroStation("Besnate",  45.69549,  8.76125,  "Main","R21"));
+        stations.add(new MetroStation("Gallarate",  45.65974,  8.79853,  "Main","R21"));
+        stations.add(new MetroStation("Busto Arsizio", 45.61593, 8.86589, "Main", "R21"));
+        stations.add(new MetroStation("Legnano", 45.5937, 8.91087, "Main", "R21"));
+        stations.add(new MetroStation("Canegrate", 45.56934, 8.92673, "Main", "R21"));
+        stations.add(new MetroStation("Parabiago", 45.55261, 8.94651, "Main", "R21"));
+        stations.add(new MetroStation("NO_DRAW", 45.52536, 8.99573, "Main", "R21"));
+        stations.add(new MetroStation("Rho FieraMilano", 45.52113, 9.0885, "Main", "R21"));
+        stations.add(new MetroStation("NO_DRAW", 45.50683, 9.13593, "Main", "R21"));
+        stations.add(new MetroStation("NO_DRAW", 45.50202, 9.15092, "Main", "R21"));
+        stations.add(new MetroStation("Milano Pta Garibaldi", 45.48449, 9.18737, "Main", "R21"));
+        return stations;
+    }
+
     public static List<MetroStation> getStationsR23() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Milano Pta Garibaldi", 45.48449, 9.18737, "Main", "R23"));
@@ -859,6 +923,208 @@ public class StationDB {
         stations.add(new MetroStation("Ispra", 45.81168, 8.62103, "Main", "R24"));
         stations.add(new MetroStation("Taino Angera", 45.77236, 8.60576, "Main", "R24"));
         stations.add(new MetroStation("Sesto Calende", 45.72624, 8.62813, "Main", "R24"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR25() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Albonese", 45.29779, 8.7146, "Main", "R25"));
+        stations.add(new MetroStation("Borgo Lavezzaro", 45.31876, 8.70319, "Main", "R25"));
+        stations.add(new MetroStation("Vespolate", 45.3515, 8.67188, "Main", "R25"));
+        stations.add(new MetroStation("Garbagna", 45.38559, 8.66642, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.40708, 8.66339, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41255, 8.6618, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41795, 8.65779, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41795, 8.65779, "Main", "R25"));
+        stations.add(new MetroStation("Novara", 45.45111, 8.62451, "Main", "R25"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR27() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Novara Nord", 45.45236, 8.62669, "Main", "R27"));
+        stations.add(new MetroStation("Galliate", 45.48106, 8.69135, "Main", "R27"));
+        stations.add(new MetroStation("Galliate Parco del Ticino", 45.50629, 8.71782, "Main", "R27"));
+        stations.add(new MetroStation("Turbigo", 45.52819, 8.73883, "Main", "R27"));
+        stations.add(new MetroStation("Castano Primo", 45.556, 8.77282, "Main", "R27"));
+        stations.add(new MetroStation("Vanzaghello Magnago", 45.57758, 8.78765, "Main", "R27"));
+        stations.add(new MetroStation("Busto Arsizio Nord",  45.60617,  8.85139,  "Main","R27"));
+        stations.add(new MetroStation("Castellanza",  45.61056,  8.87547,  "Main", "R27"));
+        stations.add(new MetroStation("Rescaldina",  45.62229,  8.94666,  "Main", "R27"));
+        stations.add(new MetroStation("Saronno",  45.62534,  9.03075,  "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.61235, 9.04557, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.5981, 9.05794, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.5908, 9.06631, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.58014, 9.08042, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.57108, 9.09097, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.55262, 9.11209, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.54289, 9.12283, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.533, 9.13238, "Main", "R27"));
+        stations.add(new MetroStation("NO_DRAW", 45.51918, 9.14562, "Main", "R27"));
+        stations.add(new MetroStation("Milano Bovisa", 45.50257, 9.15925, "Main", "R27"));
+        stations.add(new MetroStation("Milano Domodossola", 45.48089, 9.16224, "Main", "R27"));
+        stations.add(new MetroStation("Milano Cadorna", 45.46843, 9.17553, "Main", "R27"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR31() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Mortara", 45.25217, 8.73165, "Main", "R31"));
+        stations.add(new MetroStation("Parona Lomellina", 45.28022, 8.78027, "Main", "R31"));
+        stations.add(new MetroStation("Vigevano", 45.31284, 8.86189, "Main", "R31"));
+        stations.add(new MetroStation("Abbiategrasso", 45.39758, 8.92044, "Main", "R31"));
+        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.40874, 9.03118, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.42025, 9.0669, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.43044, 9.09158, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.43605, 9.10899, "Main", "R31"));
+        stations.add(new MetroStation("Milano S. Cristoforo", 45.44256, 9.13008, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44803, 9.15253, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44798, 9.15556, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44724, 9.15768, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44568, 9.15947, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44392, 9.16207, "Main", "R31"));
+        stations.add(new MetroStation("Milano Romolo", 45.44335, 9.1675, "Main", "R31"));
+        stations.add(new MetroStation("Milano Tibaldi - Bocconi", 45.44394, 9.18506, "Main", "R31"));
+        stations.add(new MetroStation("Milano Scalo Romana", 45.44585, 9.21303, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44652, 9.22732, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44637, 9.23, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.4461, 9.23245, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.44472, 9.23457, "Main", "R31"));
+        stations.add(new MetroStation("Milano Rogoredo", 45.43386, 9.23911, "Main", "R31"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR32() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Mortara", 45.25217, 8.73165, "Main", "R32"));
+        stations.add(new MetroStation("Olevano", 45.2121, 8.71197, "Main", "R32"));
+        stations.add(new MetroStation("Valle Lomellina", 45.1506, 8.68577, "Main", "R32"));
+        stations.add(new MetroStation("Sartirana", 45.11173, 8.67, "Main", "R32"));
+        stations.add(new MetroStation("Torreberetti", 45.06041, 8.66069, "Main", "R32"));
+        stations.add(new MetroStation("Valenza", 45.0235, 8.62605, "Main", "R32"));
+        stations.add(new MetroStation("Valmadonna", 44.97261, 8.61085, "Main", "R32"));
+        stations.add(new MetroStation("Alessandria", 44.9088, 8.60757, "Main", "R32"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR33() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Pavia", 45.18878, 9.14488, "Main", "R33"));
+        stations.add(new MetroStation("S. Martino Cava", 45.14492, 9.11521, "Main", "R33"));
+        stations.add(new MetroStation("Bressana Bottarone", 45.08628, 9.11075, "Main", "R33"));
+        stations.add(new MetroStation("Lungavilla", 45.04979, 9.06906, "Main", "R33"));
+        stations.add(new MetroStation("NO_DRAW", 45.00154, 9.02083, "Main", "R33"));
+        stations.add(new MetroStation("NO_DRAW", 44.99957, 9.01779, "Main", "R33"));
+        stations.add(new MetroStation("Voghera", 44.99789, 9.00861, "Main", "R33"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR35() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Pavia", 45.18878, 9.14488, "Main", "R35"));
+        stations.add(new MetroStation("NO_DRAW", 45.147, 9.07146, "Main", "R35"));
+        stations.add(new MetroStation("Sairano", 45.13881, 9.04694, "Main", "R35"));
+        stations.add(new MetroStation("Sairano Zinasco", 45.13373, 9.03019, "Main", "R35"));
+        stations.add(new MetroStation("Zinasco Nuovo", 45.12452, 8.99978, "Main", "R35"));
+        stations.add(new MetroStation("Pieve Albignola", 45.11621, 8.95975, "Main", "R35"));
+        stations.add(new MetroStation("Sannazzaro", 45.10546, 8.90514, "Main", "R35"));
+        stations.add(new MetroStation("Ferrera Lomellina", 45.11192, 8.86284, "Main", "R35"));
+        stations.add(new MetroStation("NO_DRAW", 45.12236, 8.82717, "Main", "R35"));
+        stations.add(new MetroStation("NO_DRAW", 45.12297, 8.82275, "Main", "R35"));
+        stations.add(new MetroStation("NO_DRAW", 45.12267, 8.8185, "Main", "R35"));
+        stations.add(new MetroStation("Lomello", 45.11737, 8.79909, "Main", "R35"));
+        stations.add(new MetroStation("Mede", 45.09506, 8.74248, "Main", "R35"));
+        stations.add(new MetroStation("Torreberetti", 45.06041, 8.66069, "Main", "R35"));
+        stations.add(new MetroStation("Valenza", 45.0235, 8.62605, "Main", "R35"));
+        stations.add(new MetroStation("Valmadonna", 44.97261, 8.61085, "Main", "R35"));
+        stations.add(new MetroStation("Alessandria", 44.9088, 8.60757, "Main", "R35"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR36() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Pavia", 45.18878, 9.14488, "Main", "R36"));
+        stations.add(new MetroStation("Cava Carbonara", 45.147, 9.07146, "Main", "R36"));
+        stations.add(new MetroStation("Vilanova D'Ardenghi", 45.15703, 9.03725, "Main", "R36"));
+        stations.add(new MetroStation("Gropello Cairoli", 45.1732, 8.99173, "Main", "R36"));
+        stations.add(new MetroStation("Garlasco", 45.19886, 8.92681, "Main", "R36"));
+        stations.add(new MetroStation("Tromello", 45.2119, 8.87214, "Main", "R36"));
+        stations.add(new MetroStation("Gambolò Remondò", 45.23529, 8.79975, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.24627, 8.7335, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.24736, 8.73207, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.2488, 8.73114, "Main", "R36"));
+        stations.add(new MetroStation("Mortara", 45.25217, 8.73165, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.25702, 8.73222, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.25809, 8.73177, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.25933, 8.73032, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.26035, 8.72724, "Main", "R36"));
+        stations.add(new MetroStation("Nicorvo", 45.27558, 8.67129, "Main", "R36"));
+        stations.add(new MetroStation("Robbio", 45.29342, 8.59701, "Main", "R36"));
+        stations.add(new MetroStation("Palestro", 45.30714, 8.53437, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.3385, 8.44845, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.3389, 8.44724, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.33915, 8.44599, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.3392, 8.44488, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.33903, 8.44361, "Main", "R36"));
+        stations.add(new MetroStation("NO_DRAW", 45.3386, 8.44179, "Main", "R36"));
+        stations.add(new MetroStation("Vercelli", 45.32975, 8.41639, "Main", "R36"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR37() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Pavia", 45.18878, 9.14488, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.19312, 9.15027, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.19347, 9.15176, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.19352, 9.15346, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.19258, 9.15616, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.19026, 9.16128, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.18864, 9.16317, "Main", "R37"));
+        stations.add(new MetroStation("Pavia Pta Garibaldi", 45.18421, 9.1667, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.18346, 9.16904, "Main", "R37"));
+        stations.add(new MetroStation("Motta S. Damiano", 45.17821, 9.21992, "Main", "R37"));
+        stations.add(new MetroStation("Albuzzano", 45.17238, 9.26174, "Main", "R37"));
+        stations.add(new MetroStation("Belgioioso", 45.16441, 9.31687, "Main", "R37"));
+        stations.add(new MetroStation("Corteolona", 45.15958, 9.37548, "Main", "R37"));
+        stations.add(new MetroStation("S. Cristina e Bissone", 45.1604, 9.40104, "Main", "R37"));
+        stations.add(new MetroStation("Miradolo Terme", 45.1619, 9.44985, "Main", "R37"));
+        stations.add(new MetroStation("Chignolo Po", 45.16081, 9.49418, "Main", "R37"));
+        stations.add(new MetroStation("Lambrinia", 45.16426, 9.52742, "Main", "R37"));
+        stations.add(new MetroStation("Orio Litta", 45.16667, 9.5506, "Main", "R37"));
+        stations.add(new MetroStation("Ospedaletto Lodigiano", 45.16919, 9.57523, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.18669, 9.63925, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.18681, 9.64441, "Main", "R37"));
+        stations.add(new MetroStation("NO_DRAW", 45.18555, 9.64825, "Main", "R37"));
+        stations.add(new MetroStation("Casalpusterlengo", 45.18235, 9.65366, "Main", "R37"));
+        stations.add(new MetroStation("Codogno", 45.15496, 9.70135, "Main", "R37"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsR38() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Piacenza", 45.05196, 9.70609, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.05681, 9.70405, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.05883, 9.70432, "Main", "R38"));
+        stations.add(new MetroStation("S. Stefano Lodigiano", 45.12207, 9.7238, "Main", "R38"));
+        stations.add(new MetroStation("Codogno", 45.15496, 9.70135, "Main", "R38"));
+        stations.add(new MetroStation("Casalpusterlengo", 45.18235, 9.65366, "Main", "R38"));
+        stations.add(new MetroStation("Secugnago", 45.22335, 9.58696, "Main", "R38"));
+        stations.add(new MetroStation("Lodi", 45.3092, 9.49776, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.32641, 9.40282, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.33783, 9.36165, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.35647, 9.31936, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.39134, 9.28652, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.4045, 9.27046, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.41879, 9.25291, "Main", "R38"));
+        stations.add(new MetroStation("Milano Rogoredo", 45.43386, 9.23911, "Main", "R38"));
+        stations.add(new MetroStation("Milano Lambrate", 45.48475, 9.23678, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.49492, 9.2282, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.49663, 9.22502, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.49825, 9.22059, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.50579, 9.21207, "Main", "R38"));
+        stations.add(new MetroStation("NO_DRAW", 45.50886, 9.21184, "Main", "R38"));
+        stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Main", "R38"));
         return stations;
     }
 
@@ -2097,14 +2363,26 @@ public class StationDB {
             allStations.addAll(getStationsR4());
             allStations.addAll(getStationsR5());
             allStations.addAll(getStationsR6());
+            allStations.addAll(getStationsR7());
             allStations.addAll(getStationsR8());
             allStations.addAll(getStationsR11());
+            allStations.addAll(getStationsR13());
             allStations.addAll(getStationsR14());
             allStations.addAll(getStationsR16());
             allStations.addAll(getStationsR17());
             allStations.addAll(getStationsR18());
+            allStations.addAll(getStationsR21());
             allStations.addAll(getStationsR23());
             allStations.addAll(getStationsR24());
+            allStations.addAll(getStationsR25());
+            allStations.addAll(getStationsR27());
+            allStations.addAll(getStationsR31());
+            allStations.addAll(getStationsR32());
+            allStations.addAll(getStationsR33());
+            allStations.addAll(getStationsR35());
+            allStations.addAll(getStationsR36());
+            allStations.addAll(getStationsR37());
+            allStations.addAll(getStationsR38());
             allStations.addAll(getStationsR39());
             allStations.addAll(getStationsR40());
 
