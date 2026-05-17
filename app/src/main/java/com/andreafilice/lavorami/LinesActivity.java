@@ -386,7 +386,7 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         // REGIONAL
-        String[] regionalLines = {"R1", "R2", "R3", "R4", "R5", "R8", "R11", "R14", "R16", "R18", "R39"};
+        String[] regionalLines = {"R1", "R2", "R3", "R4", "R5", "R6", "R8", "R11", "R14", "R16", "R17", "R18", "R23", "R24", "R39", "R40"};
         for (int i = 0; i < regionalLines.length; i++) {
             int finalI = i;
             aggiungiLinea(containerRegional, regionalLines[finalI], R.color.REGIONAL, "Regionale");
