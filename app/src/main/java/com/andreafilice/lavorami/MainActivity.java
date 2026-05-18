@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -17,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private Animation animSpin;
     static String maintenanceDetails = "";
     private boolean strikeBannerClosed = false;
+    private boolean  definitelyClosedSavedLinesHint;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -419,15 +422,44 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //* LISTENER PER I FILTRI (CHIP)
+        definitelyClosedSavedLinesHint = DataManager.getBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, false);
         if (filterGroup != null) {
             filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                if (checkedId == R.id.chipYourLines){
-                    findViewById(R.id.boxYourLinesInfo).setVisibility(View.VISIBLE);
-                    ImageView closeBox = findViewById(R.id.closeYourLine);
-                    closeBox.setOnClickListener(v -> findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE));
-                }else{
+                if (checkedId == R.id.chipYourLines) {
+                    if (!definitelyClosedSavedLinesHint) {
+                        findViewById(R.id.boxYourLinesInfo).setVisibility(View.VISIBLE);
+
+                        ImageView closeBox = findViewById(R.id.closeYourLine);
+                        closeBox.setOnClickListener(v -> {
+                            findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
+
+                            // Mostriamo l'icona info quando chiude il banner temporaneamente
+                            findViewById(R.id.infoSavedLine).setVisibility(View.VISIBLE); // Ti consiglio di assicurarti che anche il padre sia visibile
+                            ImageView infoSavedLines = findViewById(R.id.infoSavedLineIcon);
+                            infoSavedLines.setVisibility(View.VISIBLE);
+
+                            // QUI E' LA MAGIA: Invece di cambiare Activity, apriamo il Dialog!
+                            infoSavedLines.setOnClickListener(v1 -> showTutorialDialog());
+                        });
+
+                        TextView ForeverCloseYourLine = findViewById(R.id.ForeverCloseYourLine);
+                        ForeverCloseYourLine.setOnClickListener(v -> {
+                            definitelyClosedSavedLinesHint = true;
+                            DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
+                            findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
+                            findViewById(R.id.infoSavedLine).setVisibility(View.VISIBLE);
+                            findViewById(R.id.infoSavedLineIcon).setOnClickListener(v1 -> showTutorialDialog());
+                        });
+
+                    } else {
+                        findViewById(R.id.infoSavedLine).setVisibility(View.VISIBLE);
+                        ImageView infoSavedLines = findViewById(R.id.infoSavedLineIcon);
+                        infoSavedLines.setOnClickListener(v -> showTutorialDialog());
+                    }
+                } else {
                     findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
+                    findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
                 }
                 if (checkedId == View.NO_ID)
                     filterGroup.check(R.id.chipAll);
@@ -964,5 +996,61 @@ public class MainActivity extends AppCompatActivity {
             if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
         }
         return false;
+    }
+
+    private void showTutorialDialog() {
+        final Handler handler = new Handler(Looper.getMainLooper());
+
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_saved_lines, null);
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setCancelable(true)
+                .create();
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
+
+        //* SETUP ANIMATION
+        ImageButton heartIcon = dialogView.findViewById(R.id.buttonAddLine);
+        Animation scaleDownUp = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
+
+        final boolean[] isFilled = {false};
+
+        Runnable heartAnimation = new Runnable() {
+            @Override
+            public void run() {
+                // Inverti lo stato: se era vuoto diventa pieno, e viceversa
+                isFilled[0] = !isFilled[0];
+
+
+                if (isFilled[0]) {
+                    heartIcon.setImageResource(R.drawable.ic_heart);
+                    heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
+                } else {
+                    heartIcon.setImageResource(R.drawable.ic_heart_empty);
+                    heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+                }
+
+                heartIcon.startAnimation(scaleDownUp);
+                handler.postDelayed(this, 1800);
+            }
+        };
+
+        // Avvia l'animazione
+        handler.post(heartAnimation);
+
+
+        Button btnClose = dialogView.findViewById(R.id.btn_close_tutorial);
+        btnClose.setOnClickListener(v -> dialog.dismiss());
+
+        //* DESTROY HANDLER
+        dialog.setOnDismissListener(dialogInterface -> {
+            handler.removeCallbacks(heartAnimation);
+            handler.removeCallbacksAndMessages(null);
+        });
+
+        dialog.show();
     }
 }

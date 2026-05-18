@@ -343,4 +343,5 @@
     <string name="incorrectDetails">Segnala eventuali incorrettezze</string>
     <string name="incorrectDetailsDeps">Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!</string>
     <string name="deviationMapTxt">QUESTA LINEA É SOGGETTA A DEVIAZIONI.</string>
+    <string name="notShowAnymore">Non mostrare più</string>
 </resources>

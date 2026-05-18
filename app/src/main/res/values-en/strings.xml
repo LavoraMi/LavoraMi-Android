@@ -344,4 +344,5 @@
     <string name="seeWorks">View the works</string>
     <string name="seeWorksDeps">The map shows the original route; see the diversions in the ‘Line Works’ section!</string>
     <string name="incorrectDetails">Report any errors</string>
+    <string name="notShowAnymore">Don\'t show anymore</string>
 </resources>
