@@ -70,7 +70,7 @@ public class HowAppWorks extends AppCompatActivity {
                 handler.postDelayed(() -> {
                         favIcon.startAnimation(scaleUp);
                         favIcon.setImageResource(R.drawable.ic_star_fill);
-                handler.postDelayed(this, 5000);
+                handler.postDelayed(this, 3000);
                 },500);
             }
         };
