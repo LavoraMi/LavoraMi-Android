@@ -825,7 +825,13 @@ public class MainActivity extends AppCompatActivity {
         NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
     }
 
-    private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault, String category) {
+    private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault) {
+        /// In this method, we will check if a list is empty or not, to display the text correctly.
+        /// @PARAMETERS
+        /// List<EventDescriptor> list is the list of all works of that category.
+        /// String searchInfo is the query that the user write into the EditText.
+        /// String searchDefault is the query NOT LOWERCASED for better case-switching.
+
         TextView noWorkFounds = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
 
@@ -850,7 +856,7 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter.setFilteredList(listaFiltrata);
 
-            checkForEmptyList(events, testo, testoOriginale, getCategory().toLowerCase());
+            checkForEmptyList(events, testo, testoOriginale);
             return;
         }
 
@@ -874,7 +880,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         adapter.setFilteredList(listaFiltrata);
-        checkForEmptyList(listaFiltrata, testo, testoOriginale, getCategory().toLowerCase());
+        checkForEmptyList(listaFiltrata, testo, testoOriginale);
     }
 
     private void applicaFiltroCategoria(String categoria) {
@@ -972,7 +978,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         adapter.setFilteredList(filtrata);
-        checkForEmptyList(filtrata, "null", "", categoria);
+        checkForEmptyList(filtrata, "null", "");
     }
 
     private boolean isTram(EventDescriptor item) {return (item.typeOfTransport.contains("tram") && !item.typeOfTransport.equalsIgnoreCase("tram.fill.tunnel"));}
