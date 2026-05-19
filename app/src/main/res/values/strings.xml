@@ -344,4 +344,7 @@
     <string name="incorrectDetailsDeps">Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!</string>
     <string name="deviationMapTxt">QUESTA LINEA É SOGGETTA A DEVIAZIONI.</string>
     <string name="notShowAnymore">Non mostrare più</string>
+    <string name="tutorialTitle">Come mettere nei preferiti una linea?</string>
+    <string name="tutorialExplenation1">Troverai tutte le linee premendo sull\'icona:</string>
+    <string name="tutorialExplenation2">e basterà che premerai il cuore come mostrato qui</string>
 </resources>

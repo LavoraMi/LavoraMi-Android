@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Come mettere nei preferiti una linea?"
+            android:text="@string/tutorialTitle"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/work_sans_medium"
             android:gravity="center"
-            android:text="Troverai tutte le linee premendo sull'icona:"
+            android:text="@string/tutorialExplenation1"
             android:textColor="@color/subtitle"
             android:textSize="13sp" />
 
@@ -49,8 +49,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/work_sans_medium"
             android:gravity="center"
-            android:text="e basterà che premerai il cuore come mostrato qui"
+            android:text="@string/tutorialExplenation2"
             android:textColor="@color/subtitle"
+            android:layout_marginBottom="6dp"
             android:textSize="13sp" />
 
 
