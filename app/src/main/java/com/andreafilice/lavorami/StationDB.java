@@ -1276,7 +1276,7 @@ public class StationDB {
         stations.add(new MetroStation("S. Michele In Bosco", 45.12244, 10.57345, "Main", "R40"));
         stations.add(new MetroStation("Ospitaletto Mantovano", 45.12984, 10.60466, "Main", "R40"));
         stations.add(new MetroStation("Castellucchio", 45.14439, 10.64745, "Main", "R40"));
-        stations.add(new MetroStation("Mantova", 45.15863, 10.78329, "Main", "RE11"));
+        stations.add(new MetroStation("Mantova", 45.15863, 10.78329, "Main", "R40"));
         return stations;
     }
 
