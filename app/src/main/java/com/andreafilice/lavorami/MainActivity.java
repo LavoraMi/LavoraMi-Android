@@ -428,37 +428,18 @@ public class MainActivity extends AppCompatActivity {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
                 if (checkedId == R.id.chipYourLines) {
                     if (!definitelyClosedSavedLinesHint) {
-                        findViewById(R.id.boxYourLinesInfo).setVisibility(View.VISIBLE);
-
-                        ImageView closeBox = findViewById(R.id.closeYourLine);
-                        closeBox.setOnClickListener(v -> {
-                            findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
-
-                            // Mostriamo l'icona info quando chiude il banner temporaneamente
-                            findViewById(R.id.infoSavedLine).setVisibility(View.VISIBLE); // Ti consiglio di assicurarti che anche il padre sia visibile
-                            ImageView infoSavedLines = findViewById(R.id.infoSavedLineIcon);
-                            infoSavedLines.setVisibility(View.VISIBLE);
-
-                            // QUI E' LA MAGIA: Invece di cambiare Activity, apriamo il Dialog!
-                            infoSavedLines.setOnClickListener(v1 -> showTutorialDialog());
-                        });
-
-                        TextView ForeverCloseYourLine = findViewById(R.id.ForeverCloseYourLine);
-                        ForeverCloseYourLine.setOnClickListener(v -> {
-                            definitelyClosedSavedLinesHint = true;
-                            DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
-                            findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
-                            findViewById(R.id.infoSavedLine).setVisibility(View.VISIBLE);
-                            findViewById(R.id.infoSavedLineIcon).setOnClickListener(v1 -> showTutorialDialog());
-                        });
-
+                        View infoSavedLines = findViewById(R.id.infoSavedLine);
+                        infoSavedLines.setVisibility(View.VISIBLE);
+                        showTutorialDialog();
+                        definitelyClosedSavedLinesHint = true;
+                        DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
+                        infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     } else {
-                        findViewById(R.id.infoSavedLine).setVisibility(View.VISIBLE);
-                        ImageView infoSavedLines = findViewById(R.id.infoSavedLineIcon);
+                        View infoSavedLines = findViewById(R.id.infoSavedLine);
+                        infoSavedLines.setVisibility(View.VISIBLE);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                 } else {
-                    findViewById(R.id.boxYourLinesInfo).setVisibility(View.GONE);
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
                 }
                 if (checkedId == View.NO_ID)
@@ -477,8 +458,6 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.scrollToPosition(0);
             });
         }
-
-        findViewById(R.id.boxYourLinesInfo).setVisibility((getCategory().toLowerCase().equals("le tue linee") || getCategory().toLowerCase().equals("your lines")) ? View.VISIBLE : View.GONE);
 
         //*SETUP LANGUAGE
         /// Setting up the language of the application base from the Data saved
