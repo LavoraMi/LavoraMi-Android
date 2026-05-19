@@ -426,6 +426,7 @@ public class MainActivity extends AppCompatActivity {
         if (filterGroup != null) {
             filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                int densita= (int)getResources().getDisplayMetrics().density;
                 if (checkedId == R.id.chipYourLines) {
                     if (!definitelyClosedSavedLinesHint) {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
@@ -437,10 +438,12 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
+                        findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,20*densita);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                 } else {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
+                    findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,20*densita);
                 }
                 if (checkedId == View.NO_ID)
                     filterGroup.check(R.id.chipAll);
