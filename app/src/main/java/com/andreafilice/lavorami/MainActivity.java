@@ -776,6 +776,7 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
             ImageView closeBtn = findViewById(R.id.closeBtn);
+            View strikeOpenClose = findViewById(R.id.strikeOpenClose);
 
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled() && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
 
@@ -786,9 +787,10 @@ public class MainActivity extends AppCompatActivity {
             strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 
-            closeBtn.setOnClickListener(v -> {
-                strikeBanner.setVisibility(View.GONE);
-                strikeBannerClosed = true;
+            strikeOpenClose.setOnClickListener(v -> {
+                findViewById(R.id.strikeDescription).setVisibility((strikeBannerClosed) ? View.VISIBLE : View.GONE);
+                strikeBannerClosed = !strikeBannerClosed;
+                closeBtn.setImageResource((strikeBannerClosed) ? R.drawable.ic_down : R.drawable.ic_up);
             });
         }
 
