@@ -81,20 +81,8 @@ public class MaintenanceActivity extends AppCompatActivity {
                     else
                         ActivityUtils.changeActivity(MaintenanceActivity.this, MainActivity.class);
 
-                    if(responseComparable < 0){
-                        new AlertDialog.Builder(MaintenanceActivity.this)
-                                .setTitle(getString(R.string.newVersionAvailableTitle))
-                                .setMessage(getString(R.string.maintenanceDeps))
-                                .setPositiveButton(getString(R.string.updateButton), ((dialog, which) -> {
-                                    String packageName = getPackageName();
-                                    String link = "https://play.google.com/store/apps/details?id=" + packageName;
-
-                                    ActivityUtils.openURL(MaintenanceActivity.this, link);
-                                }))
-                                .setCancelable(false)
-                                .create()
-                                .show();
-                    }
+                    if(responseComparable < 0)
+                        ActivityUtils.changeActivity(MaintenanceActivity.this, ObsoleteVersion.class);
                 }
                 btnRefreshOnError.setBackgroundColor(ContextCompat.getColor(MaintenanceActivity.this, R.color.redMetro));
             }

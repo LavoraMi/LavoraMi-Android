@@ -113,6 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.busLinesFavorites), //? "Linee Bus"
             findViewById(R.id.movibusLinesFavorites), //? "Linee Movibus"
             findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
+            findViewById(R.id.starLinesFavorites), //? "Linee STAR"
             findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
         };
 
@@ -125,6 +126,7 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.metroLinesATMLayout),
             findViewById(R.id.disclosureHeaderMovibus),
             findViewById(R.id.disclosureHeaderStav),
+            findViewById(R.id.disclosureHeaderStar),
             findViewById(R.id.disclosureHeaderAutoguidovie)
         };
 
@@ -136,7 +138,8 @@ public class SettingsActivity extends AppCompatActivity {
             "Tram",
             "Bus",
             "z6",
-            "z5",
+            "z55",
+            "z50",
             "Autoguidovie"
         };
 

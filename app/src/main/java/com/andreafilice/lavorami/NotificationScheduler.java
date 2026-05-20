@@ -74,9 +74,14 @@ public class NotificationScheduler {
                                     if (line.matches("^([1-9]|[1-2][0-9]|3[0-3])$")) { isMatch = true; break; }
                                 }
                                 break;
-                            case "z5":
+                            case "z55":
                                 for (String line : event.lines) {
-                                    if (line.toLowerCase().startsWith("z5")) { isMatch = true; break; }
+                                    if (line.toLowerCase().startsWith("z55") || line.toLowerCase().startsWith("z56")) { isMatch = true; break; }
+                                }
+                                break;
+                            case "z50":
+                                for (String line : event.lines) {
+                                    if (line.toLowerCase().startsWith("z50") || line.toLowerCase().startsWith("z51")) { isMatch = true; break; }
                                 }
                                 break;
                             case "z6":

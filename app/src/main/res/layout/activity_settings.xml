@@ -445,6 +445,53 @@
                 app:cardElevation="0dp">
 
                 <RelativeLayout
+                    android:id="@+id/disclosureHeaderStar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:id="@+id/iconMainStar"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_bus"
+                        app:tint="@color/redMetro" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/iconMainStar"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Linee STAR"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:id="@+id/starLinesFavorites"
+                        android:clickable="true"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:focusable="true"
+                        android:src="@drawable/ic_star_empty"
+                        app:tint="#FF9F0A" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/disclosureBg"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
                     android:id="@+id/disclosureHeaderAutoguidovie"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
