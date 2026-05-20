@@ -45,7 +45,7 @@ public class StrikeDescriptor {
     //*GETTERS
     /// Set-up the Getters to use into activities for get some values.
     public boolean isStrikeEnabled() {return isStrikeEnabled.equals("true");}
-    public String isStrikeEnabledDebug() {return enableStrikeDebug;}
+    public boolean isStrikeEnabledDebug() {return enableStrikeDebug.equals("true");}
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}
