@@ -760,20 +760,8 @@ public class MainActivity extends AppCompatActivity {
         if(isInMaintenanceMode)
             ActivityUtils.changeActivity(this, MaintenanceActivity.class);
 
-        if(responseComparable < 0){
-            new AlertDialog.Builder(this)
-                    .setTitle(getString(R.string.newVersionAvailableTitle))
-                    .setMessage(getString(R.string.newVersionAvailableDeps))
-                    .setPositiveButton(getString(R.string.updateButton), ((dialog, which) -> {
-                        String packageName = getPackageName();
-                        String link = "https://play.google.com/store/apps/details?id=" + packageName;
-
-                        ActivityUtils.openURL(this, link);
-                    }))
-                    .setCancelable(false)
-                    .create()
-                    .show();
-        }
+        if(responseComparable < 0)
+            ActivityUtils.changeActivity(this, ObsoleteVersion.class);
     }
 
     private void updateStrike(StrikeDescriptor strikeDescriptor) {

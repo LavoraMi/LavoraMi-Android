@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
         <activity
+            android:name=".ObsoleteVersion"
+            android:exported="false" />
+        <activity
             android:name=".DeviationInfo"
             android:exported="false" />
         <activity
