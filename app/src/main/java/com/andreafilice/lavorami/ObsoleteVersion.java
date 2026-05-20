@@ -48,7 +48,7 @@ public class ObsoleteVersion extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequirementsDescriptor> call, Response<RequirementsDescriptor> response) {
                 if(response.isSuccessful())
-                    latestVersionSupported.setText("Ultima versione supportata: " + response.body().getMinimumVersionAndroid());
+                    latestVersionSupported.setText(getString(R.string.latestVersionSupported) + response.body().getMinimumVersionAndroid());
             }
 
             @Override

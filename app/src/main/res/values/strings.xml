@@ -212,9 +212,6 @@
     <string name="strikeBannerAderenti">Aderenti:</string>
     <string name="shareLavoraMi">Condividi LavoraMi</string>
     <string name="shareContentLavoraMi">"Scarica LavoraMi: "</string>
-    <string name="newVersionAvailableTitle">Nuova versione disponibile!</string>
-    <string name="newVersionAvailableDeps">Una nuova versione di LavoraMi è disponibile! Per continuare la navigazione, aggiorna l\'app.</string>
-    <string name="updateButton">Aggiorna</string>
     <string name="lavoriInCorsoTitle">Lavori in corso</string>
     <string name="forgotPasswordDeps">Hai dimenticato la tua Password? Non preoccuparti, puoi recuperarla qui.</string>
     <string name="backToLogin">Torna al Login</string>
@@ -349,4 +346,8 @@
     <string name="tutorialExplenation2">e basterà che premerai il cuore come mostrato qui</string>
     <string name="howItWorks">Come funziona?</string>
     <string name="understood">Ho capito</string>
+    <string name="obsoleteTitle">Stai usando una versione obsoleta.</string>
+    <string name="obsoleteDeps">Stai usando una versione non più supportata di LavoraMi, aggiorna all\'ultima versione disponibile per avere accesso a nuove funzionalità e risolvere problemi.</string>
+    <string name="latestVersionSupported">"Ultima versione supportata: "</string>
+    <string name="updateNow">Aggiorna ora</string>
 </resources>
