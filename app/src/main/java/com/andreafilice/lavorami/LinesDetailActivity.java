@@ -60,6 +60,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -425,9 +426,22 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         return true;
     }
 
+    private boolean getLineLimitation() {
+        /// This method is a refactor one that checks if the current line selected is available ONLY ON WORKING DAYS.
+
+        String[] lineeAttiveLavorativi = {"S12", "S19", "R15", "R18", "R24", "R37"};
+
+        for(String linea: lineeAttiveLavorativi) {
+            if(linea.equals(nomeLinea))
+                return true;
+        }
+
+        return false;
+    }
+
     private void aggiornaUI() {
         TextView lineLimitation = findViewById(R.id.lineLimitation);
-        lineLimitation.setVisibility((nomeLinea.equals("S2") || nomeLinea.equals("S12") || nomeLinea.equals("S19")) ? View.VISIBLE : View.GONE);
+        lineLimitation.setVisibility((getLineLimitation()) ? View.VISIBLE : View.GONE);
         TextView detBadge = findViewById(R.id.detBadge);
         TextView detTitolo = findViewById(R.id.detTitolo);
 
@@ -449,6 +463,8 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             detTitolo.setText("STAR " + nomeLinea);
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie " + nomeLinea);
+        if(nomeLinea.startsWith("R"))
+            detTitolo.setText("Regionale " + nomeLinea);
         if(nomeLinea.startsWith("RE"))
             detTitolo.setText("Regio Express " + nomeLinea);
 
@@ -940,7 +956,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         Log.d("LINEA", nomeLinea);
 
-        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE"))
+        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R"))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
             tvAttesa.setText("5-20 min.");
@@ -1048,6 +1064,41 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S13": return "Pavia - Milano Bovisa";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
+
+            case "R1": return "Bergamo - Brescia";
+            case "R2": return "Bergamo - Treviglio";
+            case "R3": return "Brescia - Iseo - Breno";
+            case "R4": return "Brescia - Treviglio - Milano";
+            case "R5": return "Brescia - Cremona";
+            case "R6": return "Cremona - Treviglio";
+            case "R7": return "Lecco - Bergamo";
+            case "R8": return "Brescia - Piadena - Parma";
+            case "R9": return "Rovato - Bornato - Iseo";
+            case "R11": return "Colico - Chiavenna";
+            case "R12": return "Sondrio - Tirano";
+            case "R13": return "Lecco - Colico - Sondrio";
+            case "R14": return "Bergamo - Carnate - Milano";
+            case "R15": return "Seregno - Carnate";
+            case "R16": return "Asso - Milano";
+            case "R17": return "Como - Saronno - Milano";
+            case "R18": return "Como - Molteno - Lecco";
+            case "R21": return "Luino - Gallarate - Milano";
+            case "R22": return "Varese - Saronno - Milano";
+            case "R23": return "Domodossola - Gallarate - Milano";
+            case "R24": return "Laveno - Sesto Calende";
+            case "R25": return "Novara - Mortara";
+            case "R27": return "Novara - Saronno - Milano";
+            case "R31": return "Mortara - Milano";
+            case "R32": return "Mortara - Alessandria";
+            case "R33": return "Pavia - Voghera";
+            case "R34": return "Stradella - Pavia - Milano";
+            case "R35": return "Pavia - Torreberetti - Alessandria";
+            case "R36": return "Pavia - Mortara - Vercelli";
+            case "R37": return "Pavia - Codogno";
+            case "R38": return "Piacenza - Lodi - Milano";
+            case "R39": return "Codogno - Cremona";
+            case "R40": return "Cremona - Mantova";
+            case "R41": return "Voghera - Piacenza";
 
             case "RE1": return "Laveno - Saronno - Milano";
             case "RE2": return "Milano - Bergamo";
@@ -1200,9 +1251,28 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "S31":
             case "S40":
             case "S50":
+            case "R2":
+            case "R5":
+            case "R6":
+            case "R7":
+            case "R13":
+            case "R21":
+            case "R23":
+            case "R25":
+            case "R33":
+            case "R34":
                 return String.format("1 %s.", getString(R.string.hourPrefix));
             case "RE1":
             case "RE8":
+            case "R1":
+            case "R4":
+            case "R14":
+            case "R16":
+            case "R17":
+            case "R22":
+            case "R27":
+            case "R31":
+            case "R38":
                 return String.format("1 %s - 30 min.", getString(R.string.hourPrefix));
             case "RE2":
             case "RE4":
@@ -1213,6 +1283,21 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE13":
                 return String.format("1 %s.", getString(R.string.hourPrefix));
             case "RE3":
+            case "R3":
+            case "R8":
+            case "R9":
+            case "R11":
+            case "R12":
+            case "R15":
+            case "R18":
+            case "R24":
+            case "R32":
+            case "R35":
+            case "R36":
+            case "R37":
+            case "R39":
+            case "R40":
+            case "R41":
                 return String.format("2 %s - 1 %s.", getString(R.string.hoursPrefix), getString(R.string.hourPrefix));
             default: return "Errore";
         }
@@ -1242,6 +1327,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "RE8":
             case "RE11":
             case "RE13":
+            case "R4":
+            case "R22":
+            case "R27":
+            case "R38":
                 return getString(R.string.fullyAccessible);
             case "S7":
             case "S8":
@@ -1251,6 +1340,20 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
             case "10":
             case "19":
             case "33":
+            case "R9":
+            case "R11":
+            case "R12":
+            case "R15":
+            case "R18":
+            case "R24":
+            case "R25":
+            case "R32":
+            case "R35":
+            case "R36":
+            case "R37":
+            case "R39":
+            case "R40":
+            case "R41":
                 return getString(R.string.nonAccessible);
             default:
                 return getString(R.string.partiallyTitle);
