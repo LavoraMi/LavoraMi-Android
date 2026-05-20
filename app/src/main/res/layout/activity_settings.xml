@@ -465,7 +465,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainStar"
                         android:fontFamily="@font/work_sans_medium"
-                        android:text="Linee STAR"
+                        android:text="@string/starLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 

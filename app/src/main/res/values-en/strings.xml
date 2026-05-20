@@ -351,4 +351,5 @@
     <string name="obsoleteDeps">You are using a version of LavoraMi that is no longer supported. Please update to the latest version to access new features and resolve any issues.</string>
     <string name="latestVersionSupported">"Latest supported version: "</string>
     <string name="updateNow">Update Now</string>
+    <string name="starLines">STAR Lines</string>
 </resources>
