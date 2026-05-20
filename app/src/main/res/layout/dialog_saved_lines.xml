@@ -28,10 +28,11 @@
             android:textStyle="bold" />
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/text_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/work_sans_medium"
+            android:fontFamily="@font/inter_medium"
             android:gravity="center"
             android:text="@string/tutorialExplenation1"
             android:textColor="@color/subtitle"
@@ -40,22 +41,21 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_margin="3dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_arrow_left_right"
-            app:tint="@color/text_primary" />
+            app:tint="@color/redMetro" />
 
         <TextView
             android:id="@+id/text_description2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/work_sans_medium"
+            android:fontFamily="@font/inter_medium"
             android:gravity="center"
+            android:layout_marginTop="10dp"
             android:text="@string/tutorialExplenation2"
             android:textColor="@color/subtitle"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="10dp"
             android:textSize="13sp" />
-
-
 
         <LinearLayout
             android:id="@+id/lineClickArea"
@@ -86,10 +86,11 @@
                 android:backgroundTint="@color/M1"
                 android:gravity="center"
                 android:text="M1"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/work_sans_medium"
                 android:textColor="@color/White"
                 android:textSize="13sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/shimmerTextAnim"
                 android:layout_width="200dp"
@@ -98,6 +99,7 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/text_primary"
                 android:text="Metro M1"
+                android:fontFamily="@font/inter_medium"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -123,7 +125,6 @@
                 app:tint="@color/text_primary" />
 
         </LinearLayout>
-
 
         <Button
             android:id="@+id/btn_close_tutorial"
