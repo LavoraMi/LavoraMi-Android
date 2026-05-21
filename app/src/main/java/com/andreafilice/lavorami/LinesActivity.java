@@ -292,9 +292,13 @@ public class LinesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(searchLines.getText().toString().isEmpty())
-            reloadRecentLines();
 
+        reloadRecentLines();
+        if(!searchLines.getText().toString().isEmpty()) {
+            titleRecent.setVisibility(View.GONE);
+            containerRecent.setVisibility(View.GONE);
+        }
+        
         linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         reloadSavedLines();
     }
@@ -456,7 +460,7 @@ public class LinesActivity extends AppCompatActivity {
         //TODO: Comment better this code.
         View row = getLayoutInflater().inflate(R.layout.item_linea_list, container, false);
 
-        row.setTag(label);
+        row.setTag(label+"|"+description);
 
         TextView badge = row.findViewById(R.id.lineBadge);
         TextView name = row.findViewById(R.id.lineName);
@@ -492,11 +496,11 @@ public class LinesActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             });
             container.addView(row);
-            isSavedLine(label, buttonAddLine);
+            isSavedLine(label, buttonAddLine, container, description);
         }
     }
 
-    private void isSavedLine(String label, ImageButton buttonAddLine) {
+    private void isSavedLine(String label, ImageButton buttonAddLine, LinearLayout container, String description) {
 
         Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
 
@@ -512,7 +516,9 @@ public class LinesActivity extends AppCompatActivity {
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
 
-                isSavedLine(label, buttonAddLine);
+                isSavedLine(label, buttonAddLine,container,description);
+                if(container.getId() == containerRecent.getId() || recentLinesSet.contains(label+"|"+description))
+                    reloadSavedLines();
             });
         }
         else {
@@ -527,7 +533,9 @@ public class LinesActivity extends AppCompatActivity {
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart);
 
-                isSavedLine(label, buttonAddLine);
+                isSavedLine(label, buttonAddLine,container,description);
+                if(container.getId() == containerRecent.getId() || recentLinesSet.contains(label+"|"+description))
+                    reloadSavedLines();
             });
         }
     }
@@ -538,11 +546,12 @@ public class LinesActivity extends AppCompatActivity {
             int numeroLinee = container.getChildCount();
             for (int i = 0; i < numeroLinee; i++) {
                 View row = container.getChildAt(i);
-                String label = (String) row.getTag();
-                if (label != null) {
+                String linea = (String) row.getTag();
+                if (linea != null) {
+                    String [] line= linea.split("\\|");
                     ImageButton buttonAddLine = row.findViewById(R.id.buttonAddLine);
                     if (buttonAddLine != null) {
-                        isSavedLine(label, buttonAddLine);
+                        isSavedLine(line[0], buttonAddLine, container, line[1]);
                     }
                 }
             }
