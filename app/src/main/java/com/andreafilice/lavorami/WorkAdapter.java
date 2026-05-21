@@ -61,6 +61,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView cardImage;
+        ImageView openCloseIcon;
         TextView titleText, trattaText, startDateText, endDateText,companyText, descriptionText;
         ChipGroup chipGroupLinee;
         ProgressBar progressBar;
@@ -69,6 +70,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public ViewHolder(View itemView){
             super(itemView);
             cardImage = itemView.findViewById(R.id.iconEvent);
+            openCloseIcon = itemView.findViewById(R.id.open_close_descriprion);
             titleText = itemView.findViewById(R.id.txtTitle);
             trattaText = itemView.findViewById(R.id.txtRoute);
             startDateText = itemView.findViewById(R.id.txtStartDate);
@@ -112,7 +114,20 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.companyText.setText(item.getCompany());
         itemHolder.descriptionText.setText(item.getDetails());
 
-        itemHolder.descriptionText.setVisibility((isShowDetail) ? View.VISIBLE : View.GONE);
+        itemHolder.descriptionText.setVisibility(View.GONE);
+        itemHolder.openCloseIcon.setImageResource(R.drawable.ic_down);
+
+        itemHolder.itemView.setOnClickListener(v -> {
+            boolean isExpanded = itemHolder.descriptionText.getVisibility() == View.VISIBLE;
+
+            if (isExpanded) {
+                itemHolder.descriptionText.setVisibility(View.GONE);
+                itemHolder.openCloseIcon.setImageResource(R.drawable.ic_down);
+            } else {
+                itemHolder.descriptionText.setVisibility(View.VISIBLE);
+                itemHolder.openCloseIcon.setImageResource(R.drawable.ic_up);
+            }
+        });
 
         int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());
         itemHolder.progressBar.setProgress(progressPercentage);

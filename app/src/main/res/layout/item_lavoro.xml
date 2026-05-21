@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lavoro"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
@@ -104,7 +105,7 @@
 
         <TextView
             android:id="@+id/txtOperator"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:textAlignment="center"
@@ -116,17 +117,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/progressBarDate" />
 
+        <ImageView
+            android:id="@+id/open_close_descriprion"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_down"
+            app:tint="@color/text_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBarDate"/>
+
         <TextView
             android:id="@+id/txtDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
             android:textColor="@color/desc"
             android:textSize="13sp"
             android:fontFamily="@font/inter_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtOperator" />
+            app:layout_constraintTop_toBottomOf="@id/open_close_descriprion" />
 
         <Button
             android:visibility="gone"
