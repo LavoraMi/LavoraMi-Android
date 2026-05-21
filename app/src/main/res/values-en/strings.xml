@@ -141,7 +141,7 @@
     <string name="openSettingsLink">Open Settings</string>
     <string name="setAllNotificationsDeps">Set all notifications to a specific status.</string>
     <string name="workNotificationsTitle">Work Notifications</string>
-    <string name="notificationStartWorks">Work Start Notifications</string>
+    <string name="notificationStartWorks">Work Started Notifications</string>
     <string name="notificationEndWorks">Work End Notifications</string>
     <string name="otherNotificationsTitle">Other Notifications</string>
     <string name="strikeNotifications">Strike Notifications</string>
