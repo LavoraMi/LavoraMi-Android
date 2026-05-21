@@ -790,7 +790,7 @@ public class MainActivity extends AppCompatActivity {
             strikeOpenClose.setOnClickListener(v -> {
                 findViewById(R.id.strikeDescription).setVisibility((strikeBannerClosed) ? View.VISIBLE : View.GONE);
                 strikeBannerClosed = !strikeBannerClosed;
-                closeBtn.setImageResource((strikeBannerClosed) ? R.drawable.ic_down : R.drawable.ic_up);
+                closeBtn.animate().rotation(!strikeBannerClosed ? 0f : -180f).setDuration(250).start();
             });
         }
 
