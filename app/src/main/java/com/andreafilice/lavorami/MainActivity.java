@@ -778,7 +778,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView closeBtn = findViewById(R.id.closeBtn);
             View strikeOpenClose = findViewById(R.id.strikeOpenClose);
 
-            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabledDebug() && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
+            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled() && !strikeBannerClosed) ? View.VISIBLE : View.GONE);
 
             //*UPDATE TEXT VALUES
             String formattedTextDate = String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate());
