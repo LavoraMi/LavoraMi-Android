@@ -9,8 +9,8 @@ appcompat = "1.7.1"
 material = "1.14.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
+mapbox = "11.9.0"
 fragment = "1.8.9"
-playServicesMaps = "20.0.0"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
 retrofit = "3.0.0"
@@ -37,7 +37,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
-play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
+mapbox-maps = { group = "com.mapbox.maps", name = "android", version.ref = "mapbox" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometricAuth" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }

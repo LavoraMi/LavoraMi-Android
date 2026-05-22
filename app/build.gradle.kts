@@ -4,6 +4,7 @@ import java.io.File
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
+    id("org.jetbrains.kotlin.android")
 }
 
 //DOT ENV INTEGRATION
@@ -11,7 +12,7 @@ val envProperties = Properties()
 val envFile = File(rootProject.projectDir, ".env")
 if (envFile.exists())
     envFile.inputStream().use { envProperties.load(it) }
-val apiKey = envProperties.getProperty("API_KEYS", "")
+val mapboxToken = envProperties.getProperty("API_MAPBOX_TOKEN", "")
 val apiSupabaseURL = envProperties.getProperty("API_SUPABASE_URL", "")
 val apiSupabaseANON = envProperties.getProperty("API_SUPABASE_ANON", "")
 val googleLoginAPI= envProperties.getProperty("API_GOOGLE_SIGNUP", "")
@@ -28,13 +29,13 @@ android {
         targetSdk = 36
         versionCode = 35
         versionName = "1.1.7"
-        var buildNumber = "21052026"
+        var buildNumber = "22052026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
         resValue("string", "appVersionFull", ("$versionName ($buildNumber)"))
 
-        manifestPlaceholders["API_KEY"] = apiKey
         manifestPlaceholders["API_SUPABASE_URL"] = apiSupabaseURL
+        manifestPlaceholders["API_MAPBOX_TOKEN"] = mapboxToken
         manifestPlaceholders["API_SUPABASE_ANON"] = apiSupabaseANON
         manifestPlaceholders["API_GOOGLE_SIGNUP"] = googleLoginAPI
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -52,6 +53,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
     }
 }
 
@@ -73,7 +77,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp.core)
     implementation(libs.okhttp.logging)
-    implementation(libs.play.services.maps)
+    implementation(libs.mapbox.maps)
     implementation(libs.dotenv.java)
     implementation(libs.androidx.browser)
     implementation(libs.shimmer)

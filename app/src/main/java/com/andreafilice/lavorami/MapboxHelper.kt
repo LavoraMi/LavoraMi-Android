@@ -1,0 +1,101 @@
+package com.andreafilice.lavorami
+
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.LineString
+import com.mapbox.geojson.Point
+import com.mapbox.maps.CameraOptions
+import com.mapbox.maps.MapView
+import com.mapbox.maps.extension.style.layers.addLayer
+import com.mapbox.maps.extension.style.layers.generated.circleLayer
+import com.mapbox.maps.extension.style.layers.generated.lineLayer
+import com.mapbox.maps.extension.style.sources.addSource
+import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
+
+object MapboxHelper {
+
+    //*INITIALIZE MAP
+    /// In this section, we initialize the values of the MapBox API with the LavoraMi token.
+    @JvmStatic
+    fun init(token: String) { com.mapbox.common.MapboxOptions.accessToken = token }
+
+    @JvmStatic
+    fun loadMap(mapView: MapView, darkMode: Boolean, onReady: MapReadyCallback) {
+        /** In this function, we get the current mapView element (from XML file) and apply some changes, base on User Preferences.
+         * @param mapView is the Map Fragment from the Activity Layout.
+         * @param darkMode checks if the DarkMode is enabled by the User and apply the current style.
+         * @param onReady is the function callback to enable when the Map is Ready and Loaded.
+        */
+
+        val style = if (darkMode) "mapbox://styles/mapbox/dark-v11" else "mapbox://styles/mapbox/streets-v12"
+
+        mapView.mapboxMap.loadStyle(style) { onReady.onReady(mapView) }
+    }
+
+    @JvmStatic
+    fun setCamera(mapView: MapView, latitude: Double, longitude: Double, zoom: Double) {
+        /** In this function, we setup the camera view based on some datas from the StationsDB script.
+         * @param mapView is the Map Fragment from the Activity Layout.
+         * @param latitude is the Center Latitude of all stations calculated into the LinesDetailActivity script.
+         * @param longitude is the Center Longitude of all stations calculated into the LinesDetailActivity script.
+         * @param zoom is the zoom that the map assumes, change based on the type of transport map.
+         */
+
+        mapView.mapboxMap.setCamera(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat(longitude, latitude))
+                .zoom(zoom)
+                .build()
+        )
+    }
+
+    @JvmStatic
+    fun addCircleLayer(mapView: MapView, features: List<Feature>, hexColor: String) {
+        /** In this function, we draw Circle points on the map, based on the Line color and other variables.
+         * @param mapView is the Map Fragment from the Activity Layout.
+         * @param features is the list of the points to draw into the mapView Fragment.
+         * @param hexColor is the color of the line in hexa notation.
+         */
+
+        mapView.mapboxMap.getStyle { style ->
+            style.addSource(geoJsonSource("marker-source") { featureCollection(FeatureCollection.fromFeatures(features)) })
+
+            style.addLayer(circleLayer("marker-layer", "marker-source") {
+                circleColor(hexColor)
+                circleRadius(6.0)
+                circleStrokeColor("#FFFFFF")
+                circleStrokeWidth(2.0)
+            })
+        }
+    }
+
+    @JvmStatic
+    fun addLineLayer(mapView: MapView, sourceId: String, layerId: String, points: List<Point>, hexColor: String, dashed: Boolean) {
+        /** In this function, we draw the effective colored line of the layer of the selected Line, this is also used for multi-branching.
+         * @param mapView is the Map Fragment from the Activity Layout.
+         * @param sourceId is the ID of the Line to draw in the MapBox Fragment.
+         * @param layerId is the Layer ID of the current branch selected.
+         * @param points is the List of points to draw into the map.
+         * @param hexColor is the color of the line in hexa notation.
+         * @param dashed is a condition if the branch is now under construction or not.
+         */
+
+        mapView.mapboxMap.getStyle { style ->
+            style.addSource(geoJsonSource(sourceId) { feature(Feature.fromGeometry(LineString.fromLngLats(points))) })
+
+            style.addLayer(lineLayer(layerId, sourceId) {
+                lineColor(hexColor)
+                lineWidth(4.0)
+                lineCap(com.mapbox.maps.extension.style.layers.properties.generated.LineCap.ROUND)
+                lineJoin(com.mapbox.maps.extension.style.layers.properties.generated.LineJoin.ROUND)
+                if (dashed) lineDasharray(listOf(2.0, 2.0))
+            })
+        }
+    }
+
+    interface MapReadyCallback {
+        //*INTERFACE CLASS
+        ///This is the interface to implement into LinesDetailActivity.
+        fun onReady(mapView: MapView)
+    }
+}

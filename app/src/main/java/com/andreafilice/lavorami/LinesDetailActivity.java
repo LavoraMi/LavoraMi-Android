@@ -3,6 +3,8 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
 
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -41,20 +43,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Dash;
-import com.google.android.gms.maps.model.Gap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MapStyleOptions;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PatternItem;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.datatransport.runtime.BuildConfig;
+import com.mapbox.maps.MapView;
+import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.Point;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -79,8 +71,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LinesDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
-    private GoogleMap mMap;
+public class LinesDetailActivity extends AppCompatActivity {
     private String nomeLinea;
     private String tipoDiLinea;
     private View lavoriNested;
@@ -101,6 +92,7 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MapboxHelper.init(getMetaData("MAPBOX_KEY"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines_detail);
 
@@ -160,10 +152,10 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
 
         aggiornaUI();
 
-        findViewById(android.R.id.content).post(() -> {
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-            if (mapFragment != null)
-                mapFragment.getMapAsync(this);
+        MapView mapView = findViewById(R.id.mapView);
+
+        MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {
+            onMapReady(mapViewReady);
         });
 
         int chipStrokeColor = Color.parseColor("#CCCCCC");
@@ -476,191 +468,119 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
         detBadge.getBackground().setTintMode(PorterDuff.Mode.SRC_IN);
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
+    private void onMapReady(MapView mapView) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
-        mMap = googleMap;
-        mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, (isDarkMode()) ? R.raw.map_style : R.raw.map_style_light));
-
-        for (MetroStation stazione : StationDB.getAllStations()) {
-            if (stazione.getLine().trim().equalsIgnoreCase(nomeLinea.trim())) {
-                int colorResId = StationDB.getLineColor(stazione.getLine());
-                int coloreEffettivo = ContextCompat.getColor(this, colorResId);
-
-                if (stazione.getName().equalsIgnoreCase("NO_DRAW"))
-                    continue;
-
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(stazione.getLatitude(), stazione.getLongitude()))
-                        .anchor(0.5f, 0.5f)
-                        .icon(creaPuntino(coloreEffettivo)));
-            }
-        }
-
-        int coloreLinea = (nomeLinea.equalsIgnoreCase("S12")) ? R.color.GRAY : ContextCompat.getColor(this, StationDB.getLineColor(nomeLinea));
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
-
         for (MetroStation s : StationDB.getAllStations()) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
                 tutteLeStazioni.add(s);
         }
 
+        int coloreLinea = ContextCompat.getColor(this, nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(nomeLinea));
+        String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
+
+        List<Feature> markerFeatures = new ArrayList<>();
+        for (MetroStation station : tutteLeStazioni) {
+            if (station.getName().equalsIgnoreCase("NO_DRAW")) continue;
+
+            markerFeatures.add(Feature.fromGeometry(Point.fromLngLat(station.getLongitude(), station.getLatitude())));
+        }
+
+        MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor);
+
+        disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
+
         if (!tutteLeStazioni.isEmpty()) {
-            LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            for (MetroStation s : tutteLeStazioni) {builder.include(new LatLng(s.getLatitude(), s.getLongitude()));}
-            LatLngBounds bounds = builder.build();
+            double latMedia = 0, lngMedia = 0;
 
-            int padding = (tipoDiLinea.contains("Tram") ? 100 : 120);
-            View mapView = getSupportFragmentManager().findFragmentById(R.id.map).getView();
-
-            if (mapView != null && mapView.getViewTreeObserver().isAlive()) {
-                mapView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        mapView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), new GoogleMap.CancelableCallback() {
-                            @Override
-                            public void onFinish() {
-                                double latMedia = 0, lngMedia = 0;
-                                for (MetroStation s : tutteLeStazioni) {
-                                    latMedia += s.getLatitude();
-                                    lngMedia += s.getLongitude();
-                                }
-                                latMedia /= tutteLeStazioni.size();
-                                lngMedia /= tutteLeStazioni.size();
-
-                                float currentZoom = mMap.getCameraPosition().zoom;
-                                float finalZoom = (tipoDiLinea.contains("Tram") ? currentZoom + 0.5f : currentZoom + 1f);
-
-                                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latMedia, lngMedia), finalZoom));
-                            }
-
-                            @Override
-                            public void onCancel() {}
-                        });
-                    }
-                });
+            for (MetroStation station : tutteLeStazioni) {
+                latMedia += station.getLatitude();
+                lngMedia += station.getLongitude();
             }
-        }
-        else {
-            LatLng milano = new LatLng(45.4642, 9.1900);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(milano, 11f));
-        }
 
-        disegnaPolilinea(tutteLeStazioni, coloreLinea);
+            latMedia /= tutteLeStazioni.size();
+            lngMedia /= tutteLeStazioni.size();
+            double zoom = tipoDiLinea.contains("Tram") ? 12.5 : 11.5;
+
+            MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
+        }
 
         layoutMaps.setVisibility(View.VISIBLE);
         layoutMaps.setAlpha(0f);
-
-        mMap.setOnMapLoadedCallback(() -> {
-            layoutMaps.animate().alpha(1f).setDuration(300).start();
-            layoutLoadingMap.setVisibility(View.GONE);
-        });
+        layoutMaps.animate().alpha(1f).setDuration(300).start();
+        layoutLoadingMap.setVisibility(View.GONE);
     }
 
-    private void disegnaPolilinea(List<MetroStation> stazioni, int colore) {
+    private void disegnaPolilinea(MapView mapView, List<MetroStation> stazioni, String hexColor) {
         if (stazioni.size() < 2) return;
 
-        List<PatternItem> pattern = Arrays.asList(new Dash(20f), new Gap(20f));
         Map<String, List<MetroStation>> branchMap = new LinkedHashMap<>();
-
         for (MetroStation station : stazioni) {
-            String branch = station.getBranch();
-
-            if (!branchMap.containsKey(branch)) branchMap.put(branch, new ArrayList<>());
-            branchMap.get(branch).add(station);
+            if (!branchMap.containsKey(station.getBranch())) branchMap.put(station.getBranch(), new ArrayList<>());
+            branchMap.get(station.getBranch()).add(station);
         }
 
         List<MetroStation> mainStations = branchMap.containsKey("Main") ? branchMap.get("Main") : new ArrayList<>();
+        int index = 0;
 
         if (mainStations.size() >= 2) {
-            PolylineOptions opts = new PolylineOptions()
-                    .width(10).color(colore).geodesic(true).zIndex(1000f);
+            List<Point> points = new ArrayList<>();
 
             for (MetroStation station : mainStations)
-                opts.add(new LatLng(station.getLatitude(), station.getLongitude()));
+                points.add(Point.fromLngLat(station.getLongitude(), station.getLatitude()));
 
-            mMap.addPolyline(opts);
+            //*CALLBACK TO HELPER
+            /// CallBack to add the layer with this current data now extracted.
+            MapboxHelper.addLineLayer(mapView, "line-source-main", "line-layer-main", points, hexColor, false);
         }
 
         for (Map.Entry<String, List<MetroStation>> entry : branchMap.entrySet()) {
-            String branchName = entry.getKey();
-            if (branchName.equals("Main")) continue;
+            if (entry.getKey().equals("Main")) continue;
 
-            List<MetroStation> branchStations = entry.getValue();
-            if (branchStations.isEmpty()) continue;
+            List<MetroStation> branch = entry.getValue();
+            if (branch.isEmpty()) continue;
 
-            boolean isPlanned = branchName.toLowerCase().contains("new") || branchName.toLowerCase().contains("nuova");
+            boolean isPlanned = entry.getKey().toLowerCase().contains("new") || entry.getKey().toLowerCase().contains("nuova");
+            List<MetroStation> pool = isPlanned ? new ArrayList<>(stazioni) : new ArrayList<>(mainStations);
 
-            List<MetroStation> searchPool = new ArrayList<>();
-            if (isPlanned) {
-                for (MetroStation station : stazioni) {
-                    if (!station.getBranch().equals(branchName))
-                        searchPool.add(station);
-                }
-            }
-            else
-                searchPool.addAll(mainStations);
+            if (isPlanned) pool.removeIf(s -> s.getBranch().equals(entry.getKey()));
+            if (pool.isEmpty()) continue;
 
-            if (searchPool.isEmpty()) continue;
+            //*GENERATED BY StackOverflow
+            /// This code is taken from StackOverflow forums.
+            MetroStation firstS = branch.get(0), lastS = branch.get(branch.size()-1);
+            double fd = Double.MAX_VALUE, ld = Double.MAX_VALUE;
 
-            MetroStation firstS = branchStations.get(0);
-            MetroStation lastS  = branchStations.get(branchStations.size() - 1);
-            double firstMinDist = Double.MAX_VALUE, lastMinDist = Double.MAX_VALUE;
-
-            for (MetroStation station : searchPool) {
-                double d1 = Math.sqrt(Math.pow(firstS.getLatitude() - station.getLatitude(),  2) + Math.pow(firstS.getLongitude() - station.getLongitude(), 2));
-                double d2 = Math.sqrt(Math.pow(lastS.getLatitude() - station.getLatitude(),  2) + Math.pow(lastS.getLongitude() - station.getLongitude(), 2));
-
-                if (d1 < firstMinDist) firstMinDist = d1;
-                if (d2 < lastMinDist)  lastMinDist  = d2;
+            for (MetroStation station : pool) {
+                double d1 = Math.hypot(firstS.getLatitude() - station.getLatitude(), firstS.getLongitude() - station.getLongitude());
+                double d2 = Math.hypot(lastS.getLatitude() - station.getLatitude(), lastS.getLongitude() - station.getLongitude());
+                if (d1 < fd) fd = d1;
+                if (d2 < ld) ld = d2;
             }
 
-            List<MetroStation> oriented = new ArrayList<>(branchStations);
-            if (lastMinDist < firstMinDist)
-                Collections.reverse(oriented);
+            List<MetroStation> oriented = new ArrayList<>(branch);
+            if (ld < fd) Collections.reverse(oriented);
 
-            MetroStation junctionEnd = oriented.get(0);
             MetroStation junction = null;
-            double minDist = Double.MAX_VALUE;
-
-            for (MetroStation p : searchPool) {
-                double d = Math.sqrt(Math.pow(junctionEnd.getLatitude()  - p.getLatitude(),  2) + Math.pow(junctionEnd.getLongitude() - p.getLongitude(), 2));
-                if (d < minDist) { minDist = d; junction = p; }
+            double md = Double.MAX_VALUE;
+            for (MetroStation p : pool) {
+                double d = Math.hypot(oriented.get(0).getLatitude()-p.getLatitude(), oriented.get(0).getLongitude()-p.getLongitude());
+                if (d < md) { md = d; junction = p; }
             }
 
             if (junction == null) continue;
 
-            PolylineOptions opts = new PolylineOptions()
-                    .width(10).color(colore).geodesic(true).zIndex(1000f);
-
-            if (isPlanned) opts.pattern(pattern);
-            opts.add(new LatLng(junction.getLatitude(), junction.getLongitude()));
-
+            List<Point> points = new ArrayList<>();
+            points.add(Point.fromLngLat(junction.getLongitude(), junction.getLatitude()));
             for (MetroStation station : oriented)
-                opts.add(new LatLng(station.getLatitude(), station.getLongitude()));
+                points.add(Point.fromLngLat(station.getLongitude(), station.getLatitude()));
 
-            mMap.addPolyline(opts);
+            index++;
+            
+            MapboxHelper.addLineLayer(mapView, "line-source-branch-" + index, "line-layer-branch-" + index, points, hexColor, isPlanned);
         }
-    }
-
-    private BitmapDescriptor creaPuntino(int colore) {
-        int size = 20;
-        Bitmap bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bmp);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-
-        paint.setColor(Color.WHITE);
-        canvas.drawCircle(size/2f, size/2f, size/2f, paint);
-        paint.setColor(colore);
-        canvas.drawCircle(size/2f, size/2f, (size/2f) - 4, paint);
-
-        return BitmapDescriptorFactory.fromBitmap(bmp);
     }
 
     private void caricaEventiFiltrati() {
@@ -1445,6 +1365,25 @@ public class LinesDetailActivity extends AppCompatActivity implements OnMapReady
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+    }
+
+    private String getMetaData(String key){
+        /// This function get from our AndroidManifest.xml the values of .env files.
+        /// @PARAMETER
+        /// String key is the actual key of the value that we need to grab from the manifest file.
+
+        try {
+            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = info.metaData;
+
+            if(bundle != null)
+                return bundle.getString(key);
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
+        }
+        return null;
     }
 
     private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ViewHolder> {
