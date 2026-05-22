@@ -98,8 +98,8 @@
     <string name="lineWorksChip">Lavori</string>
     <string name="interchangesChip">Interscambi</string>
     <string name="noWorksOnThisLine">Non ci sono lavori su questa linea.</string>
-    <string name="loadingMapDetails">Caricamento Mappa</string>
-    <string name="noInternetConnectionError">Nessuna connessione ad Internet.</string>
+    <string name="loadingMapDetails">Caricamento</string>
+    <string name="noInternetConnectionError">Nessuna connessione a Internet.</string>
     <string name="noInterchanges">Nessun interscambio con questa linea.</string>
     <string name="averageWaitingTimeTitle">"Frequenza media: "</string>
     <string name="currentWorksTitle">attuali</string>

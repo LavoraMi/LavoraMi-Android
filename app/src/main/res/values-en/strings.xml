@@ -99,7 +99,7 @@
     <string name="lineWorksChip">Works</string>
     <string name="interchangesChip">Changes</string>
     <string name="noWorksOnThisLine">There are no works on this line.</string>
-    <string name="loadingMapDetails">Loading Map</string>
+    <string name="loadingMapDetails">Loading</string>
     <string name="noInternetConnectionError">No internet connection.</string>
     <string name="noInterchanges">No changes with this line.</string>
     <string name="averageWaitingTimeTitle">"Average frequency: "</string>
