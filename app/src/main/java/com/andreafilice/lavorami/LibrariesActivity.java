@@ -163,14 +163,6 @@ public class LibrariesActivity extends AppCompatActivity {
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
-                        "Google Play Services Maps",
-                        "20.0.0",
-                        "Google APIs Terms of Service",
-                        "Copyright Google LLC",
-                        "Use of the Google Play Services Maps SDK is subject to the Google APIs Terms of Service.\n" +
-                                "See https://developers.google.com/maps/terms for details."
-                ),
-                new LibraryModel(
                         "Google Play Services Auth",
                         "21.5.1",
                         "Google APIs Terms of Service",
@@ -222,7 +214,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "JUnit",
-                        "4.13.2",
+                        "6.1.0",
                         "Eclipse Public License 1.0",
                         "Copyright (c) 2000-2021 JUnit contributors",
                         "This program and the accompanying materials are made available under the\n" +
@@ -231,7 +223,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "AndroidX Test JUnit",
-                        "1.3.0",
+                        "2.0.1",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         APACHE_LICENSE_TEXT
@@ -242,6 +234,13 @@ public class LibrariesActivity extends AppCompatActivity {
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Mapbox Maps SDK for Android",
+                        "11.24.2",
+                        "Mapbox Terms of Service",
+                        "Copyright (c) Mapbox",
+                        "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
                 ),
         };
     }
