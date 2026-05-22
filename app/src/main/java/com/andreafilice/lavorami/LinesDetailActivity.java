@@ -623,8 +623,18 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 TextView desc = card.findViewById(R.id.txtDescription);
+                ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
                 if (titolo != null) titolo.setText(evento.getTitle());
                 if (desc != null) desc.setText(evento.getDetails());
+                if (desc != null) desc.setVisibility(View.GONE);
+                if(openCloseIcon!=null) openCloseIcon.setImageResource(R.drawable.ic_down);
+
+                card.setOnClickListener(v -> {
+                    boolean isExpanded = desc.getVisibility() == View.VISIBLE;
+                    desc.setVisibility((isExpanded) ? View.GONE: View.VISIBLE);
+                    openCloseIcon.animate().rotation(isExpanded ? 0f : 180f).setDuration(250).start();
+
+                });
 
                 TextView txtInizio = card.findViewById(R.id.txtStartDate);
                 TextView txtFine = card.findViewById(R.id.txtEndDate);
