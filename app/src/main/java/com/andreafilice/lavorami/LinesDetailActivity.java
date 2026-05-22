@@ -485,7 +485,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         for (MetroStation station : tutteLeStazioni) {
             if (station.getName().equalsIgnoreCase("NO_DRAW")) continue;
 
-            markerFeatures.add(Feature.fromGeometry(Point.fromLngLat(station.getLongitude(), station.getLatitude())));
+            markerFeatures.add(MapboxHelper.makeStationFeature(station.getLatitude(), station.getLongitude(), station.getName()));
         }
 
         MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor);
@@ -578,7 +578,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 points.add(Point.fromLngLat(station.getLongitude(), station.getLatitude()));
 
             index++;
-            
+
             MapboxHelper.addLineLayer(mapView, "line-source-branch-" + index, "line-layer-branch-" + index, points, hexColor, isPlanned);
         }
     }

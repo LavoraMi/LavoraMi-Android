@@ -11,14 +11,19 @@ import com.mapbox.maps.extension.style.layers.generated.circleLayer
 import com.mapbox.maps.extension.style.layers.generated.lineLayer
 import com.mapbox.maps.extension.style.sources.addSource
 import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
+import com.mapbox.maps.extension.style.layers.generated.symbolLayer
+import com.mapbox.maps.extension.style.layers.properties.generated.TextAnchor
+import com.mapbox.maps.extension.style.expressions.dsl.generated.get
+import com.mapbox.maps.extension.style.expressions.dsl.generated.literal
 
 object MapboxHelper {
-
     //*INITIALIZE MAP
     /// In this section, we initialize the values of the MapBox API with the LavoraMi token.
     @JvmStatic
     fun init(token: String) { com.mapbox.common.MapboxOptions.accessToken = token }
 
+    //*API-INTERACTION METHODS
+    /// This methods are used to interact with MapBox API, developed for Kotlin language
     @JvmStatic
     fun loadMap(mapView: MapView, darkMode: Boolean, onReady: MapReadyCallback) {
         /** In this function, we get the current mapView element (from XML file) and apply some changes, base on User Preferences.
@@ -61,12 +66,37 @@ object MapboxHelper {
             style.addSource(geoJsonSource("marker-source") { featureCollection(FeatureCollection.fromFeatures(features)) })
 
             style.addLayer(circleLayer("marker-layer", "marker-source") {
-                circleColor(hexColor)
+                circleColor(literal(hexColor))
                 circleRadius(6.0)
-                circleStrokeColor("#FFFFFF")
+                circleStrokeColor(literal("#FFFFFF"))
                 circleStrokeWidth(2.0)
             })
+
+            style.addLayer(symbolLayer("marker-label-layer", "marker-source") {
+                textField(get("name"))
+                textSize(11.0)
+                textColor(literal("#FFFFFF"))
+                textHaloWidth(1.5)
+                textOffset(listOf(0.0, 1.5))
+                textAnchor(TextAnchor.TOP)
+                textAllowOverlap(false)
+                textIgnorePlacement(false)
+            })
         }
+    }
+
+    @JvmStatic
+    fun makeStationFeature(latitude: Double, longitude: Double, name: String): Feature {
+        /** This function gets the name of the station and draw the point with that Text.
+         * @param latitude is the latitude of the point.
+         * @param longitude is the longitude of the point.
+         * @param name is the name of the station to display.
+         */
+
+        val props = com.google.gson.JsonObject()
+        props.addProperty("name", name)
+
+        return Feature.fromGeometry(Point.fromLngLat(longitude, latitude), props)
     }
 
     @JvmStatic
@@ -84,10 +114,11 @@ object MapboxHelper {
             style.addSource(geoJsonSource(sourceId) { feature(Feature.fromGeometry(LineString.fromLngLats(points))) })
 
             style.addLayer(lineLayer(layerId, sourceId) {
-                lineColor(hexColor)
+                lineColor(literal(hexColor))
                 lineWidth(4.0)
                 lineCap(com.mapbox.maps.extension.style.layers.properties.generated.LineCap.ROUND)
                 lineJoin(com.mapbox.maps.extension.style.layers.properties.generated.LineJoin.ROUND)
+
                 if (dashed) lineDasharray(listOf(2.0, 2.0))
             })
         }
