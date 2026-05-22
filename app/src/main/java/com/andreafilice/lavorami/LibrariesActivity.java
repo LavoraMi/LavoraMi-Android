@@ -65,55 +65,6 @@ public class LibrariesActivity extends AppCompatActivity {
     private LibraryModel[] buildLibraries() {
         return new LibraryModel[]{
                 new LibraryModel(
-                        "Retrofit",
-                        "3.0.0",
-                        "Apache License 2.0",
-                        "Copyright 2013 Square, Inc.",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "Retrofit Converter Gson",
-                        "3.0.0",
-                        "Apache License 2.0",
-                        "Copyright 2013 Square, Inc.",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "OkHttp",
-                        "5.3.2",
-                        "Apache License 2.0",
-                        "Copyright 2019 Square, Inc.",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "OkHttp Logging Interceptor",
-                        "5.3.2",
-                        "Apache License 2.0",
-                        "Copyright 2019 Square, Inc.",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "Gson",
-                        "2.14.0",
-                        "Apache License 2.0",
-                        "Copyright 2008 Google Inc.",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "AndroidX AppCompat",
-                        "1.7.1",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "Material Components for Android",
-                        "1.14.0",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
                         "AndroidX Activity",
                         "1.14.0",
                         "Apache License 2.0",
@@ -121,29 +72,8 @@ public class LibrariesActivity extends AppCompatActivity {
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
-                        "AndroidX ConstraintLayout",
-                        "2.2.1",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "AndroidX Fragment",
-                        "1.8.9",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "AndroidX RecyclerView",
-                        "1.4.0",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "AndroidX CardView",
-                        "1.0.0",
+                        "AndroidX AppCompat",
+                        "1.7.1",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         APACHE_LICENSE_TEXT
@@ -163,12 +93,60 @@ public class LibrariesActivity extends AppCompatActivity {
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
-                        "Google Play Services Auth",
-                        "21.5.1",
-                        "Google APIs Terms of Service",
-                        "Copyright Google LLC",
-                        "Use of the Google Play Services Auth SDK is subject to the Google APIs Terms of Service.\n" +
-                                "See https://developers.google.com/terms for details."
+                        "AndroidX ConstraintLayout",
+                        "2.2.1",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Material Components for Android",
+                        "1.14.0",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "AndroidX CardView",
+                        "1.0.0",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "AndroidX Fragment",
+                        "1.8.9",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "AndroidX RecyclerView",
+                        "1.4.0",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "AndroidX Test JUnit",
+                        "2.0.1",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "dotenv-java",
+                        "3.2.0",
+                        "Apache License 2.0",
+                        "Copyright (c) Carmine DiMascio OSS",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Espresso",
+                        "3.7.0",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase BOM",
@@ -182,6 +160,65 @@ public class LibrariesActivity extends AppCompatActivity {
                         "34.13.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Gson",
+                        "2.14.0",
+                        "Apache License 2.0",
+                        "Copyright 2008 Google Inc.",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Google Play Services Auth",
+                        "21.5.1",
+                        "Google APIs Terms of Service",
+                        "Copyright Google LLC",
+                        "Use of the Google Play Services Auth SDK is subject to the Google APIs Terms of Service.\n" +
+                                "See https://developers.google.com/terms for details."
+                ),
+                new LibraryModel(
+                        "JUnit",
+                        "6.1.0",
+                        "Eclipse Public License 1.0",
+                        "Copyright (c) 2000-2021 JUnit contributors",
+                        "This program and the accompanying materials are made available under the\n" +
+                                "terms of the Eclipse Public License 1.0 which is available at\n" +
+                                "https://www.eclipse.org/legal/epl-v10.html"
+                ),
+                new LibraryModel(
+                        "Mapbox Maps SDK for Android",
+                        "11.24.2",
+                        "Mapbox Terms of Service",
+                        "Copyright (c) Mapbox",
+                        "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
+                ),
+                new LibraryModel(
+                        "OkHttp",
+                        "5.3.2",
+                        "Apache License 2.0",
+                        "Copyright 2019 Square, Inc.",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "OkHttp Logging Interceptor",
+                        "5.3.2",
+                        "Apache License 2.0",
+                        "Copyright 2019 Square, Inc.",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Retrofit",
+                        "3.0.0",
+                        "Apache License 2.0",
+                        "Copyright 2013 Square, Inc.",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Retrofit Converter Gson",
+                        "3.0.0",
+                        "Apache License 2.0",
+                        "Copyright 2013 Square, Inc.",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
@@ -204,43 +241,6 @@ public class LibrariesActivity extends AppCompatActivity {
                                 "AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n" +
                                 "IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n" +
                                 "ARE DISCLAIMED."
-                ),
-                new LibraryModel(
-                        "dotenv-java",
-                        "3.2.0",
-                        "Apache License 2.0",
-                        "Copyright (c) Carmine DiMascio OSS",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "JUnit",
-                        "6.1.0",
-                        "Eclipse Public License 1.0",
-                        "Copyright (c) 2000-2021 JUnit contributors",
-                        "This program and the accompanying materials are made available under the\n" +
-                                "terms of the Eclipse Public License 1.0 which is available at\n" +
-                                "https://www.eclipse.org/legal/epl-v10.html"
-                ),
-                new LibraryModel(
-                        "AndroidX Test JUnit",
-                        "2.0.1",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "Espresso",
-                        "3.7.0",
-                        "Apache License 2.0",
-                        "Copyright The Android Open Source Project",
-                        APACHE_LICENSE_TEXT
-                ),
-                new LibraryModel(
-                        "Mapbox Maps SDK for Android",
-                        "11.24.2",
-                        "Mapbox Terms of Service",
-                        "Copyright (c) Mapbox",
-                        "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
                 ),
         };
     }
