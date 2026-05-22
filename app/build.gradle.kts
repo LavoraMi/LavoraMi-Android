@@ -4,6 +4,7 @@ import java.io.File
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.android.junit5) apply false
     id("org.jetbrains.kotlin.android")
 }
 
@@ -69,7 +70,9 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.androidx.biometric)
     implementation(libs.cardview)
-    testImplementation(libs.junit)
+    testImplementation(libs.junit.jupiter.api)
+    testRuntimeOnly(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.params)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.gson)
