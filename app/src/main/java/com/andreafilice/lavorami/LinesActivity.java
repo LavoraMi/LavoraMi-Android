@@ -599,7 +599,7 @@ public class LinesActivity extends AppCompatActivity {
         /// String nameLine is the name of the line, also called "title".
         /// String description is the Company of the line, can be for example: "STAV".
 
-        description=(description.contains("Suburban")) ? "Suburbano" : nameLine;
+        description=(description.contains("Suburban")) ? "Suburbano" : description;
         String combinedEntry = nameLine + "|" + description;
         recentLinesSet.remove(combinedEntry);
 
