@@ -502,7 +502,7 @@ public class LinesActivity extends AppCompatActivity {
 
     private void isSavedLine(String label, ImageButton buttonAddLine, LinearLayout container, String description) {
 
-        Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
+        Animation scaleDownUp = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
 
         if(linesSaved.contains(label)) {
             buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
@@ -512,7 +512,7 @@ public class LinesActivity extends AppCompatActivity {
                 linesSaved.remove(label);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
 
-                buttonAddLine.startAnimation(scaleUpDown);
+                buttonAddLine.startAnimation(scaleDownUp);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
 
@@ -529,7 +529,7 @@ public class LinesActivity extends AppCompatActivity {
                 linesSaved.add(label);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
 
-                buttonAddLine.startAnimation(scaleUpDown);
+                buttonAddLine.startAnimation(scaleDownUp);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart);
 

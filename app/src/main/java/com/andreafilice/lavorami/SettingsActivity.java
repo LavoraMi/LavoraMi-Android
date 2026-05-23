@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -336,10 +338,11 @@ public class SettingsActivity extends AppCompatActivity {
     private void toggleFavorite(ImageView icon, String lineCode) {
         //TODO: Comment better this code.
         Integer currentTag = (Integer) icon.getTag();
-
+        Animation scaleDownUp = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
         int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
         int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
 
+        icon.startAnimation(scaleDownUp);
         icon.setImageResource(newRes);
         icon.setTag(newRes);
 
