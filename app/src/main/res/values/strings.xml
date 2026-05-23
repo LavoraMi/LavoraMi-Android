@@ -277,7 +277,7 @@
     <string name="confirmOptionalDownload">Conferma Download</string>
     <string name="downloadAssets">Download degli elementi necessari...</string>
     <string name="errorTranslating">Si è verificato un errore durante la traduzione.</string>
-    <string name="choseYourLineText">Salva fra i preferiti la linea che usi ogni giorno e quando ci sarà un lavoro su di essa, sarai già aggiornato.</string>
+    <string name="choseYourLineText">Salva fra i preferiti la linea che usi ogni giorno così da vederla subito nella sezione \"Le tue linee\"  e, quando ci sarà un lavoro su di essa, sarai già aggiornato.</string>
     <string name="viewInterchanges">Visualizza gli Interscambi</string>
     <string name="viewInterchangesText">Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio.</string>
     <string name="worksiteStop">Fermata Cantiere</string>
@@ -349,4 +349,6 @@
     <string name="latestVersionSupported">"Ultima versione supportata: "</string>
     <string name="updateNow">Aggiorna ora</string>
     <string name="starLines">Linee STAR</string>
+    <string name="choseOperator">Scegli le tue compagnie</string>
+    <string name="choseOperatorText">Scegli i tuoi operatori di transporti più usati nelle ipostazioni e, aggiungendoli ai preferiti, riceverai subito i lavori di quell\'operatore.</string>
 </resources>

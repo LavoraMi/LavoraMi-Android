@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -59,19 +60,31 @@ public class HowAppWorks extends AppCompatActivity {
         //*ANIMATIONS
         /// In this section of the code, we set up some animations in this screen.
         ImageView favIcon = findViewById(R.id.iconFavorite);
-        Animation scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
-        Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        ImageButton heartIcon = findViewById(R.id.buttonAddLine);
+        Animation scaleDownUp = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
+
+        final boolean[] isFilled = {false};
 
         starAnimation = new Runnable() {
             @Override
             public void run() {
-                favIcon.setImageResource(R.drawable.ic_star_empty);
-                favIcon.startAnimation(scaleDown);
-                handler.postDelayed(() -> {
-                        favIcon.startAnimation(scaleUp);
-                        favIcon.setImageResource(R.drawable.ic_star_fill);
-                handler.postDelayed(this, 3000);
-                },500);
+                isFilled[0] = !isFilled[0];
+
+
+                if (isFilled[0]) {
+                    heartIcon.setImageResource(R.drawable.ic_heart);
+                    heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
+                    favIcon.setImageResource(R.drawable.ic_star_fill);
+                } else {
+                    heartIcon.setImageResource(R.drawable.ic_heart_empty);
+                    heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+                    favIcon.setImageResource(R.drawable.ic_star_empty);
+                }
+
+                heartIcon.startAnimation(scaleDownUp);
+                favIcon.startAnimation(scaleDownUp);
+                handler.postDelayed(this, 2000);
+
             }
         };
         handler.post(starAnimation);

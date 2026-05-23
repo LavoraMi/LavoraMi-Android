@@ -79,7 +79,7 @@
                 android:visibility="gone"/>
 
             <TextView
-                android:id="@+id/badgeM2"
+                android:id="@+id/badgeM1"
                 android:layout_width="40dp"
                 android:layout_height="26dp"
                 android:background="@drawable/bg_badge_line_shimmer"
