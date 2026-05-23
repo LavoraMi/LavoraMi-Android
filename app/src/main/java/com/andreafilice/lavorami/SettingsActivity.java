@@ -385,7 +385,6 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                     DataManager.saveBoolData(DataKeys.KEY_SHOW_BANNERS, true);
                     DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true);
-                    DataManager.saveBoolData(DataKeys.KEY_SHOW_DETAILS, true);
                     DataManager.saveBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
                     DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
                     DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");

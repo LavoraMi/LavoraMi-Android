@@ -48,7 +48,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     static Context context;
     private List<EventDescriptor> eventList;
     private final String langCode;
-    private final boolean isShowDetail;
 
     public WorkAdapter(Context context, List<EventDescriptor> eventList) {
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
@@ -56,7 +55,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.context = context;
         this.eventList = (eventList!=null) ? eventList : new ArrayList<>();
         this.langCode = savedLang.contains("English") ? "en" : "it";
-        this.isShowDetail = DataManager.getBoolData(DataKeys.KEY_SHOW_DETAILS, true);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
