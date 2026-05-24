@@ -3,7 +3,11 @@ package com.andreafilice.lavorami;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.os.VibratorManager;
 
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
@@ -42,5 +46,23 @@ public class ActivityUtils {
 
         CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(context, Uri.parse(url));
+    }
+
+    public static void triggerFeedback(Context context) {
+        /// This function trigger the Haptic Feedback of the phone.
+
+        Vibrator vibrator;
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+            VibratorManager manager = (VibratorManager) context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+            vibrator = manager.getDefaultVibrator();
+        }
+        else
+            vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+        else
+            vibrator.vibrate(20);
     }
 }

@@ -261,10 +261,16 @@ public class MainActivity extends AppCompatActivity {
 
         //*NAVBAR
         ImageButton btnLines = findViewById(R.id.linesButton);
-        btnLines.setOnClickListener(v -> {ActivityUtils.changeActivity(this, LinesActivity.class);});
+        btnLines.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, LinesActivity.class);
+        });
 
         ImageButton btnSettings = findViewById(R.id.settingsButton);
-        btnSettings.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
+        btnSettings.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, SettingsActivity.class);
+        });
 
         //*REFRESH BUTTON
         Button btnRefreshOnError = findViewById(R.id.btnRefreshOnError);
@@ -435,7 +441,8 @@ public class MainActivity extends AppCompatActivity {
                         definitelyClosedSavedLinesHint = true;
                         DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
-                    } else {
+                    }
+                    else {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
                         findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,20*densita);
@@ -454,6 +461,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (selectedChip != null) {
                         String categoria = selectedChip.getText().toString().toLowerCase().trim();
+                        ActivityUtils.triggerFeedback(this);
                         applicaFiltroCategoria(categoria);
                     }
                 }
@@ -788,6 +796,7 @@ public class MainActivity extends AppCompatActivity {
             strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
 
             strikeOpenClose.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
                 findViewById(R.id.strikeDescription).setVisibility((strikeBannerClosed) ? View.VISIBLE : View.GONE);
                 strikeBannerClosed = !strikeBannerClosed;
                 closeBtn.animate().rotation(!strikeBannerClosed ? 0f : -180f).setDuration(250).start();

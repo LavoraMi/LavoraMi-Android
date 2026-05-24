@@ -29,7 +29,7 @@ android {
         minSdk = 24
         targetSdk = 36
         versionCode = 36
-        versionName = "1.1.7"
+        versionName = "1.1.8"
         var buildNumber = "24052026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")

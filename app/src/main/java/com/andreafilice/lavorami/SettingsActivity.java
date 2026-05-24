@@ -55,10 +55,16 @@ public class SettingsActivity extends AppCompatActivity {
 
         //*NAVBAR
         ImageButton btnLines = (ImageButton) findViewById(R.id.linesButton);
-        btnLines.setOnClickListener(v -> {changeActivity(this, LinesActivity.class);});
+        btnLines.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            changeActivity(this, LinesActivity.class);
+        });
 
         ImageButton btnSettings = (ImageButton) findViewById(R.id.homeButton);
-        btnSettings.setOnClickListener(v -> {changeActivity(this, MainActivity.class);});
+        btnSettings.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            changeActivity(this, MainActivity.class);
+        });
 
         //*SETTINGS BUTTONS
         RelativeLayout accountBtn = findViewById(R.id.btnAccount);
@@ -88,6 +94,7 @@ public class SettingsActivity extends AppCompatActivity {
             LinearLayout trenordLayout = findViewById(R.id.disclosureContentTrenord);
             ImageView arrowDisclosure = findViewById(R.id.disclosureArrowTrenord);
 
+            ActivityUtils.triggerFeedback(this);
             trenordLayout.setVisibility((trenordLayout.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
             arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
         });
@@ -97,6 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
             LinearLayout atmLayout = findViewById(R.id.disclosureContentAtm);
             ImageView arrowDisclosure = findViewById(R.id.disclosureArrowAtm);
 
+            ActivityUtils.triggerFeedback(this);
             atmLayout.setVisibility((atmLayout.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
             arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
         });
@@ -163,6 +171,7 @@ public class SettingsActivity extends AppCompatActivity {
             String fullVersionText = getString(R.string.appVersionFull);
             boolean isFullVersion = currentText.equals(fullVersionText);
 
+            ActivityUtils.triggerFeedback(this);
             appVersionText.setText((isFullVersion) ? R.string.app_version : R.string.appVersionFull);
         });
 
@@ -330,7 +339,10 @@ public class SettingsActivity extends AppCompatActivity {
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;
 
-            icons[i].setOnClickListener(v -> toggleFavorite(icons[finalI], lineCodes[finalI]));
+            icons[i].setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
+                toggleFavorite(icons[finalI], lineCodes[finalI]);
+            });
             layouts[i].setOnClickListener(v -> toggleFavorite(icons[finalI], lineCodes[finalI]));
         }
     }

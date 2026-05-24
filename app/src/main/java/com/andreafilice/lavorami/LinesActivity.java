@@ -283,10 +283,16 @@ public class LinesActivity extends AppCompatActivity {
 
         //*NAVBAR
         ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton);
-        btnHome.setOnClickListener(v -> {ActivityUtils.changeActivity(this, MainActivity.class);});
+        btnHome.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, MainActivity.class);
+        });
 
         ImageButton btnSettings = (ImageButton) findViewById(R.id.settingsButton);
-        btnSettings.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
+        btnSettings.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, SettingsActivity.class);
+        });
     }
 
     @Override
