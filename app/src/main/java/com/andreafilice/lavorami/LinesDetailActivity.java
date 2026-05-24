@@ -6,10 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -19,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
@@ -43,7 +39,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.datatransport.runtime.BuildConfig;
 import com.mapbox.maps.MapView;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
@@ -52,24 +47,20 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
 
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesDetailActivity extends AppCompatActivity {
     private String nomeLinea;
@@ -89,6 +80,9 @@ public class LinesDetailActivity extends AppCompatActivity {
     private String selectedStopId;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable arriviRunnable;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final Handler interchangeHandler = new Handler(Looper.getMainLooper());
+    private volatile boolean interscambiPreloaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -275,6 +269,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
         fetchDeviations();
+        preloadInterscambi();
 
         //*SAVE TO "YOUR LINES"
         /// In this section we save the line currently selected to the Array of "your lines".
@@ -724,7 +719,90 @@ public class LinesDetailActivity extends AppCompatActivity {
         emptyView.setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
     }
 
+    private void preloadInterscambi() {
+        executor.execute(() -> {
+            String searchTag = nomeLinea.trim().toUpperCase();
+            List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram")
+                    ? StationDB.getInterchangesTrams()
+                    : StationDB.getInterchanges();
+
+            List<InterchangeInfo> matched = new ArrayList<>();
+            for (InterchangeInfo info : interchanges) {
+                if (info.getLines() == null) continue;
+                for (String line : info.getLines()) {
+                    if (line != null && line.trim().toUpperCase().equals(searchTag)) {
+                        matched.add(info);
+                        break;
+                    }
+                }
+            }
+
+            interchangeHandler.post(() -> {
+                LinearLayout container = findViewById(R.id.containerInterscambi);
+                if (container == null) return;
+                container.removeAllViews();
+
+                // Costruiamo tutte le chip PRIMA di aggiungere ogni card al container
+                List<View> cards = new ArrayList<>();
+
+                for (InterchangeInfo evento : matched) {
+                    View card = getLayoutInflater().inflate(R.layout.item_interchange, container, false);
+
+                    ImageView icona = card.findViewById(R.id.iconTransport);
+                    if (icona != null) {
+                        icona.setImageResource(evento.getCardImageID());
+                        icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                    }
+
+                    TextView titolo = card.findViewById(R.id.txtTitle);
+                    TextView desc = card.findViewById(R.id.txtLineCode);
+                    TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
+
+                    if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+                    if (titolo != null)
+                        titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
+                    if (desc != null) desc.setText(nomeLinea);
+
+                    int color = ContextCompat.getColor(this, R.color.text_primary);
+                    ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
+
+                    // Chip completamente pronte PRIMA che la card entri nel container
+                    ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                    if (chipGroup != null && evento.getLines() != null) {
+                        chipGroup.removeAllViews();
+                        for (String lineName : evento.getLines())
+                            chipGroup.addView(createChip(lineName));
+                    }
+
+                    cards.add(card);
+                }
+
+                // Un solo batch di addView: il container misura tutto in un colpo solo
+                for (View card : cards) container.addView(card);
+
+                interscambiWrapper.setVisibility(View.GONE);
+                interscambiNested.setVisibility(View.GONE);
+                interscambiPreloaded = true;
+            });
+        });
+    }
+
     private void caricaInterscambiLinee() {
+        if (interscambiPreloaded) {
+            LinearLayout container = findViewById(R.id.containerInterscambi);
+            boolean hasChildren = container != null && container.getChildCount() > 0;
+            interscambiWrapper.setVisibility(hasChildren ? View.VISIBLE : View.GONE);
+            interscambiNested.setVisibility(hasChildren ? View.VISIBLE : View.GONE);
+
+            TextView emptyView = findViewById(R.id.emptyView);
+            if (emptyView != null) {
+                emptyView.setVisibility(hasChildren ? View.GONE : View.VISIBLE);
+                emptyView.setText(ContextCompat.getString(this, R.string.noInterchanges));
+            }
+            return;
+        }
+
+        ///Fallback: se il preload non è ancora terminato , carica normalmente
         LinearLayout container = findViewById(R.id.containerInterscambi);
         View wrapper = findViewById(R.id.interscambiWrapper);
         TextView emptyView = findViewById(R.id.emptyView);
@@ -1375,6 +1453,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
+        executor.shutdownNow();
+        interchangeHandler.removeCallbacksAndMessages(null);
     }
 
     private String getMetaData(String key){
