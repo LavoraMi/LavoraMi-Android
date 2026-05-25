@@ -119,7 +119,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             boolean isExpanded = itemHolder.descriptionText.getVisibility() == View.VISIBLE;
             itemHolder.descriptionText.setVisibility((isExpanded) ? View.GONE: View.VISIBLE);
             itemHolder.openCloseIcon.animate().rotation(isExpanded ? 0f : 180f).setDuration(250).start();
-
+            ActivityUtils.triggerFeedback(context);
         });
 
         int progressPercentage = calcolaPercentuale(item.getStartDate(), item.getEndDate());

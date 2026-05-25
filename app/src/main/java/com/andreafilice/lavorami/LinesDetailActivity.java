@@ -164,6 +164,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipArrivi.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
 
         chipMappa.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.GONE);
@@ -185,6 +186,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
 
         chipLavori.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
             containerInterscambi.setVisibility(View.GONE);
@@ -215,6 +217,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
 
         chipInterscambi.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.VISIBLE);
@@ -246,6 +249,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
 
         chipArrivi.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.GONE);
@@ -628,7 +632,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     boolean isExpanded = desc.getVisibility() == View.VISIBLE;
                     desc.setVisibility((isExpanded) ? View.GONE: View.VISIBLE);
                     openCloseIcon.animate().rotation(isExpanded ? 0f : 180f).setDuration(250).start();
-
+                    ActivityUtils.triggerFeedback(this);
                 });
 
                 TextView txtInizio = card.findViewById(R.id.txtStartDate);

@@ -331,6 +331,7 @@ public class LinesActivity extends AppCompatActivity {
         if(!recentLinesSet.isEmpty()){
             deleteIconRecent.setVisibility(View.VISIBLE);
             deleteIconRecent.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.areYouSurePopUp)
                         .setMessage(R.string.popUpDeleteRecentDeps)

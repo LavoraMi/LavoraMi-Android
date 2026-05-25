@@ -106,6 +106,7 @@ public class FilterSelection extends AppCompatActivity {
                 setCheckImage(filterIcons);
 
                 DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, selected);
+                ActivityUtils.triggerFeedback(this);
                 finish();
             });
         }

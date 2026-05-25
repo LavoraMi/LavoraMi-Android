@@ -180,6 +180,7 @@ public class SettingsActivity extends AppCompatActivity {
             String fullVersionText = getString(R.string.appVersionFull);
             boolean isFullVersion = currentText.equals(fullVersionText);
 
+            ActivityUtils.triggerFeedback(this);
             appVersionText.setText((isFullVersion) ? R.string.app_version : R.string.appVersionFull);
         });
 
@@ -209,6 +210,7 @@ public class SettingsActivity extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_SUBJECT, "LavoraMi");
             intent.putExtra(Intent.EXTRA_TEXT, ContextCompat.getString(this, R.string.shareContentLavoraMi) + link);
 
+            ActivityUtils.triggerFeedback(this);
             startActivity(Intent.createChooser(intent, ContextCompat.getString(this, R.string.shareLavoraMi)));
         });
 
@@ -379,6 +381,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void resetSettings(ImageView[] images, String[] lines){
+        ActivityUtils.triggerFeedback(this);
         new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.areYouSurePopUp))
                 .setMessage(getString(R.string.resetSettingsPopUp))

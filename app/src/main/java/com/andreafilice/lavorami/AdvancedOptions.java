@@ -134,6 +134,7 @@ public class AdvancedOptions extends AppCompatActivity {
         /// In this section of the code, we set-up the code to delete the Cache Memory.
         CardView btnCacheMemory = findViewById(R.id.btnCacheMemory);
         btnCacheMemory.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
             new AlertDialog.Builder(this)
                     .setTitle(R.string.areYouSurePopUp)
                     .setMessage(R.string.cacheMemoryPopUpDeps)
@@ -167,6 +168,7 @@ public class AdvancedOptions extends AppCompatActivity {
         //*SAVE DATAS
         /// Save the value from the Switch Checked status to DataManager.
         currentSwitch.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
             if(dataToSave == DataKeys.KEY_REQUIRE_BIOMETRICS)
                 showBiometricPrompt(currentSwitch);
             else {
