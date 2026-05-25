@@ -387,6 +387,23 @@
                 app:iconTint="#FF5252"
                 app:iconGravity="textStart" />
 
+            <View
+                android:layout_width="150dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/work_sans_medium"
+                android:text="@string/infoAccount"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLibraries"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -405,23 +422,6 @@
                 app:iconPadding="12dp"
                 app:iconTint="#FF5252"
                 app:iconGravity="textStart" />
-
-            <View
-                android:layout_width="150dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/work_sans_medium"
-                android:text="@string/infoAccount"
-                android:textAlignment="center"
-                android:textSize="28sp"
-                android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPrivacyPolicy"
