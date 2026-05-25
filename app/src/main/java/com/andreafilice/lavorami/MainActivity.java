@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
     static String maintenanceDetails = "";
     private boolean strikeBannerClosed = false;
     private boolean  definitelyClosedSavedLinesHint;
+    public static boolean alreadyRefreshedLines = false;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -651,6 +652,10 @@ public class MainActivity extends AppCompatActivity {
                                 runOnUiThread(() -> {
                                     events = datiRaw;
                                     EventData.listaEventiCompleta = events;
+                                    if(!alreadyRefreshedLines) {
+                                        NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
+                                        alreadyRefreshedLines = true;
+                                    }
 
                                     if (adapter == null) {
                                         adapter = new WorkAdapter(MainActivity.this, new ArrayList<>(events));

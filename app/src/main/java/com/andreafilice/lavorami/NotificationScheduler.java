@@ -122,6 +122,7 @@ public class NotificationScheduler {
                 if (notifyStart) {
                     if (startMillis > now) {
                         long notifTime = getSelectedTime(startMillis);
+                        Log.d(TAG, String.format("Schedulato: %s linee/a %s", event.roads, event.getStringLines()));
                         if (notifTime > now) {
                             if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
@@ -153,6 +154,7 @@ public class NotificationScheduler {
                     long startDayBefore = startMillis - oneDayMillis;
                     if (startDayBefore > now) {
                         long notifTimePre = getSelectedTime(startDayBefore);
+                        Log.d(TAG, String.format("Schedulato: %s linee/a %s", event.roads, event.getStringLines()));
                         if (notifTimePre > now) {
                             if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
@@ -185,6 +187,7 @@ public class NotificationScheduler {
                 if (notifyEnd) {
                     if (endMillis > now) {
                         long notifTimeEnd = getSelectedTime(endMillis);
+                        Log.d(TAG, String.format("Schedulato: %s linee/a %s", event.roads, event.getStringLines()));
                         if (notifTimeEnd > now) {
                             if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
@@ -215,6 +218,7 @@ public class NotificationScheduler {
                     long endDayBefore = endMillis - oneDayMillis;
                     if (endDayBefore > now) {
                         long notifTimePreEnd = getSelectedTime(endDayBefore);
+                        Log.d(TAG, String.format("Schedulato: %s linee/a %s", event.roads, event.getStringLines()));
                         if (notifTimePreEnd > now) {
                             if(isViaChecked(event.roads.toLowerCase())) {
                                 if(event.getLines().length <= 1)
@@ -256,7 +260,7 @@ public class NotificationScheduler {
 
         if (strike == null || strike.getStrikeDate() == null) return;
 
-        long strikeMillis = parseDateMillis(strike.getStrikeDate());
+        long strikeMillis = parseStrikeDateMillis(strike.getStrikeDate());
         if (strikeMillis < 0) {
             Log.e(TAG, "Data sciopero non valida: " + strike.getStrikeDate());
             return;
@@ -317,6 +321,26 @@ public class NotificationScheduler {
             catch (ParseException ignored) {Log.e(TAG, ignored.getLocalizedMessage());}
         }
         return -1;
+    }
+
+    private static long parseStrikeDateMillis(String dateStr) {
+        if (dateStr == null) return -1;
+
+        try {
+            String[] parts = dateStr.trim().split("/");
+            int day = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int year = Integer.parseInt(parts[2]);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month - 1, day, 0, 0, 0);
+            calendar.set(Calendar.MILLISECOND, 0);
+
+            return calendar.getTimeInMillis();
+        } catch (Exception e) {
+            Log.e(TAG, "Parsing data failed:" + dateStr);
+            return -1;
+        }
     }
 
     @SuppressLint("ScheduleExactAlarm")

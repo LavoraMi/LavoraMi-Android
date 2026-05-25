@@ -339,10 +339,7 @@ public class SettingsActivity extends AppCompatActivity {
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;
 
-            icons[i].setOnClickListener(v -> {
-                ActivityUtils.triggerFeedback(this);
-                toggleFavorite(icons[finalI], lineCodes[finalI]);
-            });
+            icons[i].setOnClickListener(v -> {toggleFavorite(icons[finalI], lineCodes[finalI]);});
             layouts[i].setOnClickListener(v -> toggleFavorite(icons[finalI], lineCodes[finalI]));
         }
     }
@@ -363,8 +360,9 @@ public class SettingsActivity extends AppCompatActivity {
         else
             favorites.remove(lineCode);
 
-        NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta);
+        new Thread(() -> NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta)).start();
         DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
+        ActivityUtils.triggerFeedback(this);
     }
 
     public void loadFavorites(ImageView[] starIcons, String[] lineCodes) {
