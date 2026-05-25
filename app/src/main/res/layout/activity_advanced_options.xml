@@ -257,7 +257,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconFeedbacks"
                         android:fontFamily="@font/work_sans_medium"
-                        android:text="feedback_string"
+                        android:text="@string/feedbackText"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -281,7 +281,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="@string/requireBiometricAuthDeps"
+                android:text="@string/feedbackTextDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
