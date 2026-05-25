@@ -349,8 +349,8 @@
     <string name="latestVersionSupported">"Ultima versione supportata: "</string>
     <string name="updateNow">Aggiorna ora</string>
     <string name="starLines">Linee STAR</string>
-    <string name="choseOperator">Scegli le tue compagnie</string>
-    <string name="choseOperatorText">Scegli i tuoi operatori di transporti più usati nelle ipostazioni e, aggiungendoli ai preferiti, riceverai subito i lavori di quell\'operatore.</string>
+    <string name="choseOperator">Scegli i tuoi aggiornamenti</string>
+    <string name="choseOperatorText">Scegli i tuoi operatori di transporti più usati nelle impostazioni e, aggiungendoli ai preferiti, riceverai subito i lavori di quell\'operatore.</string>
     <string name="feedbackText">Attiva Feedback Vibrazione</string>
     <string name="feedbackTextDeps">Attiva i Feedback di vibrazione su alcune schermate o pulsanti.</string>
 </resources>

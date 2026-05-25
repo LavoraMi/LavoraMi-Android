@@ -350,7 +350,7 @@
     <string name="latestVersionSupported">"Latest supported version: "</string>
     <string name="updateNow">Update Now</string>
     <string name="starLines">STAR Lines</string>
-    <string name="choseOperator">Choose your transport operators</string>
+    <string name="choseOperator">Choose your updates</string>
     <string name="choseOperatorText">Choose your most used transport operators in your settings and, by adding them to your favourites, you will immediately receive new works.</string>
     <string name="feedbackText">Enable Haptic Feedback</string>
     <string name="feedbackTextDeps">Enable Haptic Feedback on certain buttons or screens.</string>
