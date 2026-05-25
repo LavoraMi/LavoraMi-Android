@@ -50,12 +50,43 @@
             app:tint="@color/redMetro" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <EditText
+        android:id="@+id/editSearch"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/background_app"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="10dp"
+        android:hint=""
+        android:fontFamily="@font/inter_medium"
+        android:inputType="text"
+        android:paddingStart="15dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="#666666"
+        android:imeOptions="actionDone"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+
+    <TextSwitcher
+        android:id="@+id/hintSwitcher"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:isIndicator="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/editSearch"
+        app:layout_constraintEnd_toEndOf="@id/editSearch"
+        app:layout_constraintStart_toStartOf="@id/editSearch"
+        app:layout_constraintTop_toTopOf="@id/editSearch" />
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/strikeBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="8dp"
         android:visibility="gone"
         app:cardBackgroundColor="@color/disclosureBg"
         app:cardCornerRadius="14dp"
@@ -64,7 +95,7 @@
         app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+        app:layout_constraintTop_toBottomOf="@+id/editSearch"
         tools:visibility="visible">
 
         <LinearLayout
@@ -80,7 +111,7 @@
                 android:gravity="center_vertical"
                 android:clickable="true"
                 android:paddingHorizontal="14dp"
-                android:paddingVertical="11dp"
+                android:paddingVertical="7dp"
                 android:background="@color/RE">
 
                 <ImageView
@@ -106,7 +137,7 @@
                     android:id="@+id/closeBtn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_up"
+                    android:src="@drawable/ic_down"
                     android:padding="8dp"
                     app:tint="@android:color/white" />
             </LinearLayout>
@@ -212,44 +243,13 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <EditText
-        android:id="@+id/editSearch"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/background_app"
-        android:drawableStart="@android:drawable/ic_menu_search"
-        android:drawablePadding="10dp"
-        android:hint=""
-        android:fontFamily="@font/inter_medium"
-        android:inputType="text"
-        android:paddingStart="15dp"
-        android:textColor="@color/text_primary"
-        android:textColorHint="#666666"
-        android:imeOptions="actionDone"
-        app:layout_constraintTop_toBottomOf="@id/strikeBanner" />
-
-    <TextSwitcher
-        android:id="@+id/hintSwitcher"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clickable="false"
-        android:isIndicator="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/editSearch"
-        app:layout_constraintEnd_toEndOf="@id/editSearch"
-        app:layout_constraintStart_toStartOf="@id/editSearch"
-        app:layout_constraintTop_toTopOf="@id/editSearch" />
-
     <HorizontalScrollView
         android:id="@+id/filterScroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="8dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@id/editSearch">
+        app:layout_constraintTop_toBottomOf="@id/strikeBanner">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/filterChipGroup"

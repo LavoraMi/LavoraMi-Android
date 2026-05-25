@@ -118,7 +118,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.itemView.setOnClickListener(v -> {
             boolean isExpanded = itemHolder.descriptionText.getVisibility() == View.VISIBLE;
             itemHolder.descriptionText.setVisibility((isExpanded) ? View.GONE: View.VISIBLE);
-            itemHolder.openCloseIcon.animate().rotation(isExpanded ? 0f : 180f).setDuration(250).start();
+            itemHolder.openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
             ActivityUtils.triggerFeedback(context);
         });
 

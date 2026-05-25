@@ -805,7 +805,7 @@ public class MainActivity extends AppCompatActivity {
                 ActivityUtils.triggerFeedback(this);
                 findViewById(R.id.strikeDescription).setVisibility((strikeBannerClosed) ? View.VISIBLE : View.GONE);
                 strikeBannerClosed = !strikeBannerClosed;
-                closeBtn.animate().rotation(!strikeBannerClosed ? 0f : -180f).setDuration(250).start();
+                closeBtn.animate().rotation(!strikeBannerClosed ? 0f : -90f).setDuration(200).start();
             });
         }
         else
