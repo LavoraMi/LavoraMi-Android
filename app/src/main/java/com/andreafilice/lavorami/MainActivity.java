@@ -552,6 +552,7 @@ public class MainActivity extends AppCompatActivity {
         String categorySelected = getCategory();
 
         downloadJSONData(categorySelected, false);
+        checkForStrikes();
     }
 
     private void askForNotificationPermission(){
@@ -807,6 +808,8 @@ public class MainActivity extends AppCompatActivity {
                 closeBtn.animate().rotation(!strikeBannerClosed ? 0f : -180f).setDuration(250).start();
             });
         }
+        else
+            findViewById(R.id.strikeBanner).setVisibility(View.GONE);
 
         NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
     }
