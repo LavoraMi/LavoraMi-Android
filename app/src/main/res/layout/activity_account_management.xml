@@ -232,7 +232,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="10dp"
-                    app:cardCornerRadius="8dp"
+                    app:cardCornerRadius="16dp"
                     app:cardElevation="4dp"
                     app:cardBackgroundColor="#FFFFFF"
                     android:foreground="?android:attr/selectableItemBackground"
