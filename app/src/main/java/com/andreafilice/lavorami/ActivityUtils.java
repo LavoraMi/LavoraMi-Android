@@ -50,19 +50,21 @@ public class ActivityUtils {
 
     public static void triggerFeedback(Context context) {
         /// This function trigger the Haptic Feedback of the phone.
-
+        boolean hapticsEnabled = DataManager.getBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true);
         Vibrator vibrator;
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
-            VibratorManager manager = (VibratorManager) context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
-            vibrator = manager.getDefaultVibrator();
-        }
-        else
-            vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        if(hapticsEnabled) {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+                VibratorManager manager = (VibratorManager) context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+                vibrator = manager.getDefaultVibrator();
+            }
+            else
+                vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
-        else
-            vibrator.vibrate(20);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE));
+            else
+                vibrator.vibrate(20);
+        }
     }
 }

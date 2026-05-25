@@ -108,6 +108,7 @@ public class AdvancedOptions extends AppCompatActivity {
             DataManager.getBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false),
             DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true),
             DataManager.getBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true),
+            DataManager.getBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true),
             DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false),
             DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)
         };
@@ -116,6 +117,7 @@ public class AdvancedOptions extends AppCompatActivity {
             findViewById(R.id.switchErrors),
             findViewById(R.id.switchBanner),
             findViewById(R.id.switchBiometrics),
+            findViewById(R.id.switchFeedbacks),
             findViewById(R.id.switchTranslation),
             findViewById(R.id.switchRecent)
         };
@@ -124,6 +126,7 @@ public class AdvancedOptions extends AppCompatActivity {
             DataKeys.KEY_SHOW_ERROR_MESSAGES,
             DataKeys.KEY_SHOW_BANNERS,
             DataKeys.KEY_REQUIRE_BIOMETRICS,
+            DataKeys.KEY_HAPTIC_FEEDBACKS,
             DataKeys.KEY_SHOW_TRANSLATE_BUTTON,
             DataKeys.KEY_SHOW_RECENT_LINES
         };
