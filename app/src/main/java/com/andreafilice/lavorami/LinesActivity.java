@@ -363,7 +363,7 @@ public class LinesActivity extends AppCompatActivity {
             isRecentEmpty = true;
         }
 
-        findViewById(R.id.emptyViewRecent).setVisibility((isRecentEmpty) ? View.GONE : View.VISIBLE);
+        findViewById(R.id.emptyViewRecent).setVisibility((!isRecentEmpty) ? View.GONE : View.VISIBLE);
     }
 
     private void loadLines(){

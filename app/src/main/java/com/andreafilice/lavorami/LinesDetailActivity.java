@@ -148,9 +148,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         MapView mapView = findViewById(R.id.mapView);
 
-        MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {
-            onMapReady(mapViewReady);
-        });
+        MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
 
         int chipStrokeColor = Color.parseColor("#CCCCCC");
 
@@ -501,7 +499,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             latMedia /= tutteLeStazioni.size();
             lngMedia /= tutteLeStazioni.size();
-            double zoom = tipoDiLinea.contains("Tram") ? 12.5 : 11.5;
+            double zoom = tipoDiLinea.contains("Tram") ? 12.5 : 10;
 
             MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
         }
