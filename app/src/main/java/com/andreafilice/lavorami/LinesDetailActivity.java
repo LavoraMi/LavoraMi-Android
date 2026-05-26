@@ -719,16 +719,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
         ((TextView)findViewById(R.id.emptyView)).setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
+        ((ImageView)findViewById(R.id.emptyViewIcon)).setImageResource((EventData.networkError) ? R.drawable.ic_wifi_maintenance : R.drawable.ic_info);
     }
 
     private void preloadInterscambi() {
         executor.execute(() -> {
             String searchTag = nomeLinea.trim().toUpperCase();
-            List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram")
-                    ? StationDB.getInterchangesTrams()
-                    : StationDB.getInterchanges();
+            List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : StationDB.getInterchanges();
 
             List<InterchangeInfo> matched = new ArrayList<>();
+
             for (InterchangeInfo info : interchanges) {
                 if (info.getLines() == null) continue;
                 for (String line : info.getLines()) {
@@ -744,7 +744,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (container == null) return;
                 container.removeAllViews();
 
-                // Costruiamo tutte le chip PRIMA di aggiungere ogni card al container
                 List<View> cards = new ArrayList<>();
 
                 for (InterchangeInfo evento : matched) {
@@ -768,7 +767,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                     int color = ContextCompat.getColor(this, R.color.text_primary);
                     ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
 
-                    // Chip completamente pronte PRIMA che la card entri nel container
                     ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
                     if (chipGroup != null && evento.getLines() != null) {
                         chipGroup.removeAllViews();
@@ -779,7 +777,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                     cards.add(card);
                 }
 
-                // Un solo batch di addView: il container misura tutto in un colpo solo
                 for (View card : cards) container.addView(card);
 
                 interscambiWrapper.setVisibility(View.GONE);
@@ -804,7 +801,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             return;
         }
 
-        ///Fallback: se il preload non è ancora terminato , carica normalmente
         LinearLayout container = findViewById(R.id.containerInterscambi);
         View wrapper = findViewById(R.id.interscambiWrapper);
         TextView emptyView = findViewById(R.id.emptyView);
