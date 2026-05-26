@@ -1,7 +1,6 @@
 package com.andreafilice.lavorami;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -33,7 +32,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.util.Log;
-import android.widget.ProgressBar;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
@@ -52,7 +50,6 @@ import androidx.core.os.LocaleListCompat;
 import androidx.core.text.HtmlCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.dynamicanimation.animation.AnimationHandler;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -64,24 +61,17 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import okhttp3.CertificatePinner;
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<EventDescriptor> events = new ArrayList<EventDescriptor>();
@@ -698,7 +688,7 @@ public class MainActivity extends AppCompatActivity {
                     btnRefresh.clearAnimation();
 
                     /// In this section of the code, we check the android version and adapt the style to that version.
-                    iconWiFi.setImageResource((Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) ? R.drawable.ic_wifi_slash_android11_later : R.drawable.ic_wifi_slash_android10_previous);
+                    iconWiFi.setImageResource((Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) ? R.drawable.ic_no_wifi_connection : R.drawable.ic_wifi_slash_android10_previous);
                 }
             }
         });

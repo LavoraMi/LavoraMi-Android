@@ -719,7 +719,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
         ((TextView)findViewById(R.id.emptyView)).setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
-        ((ImageView)findViewById(R.id.emptyViewIcon)).setImageResource((EventData.networkError) ? R.drawable.ic_wifi_maintenance : R.drawable.ic_info);
+        ((ImageView)findViewById(R.id.emptyViewIcon)).setImageResource((EventData.networkError) ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
     }
 
     private void preloadInterscambi() {

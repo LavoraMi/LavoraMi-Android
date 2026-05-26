@@ -23,7 +23,7 @@
             android:id="@+id/iconWifi"
             android:layout_width="88dp"
             android:layout_height="59dp"
-            android:src="@drawable/ic_wifi_maintenance"
+            android:src="@drawable/ic_wifi_slash"
             app:tint="@color/text_primary" />
 
         <TextView
