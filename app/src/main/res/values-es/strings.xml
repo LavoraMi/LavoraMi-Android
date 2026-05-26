@@ -354,4 +354,5 @@
     <string name="choseOperatorText">Elige tus operadores de transporte más utilizados en los ajustes y, al añadirlos a favoritos, recibirás de inmediato las obras de ese operador.</string>
     <string name="feedbackText">Activar Vibración Táctil</string>
     <string name="feedbackTextDeps">Activa la vibración táctil en determinadas pantallas o botones.</string>
+    <string name="spanishLanguage">Español</string>
 </resources>

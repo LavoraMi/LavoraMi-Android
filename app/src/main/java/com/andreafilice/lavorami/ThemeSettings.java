@@ -38,8 +38,8 @@ public class ThemeSettings extends AppCompatActivity {
 
         //*UI ELEMENTS
         /// In this section of the code, we declared RelativeLayouts and ImageResources for the Tick icon.
-        ImageView[] languageTicks = {findViewById(R.id.checkItalian), findViewById(R.id.checkEnglish)};
-        RelativeLayout[] languageLayouts = {findViewById(R.id.italian), findViewById(R.id.english)};
+        ImageView[] languageTicks = {findViewById(R.id.checkItalian), findViewById(R.id.checkEnglish), findViewById(R.id.checkSpain)};
+        RelativeLayout[] languageLayouts = {findViewById(R.id.italian), findViewById(R.id.english), findViewById(R.id.spanish)};
 
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
 
@@ -52,6 +52,7 @@ public class ThemeSettings extends AppCompatActivity {
             DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
             languageTicks[0].setVisibility(View.VISIBLE);
             languageTicks[1].setVisibility(View.GONE);
+            languageTicks[2].setVisibility(View.GONE);
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("it"));
 
             /// Back to Settings screen
@@ -62,7 +63,19 @@ public class ThemeSettings extends AppCompatActivity {
             DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "English");
             languageTicks[0].setVisibility(View.GONE);
             languageTicks[1].setVisibility(View.VISIBLE);
+            languageTicks[2].setVisibility(View.GONE);
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"));
+
+            /// Back to Settings screen
+            finish();
+        });
+
+        languageLayouts[2].setOnClickListener(v -> {
+            DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Spanish");
+            languageTicks[0].setVisibility(View.GONE);
+            languageTicks[1].setVisibility(View.GONE);
+            languageTicks[2].setVisibility(View.VISIBLE);
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es"));
 
             /// Back to Settings screen
             finish();

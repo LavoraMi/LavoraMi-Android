@@ -328,6 +328,42 @@
                                 app:tint="@color/redMetro"
                                 android:visibility="gone"/>
                         </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/spanish"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:paddingHorizontal="16dp">
+
+                            <ImageView
+                                android:id="@+id/iconSpain"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_spain"
+                                android:visibility="visible"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@id/iconSpain"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/inter_medium"
+                                android:text="@string/spanishLanguage"
+                                android:textColor="@color/text_primary"
+                                android:textSize="17sp" />
+
+                            <ImageView
+                                android:id="@+id/checkSpain"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/check"
+                                app:tint="@color/redMetro"
+                                android:visibility="gone"/>
+                        </RelativeLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

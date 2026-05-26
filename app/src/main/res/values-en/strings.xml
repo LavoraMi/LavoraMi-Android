@@ -95,7 +95,7 @@
     <string name="worksLineDetails">WORK ON THE LINE:</string>
     <string name="mapChip">Map</string>
     <string name="lineWorksChip">Works</string>
-    <string name="interchangesChip">Interchanges</string>
+    <string name="interchangesChip">Changes</string>
     <string name="noWorksOnThisLine">There are no works on this line.</string>
     <string name="loadingMapDetails">Loading</string>
     <string name="noInternetConnectionError">No internet connection.</string>
@@ -354,4 +354,5 @@
     <string name="choseOperatorText">Choose your most used transport operators in your settings and, by adding them to your favourites, you will immediately receive new works.</string>
     <string name="feedbackText">Enable Haptic Feedback</string>
     <string name="feedbackTextDeps">Enable Haptic Feedback on certain buttons or screens.</string>
+    <string name="spanishLanguage">Spanish</string>
 </resources>
