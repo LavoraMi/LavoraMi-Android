@@ -95,7 +95,7 @@
     <string name="worksLineDetails">WORK ON THE LINE:</string>
     <string name="mapChip">Map</string>
     <string name="lineWorksChip">Works</string>
-    <string name="interchangesChip">Changes</string>
+    <string name="interchangesChip">Interchanges</string>
     <string name="noWorksOnThisLine">There are no works on this line.</string>
     <string name="loadingMapDetails">Loading</string>
     <string name="noInternetConnectionError">No internet connection.</string>
@@ -241,7 +241,7 @@
     <string name="endWorksTomorrowNotificationDepsVar1">Work on the %s line in %s will be completed tomorrow. Visit the %s website for more information.</string>
     <string name="endWorksTomorrowNotificationDepsVar2">Work on the %s lines in %s will be completed tomorrow. Visit the %s website for more information.</string>
     <string name="endWorksTomorrowNotificationDepsVar3">Work on the %s line at %s will be completed tomorrow. Visit the %s website for more information.</string>
-    <string name="endWorksTomorrowNotificationDepsVar4">Work on the %s lines will be completed tomorrow. Visit the %s website for more information.</string>
+    <string name="endWorksTomorrowNotificationDepsVar4">Work on the %s lines at %s will be completed tomorrow. Visit the %s website for more information.</string>
     <string name="startWorkNotificationTitle">Works started!</string>
     <string name="startWorkNotificationVar1">Work on the %s line in %s began today. Visit the %s website for more information.</string>
     <string name="startWorkNotificationVar2">Work on the %s lines in %s began today. Visit the %s website for more information.</string>
