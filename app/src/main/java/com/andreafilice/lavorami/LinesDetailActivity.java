@@ -629,7 +629,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 card.setOnClickListener(v -> {
                     boolean isExpanded = desc.getVisibility() == View.VISIBLE;
                     desc.setVisibility((isExpanded) ? View.GONE: View.VISIBLE);
-                    openCloseIcon.animate().rotation(isExpanded ? 0f : 180f).setDuration(250).start();
+                    openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
                     ActivityUtils.triggerFeedback(this);
                 });
 
