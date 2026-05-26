@@ -856,9 +856,12 @@ public class MainActivity extends AppCompatActivity {
             long now = System.currentTimeMillis();
             long terminated = DateUtils.toMillis(item.getEndDate());
 
+            if(item.getRoads().toLowerCase().contains(testoLower) || item.getDetails().toLowerCase().contains(testoLower))
+                found = true;
+
             if (!found && item.getLines() != null) {
                 for (String line : item.getLines()) {
-                    if (line != null && line.toLowerCase().contains(testoLower)) {
+                    if (line != null && (line.toLowerCase().contains(testoLower))) {
                         found = true;
                         break;
                     }

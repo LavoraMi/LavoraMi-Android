@@ -181,7 +181,7 @@
     <string name="settingResettedPopUp">Settings have been successfully restored!</string>
     <string name="hintMain1">Search jobs...</string>
     <string name="hintMain2">Discover something new...</string>
-    <string name="hintMain3">Search your line...</string>
+    <string name="hintMain3">Search by line or place...</string>
     <string name="hintMain4">Find what you love...</string>
     <string name="hintMain5">Don\'t be the last to know...</string>
     <string name="hintMain6">Check out what\'s new...</string>
