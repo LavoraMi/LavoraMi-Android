@@ -245,13 +245,13 @@
     <string name="startWorkNotificationTitle">¡Obras iniciadas!</string>
     <string name="startWorkNotificationVar1">Hoy han comenzado las obras en %s de la línea %s. Visita el sitio de %s para más información.</string>
     <string name="startWorkNotificationVar2">Hoy han comenzado las obras en %s de las líneas %s. Visita el sitio de %s para más información.</string>
-    <string name="startWorkNotificationVar3">Hoy han comenzado las obras en %s de la línea %s. Visita el sitio de %s para más información.</string>
-    <string name="startWorkNotificationVar4">Hoy han comenzado las obras de las líneas %s. Visita el sitio de %s para más información.</string>
+    <string name="startWorkNotificationVar3">Hoy han comenzado las obras a %s de la línea %s. Visita el sitio de %s para más información.</string>
+    <string name="startWorkNotificationVar4">Hoy han comenzado las obras a %s de las líneas %s. Visita el sitio de %s para más información.</string>
     <string name="startWorkTomorrowNotificationTitle">⚠\uFE0F ¡Las obras empiezan mañana!</string>
     <string name="startWorkTomorrowVar1">Mañana comienzan las obras en %s de las líneas %s. Visita el sitio de %s para más información.</string>
     <string name="startWorkTomorrowVar2">Mañana comienzan las obras en %s de la línea %s. Visita el sitio de %s para más información.</string>
-    <string name="startWorkTomorrowVar3">Mañana comienzan las obras en %s de la línea %s. Visita el sitio de %s para más información.</string>
-    <string name="startWorkTomorrowVar4">Mañana comienzan las obras de las líneas %s. Visita el sitio de %s para más información.</string>
+    <string name="startWorkTomorrowVar3">Mañana comienzan las obras a %s de la línea %s. Visita el sitio de %s para más información.</string>
+    <string name="startWorkTomorrowVar4">Mañana comienzan las obras a %s de las líneas %s. Visita el sitio de %s para más información.</string>
     <string name="strikeNotificationTitle">\uD83D\uDEAB ¡Huelga hoy!</string>
     <string name="strikeNotificationDeps">Hoy está prevista una huelga de %s, los servicios garantizados %s</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F ¡Huelga mañana!</string>
