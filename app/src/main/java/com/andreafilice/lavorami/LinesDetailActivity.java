@@ -173,7 +173,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             arriviWrapper.setVisibility(View.GONE);
             arriviNested.setVisibility(View.GONE);
             findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
-            findViewById(R.id.emptyView).setVisibility(View.GONE);
+            findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
 
             if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked()){
                 chipMappa.setChecked(true);
@@ -201,7 +201,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 cardMappa.setVisibility(View.VISIBLE);
                 containerLavori.setVisibility(View.GONE);
                 containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.GONE);
+                findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             }
             else if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
                 chipMappa.setChecked(false);
@@ -210,7 +210,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 cardMappa.setVisibility(View.GONE);
                 containerLavori.setVisibility(View.VISIBLE);
                 containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
+                findViewById(R.id.emptyViewContainer).setVisibility(View.VISIBLE);
             }
         });
 
@@ -223,7 +223,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             lavoriNested.setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.GONE);
             arriviNested.setVisibility(View.GONE);
-            findViewById(R.id.emptyView).setVisibility(View.GONE);
+            findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             caricaInterscambiLinee();
 
             if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
@@ -233,7 +233,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 cardMappa.setVisibility(View.GONE);
                 containerLavori.setVisibility(View.VISIBLE);
                 containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.VISIBLE);
+                findViewById(R.id.emptyViewContainer).setVisibility(View.VISIBLE);
             }
             else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
                 chipMappa.setChecked(true);
@@ -242,7 +242,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 cardMappa.setVisibility(View.VISIBLE);
                 containerLavori.setVisibility(View.GONE);
                 containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyView).setVisibility(View.GONE);
+                findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             }
         });
 
@@ -255,7 +255,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             lavoriNested.setVisibility(View.GONE);
             interscambiWrapper.setVisibility(View.GONE);
             interscambiNested.setVisibility(View.GONE);
-            findViewById(R.id.emptyView).setVisibility(View.GONE);
+            findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.VISIBLE);
             arriviNested.setVisibility(View.VISIBLE);
 
@@ -583,7 +583,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void caricaEventiFiltrati() {
         LinearLayout container = findViewById(R.id.containerLavori);
         View wrapper = findViewById(R.id.lavoriSezioneWrapper);
-        TextView emptyView = findViewById(R.id.emptyView);
+        View emptyView = findViewById(R.id.emptyViewContainer);
 
         if (container == null || wrapper == null) return;
 
@@ -718,7 +718,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
-        emptyView.setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
+        ((TextView)findViewById(R.id.emptyView)).setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
     }
 
     private void preloadInterscambi() {

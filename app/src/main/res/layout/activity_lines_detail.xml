@@ -412,18 +412,35 @@
                 android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
 
-        <TextView
-            android:id="@+id/emptyView"
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:id="@+id/emptyViewContainer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:text="@string/noWorksOnThisLine"
-            android:textSize="16sp"
-            android:textColor="@color/text_primary"
-            android:alpha="0.7"
-            android:fontFamily="@font/inter_medium"
-            android:visibility="gone" />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/emptyViewIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_info"
+                app:tint="@color/text_primary"/>
+
+            <TextView
+                android:id="@+id/emptyView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/noWorksOnThisLine"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:alpha="0.7"
+                android:fontFamily="@font/inter_medium" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

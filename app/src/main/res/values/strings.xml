@@ -106,7 +106,7 @@
     <string name="tilo">TILO</string>
     <string name="suburban">Suburbano</string>
     <string name="avvisoSciopero">AVVISO SCIOPERO</string>
-    <string name="dateSciopero">Sciopero proclamato il:</string>
+    <string name="dateSciopero">Sciopero proclamato per il:</string>
     <string name="noWorkOnFilter">Nessun lavoro trovato per questo filtro.</string>
     <string name="downloadDataError">Impossibile caricare i dati dal server.</string>
     <string name="retry">Riprova</string>
