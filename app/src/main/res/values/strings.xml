@@ -201,7 +201,7 @@
     <string name="endPages">Fine</string>
     <string name="nextPages">Avanti</string>
     <string name="strikeBannerTitle">Sciopero proclamato il &lt;b&gt;%s&lt;/b&gt;.</string>
-    <string name="strikeBannerGuaranteed">Le fasce di garanzia %s</string>
+    <string name="strikeBannerGuaranteed">Fasce di garanzia: %s</string>
     <string name="noWorksFoundInput">Nessun lavoro trovato per: \"%s\".</string>
     <string name="italianSettings">" Italiano"</string>
     <string name="englishLanguage">" Inglese"</string>
