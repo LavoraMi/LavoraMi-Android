@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -312,7 +313,6 @@ public class LinesActivity extends AppCompatActivity {
     public void reloadRecentLines() {
         /// In this function, we will reload the Recent Lines when the Activity is resumed.
         ImageView deleteIconRecent = findViewById(R.id.deleteIconRecent);
-
         findViewById(R.id.subTitleSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
         findViewById(R.id.headerRecentSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
         findViewById(R.id.groupRecent).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
@@ -342,8 +342,6 @@ public class LinesActivity extends AppCompatActivity {
                         }).show();
             });
 
-            findViewById(R.id.emptyViewRecent).setVisibility(View.GONE);
-
             for (String entry : recentLinesSet) {
                 String[] parts = entry.split("\\|");
 
@@ -358,12 +356,14 @@ public class LinesActivity extends AppCompatActivity {
                     aggiungiLinea(containerRecent, title, color, deps);
                 }
             }
+            isRecentEmpty = false;
         }
         else {
-            findViewById(R.id.emptyViewRecent).setVisibility(View.VISIBLE);
             deleteIconRecent.setVisibility(View.GONE);
             isRecentEmpty = true;
         }
+
+        findViewById(R.id.emptyViewRecent).setVisibility((isRecentEmpty) ? View.GONE : View.VISIBLE);
     }
 
     private void loadLines(){
