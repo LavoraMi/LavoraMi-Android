@@ -54,7 +54,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         this.context = context;
         this.eventList = (eventList!=null) ? eventList : new ArrayList<>();
-        this.langCode = savedLang.contains("English") ? "en" : "it";
+        this.langCode = savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it";
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -128,7 +128,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor((progressPercentage == 100) ? "#16660e" : "#FD272D")));
 
         itemHolder.chipGroupLinee.removeAllViews();
-        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
+        itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en") || langCode.equalsIgnoreCase("es") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
         itemHolder.translateBtn.setOnClickListener(v -> {
             //*VARIABLES
@@ -239,6 +239,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TranslatorOptions options = new TranslatorOptions.Builder()
                 .setSourceLanguage(TranslateLanguage.ITALIAN)
                 .setTargetLanguage(TranslateLanguage.ENGLISH)
+                .setTargetLanguage(TranslateLanguage.SPANISH)
                 .build();
 
         Translator translator = Translation.getClient(options);
@@ -250,7 +251,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 .addOnSuccessListener(unused -> {
                     translator.translate(item.getTitle()).addOnSuccessListener(title -> {
                         translator.translate(item.getDetails()).addOnSuccessListener(details -> {
-                            String finalText = title + "\n\n" + details + "\n\n" + "Roads: " + item.getRoads() + "\n\n" + "Lines involved: " + item.getStringLines();
+                            String finalText = title + "\n\n" + details + "\n\n" + context.getString(R.string.roads) + item.getRoads() + "\n\n" + context.getString(R.string.linesInvolved) + item.getStringLines();
                             loadingLayout.setVisibility(View.GONE);
                             translatedTxt.setVisibility(View.VISIBLE);
                             translatedTxt.setText(finalText);

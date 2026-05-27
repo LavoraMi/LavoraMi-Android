@@ -355,4 +355,6 @@
     <string name="feedbackText">Enable Haptic Feedback</string>
     <string name="feedbackTextDeps">Enable Haptic Feedback on certain buttons or screens.</string>
     <string name="spanishLanguage">Spanish</string>
+    <string name="roads">"Roads: "</string>
+    <string name="linesInvolved">"Lines involved: "</string>
 </resources>

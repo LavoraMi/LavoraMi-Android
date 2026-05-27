@@ -21,6 +21,8 @@ public class RequirementsDescriptor {
     public String maintenanceDeps;
     @SerializedName("maintenanceDepsEn")
     public String maintenanceDepsEnglish;
+    @SerializedName("maintenanceDepsEs")
+    public String maintenanceDepsSpanish;
 
     public RequirementsDescriptor(String minimumVersionAndroid){this.minimumVersionAndroid = minimumVersionAndroid;}
 
@@ -28,9 +30,10 @@ public class RequirementsDescriptor {
     /// Set-up the Getter to use into MainActivity.java for get some values.
     public String getMinimumVersionAndroid(){return this.minimumVersionAndroid;}
     public boolean isMaintenanceEnabled(){return maintenanceModeEnabled.equalsIgnoreCase("true");}
-    public boolean isMaintenanceDebugEnabled(){return maintenanceModeDebug.equalsIgnoreCase("true");}
+    public boolean isMaintenanceDebugEnabled(){return maintenanceModeDebug.equalsIgnoreCase("false");}
     public String getMaintenanceDeps(){return this.maintenanceDeps;}
     public String getMaintenanceDepsEnglish(){return this.maintenanceDepsEnglish;}
+    public String getMaintenanceDepsSpanish(){return this.maintenanceDepsSpanish;}
 
     public static int compareSemanticVersions(String version1, String version2) {
         //TODO: Comment better this code.

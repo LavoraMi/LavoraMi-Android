@@ -354,4 +354,6 @@
     <string name="feedbackText">Attiva Feedback Vibrazione</string>
     <string name="feedbackTextDeps">Attiva i Feedback di vibrazione su alcune schermate o pulsanti.</string>
     <string name="spanishLanguage">Spagnolo</string>
+    <string name="roads">"Strade: "</string>
+    <string name="linesInvolved">"Linee interessate: "</string>
 </resources>

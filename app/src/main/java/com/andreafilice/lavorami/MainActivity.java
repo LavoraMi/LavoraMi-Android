@@ -464,7 +464,7 @@ public class MainActivity extends AppCompatActivity {
         //*SETUP LANGUAGE
         /// Setting up the language of the application base from the Data saved
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-        String langCode = savedLang.contains("English") ? "en" : "it";
+        String langCode = savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it";
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(langCode));
 
         //*CHIP COLORS
@@ -752,7 +752,7 @@ public class MainActivity extends AppCompatActivity {
         String currentVersion = ContextCompat.getString(this, R.string.app_version);
 
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-        String langCode = savedLang.contains("English") ? "en" : "it";
+        String langCode = savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it";
 
         int responseComparable = RequirementsDescriptor.compareSemanticVersions(currentVersion, versionMinimum);
 

@@ -68,10 +68,10 @@ public class MaintenanceActivity extends AppCompatActivity {
                     //*CHECK FOR MAINTENANCE
                     /// Check if LavoraMi is in maintenance mode and get the details from the CDN.
                     String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-                    String langCode = savedLang.contains("English") ? "en" : "it";
+                    String langCode = savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it";
 
                     boolean isInMaintenanceMode = response.body().isMaintenanceEnabled();
-                    String maintenanceDetails = (langCode.equalsIgnoreCase("en")) ? response.body().getMaintenanceDepsEnglish() : response.body().getMaintenanceDeps();
+                    String maintenanceDetails = (langCode.equalsIgnoreCase("en")) ? response.body().getMaintenanceDepsEnglish() : langCode.equalsIgnoreCase("es") ? response.body().getMaintenanceDepsSpanish() :  response.body().getMaintenanceDeps();
 
                     TextView maintenanceDeps = findViewById(R.id.maintenanceDeps);
                     maintenanceDeps.setText(maintenanceDetails);

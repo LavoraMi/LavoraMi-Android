@@ -78,7 +78,7 @@
     <string name="movibusFilter">de Movibus</string>
     <string name="stavFilter">de STAV</string>
     <string name="autoguidovieFilter">de Autoguidovie</string>
-    <string name="acknowledgmentsTitle">Bibliotecas de Código Abierto</string>
+    <string name="acknowledgmentsTitle">Bibliotecas Open-Source</string>
     <string name="linesSearchBar">Buscar por tipo o número...</string>
     <string name="metroLinesTitle">Líneas de Metro</string>
     <string name="suburbanLinesTitle">Líneas Suburbanas</string>
@@ -355,4 +355,6 @@
     <string name="feedbackText">Activar Vibración Táctil</string>
     <string name="feedbackTextDeps">Activa la vibración táctil en determinadas pantallas o botones.</string>
     <string name="spanishLanguage">Español</string>
+    <string name="roads">"Calles: "</string>
+    <string name="linesInvolved">"Líneas afectadas: "</string>
 </resources>

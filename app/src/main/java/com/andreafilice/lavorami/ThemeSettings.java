@@ -45,8 +45,9 @@ public class ThemeSettings extends AppCompatActivity {
 
         languageTicks[0].setVisibility(savedLang.contains("Italiano") ? View.VISIBLE : View.GONE);
         languageTicks[1].setVisibility(savedLang.contains("English") ? View.VISIBLE : View.GONE);
+        languageTicks[2].setVisibility(savedLang.contains("Spanish") ? View.VISIBLE : View.GONE);
 
-        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(savedLang.contains("English") ? "en" : "it"));
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it"));
 
         languageLayouts[0].setOnClickListener(v -> {
             DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
