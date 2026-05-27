@@ -95,11 +95,11 @@
     <string name="worksLineDetails">OBRAS EN LA LÍNEA:</string>
     <string name="mapChip">Mapa</string>
     <string name="lineWorksChip">Obras</string>
-    <string name="interchangesChip">Correspondencias</string>
+    <string name="interchangesChip">Intercambios</string>
     <string name="noWorksOnThisLine">No hay obras en esta línea.</string>
     <string name="loadingMapDetails">Cargando</string>
     <string name="noInternetConnectionError">Sin conexión a Internet.</string>
-    <string name="noInterchanges">Sin correspondencias con esta línea.</string>
+    <string name="noInterchanges">Sin intercambios con esta línea.</string>
     <string name="averageWaitingTimeTitle">"Frecuencia media: "</string>
     <string name="currentWorksTitle">actuales</string>
     <string name="scheduledWorksTitle">programadas</string>
@@ -279,8 +279,8 @@
     <string name="downloadAssets">Descargando los elementos necesarios...</string>
     <string name="errorTranslating">Se ha producido un error durante la traducción.</string>
     <string name="choseYourLineText">Guarda como favorita la línea que usas cada día para verla enseguida en la sección \"Tus Líneas\" y, cuando haya obras en ella, ya estarás informado.</string>
-    <string name="viewInterchanges">Ver las Correspondencias</string>
-    <string name="viewInterchangesText">Visualiza las líneas que hacen correspondencia con TU línea o, en el caso de los autobuses, dónde tienen parada final con correspondencia.</string>
+    <string name="viewInterchanges">Ver las Intercambios</string>
+    <string name="viewInterchangesText">Visualiza las líneas que hacen intercambios con TU línea o, en el caso de los autobuses, dónde tienen parada final con correspondencia.</string>
     <string name="worksiteStop">Parada en Obras</string>
     <string name="worksiteStopText">No solo \"obras en curso\": te explicamos qué tipo de trabajo se está realizando y las consecuencias que puede tener ese tramo en obras (desvíos, paradas suspendidas...).</string>
     <string name="fermataExample">Obras de mejora de infraestructuras en el tramo Palazzolo, Camnago Lenate, Seveso con modificaciones en la circulación de trenes</string>
