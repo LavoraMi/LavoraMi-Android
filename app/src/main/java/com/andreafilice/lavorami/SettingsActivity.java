@@ -261,7 +261,7 @@ public class SettingsActivity extends AppCompatActivity {
         //*LOADING DATAS
         /// In this section of the code, we will loading the datas from the DataManager file also AFTER the Back Gesture.
 
-        String selectedFilter = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        CategoriesEnum selectedFilter = CategoriesEnum.valueOf(DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI").toUpperCase());
         TextView filterSelectedText = findViewById(R.id.filterText);
 
         /// Localize the current filter to the correct language
@@ -313,25 +313,25 @@ public class SettingsActivity extends AppCompatActivity {
         return String.format("%s%s", values[0].charAt(0), values[1].charAt(0));
     }
 
-    public String getLocalizedMessage(String toCompare){
+    public String getLocalizedMessage(CategoriesEnum toCompare){
         /// In this method, we return the value that the option "Default Filter" have as a value.
         /// @PARAMETERS
         /// String toCompare is the value taken from the Data folder.
 
         switch(toCompare) {
-            case "Le tue linee": return "Le tue linee";
-            case "Tutti": return getString(R.string.allFilter);
-            case "Bus": return "Bus";
-            case "Tram": return "Tram";
-            case "Metropolitana": return getString(R.string.metroFilter);
-            case "Treno": return getString(R.string.trainFilter);
-            case "In Corso": return getString(R.string.inProgressFilter);
-            case "Programmati": return getString(R.string.scheduledFilter);
-            case "di ATM": return getString(R.string.atmFilter);
-            case "di Trenord": return getString(R.string.trenordFilter);
-            case "di Movibus": return getString(R.string.movibusFilter);
-            case "di STAV": return getString(R.string.stavFilter);
-            case "di Autoguidovie": return getString(R.string.autoguidovieFilter);
+            case LE_TUE_LINEE: return "Le tue linee";
+            case TUTTI: return getString(R.string.allFilter);
+            case BUS: return "Bus";
+            case TRAM: return "Tram";
+            case METROPOLITANA: return getString(R.string.metroFilter);
+            case TRENO: return getString(R.string.trainFilter);
+            case IN_CORSO: return getString(R.string.inProgressFilter);
+            case PROGRAMMATI: return getString(R.string.scheduledFilter);
+            case DI_ATM: return getString(R.string.atmFilter);
+            case DI_TRENORD: return getString(R.string.trenordFilter);
+            case DI_MOVIBUS: return getString(R.string.movibusFilter);
+            case DI_STAV: return getString(R.string.stavFilter);
+            case DI_AUTOGUIDOVIE: return getString(R.string.autoguidovieFilter);
             default: return "Errore";
         }
     }
@@ -387,7 +387,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setMessage(getString(R.string.resetSettingsPopUp))
                 .setNegativeButton(getString(R.string.cancelPopUp), null)
                 .setPositiveButton(getString(R.string.confirmPopUp), (dialog, which) -> {
-                    DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+                    DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI");
                     DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
                     DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
                     DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
