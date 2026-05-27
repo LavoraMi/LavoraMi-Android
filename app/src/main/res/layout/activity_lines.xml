@@ -340,7 +340,7 @@
                         android:id="@+id/subTitleR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Linee Regionali"
+                        android:text="@string/regionalLines"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/work_sans_medium" />

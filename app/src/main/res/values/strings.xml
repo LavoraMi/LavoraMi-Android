@@ -356,4 +356,5 @@
     <string name="spanishLanguage">Spagnolo</string>
     <string name="roads">"Strade: "</string>
     <string name="linesInvolved">"Linee interessate: "</string>
+    <string name="regionalLines">Linee Regionali</string>
 </resources>
