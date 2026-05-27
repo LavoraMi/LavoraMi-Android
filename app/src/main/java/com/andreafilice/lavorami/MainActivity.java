@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     private ShimmerFrameLayout loadingLayout;
     private LinearLayout errorLayout;
     private WorkAdapter adapter;
-    private String defaultCategory;
+    private CategoriesEnum defaultCategory;
     private boolean hasCompletedSetup;
     private static ExecutorService threadManager = Executors.newFixedThreadPool(8);
     private StrikeDescriptor strikeCDNResponse;
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        defaultCategory = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        defaultCategory = CategoriesEnum.valueOf(DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI").toUpperCase());
         ThemeSettings.setTheme();
 
         EdgeToEdge.enable(this);
@@ -291,54 +291,43 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < filterGroup.getChildCount(); i++) {filterGroup.getChildAt(i).setSaveEnabled(false);}
 
             switch(defaultCategory){
-                case "Le tue linee":
-                case "Your Lines":
+                case LE_TUE_LINEE:
                     filterGroup.check(R.id.chipYourLines);
                     break;
-                case "Tutti":
-                case "All":
+                case TUTTI:
                     filterGroup.check(R.id.chipAll);
                     break;
-                case "Bus":
+                case BUS:
                     filterGroup.check(R.id.chipBus);
                     break;
-                case "Tram":
+                case TRAM:
                     filterGroup.check(R.id.chipTram);
                     break;
-                case "Metropolitana":
-                case "Metro":
+                case METROPOLITANA:
                     filterGroup.check(R.id.chipMetro);
                     break;
-                case "Treno":
-                case "Train":
+                case TRENO:
                     filterGroup.check(R.id.chipTreno);
                     break;
-                case "In Corso":
-                case "In progress":
+                case IN_CORSO:
                     filterGroup.check(R.id.chipInCorso);
                     break;
-                case "Programmati":
-                case "Scheduled":
+                case PROGRAMMATI:
                     filterGroup.check(R.id.chipProgrammati);
                     break;
-                case "di ATM":
-                case "by ATM":
+                case DI_ATM:
                     filterGroup.check(R.id.chipATM);
                     break;
-                case "di Trenord":
-                case "by Trenord":
+                case DI_TRENORD:
                     filterGroup.check(R.id.chipTrenord);
                     break;
-                case "di Movibus":
-                case "by Movibus":
+                case DI_MOVIBUS:
                     filterGroup.check(R.id.chipMovibus);
                     break;
-                case "di STAV":
-                case "by STAV":
+                case DI_STAV:
                     filterGroup.check(R.id.chipStav);
                     break;
-                case "di Autoguidovie":
-                case "by Autoguidovie":
+                case DI_AUTOGUIDOVIE:
                     filterGroup.check(R.id.chipAutoguidovie);
                     break;
             }
@@ -451,7 +440,7 @@ public class MainActivity extends AppCompatActivity {
                     Chip selectedChip = findViewById(checkedId);
 
                     if (selectedChip != null) {
-                        String categoria = selectedChip.getText().toString().toLowerCase().trim();
+                        CategoriesEnum categoria = getCategory();
                         ActivityUtils.triggerFeedback(this);
                         applicaFiltroCategoria(categoria);
                     }
@@ -507,7 +496,7 @@ public class MainActivity extends AppCompatActivity {
         //*DOWNLOADING EVENTS
         downloadJSONData(defaultCategory, false);
 
-        String categoriaFinale = defaultCategory;
+        CategoriesEnum categoriaFinale = defaultCategory;
         if (filterGroup != null)
             filterGroup.post(() -> applicaFiltroCategoria(categoriaFinale));
 
@@ -539,7 +528,7 @@ public class MainActivity extends AppCompatActivity {
         editSearch.clearFocus();
         editSearch.setText("");
 
-        String categorySelected = getCategory();
+        CategoriesEnum categorySelected = getCategory();
 
         downloadJSONData(categorySelected, false);
         checkForStrikes();
@@ -559,22 +548,55 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String getCategory() {
+    public CategoriesEnum getCategory() {
         ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
-        if (filterGroup == null) return "tutti";
+        if (filterGroup == null) return CategoriesEnum.TUTTI;
 
         int checkedId = filterGroup.getCheckedChipId();
         if (checkedId == View.NO_ID || checkedId == R.id.chipAll)
-            return "tutti";
+            return CategoriesEnum.TUTTI;
 
-        Chip selectedChip = findViewById(checkedId);
-        if (selectedChip != null)
-            return selectedChip.getText().toString().toLowerCase().trim();
+        int[] chipIDS = {
+            R.id.chipYourLines,
+            R.id.chipAll,
+            R.id.chipBus,
+            R.id.chipTram,
+            R.id.chipMetro,
+            R.id.chipTreno,
+            R.id.chipInCorso,
+            R.id.chipProgrammati,
+            R.id.chipATM,
+            R.id.chipTrenord,
+            R.id.chipMovibus,
+            R.id.chipStav,
+            R.id.chipAutoguidovie
+        };
 
-        return "tutti";
+        CategoriesEnum[] arrayEnums = {
+            CategoriesEnum.LE_TUE_LINEE,
+            CategoriesEnum.TUTTI,
+            CategoriesEnum.BUS,
+            CategoriesEnum.TRAM,
+            CategoriesEnum.METROPOLITANA,
+            CategoriesEnum.TRENO,
+            CategoriesEnum.IN_CORSO,
+            CategoriesEnum.PROGRAMMATI,
+            CategoriesEnum.DI_ATM,
+            CategoriesEnum.DI_TRENORD,
+            CategoriesEnum.DI_MOVIBUS,
+            CategoriesEnum.DI_STAV,
+            CategoriesEnum.DI_AUTOGUIDOVIE
+        };
+
+        for (int i = 0; i < arrayEnums.length; i++) {
+            if(checkedId == chipIDS[i])
+                return arrayEnums[i];
+        }
+
+        return CategoriesEnum.TUTTI;
     }
 
-    public void downloadJSONData(String categoryToFilter, boolean reloadingDatas) {
+    public void downloadJSONData(CategoriesEnum categoryToFilter, boolean reloadingDatas) {
         /// In this section of the code, we create a CACHE Memory to save the JSON Downloaded.
         /// This part is very important because avoids to use Bandwith of our CDN for nothing.
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -865,7 +887,7 @@ public class MainActivity extends AppCompatActivity {
         checkForEmptyList(listaFiltrata, testo, testoOriginale);
     }
 
-    private void applicaFiltroCategoria(String categoria) {
+    private void applicaFiltroCategoria(CategoriesEnum categoria) {
         if(adapter == null || errorLayout.getVisibility() == View.VISIBLE)
             return;
 
@@ -876,9 +898,6 @@ public class MainActivity extends AppCompatActivity {
         Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         long oggi = System.currentTimeMillis();
 
-        //? NOTE: toLowerCase() for better switch-casing
-        categoria = categoria.toLowerCase();
-
         long now = System.currentTimeMillis();
         long terminated;
 
@@ -886,8 +905,7 @@ public class MainActivity extends AppCompatActivity {
             terminated = item.getEndDateMillis();
 
             switch (categoria) {
-                case "le tue linee":
-                case "your lines":
+                case LE_TUE_LINEE:
                     for(String line: item.lines) {
                         if(linesSaved.contains(line)){
                             filtrata.add(item);
@@ -896,65 +914,55 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     break;
-                case "tutti":
-                case "all":
+                case TUTTI:
                     if (terminated > now)
                         filtrata.add(item);
                     break;
 
-                case "bus":
+                case BUS:
                     if (isBus(item) && terminated > now) filtrata.add(item);
                     break;
 
-                case "tram":
+                case TRAM:
                     if(isTram(item) && terminated > now) filtrata.add(item);
                     break;
 
-                case "metropolitana":
-                case "metro":
+                case METROPOLITANA:
                     if (isMetro(item) && terminated > now) filtrata.add(item);
                     break;
 
-                case "treno":
-                case "train":
+                case TRENO:
                     if (isTreno(item) && terminated > now) filtrata.add(item);
                     break;
 
-                case "in corso":
-                case "in progress":
+                case IN_CORSO:
                     long start = item.getStartDateMillis();
                     long end = item.getEndDateMillis();
                     if (start > 0 && end > 0 && oggi >= start && oggi <= end)  filtrata.add(item);
                     break;
 
-                case "programmati":
-                case "scheduled":
+                case PROGRAMMATI:
                     long startP = item.getStartDateMillis();
                     if (startP > 0 && oggi < startP)  filtrata.add(item);
                     break;
 
-                case "di atm":
-                case "by atm":
+                case DI_ATM:
                     if(item.company.equalsIgnoreCase("ATM") && terminated > now) filtrata.add(item);
                     break;
 
-                case "di trenord":
-                case "by trenord":
+                case DI_TRENORD:
                     if(item.company.equalsIgnoreCase("Trenord") && terminated > now) filtrata.add(item);
                     break;
 
-                case "di movibus":
-                case "by movibus":
+                case DI_MOVIBUS:
                     if(item.company.equalsIgnoreCase("Movibus") && terminated > now) filtrata.add(item);
                     break;
 
-                case "di stav":
-                case "by stav":
+                case DI_STAV:
                     if(item.company.equalsIgnoreCase("STAV") && terminated > now) filtrata.add(item);
                     break;
 
-                case "di autoguidovie":
-                case "by autoguidovie":
+                case DI_AUTOGUIDOVIE:
                     if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > now) filtrata.add(item);
                     break;
             }

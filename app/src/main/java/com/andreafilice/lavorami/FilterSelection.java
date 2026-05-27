@@ -71,19 +71,19 @@ public class FilterSelection extends AppCompatActivity {
         };
 
         String[] filterValues = {
-            "Le tue linee",
+            "Le_tue_linee",
             "Tutti",
             "Bus",
             "Tram",
             "Metropolitana",
             "Treno",
-            "In Corso",
+            "In_Corso",
             "Programmati",
-            "di ATM",
-            "di Trenord",
-            "di Movibus",
-            "di STAV",
-            "di Autoguidovie"
+            "di_ATM",
+            "di_Trenord",
+            "di_Movibus",
+            "di_STAV",
+            "di_Autoguidovie"
         };
 
         //*LOAD FROM DATAS
@@ -92,7 +92,7 @@ public class FilterSelection extends AppCompatActivity {
         /// The steps are: Load the Datas, Get the data from DataManager, get the CurrentIndex,
         /// Set global variables so we can set the Tickimage with the Method 'setCheckImage'
 
-        String selectedFilter = DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "Tutti");
+        CategoriesEnum selectedFilter = CategoriesEnum.valueOf(DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI").toUpperCase());
         setGlobalVariables(filterValues, selectedFilter);
         setCheckImage(filterIcons);
 
@@ -102,7 +102,7 @@ public class FilterSelection extends AppCompatActivity {
         for (int i = 0; i < filterLayouts.length; i++) {
             int index = i;
             filterLayouts[i].setOnClickListener(v -> {
-                String selected = getCurrentFilterSelected(filterValues, index);
+                String selected = getCurrentFilterSelected(filterValues, index).toUpperCase();
                 setCheckImage(filterIcons);
 
                 DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, selected);
@@ -132,21 +132,21 @@ public class FilterSelection extends AppCompatActivity {
         for (int i = 0; i < filterIcons.length; i++) {filterIcons[i].setVisibility((i == indexFilterSelected) ? ImageView.VISIBLE : ImageView.GONE);}
     }
 
-    public int getIndexFilterSaved(String[] filters, String data){
+    public int getIndexFilterSaved(String[] filters, CategoriesEnum data){
         /// In this Method, we find the current index of the Filter currently saved as predefinite.
         ///@PARAMETER
         /// String[] filters is the array containing the values that the default filter can be.
         /// String data is the DataManager variable taken from the sharedPreferences.
 
         for (int i = 0; i < filters.length; i++) {
-            if(filters[i].equals(data))
+            if(filters[i].toUpperCase().equals(data.toString()))
                 return i;
         }
 
         return -1;
     }
 
-    public void setGlobalVariables(String[] filters, String data){
+    public void setGlobalVariables(String[] filters, CategoriesEnum data){
         /// In this Method, we modify the global variables with the loaded ones.
         /// Modifying this type of data is important for 'setCheckImage' Method.
         ///@PARAMETER
