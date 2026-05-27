@@ -352,6 +352,10 @@ public class LinesActivity extends AppCompatActivity {
 
                     if(deps.contains("Suburban"))
                         deps = getString(R.string.suburban);
+                    else if (deps.contains("Tra"))
+                        deps = getString(R.string.tramLinesScroll);
+                    else if (deps.contains("Region"))
+                        deps = getString(R.string.regionalLinesScroll);
 
                     aggiungiLinea(containerRecent, title, color, deps);
                 }
