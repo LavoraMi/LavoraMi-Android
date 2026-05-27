@@ -357,6 +357,6 @@
     <string name="spanishLanguage">Español</string>
     <string name="roads">"Calles: "</string>
     <string name="linesInvolved">"Líneas afectadas: "</string>
-    <string name="regionalLines">Líneas regionales</string>
+    <string name="regionalLines">Líneas Regionales</string>
     <string name="starFilter">de STAR</string>
 </resources>
