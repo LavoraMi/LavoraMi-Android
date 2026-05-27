@@ -358,4 +358,5 @@
     <string name="roads">"Calles: "</string>
     <string name="linesInvolved">"Líneas afectadas: "</string>
     <string name="regionalLines">Líneas regionales</string>
+    <string name="starFilter">de STAR</string>
 </resources>

@@ -480,7 +480,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/inter_medium"
-                            android:text="di STAR"
+                            android:text="@string/starFilter"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
