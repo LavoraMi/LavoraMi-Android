@@ -318,7 +318,7 @@
     <string name="basedOnSearchDeps">Basado en tus búsquedas</string>
     <string name="noLinesSearched">No hay líneas buscadas recientemente.</string>
     <string name="directionTitleArrivals">"DIRECCIÓN: "</string>
-    <string name="showRecentLinesTitle">Mostrar Búsquedas Recientes</string>
+    <string name="showRecentLinesTitle">Mostrar Recientes</string>
     <string name="showRecentLinesDeps">Muestra tus búsquedas recientes en la parte superior de la página de Líneas.</string>
     <string name="setupAccessibilityTitle">Accesible, siempre.</string>
     <string name="setupDepsAccessiblity">Comprueba si una línea es completamente, parcialmente o nada accesible. Todo de un vistazo.</string>
