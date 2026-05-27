@@ -359,4 +359,6 @@
     <string name="linesInvolved">"Lines involved: "</string>
     <string name="regionalLines">Regional Lines</string>
     <string name="starFilter">by STAR</string>
+    <string name="regionalLinesScroll">Regional</string>
+    <string name="tramLinesScroll">Tram</string>
 </resources>

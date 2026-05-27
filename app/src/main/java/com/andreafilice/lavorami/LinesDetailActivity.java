@@ -437,9 +437,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.startsWith("M"))
             detTitolo.setText("Metro " + nomeLinea);
         if(nomeLinea.startsWith("S"))
-            detTitolo.setText("Suburbano " + nomeLinea);
+            detTitolo.setText(String.format("%s %s", getString(R.string.suburban), nomeLinea));
         if(nomeLinea.matches("^[1-9][0-9]?$"))
-            detTitolo.setText("Tram "+nomeLinea);
+            detTitolo.setText(String.format("%s %s", getString(R.string.tramLinesScroll), nomeLinea));
         if(nomeLinea.equals("S10") || nomeLinea.equals("S30") || nomeLinea.equals("S40") || nomeLinea.equals("S50") || nomeLinea.equals("RE80"))
             detTitolo.setText("TILO "+ nomeLinea);
         if(nomeLinea.startsWith("MXP"))
@@ -453,7 +453,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie " + nomeLinea);
         if(nomeLinea.startsWith("R"))
-            detTitolo.setText("Regionale " + nomeLinea);
+            detTitolo.setText(String.format("%s %s", getString(R.string.regionalLinesScroll), nomeLinea));
         if(nomeLinea.startsWith("RE"))
             detTitolo.setText("Regio Express " + nomeLinea);
 
@@ -499,7 +499,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             latMedia /= tutteLeStazioni.size();
             lngMedia /= tutteLeStazioni.size();
-            double zoom = tipoDiLinea.contains("Tram") ? 12.5 : 10;
+            double zoom = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? 12.5 : 10;
 
             MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
         }
@@ -725,7 +725,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void preloadInterscambi() {
         executor.execute(() -> {
             String searchTag = nomeLinea.trim().toUpperCase();
-            List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : StationDB.getInterchanges();
+            List<InterchangeInfo> interchanges = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? StationDB.getInterchangesTrams() : StationDB.getInterchanges();
 
             List<InterchangeInfo> matched = new ArrayList<>();
 

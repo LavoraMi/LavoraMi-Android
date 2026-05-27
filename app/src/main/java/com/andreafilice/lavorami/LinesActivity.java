@@ -402,7 +402,7 @@ public class LinesActivity extends AppCompatActivity {
                 "R35", "R36", "R37", "R38", "R39", "R40", "R41"};
         for (int i = 0; i < regionalLines.length; i++) {
             int finalI = i;
-            aggiungiLinea(containerRegional, regionalLines[finalI], R.color.REGIONAL, "Regionale");
+            aggiungiLinea(containerRegional, regionalLines[finalI], R.color.REGIONAL, getString(R.string.regionalLinesScroll));
         }
 
         // TILO
@@ -423,7 +423,7 @@ public class LinesActivity extends AppCompatActivity {
         String[] tramLines = {"1", "2", "3", "4", "5", "7", "9", "10", "12", "14",
                 "15", "16", "19", "24", "27", "31", "33"};
         for (String line : tramLines) {
-            aggiungiLinea(containerTram, line, R.color.TRAM, "Tram");
+            aggiungiLinea(containerTram, line, R.color.TRAM, getString(R.string.tramLinesScroll));
         }
 
         // MOVIBUS

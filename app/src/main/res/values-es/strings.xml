@@ -359,4 +359,6 @@
     <string name="linesInvolved">"Líneas afectadas: "</string>
     <string name="regionalLines">Líneas Regionales</string>
     <string name="starFilter">de STAR</string>
+    <string name="regionalLinesScroll">Regional</string>
+    <string name="tramLinesScroll">Tranvía</string>
 </resources>
