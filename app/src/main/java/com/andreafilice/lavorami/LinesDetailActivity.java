@@ -610,7 +610,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
                 String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-                String langCode = savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it";
+                String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
 
                 ImageView icona = card.findViewById(R.id.iconEvent);
                 if (icona != null) {
@@ -640,7 +640,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 //*TRANSLATE BUTTON
                 Button btnTranslate = card.findViewById(R.id.btnTranslate);
-                btnTranslate.setVisibility((langCode.equalsIgnoreCase("en") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
+                btnTranslate.setVisibility((!langCode.equalsIgnoreCase("it") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
                 btnTranslate.setOnClickListener(v -> {
                     //*VARIABLES
