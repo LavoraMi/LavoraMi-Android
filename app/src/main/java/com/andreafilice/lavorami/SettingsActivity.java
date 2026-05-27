@@ -316,10 +316,10 @@ public class SettingsActivity extends AppCompatActivity {
     public String getLocalizedMessage(CategoriesEnum toCompare){
         /// In this method, we return the value that the option "Default Filter" have as a value.
         /// @PARAMETERS
-        /// String toCompare is the value taken from the Data folder.
+        /// CategoriesEnum toCompare is the value taken from the Data folder.
 
         switch(toCompare) {
-            case LE_TUE_LINEE: return "Le tue linee";
+            case LE_TUE_LINEE: return getString(R.string.yourLinesPrefix);
             case TUTTI: return getString(R.string.allFilter);
             case BUS: return "Bus";
             case TRAM: return "Tram";
@@ -331,7 +331,7 @@ public class SettingsActivity extends AppCompatActivity {
             case DI_TRENORD: return getString(R.string.trenordFilter);
             case DI_MOVIBUS: return getString(R.string.movibusFilter);
             case DI_STAV: return getString(R.string.stavFilter);
-            case DI_STAR: return "di STAR";
+            case DI_STAR: return getString(R.string.starFilter);
             case DI_AUTOGUIDOVIE: return getString(R.string.autoguidovieFilter);
             default: return "Errore";
         }
