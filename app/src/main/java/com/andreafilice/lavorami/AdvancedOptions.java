@@ -92,7 +92,7 @@ public class AdvancedOptions extends AppCompatActivity {
 
         //*VARIABLES
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-        String langCode = savedLang.contains("English") ? "en" : "it";
+        String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
 
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
