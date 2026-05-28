@@ -171,7 +171,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Google Play Services Auth",
-                        "21.5.1",
+                        "21.6.0",
                         "Google APIs Terms of Service",
                         "Copyright Google LLC",
                         "Use of the Google Play Services Auth SDK is subject to the Google APIs Terms of Service.\n" +
@@ -188,7 +188,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Mapbox Maps SDK for Android",
-                        "11.24.2",
+                        "11.24.3",
                         "Mapbox Terms of Service",
                         "Copyright (c) Mapbox",
                         "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
