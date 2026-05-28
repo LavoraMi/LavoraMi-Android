@@ -70,6 +70,8 @@ public class EventDescriptor {
                 return R.drawable.ic_bolt_horizontal;
             case "party.popper.fill":
                 return R.drawable.ic_event;
+            case "bolt.batteryblock.fill":
+                return R.drawable.ic_bolt_work;
             default:
                 return R.drawable.empty_image;
         }
