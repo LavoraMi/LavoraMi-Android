@@ -81,9 +81,9 @@ public class SetupModels {
             if (position == 0) {
                 holder.spinnerSetup.setVisibility(View.VISIBLE);
 
-                String[] languageNames = {"Italiano", "English"};
-                int[] languageFlags = {R.drawable.ic_italy, R.drawable.ic_uk};
-                String[] languageCodes = {"it", "en"};
+                String[] languageNames = {"Italiano", "English", "Español"};
+                int[] languageFlags = {R.drawable.ic_italy, R.drawable.ic_uk, R.drawable.ic_spain};
+                String[] languageCodes = {"it", "en", "es"};
 
                 ArrayAdapter<String> languageAdapter = new ArrayAdapter<String>(holder.itemView.getContext(), R.layout.spinner_item_language, R.id.languageText, Arrays.asList(languageNames)) {
                     @Override
