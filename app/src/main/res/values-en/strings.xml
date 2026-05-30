@@ -19,7 +19,7 @@
     <string name="googleLogin">Sign in with Google</string>
     <string name="accediAccount">Sign in</string>
     <string name="welcomeAccountLoggedIn">"Hi "</string>
-    <string name="gestisciDepsAccount">Here you can manage your account and your information.</string>
+    <string name="gestisciDepsAccount">Here you can manage your Account and your information.</string>
     <string name="infoAccount">Information</string>
     <string name="creatoConGoogle">Account created with Google</string>
     <string name="gestisciAccount">Manage</string>

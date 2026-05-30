@@ -19,7 +19,7 @@
     <string name="googleLogin">Iniciar sesión con Google</string>
     <string name="accediAccount">Iniciar sesión</string>
     <string name="welcomeAccountLoggedIn">"Hola "</string>
-    <string name="gestisciDepsAccount">Aquí puedes gestionar tu cuenta y tu información.</string>
+    <string name="gestisciDepsAccount">Aquí puedes gestionar tu Cuenta y tu información.</string>
     <string name="infoAccount">Información</string>
     <string name="creatoConGoogle">Cuenta creada con Google</string>
     <string name="gestisciAccount">Gestionar</string>
