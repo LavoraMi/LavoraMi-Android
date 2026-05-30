@@ -155,7 +155,7 @@ public class AccountManagement extends AppCompatActivity {
         //*BACK BUTTON
         /// In this section of the code, we initialize the Back Button and his action.
         ImageView backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> {ActivityUtils.changeActivity(this, SettingsActivity.class);});
+        backBtn.setOnClickListener(v -> finish());
 
         //*SIGN-IN WITH GOOGLE
         /// In this section we initialize all of the elements needed for the Google Sign-Up.
