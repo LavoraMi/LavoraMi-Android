@@ -792,23 +792,22 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void caricaInterscambiLinee() {
-        if (interscambiPreloaded) {
-            LinearLayout container = findViewById(R.id.containerInterscambi);
-            boolean hasChildren = container != null && container.getChildCount() > 0;
-            interscambiWrapper.setVisibility(hasChildren ? View.VISIBLE : View.GONE);
-            interscambiNested.setVisibility(hasChildren ? View.VISIBLE : View.GONE);
-
-            TextView emptyView = findViewById(R.id.emptyView);
-            if (emptyView != null) {
-                emptyView.setVisibility(hasChildren ? View.GONE : View.VISIBLE);
-                emptyView.setText(ContextCompat.getString(this, R.string.noInterchanges));
-            }
-            return;
-        }
-
         LinearLayout container = findViewById(R.id.containerInterscambi);
         View wrapper = findViewById(R.id.interscambiWrapper);
+        View emptyViewContainer = findViewById(R.id.emptyViewContainer);
         TextView emptyView = findViewById(R.id.emptyView);
+
+        if (interscambiPreloaded) {
+            boolean hasChildren = container != null && container.getChildCount() > 0;
+            if (interscambiWrapper != null) interscambiWrapper.setVisibility(hasChildren ? View.VISIBLE : View.GONE);
+            if (interscambiNested != null) interscambiNested.setVisibility(hasChildren ? View.VISIBLE : View.GONE);
+
+            if (emptyViewContainer != null)
+                emptyViewContainer.setVisibility(hasChildren ? View.GONE : View.VISIBLE);
+            if (emptyView != null)
+                emptyView.setText(ContextCompat.getString(this, R.string.noInterchanges));
+            return;
+        }
 
         if (container == null || wrapper == null) return;
 
@@ -816,23 +815,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         boolean foundAtLeastOne = false;
 
         String searchTag = nomeLinea.trim().toUpperCase();
-        List<InterchangeInfo> interchanges = new ArrayList<>();
-
-        if(tipoDiLinea.contains("Tram"))
-            interchanges = StationDB.getInterchangesTrams();
-        else
-            interchanges = StationDB.getInterchanges();
+        List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : StationDB.getInterchanges();
 
         for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;
 
             boolean matchFound = false;
             for (String lineInEvent : evento.getLines()) {
-                if (lineInEvent != null) {
-                    if (lineInEvent.trim().toUpperCase().equals(searchTag)) {
-                        matchFound = true;
-                        break;
-                    }
+                if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag)) {
+                    matchFound = true;
+                    break;
                 }
             }
 
@@ -851,21 +843,16 @@ public class LinesDetailActivity extends AppCompatActivity {
                 TextView desc = card.findViewById(R.id.txtLineCode);
                 TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
 
-                if(txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
-
-                if (titolo != null)
-                    titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
-
+                if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+                if (titolo != null) titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
                 if (desc != null) desc.setText(nomeLinea);
 
                 int color = ContextCompat.getColor(this, R.color.text_primary);
                 ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
 
                 ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-
                 if (chipGroup != null && evento.getLines() != null) {
                     chipGroup.removeAllViews();
-
                     for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
                 }
                 container.addView(card);
@@ -873,9 +860,14 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
-        interscambiNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
-        emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
-        emptyView.setText(ContextCompat.getString(this, R.string.noInterchanges));
+        if (interscambiNested != null) interscambiNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
+
+        //*AVOID NULL-POINTER EXCEPTIONS
+        /// In this section of the code, we check if all components are not NULL, to avoid Null-Pointer exceptions.
+        if (emptyViewContainer != null)
+            emptyViewContainer.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
+        if (emptyView != null)
+            emptyView.setText(ContextCompat.getString(this, R.string.noInterchanges));
     }
 
     private void caricaFermateInterscambio() {
