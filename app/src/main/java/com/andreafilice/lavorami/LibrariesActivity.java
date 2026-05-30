@@ -150,14 +150,14 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Firebase BOM",
-                        "34.13.0",
+                        "34.14.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Cloud Messaging",
-                        "34.13.0",
+                        "34.14.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT

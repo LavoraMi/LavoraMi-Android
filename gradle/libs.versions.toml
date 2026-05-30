@@ -22,7 +22,7 @@ benMaves = "0.54.0"
 playServicesAuth = "21.6.0"
 biometricAuth = "1.1.0"
 googleServices = "4.4.4"
-firebaseBom = "34.13.0"
+firebaseBom = "34.14.0"
 mlkitTranslate = "17.0.3"
 activityKtx = "1.13.0"
 
