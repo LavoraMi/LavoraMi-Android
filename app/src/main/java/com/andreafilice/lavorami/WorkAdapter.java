@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
@@ -58,6 +59,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        MaterialCardView cardView;
+        LinearLayout bannerImportante;
         ImageView cardImage;
         ImageView openCloseIcon;
         TextView titleText, trattaText, startDateText, endDateText,companyText, descriptionText;
@@ -67,6 +70,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         public ViewHolder(View itemView){
             super(itemView);
+            cardView = (MaterialCardView) itemView;
+            bannerImportante = itemView.findViewById(R.id.bannerImportante);
             cardImage = itemView.findViewById(R.id.iconEvent);
             openCloseIcon = itemView.findViewById(R.id.open_close_descriprion);
             titleText = itemView.findViewById(R.id.txtTitle);
@@ -110,7 +115,22 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.startDateText.setText(finalStartDate);
         itemHolder.endDateText.setText(finalEndDate);
         itemHolder.companyText.setText(item.getCompany());
-        itemHolder.descriptionText.setText(item.getDetails());
+
+        boolean isImportant = item.getDetails() != null && item.getDetails().contains("[LAVORO IMPORTANTE]");
+        String cleanedDetails = isImportant ? item.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : item.getDetails();
+
+        itemHolder.descriptionText.setText(cleanedDetails);
+
+        if (isImportant) {
+            itemHolder.bannerImportante.setVisibility(View.VISIBLE);
+            itemHolder.cardView.setStrokeColor(Color.parseColor("#FD272D"));
+            itemHolder.cardView.setStrokeWidth(dpToPx(itemHolder.itemView.getContext(), 2));
+            itemHolder.cardView.setCardElevation(dpToPx(itemHolder.itemView.getContext(), 10));
+        } else {
+            itemHolder.bannerImportante.setVisibility(View.GONE);
+            itemHolder.cardView.setStrokeWidth(0);
+            itemHolder.cardView.setCardElevation(dpToPx(itemHolder.itemView.getContext(), 4));
+        }
 
         itemHolder.descriptionText.setVisibility(View.GONE);
         itemHolder.openCloseIcon.setImageResource(R.drawable.ic_down);
@@ -130,6 +150,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         itemHolder.chipGroupLinee.removeAllViews();
         itemHolder.translateBtn.setVisibility((langCode.equalsIgnoreCase("en") || langCode.equalsIgnoreCase("es") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
 
+        final String detailsForTranslation = cleanedDetails;
         itemHolder.translateBtn.setOnClickListener(v -> {
             //*VARIABLES
             /// In this section of the code, we initialize some components that we will user later in the code.
@@ -154,7 +175,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 layoutDefault.setVisibility(View.VISIBLE);
                 downloadingText.setVisibility(View.GONE);
 
-                translateStrings(sheetView, item, loadingLayout);
+                translateStrings(sheetView, item, detailsForTranslation, loadingLayout);
             }
             else {
                 layoutDefault.setVisibility(View.GONE);
@@ -166,7 +187,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     downloadingText.setVisibility(View.VISIBLE);
                     DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
 
-                    translateStrings(sheetView, item, loadingLayout);
+                    translateStrings(sheetView, item, detailsForTranslation, loadingLayout);
                 });
 
                 cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});
@@ -230,7 +251,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    public static void translateStrings(View sheetView, EventDescriptor item, ShimmerFrameLayout loadingLayout){
+    public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails, ShimmerFrameLayout loadingLayout){
         Button btnCopy = sheetView.findViewById(R.id.btn_copy);
         TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
 
@@ -250,7 +271,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         translator.downloadModelIfNeeded(conditions)
                 .addOnSuccessListener(unused -> {
                     translator.translate(item.getTitle()).addOnSuccessListener(title -> {
-                        translator.translate(item.getDetails()).addOnSuccessListener(details -> {
+                        translator.translate(cleanedDetails).addOnSuccessListener(details -> {
                             String finalText = title + "\n\n" + details + "\n\n" + context.getString(R.string.roads) + item.getRoads() + "\n\n" + context.getString(R.string.linesInvolved) + item.getStringLines();
                             loadingLayout.setVisibility(View.GONE);
                             translatedTxt.setVisibility(View.VISIBLE);
@@ -308,5 +329,10 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void setFilteredList(List<EventDescriptor> filteredList) {
         this.eventList = (filteredList != null) ? filteredList : new ArrayList<>();
         notifyDataSetChanged();
+    }
+
+    private static int dpToPx(Context context, int dp) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }

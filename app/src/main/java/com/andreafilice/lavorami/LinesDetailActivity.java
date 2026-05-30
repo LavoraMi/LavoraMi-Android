@@ -665,7 +665,9 @@ public class LinesDetailActivity extends AppCompatActivity {
                         layoutDefault.setVisibility(View.VISIBLE);
                         downloadingText.setVisibility(View.GONE);
 
-                        translateStrings(sheetView, evento, loadingLayout);
+                        boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
+                        String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
+                        translateStrings(sheetView, evento, cleanedDetails, loadingLayout);
                     }
                     else {
                         layoutDefault.setVisibility(View.GONE);
@@ -677,7 +679,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                             downloadingText.setVisibility(View.VISIBLE);
                             DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
 
-                            translateStrings(sheetView, evento, loadingLayout);
+                            boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
+                            String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
+
+                            translateStrings(sheetView, evento, cleanedDetails, loadingLayout);
                         });
 
                         cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});
