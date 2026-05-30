@@ -55,11 +55,12 @@ object MapboxHelper {
     }
 
     @JvmStatic
-    fun addCircleLayer(mapView: MapView, features: List<Feature>, hexColor: String) {
+    fun addCircleLayer(mapView: MapView, features: List<Feature>, hexColor: String, textHexColor: String = "#FFFFFF") {
         /** In this function, we draw Circle points on the map, based on the Line color and other variables.
          * @param mapView is the Map Fragment from the Activity Layout.
          * @param features is the list of the points to draw into the mapView Fragment.
          * @param hexColor is the color of the line in hexa notation.
+         * @param textHexColor is the hex color of labels, if is light, set to black.
          */
 
         mapView.mapboxMap.getStyle { style ->
@@ -75,7 +76,7 @@ object MapboxHelper {
             style.addLayer(symbolLayer("marker-label-layer", "marker-source") {
                 textField(get("name"))
                 textSize(11.0)
-                textColor(literal("#FFFFFF"))
+                textColor(literal(textHexColor))
                 textHaloWidth(1.5)
                 textOffset(listOf(0.0, 1.5))
                 textAnchor(TextAnchor.TOP)

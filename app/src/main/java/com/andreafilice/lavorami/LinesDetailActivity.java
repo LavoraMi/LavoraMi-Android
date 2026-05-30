@@ -476,7 +476,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         int coloreLinea = ContextCompat.getColor(this, nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(nomeLinea));
+        int coloreDefaultText = ContextCompat.getColor(this, R.color.text_primary);
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
+        String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
 
         List<Feature> markerFeatures = new ArrayList<>();
         for (MetroStation station : tutteLeStazioni) {
@@ -485,7 +487,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             markerFeatures.add(MapboxHelper.makeStationFeature(station.getLatitude(), station.getLongitude(), station.getName()));
         }
 
-        MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor);
+        MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor, hexColorText);
 
         disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
 
