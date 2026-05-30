@@ -139,10 +139,10 @@
     <string name="openSettingsLink">Abrir Ajustes</string>
     <string name="setAllNotificationsDeps">Establece todas las notificaciones en un estado determinado.</string>
     <string name="workNotificationsTitle">Notificaciones de Obras</string>
-    <string name="notificationStartWorks">Notificaciones de Inicio de Obras</string>
-    <string name="notificationEndWorks">Notificaciones de Fin de Obras</string>
+    <string name="notificationStartWorks">Notificaciones Inicio Obras</string>
+    <string name="notificationEndWorks">Notificaciones Fin Obras</string>
     <string name="otherNotificationsTitle">Otras Notificaciones</string>
-    <string name="strikeNotifications">Notificaciones de Huelgas</string>
+    <string name="strikeNotifications">Notificaciones Huelgas</string>
     <string name="pushNotifications">Notificaciones Push</string>
     <string name="notificationSettingsTitle">Ajustes de Notificaciones</string>
     <string name="notificationScheduled">Horario de Notificaciones</string>
