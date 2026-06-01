@@ -277,6 +277,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             translatedTxt.setVisibility(View.VISIBLE);
                             translatedTxt.setText(finalText);
                             btnCopy.setVisibility(View.VISIBLE);
+                            DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
                         });
                     }).addOnFailureListener(e -> {
                         loadingLayout.setVisibility(View.GONE);

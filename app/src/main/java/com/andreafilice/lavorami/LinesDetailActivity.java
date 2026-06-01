@@ -679,7 +679,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                             layoutDefault.setVisibility(View.VISIBLE);
                             layoutTerms.setVisibility(View.GONE);
                             downloadingText.setVisibility(View.VISIBLE);
-                            DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
 
                             boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
                             String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
