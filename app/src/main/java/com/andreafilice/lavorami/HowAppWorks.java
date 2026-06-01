@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -15,6 +16,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -70,7 +72,6 @@ public class HowAppWorks extends AppCompatActivity {
             public void run() {
                 isFilled[0] = !isFilled[0];
 
-
                 if (isFilled[0]) {
                     heartIcon.setImageResource(R.drawable.ic_heart);
                     heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
@@ -84,7 +85,6 @@ public class HowAppWorks extends AppCompatActivity {
                 heartIcon.startAnimation(scaleDownUp);
                 favIcon.startAnimation(scaleDownUp);
                 handler.postDelayed(this, 2000);
-
             }
         };
         handler.post(starAnimation);
@@ -96,14 +96,27 @@ public class HowAppWorks extends AppCompatActivity {
 
         ImageView mapImage = findViewById(R.id.imgLineOnMap);
         mapImage.setImageResource(isNightMode ? R.drawable.ic_line_on_map : R.drawable.ic_line_on_map_light);
+
+        ImageView worksiteArrowDesc = findViewById(R.id.worksiteArrowDesc);
+        TextView txtWorksiteStopExample = findViewById(R.id.txtWorksiteStopExample);
+        ConstraintLayout cardExampleWork = findViewById(R.id.cardExampleWork);
+
+        cardExampleWork.setOnClickListener(v -> {
+            boolean isExpanded = txtWorksiteStopExample.getVisibility() == View.VISIBLE;
+            if (isExpanded) {
+                txtWorksiteStopExample.setVisibility(View.GONE);
+                worksiteArrowDesc.animate().rotation(-90).setDuration(200).start();
+            }
+            else {
+                txtWorksiteStopExample.setVisibility(View.VISIBLE);
+                worksiteArrowDesc.animate().rotation(0).setDuration(200).start();
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        //*DESTROY HANDLER
-        /// In this section of the code, we will destroy the handler to avoid error loops.
         if(handler != null && starAnimation != null) {
             handler.removeCallbacks(starAnimation);
             handler.removeCallbacksAndMessages(null);
