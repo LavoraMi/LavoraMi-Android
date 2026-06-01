@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -2436,7 +2438,7 @@ public class StationDB {
         );
     }
 
-    public static List<InterchangeInfo> getInterchanges() {
+    public static List<InterchangeInfo> getInterchanges(Context context) {
         return Arrays.asList(
                 new InterchangeInfo("Rho Fiera-Milano", new String[]{"M1", "AV", "R21", "R23", "RE4", "RE5", "S5", "S6", "S11"}, "lightrail"),
                 new InterchangeInfo("Lotto", new String[]{"M1", "M5"}, "tram.fill.tunnel"),
@@ -2460,7 +2462,7 @@ public class StationDB {
                 new InterchangeInfo("Sforza - Policlinico", new String[]{"M3", "M4"}, "figure.walk"),
                 new InterchangeInfo("Dateo", new String[]{"M4", "S1", "S2", "S5", "S6", "S12", "S13"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Stazione Forlanini", new String[]{"M4", "R38", "RE8", "RE13", "S5", "S6", "S9"}, "lightrail"),
-                new InterchangeInfo("Linate Aereoporto", new String[]{"Aereoporto", "M4"}, "airplane.departure"),
+                new InterchangeInfo("Linate Aereoporto", new String[]{context.getString(R.string.airportKey), "M4"}, "airplane.departure"),
                 new InterchangeInfo("Domodossola FN", new String[]{"M5", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "S3", "S4"}, "tram.fill.tunnel"),
                 new InterchangeInfo("Como S. Giovanni", new String[]{"S10", "S11", "S40", "RE80"}, "lightrail"),
                 new InterchangeInfo("Mendrisio", new String[]{"S10", "S40", "S50", "RE80"}, "lightrail"),
@@ -2570,7 +2572,7 @@ public class StationDB {
         return CACHED_STATIONS;
     }
 
-    public static int getLineColor(String nomeLinea) {
+    public static int getLineColor(Context context, String nomeLinea) {
         switch (nomeLinea) {
             //S LINES
             case "S1":
@@ -2648,7 +2650,7 @@ public class StationDB {
                     return R.color.AUTOGUIDOVIE;
                 else if(nomeLinea.startsWith("MXP"))
                     return R.color.MXP;
-                else if(nomeLinea.equalsIgnoreCase("Aereoporto"))
+                else if(nomeLinea.equalsIgnoreCase(context.getString(R.string.airportKey)))
                     return R.color.airport;
                 else
                     return R.color.OTHER_LINES;

@@ -362,4 +362,5 @@
     <string name="regionalLinesScroll">Regional</string>
     <string name="tramLinesScroll">Tram</string>
     <string name="importantWork">IMPORTANT WORK</string>
+    <string name="airportKey">Airport</string>
 </resources>

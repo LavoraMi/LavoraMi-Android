@@ -348,7 +348,7 @@ public class LinesActivity extends AppCompatActivity {
                 if (parts.length == 2) {
                     String title = parts[0];
                     String deps = parts[1];
-                    int color = StationDB.getLineColor(title);
+                    int color = StationDB.getLineColor(this, title);
 
                     if(deps.contains("Suburban"))
                         deps = getString(R.string.suburban);

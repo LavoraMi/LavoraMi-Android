@@ -285,7 +285,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
-        int coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(nomeLinea)));
+        int coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(this, nomeLinea)));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
         ColorStateList chipColor = new ColorStateList(
             new int[][]{
@@ -458,7 +458,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             detTitolo.setText("Regio Express " + nomeLinea);
 
         detBadge.setText(nomeLinea);
-        int colorResId = StationDB.getLineColor(nomeLinea);
+        int colorResId = StationDB.getLineColor(this, nomeLinea);
         int coloreEffettivo = ContextCompat.getColor(this, colorResId);
 
         detBadge.getBackground().setTint(coloreEffettivo);
@@ -475,7 +475,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 tutteLeStazioni.add(s);
         }
 
-        int coloreLinea = ContextCompat.getColor(this, nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(nomeLinea));
+        int coloreLinea = ContextCompat.getColor(this, nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(this, nomeLinea));
         int coloreDefaultText = ContextCompat.getColor(this, R.color.text_primary);
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
         String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
@@ -732,7 +732,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void preloadInterscambi() {
         executor.execute(() -> {
             String searchTag = nomeLinea.trim().toUpperCase();
-            List<InterchangeInfo> interchanges = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? StationDB.getInterchangesTrams() : StationDB.getInterchanges();
+            List<InterchangeInfo> interchanges = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? StationDB.getInterchangesTrams() : StationDB.getInterchanges(this);
 
             List<InterchangeInfo> matched = new ArrayList<>();
 
@@ -817,7 +817,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         boolean foundAtLeastOne = false;
 
         String searchTag = nomeLinea.trim().toUpperCase();
-        List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : StationDB.getInterchanges();
+        List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : StationDB.getInterchanges(this);
 
         for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;
@@ -943,7 +943,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setTextSize(13f);
         chip.setTypeface(Typeface.create(ResourcesCompat.getFont(this, R.font.inter_medium), Typeface.BOLD));
 
-        int colore = ContextCompat.getColor(this, StationDB.getLineColor(name));
+        int colore = ContextCompat.getColor(this, StationDB.getLineColor(this, name));
         chip.setChipBackgroundColor(ColorStateList.valueOf(colore));
         chip.setTextColor(ContextCompat.getColor(this, R.color.White));
         chip.setCloseIconVisible(false);

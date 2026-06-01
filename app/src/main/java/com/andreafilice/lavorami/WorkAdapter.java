@@ -235,7 +235,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 Typeface interMediumBold = Typeface.create(interMedium, Typeface.BOLD);
                 chip.setTypeface(interMediumBold);
 
-                int coloreLinea = StationDB.getLineColor(nomePulito);
+                int coloreLinea = StationDB.getLineColor(context, nomePulito);
                 int coloreEffettivo = ContextCompat.getColor(context, coloreLinea);
                 int coloreTestoEffettivo = ContextCompat.getColor(context, R.color.White);
 
