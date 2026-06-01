@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -252,7 +253,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails, String langCode, ShimmerFrameLayout loadingLayout){
-        Button btnCopy = sheetView.findViewById(R.id.btn_copy);
+        MaterialButton btnCopy = sheetView.findViewById(R.id.btn_copy);
         TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
 
         btnCopy.setVisibility(View.GONE);
@@ -288,7 +289,16 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         btnCopy.setOnClickListener(viewClick -> {
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             android.content.ClipData clip = android.content.ClipData.newPlainText("traduzione", translatedTxt.getText());
+            btnCopy.setIcon(ContextCompat.getDrawable(context, R.drawable.ic_checkmark_single));
+            btnCopy.setText("Copiato!");
             clipboard.setPrimaryClip(clip);
+
+            new Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                if (btnCopy != null) {
+                    btnCopy.setIconResource(R.drawable.ic_clipboard);
+                    btnCopy.setText(context.getString(R.string.copyTranslation));
+                }
+            }, 4000);
         });
     }
 
