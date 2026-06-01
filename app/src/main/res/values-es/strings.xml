@@ -363,4 +363,5 @@
     <string name="tramLinesScroll">Tranvía</string>
     <string name="importantWork">OBRA IMPORTANTE</string>
     <string name="airportKey">Aeropuerto</string>
+    <string name="translationCopied">¡Copiada!</string>
 </resources>

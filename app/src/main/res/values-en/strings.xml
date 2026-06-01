@@ -363,4 +363,5 @@
     <string name="tramLinesScroll">Tram</string>
     <string name="importantWork">IMPORTANT WORK</string>
     <string name="airportKey">Airport</string>
+    <string name="translationCopied">Copied!</string>
 </resources>
