@@ -49,7 +49,7 @@
     <string name="signInPopUpTitle">Accedi al tuo Account</string>
     <string name="biometricAuthPopUpDeps">Usa l\'impronta o il viso per accedere.</string>
     <string name="advancedOptionsTitle">Opzioni Avanzate</string>
-    <string name="errorMessagesOptions">Mostra Messaggi Di Errore</string>
+    <string name="errorMessagesOptions">Mostra Messaggi Errore</string>
     <string name="showErrorsDeps">Mostra messaggi di errore quando fallisce il Download dei dati dal server.</string>
     <string name="bannerStrikesOptions">Mostra Banner Scioperi</string>
     <string name="bannerStrikesDeps">Mostra il banner di scioperi nella Home quando sono presenti.</string>

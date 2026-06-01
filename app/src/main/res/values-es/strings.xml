@@ -50,7 +50,7 @@
     <string name="signInPopUpTitle">Inicia sesión en tu cuenta</string>
     <string name="biometricAuthPopUpDeps">Usa tu huella o cara para acceder.</string>
     <string name="advancedOptionsTitle">Opciones Avanzadas</string>
-    <string name="errorMessagesOptions">Mostrar Mensajes de Error</string>
+    <string name="errorMessagesOptions">Mostrar Mensajes Error</string>
     <string name="showErrorsDeps">Muestra mensajes de error cuando falla la descarga de datos desde el servidor.</string>
     <string name="bannerStrikesOptions">Mostrar Banner de Huelgas</string>
     <string name="bannerStrikesDeps">Muestra el banner de huelgas en la pantalla de inicio cuando estén activas.</string>
