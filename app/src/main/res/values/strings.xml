@@ -142,7 +142,7 @@
     <string name="notificationEndWorks">Notifiche Fine Lavori</string>
     <string name="otherNotificationsTitle">Altre Notifiche</string>
     <string name="strikeNotifications">Notifiche Scioperi</string>
-    <string name="pushNotifications">Notifiche Push</string>
+    <string name="pushNotifications">Notifiche In Tempo Reale</string>
     <string name="notificationSettingsTitle">Impostazioni Notifiche</string>
     <string name="notificationScheduled">Orario Notifiche</string>
     <string name="notificationTimeDeps">Modifica l\'orario di arrivo delle notifiche.</string>

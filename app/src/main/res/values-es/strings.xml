@@ -143,7 +143,7 @@
     <string name="notificationEndWorks">Notificaciones Fin Obras</string>
     <string name="otherNotificationsTitle">Otras Notificaciones</string>
     <string name="strikeNotifications">Notificaciones Huelgas</string>
-    <string name="pushNotifications">Notificaciones Push</string>
+    <string name="pushNotifications">Notificaciones Tiempo Real</string>
     <string name="notificationSettingsTitle">Ajustes de Notificaciones</string>
     <string name="notificationScheduled">Horario de Notificaciones</string>
     <string name="notificationTimeDeps">Cambia la hora en la que se reciben las notificaciones.</string>

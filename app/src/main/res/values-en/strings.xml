@@ -143,7 +143,7 @@
     <string name="notificationEndWorks">Work Ended Notifications</string>
     <string name="otherNotificationsTitle">Other Notifications</string>
     <string name="strikeNotifications">Strike Notifications</string>
-    <string name="pushNotifications">Push Notifications</string>
+    <string name="pushNotifications">Real-Time Notifications</string>
     <string name="notificationSettingsTitle">Notification Settings</string>
     <string name="notificationScheduled">Notification Schedule</string>
     <string name="notificationTimeDeps">Change the time when notifications are delivered.</string>
