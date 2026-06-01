@@ -669,7 +669,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                         boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
                         String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
-                        translateStrings(sheetView, evento, cleanedDetails, loadingLayout);
+                        translateStrings(sheetView, evento, cleanedDetails, langCode, loadingLayout);
                     }
                     else {
                         layoutDefault.setVisibility(View.GONE);
@@ -683,7 +683,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                             boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
                             String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
 
-                            translateStrings(sheetView, evento, cleanedDetails, loadingLayout);
+                            translateStrings(sheetView, evento, cleanedDetails, langCode, loadingLayout);
                         });
 
                         cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});

@@ -175,7 +175,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 layoutDefault.setVisibility(View.VISIBLE);
                 downloadingText.setVisibility(View.GONE);
 
-                translateStrings(sheetView, item, detailsForTranslation, loadingLayout);
+                translateStrings(sheetView, item, detailsForTranslation, langCode, loadingLayout);
             }
             else {
                 layoutDefault.setVisibility(View.GONE);
@@ -187,7 +187,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     downloadingText.setVisibility(View.VISIBLE);
                     DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
 
-                    translateStrings(sheetView, item, detailsForTranslation, loadingLayout);
+                    translateStrings(sheetView, item, detailsForTranslation, langCode, loadingLayout);
                 });
 
                 cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});
@@ -251,7 +251,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails, ShimmerFrameLayout loadingLayout){
+    public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails, String langCode, ShimmerFrameLayout loadingLayout){
         Button btnCopy = sheetView.findViewById(R.id.btn_copy);
         TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
 
@@ -259,8 +259,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         TranslatorOptions options = new TranslatorOptions.Builder()
                 .setSourceLanguage(TranslateLanguage.ITALIAN)
-                .setTargetLanguage(TranslateLanguage.ENGLISH)
-                .setTargetLanguage(TranslateLanguage.SPANISH)
+                .setTargetLanguage((langCode.equalsIgnoreCase("es")) ? TranslateLanguage.SPANISH : TranslateLanguage.ENGLISH)
                 .build();
 
         Translator translator = Translation.getClient(options);
