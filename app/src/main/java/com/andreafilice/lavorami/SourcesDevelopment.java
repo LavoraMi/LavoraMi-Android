@@ -49,7 +49,7 @@ public class SourcesDevelopment extends AppCompatActivity {
 
         btnReportBug.setOnClickListener(v -> {
             String subject = ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentSubject);
-            String body = String.format(ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentBody), Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER);
+            String body = String.format(ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentBody), Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER, getString(R.string.app_version));
 
             String encodedBody = Uri.encode(body);
             String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;

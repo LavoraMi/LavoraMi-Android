@@ -122,7 +122,7 @@
     <string name="parteonSupport">Support us on Patreon</string>
     <string name="buyACoffeSupport">Support us on Buy Me A Coffee</string>
     <string name="followOn">Follow us on:</string>
-    <string name="contacts">Contacts:</string>
+    <string name="contacts">Contact us:</string>
     <string name="bugReport">Report a bug</string>
     <string name="webSite">Web Site</string>
     <string name="credits">Open-Source Libraries</string>
@@ -148,7 +148,7 @@
     <string name="notificationScheduled">Notification Schedule</string>
     <string name="notificationTimeDeps">Change the time when notifications are delivered.</string>
     <string name="bugIntentSubject">Report a bug with LavoraMi on Android</string>
-    <string name="bugIntentBody">DEVICE INFORMATION (DO NOT DELETE; USE FOR DEBUGGING PURPOSES): Phone ID: %s Android version: %s Model and manufacturer: %s, %s</string>
+    <string name="bugIntentBody">DEVICE INFORMATION (DO NOT DELETE; USE FOR DEBUGGING PURPOSES): Phone ID: %s, Android version: %s, Model and manufacturer: %s, %s, Application Version: %s</string>
     <string name="helpTitle">Help</string>
     <string name="requestDataTitle">Request Your Data</string>
     <string name="requestDataDeps">Submit a request to our team to download your data.</string>

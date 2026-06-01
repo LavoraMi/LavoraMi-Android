@@ -122,7 +122,7 @@
     <string name="parteonSupport">Apóyanos en Patreon</string>
     <string name="buyACoffeSupport">Apóyanos en Buy Me A Coffee</string>
     <string name="followOn">Síguenos en:</string>
-    <string name="contacts">Contactos:</string>
+    <string name="contacts">Contáctanos:</string>
     <string name="bugReport">Reportar un error</string>
     <string name="webSite">Sitio Web</string>
     <string name="credits">Bibliotecas de Código Abierto</string>
@@ -148,7 +148,7 @@
     <string name="notificationScheduled">Horario de Notificaciones</string>
     <string name="notificationTimeDeps">Cambia la hora en la que se reciben las notificaciones.</string>
     <string name="bugIntentSubject">Reporte de error en LavoraMi para Android</string>
-    <string name="bugIntentBody">INFORMACIÓN DEL DISPOSITIVO (NO ELIMINAR, USADA PARA DEPURACIÓN):\\nID del teléfono: %s\\nVersión de Android: %s\\nModelo y fabricante: %s, %s</string>
+    <string name="bugIntentBody">INFORMACIÓN DEL DISPOSITIVO (NO ELIMINAR, USADA PARA DEPURACIÓN): ID del teléfono: %s, Versión de Android: %s, Modelo y fabricante: %s, %s, Versión de la aplicación: %s</string>
     <string name="helpTitle">Ayuda</string>
     <string name="requestDataTitle">Solicitar tus Datos</string>
     <string name="requestDataDeps">Envía una solicitud a nuestro equipo para descargar tus datos.</string>

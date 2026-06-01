@@ -121,7 +121,7 @@
     <string name="parteonSupport">Supportaci su Patreon</string>
     <string name="buyACoffeSupport">Supportaci su Buy Me A Coffee</string>
     <string name="followOn">Seguici su:</string>
-    <string name="contacts">Contatti:</string>
+    <string name="contacts">Contattaci:</string>
     <string name="bugReport">Segnala un bug</string>
     <string name="webSite">Sito Web</string>
     <string name="credits">Librerie Open-Source</string>
@@ -147,7 +147,7 @@
     <string name="notificationScheduled">Orario Notifiche</string>
     <string name="notificationTimeDeps">Modifica l\'orario di arrivo delle notifiche.</string>
     <string name="bugIntentSubject">Segnalazione bug LavoraMi su Android</string>
-    <string name="bugIntentBody">INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG):\\nID Telefono: %s\\nVersione Android: %s\\nModello e manufacture: %s, %s</string>
+    <string name="bugIntentBody">INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG): ID Telefono: %s, nVersione Android: %s, Modello e manufacture: %s, %s, Versione Applicazione: %s</string>
     <string name="helpTitle">Aiuto</string>
     <string name="requestDataTitle">Richiedi i tuoi Dati</string>
     <string name="requestDataDeps">Invia una richiesta al nostro Team per scaricare i tuoi dati.</string>
