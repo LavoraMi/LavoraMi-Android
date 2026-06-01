@@ -2648,6 +2648,8 @@ public class StationDB {
                     return R.color.AUTOGUIDOVIE;
                 else if(nomeLinea.startsWith("MXP"))
                     return R.color.MXP;
+                else if(nomeLinea.equalsIgnoreCase("Aereoporto"))
+                    return R.color.airport;
                 else
                     return R.color.OTHER_LINES;
         }
