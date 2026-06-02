@@ -2563,6 +2563,72 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsFilobus92() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Lodi M3", 45.44681, 9.20926, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.44698, 9.21025, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.44706, 9.21057, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.44725, 9.21072, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.44747, 9.2107, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.44762, 9.21058, "Main", "92"));
+        stations.add(new MetroStation("V.Le Umbria Lodi M3", 45.44817, 9.21081, "Main", "92"));
+        stations.add(new MetroStation("V.Le Umbria Via Muratori", 45.45036, 9.21263, "Main", "92"));
+        stations.add(new MetroStation("V.Le Umbria Via Comelico", 45.45365, 9.21529, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.45456, 9.21609, "Main", "92"));
+        stations.add(new MetroStation("Via Maestri Campionesi", 45.45527, 9.21662, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.45658, 9.21713, "Main", "92"));
+        stations.add(new MetroStation("Via Arconati", 45.45759, 9.21745, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.45874, 9.21761, "Main", "92"));
+        stations.add(new MetroStation("P.Za Emilia", 45.46172, 9.21747, "Main", "92"));
+        stations.add(new MetroStation("V.Le Piceno", 45.46597, 9.21741, "Main", "92"));
+        stations.add(new MetroStation("Dateo FS M4", 45.46858, 9.21733, "Main", "92"));
+        stations.add(new MetroStation("V.Le Dei Mille P.Za Novelli", 45.47066, 9.2173, "Main", "92"));
+        stations.add(new MetroStation("P.Za Ascoli", 45.47398, 9.21725, "Main", "92"));
+        stations.add(new MetroStation("V.Le Abruzzi Via Plinio", 45.47733, 9.2172, "Main", "92"));
+        stations.add(new MetroStation("P.Le Bacone", 45.48054, 9.21715, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.4817, 9.21711, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.48181, 9.2169, "Main", "92"));
+        stations.add(new MetroStation("Via Piccini V.Le Abruzzi", 45.48206, 9.21647, "Main", "92"));
+        stations.add(new MetroStation("P.Le Loreto Via Pergolesi", 45.48361, 9.2134, "Main", "92"));
+        stations.add(new MetroStation("Caiazzo M2", 45.48556, 9.20943, "Main", "92"));
+        stations.add(new MetroStation("P.Za Luigi Di Savoia", 45.48664, 9.2073, "Main", "92"));
+        stations.add(new MetroStation("Stazione Centrale Via Tonale", 45.48825, 9.20404, "Main", "92"));
+        stations.add(new MetroStation("Sondrio M3", 45.48996, 9.20064, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49103, 9.1985, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49115, 9.19823, "Main", "92"));
+        stations.add(new MetroStation("V.Le Sauro Via Oldofredi", 45.49132, 9.19776, "Main", "92"));
+        stations.add(new MetroStation("Zara M3 M5", 45.49247, 9.19342, "Main", "92"));
+        stations.add(new MetroStation("V.Le Stelvio Via Lario", 45.49312, 9.19096, "Main", "92"));
+        stations.add(new MetroStation("Via Farini V.Le Stelvio", 45.49453, 9.18559, "Main", "92"));
+        stations.add(new MetroStation("Via Bernina", 45.49561, 9.1816, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49565, 9.18092, "Main", "92"));
+        stations.add(new MetroStation("Lancetti FS", 45.49545, 9.1769, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49518, 9.17425, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49511, 9.17349, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49513, 9.17308, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49523, 9.17241, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49526, 9.17226, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49535, 9.17215, "Main", "92"));
+        stations.add(new MetroStation("P.Le Nigra", 45.4958, 9.1719, "Main", "92"));
+        stations.add(new MetroStation("Via Imbriani Via Scalvini", 45.49923, 9.16933, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.49955, 9.16866, "Main", "92"));
+        stations.add(new MetroStation("Bausan", 45.50157, 9.16629, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50212, 9.16555, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50222, 9.16563, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50233, 9.16565, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50243, 9.16558, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50251, 9.16543, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50251, 9.16525, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50246, 9.16513, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50251, 9.16504, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50289, 9.16461, "Main", "92"));
+        stations.add(new MetroStation("Via Broglio Via Varè", 45.5025, 9.1627, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50222, 9.16193, "Main", "92"));
+        stations.add(new MetroStation("NO_DRAW", 45.50201, 9.16202, "Main", "92"));
+        stations.add(new MetroStation("Via Varè", 45.50177, 9.16208, "Main", "92"));
+        return stations;
+    }
+
     public static List<InterchangeInfo> getBusInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
         interchanges.add(new InterchangeInfo(
@@ -2932,6 +2998,7 @@ public class StationDB {
 
             allStations.addAll(getStationsFilobus90());
             allStations.addAll(getStationsFilobus91());
+            allStations.addAll(getStationsFilobus92());
 
             CACHED_STATIONS = Collections.unmodifiableList(allStations);
         }
