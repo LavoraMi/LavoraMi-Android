@@ -36,8 +36,8 @@ import java.util.Set;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
-    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
@@ -49,7 +49,7 @@ public class LinesActivity extends AppCompatActivity {
     private Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
     //* BOOLEAN VALUES
-    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto;
+    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasStav, hasSTAR, hasAuto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +72,7 @@ public class LinesActivity extends AppCompatActivity {
         containerMXP = findViewById(R.id.groupMXP);
         containerTram = findViewById(R.id.groupTram);
         containerTrans = findViewById(R.id.groupTrans);
+        containerFilobus = findViewById(R.id.groupFilobus);
         containerMovibus = findViewById(R.id.groupMovibus);
         containerStav = findViewById(R.id.groupStav);
         containerSTAR = findViewById(R.id.groupStar);
@@ -85,6 +86,7 @@ public class LinesActivity extends AppCompatActivity {
         titleMXP = findViewById(R.id.headerMXP);
         titleTrans = findViewById(R.id.headerTransfrontaliere);
         titleTram = findViewById(R.id.headerTram);
+        titleFilobus = findViewById(R.id.headerFilobus);
         titleMovibus = findViewById(R.id.headerMovibus);
         titleStav = findViewById(R.id.headerSTAV);
         titleSTAR = findViewById(R.id.headerSTAR);
@@ -125,6 +127,7 @@ public class LinesActivity extends AppCompatActivity {
                 findViewById(R.id.infoIconTransfrontaliere),
                 findViewById(R.id.infoIconMXP),
                 findViewById(R.id.infoIconTram),
+                findViewById(R.id.infoIconFilobus),
                 findViewById(R.id.infoIconMovibus),
                 findViewById(R.id.infoIconStav),
                 findViewById(R.id.infoIconStar),
@@ -138,6 +141,7 @@ public class LinesActivity extends AppCompatActivity {
                 "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
                 "https://www.tilo.ch",
                 "https://www.malpensaexpress.it",
+                "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
                 "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
                 "https://movibus.it/news/",
                 "https://stavautolinee.it/reti-servite/",
@@ -187,6 +191,7 @@ public class LinesActivity extends AppCompatActivity {
                     hasMXP = filtraContainer(containerMXP, query);
                     hasTrans = filtraContainer(containerTrans, query);
                     hasTram = filtraContainer(containerTram, query);
+                    hasFilobus = filtraContainer(containerFilobus, query);
                     hasMovibus = filtraContainer(containerMovibus, query);
                     hasStav = filtraContainer(containerStav, query);
                     hasSTAR = filtraContainer(containerSTAR, query);
@@ -231,6 +236,11 @@ public class LinesActivity extends AppCompatActivity {
                     titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
                     containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
                     setUpMargin(titleTram, onlyOneActive());
+
+                    //*FILOBUS LINES
+                    titleFilobus.setVisibility(hasFilobus ? View.VISIBLE : View.GONE);
+                    containerFilobus.setVisibility(hasFilobus ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleFilobus, onlyOneActive());
 
                     //*MOVIBUS LINES
                     titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
@@ -428,6 +438,12 @@ public class LinesActivity extends AppCompatActivity {
                 "15", "16", "19", "24", "27", "31", "33"};
         for (String line : tramLines) {
             aggiungiLinea(containerTram, line, R.color.TRAM, getString(R.string.tramLinesScroll));
+        }
+
+        // FILOBUS
+        String[] filobusLines = {"90", "91", "92", "93"};
+        for (String line : filobusLines) {
+            aggiungiLinea(containerFilobus, line, R.color.FILOBUS, "Filobus");
         }
 
         // MOVIBUS
