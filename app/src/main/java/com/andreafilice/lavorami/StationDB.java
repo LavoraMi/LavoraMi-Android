@@ -1519,7 +1519,7 @@ public class StationDB {
         stations.add(new MetroStation("Milano Pta Garibaldi", 45.48449, 9.18737, "Garibaldi", "RE2"));
         stations.add(new MetroStation("Milano Villapizzone", 45.50202, 9.15092, "Garibaldi", "RE2"));
         stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Greco", "RE2"));
-        stations.add(new MetroStation("Milano Centrale", 45.48713, 9.20482, "Main", "RE2"));
+        stations.add(new MetroStation("Milano Centrale", 45.48713, 9.20482, "Centrale", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.49443, 9.21352, "Main", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.49659, 9.21633, "Main", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.49707, 9.21866, "Main", "RE2"));
