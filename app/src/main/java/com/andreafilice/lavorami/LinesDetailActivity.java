@@ -594,7 +594,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         container.removeAllViews();
         boolean foundAtLeastOne = false;
 
-        String searchTag = nomeLinea.trim().toUpperCase();
+        String searchTag = (nomeLinea.matches("9[0-3]")) ? ("FILOBUS " + nomeLinea.trim()) : nomeLinea.trim().toUpperCase();
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
             if (evento.getLines() == null) continue;
@@ -628,7 +628,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (titolo != null) titolo.setText(evento.getTitle());
                 if (desc != null) desc.setText(evento.getDetails());
                 if (desc != null) desc.setVisibility(View.GONE);
-                if(openCloseIcon!=null) openCloseIcon.setImageResource(R.drawable.ic_down);
+                if(openCloseIcon != null) openCloseIcon.setImageResource(R.drawable.ic_down);
 
                 card.setOnClickListener(v -> {
                     boolean isExpanded = desc.getVisibility() == View.VISIBLE;
@@ -970,6 +970,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             tvAttesa.setText("Frequenza variabile");
 
         int numeroLavoriProgrammati = 0, numeroLavoriAttuali = 0, numeroLavori = 0;
+        String searchTag = (nomeLinea.matches("9[0-3]")) ? ("FILOBUS " + nomeLinea.trim()) : nomeLinea.trim();
 
         for (EventDescriptor event : EventData.listaEventiCompleta) {
             long start = event.getStartDateMillis();
@@ -978,7 +979,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             long startP = event.getStartDateMillis();
 
             for (String line : event.getLines()) {
-                if (line.equalsIgnoreCase(nomeLinea)) {
+                if (line.equalsIgnoreCase(searchTag)) {
                     numeroLavori++;
 
                     if(start > 0 && end > 0 && oggi >= start && oggi <= end) numeroLavoriAttuali++;
