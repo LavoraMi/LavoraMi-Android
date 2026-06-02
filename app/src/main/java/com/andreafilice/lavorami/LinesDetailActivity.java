@@ -733,7 +733,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void preloadInterscambi() {
         executor.execute(() -> {
             String searchTag = nomeLinea.trim().toUpperCase();
-            List<InterchangeInfo> interchanges = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? StationDB.getInterchangesTrams() : StationDB.getInterchanges(this);
+            List<InterchangeInfo> interchanges = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? StationDB.getInterchangesTrams() : (tipoDiLinea.contains("Filobus") ? StationDB.getInterchangesFilobus() : StationDB.getInterchanges(this));
 
             List<InterchangeInfo> matched = new ArrayList<>();
 
@@ -818,7 +818,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         boolean foundAtLeastOne = false;
 
         String searchTag = nomeLinea.trim().toUpperCase();
-        List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : StationDB.getInterchanges(this);
+        List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : (tipoDiLinea.contains("Filobus") ? StationDB.getInterchangesFilobus() : StationDB.getInterchanges(this));
 
         for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;

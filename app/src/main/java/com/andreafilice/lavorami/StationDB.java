@@ -2679,6 +2679,20 @@ public class StationDB {
         );
     }
 
+    public static List<InterchangeInfo> getInterchangesFilobus() {
+        return Arrays.asList(
+            new InterchangeInfo("Lodi M3", new String[]{"M3", "90", "91", "92"}, "tram.fill.tunnel"),
+            new InterchangeInfo("V.Le Isonzo Via Ripamonti", new String[]{"24", "90", "91"}, "tram.fill"),
+            new InterchangeInfo("Tibaldi", new String[]{"S9", "S19", "R31", "15", "90", "91"}, "lightrail"),
+            new InterchangeInfo("V.Le Tibaldi Via Meda", new String[]{"3", "90", "91"}, "lightrail"),
+            new InterchangeInfo("Romolo M2", new String[]{"M2", "S9", "S19", "R31", "90", "91"}, "tram.fill.tunnel"),
+            new InterchangeInfo("Ponte Guido Crepax", new String[]{"2", "90", "91"}, "tram.fill"),
+            new InterchangeInfo("Bolivar M4", new String[]{"M4", "90", "91"}, "tram.fill.tunnel"),
+            new InterchangeInfo("P.Le Brescia", new String[]{"16", "90", "91"}, "tram.fill"),
+            new InterchangeInfo("Lotto M1 M5", new String[]{"M1", "M5", "90", "91"}, "tram.fill.tunnel")
+        );
+    }
+
     public static List<InterchangeInfo> getInterchanges(Context context) {
         return Arrays.asList(
                 new InterchangeInfo("Rho Fiera-Milano", new String[]{"M1", "AV", "R21", "R23", "RE4", "RE5", "S5", "S6", "S11"}, "lightrail"),
