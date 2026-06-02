@@ -364,4 +364,5 @@
     <string name="importantWork">OBRA IMPORTANTE</string>
     <string name="airportKey">Aeropuerto</string>
     <string name="translationCopied">¡Copiada!</string>
+    <string name="filobusLinesDesc">Líneas Trolebús</string>
 </resources>
