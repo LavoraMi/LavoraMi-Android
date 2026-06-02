@@ -2625,7 +2625,7 @@ public class StationDB {
         stations.add(new MetroStation("Via Broglio Via Varè", 45.5025, 9.1627, "Main", "92"));
         stations.add(new MetroStation("NO_DRAW", 45.50222, 9.16193, "Main", "92"));
         stations.add(new MetroStation("NO_DRAW", 45.50201, 9.16202, "Main", "92"));
-        stations.add(new MetroStation("Via Varè", 45.50177, 9.16208, "Main", "92"));
+        stations.add(new MetroStation("Via Varè (Bovisa FN)", 45.50177, 9.16208, "Main", "92"));
         return stations;
     }
 
