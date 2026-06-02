@@ -263,7 +263,7 @@ public class LinesActivity extends AppCompatActivity {
                     setUpMargin(titleAutoguidovie, onlyOneActive());
 
                     if (tvNoResults != null){
-                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
+                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
                         tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
                     }
 

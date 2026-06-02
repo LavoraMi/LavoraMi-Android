@@ -2931,6 +2931,7 @@ public class StationDB {
             allStations.addAll(getStationsTram33());
 
             allStations.addAll(getStationsFilobus90());
+            allStations.addAll(getStationsFilobus91());
 
             CACHED_STATIONS = Collections.unmodifiableList(allStations);
         }
