@@ -1305,6 +1305,13 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R40":
             case "R41":
                 return String.format("2 %s - 1 %s.", getString(R.string.hoursPrefix), getString(R.string.hourPrefix));
+            case "90":
+            case "91":
+                return "4-6 min.";
+            case "92":
+                return "7-10 min.";
+            case "93":
+                return "10-12 min.";
             default: return "Errore";
         }
     }
