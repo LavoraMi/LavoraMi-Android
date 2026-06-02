@@ -1144,6 +1144,11 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
 
+            case "90": return "Circolare Destra (Lotto M1 M5 - Lodi M3)";
+            case "91": return "Circolare Sinistra (Lodi M3 - Lotto M1 M5)";
+            case "92": return "Via Varè (Bovisa FN) - Lodi M3";
+            case "93": return "V.Le Omero - Lambrate FS";
+
             case "Z601": return "Legnano - Molino Dorino M1";
             case "Z602": return "Milano Cadorna - Legnano";
             case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
