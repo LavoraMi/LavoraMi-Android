@@ -456,6 +456,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             detTitolo.setText(String.format("%s %s", getString(R.string.regionalLinesScroll), nomeLinea));
         if(nomeLinea.startsWith("RE"))
             detTitolo.setText("Regio Express " + nomeLinea);
+        if(nomeLinea.matches("9[0-3]"))
+            detTitolo.setText("Filobus " + nomeLinea);
 
         detBadge.setText(nomeLinea);
         int colorResId = StationDB.getLineColor(this, nomeLinea);

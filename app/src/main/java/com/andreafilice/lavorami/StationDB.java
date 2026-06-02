@@ -2887,6 +2887,8 @@ public class StationDB {
                     return R.color.REGIONAL;
                 else if (nomeLinea.contains("RE"))
                     return R.color.RE;
+                else if(nomeLinea.matches("9[0-3]"))
+                    return R.color.FILOBUS;
                 else if (nomeLinea.matches("^[1-9][0-9]?$"))
                     return R.color.TRAM;
                 else if (nomeLinea.startsWith("P"))
