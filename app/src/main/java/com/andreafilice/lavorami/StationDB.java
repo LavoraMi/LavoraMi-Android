@@ -2386,11 +2386,11 @@ public class StationDB {
         stations.add(new MetroStation("V.Le Monte Grappa Via Gioia", 45.48083, 9.18907, "Main", "33"));
         stations.add(new MetroStation("Garibaldi FS M2 M5", 45.48374, 9.1867, "Main", "33"));
         stations.add(new MetroStation("Via Farini Via Ferrari", 45.48573, 9.18262, "Main", "33"));
-        stations.add(new MetroStation("Intersection Point 1", 45.48576, 9.18211, "Intersection", "33"));
-        stations.add(new MetroStation("Intersection Point 2", 45.48838, 9.18258, "Intersection", "33"));
+        stations.add(new MetroStation("NO_DRAW", 45.48576, 9.18211, "Main", "33"));
+        stations.add(new MetroStation("NO_DRAW", 45.48838, 9.18258, "Main", "33"));
         stations.add(new MetroStation("Via Ugo Bassi", 45.48897, 9.18468, "Main", "33"));
         stations.add(new MetroStation("Via Porro Lambertenghi", 45.48909, 9.18702, "Main", "33"));
-        stations.add(new MetroStation("Intersection Point 3", 45.48903, 9.19041, "Intersection", "33"));
+        stations.add(new MetroStation("NO_DRAW", 45.48903, 9.19041, "Main", "33"));
         stations.add(new MetroStation("P.Le Lagosta", 45.48964, 9.19153, "Main", "33"));
         return stations;
     }
