@@ -365,4 +365,6 @@
     <string name="airportKey">Aeropuerto</string>
     <string name="translationCopied">¡Copiada!</string>
     <string name="filobusLinesDesc">Líneas Trolebús</string>
+    <string name="circolareDestraDesc">Circular Derecha</string>
+    <string name="circolareSinistraDesc">Circular Izquierda</string>
 </resources>

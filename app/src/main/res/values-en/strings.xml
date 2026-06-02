@@ -365,4 +365,6 @@
     <string name="airportKey">Airport</string>
     <string name="translationCopied">Copied!</string>
     <string name="filobusLinesDesc">Trolleybus Lines</string>
+    <string name="circolareDestraDesc">Clockwise Circular</string>
+    <string name="circolareSinistraDesc">Anticlockwise Circular</string>
 </resources>

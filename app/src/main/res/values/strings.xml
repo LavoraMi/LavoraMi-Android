@@ -364,4 +364,6 @@
     <string name="airportKey">Aereoporto</string>
     <string name="translationCopied">Copiata!</string>
     <string name="filobusLinesDesc">Linee Filoviarie</string>
+    <string name="circolareDestraDesc">Circolare Destra</string>
+    <string name="circolareSinistraDesc">Circolare Sinistra</string>
 </resources>
