@@ -3192,8 +3192,14 @@ public class StationDB {
                     return R.color.RE;
                 else if(nomeLinea.matches("9[0-3]"))
                     return R.color.FILOBUS;
-                else if (nomeLinea.matches("^[1-9][0-9]?$"))
-                    return R.color.TRAM;
+                else if (nomeLinea.matches("^\\d+$")) {
+                    int numero = Integer.parseInt(nomeLinea);
+
+                    if (numero >= 1 && numero <= 33)
+                        return R.color.TRAM;
+                    else
+                        return R.color.OTHER_LINES;
+                }
                 else if (nomeLinea.startsWith("P"))
                     return R.color.AUTOGUIDOVIE;
                 else if(nomeLinea.startsWith("MXP"))
