@@ -1349,6 +1349,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R22":
             case "R27":
             case "R38":
+            case "90":
+            case "91":
+            case "92":
                 return getString(R.string.fullyAccessible);
             case "S7":
             case "S8":
