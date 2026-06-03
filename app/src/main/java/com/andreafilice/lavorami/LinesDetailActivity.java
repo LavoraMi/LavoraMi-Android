@@ -445,13 +445,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.startsWith("MXP"))
             detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
-            detTitolo.setText("Movibus " + nomeLinea);
+            detTitolo.setText("Movibus");
         if(nomeLinea.startsWith("z55") || nomeLinea.startsWith("z56"))
-            detTitolo.setText("STAV " + nomeLinea);
+            detTitolo.setText("STAV");
         if(nomeLinea.startsWith("z50") || nomeLinea.startsWith("z51"))
-            detTitolo.setText("STAR " + nomeLinea);
+            detTitolo.setText("STAR Mobility");
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
-            detTitolo.setText("Autoguidovie " + nomeLinea);
+            detTitolo.setText("Autoguidovie");
         if(nomeLinea.startsWith("R"))
             detTitolo.setText(String.format("%s %s", getString(R.string.regionalLinesScroll), nomeLinea));
         if(nomeLinea.startsWith("RE"))
