@@ -3166,12 +3166,16 @@ public class StationDB {
 
             //METRO LINES
             case "M1":
+            case "NM1":
                 return R.color.M1;
             case "M2":
+            case "NM2":
                 return R.color.M2;
             case "M3":
+            case "NM3":
                 return R.color.M3;
             case "M4":
+            case "NM4":
                 return R.color.M4;
             case "M5":
                 return R.color.M5;
