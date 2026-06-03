@@ -28,6 +28,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -334,6 +335,7 @@ public class MainActivity extends AppCompatActivity {
                     filterGroup.check(R.id.chipAutoguidovie);
                     break;
             }
+
             for (int i = 0; i < filterGroup.getChildCount(); i++) {
                 View child = filterGroup.getChildAt(i);
 
@@ -343,6 +345,19 @@ public class MainActivity extends AppCompatActivity {
                     chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
                 }
             }
+
+            int checkedId = filterGroup.getCheckedChipId();
+            HorizontalScrollView filterScroll = findViewById(R.id.filterScroll);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    View selectedChip = filterGroup.findViewById(checkedId);
+                    if (selectedChip != null) {
+                        int targetX = selectedChip.getLeft() - 55;//allineato alla search bar
+                        filterScroll.smoothScrollTo(targetX, 0);
+                    }
+                }
+            });
         }
 
         //* SEARCH BAR
