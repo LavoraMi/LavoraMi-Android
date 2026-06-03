@@ -962,7 +962,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Log.d("LINEA", nomeLinea);
 
-        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R"))
+        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R") || nomeLinea.startsWith("9"))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(nomeLinea.matches("^[1-9][0-9]?$"))
             tvAttesa.setText("5-20 min.");
