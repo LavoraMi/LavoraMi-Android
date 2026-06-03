@@ -542,6 +542,7 @@ public class LinesActivity extends AppCompatActivity {
                 buttonAddLine.startAnimation(scaleDownUp);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
+                ActivityUtils.triggerFeedback(this);
 
                 isSavedLine(label, buttonAddLine,container,description);
                 if(container.getId() == containerRecent.getId() || recentLinesSet.contains(label+"|"+description))
@@ -559,6 +560,7 @@ public class LinesActivity extends AppCompatActivity {
                 buttonAddLine.startAnimation(scaleDownUp);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart);
+                ActivityUtils.triggerFeedback(this);
 
                 isSavedLine(label, buttonAddLine,container,description);
                 if(container.getId() == containerRecent.getId() || recentLinesSet.contains(label+"|"+description))

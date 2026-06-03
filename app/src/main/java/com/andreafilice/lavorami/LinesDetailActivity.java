@@ -387,6 +387,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 linesSaved.remove(nomeLinea);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
 
+                ActivityUtils.triggerFeedback(this);
                 buttonAddLine.startAnimation(scaleUpDown);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart_empty);
@@ -401,6 +402,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 linesSaved.add(nomeLinea);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
 
+                ActivityUtils.triggerFeedback(this);
                 buttonAddLine.startAnimation(scaleUpDown);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
                 buttonAddLine.setImageResource(R.drawable.ic_heart);
