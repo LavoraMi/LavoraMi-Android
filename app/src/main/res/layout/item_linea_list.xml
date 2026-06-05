@@ -19,7 +19,7 @@
             android:layout_width="40dp"
             android:layout_height="26dp"
             android:background="@drawable/bg_badge_line"
-            android:fontFamily="@font/font_main"
+            android:fontFamily="@font/inter"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textStyle="bold"

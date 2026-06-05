@@ -944,7 +944,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setTextStartPadding(15f); chip.setTextEndPadding(15f);
         chip.setChipStrokeWidth(0f);
         chip.setTextSize(13f);
-        chip.setTypeface(Typeface.create(ResourcesCompat.getFont(this, R.font.inter_medium), Typeface.BOLD));
+        chip.setTypeface(Typeface.create(ResourcesCompat.getFont(this, R.font.inter), Typeface.BOLD));
 
         int colore = ContextCompat.getColor(this, StationDB.getLineColor(this, name));
         chip.setChipBackgroundColor(ColorStateList.valueOf(colore));

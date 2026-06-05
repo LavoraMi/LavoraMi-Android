@@ -232,7 +232,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 chip.setChipStrokeWidth(0f);
 
                 chip.setTextSize(13f);
-                Typeface interMedium = ResourcesCompat.getFont(context, R.font.inter_medium);
+                Typeface interMedium = ResourcesCompat.getFont(context, R.font.inter);
                 Typeface interMediumBold = Typeface.create(interMedium, Typeface.BOLD);
                 chip.setTypeface(interMediumBold);
 
