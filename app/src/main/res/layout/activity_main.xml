@@ -507,7 +507,7 @@
         android:paddingHorizontal="12dp"
         android:paddingTop="8dp"
         android:paddingBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contentBarrier" />
@@ -516,7 +516,6 @@
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
         app:layout_constraintTop_toBottomOf="@+id/contentBarrier"
         app:shimmer_auto_start="true">
 
@@ -540,7 +539,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+        app:layout_constraintBottom_toTopOf="@+id/floatingBottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerLayout">
@@ -595,50 +594,62 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/customBottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="@color/background_app"
-        android:orientation="horizontal"
-        android:weightSum="3"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/floatingBottomBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:cardBackgroundColor="#66000000"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:id="@+id/homeButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_home"
-            app:tint="#FD272D" />
+        <LinearLayout
+            android:id="@+id/customBottomBar"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:background="@drawable/glass_bottom_bar_bg"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
 
-        <ImageButton
-            android:id="@+id/linesButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_branch"
-            app:tint="?attr/colorControlNormal" />
+            <ImageButton
+                android:id="@+id/homeButton"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_home"
+                app:tint="@color/redMetro"/>
 
-        <ImageButton
-            android:id="@+id/settingsButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_setting"
-            app:tint="?attr/colorControlNormal" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/linesButton"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:layout_marginHorizontal="20dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_branch"
+                app:tint="#AAFFFFFF" />
+
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_setting"
+                app:tint="#AAFFFFFF" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/setupOverlay"
