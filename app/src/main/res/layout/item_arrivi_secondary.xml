@@ -32,5 +32,5 @@
         android:text=""
         android:textColor="@color/subtitle"
         android:textSize="12sp"
-        android:fontFamily="@font/work_sans_medium" />
+        android:fontFamily="@font/font_main" />
 </LinearLayout>

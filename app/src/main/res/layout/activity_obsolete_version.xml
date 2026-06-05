@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/work_sans_medium"
+            android:fontFamily="@font/font_main"
             android:text="@string/obsoleteTitle"
             android:gravity="center"
             android:textColor="@color/text_primary"

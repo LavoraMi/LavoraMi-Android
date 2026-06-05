@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="16dp"
-        android:fontFamily="@font/work_sans_medium"
+        android:fontFamily="@font/font_main"
         android:text="@string/settings"
         android:textColor="@color/text_primary"
         android:textSize="34sp"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:text="Account"
                 android:textColor="#8E8E93"
                 android:textStyle="bold"
@@ -106,7 +106,7 @@
                             android:id="@+id/nameSettingsText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="account_name"
                             android:textColor="@color/text_primary"
                             android:textSize="20sp" />
@@ -137,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:text="@string/favoritesDeps"
                 android:textStyle="bold"
                 android:textColor="#8E8E93"
@@ -177,7 +177,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconMain"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/trenordLines"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -276,7 +276,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/iconMainAtm"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/atmLines"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -370,7 +370,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainMovibus"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/font_main"
                         android:text="@string/movibusLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -417,7 +417,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainStav"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/font_main"
                         android:text="@string/stavLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -464,7 +464,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainStar"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/font_main"
                         android:text="@string/starLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -511,7 +511,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainAutoguidovie"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/font_main"
                         android:text="@string/autoguidovieLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
@@ -536,7 +536,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:text="@string/general"
                 android:textStyle="bold"
                 android:textColor="#8E8E93"
@@ -577,7 +577,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconNotif"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/notificationTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -616,7 +616,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconFiltro"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/defaultFilterTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -668,7 +668,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconTheme"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/appearance"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -708,7 +708,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconAdvanced"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/advancedOptionsTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -733,7 +733,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:text="@string/helpSettingsTitle"
                 android:textColor="#8E8E93"
                 android:textStyle="bold"
@@ -775,7 +775,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconFonts"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/sourcesDevelopment"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
@@ -816,7 +816,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconHowWorks"
                             android:text="@string/howAppWorks"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp" />
 
@@ -854,7 +854,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:layout_toEndOf="@id/iconVersion"
                             android:text="@string/versionTitle"
                             android:textColor="@color/text_primary"
@@ -886,7 +886,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="18dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:text="@string/linksSettingsTitle"
                 android:textStyle="bold"
                 android:textColor="#8E8E93"
@@ -929,7 +929,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconShare"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/shareLavoraMi"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
@@ -960,7 +960,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconRate"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/rateUsTitle"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
@@ -991,7 +991,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconSupport"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/supportLavoraMiButtonSettings"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
@@ -1006,7 +1006,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="0dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:text=""
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
@@ -1048,7 +1048,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconRefresh"
                             android:text="@string/resetSettingsTitle"
-                            android:fontFamily="@font/work_sans_medium"
+                            android:fontFamily="@font/font_main"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
 

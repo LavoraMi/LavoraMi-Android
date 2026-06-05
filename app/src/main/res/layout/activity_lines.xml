@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/work_sans_medium"
+            android:fontFamily="@font/font_main"
             android:text="@string/lines"
             android:textColor="@color/text_primary"
             android:textSize="34sp"
@@ -107,7 +107,7 @@
                 android:textColor="@color/text_primary"
                 android:gravity="center"
                 android:layout_marginTop="100dp"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:visibility="gone"/>
 
             <LinearLayout
@@ -150,7 +150,7 @@
                             android:textColor="@color/text_primary"
                             android:layout_marginStart="8dp"
                             android:textSize="20sp"
-                            android:fontFamily="@font/work_sans_medium" />
+                            android:fontFamily="@font/font_main" />
                     </LinearLayout>
 
                     <TextView
@@ -223,7 +223,7 @@
                         android:text="@string/metroLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/font_main" />
 
                     <TextView
                         android:id="@+id/subTitleMetroDesc"
@@ -283,7 +283,7 @@
                         android:text="@string/suburbanLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/font_main" />
 
                     <TextView
                         android:id="@+id/subTitleSuburbaneDesc"
@@ -343,7 +343,7 @@
                         android:text="@string/regionalLines"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/font_main" />
 
                     <TextView
                         android:id="@+id/subTitleRDesc"
@@ -403,7 +403,7 @@
                         android:text="@string/regioExpressLines"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium" />
+                        android:fontFamily="@font/font_main" />
 
                     <TextView
                         android:id="@+id/subTitleREDesc"
@@ -463,7 +463,7 @@
                         android:text="@string/tiloLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleTransDesc"
@@ -523,7 +523,7 @@
                         android:text="@string/malpensaExpressLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleMXPDesc"
@@ -583,7 +583,7 @@
                         android:text="@string/tramLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleTramDesc"
@@ -643,7 +643,7 @@
                         android:text="@string/filobusLinesDesc"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleFilobusDesc"
@@ -703,7 +703,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleMovibusDesc"
@@ -763,7 +763,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleStarDesc"
@@ -824,7 +824,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleStavDesc"
@@ -885,7 +885,7 @@
                         android:text="@string/busLinesTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
-                        android:fontFamily="@font/work_sans_medium"/>
+                        android:fontFamily="@font/font_main"/>
 
                     <TextView
                         android:id="@+id/subTitleAutoguidovieDesc"

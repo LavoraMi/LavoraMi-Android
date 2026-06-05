@@ -47,7 +47,7 @@
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
-                android:fontFamily="@font/work_sans_medium" />
+                android:fontFamily="@font/font_main" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,7 +71,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/iconEvent"
                 app:layout_constraintTop_toTopOf="@id/iconEvent" />
@@ -148,7 +148,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/progressBarDate" />
@@ -187,7 +187,7 @@
                 android:text="@string/translateBtnText"
                 android:textColor="@color/White"
                 app:icon="@drawable/ic_translate"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 app:iconPadding="10dp"
                 app:iconTint="@color/White"
                 app:layout_constraintBottom_toBottomOf="parent"

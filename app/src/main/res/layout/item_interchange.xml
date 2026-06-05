@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Porta Garibaldi"
-            android:fontFamily="@font/work_sans_medium"
+            android:fontFamily="@font/font_main"
             android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"

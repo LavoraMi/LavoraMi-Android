@@ -76,7 +76,7 @@
                     android:text="00:00"
                     android:textColor="@color/subtitle"
                     android:textSize="15sp"
-                    android:fontFamily="@font/work_sans_medium" />
+                    android:fontFamily="@font/font_main" />
             </LinearLayout>
 
             <TextView
@@ -86,7 +86,7 @@
                 android:textColor="@color/subtitle"
                 android:textSize="10sp"
                 android:layout_marginTop="6dp"
-                android:fontFamily="@font/work_sans_medium" />
+                android:fontFamily="@font/font_main" />
 
             <View
                 android:id="@+id/dividerArrivi"
@@ -103,7 +103,7 @@
                 android:textColor="@color/subtitle"
                 android:textSize="15sp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/work_sans_medium" />
+                android:fontFamily="@font/font_main" />
 
             <LinearLayout
                 android:id="@+id/containerOtherDepartures"

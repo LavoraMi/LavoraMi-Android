@@ -71,7 +71,7 @@
                 android:layout_width="40dp"
                 android:layout_height="26dp"
                 android:background="@drawable/bg_badge_line"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -86,7 +86,7 @@
                 android:backgroundTint="@color/M1"
                 android:gravity="center"
                 android:text="M1"
-                android:fontFamily="@font/work_sans_medium"
+                android:fontFamily="@font/font_main"
                 android:textColor="@color/White"
                 android:textSize="13sp"
                 android:textStyle="bold" />

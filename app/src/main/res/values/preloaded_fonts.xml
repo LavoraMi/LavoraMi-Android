@@ -2,6 +2,6 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/inter_medium</item>
-        <item>@font/work_sans_medium</item>
+        <item>@font/font_main</item>
     </array>
 </resources>
