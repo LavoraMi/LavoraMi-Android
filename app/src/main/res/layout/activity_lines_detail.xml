@@ -326,7 +326,7 @@
                 android:layout_marginStart="3dp"
                 android:text="Completamente accessibile."
                 android:textColor="@color/text_primary"
-                android:fontFamily="@font/font_main"
+                android:fontFamily="@font/inter"
                 android:textSize="18sp"
                 android:ellipsize="end"
                 android:textStyle="bold"
