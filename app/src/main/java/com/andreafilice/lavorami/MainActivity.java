@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     View selectedChip = filterGroup.findViewById(checkedId);
-                    if (selectedChip != null && selectedChip != filterGroup.findViewById(R.id.chipAll)) {
+                    if (selectedChip != null && (selectedChip != filterGroup.findViewById(R.id.chipAll) && selectedChip != filterGroup.findViewById((R.id.chipBus)))) {
                         int targetX = selectedChip.getLeft() - 55;//allineato alla search bar
                         filterScroll.smoothScrollTo(targetX, 0);
                     }
