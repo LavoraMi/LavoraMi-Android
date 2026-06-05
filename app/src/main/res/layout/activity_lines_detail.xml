@@ -47,7 +47,7 @@
                 android:background="@drawable/bg_badge_line"
                 android:text=""
                 android:textColor="#FFFFFF"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/inter"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/subtitle"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:textSize="12sp"
                 android:paddingTop="5dp"
                 android:text="@string/tramDeviationsTitle"
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/subtitle"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:textSize="12sp"
                 android:paddingTop="5dp"
                 android:text="@string/deviationMapTxt"
@@ -157,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/subtitle"
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/inter"
             android:textSize="12sp"
             android:paddingTop="10dp"
             android:text=""
@@ -211,7 +211,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:text=""
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:textStyle="bold"/>
         </LinearLayout>
 
@@ -222,7 +222,7 @@
             android:textColor="@color/text_primary"
             android:textSize="17sp"
             android:text="@string/noInterchangeStationTitle"
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/inter"
             android:visibility="gone"/>
 
         <HorizontalScrollView
@@ -248,7 +248,7 @@
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:text=""
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/inter"
             android:textStyle="bold"
             android:visibility="visible"/>
 
@@ -278,7 +278,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/inter"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -439,7 +439,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/text_primary"
                 android:alpha="0.7"
-                android:fontFamily="@font/inter_medium" />
+                android:fontFamily="@font/inter" />
 
         </LinearLayout>
 

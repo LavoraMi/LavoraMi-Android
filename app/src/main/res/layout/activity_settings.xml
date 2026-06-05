@@ -87,7 +87,7 @@
                         android:background="@drawable/circle_backgroud_account"
                         android:gravity="center"
                         android:textColor="@color/White"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:text="AF"/>
@@ -116,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/manageAccountDeps"
                             android:textColor="#8E8E93"
-                            android:fontFamily="@font/inter_medium"
+                            android:fontFamily="@font/inter"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -627,7 +627,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="8dp"
-                            android:fontFamily="@font/inter_medium"
+                            android:fontFamily="@font/inter"
                             android:layout_toStartOf="@id/arrowFiltro"
                             android:text="Tutti"
                             android:textColor="#8E8E93"
@@ -867,7 +867,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="12dp"
-                            android:fontFamily="@font/inter_medium"
+                            android:fontFamily="@font/inter"
                             android:text="@string/app_version"
                             android:textColor="@color/text_primary"
                             android:textSize="16sp"
@@ -1063,7 +1063,7 @@
                 android:layout_marginHorizontal="23dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:text="@string/resetSettingsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="12sp" />

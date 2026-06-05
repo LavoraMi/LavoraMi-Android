@@ -109,7 +109,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/inter_medium"
+                                android:fontFamily="@font/inter"
                                 android:layout_marginStart="16dp"
                                 android:text="@string/sistemaTheme"
                                 android:layout_toEndOf="@id/iconSystem"
@@ -156,7 +156,7 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_toEndOf="@id/iconDark"
                                 android:text="@string/darkTheme"
-                                android:fontFamily="@font/inter_medium"
+                                android:fontFamily="@font/inter"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
 
@@ -199,7 +199,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="16dp"
                                 android:text="@string/lightTheme"
-                                android:fontFamily="@font/inter_medium"
+                                android:fontFamily="@font/inter"
                                 android:layout_toEndOf="@id/iconLight"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
@@ -268,7 +268,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:fontFamily="@font/inter_medium"
+                                android:fontFamily="@font/inter"
                                 android:layout_toEndOf="@id/iconItaly"
                                 android:layout_marginStart="10dp"
                                 android:text="@string/italianSettings"
@@ -313,7 +313,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_toEndOf="@id/iconGB"
                                 android:layout_marginStart="10dp"
-                                android:fontFamily="@font/inter_medium"
+                                android:fontFamily="@font/inter"
                                 android:text="@string/englishLanguage"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
@@ -349,7 +349,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_toEndOf="@id/iconSpain"
                                 android:layout_marginStart="10dp"
-                                android:fontFamily="@font/inter_medium"
+                                android:fontFamily="@font/inter"
                                 android:text="@string/spanishLanguage"
                                 android:textColor="@color/text_primary"
                                 android:textSize="17sp" />
@@ -373,7 +373,7 @@
                     android:layout_marginHorizontal="23dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/themeDisclaimer"
                     android:textColor="#8E8E93"
                     android:textSize="14sp" />

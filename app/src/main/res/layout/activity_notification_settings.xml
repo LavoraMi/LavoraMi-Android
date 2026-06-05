@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:text="@string/setAllNotificationsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
@@ -447,7 +447,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:text="@string/notificationTimeDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />

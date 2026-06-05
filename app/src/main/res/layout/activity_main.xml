@@ -60,7 +60,7 @@
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="10dp"
         android:hint=""
-        android:fontFamily="@font/inter_medium"
+        android:fontFamily="@font/inter"
         android:inputType="text"
         android:paddingStart="15dp"
         android:textColor="@color/text_primary"
@@ -170,7 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="Sciopero proclamato per il date"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
@@ -196,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="8dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="Le fasce garantite (06:00 - 09:00, 18:00 - 21:00) non sono presenti."
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />

@@ -38,7 +38,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="17dp"
             android:background="@color/background_app"
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/inter"
             android:drawableStart="@drawable/ic_search_small"
             android:drawableTint="@color/text_primary"
             android:drawablePadding="10dp"
@@ -160,7 +160,7 @@
                         android:text="@string/basedOnSearchDeps"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -183,7 +183,7 @@
                 android:text="@string/noLinesSearched"
                 android:textColor="@color/desc"
                 android:textSize="17sp"
-                android:fontFamily="@font/inter_medium"
+                android:fontFamily="@font/inter"
                 android:layout_gravity="center"
                 android:textStyle="bold"
                 android:visibility="gone"/>
@@ -232,7 +232,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -292,7 +292,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -352,7 +352,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -412,7 +412,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -472,7 +472,7 @@
                         android:text="TILO"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -532,7 +532,7 @@
                         android:text="Trenord"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -592,7 +592,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -652,7 +652,7 @@
                         android:text="ATM"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -712,7 +712,7 @@
                         android:text="Movibus"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -772,7 +772,7 @@
                         android:text="STAR Mobility"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -833,7 +833,7 @@
                         android:text="STAV"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 
@@ -894,7 +894,7 @@
                         android:text="Autoguidovie"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
-                        android:fontFamily="@font/inter_medium" />
+                        android:fontFamily="@font/inter" />
 
                 </LinearLayout>
 

@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/accediDepsAccount"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -190,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/termsPart1"
                         android:textColor="@color/subtitle" />
 
@@ -202,7 +202,7 @@
                         android:clickable="true"
                         android:layout_marginStart="1dp"
                         android:layout_marginEnd="1dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/termini"
                         android:textColor="@color/redMetro" />
 
@@ -211,7 +211,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/termsPart2"
                         android:textColor="@color/subtitle" />
 
@@ -221,7 +221,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="Privacy Policy."
                         android:textColor="@color/redMetro" />
                 </LinearLayout>
@@ -324,7 +324,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/forgotPasswordDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -469,7 +469,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/logginInGoogleDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp"
@@ -510,7 +510,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/scannerizzaImpronta"
                     android:textColor="#8E8E93"
                     android:textSize="16sp"
@@ -557,7 +557,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/gestisciDepsAccount"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -589,7 +589,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="full_name"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
@@ -613,7 +613,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="user_email"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
@@ -640,7 +640,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/iconGoogle"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/creatoConGoogle"
                         android:textColor="#8E8E93"
                         android:textSize="16sp" />
@@ -819,7 +819,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/inter"
                     android:text="@string/createAccountDeps"
                     android:textColor="#8E8E93"
                     android:textSize="16sp" />
@@ -951,7 +951,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/termsPart1"
                         android:textColor="@color/subtitle" />
 
@@ -963,7 +963,7 @@
                         android:clickable="true"
                         android:layout_marginStart="1dp"
                         android:layout_marginEnd="1dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/termini"
                         android:textColor="@color/redMetro" />
 
@@ -972,7 +972,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="@string/termsPart2"
                         android:textColor="@color/subtitle" />
 
@@ -982,7 +982,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/inter"
                         android:text="Privacy Policy."
                         android:textColor="@color/redMetro" />
                 </LinearLayout>
