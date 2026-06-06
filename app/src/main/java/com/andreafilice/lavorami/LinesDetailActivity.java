@@ -1442,13 +1442,13 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void updateArriviList() {
         if (routeData == null || selectedStopId == null) return;
 
-        Map<String, List<GTFSHelper.Departure>> departuresByDir =
-                GTFSHelper.getDepartures(this, selectedStopId, routeData, 3);
+        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 3);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             arriviRecyclerView.setVisibility(View.GONE);
             arriviEmptyState.setVisibility(View.VISIBLE);
-        } else {
+        }
+        else {
             arriviEmptyState.setVisibility(View.GONE);
             if (arriviRecyclerView != null) {
                 arriviRecyclerView.setVisibility(View.VISIBLE);
@@ -1492,7 +1492,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         return null;
     }
 
-    private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ViewHolder> {
+    private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ArrivalsView> {
         private final List<String> directions;
         private final Map<String, List<GTFSHelper.Departure>> data;
 
@@ -1504,13 +1504,13 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ArrivalsView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_arrivi_direction, parent, false);
-            return new ViewHolder(view);
+            return new ArrivalsView(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull ArrivalsView holder, int position) {
             String dirId = directions.get(position);
             List<GTFSHelper.Departure> deps = data.get(dirId);
 
@@ -1520,12 +1520,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 int colorFirst;
                 if (first.minutesFromNow < 10) {
-                    if (first.minutesFromNow < 5) {
-                        if (first.minutesFromNow == 0)
-                            colorFirst = Color.parseColor("#FFEB3B");
-                        else
-                            colorFirst = Color.parseColor("#F44336");
-                    }
+                    if (first.minutesFromNow < 5)
+                        colorFirst = (first.minutesFromNow == 0) ? Color.parseColor("#FFEB3B") : Color.parseColor("#F44336");
                     else
                         colorFirst = Color.parseColor("#FF9800");
                 }
@@ -1565,21 +1561,21 @@ public class LinesDetailActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {return directions.size();}
 
-        class ViewHolder extends RecyclerView.ViewHolder {
+        class ArrivalsView extends RecyclerView.ViewHolder {
             TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals;
             ImageView iconFirstClock;
             View dividerArrivi;
             LinearLayout containerOtherDepartures;
 
-            ViewHolder(View v) {
-                super(v);
-                txtDirectionHeadsign = v.findViewById(R.id.txtDirectionHeadsign);
-                iconFirstClock = v.findViewById(R.id.iconFirstClock);
-                txtFirstMins = v.findViewById(R.id.txtFirstMins);
-                txtFirstTime = v.findViewById(R.id.txtFirstTime);
-                dividerArrivi = v.findViewById(R.id.dividerArrivi);
-                containerOtherDepartures = v.findViewById(R.id.containerOtherDepartures);
-                nextArrivals = v.findViewById(R.id.nextArrivals);
+            ArrivalsView(View view) {
+                super(view);
+                txtDirectionHeadsign = view.findViewById(R.id.txtDirectionHeadsign);
+                iconFirstClock = view.findViewById(R.id.iconFirstClock);
+                txtFirstMins = view.findViewById(R.id.txtFirstMins);
+                txtFirstTime = view.findViewById(R.id.txtFirstTime);
+                dividerArrivi = view.findViewById(R.id.dividerArrivi);
+                containerOtherDepartures = view.findViewById(R.id.containerOtherDepartures);
+                nextArrivals = view.findViewById(R.id.nextArrivals);
             }
         }
     }

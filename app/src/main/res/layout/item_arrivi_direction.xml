@@ -76,7 +76,7 @@
                     android:text="00:00"
                     android:textColor="@color/subtitle"
                     android:textSize="15sp"
-                    android:fontFamily="@font/font_main" />
+                    android:fontFamily="@font/inter" />
             </LinearLayout>
 
             <TextView
