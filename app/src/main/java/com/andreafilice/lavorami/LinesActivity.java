@@ -644,7 +644,7 @@ public class LinesActivity extends AppCompatActivity {
     private boolean onlyOneActive() {
         /// This methods get all the values and return if only one value is active.
 
-        boolean[] values = {hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasMovibus, hasStav, hasSTAR, hasAuto};
+        boolean[] values = {hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasStav, hasSTAR, hasAuto};
         int totalActive = 0;
 
         for(boolean value: values) {if (value) totalActive++;}
