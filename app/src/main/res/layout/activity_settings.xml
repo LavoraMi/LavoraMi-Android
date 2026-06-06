@@ -1150,7 +1150,7 @@
                 android:layout_marginEnd="10dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_home"
-                app:tint="#AAFFFFFF"/>
+                app:tint="@color/bottomBarIconTint"/>
 
             <ImageButton
                 android:id="@+id/linesButton"
@@ -1161,7 +1161,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_branch"
-                app:tint="#AAFFFFFF" />
+                app:tint="@color/bottomBarIconTint" />
 
             <ImageButton
                 android:id="@+id/settingsButton"

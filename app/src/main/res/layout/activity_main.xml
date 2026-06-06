@@ -635,7 +635,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_branch"
-                app:tint="#AAFFFFFF" />
+                app:tint="@color/bottomBarIconTint" />
 
             <ImageButton
                 android:id="@+id/settingsButton"
@@ -646,8 +646,7 @@
                 android:layout_marginStart="10dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_setting"
-                app:tint="#AAFFFFFF" />
-
+                app:tint="@color/bottomBarIconTint" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
