@@ -211,10 +211,12 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 if(nomePulito.contains("Filobus")){
                     chip.setChipIcon(ContextCompat.getDrawable(context, R.drawable.ic_bolt));
                     chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                    chip.setIconStartPadding(10);
                 }
                 else if(nomePulito.contains("N")){
                     chip.setChipIcon(ContextCompat.getDrawable(context, R.drawable.ic_dark));
                     chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                    chip.setIconStartPadding(10);
                 }
 
                 chip.setShapeAppearanceModel(cornerRadius);
