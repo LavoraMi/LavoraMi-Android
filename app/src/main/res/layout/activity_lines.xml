@@ -917,6 +917,7 @@
                 android:background="@drawable/bg_line_group"
                 android:divider="@drawable/line_divider"
                 android:orientation="vertical"
+                android:layout_marginBottom="76dp"
                 android:showDividers="middle">
 
             </LinearLayout>

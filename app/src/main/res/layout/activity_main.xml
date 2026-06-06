@@ -506,7 +506,7 @@
         android:clipToPadding="false"
         android:paddingHorizontal="12dp"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="96dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
