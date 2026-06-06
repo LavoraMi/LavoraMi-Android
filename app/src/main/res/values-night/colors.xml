@@ -7,4 +7,5 @@
     <color name="desc">#98979C</color>
     <color name="disclosureBg">#343438</color>
     <color name="BlackS12">#000000</color>
+    <color name="bottomBarFade">#55101010</color>
 </resources>

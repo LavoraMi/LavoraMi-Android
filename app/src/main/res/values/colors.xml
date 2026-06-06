@@ -48,4 +48,5 @@
     <color name="NIGHTLINES">#021B81</color>
     <color name="BlackS12">#FFFF</color>
     <color name="heartColor">#FF5DA2</color>
+    <color name="bottomBarFade">#55FFFEFE</color>
 </resources>
