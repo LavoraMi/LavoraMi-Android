@@ -937,6 +937,17 @@ public class LinesDetailActivity extends AppCompatActivity {
         float density = getResources().getDisplayMetrics().density;
         int heightPx = (int) (26 * density);
 
+        if(name.contains("Filobus") || name.matches("9[0-3]")){
+            chip.setChipIcon(ContextCompat.getDrawable(this, R.drawable.ic_bolt));
+            chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+            chip.setIconStartPadding(10);
+        }
+        else if(name.contains("N")){
+            chip.setChipIcon(ContextCompat.getDrawable(this, R.drawable.ic_dark));
+            chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+            chip.setIconStartPadding(10);
+        }
+
         chip.setEnsureMinTouchTargetSize(false);
         chip.setChipMinHeight(heightPx);
         chip.setMinHeight(heightPx);
