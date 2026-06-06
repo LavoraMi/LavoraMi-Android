@@ -28,7 +28,7 @@ android {
         applicationId = "com.andreafilice.lavorami"
         minSdk = 24
         targetSdk = 36
-        versionCode = 38
+        versionCode = 40
         versionName = "1.1.9"
         var buildNumber = "06062026"
 
