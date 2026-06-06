@@ -1505,8 +1505,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_arrivi_direction, parent, false);
-            return new ViewHolder(v);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_arrivi_direction, parent, false);
+            return new ViewHolder(view);
         }
 
         @Override
@@ -1544,8 +1544,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                     for (int i = 1; i < Math.min(deps.size(), 3); i++) {
                         GTFSHelper.Departure dep = deps.get(i);
-                        View otherDepView = LayoutInflater.from(holder.itemView.getContext())
-                                .inflate(R.layout.item_arrivi_secondary, holder.containerOtherDepartures, false);
+                        View otherDepView = LayoutInflater.from(holder.itemView.getContext()).inflate(R.layout.item_arrivi_secondary, holder.containerOtherDepartures, false);
 
                         TextView txtMins = otherDepView.findViewById(R.id.txtSecMins);
                         TextView txtTime = otherDepView.findViewById(R.id.txtSecTime);
@@ -1556,6 +1555,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     }
                 }
                 else {
+                    holder.nextArrivals.setVisibility(View.GONE);
                     holder.dividerArrivi.setVisibility(View.GONE);
                     holder.containerOtherDepartures.setVisibility(View.GONE);
                 }
@@ -1566,7 +1566,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         public int getItemCount() {return directions.size();}
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime;
+            TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals;
             ImageView iconFirstClock;
             View dividerArrivi;
             LinearLayout containerOtherDepartures;
@@ -1579,6 +1579,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 txtFirstTime = v.findViewById(R.id.txtFirstTime);
                 dividerArrivi = v.findViewById(R.id.dividerArrivi);
                 containerOtherDepartures = v.findViewById(R.id.containerOtherDepartures);
+                nextArrivals = v.findViewById(R.id.nextArrivals);
             }
         }
     }
