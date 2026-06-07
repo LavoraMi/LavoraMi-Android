@@ -136,7 +136,12 @@ public class MainActivity extends AppCompatActivity {
         hasCompletedSetup = DataManager.getBoolData(DataKeys.KEY_END_SETUP, false);
 
         ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
-        setupOverlay.setVisibility((hasCompletedSetup) ? View.GONE : View.VISIBLE);
+        if(hasCompletedSetup)
+            setupOverlay.setVisibility(View.GONE);
+        else{
+            setupOverlay.setVisibility(View.VISIBLE);
+            findViewById(R.id.floatingBottomBar).setVisibility(View.GONE);
+        }
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle1), getString(R.string.setupDeps1), R.drawable.ic_app, ""));
@@ -164,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
             else {
                 DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
                 setupOverlay.setVisibility(View.GONE);
+                findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
                 hasCompletedSetup = true;
                 downloadJSONData(defaultCategory, false);
             }
