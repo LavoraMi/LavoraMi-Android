@@ -947,16 +947,15 @@
 
             <LinearLayout
                 android:id="@+id/homeButton"
-                android:layout_width="95dp"
+                android:layout_width="113dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="10dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     app:srcCompat="@drawable/ic_home"
                     app:tint="@color/bottomBarIconTint" />
 
@@ -972,17 +971,16 @@
 
             <LinearLayout
                 android:id="@+id/linesButton"
-                android:layout_width="95dp"
+                android:layout_width="113dp"
                 android:layout_height="64dp"
-                android:layout_marginHorizontal="10dp"
                 android:background="@drawable/glass_bottom_bar_bg"
                 android:backgroundTint="@color/bottomBarPillTint"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     app:srcCompat="@drawable/ic_branch"
                     app:tint="@color/redMetro" />
 
@@ -999,16 +997,15 @@
 
             <LinearLayout
                 android:id="@+id/settingsButton"
-                android:layout_width="95dp"
+                android:layout_width="113dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="10dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     app:srcCompat="@drawable/ic_setting"
                     app:tint="@color/bottomBarIconTint" />
 
