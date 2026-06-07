@@ -341,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (child instanceof Chip) {
                     Chip chip = (Chip) child;
+
                     chip.setChipStrokeWidth(3f);
                     chip.setChipStrokeColor(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
                 }
@@ -506,10 +507,12 @@ public class MainActivity extends AppCompatActivity {
             }
         );
 
+        Typeface fontChip = ResourcesCompat.getFont(MainActivity.this, R.font.font_main);
+
         for(Chip chip : filterChips) {
             chip.setTextColor(chipColors);
             chip.setChipIconTint(chipColors);
-            chip.setTypeface(Typeface.create("@font/inter_medium", Typeface.BOLD));
+            chip.setTypeface(fontChip);
         }
 
         //*DOWNLOADING EVENTS
