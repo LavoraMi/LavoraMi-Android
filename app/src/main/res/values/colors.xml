@@ -50,4 +50,5 @@
     <color name="heartColor">#FF5DA2</color>
     <color name="bottomBarFade">#A1FFFFFF</color>
     <color name="bottomBarIconTint">#000000</color>
+    <color name="bottomBarPillTint">#A2A2A2</color>
 </resources>

@@ -620,7 +620,7 @@
                 android:layout_height="64dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/glass_bottom_bar_bg"
-                android:backgroundTint="@color/GRAY"
+                android:backgroundTint="@color/bottomBarPillTint"
                 android:gravity="center"
                 android:orientation="vertical">
 

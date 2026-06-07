@@ -9,4 +9,5 @@
     <color name="BlackS12">#000000</color>
     <color name="bottomBarFade">#98101010</color>
     <color name="bottomBarIconTint">#FFFFFF</color>
+    <color name="bottomBarPillTint">#595858</color>
 </resources>
