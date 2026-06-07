@@ -1159,6 +1159,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_main"
                     android:text="Home"
                     android:textColor="@color/bottomBarIconTint"
                     android:textSize="11sp"
@@ -1184,6 +1185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
+                    android:fontFamily="@font/font_main"
                     android:text="@string/lines"
                     android:textColor="@color/bottomBarIconTint"
                     android:textSize="11sp"
@@ -1210,6 +1212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
+                    android:fontFamily="@font/font_main"
                     android:text="@string/settings"
                     android:textColor="@color/redMetro"
                     android:textSize="11sp"
