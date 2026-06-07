@@ -366,4 +366,5 @@
     <string name="filobusLinesDesc">Linee Filoviarie</string>
     <string name="circolareDestraDesc">Circolare Destra</string>
     <string name="circolareSinistraDesc">Circolare Sinistra</string>
+    <string name="homeBottomText">Home</string>
 </resources>

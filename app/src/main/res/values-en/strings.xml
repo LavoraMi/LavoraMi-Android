@@ -367,4 +367,5 @@
     <string name="filobusLinesDesc">Trolleybus Lines</string>
     <string name="circolareDestraDesc">Clockwise Circular</string>
     <string name="circolareSinistraDesc">Anticlockwise Circular</string>
+    <string name="homeBottomText">Home</string>
 </resources>
