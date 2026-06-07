@@ -293,13 +293,13 @@ public class LinesActivity extends AppCompatActivity {
         });
 
         //*NAVBAR
-        ImageButton btnHome = (ImageButton) findViewById(R.id.homeButton);
+        View btnHome = findViewById(R.id.homeButton);
         btnHome.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             ActivityUtils.changeActivity(this, MainActivity.class);
         });
 
-        ImageButton btnSettings = (ImageButton) findViewById(R.id.settingsButton);
+        View btnSettings = findViewById(R.id.settingsButton);
         btnSettings.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             ActivityUtils.changeActivity(this, SettingsActivity.class);

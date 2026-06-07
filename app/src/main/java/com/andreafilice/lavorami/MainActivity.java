@@ -252,13 +252,13 @@ public class MainActivity extends AppCompatActivity {
         startHintLoop(hints);
 
         //*NAVBAR
-        ImageButton btnLines = findViewById(R.id.linesButton);
+        View btnLines = findViewById(R.id.linesButton);
         btnLines.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             ActivityUtils.changeActivity(this, LinesActivity.class);
         });
 
-        ImageButton btnSettings = findViewById(R.id.settingsButton);
+        View btnSettings = findViewById(R.id.settingsButton);
         btnSettings.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             ActivityUtils.changeActivity(this, SettingsActivity.class);

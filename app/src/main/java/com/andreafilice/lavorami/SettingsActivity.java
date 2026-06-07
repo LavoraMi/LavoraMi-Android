@@ -54,13 +54,13 @@ public class SettingsActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         //*NAVBAR
-        ImageButton btnLines = (ImageButton) findViewById(R.id.linesButton);
+        View btnLines = findViewById(R.id.linesButton);
         btnLines.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             changeActivity(this, LinesActivity.class);
         });
 
-        ImageButton btnSettings = (ImageButton) findViewById(R.id.homeButton);
+        View btnSettings = findViewById(R.id.homeButton);
         btnSettings.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             changeActivity(this, MainActivity.class);
