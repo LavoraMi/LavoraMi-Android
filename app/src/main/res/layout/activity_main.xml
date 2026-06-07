@@ -612,14 +612,12 @@
             android:layout_height="64dp"
             android:background="@drawable/glass_bottom_bar_bg"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
+            android:gravity="center_vertical">
 
             <LinearLayout
                 android:id="@+id/homeButton"
-                android:layout_width="95dp"
-                android:layout_height="48dp"
+                android:layout_width="98dp"
+                android:layout_height="64dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/glass_bottom_bar_bg"
                 android:backgroundTint="@color/GRAY"

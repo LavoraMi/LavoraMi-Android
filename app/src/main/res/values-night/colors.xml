@@ -8,5 +8,5 @@
     <color name="disclosureBg">#343438</color>
     <color name="BlackS12">#000000</color>
     <color name="bottomBarFade">#98101010</color>
-    <color name="bottomBarIconTint">#AAFFFFFF</color>
+    <color name="bottomBarIconTint">#FFFFFF</color>
 </resources>

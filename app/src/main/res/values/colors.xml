@@ -49,5 +49,5 @@
     <color name="BlackS12">#FFFF</color>
     <color name="heartColor">#FF5DA2</color>
     <color name="bottomBarFade">#A1FFFFFF</color>
-    <color name="bottomBarIconTint">#AA3E3E3E</color>
+    <color name="bottomBarIconTint">#000000</color>
 </resources>
