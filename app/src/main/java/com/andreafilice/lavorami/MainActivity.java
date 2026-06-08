@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton(getString(R.string.confirmPopUp), ((dialog, which) -> {
                         DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
                         setupOverlay.setVisibility(View.GONE);
+                        findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
                         askForNotificationPermission();
                     }))
                     .create()
