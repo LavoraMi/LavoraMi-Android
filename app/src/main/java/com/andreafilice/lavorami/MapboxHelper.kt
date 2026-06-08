@@ -130,10 +130,9 @@ object MapboxHelper {
 
     @JvmStatic
     fun enableUserLocation(mapView: MapView, followUser: Boolean) {
-        /** Abilita il punto blu della posizione utente sulla mappa.
-         * @param mapView è il fragment della mappa nel layout dell'Activity.
-         * @param followUser se true, centra la camera sulla posizione utente al primo fix.
-         * NOTA: i permessi devono essere già stati concessi prima di chiamare questo metodo.
+        /** Enables the blue user position dot on the map.
+         * @param mapView is the map fragment in the Activity layout.
+         * @param followUser If true, centers the camera on the user position at the first fix.
          */
 
         mapView.location.updateSettings {
@@ -150,7 +149,6 @@ object MapboxHelper {
                         .build()
                 )
             }
-            // Aggiunge il listener — rimuovilo dall'Activity quando non serve più
             mapView.location.addOnIndicatorPositionChangedListener(listener)
         }
     }

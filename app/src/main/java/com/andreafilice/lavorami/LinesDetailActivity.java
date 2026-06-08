@@ -631,7 +631,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             MapboxHelper.zoomToUserLocation(mapViewRef);
 
         } else {
-            // Richiedi il permesso
             androidx.core.app.ActivityCompat.requestPermissions(
                     this,
                     new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
@@ -656,7 +655,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 }
             } else {
                 Toast.makeText(this,
-                        getString(R.string.locationPermissionDenied), // aggiungi questa stringa
+                        getString(R.string.locationPermissionDenied),
                         Toast.LENGTH_SHORT).show();
             }
         }
