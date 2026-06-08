@@ -87,6 +87,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler interchangeHandler = new Handler(Looper.getMainLooper());
     private volatile boolean interscambiPreloaded = false;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
+    private MapView mapViewRef; // riferimento per usarlo nel callback dei permessi
     SessionManager sessionManager;
     SupabaseAPI api;
     Retrofit retrofitAPI;
@@ -545,6 +547,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         layoutMaps.setAlpha(0f);
         layoutMaps.animate().alpha(1f).setDuration(300).start();
         layoutLoadingMap.setVisibility(View.GONE);
+        mapViewRef = mapView;
+        ImageButton positionButton = findViewById(R.id.positionButton);
+        positionButton.setOnClickListener(v -> positionButtonClick());
     }
 
     private void disegnaPolilinea(MapView mapView, List<MetroStation> stazioni, String hexColor) {
@@ -617,6 +622,45 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
     }
 
+    private void positionButtonClick() {
+        if (androidx.core.content.ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+
+            MapboxHelper.enableUserLocation(mapViewRef, false);
+            MapboxHelper.zoomToUserLocation(mapViewRef);
+
+        } else {
+            // Richiedi il permesso
+            androidx.core.app.ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
+                    LOCATION_PERMISSION_REQUEST_CODE
+            );
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                // Permesso appena concesso
+                if (mapViewRef != null) {
+                    MapboxHelper.enableUserLocation(mapViewRef, false);
+                    MapboxHelper.zoomToUserLocation(mapViewRef);
+                }
+            } else {
+                Toast.makeText(this,
+                        getString(R.string.locationPermissionDenied), // aggiungi questa stringa
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     private void caricaEventiFiltrati() {
         LinearLayout container = findViewById(R.id.containerLavori);
         View wrapper = findViewById(R.id.lavoriSezioneWrapper);

@@ -470,6 +470,17 @@
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/positionButton"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="12dp"
+                android:background="@drawable/glass_bottom_bar_bg"
+                android:elevation="4dp"
+                android:src="@drawable/ic_position"
+                app:tint="@color/text_primary" />
         </FrameLayout>
 
         <LinearLayout

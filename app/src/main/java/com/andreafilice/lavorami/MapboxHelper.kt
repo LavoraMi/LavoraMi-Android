@@ -15,6 +15,9 @@ import com.mapbox.maps.extension.style.layers.generated.symbolLayer
 import com.mapbox.maps.extension.style.layers.properties.generated.TextAnchor
 import com.mapbox.maps.extension.style.expressions.dsl.generated.get
 import com.mapbox.maps.extension.style.expressions.dsl.generated.literal
+import com.mapbox.maps.plugin.animation.easeTo
+import com.mapbox.maps.plugin.locationcomponent.location
+import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 
 object MapboxHelper {
     //*INITIALIZE MAP
@@ -124,6 +127,52 @@ object MapboxHelper {
             })
         }
     }
+
+    @JvmStatic
+    fun enableUserLocation(mapView: MapView, followUser: Boolean) {
+        /** Abilita il punto blu della posizione utente sulla mappa.
+         * @param mapView è il fragment della mappa nel layout dell'Activity.
+         * @param followUser se true, centra la camera sulla posizione utente al primo fix.
+         * NOTA: i permessi devono essere già stati concessi prima di chiamare questo metodo.
+         */
+
+        mapView.location.updateSettings {
+            enabled = true
+            pulsingEnabled = true
+        }
+
+        if (followUser) {
+            val listener = OnIndicatorPositionChangedListener { point ->
+                mapView.mapboxMap.setCamera(
+                    CameraOptions.Builder()
+                        .center(point)
+                        .zoom(14.0)
+                        .build()
+                )
+            }
+            // Aggiunge il listener — rimuovilo dall'Activity quando non serve più
+            mapView.location.addOnIndicatorPositionChangedListener(listener)
+        }
+    }
+
+  @JvmStatic
+  fun zoomToUserLocation(mapView: MapView) {
+      val listener = object : OnIndicatorPositionChangedListener {
+          override fun onIndicatorPositionChanged(point: Point) {
+              mapView.mapboxMap.easeTo(
+                  CameraOptions.Builder()
+                      .center(point)
+                      .zoom(15.0)
+                      .build(),
+                  com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
+                      duration(800L)
+                  }
+              )
+              mapView.location.removeOnIndicatorPositionChangedListener(this)
+          }
+      }
+      mapView.location.addOnIndicatorPositionChangedListener(listener)
+  }
 
     interface MapReadyCallback {
         //*INTERFACE CLASS

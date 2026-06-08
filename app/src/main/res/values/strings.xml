@@ -367,4 +367,5 @@
     <string name="circolareDestraDesc">Circolare Destra</string>
     <string name="circolareSinistraDesc">Circolare Sinistra</string>
     <string name="homeBottomText">Home</string>
+    <string name="locationPermissionDenied">Permesso di localizzazione negato.</string>
 </resources>
