@@ -114,6 +114,11 @@
             android:name=".NotificationReceiver"
             android:enabled="true"
             android:exported="false" />
+
+        <activity
+            android:name=".DatabaseDataPreferences"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

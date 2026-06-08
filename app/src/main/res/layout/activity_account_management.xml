@@ -486,7 +486,7 @@
                 android:gravity="center"
                 android:paddingBottom="70dp"
                 android:paddingHorizontal="24dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="100dp"
@@ -526,7 +526,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -717,6 +717,39 @@
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/font_main"
                             android:text="@string/deleteAccount"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnDataPreferences"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#007AFF"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_drive_data"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/font_main"
+                            android:text="Preferenze Dati"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>

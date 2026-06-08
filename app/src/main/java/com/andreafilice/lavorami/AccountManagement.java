@@ -219,11 +219,13 @@ public class AccountManagement extends AppCompatActivity {
         CardView btnLogout = findViewById(R.id.btnLogout);
         CardView btnChangePassword = findViewById(R.id.btnChangePassword);
         CardView btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
+        CardView btnChooseDataPreferences = findViewById(R.id.btnDataPreferences);
         CardView btnRequestYourDatas = findViewById(R.id.btnRequestYourDatas);
 
         btnLogout.setOnClickListener(v -> {showConfirmLogout();});
         btnChangePassword.setOnClickListener(v -> {changePassword();});
         btnDeleteAccount.setOnClickListener(v -> {deleteAccount();});
+        btnChooseDataPreferences.setOnClickListener(v -> ActivityUtils.changeActivity(this, DatabaseDataPreferences.class));
         btnRequestYourDatas.setOnClickListener(v -> {ActivityUtils.changeActivity(this, RequestUserDatas.class);});
 
         //*RESET PASSWORD VIEW
