@@ -58,9 +58,13 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesDetailActivity extends AppCompatActivity {
     private String nomeLinea;
@@ -83,6 +87,10 @@ public class LinesDetailActivity extends AppCompatActivity {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler interchangeHandler = new Handler(Looper.getMainLooper());
     private volatile boolean interscambiPreloaded = false;
+    SessionManager sessionManager;
+    SupabaseAPI api;
+    Retrofit retrofitAPI;
+    private String SupabaseANON, SupabaseURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,12 +153,33 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipArrivi.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
 
         aggiornaUI();
-
         MapView mapView = findViewById(R.id.mapView);
-
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
-
         int chipStrokeColor = Color.parseColor("#CCCCCC");
+
+        sessionManager = new SessionManager(this);
+
+        //*GET METADATA
+        /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
+        SupabaseANON = getMetaData("supabaseANON");
+        SupabaseURL = getMetaData("supabaseURL");
+
+        /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
+        if(SupabaseURL != null){
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.NONE);
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+
+            retrofitAPI = new Retrofit.Builder()
+                    .baseUrl(SupabaseURL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build();
+
+            api = retrofitAPI.create(SupabaseAPI.class);
+        }
+        else
+            Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
         chipMappa.setChipStrokeWidth(3f);
         chipMappa.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
@@ -386,6 +415,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             buttonAddLine.setOnClickListener(v -> {
                 linesSaved.remove(nomeLinea);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
+                syncYourLinesToSupabase(linesSaved);
 
                 ActivityUtils.triggerFeedback(this);
                 buttonAddLine.startAnimation(scaleUpDown);
@@ -401,6 +431,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             buttonAddLine.setOnClickListener(v -> {
                 linesSaved.add(nomeLinea);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
+                syncYourLinesToSupabase(linesSaved);
 
                 ActivityUtils.triggerFeedback(this);
                 buttonAddLine.startAnimation(scaleUpDown);
@@ -1588,6 +1619,38 @@ public class LinesDetailActivity extends AppCompatActivity {
                 containerOtherDepartures = view.findViewById(R.id.containerOtherDepartures);
                 nextArrivals = view.findViewById(R.id.nextArrivals);
             }
+        }
+    }
+
+    private void syncYourLinesToSupabase(Set<String> yourLinesSet) {
+        if (sessionManager != null && sessionManager.isLoggedIn()) {
+            Set<String> favoritesSet = DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new java.util.HashSet<>());
+
+            ArrayList<String> favoritesList = new ArrayList<>(favoritesSet);
+            ArrayList<String> yourLinesList = new ArrayList<>(yourLinesSet);
+
+            String userEmail = sessionManager.getUserEmail();
+            String token = sessionManager.getToken();
+
+            SupabaseDataManager supabaseDataManager = new SupabaseDataManager(
+                    this,
+                    api,
+                    SupabaseANON,
+                    token,
+                    userEmail
+            );
+
+            supabaseDataManager.saveFavoritesAndLines(favoritesList, yourLinesList, new SupabaseDataManager.DataCallback<Void>() {
+                @Override
+                public void onSuccess(Void result) {
+                    Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");
+                }
+
+                @Override
+                public void onError(String error) {
+                    Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);
+                }
+            });
         }
     }
 }
