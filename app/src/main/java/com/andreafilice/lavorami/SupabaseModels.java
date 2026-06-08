@@ -76,4 +76,45 @@ public class SupabaseModels {
         public String email;
         public ResetPasswordRequest(String email) {this.email = email;}
     }
+
+    /// This class represent the LinesFavoriteDatas table structure in Supabase.
+    /// @ATTRIBUTES
+    /// @String id_user is the UUID of the user account.
+    /// @String user_email is the email of the user for query purposes.
+    /// @ArrayList<String> lines is the list of favorite lines for the user.
+    /// @ArrayList<String> your_lines is the list of user's custom lines.
+    public static class LinesFavoriteDatas {
+        @SerializedName("user_email")
+        public String user_email;
+        @SerializedName("lines")
+        public java.util.ArrayList<String> lines;
+        @SerializedName("your_lines")
+        public java.util.ArrayList<String> your_lines;
+
+        public LinesFavoriteDatas(String user_email, java.util.ArrayList<String> lines, java.util.ArrayList<String> your_lines) {
+            this.user_email = user_email;
+            this.lines = lines;
+            this.your_lines = your_lines;
+        }
+    }
+
+    /// This class represent the UserPreferencesDatas table structure in Supabase.
+    /// @ATTRIBUTES
+    /// @String user_email is the email of the user for query purposes.
+    /// @boolean enable_favorites is the flag to enable/disable favorite lines.
+    /// @boolean enable_your_lines is the flag to enable/disable custom lines.
+    public static class UserPreferencesDatas {
+        @SerializedName("user_email")
+        public String user_email;
+        @SerializedName("enable_favorites")
+        public boolean enable_favorites;
+        @SerializedName("enable_your_lines")
+        public boolean enable_your_lines;
+
+        public UserPreferencesDatas(String user_email, boolean enable_favorites, boolean enable_your_lines) {
+            this.user_email = user_email;
+            this.enable_favorites = enable_favorites;
+            this.enable_your_lines = enable_your_lines;
+        }
+    }
 }

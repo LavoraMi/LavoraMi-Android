@@ -7,6 +7,8 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,12 +30,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SettingsActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
+    SupabaseAPI api;
+    Retrofit retrofitAPI;
+    private String SupabaseANON, SupabaseURL;
     private Set<String> favorites = new HashSet<>();
 
     @Override
@@ -52,6 +63,28 @@ public class SettingsActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         sessionManager = new SessionManager(this);
+
+        //*GET METADATA
+        /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
+        SupabaseANON = getMetaData("supabaseANON");
+        SupabaseURL = getMetaData("supabaseURL");
+
+        /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
+        if(SupabaseURL != null){
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.NONE);
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+
+            retrofitAPI = new Retrofit.Builder()
+                    .baseUrl(SupabaseURL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build();
+
+            api = retrofitAPI.create(SupabaseAPI.class);
+        }
+        else
+            Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
         //*NAVBAR
         View btnLines = findViewById(R.id.linesButton);
@@ -257,6 +290,34 @@ public class SettingsActivity extends AppCompatActivity {
         reloadDatas();
     }
 
+    private void syncFavoritesToSupabase() {
+        if (sessionManager.isLoggedIn()) {
+            Set<String> yourLinesSet = DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
+
+            ArrayList<String> favoritesList = new ArrayList<>(favorites);
+            ArrayList<String> yourLinesList = new ArrayList<>(yourLinesSet);
+
+            String userEmail = sessionManager.getUserEmail();
+            String token = sessionManager.getToken();
+
+            SupabaseDataManager supabaseDataManager = new SupabaseDataManager(
+                    this,
+                    api,
+                    SupabaseANON,
+                    token,
+                    userEmail
+            );
+
+            supabaseDataManager.saveFavoritesAndLines(favoritesList, yourLinesList, new SupabaseDataManager.DataCallback<Void>() {
+                @Override
+                public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Preferiti aggiornati nel cloud con successo!");}
+
+                @Override
+                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore durante la sincronizzazione cloud: " + error);}
+            });
+        }
+    }
+
     public void reloadDatas(){
         //*LOADING DATAS
         /// In this section of the code, we will loading the datas from the DataManager file also AFTER the Back Gesture.
@@ -366,6 +427,8 @@ public class SettingsActivity extends AppCompatActivity {
         new Thread(() -> NotificationScheduler.scheduleWorkNotifications(this, EventData.listaEventiCompleta)).start();
         DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
         ActivityUtils.triggerFeedback(this);
+
+        syncFavoritesToSupabase();
     }
 
     public void loadFavorites(ImageView[] starIcons, String[] lineCodes) {
@@ -411,5 +474,24 @@ public class SettingsActivity extends AppCompatActivity {
                     ThemeSettings.setTheme();
                     loadFavorites(images, lines);
                 }).show();
+    }
+
+    private String getMetaData(String key){
+        /// This function get from our AndroidManifest.xml the values of .env files.
+        /// @PARAMETER
+        /// String key is the actual key of the value that we need to grab from the manifest file.
+
+        try {
+            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = info.metaData;
+
+            if(bundle != null)
+                return bundle.getString(key);
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
+        }
+        return null;
     }
 }

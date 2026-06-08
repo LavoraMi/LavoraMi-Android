@@ -57,6 +57,7 @@ public class AccountManagement extends AppCompatActivity {
     SessionManager sessionManager;
     GoogleSignInClient googleClient;
     SupabaseAPI api;
+    SupabaseDataManager dataManager;
     Retrofit retrofitAPI;
     LinearLayout loginView;
     LinearLayout loggedInView;
@@ -151,6 +152,8 @@ public class AccountManagement extends AppCompatActivity {
         }
         else
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+
+        dataManager = new SupabaseDataManager(this, api, SupabaseANON, "", "");
 
         //*BACK BUTTON
         /// In this section of the code, we initialize the Back Button and his action.
@@ -346,11 +349,14 @@ public class AccountManagement extends AppCompatActivity {
                     EditText etLoginPassword = findViewById(R.id.etLoginPassword);
                     EditText etLoginEmail = findViewById(R.id.etLoginEmail);
 
+                    dataManager.setBearerToken(token);
+                    dataManager.setUserEmail(email);
+
                     etLoginEmail.setEnabled(true);
                     etLoginPassword.setEnabled(true);
                     updateUI();
                 }
-                else{
+                else {
                     Toast.makeText(AccountManagement.this, getString(R.string.loginErrorCredentialsToast), Toast.LENGTH_SHORT).show();
                     EditText etLoginPassword = findViewById(R.id.etLoginPassword);
                     EditText etLoginEmail = findViewById(R.id.etLoginEmail);
@@ -400,6 +406,9 @@ public class AccountManagement extends AppCompatActivity {
                     }
 
                     sessionManager.saveSession(token, email, nameUser, true);
+
+                    dataManager.setBearerToken(token);
+                    dataManager.setUserEmail(email);
 
                     updateUI();
                     Toast.makeText(AccountManagement.this, getString(R.string.googleSignInSuccesfulToast), Toast.LENGTH_SHORT).show();
