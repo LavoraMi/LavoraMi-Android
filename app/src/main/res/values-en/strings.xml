@@ -369,4 +369,8 @@
     <string name="circolareSinistraDesc">Anticlockwise Circular</string>
     <string name="homeBottomText">Home</string>
     <string name="locationPermissionDenied">Location permission denied.</string>
+    <string name="dataPreferencesTitle">Data Preferences</string>
+    <string name="dataSynched">Synched Data</string>
+    <string name="dataFailureSync">Synch Error</string>
+    <string name="dataSyncing">Syncing...</string>
 </resources>

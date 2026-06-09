@@ -774,7 +774,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/font_main"
-                            android:text="Preferenze Dati"
+                            android:text="@string/dataPreferencesTitle"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>

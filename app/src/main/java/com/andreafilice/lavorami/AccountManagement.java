@@ -852,7 +852,7 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     private void checkProgress() {
-        tvProfileSync.setText((dataSyncing == 3 && !errorWhileSyncing) ? "Dati Sincronizzati" : ((dataSyncing != 3) ? "Sincronizzazione..." : "Errore Sincronizzazione"));
+        tvProfileSync.setText((dataSyncing == 3 && !errorWhileSyncing) ? getString(R.string.dataSynched) : ((dataSyncing != 3) ? getString(R.string.dataSyncing) : getString(R.string.dataFailureSync)));
         iconProfileSync.setImageResource((dataSyncing == 3 && !errorWhileSyncing) ? R.drawable.ic_cloud_success_sync : ((dataSyncing != 3) ? R.drawable.ic_cloud_syncing : R.drawable.ic_cloud_failed_sync));
     }
 }

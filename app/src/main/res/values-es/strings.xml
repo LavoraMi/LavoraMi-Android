@@ -369,4 +369,8 @@
     <string name="circolareSinistraDesc">Circular Izquierda</string>
     <string name="homeBottomText">Inicio</string>
     <string name="locationPermissionDenied">" Permiso de ubicación denegado."</string>
+    <string name="dataPreferencesTitle">Preferencias Datos</string>
+    <string name="dataSynched">Datos Sincronizados</string>
+    <string name="dataFailureSync">Error Sincronización</string>
+    <string name="dataSyncing">Sincronizando...</string>
 </resources>
