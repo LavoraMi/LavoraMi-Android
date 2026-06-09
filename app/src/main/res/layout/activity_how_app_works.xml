@@ -640,7 +640,10 @@
                     android:id="@+id/cardExampleWork"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
 
                     <ImageView
                         android:id="@+id/iconWorksiteCard"

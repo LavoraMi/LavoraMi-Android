@@ -97,6 +97,7 @@ public class HowAppWorks extends AppCompatActivity {
         ImageView mapImage = findViewById(R.id.imgLineOnMap);
         mapImage.setImageResource(isNightMode ? R.drawable.ic_line_on_map : R.drawable.ic_line_on_map_light);
 
+        //*EXPAND WORK
         ImageView worksiteArrowDesc = findViewById(R.id.worksiteArrowDesc);
         TextView txtWorksiteStopExample = findViewById(R.id.txtWorksiteStopExample);
         ConstraintLayout cardExampleWork = findViewById(R.id.cardExampleWork);
@@ -111,6 +112,7 @@ public class HowAppWorks extends AppCompatActivity {
                 txtWorksiteStopExample.setVisibility(View.VISIBLE);
                 worksiteArrowDesc.animate().rotation(0).setDuration(200).start();
             }
+            ActivityUtils.triggerFeedback(this);
         });
     }
 
