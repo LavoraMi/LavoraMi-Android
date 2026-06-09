@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean strikeBannerClosed = false;
     private boolean  definitelyClosedSavedLinesHint;
     public static boolean alreadyRefreshedLines = false;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -128,6 +129,17 @@ public class MainActivity extends AppCompatActivity {
                     btnSetupNext.setEnabled(true);
                     btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
                 }
+            });
+    private final ActivityResultLauncher<String> requestLocationPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(
+                            ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+                } else {
+                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(
+                            ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+                }
+                btnSetupNext.setEnabled(true);
             });
 
     @Override
@@ -201,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle3), getString(R.string.setupDeps3), R.drawable.ic_star_fill, ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle4), getString(R.string.setupDeps4), R.drawable.ic_bell_fill, ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitleTranslate), getString(R.string.setupDepsTranslate), R.drawable.ic_translate, getString(R.string.setupMiniDepsTranslate)));
+        pages.add(new SetupModels.SetupPage(getString(R.string.setupTitlePosition), getString(R.string.setupDepsPosition), R.drawable.ic_position, ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupAccessibilityTitle), getString(R.string.setupDepsAccessiblity), R.drawable.ic_accessibility, ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle5), getString(R.string.setupDeps5), R.drawable.ic_lock, getString(R.string.setupMiniDetails)));
 
@@ -229,6 +242,9 @@ public class MainActivity extends AppCompatActivity {
             /// In this section, we ask the permission of notifications to the user, beacuse in this Index there is the "Notification" page.
             if(currentPage == 3)
                 askForNotificationPermission();
+            if(currentPage == 4){
+                askForPositionPermission();
+            }
         });
 
         Button btnSetupSkip = findViewById(R.id.btnSetupSkip);
@@ -243,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
                         setupOverlay.setVisibility(View.GONE);
                         findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
                         askForNotificationPermission();
+                        askForPositionPermission();
                     }))
                     .create()
                     .show();
@@ -256,9 +273,10 @@ public class MainActivity extends AppCompatActivity {
 
                 btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
                 btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
-
                 if(position == 3)
                     askForNotificationPermission();
+                if(position == 5)
+                    askForPositionPermission();
             }
         });
 
@@ -626,6 +644,17 @@ public class MainActivity extends AppCompatActivity {
                 btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
                 btnSetupNext.setEnabled(true);
             }
+        }
+    }
+
+    private void askForPositionPermission() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.GRAY)));
+            btnSetupNext.setEnabled(false);
+            requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+        } else {
+            btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+            btnSetupNext.setEnabled(true);
         }
     }
 
