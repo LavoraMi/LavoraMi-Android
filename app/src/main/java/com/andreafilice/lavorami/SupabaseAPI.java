@@ -34,6 +34,12 @@ public interface SupabaseAPI {
         @Body SupabaseModels.PasswordRequest request
     );
 
+    @POST("auth/v1/token?grant_type=refresh_token")
+    Call<SupabaseModels.AuthResponse> refreshToken(
+        @Header("apikey") String apiKey,
+        @Body SupabaseModels.RefreshTokenRequest request
+    );
+
     @POST("rest/v1/rpc/delete_self_dev_test")
     Call<Void> deleteAccount(
         @Header("apikey") String apiKey,

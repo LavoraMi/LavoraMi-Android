@@ -132,13 +132,11 @@ public class MainActivity extends AppCompatActivity {
             });
     private final ActivityResultLauncher<String> requestLocationPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if (isGranted) {
-                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(
-                            ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
-                } else {
-                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(
-                            ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
-                }
+                if (isGranted)
+                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+                else
+                    btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+
                 btnSetupNext.setEnabled(true);
             });
 
@@ -167,7 +165,10 @@ public class MainActivity extends AppCompatActivity {
         if(SupabaseURL != null){
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
-            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(logging)
+                    .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
+                    .build();
 
             retrofitAPI = new Retrofit.Builder()
                     .baseUrl(SupabaseURL)

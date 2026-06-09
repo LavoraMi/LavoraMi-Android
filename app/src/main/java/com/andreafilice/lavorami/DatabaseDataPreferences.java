@@ -49,7 +49,10 @@ public class DatabaseDataPreferences extends AppCompatActivity {
         if(SupabaseURL != null){
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
-            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(logging)
+                    .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
+                    .build();
 
             retrofitAPI = new Retrofit.Builder()
                     .baseUrl(SupabaseURL)

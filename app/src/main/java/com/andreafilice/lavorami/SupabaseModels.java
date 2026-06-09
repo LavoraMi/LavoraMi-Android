@@ -35,6 +35,7 @@ public class SupabaseModels {
 
     public static class AuthResponse {
         public String access_token;
+        public String refresh_token;
         public User user;
 
         public static class User {
@@ -42,6 +43,15 @@ public class SupabaseModels {
             public String email;
             @SerializedName("user_metadata")
             public Map<String, Object> userMetadata;
+        }
+    }
+
+    public static class RefreshTokenRequest {
+        @SerializedName("refresh_token")
+        public String refresh_token;
+
+        public RefreshTokenRequest(String refresh_token) {
+            this.refresh_token = refresh_token;
         }
     }
 

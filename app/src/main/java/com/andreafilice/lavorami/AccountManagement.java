@@ -146,7 +146,10 @@ public class AccountManagement extends AppCompatActivity {
         if(SupabaseURL != null){
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
-            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(logging)
+                    .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
+                    .build();
 
             retrofitAPI = new Retrofit.Builder()
                     .baseUrl(SupabaseURL)
@@ -342,6 +345,7 @@ public class AccountManagement extends AppCompatActivity {
             public void onResponse(Call<SupabaseModels.AuthResponse> call, Response<SupabaseModels.AuthResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     String token = response.body().access_token;
+                    String refreshToken = response.body().refresh_token;
                     String email = response.body().user.email;
 
                     String nameUser = "Utente";
@@ -355,7 +359,8 @@ public class AccountManagement extends AppCompatActivity {
                             nameUser = response.body().user.userMetadata.get("display_name").toString();
                     }
 
-                    sessionManager.saveSession(token, email, nameUser, false);
+                    sessionManager.saveSession(token, refreshToken, email, nameUser, false);
+                    Log.d("AUTH", "Refresh token: " + (refreshToken != null ? "presente: " + refreshToken : "NULLO"));
 
                     Toast.makeText(AccountManagement.this, getString(R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
@@ -410,6 +415,7 @@ public class AccountManagement extends AppCompatActivity {
             public void onResponse(Call<SupabaseModels.AuthResponse> call, Response<SupabaseModels.AuthResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     String token = response.body().access_token;
+                    String refreshToken = response.body().refresh_token;
                     String email = response.body().user.email;
 
                     String nameUser = "Utente Google";
@@ -423,7 +429,8 @@ public class AccountManagement extends AppCompatActivity {
                             nameUser = response.body().user.userMetadata.get("display_name").toString();
                     }
 
-                    sessionManager.saveSession(token, email, nameUser, true);
+                    sessionManager.saveSession(token, refreshToken, email, nameUser, true);
+                    Log.d("AUTH", "Refresh token: " + (refreshToken != null ? "presente" : "NULLO"));
 
                     dataManager.setBearerToken(token);
                     dataManager.setUserEmail(email);

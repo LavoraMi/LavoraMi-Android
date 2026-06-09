@@ -42,11 +42,15 @@ public class SupabaseDataManager {
             return;
         }
 
-        Call<Void> call = api.upsertUserLines(supabaseANON, bearerToken, "resolution=merge-duplicates", linesToSave);
+        SessionManager sessionManager = new SessionManager(context);
+        String liveToken = "Bearer " + sessionManager.getToken();
+
+        Call<Void> call = api.upsertUserLines(supabaseANON, liveToken, "resolution=merge-duplicates", linesToSave);
 
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+
                 if (response.isSuccessful()) {
                     Log.d("DataManager", "Dati salvati con successo nel database.");
                     if (callback != null)
@@ -68,43 +72,80 @@ public class SupabaseDataManager {
         });
     }
 
-    public void saveUserPreferences(boolean enableFavorites, boolean enableYourLines, DataCallback<Void> callback) {
-        SupabaseModels.UserPreferencesDatas preferencesToSave = new SupabaseModels.UserPreferencesDatas(userEmail, enableFavorites, enableYourLines);
+    private void ensureValidToken(DataCallback<Void> callback) {
+        SessionManager sm = new SessionManager(context);
+        String refreshToken = sm.getRefreshToken();
 
-        if (userEmail == null || userEmail.isEmpty()) {
-            Log.e("DataManager", "ERRORE: Email vuota.");
-            if (callback != null)
-                callback.onError("Email vuota");
+        if (refreshToken == null) {
+            if (callback != null) callback.onError("No refresh token");
             return;
         }
 
-        Call<Void> call = api.upsertUserPreferences(supabaseANON, bearerToken, "resolution=merge-duplicates", preferencesToSave);
+        api.refreshToken(supabaseANON, new SupabaseModels.RefreshTokenRequest(refreshToken))
+                .enqueue(new Callback<SupabaseModels.AuthResponse>() {
+                    @Override
+                    public void onResponse(Call<SupabaseModels.AuthResponse> call, Response<SupabaseModels.AuthResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            String newToken = response.body().access_token;
+                            String newRefreshToken = response.body().refresh_token;
+                            sm.saveSession(newToken, newRefreshToken, sm.getUserEmail(), sm.getUserName(), sm.isLoggedInWithGoogle());
+                            if (callback != null) callback.onSuccess(null);
+                        } else {
+                            if (callback != null) callback.onError("Refresh failed: " + response.code());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<SupabaseModels.AuthResponse> call, Throwable t) {
+                        if (callback != null) callback.onError(t.getMessage());
+                    }
+                });
+    }
+
+    public void saveUserPreferences(boolean enableFavorites, boolean enableYourLines, DataCallback<Void> callback) {
+        ensureValidToken(new DataCallback<Void>() {
+            @Override
+            public void onSuccess(Void result) {doSaveUserPreferences(enableFavorites, enableYourLines, callback);}
+
+            @Override
+            public void onError(String error) {
+                if (callback != null) callback.onError(error);
+            }
+        });
+    }
+
+    private void doSaveUserPreferences(boolean enableFavorites, boolean enableYourLines, DataCallback<Void> callback) {
+        if (userEmail == null || userEmail.isEmpty()) {
+            if (callback != null) callback.onError("Email vuota");
+            return;
+        }
+
+        SupabaseModels.UserPreferencesDatas preferencesToSave = new SupabaseModels.UserPreferencesDatas(userEmail, enableFavorites, enableYourLines);
+        SessionManager sessionManager = new SessionManager(context);
+        String liveToken = "Bearer " + sessionManager.getToken();
+
+        Call<Void> call = api.upsertUserPreferences(supabaseANON, liveToken, "resolution=merge-duplicates", preferencesToSave);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    Log.d("DataManager", "Preferenze salvate con successo.");
-                    if (callback != null)
-                        callback.onSuccess(null);
-                }
-                else {
-                    Log.e("DataManager", "Errore durante il salvataggio delle preferenze: " + response.code());
-                    if (callback != null)
-                        callback.onError("Errore durante il salvataggio: " + response.code());
-                }
+                if (response.isSuccessful())
+                    if (callback != null) callback.onSuccess(null);
+                else
+                    if (callback != null) callback.onError("Errore durante il salvataggio: " + response.code());
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("DataManager", "Errore di rete durante il salvataggio: " + t.getMessage());
-                if (callback != null)
-                    callback.onError("Errore di rete: " + t.getMessage());
+                if (callback != null) callback.onError("Errore di rete: " + t.getMessage());
             }
         });
     }
 
     public void fetchUserFavorites(DataCallback<ArrayList<String>> callback) {
-        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, bearerToken, "eq." + userEmail, "*");
+        SessionManager sessionManager = new SessionManager(context);
+        String liveToken = "Bearer " + sessionManager.getToken();
+
+        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, liveToken, "eq." + userEmail, "*");
 
         call.enqueue(new Callback<ArrayList<SupabaseModels.LinesFavoriteDatas>>() {
             @Override
@@ -132,7 +173,10 @@ public class SupabaseDataManager {
     }
 
     public void fetchUserCustomLines(DataCallback<ArrayList<String>> callback) {
-        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, bearerToken, "eq." + userEmail, "*");
+        SessionManager sessionManager = new SessionManager(context);
+        String liveToken = "Bearer " + sessionManager.getToken();
+
+        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, liveToken, "eq." + userEmail, "*");
 
         call.enqueue(new Callback<ArrayList<SupabaseModels.LinesFavoriteDatas>>() {
             @Override
@@ -160,7 +204,10 @@ public class SupabaseDataManager {
     }
 
     public void fetchUserPreferences(DataCallback<SupabaseModels.UserPreferencesDatas> callback) {
-        Call<ArrayList<SupabaseModels.UserPreferencesDatas>> call = api.fetchUserPreferences(supabaseANON, bearerToken, "eq." + userEmail, "*");
+        SessionManager sessionManager = new SessionManager(context);
+        String liveToken = "Bearer " + sessionManager.getToken();
+
+        Call<ArrayList<SupabaseModels.UserPreferencesDatas>> call = api.fetchUserPreferences(supabaseANON, liveToken, "eq." + userEmail, "*");
 
         call.enqueue(new Callback<ArrayList<SupabaseModels.UserPreferencesDatas>>() {
             @Override
