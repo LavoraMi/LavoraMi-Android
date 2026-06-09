@@ -71,10 +71,12 @@ public class AccountManagement extends AppCompatActivity {
     TextView tvProfileName;
     TextView tvProfileEmail;
     TextView tvProfileSync;
+    ImageView iconProfileSync;
     LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
-    int dataSuccesfullySynched = 0;
+    int dataSyncing = 0;
+    boolean errorWhileSyncing = false;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$");
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
@@ -159,6 +161,7 @@ public class AccountManagement extends AppCompatActivity {
 
         dataManager = new SupabaseDataManager(this, api, SupabaseANON, "", "");
         tvProfileSync = findViewById(R.id.tvProfileSync);
+        iconProfileSync = findViewById(R.id.iconSync);
 
         if(sessionManager.isLoggedIn()) {
             dataManager.setUserEmail(sessionManager.getUserEmail());
@@ -837,14 +840,19 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     private void handleSync() {
-        dataSuccesfullySynched++;
+        dataSyncing++;
         checkProgress();
     }
 
     private void handleSyncError() {
+        dataSyncing++;
+        errorWhileSyncing = true;
         Toast.makeText(this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();
         checkProgress();
     }
 
-    private void checkProgress() {tvProfileSync.setText((dataSuccesfullySynched == 3) ? "Dati Sincronizzati" : "Errore Sincronizzazione");}
+    private void checkProgress() {
+        tvProfileSync.setText((dataSyncing == 3 && !errorWhileSyncing) ? "Dati Sincronizzati" : ((dataSyncing != 3) ? "Sincronizzazione..." : "Errore Sincronizzazione"));
+        iconProfileSync.setImageResource((dataSyncing == 3 && !errorWhileSyncing) ? R.drawable.ic_cloud_success_sync : ((dataSyncing != 3) ? R.drawable.ic_cloud_syncing : R.drawable.ic_cloud_failed_sync));
+    }
 }

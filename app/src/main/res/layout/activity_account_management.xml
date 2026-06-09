@@ -627,9 +627,10 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/iconSync"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_refresh"
+                        android:src="@drawable/ic_cloud_syncing"
                         app:tint="#FF3B30" />
 
                     <TextView
@@ -638,7 +639,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/inter"
-                        android:text="Dati Sincronizzati"
+                        android:text="Sincronizzazione..."
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
                 </LinearLayout>
