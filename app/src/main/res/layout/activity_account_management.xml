@@ -598,7 +598,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -615,6 +615,30 @@
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/inter"
                         android:text="user_email"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_refresh"
+                        app:tint="#FF3B30" />
+
+                    <TextView
+                        android:id="@+id/tvProfileSync"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/inter"
+                        android:text="Dati Sincronizzati"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
                 </LinearLayout>

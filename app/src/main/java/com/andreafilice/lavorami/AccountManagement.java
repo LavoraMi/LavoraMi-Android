@@ -70,9 +70,11 @@ public class AccountManagement extends AppCompatActivity {
     TextView fullNameTextLoginPage;
     TextView tvProfileName;
     TextView tvProfileEmail;
+    TextView tvProfileSync;
     LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
+    int dataSuccesfullySynched = 0;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$");
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
@@ -156,6 +158,7 @@ public class AccountManagement extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
         dataManager = new SupabaseDataManager(this, api, SupabaseANON, "", "");
+        tvProfileSync = findViewById(R.id.tvProfileSync);
 
         if(sessionManager.isLoggedIn()) {
             dataManager.setUserEmail(sessionManager.getUserEmail());
@@ -805,29 +808,43 @@ public class AccountManagement extends AppCompatActivity {
 
         dataManager.fetchUserPreferences(new SupabaseDataManager.DataCallback<SupabaseModels.UserPreferencesDatas>() {
             @Override
-            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {Log.d("ACCOUNT", "Preferenze caricate");}
+            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {handleSync();}
             @Override
-            public void onError(String error) {Toast.makeText(AccountManagement.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();}
+            public void onError(String error) {handleSyncError();}
         });
 
         dataManager.fetchUserFavorites(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
                 Log.d("ACCOUNT", "Linee Caricate: " + result.size());
+                handleSync();
                 DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>(result));
             }
             @Override
-            public void onError(String error) {Toast.makeText(AccountManagement.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();}
+            public void onError(String error) {handleSyncError();}
         });
 
         dataManager.fetchUserCustomLines(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
                 Log.d("ACCOUNT", "Your Lines Caricate: " + result.size());
+                handleSync();
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>(result));
             }
             @Override
-            public void onError(String error) {Toast.makeText(AccountManagement.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();}
+            public void onError(String error) {handleSyncError();}
         });
     }
+
+    private void handleSync() {
+        dataSuccesfullySynched++;
+        checkProgress();
+    }
+
+    private void handleSyncError() {
+        Toast.makeText(this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();
+        checkProgress();
+    }
+
+    private void checkProgress() {tvProfileSync.setText((dataSuccesfullySynched == 3) ? "Dati Sincronizzati" : "Errore Sincronizzazione");}
 }
