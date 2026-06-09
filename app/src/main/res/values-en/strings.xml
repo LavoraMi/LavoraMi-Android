@@ -373,4 +373,9 @@
     <string name="dataSynched">Synched Data</string>
     <string name="dataFailureSync">Synch Error</string>
     <string name="dataSyncing">Syncing...</string>
+    <string name="chooseYourDataTitle">Choose your Data</string>
+    <string name="yourDataDeps1">Choose what type of data you want to be saved in our Databases, so that you can always access it from your Account.</string>
+    <string name="yourDataDeps2">Your LavoraMi data is completely private and secure. You can request it at any time by selecting “Request your data”.</string>
+    <string name="dataToSaveTitle">Data to be Saved</string>
+    <string name="favoriteLinesDeps">Favorite Lines</string>
 </resources>

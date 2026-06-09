@@ -372,4 +372,9 @@
     <string name="dataSynched">Dati Sincronizzati</string>
     <string name="dataFailureSync">Errore Sincronizzazione</string>
     <string name="dataSyncing">Sincronizzazione...</string>
+    <string name="chooseYourDataTitle">Scegli i tuoi Dati</string>
+    <string name="yourDataDeps1">Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account.</string>
+    <string name="yourDataDeps2">I tuoi dati di LavoraMi sono completamente privati e protetti, potrai richiederli quando vuoi selezionando \"Richiedi i tuoi Dati\".</string>
+    <string name="dataToSaveTitle">Dati da Salvare</string>
+    <string name="favoriteLinesDeps">Linee Preferite</string>
 </resources>

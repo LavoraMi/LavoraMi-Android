@@ -19,14 +19,14 @@
             android:id="@+id/headerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="45dp"
             android:paddingHorizontal="16dp"
             android:paddingBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Preferenze Dati"
+                android:text="@string/dataPreferencesTitle"
                 android:fontFamily="@font/font_main"
                 android:textColor="@color/text_primary"
                 android:textSize="20sp"
@@ -68,7 +68,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/ic_drive_data"
+                android:src="@drawable/ic_cloud_empty"
                 app:tint="#E41414" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/font_main"
-                android:text="Scegli i tuoi Dati"
+                android:text="@string/chooseYourDataTitle"
                 android:textAlignment="center"
                 android:textColor="@color/text_primary"
                 android:textSize="24sp"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter"
-                android:text="Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account."
+                android:text="@string/yourDataDeps1"
                 android:textAlignment="center"
                 android:textColor="@color/subtitle"
                 android:textSize="16sp" />
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/inter"
-                android:text="I tuoi dati di LavoraMi sono completamente privati e protetti, potrai richiederli quando vuoi selezionando Richiedi i tuoi Dati."
+                android:text="@string/yourDataDeps2"
                 android:textAlignment="center"
                 android:textColor="@color/subtitle"
                 android:textSize="12sp" />
@@ -109,7 +109,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/font_main"
-                android:text="Dati da Salvare"
+                android:text="@string/dataToSaveTitle"
                 android:textColor="#8E8E93"
                 android:textSize="18sp" />
 
@@ -146,7 +146,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconStartWork"
                             android:fontFamily="@font/font_main"
-                            android:text="Linee Preferite"
+                            android:text="@string/favoriteLinesDeps"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -189,7 +189,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconEndWork"
                             android:fontFamily="@font/font_main"
-                            android:text="Le Tue Linee"
+                            android:text="@string/yourLinesPrefix"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 

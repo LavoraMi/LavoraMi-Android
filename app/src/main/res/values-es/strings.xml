@@ -373,4 +373,9 @@
     <string name="dataSynched">Datos Sincronizados</string>
     <string name="dataFailureSync">Error Sincronización</string>
     <string name="dataSyncing">Sincronizando...</string>
+    <string name="chooseYourDataTitle">Elige tus Datos</string>
+    <string name="yourDataDeps1">Elige qué tipo de datos quieres que se guarden en nuestras bases de datos, para poder acceder a ellos en cualquier momento desde tu Cuenta.</string>
+    <string name="yourDataDeps2">Tus datos de LavoraMi son totalmente privados y están protegidos. Puedes solicitarlos cuando quieras seleccionando “Solicita tus datos”.</string>
+    <string name="dataToSaveTitle">Datos que hay que Guardar</string>
+    <string name="favoriteLinesDeps">Líneas Favoritas</string>
 </resources>
