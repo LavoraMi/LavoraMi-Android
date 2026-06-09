@@ -112,6 +112,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "5", "7", "9", "10", "15", "19", "24", "31", "33"));
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z620"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -132,7 +133,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
 
         if (nomeLinea == null) nomeLinea = "M1";
-        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || nomeLinea.contains("z")){
+        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("Movibus") && !(busLinesWithMap.contains(nomeLinea)))){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);

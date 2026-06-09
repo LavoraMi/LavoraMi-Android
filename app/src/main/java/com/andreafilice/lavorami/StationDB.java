@@ -2715,6 +2715,70 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsZ620(){
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Magenta, Tobagi", 45.45574, 8.89153, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45589, 8.89149, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45576, 8.88789, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45624, 8.88509, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45377, 8.88516, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45118, 8.88457, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.44934, 8.88429, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.44795, 8.88466, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.44772, 8.88446, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.44781, 8.88363, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45283, 8.87501, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.45624, 8.87145, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46083, 8.86814, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46115, 8.86823, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46151, 8.86841, "Main", "z620"));
+        stations.add(new MetroStation("Magenta, Leopardi/Italia",45.46179, 8.86928, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46223, 8.87055, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46232, 8.87077, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46254, 8.87077, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46402, 8.87042, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46492, 8.87636, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46502, 8.87678, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46515, 8.87683, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46603, 8.87665, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46614, 8.87666, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46622, 8.87673, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46632, 8.87685, "Main", "z620"));
+        stations.add(new MetroStation("Magenta, Novara/Pellico,Carabinieri", 45.46741, 8.87983, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46798, 8.88145, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46797, 8.88168, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46805, 8.88183, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46811, 8.88178, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46824, 8.88252, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46632, 8.87685, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.46632, 8.87685, "Main", "z620"));
+        //dio santo le fermate sono sbagliate guarda su https://citymapper.com/milano/autobus/movibus-z620?lang=it
+        stations.add(new MetroStation("Magenta, Novara 15", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Magenta, Brocca 41,Stazione FS", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Magenta, Cavallari 28", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Magenta, Tragella", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Magenta, Milano 101", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Corbetta, Simone Da Corbetta", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Corbetta, Simone Da Corbetta/S. Ambrogio", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Corbetta, Beretta/Volta", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Corbetta, Milano,La Pobbia", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Vittuone, Milano 22", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Vittuone, Milano 7", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Sedriano, Magenta 11", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Sedriano, Fagnani/Europa", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Bareggio, Novara/Roma", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Bareggio, Milano/Leoncavallo", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Cornaredo, Dubini,S.Pietro all'Olmo", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Cornaredo, Milano/S.Siro", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Cornaredo, Milano/Garibaldi", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Cornaredo, Milano/Cascina Torretta", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Settimo Milanese, Gramsci 32", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Settimo Milanese, Gramsci/Foscolo", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Settimo Milanese, Gramsci", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("Milano, Molino Dorino M1", 0, 0, "Main", "z620"));
+        return stations;
+    }
+
     public static List<InterchangeInfo> getBusInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
         interchanges.add(new InterchangeInfo(
@@ -3107,6 +3171,8 @@ public class StationDB {
             allStations.addAll(getStationsTram24());
             allStations.addAll(getStationsTram31());
             allStations.addAll(getStationsTram33());
+
+            allStations.addAll(getStationsZ620());
 
             allStations.addAll(getStationsFilobus90());
             allStations.addAll(getStationsFilobus91());
