@@ -78,10 +78,8 @@ public class DatabaseDataPreferences extends AppCompatActivity {
 
             loadUserPreferences();
         }
-        else {
-            Toast.makeText(this, "Effettua il login per accedere alle preferenze cloud.", Toast.LENGTH_SHORT).show();
+        else
             finish();
-        }
     }
 
     private String getMetaData(String key){
@@ -96,10 +94,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
             if(bundle != null)
                 return bundle.getString(key);
         }
-        catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
-        }
+        catch (PackageManager.NameNotFoundException e) {Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
         return null;
     }
 
@@ -124,7 +119,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
 
             @Override
             public void onError(String error) {
-                Log.e("PREFS_ACTIVITY", "Errore caricamento preferenze: " + error);
+                Toast.makeText(DatabaseDataPreferences.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
                 setupSwitchListeners();
             }
         });
@@ -154,7 +149,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
             @Override
             public void onError(String error) {
                 Log.e("PREFS_ACTIVITY", "Errore durante il salvataggio istantaneo: " + error);
-                Toast.makeText(DatabaseDataPreferences.this, "Errore di sincronizzazione cloud", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DatabaseDataPreferences.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();
             }
         });
     }

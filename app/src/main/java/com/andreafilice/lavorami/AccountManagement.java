@@ -463,7 +463,7 @@ public class AccountManagement extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if(response.isSuccessful()){
+                if(response.isSuccessful()) {
                     new AlertDialog.Builder(AccountManagement.this)
                             .setTitle(R.string.popUpConfirmEmail)
                             .setMessage(R.string.emailPopUpDeps)
@@ -474,7 +474,7 @@ public class AccountManagement extends AppCompatActivity {
                     screenUnlocked = true;
                     updateUI();
                 }
-                else{
+                else {
                     Toast.makeText(AccountManagement.this, getString(R.string.registrationErrorToast), Toast.LENGTH_SHORT).show();
                     Log.d("ERRORE_REG", response.message());
                 }
@@ -594,16 +594,14 @@ public class AccountManagement extends AppCompatActivity {
                     api.deleteAccount(SupabaseANON, "Bearer " + tokenKey).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-                            if(response.isSuccessful()){
+                            if(response.isSuccessful()) {
                                 sessionManager.logout();
                                 updateUI();
                                 Toast.makeText(AccountManagement.this, getString(R.string.deleteAccountSuccesfullToast), Toast.LENGTH_SHORT).show();
                             }
-                            else{
+                            else {
                                 Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                                try {
-                                    Log.e("DELETE_ERR", response.errorBody().string());
-                                } catch (Exception e) {}
+                                try {Log.e("DELETE_ERR", response.errorBody().string());} catch (Exception e) {}
                             }
                         }
 
@@ -799,38 +797,37 @@ public class AccountManagement extends AppCompatActivity {
         /// CardView btnToApply is the button to Apply this colors
         /// boolean isValid is the actual value to apply, if is valid or not.
 
-        btnToApply.setBackgroundTintList(isValid
-            ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
-            : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
-        );
+        btnToApply.setBackgroundTintList(isValid ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro)) : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY)));
     }
 
     private void fetchUserDataOnInit() {
+        /// This method fetch the User Data while: Logging In and onCreate scenarios.
+
         dataManager.fetchUserPreferences(new SupabaseDataManager.DataCallback<SupabaseModels.UserPreferencesDatas>() {
             @Override
-            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {Log.d("ACCOUNT", "✅ Preferenze caricate");}
+            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {Log.d("ACCOUNT", "Preferenze caricate");}
             @Override
-            public void onError(String error) {Log.e("ACCOUNT", "❌ Errore preferenze: " + error);}
+            public void onError(String error) {Toast.makeText(AccountManagement.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();}
         });
 
         dataManager.fetchUserFavorites(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
-                Log.d("ACCOUNT", "✅ Favorites caricate: " + result.size());
+                Log.d("ACCOUNT", "Linee Caricate: " + result.size());
                 DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>(result));
             }
             @Override
-            public void onError(String error) {Log.e("ACCOUNT", "❌ Errore favorites: " + error);}
+            public void onError(String error) {Toast.makeText(AccountManagement.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();}
         });
 
         dataManager.fetchUserCustomLines(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
-                Log.d("ACCOUNT", "✅ Custom lines caricate: " + result.size());
+                Log.d("ACCOUNT", "Your Lines Caricate: " + result.size());
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>(result));
             }
             @Override
-            public void onError(String error) {Log.e("ACCOUNT", "❌ Errore custom lines: " + error);}
+            public void onError(String error) {Toast.makeText(AccountManagement.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();}
         });
     }
 }
