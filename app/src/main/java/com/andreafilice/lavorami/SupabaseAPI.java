@@ -54,32 +54,33 @@ public interface SupabaseAPI {
 
     @POST("rest/v1/userDatas")
     Call<Void> upsertUserLines(
-            @Header("apikey") String apiKey,
-            @Header("Authorization") String bearerToken,
-            @Header("Prefer") String prefer,
-            @Body SupabaseModels.LinesFavoriteDatas data
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Header("Prefer") String prefer,
+        @Body SupabaseModels.LinesFavoriteDatas data
     );
 
     @GET("rest/v1/userDatas")
     Call<java.util.ArrayList<SupabaseModels.LinesFavoriteDatas>> fetchUserLines(
-            @Header("apikey") String apiKey,
-            @Header("Authorization") String bearerToken,
-            @Query("user_email") String userEmail,
-            @Query("select") String select
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Query("user_email") String userEmail,
+        @Query("select") String select
     );
 
     @POST("rest/v1/userPreferences")
     Call<Void> upsertUserPreferences(
-            @Header("apikey") String apiKey,
-            @Header("Authorization") String bearerToken,
-            @Body SupabaseModels.UserPreferencesDatas preferences
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Header("Prefer") String prefer,
+        @Body SupabaseModels.UserPreferencesDatas preferences
     );
 
     @GET("rest/v1/userPreferences")
     Call<java.util.ArrayList<SupabaseModels.UserPreferencesDatas>> fetchUserPreferences(
-            @Header("apikey") String apiKey,
-            @Header("Authorization") String bearerToken,
-            @Query("user_email") String userEmail,
-            @Query("select") String select
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Query("user_email") String userEmail,
+        @Query("select") String select
     );
 }

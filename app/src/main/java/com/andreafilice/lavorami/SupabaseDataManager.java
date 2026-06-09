@@ -78,8 +78,7 @@ public class SupabaseDataManager {
             return;
         }
 
-        Call<Void> call = api.upsertUserPreferences(supabaseANON, bearerToken, preferencesToSave);
-
+        Call<Void> call = api.upsertUserPreferences(supabaseANON, bearerToken, "resolution=merge-duplicates", preferencesToSave);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -105,7 +104,7 @@ public class SupabaseDataManager {
     }
 
     public void fetchUserFavorites(DataCallback<ArrayList<String>> callback) {
-        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, bearerToken, userEmail, "*");
+        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, bearerToken, "eq." + userEmail, "*");
 
         call.enqueue(new Callback<ArrayList<SupabaseModels.LinesFavoriteDatas>>() {
             @Override
@@ -133,7 +132,7 @@ public class SupabaseDataManager {
     }
 
     public void fetchUserCustomLines(DataCallback<ArrayList<String>> callback) {
-        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, bearerToken, userEmail, "*");
+        Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call = api.fetchUserLines(supabaseANON, bearerToken, "eq." + userEmail, "*");
 
         call.enqueue(new Callback<ArrayList<SupabaseModels.LinesFavoriteDatas>>() {
             @Override
@@ -161,7 +160,7 @@ public class SupabaseDataManager {
     }
 
     public void fetchUserPreferences(DataCallback<SupabaseModels.UserPreferencesDatas> callback) {
-        Call<ArrayList<SupabaseModels.UserPreferencesDatas>> call = api.fetchUserPreferences(supabaseANON, bearerToken, userEmail, "*");
+        Call<ArrayList<SupabaseModels.UserPreferencesDatas>> call = api.fetchUserPreferences(supabaseANON, bearerToken, "eq." + userEmail, "*");
 
         call.enqueue(new Callback<ArrayList<SupabaseModels.UserPreferencesDatas>>() {
             @Override

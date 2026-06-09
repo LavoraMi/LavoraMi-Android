@@ -88,7 +88,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private final Handler interchangeHandler = new Handler(Looper.getMainLooper());
     private volatile boolean interscambiPreloaded = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
-    private MapView mapViewRef; // riferimento per usarlo nel callback dei permessi
+    private MapView mapViewRef;
     SessionManager sessionManager;
     SupabaseAPI api;
     Retrofit retrofitAPI;
@@ -1675,24 +1675,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             String userEmail = sessionManager.getUserEmail();
             String token = sessionManager.getToken();
 
-            SupabaseDataManager supabaseDataManager = new SupabaseDataManager(
-                    this,
-                    api,
-                    SupabaseANON,
-                    token,
-                    userEmail
-            );
+            SupabaseDataManager supabaseDataManager = new SupabaseDataManager(this, api, SupabaseANON, token, userEmail);
 
             supabaseDataManager.saveFavoritesAndLines(favoritesList, yourLinesList, new SupabaseDataManager.DataCallback<Void>() {
                 @Override
-                public void onSuccess(Void result) {
-                    Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");
-                }
+                public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");}
 
                 @Override
-                public void onError(String error) {
-                    Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);
-                }
+                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
             });
         }
     }
