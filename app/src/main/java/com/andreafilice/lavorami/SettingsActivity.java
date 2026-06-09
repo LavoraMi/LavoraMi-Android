@@ -287,6 +287,51 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onResume(){
         /// In this section of the code, we reload the datas of the SettingsActivity for updating it to the latest versions.
         super.onResume();
+
+        favorites = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
+
+        //*SET FAVORITES
+        ImageView[] starIcons = {
+            findViewById(R.id.sLinesFavorites), //? "Linee S"
+            findViewById(R.id.rLinesFavorites), //? "Linee R"
+            findViewById(R.id.reLinesFavorites), //? "Linee RE"
+            findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
+            findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
+            findViewById(R.id.busLinesFavorites), //? "Linee Bus"
+            findViewById(R.id.movibusLinesFavorites), //? "Linee Movibus"
+            findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
+            findViewById(R.id.starLinesFavorites), //? "Linee STAR"
+            findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
+        };
+
+        RelativeLayout[] starButtons = {
+                findViewById(R.id.sLinesLayout),
+                findViewById(R.id.rLinesLayout),
+                findViewById(R.id.reLinesLayout),
+                findViewById(R.id.busLinesATMLayout),
+                findViewById(R.id.tramLinesATMLayout),
+                findViewById(R.id.metroLinesATMLayout),
+                findViewById(R.id.disclosureHeaderMovibus),
+                findViewById(R.id.disclosureHeaderStav),
+                findViewById(R.id.disclosureHeaderStar),
+                findViewById(R.id.disclosureHeaderAutoguidovie)
+        };
+
+        String[] lineCodes = {
+            "S",
+            "R",
+            "RE",
+            "Metro",
+            "Tram",
+            "Bus",
+            "z6",
+            "z55",
+            "z50",
+            "Autoguidovie"
+        };
+
+        setStarIcons(starIcons, starButtons, lineCodes);
+        loadFavorites(starIcons, lineCodes);
         reloadDatas();
     }
 
@@ -363,7 +408,7 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this method, we get the user FullName value and split it to create an Account icon.
         /// @PARAMETERS
         /// SessionManager manager is the manager of the session which contains the FullName attribute.
-        
+
         String[] values = manager.getUserName().split("\\s+");
 
         //*STRING SPLIT VALIDATION

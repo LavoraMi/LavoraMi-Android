@@ -109,6 +109,9 @@ public class DatabaseDataPreferences extends AppCompatActivity {
                 switchFavorites.setChecked(result.enable_favorites);
                 switchYourLines.setChecked(result.enable_your_lines);
 
+                DataManager.saveBoolData(DataKeys.KEY_SAVE_DB_FAVORITES, result.enable_favorites);
+                DataManager.saveBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, result.enable_your_lines);
+
                 switchFavorites.setTrackTintMode((result.enable_favorites) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
                 switchYourLines.setTrackTintMode((result.enable_your_lines) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
 

@@ -356,7 +356,6 @@ public class LinesActivity extends AppCompatActivity {
         }
         
         linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
-        reloadSavedLines();
     }
 
     public void reloadRecentLines() {
@@ -704,23 +703,19 @@ public class LinesActivity extends AppCompatActivity {
             String token = sessionManager.getToken();
 
             SupabaseDataManager supabaseDataManager = new SupabaseDataManager(
-                    this,
-                    api,
-                    SupabaseANON,
-                    token,
-                    userEmail
+                this,
+                api,
+                SupabaseANON,
+                token,
+                userEmail
             );
 
             supabaseDataManager.saveFavoritesAndLines(favoritesList, yourLinesList, new SupabaseDataManager.DataCallback<Void>() {
                 @Override
-                public void onSuccess(Void result) {
-                    Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");
-                }
+                public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");}
 
                 @Override
-                public void onError(String error) {
-                    Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);
-                }
+                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
             });
         }
     }

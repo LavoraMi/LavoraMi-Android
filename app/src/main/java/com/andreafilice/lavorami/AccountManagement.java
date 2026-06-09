@@ -33,7 +33,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 
@@ -79,13 +81,13 @@ public class AccountManagement extends AppCompatActivity {
                 if(result.getResultCode() == RESULT_OK){
                     Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
 
-                    try{
+                    try {
                         GoogleSignInAccount account = task.getResult(ApiException.class);
                         String idToken = account.getIdToken();
 
                         performSupabaseGoogleLogin(idToken);
                     }
-                    catch(ApiException e){
+                    catch(ApiException e) {
                         Log.e("GOOGLE", "Login fallito. Status Code: " + e.getStatusCode());
                         Toast.makeText(this, getString(R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
                     }
@@ -154,6 +156,12 @@ public class AccountManagement extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
         dataManager = new SupabaseDataManager(this, api, SupabaseANON, "", "");
+
+        if(sessionManager.isLoggedIn()) {
+            dataManager.setUserEmail(sessionManager.getUserEmail());
+            dataManager.setBearerToken(sessionManager.getToken());
+            fetchUserDataOnInit();
+        }
 
         //*BACK BUTTON
         /// In this section of the code, we initialize the Back Button and his action.
@@ -354,6 +362,8 @@ public class AccountManagement extends AppCompatActivity {
                     dataManager.setBearerToken(token);
                     dataManager.setUserEmail(email);
 
+                    fetchUserDataOnInit();
+
                     etLoginEmail.setEnabled(true);
                     etLoginPassword.setEnabled(true);
                     updateUI();
@@ -411,6 +421,8 @@ public class AccountManagement extends AppCompatActivity {
 
                     dataManager.setBearerToken(token);
                     dataManager.setUserEmail(email);
+
+                    fetchUserDataOnInit();
 
                     updateUI();
                     Toast.makeText(AccountManagement.this, getString(R.string.googleSignInSuccesfulToast), Toast.LENGTH_SHORT).show();
@@ -791,5 +803,34 @@ public class AccountManagement extends AppCompatActivity {
             ? ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.redMetro))
             : ColorStateList.valueOf(ContextCompat.getColor(AccountManagement.this, R.color.GRAY))
         );
+    }
+
+    private void fetchUserDataOnInit() {
+        dataManager.fetchUserPreferences(new SupabaseDataManager.DataCallback<SupabaseModels.UserPreferencesDatas>() {
+            @Override
+            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {Log.d("ACCOUNT", "✅ Preferenze caricate");}
+            @Override
+            public void onError(String error) {Log.e("ACCOUNT", "❌ Errore preferenze: " + error);}
+        });
+
+        dataManager.fetchUserFavorites(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
+            @Override
+            public void onSuccess(java.util.ArrayList<String> result) {
+                Log.d("ACCOUNT", "✅ Favorites caricate: " + result.size());
+                DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>(result));
+            }
+            @Override
+            public void onError(String error) {Log.e("ACCOUNT", "❌ Errore favorites: " + error);}
+        });
+
+        dataManager.fetchUserCustomLines(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
+            @Override
+            public void onSuccess(java.util.ArrayList<String> result) {
+                Log.d("ACCOUNT", "✅ Custom lines caricate: " + result.size());
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>(result));
+            }
+            @Override
+            public void onError(String error) {Log.e("ACCOUNT", "❌ Errore custom lines: " + error);}
+        });
     }
 }
