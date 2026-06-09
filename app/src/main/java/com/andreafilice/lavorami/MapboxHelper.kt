@@ -152,25 +152,38 @@ object MapboxHelper {
             mapView.location.addOnIndicatorPositionChangedListener(listener)
         }
     }
-
-  @JvmStatic
-  fun zoomToUserLocation(mapView: MapView) {
-      val listener = object : OnIndicatorPositionChangedListener {
-          override fun onIndicatorPositionChanged(point: Point) {
-              mapView.mapboxMap.easeTo(
-                  CameraOptions.Builder()
-                      .center(point)
-                      .zoom(15.0)
-                      .build(),
-                  com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
-                      duration(800L)
-                  }
-              )
-              mapView.location.removeOnIndicatorPositionChangedListener(this)
-          }
-      }
-      mapView.location.addOnIndicatorPositionChangedListener(listener)
-  }
+    @JvmStatic
+    fun zoomToUserLocation(mapView: MapView) {
+        val listener = object : OnIndicatorPositionChangedListener {
+            override fun onIndicatorPositionChanged(point: Point) {
+                mapView.location.removeOnIndicatorPositionChangedListener(this)
+                mapView.mapboxMap.easeTo(
+                    CameraOptions.Builder()
+                        .center(point)
+                        .build(),
+                    com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
+                        duration(600L)
+                    },
+                    object : android.animation.Animator.AnimatorListener {
+                        override fun onAnimationEnd(animation: android.animation.Animator) {
+                            mapView.mapboxMap.easeTo(
+                                CameraOptions.Builder()
+                                    .zoom(15.0)
+                                    .build(),
+                                com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
+                                    duration(400L)
+                                }
+                            )
+                        }
+                        override fun onAnimationStart(animation: android.animation.Animator) {}
+                        override fun onAnimationCancel(animation: android.animation.Animator) {}
+                        override fun onAnimationRepeat(animation: android.animation.Animator) {}
+                    }
+                )
+            }
+        }
+        mapView.location.addOnIndicatorPositionChangedListener(listener)
+    }
 
     interface MapReadyCallback {
         //*INTERFACE CLASS
