@@ -4,9 +4,11 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -35,6 +37,7 @@ import android.widget.LinearLayout;
 import android.util.Log;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 
@@ -70,9 +73,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<EventDescriptor> events = new ArrayList<EventDescriptor>();
@@ -98,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText editSearch;
     private int indexHintAnimation;
     private final Handler handler = new Handler(Looper.getMainLooper());
+
+    //*DATABASE SYNCH VARIABLES
+    /// In this section of the code, we will create the variables for synch datas to DB ones.
+    private SessionManager sessionManager;
+    private SupabaseDataManager supabaseDataManager;
+    SupabaseAPI api;
+    Retrofit retrofitAPI;
+    private String SupabaseANON, SupabaseURL;
+
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if(isGranted){
@@ -129,6 +145,42 @@ public class MainActivity extends AppCompatActivity {
         //*LOCK THE ORIENTATION
         /// In this section of the code, we will block the orientation to PORTRAIT because in LANDSCAPE LavoraMi is not supported.
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        //*GET METADATA
+        /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
+        SupabaseANON = getMetaData("supabaseANON");
+        SupabaseURL = getMetaData("supabaseURL");
+
+        /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
+        if(SupabaseURL != null){
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.NONE);
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(logging).build();
+
+            retrofitAPI = new Retrofit.Builder()
+                    .baseUrl(SupabaseURL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(client)
+                    .build();
+
+            api = retrofitAPI.create(SupabaseAPI.class);
+        }
+        else
+            Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+
+        sessionManager = new SessionManager(this);
+
+        if (sessionManager.isLoggedIn()) {
+            supabaseDataManager = new SupabaseDataManager(
+                    this,
+                    api,
+                    SupabaseANON,
+                    sessionManager.getToken(),
+                    sessionManager.getUserEmail()
+            );
+
+            loadUserPreferences();
+        }
 
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
@@ -1083,5 +1135,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    private String getMetaData(String key){
+        /// This function get from our AndroidManifest.xml the values of .env files.
+        /// @PARAMETER
+        /// String key is the actual key of the value that we need to grab from the manifest file.
+
+        try {
+            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = info.metaData;
+
+            if(bundle != null)
+                return bundle.getString(key);
+        }
+        catch (PackageManager.NameNotFoundException e) {Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
+        return null;
+    }
+
+    private void loadUserPreferences() {
+        supabaseDataManager.fetchUserPreferences(new SupabaseDataManager.DataCallback<SupabaseModels.UserPreferencesDatas>() {
+            @Override
+            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {
+                DataManager.saveBoolData(DataKeys.KEY_SAVE_DB_FAVORITES, result.enable_favorites);
+                DataManager.saveBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, result.enable_your_lines);
+            }
+
+            @Override
+            public void onError(String error) {Toast.makeText(MainActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();}
+        });
     }
 }
