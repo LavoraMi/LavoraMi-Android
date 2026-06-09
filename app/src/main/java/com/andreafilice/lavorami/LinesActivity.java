@@ -566,7 +566,8 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void isSavedLine(String label, ImageButton buttonAddLine, LinearLayout container, String description) {
-
+        //TODO: Comment better this code.
+        boolean isEnableSyncWithCloud = DataManager.getBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, true);
         Animation scaleDownUp = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
 
         if(linesSaved.contains(label)) {
@@ -576,7 +577,7 @@ public class LinesActivity extends AppCompatActivity {
             buttonAddLine.setOnClickListener(v -> {
                 linesSaved.remove(label);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
-                syncYourLinesToSupabase(linesSaved);
+                if(isEnableSyncWithCloud) syncYourLinesToSupabase(linesSaved);
 
                 buttonAddLine.startAnimation(scaleDownUp);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
@@ -595,7 +596,7 @@ public class LinesActivity extends AppCompatActivity {
             buttonAddLine.setOnClickListener(v -> {
                 linesSaved.add(label);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
-                syncYourLinesToSupabase(linesSaved);
+                if(isEnableSyncWithCloud) syncYourLinesToSupabase(linesSaved);
 
                 buttonAddLine.startAnimation(scaleDownUp);
                 buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
@@ -613,15 +614,17 @@ public class LinesActivity extends AppCompatActivity {
         LinearLayout [] containers = {containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
         for (LinearLayout container : containers) {
             int numeroLinee = container.getChildCount();
+
             for (int i = 0; i < numeroLinee; i++) {
                 View row = container.getChildAt(i);
                 String linea = (String) row.getTag();
+
                 if (linea != null) {
                     String [] line= linea.split("\\|");
                     ImageButton buttonAddLine = row.findViewById(R.id.buttonAddLine);
-                    if (buttonAddLine != null) {
+
+                    if (buttonAddLine != null)
                         isSavedLine(line[0], buttonAddLine, container, line[1]);
-                    }
                 }
             }
         }

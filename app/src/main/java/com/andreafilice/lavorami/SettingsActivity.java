@@ -457,8 +457,10 @@ public class SettingsActivity extends AppCompatActivity {
         //TODO: Comment better this code.
         Integer currentTag = (Integer) icon.getTag();
         Animation scaleDownUp = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
+
         int currentRes = (currentTag != null) ? currentTag : R.drawable.ic_star_empty;
         int newRes = (currentRes == R.drawable.ic_star_empty) ? R.drawable.ic_star_fill : R.drawable.ic_star_empty;
+        boolean isSyncWithCloudEnabled = DataManager.getBoolData(DataKeys.KEY_SAVE_DB_FAVORITES, true);
 
         icon.startAnimation(scaleDownUp);
         icon.setImageResource(newRes);
@@ -473,7 +475,7 @@ public class SettingsActivity extends AppCompatActivity {
         DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, favorites);
         ActivityUtils.triggerFeedback(this);
 
-        syncFavoritesToSupabase();
+        if(isSyncWithCloudEnabled) syncFavoritesToSupabase();
     }
 
     public void loadFavorites(ImageView[] starIcons, String[] lineCodes) {

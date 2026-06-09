@@ -409,6 +409,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         ImageButton buttonAddLine = findViewById(R.id.buttonAddLine);
         Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_up_down);
+        boolean isSyncWithCloudEnabled = DataManager.getBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, true);
 
         if(linesSaved.contains(nomeLinea)) {
             buttonAddLine.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
@@ -417,7 +418,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             buttonAddLine.setOnClickListener(v -> {
                 linesSaved.remove(nomeLinea);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
-                syncYourLinesToSupabase(linesSaved);
+                if(isSyncWithCloudEnabled) syncYourLinesToSupabase(linesSaved);
 
                 ActivityUtils.triggerFeedback(this);
                 buttonAddLine.startAnimation(scaleUpDown);
@@ -433,7 +434,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             buttonAddLine.setOnClickListener(v -> {
                 linesSaved.add(nomeLinea);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, linesSaved);
-                syncYourLinesToSupabase(linesSaved);
+                if(isSyncWithCloudEnabled) syncYourLinesToSupabase(linesSaved);
 
                 ActivityUtils.triggerFeedback(this);
                 buttonAddLine.startAnimation(scaleUpDown);
