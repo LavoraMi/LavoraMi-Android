@@ -36,6 +36,10 @@ public class DatabaseDataPreferences extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_database_data_preferences);
 
+        //*BUTTONS
+        /// In this section of the code, we setup the Back button action.
+        findViewById(R.id.backBtn).setOnClickListener(v -> finish());
+
         //*GET METADATA
         /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
         SupabaseANON = getMetaData("supabaseANON");
