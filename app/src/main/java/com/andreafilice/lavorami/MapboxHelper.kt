@@ -168,7 +168,7 @@ object MapboxHelper {
                         override fun onAnimationEnd(animation: android.animation.Animator) {
                             mapView.mapboxMap.easeTo(
                                 CameraOptions.Builder()
-                                    .zoom(15.0)
+                                    .zoom(15.5)
                                     .build(),
                                 com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
                                     duration(400L)

@@ -550,7 +550,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         layoutLoadingMap.setVisibility(View.GONE);
         mapViewRef = mapView;
         ImageButton positionButton = findViewById(R.id.positionButton);
+        positionButton.setImageTintList(ColorStateList.valueOf(coloreLinea));
         positionButton.setOnClickListener(v -> positionButtonClick());
+        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
+            MapboxHelper.enableUserLocation(mapViewRef, false);
     }
 
     private void disegnaPolilinea(MapView mapView, List<MetroStation> stazioni, String hexColor) {
@@ -624,14 +627,9 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void positionButtonClick() {
-        if (androidx.core.content.ContextCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == android.content.pm.PackageManager.PERMISSION_GRANTED) {
-
-            MapboxHelper.enableUserLocation(mapViewRef, false);
+        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
             MapboxHelper.zoomToUserLocation(mapViewRef);
-
-        } else {
+        else {
             androidx.core.app.ActivityCompat.requestPermissions(
                     this,
                     new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
