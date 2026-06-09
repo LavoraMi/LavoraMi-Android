@@ -509,7 +509,7 @@ public class MainActivity extends AppCompatActivity {
         if (filterGroup != null) {
             filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                int densita= (int)getResources().getDisplayMetrics().density;
+                int densita = (int)getResources().getDisplayMetrics().density;
                 if (checkedId == R.id.chipYourLines) {
                     if (!definitelyClosedSavedLinesHint) {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);

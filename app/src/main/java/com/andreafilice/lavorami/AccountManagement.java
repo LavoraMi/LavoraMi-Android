@@ -859,7 +859,32 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     private void checkProgress() {
-        tvProfileSync.setText((dataSyncing == 3 && !errorWhileSyncing) ? getString(R.string.dataSynched) : ((dataSyncing != 3) ? getString(R.string.dataSyncing) : getString(R.string.dataFailureSync)));
-        iconProfileSync.setImageResource((dataSyncing == 3 && !errorWhileSyncing) ? R.drawable.ic_cloud_success_sync : ((dataSyncing != 3) ? R.drawable.ic_cloud_syncing : R.drawable.ic_cloud_failed_sync));
+        boolean isFavoriteActivated = DataManager.getBoolData(DataKeys.KEY_SAVE_DB_FAVORITES, true);
+        boolean isYourLinesActivated = DataManager.getBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, true);
+
+        String syncText;
+        int syncIcon;
+
+        if (dataSyncing == 3 && !errorWhileSyncing) {
+            if (!isFavoriteActivated && !isYourLinesActivated) {
+                syncText = "Non Sincronizzato";
+                syncIcon = R.drawable.ic_cloud_disabled;
+            }
+            else {
+                syncText = getString(R.string.dataSynched);
+                syncIcon = R.drawable.ic_cloud_success_sync;
+            }
+        }
+        else if (dataSyncing != 3) {
+            syncText = getString(R.string.dataSyncing);
+            syncIcon = R.drawable.ic_cloud_syncing;
+        }
+        else {
+            syncText = getString(R.string.dataFailureSync);
+            syncIcon = R.drawable.ic_cloud_failed_sync;
+        }
+
+        tvProfileSync.setText(syncText);
+        iconProfileSync.setImageResource(syncIcon);
     }
 }
