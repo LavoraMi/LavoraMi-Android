@@ -161,8 +161,7 @@ public class NotificationSettings extends AppCompatActivity {
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(NotificationSettings.this,
                 (view, hourOfDay, selectedMinute) -> {
-                    String formattedText = ((hourOfDay < 10) ? ("0" + hourOfDay) : String.valueOf(hourOfDay))
-                            + ":" + ((selectedMinute < 10) ? ("0" + selectedMinute) : String.valueOf(selectedMinute));
+                    String formattedText = ((hourOfDay < 10) ? ("0" + hourOfDay) : String.valueOf(hourOfDay)) + ":" + ((selectedMinute < 10) ? ("0" + selectedMinute) : String.valueOf(selectedMinute));
                     textHoursNotifications.setText(formattedText);
 
                     DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, hourOfDay);

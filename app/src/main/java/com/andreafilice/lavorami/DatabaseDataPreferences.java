@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CompoundButton;
@@ -108,6 +109,9 @@ public class DatabaseDataPreferences extends AppCompatActivity {
                 switchFavorites.setChecked(result.enable_favorites);
                 switchYourLines.setChecked(result.enable_your_lines);
 
+                switchFavorites.setTrackTintMode((result.enable_favorites) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+                switchYourLines.setTrackTintMode((result.enable_your_lines) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+
                 setupSwitchListeners();
             }
 
@@ -123,6 +127,8 @@ public class DatabaseDataPreferences extends AppCompatActivity {
     private void setupSwitchListeners() {
         CompoundButton.OnCheckedChangeListener changeListener = (buttonView, isChecked) -> {
             ActivityUtils.triggerFeedback(DatabaseDataPreferences.this);
+            switchYourLines.setTrackTintMode((switchYourLines.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            switchFavorites.setTrackTintMode((switchFavorites.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             saveUserPreferences();
         };
 
