@@ -8,14 +8,14 @@
     android:layout_gravity="center"
     app:cardCornerRadius="16dp"
     app:cardElevation="8dp"
-    android:layout_margin="16dp">
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/text_title"
@@ -42,7 +42,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_arrow_left_right"
+            android:src="@drawable/ic_branch"
             app:tint="@color/redMetro" />
 
         <TextView

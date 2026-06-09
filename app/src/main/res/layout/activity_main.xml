@@ -453,8 +453,8 @@
         android:layout_marginEnd="8dp"
         android:padding="5dp"
         android:visibility="gone"
-        android:background="@drawable/bg_badge_line"
-        android:backgroundTint="@color/surface_card"
+        android:background="@drawable/glass_bottom_bar_bg"
+        android:backgroundTint="@color/bottomBarPillTint"
         android:clickable="true"
         android:focusable="true"
         android:elevation="3dp"
@@ -467,6 +467,7 @@
             android:textColor="@color/text_primary"
             android:fontFamily="@font/font_main"
             android:text="@string/howItWorks"
+            android:layout_gravity="center_vertical"
             android:layout_marginEnd="5dp"/>
 
         <ImageView
