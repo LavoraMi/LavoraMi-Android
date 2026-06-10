@@ -380,4 +380,5 @@
     <string name="yourDataDeps2">Tus datos de LavoraMi son totalmente privados y están protegidos. Puedes solicitarlos cuando quieras seleccionando “Solicita tus datos”.</string>
     <string name="dataToSaveTitle">Datos que hay que Guardar</string>
     <string name="favoriteLinesDeps">Líneas Favoritas</string>
+    <string name="notSynched">Sin Sincronizar</string>
 </resources>

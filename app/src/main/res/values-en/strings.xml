@@ -380,4 +380,5 @@
     <string name="yourDataDeps2">Your LavoraMi data is completely private and secure. You can request it at any time by selecting “Request your data”.</string>
     <string name="dataToSaveTitle">Data to be Saved</string>
     <string name="favoriteLinesDeps">Favorite Lines</string>
+    <string name="notSynched">Not Synched</string>
 </resources>

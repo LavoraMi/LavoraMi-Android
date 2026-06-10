@@ -867,7 +867,7 @@ public class AccountManagement extends AppCompatActivity {
 
         if (dataSyncing == 3 && !errorWhileSyncing) {
             if (!isFavoriteActivated && !isYourLinesActivated) {
-                syncText = "Non Sincronizzato";
+                syncText = getString(R.string.notSynched);
                 syncIcon = R.drawable.ic_cloud_disabled;
             }
             else {
