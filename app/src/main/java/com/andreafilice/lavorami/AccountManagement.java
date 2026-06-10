@@ -369,7 +369,6 @@ public class AccountManagement extends AppCompatActivity {
                     }
 
                     sessionManager.saveSession(token, refreshToken, email, nameUser, false);
-                    Log.d("AUTH", "Refresh token: " + (refreshToken != null ? "presente: " + refreshToken : "NULLO"));
 
                     Toast.makeText(AccountManagement.this, getString(R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
                     screenUnlocked = true;
