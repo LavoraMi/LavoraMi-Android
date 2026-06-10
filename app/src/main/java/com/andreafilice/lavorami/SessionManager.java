@@ -3,6 +3,10 @@ package com.andreafilice.lavorami;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.Base64;
+
 public class SessionManager {
     private static final String PREF_NAME = "LavoraMiSession";
     private static final String KEY_TOKEN = "access_token";
@@ -22,13 +26,9 @@ public class SessionManager {
         editor = prefs.edit();
     }
 
-    public void saveSession(String token, String email, String name, boolean loggedInWithGoogle) {
-        saveSession(token, null, email, name, loggedInWithGoogle);
-    }
-
     public void saveSession(String token, String refreshToken, String email, String name, boolean loggedInWithGoogle) {
         editor.putString(KEY_TOKEN, token);
-        if(token != null) editor.putString(KEY_REFRESH_TOKEN, refreshToken);
+        editor.putString(KEY_REFRESH_TOKEN, refreshToken);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_NAME, name);
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
