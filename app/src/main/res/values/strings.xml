@@ -382,4 +382,5 @@
     <string name="notSynched">Non Sincronizzato</string>
     <string name="notSynchedDataInfo">Dati non Sincronizzati</string>
     <string name="notSynchedDataInfoDeps">Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili.</string>
+    <string name="loadingEllipsis">Caricamento...</string>
 </resources>

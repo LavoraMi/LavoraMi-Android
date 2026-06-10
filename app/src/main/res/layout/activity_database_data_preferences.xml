@@ -234,7 +234,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:layout_marginStart="6dp"
-                    android:text="Caricamento..."
+                    android:text="@string/loadingEllipsis"
                     android:textColor="@color/text_primary"
                     android:textSize="20sp" />
             </LinearLayout>

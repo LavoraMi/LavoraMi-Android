@@ -383,4 +383,5 @@
     <string name="notSynched">Not Synched</string>
     <string name="notSynchedDataInfo">Data not Synched</string>
     <string name="notSynchedDataInfoDeps">You have chosen not to synchronise your Account data via the \"Data Preferences\" feature. To synchronise it, please enable at least one of the available options.</string>
+    <string name="loadingEllipsis">Loading...</string>
 </resources>
