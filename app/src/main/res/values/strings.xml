@@ -380,4 +380,6 @@
     <string name="dataToSaveTitle">Dati da Salvare</string>
     <string name="favoriteLinesDeps">Linee Preferite</string>
     <string name="notSynched">Non Sincronizzato</string>
+    <string name="notSynchedDataInfo">Dati non Sincronizzati</string>
+    <string name="notSynchedDataInfoDeps">Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione \"Preferenze Dati\". Per sincronizzarli, attiva almeno una delle opzioni disponibili.</string>
 </resources>

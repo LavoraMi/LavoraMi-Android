@@ -898,8 +898,8 @@ public class AccountManagement extends AppCompatActivity {
 
                 infoIconNotSynched.setOnClickListener(v -> {
                     new AlertDialog.Builder(AccountManagement.this)
-                            .setTitle("Dati non Sincronizzati")
-                            .setMessage("Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione Preferenze Dati. Per sincronizzarli, attiva almeno una delle opzioni disponibili.")
+                            .setTitle(R.string.notSynchedDataInfo)
+                            .setMessage(R.string.notSynchedDataInfoDeps)
                             .setNegativeButton(R.string.closePopUp, null)
                             .create()
                             .show();
