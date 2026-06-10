@@ -73,6 +73,7 @@ public class AccountManagement extends AppCompatActivity {
     TextView tvProfileEmail;
     TextView tvProfileSync;
     ImageView iconProfileSync;
+    ImageView infoIconNotSynched;
     ProgressBar synchProgressBar;
     LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
@@ -168,6 +169,7 @@ public class AccountManagement extends AppCompatActivity {
         dataManager = new SupabaseDataManager(this, api, SupabaseANON, "", "");
         tvProfileSync = findViewById(R.id.tvProfileSync);
         iconProfileSync = findViewById(R.id.iconSync);
+        infoIconNotSynched = findViewById(R.id.infoIconNotSynched);
         synchProgressBar = findViewById(R.id.synchProgressBar);
 
         if(sessionManager.isLoggedIn()) {
@@ -892,6 +894,16 @@ public class AccountManagement extends AppCompatActivity {
                 syncText = getString(R.string.notSynched);
                 syncIcon = R.drawable.ic_cloud_disabled;
                 synchProgressBar.setVisibility(View.GONE);
+                infoIconNotSynched.setVisibility(View.VISIBLE);
+
+                infoIconNotSynched.setOnClickListener(v -> {
+                    new AlertDialog.Builder(AccountManagement.this)
+                            .setTitle("Dati non Sincronizzati")
+                            .setMessage("Hai scelto di non sincronizzare i dati del tuo Account attraverso la funzione Preferenze Dati. Per sincronizzarli, attiva almeno una delle opzioni disponibili.")
+                            .setNegativeButton(R.string.closePopUp, null)
+                            .create()
+                            .show();
+                });
             }
             else {
                 syncText = getString(R.string.dataSynched);
