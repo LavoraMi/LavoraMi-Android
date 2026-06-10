@@ -160,6 +160,7 @@
                             android:thumbTint="@color/White"
                             android:trackTint="#FF453A"
                             android:trackTintMode="add"
+                            android:enabled="false"
                             tools:ignore="UseSwitchCompatOrMaterialXml" />
                     </RelativeLayout>
 
@@ -189,6 +190,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_toEndOf="@id/iconEndWork"
                             android:fontFamily="@font/font_main"
+                            android:enabled="false"
                             android:text="@string/yourLinesPrefix"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
@@ -207,6 +209,35 @@
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/loaderToggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/synchProgressBar"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/redMetro"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tvProfileSync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:layout_marginStart="6dp"
+                    android:text="Caricamento..."
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

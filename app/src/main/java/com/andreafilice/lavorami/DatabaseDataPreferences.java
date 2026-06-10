@@ -5,7 +5,9 @@ import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
     private Switch switchYourLines;
     private SessionManager sessionManager;
     private SupabaseDataManager supabaseDataManager;
+    LinearLayout loaderToggle;
     SupabaseAPI api;
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
@@ -39,6 +42,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
         //*BUTTONS
         /// In this section of the code, we setup the Back button action.
         findViewById(R.id.backBtn).setOnClickListener(v -> finish());
+        loaderToggle = findViewById(R.id.loaderToggle);
 
         //*GET METADATA
         /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
@@ -116,6 +120,8 @@ public class DatabaseDataPreferences extends AppCompatActivity {
 
                 switchFavorites.setTrackTintMode((result.enable_favorites) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
                 switchYourLines.setTrackTintMode((result.enable_your_lines) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+                switchFavorites.setEnabled(true);
+                switchYourLines.setEnabled(true);
 
                 setupSwitchListeners();
             }
@@ -139,6 +145,8 @@ public class DatabaseDataPreferences extends AppCompatActivity {
 
         switchFavorites.setOnCheckedChangeListener(changeListener);
         switchYourLines.setOnCheckedChangeListener(changeListener);
+
+        loaderToggle.setVisibility(View.GONE);
     }
 
     private void saveUserPreferences() {
