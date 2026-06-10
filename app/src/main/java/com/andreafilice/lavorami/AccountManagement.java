@@ -29,6 +29,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +73,7 @@ public class AccountManagement extends AppCompatActivity {
     TextView tvProfileEmail;
     TextView tvProfileSync;
     ImageView iconProfileSync;
+    ProgressBar synchProgressBar;
     LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
@@ -166,6 +168,7 @@ public class AccountManagement extends AppCompatActivity {
         dataManager = new SupabaseDataManager(this, api, SupabaseANON, "", "");
         tvProfileSync = findViewById(R.id.tvProfileSync);
         iconProfileSync = findViewById(R.id.iconSync);
+        synchProgressBar = findViewById(R.id.synchProgressBar);
 
         if(sessionManager.isLoggedIn()) {
             dataManager.setUserEmail(sessionManager.getUserEmail());
@@ -855,7 +858,7 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
                 if(fetchID != currentFetchID) return;
-                
+
                 Log.d("ACCOUNT", "Your Lines Caricate: " + result.size());
                 handleSync();
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>(result));
@@ -888,19 +891,23 @@ public class AccountManagement extends AppCompatActivity {
             if (!isFavoriteActivated && !isYourLinesActivated) {
                 syncText = getString(R.string.notSynched);
                 syncIcon = R.drawable.ic_cloud_disabled;
+                synchProgressBar.setVisibility(View.GONE);
             }
             else {
                 syncText = getString(R.string.dataSynched);
                 syncIcon = R.drawable.ic_cloud_success_sync;
+                synchProgressBar.setVisibility(View.GONE);
             }
         }
         else if (dataSyncing != 3) {
             syncText = getString(R.string.dataSyncing);
             syncIcon = R.drawable.ic_cloud_syncing;
+            synchProgressBar.setVisibility(View.VISIBLE);
         }
         else {
             syncText = getString(R.string.dataFailureSync);
             syncIcon = R.drawable.ic_cloud_failed_sync;
+            synchProgressBar.setVisibility(View.GONE);
         }
 
         tvProfileSync.setText(syncText);
