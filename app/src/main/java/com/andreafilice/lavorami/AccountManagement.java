@@ -76,6 +76,7 @@ public class AccountManagement extends AppCompatActivity {
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
     int dataSyncing = 0;
+    int currentFetchID = 0;
     boolean errorWhileSyncing = false;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$");
@@ -306,7 +307,10 @@ public class AccountManagement extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         if(!screenUnlocked) showBiometricPrompt();
+        if(sessionManager.isLoggedIn()) fetchUserDataOnInit();
+
         updateUI();
     }
 
@@ -816,9 +820,20 @@ public class AccountManagement extends AppCompatActivity {
     private void fetchUserDataOnInit() {
         /// This method fetch the User Data while: Logging In and onCreate scenarios.
 
+        dataSyncing = 0;
+        errorWhileSyncing = false;
+        currentFetchID++;
+        final int fetchID = currentFetchID;
+
         dataManager.fetchUserPreferences(new SupabaseDataManager.DataCallback<SupabaseModels.UserPreferencesDatas>() {
             @Override
-            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {handleSync();}
+            public void onSuccess(SupabaseModels.UserPreferencesDatas result) {
+                if(fetchID != currentFetchID) return;
+
+                DataManager.saveBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, result.enable_your_lines);
+                DataManager.saveBoolData(DataKeys.KEY_SAVE_DB_FAVORITES, result.enable_favorites);
+                handleSync();
+            }
             @Override
             public void onError(String error) {handleSyncError();}
         });
@@ -826,6 +841,8 @@ public class AccountManagement extends AppCompatActivity {
         dataManager.fetchUserFavorites(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
+                if(fetchID != currentFetchID) return;
+
                 Log.d("ACCOUNT", "Linee Caricate: " + result.size());
                 handleSync();
                 DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>(result));
@@ -837,6 +854,8 @@ public class AccountManagement extends AppCompatActivity {
         dataManager.fetchUserCustomLines(new SupabaseDataManager.DataCallback<java.util.ArrayList<String>>() {
             @Override
             public void onSuccess(java.util.ArrayList<String> result) {
+                if(fetchID != currentFetchID) return;
+                
                 Log.d("ACCOUNT", "Your Lines Caricate: " + result.size());
                 handleSync();
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>(result));
