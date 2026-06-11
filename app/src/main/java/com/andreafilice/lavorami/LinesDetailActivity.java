@@ -1052,9 +1052,9 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Log.d("LINEA", nomeLinea);
 
-        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R") || nomeLinea.startsWith("9"))
+        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R") || (nomeLinea.startsWith("9") && !tipoDiLinea.contains(getString(R.string.tramLinesScroll))))
             tvAttesa.setText(getFrequenza(nomeLinea));
-        else if(nomeLinea.matches("^[1-9][0-9]?$"))
+        else if(tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
             tvAttesa.setText("5-20 min.");
         else
             tvAttesa.setText("Frequenza variabile");
