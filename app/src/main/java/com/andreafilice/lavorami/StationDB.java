@@ -2005,6 +2005,35 @@ public class StationDB {
         stations.add(new MetroStation("Via Vigevano Via Corsico", 45.45308, 9.17344, "Main", "3"));
         stations.add(new MetroStation("Porta Genova M2", 45.45322, 9.17065, "Main", "3"));
         stations.add(new MetroStation("P.Le Cantore", 45.45491, 9.17225, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45514, 9.17242, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45707, 9.16951, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45717, 9.16933, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45716, 9.16918, "Main", "3"));
+        stations.add(new MetroStation("V.Le Coni Zugna Via Solari", 45.45708, 9.16864, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45705, 9.16826, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45696, 9.16794, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.45678, 9.1674, "Main", "3"));
+        stations.add(new MetroStation("Via Montevideo", 45.45626, 9.16584, "Main", "3"));
+        stations.add(new MetroStation("P.Za Del Rosario", 45.45527, 9.16278, "Main", "3"));
+        stations.add(new MetroStation("Via Solari Via Stendhal", 45.4542, 9.1593, "Main", "3"));
+        stations.add(new MetroStation("P.Za Napoli", 45.45218, 9.15325, "Main", "3"));
+        stations.add(new MetroStation("Via Giambellino Via Tolstoj", 45.45151, 9.15116, "Main", "3"));
+        stations.add(new MetroStation("Via Giambellino Via Vignoli", 45.45049, 9.14798, "Main", "3"));
+        stations.add(new MetroStation("Via Brunelleschi", 45.44935, 9.14448, "Main", "3"));
+        stations.add(new MetroStation("Via Giambellino Via Curio Dentato", 45.44872, 9.14251, "Main", "3"));
+        stations.add(new MetroStation("L.Go Gelsomini L.Go Giambellino", 45.44766, 9.13921, "Main", "3"));
+        stations.add(new MetroStation("Via Giambellino Via Odazio", 45.44636, 9.13522, "Main", "3"));
+        stations.add(new MetroStation("S. Cristoforo M4 FS", 45.44476, 9.13028, "Main", "3"));
+        stations.add(new MetroStation("Via Gonin Via Giordani", 45.44277, 9.12407, "Main", "3"));
+        stations.add(new MetroStation("Via Gonin Via M Di Lorenteggio", 45.44102, 9.1187, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44081, 9.11816, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44078, 9.11792, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44081, 9.11777, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44085, 9.11764, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44098, 9.11749, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44127, 9.11715, "Main", "3"));
+        stations.add(new MetroStation("NO_DRAW", 45.44146, 9.11709, "Main", "3"));
+        stations.add(new MetroStation("Lorenteggio", 45.44194, 9.11714, "Main", "3"));
         return stations;
     }
 
