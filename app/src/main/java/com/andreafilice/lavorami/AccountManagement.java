@@ -877,7 +877,7 @@ public class AccountManagement extends AppCompatActivity {
     private void handleSyncError() {
         dataSyncing++;
         errorWhileSyncing = true;
-        Toast.makeText(this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.syncErrorMessageToast), Toast.LENGTH_SHORT).show();
         checkProgress();
     }
 

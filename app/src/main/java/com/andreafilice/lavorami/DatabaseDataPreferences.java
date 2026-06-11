@@ -160,7 +160,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
             @Override
             public void onError(String error) {
                 Log.e("PREFS_ACTIVITY", "Errore durante il salvataggio istantaneo: " + error);
-                Toast.makeText(DatabaseDataPreferences.this, "Errore durante la Sincronizzazione col Server. Riprova.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DatabaseDataPreferences.this, getString(R.string.syncErrorMessageToast), Toast.LENGTH_SHORT).show();
             }
         });
     }

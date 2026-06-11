@@ -388,4 +388,5 @@
     <string name="directionsNotAvailable">Directions not available</string>
     <string name="directionsNotAvailableFor">"Directions not available for "</string>
     <string name="error">Error</string>
+    <string name="syncErrorMessageToast">An error occurred whilst syncing with the server. Please try again.</string>
 </resources>
