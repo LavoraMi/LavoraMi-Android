@@ -384,4 +384,8 @@
     <string name="notSynchedDataInfo">Datos no Sincronizados</string>
     <string name="notSynchedDataInfoDeps">Has decidido no sincronizar los datos de tu Cuenta a través de la función \"Preferencias Datos\". Para sincronizarlos, activa al menos una de las opciones disponibles.</string>
     <string name="loadingEllipsis">Cargando...</string>
+    <string name="variableFrequency">Frecuencia Variable</string>
+    <string name="directionsNotAvailable">Direcciones no disponibles</string>
+    <string name="directionsNotAvailableFor">"No hay direcciones disponibles para "</string>
+    <string name="error">Error</string>
 </resources>

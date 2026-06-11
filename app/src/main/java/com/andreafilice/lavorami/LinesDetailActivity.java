@@ -1057,7 +1057,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         else if(tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
             tvAttesa.setText("5-20 min.");
         else
-            tvAttesa.setText("Frequenza variabile");
+            tvAttesa.setText(getString(R.string.variableFrequency));
 
         int numeroLavoriProgrammati = 0, numeroLavoriAttuali = 0, numeroLavori = 0;
         String searchTag = (nomeLinea.matches("9[0-3]")) ? ("FILOBUS " + nomeLinea.trim()) : nomeLinea.trim();
@@ -1140,7 +1140,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private String getCapolinea(String linea) {
-        if (linea == null) return "Direzioni non disponibili";
+        if (linea == null) return getString(R.string.directionsNotAvailable);
 
         switch (linea.toUpperCase().trim()) {
             case "M1": return "Sesto 1° Maggio FS - Rho Fiera / Bisceglie";
@@ -1319,7 +1319,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z242": return "Desio - Seregno FS - Renate";
             case "Z250": return "Lissone FS - Desio FS - Cesano FN";
             case "Z251": return "Desio FS - Bovisio M. - Limbiate - Cesano FN";
-            default: return "Direzioni non disponibili per " + linea;
+            default: return getString(R.string.directionsNotAvailableFor) + linea;
         }
     }
 
@@ -1410,7 +1410,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 return "7-10 min.";
             case "93":
                 return "10-12 min.";
-            default: return "Errore";
+            default: return getString(R.string.error);
         }
     }
 
