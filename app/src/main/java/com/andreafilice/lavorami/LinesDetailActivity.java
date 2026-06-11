@@ -1097,6 +1097,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     String[] gtfsSupportedLines = strikeCDNResponse.getSupportedGTFSLines();
                     int i = 0;
 
+                    LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
                     ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
                     ImageView mapDeviationDefBtn = findViewById(R.id.mapDeviationDefBtn);
 
@@ -1104,9 +1105,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                         if(linea.equals(nomeLinea)){
                             String lineLink = linkLinee[i];
 
-                            findViewById(R.id.deviazioneLinea).setVisibility(View.VISIBLE);
+                            deviazioneLinea.setVisibility(View.VISIBLE);
+                            deviazioneLinea.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, lineLink));
                             mapDeviationBtn.setVisibility((lineLink.equalsIgnoreCase("null")) ? View.GONE : View.VISIBLE);
-                            mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURL(LinesDetailActivity.this, lineLink));
+                            mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, lineLink));
                         }
                         i++;
                     }
