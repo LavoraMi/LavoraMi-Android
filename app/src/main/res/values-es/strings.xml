@@ -330,7 +330,7 @@
     <string name="regioExpressLines">Líneas Regio Express</string>
     <string name="deviationInfoTitle">Mapas</string>
     <string name="deviationInfoDeps">Información sobre los mapas</string>
-    <string name="deviationInfoDeps2">Es posible que LavoraMi no muestre el recorrido actual de esta línea, ya que hay desvíos, interrupciones de tramos o estaciones no accesibles. ¡Consulta los avisos en la sección \"Obras en la Línea\" aquí abajo!</string>
+    <string name="deviationInfoDeps2">Es posible que LavoraMi no muestre el recorrido actual de esta línea, ya que hay desvíos, interrupciones de tramos o estaciones no accesibles. ¡Consulta los avisos en la sección \"Obras en la Línea\"!</string>
     <string name="deviationInfoDeps3">LavoraMi obtiene esta información de fuentes autorizadas y fiables; los posibles desvíos de recorrido se indican en las obras mostradas a continuación, donde también puedes encontrar las alternativas de viaje correspondientes.</string>
     <string name="onBoardPersonal">Confía en el personal de a bordo</string>
     <string name="onBoardPersonalDeps">Si tu trayecto en tren continúa con un autobús sustitutivo, el personal de a bordo te facilitará toda la información necesaria para continuar el viaje con tranquilidad.</string>

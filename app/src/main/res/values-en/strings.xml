@@ -332,7 +332,7 @@
     <string name="deviationInfoDeps">Info about maps</string>
     <string name="incorrectDetailsDeps">If you notice any discrepancies between our app and your mobile plan, please report the issue to: info@lavorami.it!</string>
     <string name="deviationMapTxt">THIS LINE IS SUBJECT TO ROUTE CHANGES.</string>
-    <string name="deviationInfoDeps2">LavoraMi may not show the current route for this line, as there are currently diversions, section closures or stations that are inaccessible. Please check the notices in the ‘Line Works’ section below!</string>
+    <string name="deviationInfoDeps2">LavoraMi may not show the current route for this line, as there are currently diversions, section closures or stations that are inaccessible. Please check the notices in the \"Line Works\" section!</string>
     <string name="deviationInfoDeps3">LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below, and you can find alternative travel options in the relevant section.</string>
     <string name="onBoardPersonal">Please rely on the cabin crew</string>
     <string name="onBoardPersonalDeps">If your train journey continues by replacement bus, the on-board staff will provide you with all the information you need to continue your journey with peace of mind.</string>
