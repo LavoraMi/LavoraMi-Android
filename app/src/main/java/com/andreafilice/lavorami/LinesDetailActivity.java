@@ -158,6 +158,11 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipArrivi.setChecked(false);
         }
 
+        if(tipoDiLinea.contains("Movibus")){
+            caricaFermateInterscambio();
+            chipInterscambi.setVisibility(View.GONE);
+        }
+
         chipMappa.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
         chipLavori.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
         chipInterscambi.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
@@ -166,7 +171,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         aggiornaUI();
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
-        int chipStrokeColor = Color.parseColor("#CCCCCC");
 
         sessionManager = new SessionManager(this);
 
