@@ -1,11 +1,17 @@
 package com.andreafilice.lavorami;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -66,14 +72,28 @@ public class SetupModels {
 
             //*APP ICON
             /// In this section of the code, we will check if the user is in the first slide and disable the color.
-
             if(page.icon != R.drawable.ic_app) {
                 holder.img.setVisibility(View.VISIBLE);
                 holder.imgFirstSlide.setVisibility(View.GONE);
+
+                holder.imgFirstSlide.animate().cancel();
             }
             else {
                 holder.img.setVisibility(View.GONE);
                 holder.imgFirstSlide.setVisibility(View.VISIBLE);
+                holder.imgFirstSlide.animate().cancel();
+
+                holder.imgFirstSlide.setAlpha(0f);
+                holder.imgFirstSlide.setScaleX(0.7f);
+                holder.imgFirstSlide.setScaleY(0.7f);
+
+                holder.imgFirstSlide.animate()
+                        .alpha(1f)
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .setDuration(1000)
+                        .setInterpolator(new OvershootInterpolator(1.3f))
+                        .start();
             }
 
             //*LANGUAGE DROPDOWN
