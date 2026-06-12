@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
             /// In this section, we ask the permission of notifications to the user, beacuse in this Index there is the "Notification" page.
             if(currentPage == 3)
                 askForNotificationPermission();
-            if(currentPage == 4){
+            if(currentPage == 5){
                 askForPositionPermission();
             }
         });
