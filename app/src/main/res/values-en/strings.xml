@@ -370,7 +370,7 @@
     <string name="homeBottomText">Home</string>
     <string name="locationPermissionDenied">Location permission denied.</string>
     <string name="setupTitlePosition">Never get Lost.</string>
-    <string name="setupDepsPosition">Activate location so you never know where you are and never miss your stop.</string>
+    <string name="setupDepsPosition">Turn on your location so you always know where you are and never miss your stop.</string>
     <string name="dataPreferencesTitle">Data Preferences</string>
     <string name="dataSynched">Synched Data</string>
     <string name="dataFailureSync">Synch Error</string>

@@ -370,7 +370,7 @@
     <string name="homeBottomText">Inicio</string>
     <string name="locationPermissionDenied">" Permiso de ubicación denegado."</string>
     <string name="setupTitlePosition">Nunca te pierdas.</string>
-    <string name="setupDepsPosition">Activa la ubicación para que nunca sepas dónde estás y nunca te pierdas tu parada.</string>
+    <string name="setupDepsPosition">Activa la ubicación para saber siempre dónde estás y no perderte nunca tu parada.</string>
     <string name="dataPreferencesTitle">Preferencias Datos</string>
     <string name="dataSynched">Datos Sincronizados</string>
     <string name="dataFailureSync">Error Sincronización</string>
