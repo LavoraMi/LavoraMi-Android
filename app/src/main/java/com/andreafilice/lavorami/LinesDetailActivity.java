@@ -12,6 +12,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.transition.ChangeBounds;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -1583,6 +1585,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             int totalSpacingSpace = (int) ((totalVisibleCount - 1) * chipSpacing);
             int totalUnselectedSpace = visibleUnselectedCount * unselectedWidth;
             int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
+
+            TransitionManager.beginDelayedTransition(chipGroup, new ChangeBounds().setDuration(250));
 
             // PASSO 2: Applichiamo le modifiche SOLO se i valori cambiano davvero
             for (int i = 0; i < totalVisibleCount; i++) {
