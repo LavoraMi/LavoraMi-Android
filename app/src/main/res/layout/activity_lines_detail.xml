@@ -127,33 +127,6 @@
                 app:tint="@color/subtitle" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/deviazioneMappa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/subtitle"
-                android:fontFamily="@font/inter"
-                android:textSize="12sp"
-                android:paddingTop="5dp"
-                android:text="@string/deviationMapTxt"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/mapDeviationDefBtn"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_marginStart="5dp"
-                android:src="@drawable/ic_info"
-                app:tint="@color/subtitle" />
-        </LinearLayout>
-
         <TextView
             android:id="@+id/attestazioneLinea"
             android:layout_width="wrap_content"

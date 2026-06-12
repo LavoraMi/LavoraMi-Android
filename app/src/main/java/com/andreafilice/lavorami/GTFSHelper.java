@@ -101,12 +101,8 @@ public class GTFSHelper {
                 }
                 callback.onSuccess(route);
             }
-            catch (Exception e) {
-                callback.onError();
-            }
-            finally {
-                if(conn != null) conn.disconnect();
-            }
+            catch (Exception e) {callback.onError();}
+            finally {if(conn != null) conn.disconnect();}
         });
     }
 
