@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:fontFamily="@font/font_main"
             android:text="@string/tutorialTitle"
             android:textSize="20sp"
             android:layout_marginBottom="6dp"
@@ -132,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/redMetro"
+            android:fontFamily="@font/font_main"
             android:text="@string/understood"
             android:textColor="@color/White"
             android:textStyle="bold" />
