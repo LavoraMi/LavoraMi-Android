@@ -36,6 +36,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -85,6 +86,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private ChipGroup detActionGroup;
     private GTFSHelper.GTFSRoute routeData;
     private String selectedStopId;
+    private int coloreLinea;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable arriviRunnable;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -193,14 +195,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         else
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
-        chipMappa.setChipStrokeWidth(3f);
-        chipMappa.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
-        chipLavori.setChipStrokeWidth(3f);
-        chipLavori.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
-        chipInterscambi.setChipStrokeWidth(3f);
-        chipInterscambi.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
-        chipArrivi.setChipStrokeWidth(3f);
-        chipArrivi.setChipStrokeColor(ColorStateList.valueOf(chipStrokeColor));
 
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
@@ -522,7 +516,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 tutteLeStazioni.add(s);
         }
 
-        int coloreLinea = ContextCompat.getColor(this, nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(this, nomeLinea));
+        coloreLinea = ContextCompat.getColor(this, nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(this, nomeLinea));
         int coloreDefaultText = ContextCompat.getColor(this, R.color.text_primary);
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
         String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
@@ -1563,7 +1557,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             float chipSpacing = chipGroup.getChipSpacingHorizontal();
             int totalWidth = chipGroup.getWidth() - chipGroup.getPaddingLeft() - chipGroup.getPaddingRight();
 
-            // PASSO 1: Un solo ciclo per raccogliere i chip visibili ed evitare allocazioni inutili
             ArrayList<Chip> visibleChips = new ArrayList<>(childCount);
             Chip selectedChip = null;
 
@@ -1588,7 +1581,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             TransitionManager.beginDelayedTransition(chipGroup, new ChangeBounds().setDuration(250));
 
-            // PASSO 2: Applichiamo le modifiche SOLO se i valori cambiano davvero
             for (int i = 0; i < totalVisibleCount; i++) {
                 Chip chip = visibleChips.get(i);
                 ViewGroup.LayoutParams params = chip.getLayoutParams();
@@ -1618,10 +1610,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                         calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
                     }
 
+                    chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
                     safelyUpdatePadding(chip, calculatedStartPadding, (int) itemSpacing, 0, 0);
 
                 } else {
-                    // Configurazione CHIP NON SELEZIONATA
                     if (params.width != unselectedWidth) {
                         params.width = unselectedWidth;
                         chip.setLayoutParams(params);
@@ -1631,6 +1623,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                         chip.setText("");
                     }
 
+                    chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(coloreLinea, 38)));
                     float iconSize = chip.getChipIconSize();
                     int calculatedIconPadding = (int) ((unselectedWidth -iconSize) / 2);
 
