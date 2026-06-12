@@ -262,10 +262,16 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         //*SUPPORT LAVORAMI
-        /// In this section, we add a listener to the "Support Us" button in Settings view.
+        /// In this section, we add a listener to the "Support Us" button in Settings View.
         RelativeLayout supportBtn = findViewById(R.id.btnSupportUs);
 
         supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.buymeacoffee.com/lavorami"));
+
+        //*MAPS INFOS
+        /// In this section, we add a listener to the "Info about Maps" button in Settings View.
+        RelativeLayout btnSeeMaps = findViewById(R.id.btnSeeMaps);
+
+        btnSeeMaps.setOnClickListener(v -> ActivityUtils.changeActivity(this, DeviationInfo.class));
 
         //*RESET SETTINGS
         /// In this section of the code we create the Listener for the Reset Settings button
