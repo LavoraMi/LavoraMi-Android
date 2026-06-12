@@ -188,21 +188,21 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Mapbox Maps SDK for Android",
-                        "11.24.3",
+                        "11.25.0",
                         "Mapbox Terms of Service",
                         "Copyright (c) Mapbox",
                         "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
                 ),
                 new LibraryModel(
                         "OkHttp",
-                        "5.3.2",
+                        "5.4.0",
                         "Apache License 2.0",
                         "Copyright 2019 Square, Inc.",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "OkHttp Logging Interceptor",
-                        "5.3.2",
+                        "5.4.0",
                         "Apache License 2.0",
                         "Copyright 2019 Square, Inc.",
                         APACHE_LICENSE_TEXT
