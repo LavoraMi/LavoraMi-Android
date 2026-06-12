@@ -850,6 +850,7 @@ public class AccountManagement extends AppCompatActivity {
                 Log.d("ACCOUNT", "Linee Caricate: " + result.size());
                 handleSync();
                 DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>(result));
+                new Thread(() -> NotificationScheduler.scheduleWorkNotifications(AccountManagement.this, EventData.listaEventiCompleta)).start();
             }
             @Override
             public void onError(String error) {handleSyncError();}
