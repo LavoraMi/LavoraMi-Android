@@ -1023,7 +1023,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@id/iconMap"
                             android:fontFamily="@font/font_main"
-                            android:text="Info sulle Mappe"
+                            android:text="@string/infoMapsText"
                             android:textColor="@color/redMetro"
                             android:textSize="16sp" />
                     </RelativeLayout>
