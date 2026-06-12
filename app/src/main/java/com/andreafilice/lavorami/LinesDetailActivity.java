@@ -80,6 +80,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private RecyclerView arriviRecyclerView;
     private ProgressBar arriviProgressBar;
     private LinearLayout arriviEmptyState;
+    private ChipGroup detActionGroup;
     private GTFSHelper.GTFSRoute routeData;
     private String selectedStopId;
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -102,6 +103,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         //*LOCK THE ORIENTATION
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        detActionGroup = findViewById(R.id.detActionGroup);
 
         Chip chipMappa = findViewById(R.id.chipMappa);
         Chip chipLavori = findViewById(R.id.chipLavoriInCorso);
@@ -128,6 +131,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         arriviRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chipMappa.setChecked(true);
+        updateChipGroupSizes(detActionGroup);
 
         nomeLinea = getIntent().getStringExtra("NOME_LINEA");
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
@@ -210,12 +214,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
 
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked()){
+            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked()) {
                 chipMappa.setChecked(true);
                 chipLavori.setChecked(false);
                 chipInterscambi.setChecked(false);
                 chipArrivi.setChecked(false);
             }
+
+            updateChipGroupSizes(detActionGroup);
         });
 
         chipLavori.setOnClickListener(v -> {
@@ -229,7 +235,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             arriviNested.setVisibility(View.GONE);
             caricaEventiFiltrati();
 
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
+            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()) {
                 chipMappa.setChecked(true);
                 chipLavori.setChecked(false);
                 chipArrivi.setChecked(false);
@@ -238,7 +244,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 containerInterscambi.setVisibility(View.GONE);
                 findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             }
-            else if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
+            else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()) {
                 chipMappa.setChecked(false);
                 chipLavori.setChecked(true);
                 chipArrivi.setChecked(false);
@@ -247,6 +253,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 containerInterscambi.setVisibility(View.GONE);
                 findViewById(R.id.emptyViewContainer).setVisibility(View.VISIBLE);
             }
+
+            updateChipGroupSizes(detActionGroup);
         });
 
         chipInterscambi.setOnClickListener(v -> {
@@ -261,7 +269,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             caricaInterscambiLinee();
 
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()){
+            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()) {
                 chipMappa.setChecked(false);
                 chipLavori.setChecked(true);
                 chipArrivi.setChecked(false);
@@ -270,7 +278,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 containerInterscambi.setVisibility(View.GONE);
                 findViewById(R.id.emptyViewContainer).setVisibility(View.VISIBLE);
             }
-            else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()){
+            else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()) {
                 chipMappa.setChecked(true);
                 chipLavori.setChecked(false);
                 chipArrivi.setChecked(false);
@@ -279,6 +287,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 containerInterscambi.setVisibility(View.GONE);
                 findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             }
+
+            updateChipGroupSizes(detActionGroup);
         });
 
         chipArrivi.setOnClickListener(v -> {
@@ -294,12 +304,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             arriviWrapper.setVisibility(View.VISIBLE);
             arriviNested.setVisibility(View.VISIBLE);
 
-            if(!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !chipArrivi.isChecked()){
+            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !chipArrivi.isChecked()) {
                 chipArrivi.setChecked(true);
                 chipMappa.setChecked(false);
                 chipLavori.setChecked(false);
                 chipInterscambi.setChecked(false);
             }
+
+            updateChipGroupSizes(detActionGroup);
         });
 
         ImageButton btnBack = findViewById(R.id.buttonBack);
@@ -322,54 +334,45 @@ public class LinesDetailActivity extends AppCompatActivity {
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
         int coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(this, nomeLinea)));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
-        ColorStateList chipColor = new ColorStateList(
-            new int[][]{
-                new int[]{ android.R.attr.state_checked },
-                new int[]{ -android.R.attr.state_checked }
-            },
-            new int[]{
-                coloreLinea,
-                coloreDefault
-            }
+
+        ColorStateList chipBgColor = new ColorStateList(
+                new int[][]{
+                        new int[]{ android.R.attr.state_checked },
+                        new int[]{ -android.R.attr.state_checked }
+                },
+                new int[]{ coloreLinea, coloreDefault }
         );
-        chipMappa.setChipBackgroundColor(chipColor);
-        chipLavori.setChipBackgroundColor(chipColor);
-        chipInterscambi.setChipBackgroundColor(chipColor);
-        chipArrivi.setChipBackgroundColor(chipColor);
+        chipMappa.setChipBackgroundColor(chipBgColor);
+        chipLavori.setChipBackgroundColor(chipBgColor);
+        chipInterscambi.setChipBackgroundColor(chipBgColor);
+        chipArrivi.setChipBackgroundColor(chipBgColor);
 
-        //*CHIP ICON COLOR
-        /// In this section of the code we setup the Chip Icon color when selected and when is not.
-        int coloreSelezionato = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.background_app : R.color.White));
-        int coloreNonSelezionato = ContextCompat.getColor(this, R.color.text_primary);
-
+        // CHIP ICON COLOR
         ColorStateList chipIconColors = new ColorStateList(
-            new int[][] {
-                new int[]{ android.R.attr.state_checked },
-                new int[]{ -android.R.attr.state_checked }
-            },
-            new int[] {
-                coloreSelezionato,
-                coloreNonSelezionato
-            }
+                new int[][] {
+                        new int[]{ android.R.attr.state_checked },
+                        new int[]{ -android.R.attr.state_checked }
+                },
+                new int[] {
+                        ContextCompat.getColor(this, R.color.White),
+                        coloreLinea
+                }
         );
         chipMappa.setChipIconTint(chipIconColors);
         chipLavori.setChipIconTint(chipIconColors);
         chipInterscambi.setChipIconTint(chipIconColors);
         chipArrivi.setChipIconTint(chipIconColors);
 
-        //*CHIP TEXT COLOR
-        /// In this section of the code we setup the Chip Text color when selected and when is not selected.
-        int bianco = (nomeLinea.equalsIgnoreCase("S12")) ? ContextCompat.getColor(this, R.color.BlackS12) : ContextCompat.getColor(this, R.color.White);
-        int testoDefault = ContextCompat.getColor(this, R.color.text_primary);
+        // CHIP TEXT COLOR
         ColorStateList chipTextColor = new ColorStateList(
-            new int[][]{
-                new int[]{ android.R.attr.state_checked },
-                new int[]{ -android.R.attr.state_checked }
-            },
-            new int[]{
-                bianco,
-                testoDefault
-            }
+                new int[][]{
+                        new int[]{ android.R.attr.state_checked },
+                        new int[]{ -android.R.attr.state_checked }
+                },
+                new int[]{
+                        ContextCompat.getColor(this, R.color.White),      // selezionata > bianco
+                        Color.TRANSPARENT                                  // non selezionata > invisibile
+                }
         );
         chipMappa.setTextColor(chipTextColor);
         chipLavori.setTextColor(chipTextColor);
@@ -1113,6 +1116,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                     if(Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
                         findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
+                        updateChipGroupSizes(detActionGroup);
+
                         loadGTFSData();
                     }
                     else
@@ -1544,6 +1549,115 @@ public class LinesDetailActivity extends AppCompatActivity {
         handler.removeCallbacks(arriviRunnable);
         arriviRunnable = () -> updateArriviList();
         handler.postDelayed(arriviRunnable, 10000);
+    }
+
+    private void updateChipGroupSizes(ChipGroup chipGroup) {
+        chipGroup.post(() -> {
+            int childCount = chipGroup.getChildCount();
+            if (childCount == 0) return;
+
+            float density = chipGroup.getContext().getResources().getDisplayMetrics().density;
+            int unselectedWidth = (int) (70 * density);
+            float chipSpacing = chipGroup.getChipSpacingHorizontal();
+            int totalWidth = chipGroup.getWidth() - chipGroup.getPaddingLeft() - chipGroup.getPaddingRight();
+
+            // PASSO 1: Un solo ciclo per raccogliere i chip visibili ed evitare allocazioni inutili
+            ArrayList<Chip> visibleChips = new ArrayList<>(childCount);
+            Chip selectedChip = null;
+
+            for (int i = 0; i < childCount; i++) {
+                View child = chipGroup.getChildAt(i);
+                if (child instanceof Chip && child.getVisibility() != View.GONE) {
+                    Chip chip = (Chip) child;
+                    visibleChips.add(chip);
+                    if (chip.isChecked()) {
+                        selectedChip = chip;
+                    }
+                }
+            }
+
+            int totalVisibleCount = visibleChips.size();
+            if (totalVisibleCount == 0) return;
+
+            int visibleUnselectedCount = totalVisibleCount - (selectedChip != null ? 1 : 0);
+            int totalSpacingSpace = (int) ((totalVisibleCount - 1) * chipSpacing);
+            int totalUnselectedSpace = visibleUnselectedCount * unselectedWidth;
+            int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
+
+            // PASSO 2: Applichiamo le modifiche SOLO se i valori cambiano davvero
+            for (int i = 0; i < totalVisibleCount; i++) {
+                Chip chip = visibleChips.get(i);
+                ViewGroup.LayoutParams params = chip.getLayoutParams();
+
+                if (chip == selectedChip) {
+                    // Configurazione CHIP SELEZIONATA
+                    if (params.width != remainingWidth) {
+                        params.width = remainingWidth;
+                        chip.setLayoutParams(params);
+                    }
+
+                    int textResId = getChipTextResId(chip.getId());
+                    String targetText = chip.getContext().getString(textResId);
+
+                    // Evita di resettare lo stesso testo (evita il re-layout interno al chip)
+                    if (!targetText.equals(chip.getText().toString())) {
+                        chip.setText(targetText);
+                    }
+
+                    float textWidth = chip.getPaint().measureText(targetText);
+                    float iconSize = chip.getChipIconSize();
+                    float itemSpacing = 6 * density;
+                    float totalContentWidth = iconSize + itemSpacing + textWidth;
+
+                    int calculatedStartPadding = 0;
+                    if (remainingWidth > totalContentWidth) {
+                        calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
+                    }
+
+                    safelyUpdatePadding(chip, calculatedStartPadding, (int) itemSpacing, 0, 0);
+
+                } else {
+                    // Configurazione CHIP NON SELEZIONATA
+                    if (params.width != unselectedWidth) {
+                        params.width = unselectedWidth;
+                        chip.setLayoutParams(params);
+                    }
+
+                    if (chip.getText().length() > 0) {
+                        chip.setText("");
+                    }
+
+                    float iconSize = chip.getChipIconSize();
+                    int calculatedIconPadding = (int) ((unselectedWidth -iconSize) / 2);
+
+                    safelyUpdatePadding(chip, calculatedIconPadding, 0, 0, 0);
+                }
+            }
+        });
+    }
+
+    // Helper per aggiornare i padding solo se sono diversi dai correnti
+    private void safelyUpdatePadding(Chip chip, int iconStart, int iconEnd, int textStart, int textEnd) {
+        if (chip.getIconStartPadding() != iconStart) chip.setIconStartPadding(iconStart);
+        if (chip.getIconEndPadding() != iconEnd) chip.setIconEndPadding(iconEnd);
+        if (chip.getTextStartPadding() != textStart) chip.setTextStartPadding(textStart);
+        if (chip.getTextEndPadding() != textEnd) chip.setTextEndPadding(textEnd);
+        if (chip.getChipStartPadding() != 0f) chip.setChipStartPadding(0f);
+        if (chip.getChipEndPadding() != 0f) chip.setChipEndPadding(0f);
+    }
+
+    private int getChipTextResId(int chipId) {
+
+        if (chipId == R.id.chipMappa) return R.string.mapChip;
+
+        if (chipId == R.id.chipLavoriInCorso) return R.string.lineWorksChip;
+
+        if (chipId == R.id.chipInterscambi) return R.string.interchangesChip;
+
+        if (chipId == R.id.chipArrivi) return R.string.arrivalsChipText;
+
+        return 0;
+
     }
 
     @Override
