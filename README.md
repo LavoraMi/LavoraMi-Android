@@ -6,6 +6,7 @@
 [![Kotlin](https://img.shields.io/badge/Java-11%2B-orange.svg?style=flat)](https://www.java.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](LICENSE)
 [![Repository](https://img.shields.io/badge/GitHub-LavoraMi--Android-black?style=flat&logo=github)](https://github.com/Andrea-Filice/LavoraMi-Android)
+[![GooglePlay](https://img.shields.io/badge/Google_Play-000000?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.andreafilice.lavorami&hl=it)
 
 Un'app Android intuitiva per monitorare i lavori di manutenzione del trasporto pubblico.
 
@@ -206,6 +207,9 @@ copies or substantial portions of the Software.
 - 🔗 [GitHub](https://github.com/TizioBanana08)
 - 📧 Contattami attraverso il repository
 
+**Alessandro Rebuscini**
+- 🔗 [GitHub](https://github.com/Rebuale)
+- 📧 Contattami attraverso il repositor
 ---
 
 <div align="center">
