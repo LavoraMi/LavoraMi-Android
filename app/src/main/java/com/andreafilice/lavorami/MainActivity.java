@@ -790,7 +790,7 @@ public class MainActivity extends AppCompatActivity {
                                     events = datiRaw;
                                     EventData.listaEventiCompleta = events;
                                     if(!alreadyRefreshedLines) {
-                                        NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta);
+                                        new Thread(() -> NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta)).start();
                                         alreadyRefreshedLines = true;
                                     }
 
@@ -947,7 +947,7 @@ public class MainActivity extends AppCompatActivity {
         else
             findViewById(R.id.strikeBanner).setVisibility(View.GONE);
 
-        NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse);
+        new Thread(() -> NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse)).start();
     }
 
     private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault) {
