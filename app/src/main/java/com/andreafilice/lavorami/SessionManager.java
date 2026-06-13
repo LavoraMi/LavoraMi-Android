@@ -3,9 +3,11 @@ package com.andreafilice.lavorami;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.util.Base64;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKey;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class SessionManager {
     private static final String PREF_NAME = "LavoraMiSession";
@@ -20,10 +22,22 @@ public class SessionManager {
     private SharedPreferences.Editor editor;
     private Context context;
 
-    public SessionManager(Context context){
+    public SessionManager(Context context) {
         this.context = context.getApplicationContext();
-        prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        editor = prefs.edit();
+        try {
+            MasterKey masterKey = new MasterKey.Builder(this.context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+                    .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                    .build();
+
+            prefs = EncryptedSharedPreferences.create(
+                    this.context,
+                    PREF_NAME,
+                    masterKey,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
+            editor = prefs.edit();
+        }
+        catch (GeneralSecurityException | IOException e) {throw new RuntimeException("Errore nell'inizializzazione di EncryptedSharedPreferences", e);}
     }
 
     public void saveSession(String token, String refreshToken, String email, String name, boolean loggedInWithGoogle) {

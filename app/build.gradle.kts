@@ -88,4 +88,5 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)
     implementation(libs.google.mlkit.translate)
+    implementation(libs.androidx.security.crypto)
 }
