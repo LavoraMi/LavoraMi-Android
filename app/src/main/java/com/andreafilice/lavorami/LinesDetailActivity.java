@@ -1569,9 +1569,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (child instanceof Chip && child.getVisibility() != View.GONE) {
                     Chip chip = (Chip) child;
                     visibleChips.add(chip);
-                    if (chip.isChecked()) {
+                    if (chip.isChecked()) 
                         selectedChip = chip;
-                    }
                 }
             }
 
@@ -1590,7 +1589,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams params = chip.getLayoutParams();
 
                 if (chip == selectedChip) {
-                    // Configurazione CHIP SELEZIONATA
                     if (params.width != remainingWidth) {
                         params.width = remainingWidth;
                         chip.setLayoutParams(params);
@@ -1599,10 +1597,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                     int textResId = getChipTextResId(chip.getId());
                     String targetText = chip.getContext().getString(textResId);
 
-                    // Evita di resettare lo stesso testo (evita il re-layout interno al chip)
-                    if (!targetText.equals(chip.getText().toString())) {
+                    if (!targetText.equals(chip.getText().toString()))
                         chip.setText(targetText);
-                    }
 
                     float textWidth = chip.getPaint().measureText(targetText);
                     float iconSize = chip.getChipIconSize();
@@ -1623,9 +1619,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                         chip.setLayoutParams(params);
                     }
 
-                    if (chip.getText().length() > 0) {
+                    if (chip.getText().length() > 0)
                         chip.setText("");
-                    }
 
                     chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(coloreLinea, 38)));
                     float iconSize = chip.getChipIconSize();
