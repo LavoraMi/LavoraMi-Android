@@ -2601,7 +2601,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.46219, 9.23265, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.46224, 9.23249, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.46225, 9.2323, "Main", "27"));
-        stations.add(new MetroStation("V.Le Corsica Via Lomellina", 45.46229, 9.2323, "Main", "27"));
+        stations.add(new MetroStation("V.Le Corsica Via Lomellina", 45.46229, 9.23095, "Main", "27"));
         stations.add(new MetroStation("V.Le Corsica Via Battistotti Sassi", 45.46231, 9.22826, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.46226, 9.22778, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.46224, 9.22766, "Main", "27"));
