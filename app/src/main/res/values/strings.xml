@@ -391,4 +391,5 @@
     <string name="infoMapsText">Info sulle Mappe</string>
     <string name="titlePopUpPolicy">Salva le tue Linee!</string>
     <string name="depsPopUpPolicy">Con il nuovo aggiornamento, puoi salvare Le Tue Linee e le Linee Preferite sul tuo Account! Potrebbe essere necessario fare il logout e poi il login. Per gestire i tuoi dati, vai in: Impostazioni > Account > Preferenze Dati.</string>
+    <string name="mainDeveloperText">Sviluppatore Principale:</string>
 </resources>
