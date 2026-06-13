@@ -141,7 +141,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
 
         if (nomeLinea == null) nomeLinea = "M1";
-        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("Movibus") && !(busLinesWithMap.contains(nomeLinea)))){
+        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z"))){ // && !(busLinesWithMap.contains(nomeLinea))
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -158,10 +158,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipArrivi.setChecked(false);
         }
 
-        if(tipoDiLinea.contains("Movibus")){
+        /*if(tipoDiLinea.contains("Movibus")){
             caricaFermateInterscambio();
             chipInterscambi.setVisibility(View.GONE);
-        }
+        }*/
 
         chipMappa.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
         chipLavori.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
