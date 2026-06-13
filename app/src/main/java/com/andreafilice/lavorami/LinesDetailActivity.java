@@ -1229,7 +1229,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "16": return "Stadio San Siro M5 - Via Monte Velino";
             case "19": return "P.Za Castelli - Lambrate FS M2";
             case "24": return "Piazza Fontana - Vigentino";
-            case "27": return "V.Le Ungheria - Duomo M1 M3";
+            case "27": return "V.Le Ungheria - Piazza Fontana";
             case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
 
@@ -1569,7 +1569,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (child instanceof Chip && child.getVisibility() != View.GONE) {
                     Chip chip = (Chip) child;
                     visibleChips.add(chip);
-                    if (chip.isChecked()) 
+                    if (chip.isChecked())
                         selectedChip = chip;
                 }
             }
