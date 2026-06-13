@@ -3604,6 +3604,7 @@ public class StationDB {
             allStations.addAll(getStationsTram16());
             allStations.addAll(getStationsTram19());
             allStations.addAll(getStationsTram24());
+            allStations.addAll(getStationsTram27());
             allStations.addAll(getStationsTram31());
             allStations.addAll(getStationsTram33());
 
