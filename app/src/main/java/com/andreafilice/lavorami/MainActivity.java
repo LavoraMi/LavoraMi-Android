@@ -778,14 +778,32 @@ public class MainActivity extends AppCompatActivity {
 
                     AtomicInteger pronti = new AtomicInteger(0);
 
-                    for (EventDescriptor lavoro : datiRaw) {
+                    if (datiRaw.isEmpty()) {
+                        runOnUiThread(() -> {
+                            if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
+                            applicaFiltroCategoria(categoryToFilter);
+                        });
+                        return;
+                    }
+
+                    int BATCH_SIZE = 50;
+                    int totalBatches = (int) Math.ceil((double) datiRaw.size() / BATCH_SIZE);
+                    AtomicInteger completedBatches = new AtomicInteger(0);
+
+                    for (int i = 0; i < datiRaw.size(); i += BATCH_SIZE) {
+                        final int batchStart = i;
+                        final int batchEnd = Math.min(i + BATCH_SIZE, datiRaw.size());
+
                         threadManager.submit(() -> {
-                            lavoro.setEndDateMillis(DateUtils.toMillis(lavoro.getEndDate()));
-                            lavoro.setStartDateMillis(DateUtils.toMillis(lavoro.getStartDate()));
+                            for (int j = batchStart; j < batchEnd; j++) {
+                                EventDescriptor lavoro = datiRaw.get(j);
+                                lavoro.setEndDateMillis(DateUtils.toMillis(lavoro.getEndDate()));
+                                lavoro.setStartDateMillis(DateUtils.toMillis(lavoro.getStartDate()));
+                            }
 
-                            int attuali = pronti.incrementAndGet();
+                            int completati = completedBatches.incrementAndGet();
 
-                            if (attuali == totale) {
+                            if (completati == totalBatches) {
                                 runOnUiThread(() -> {
                                     events = datiRaw;
                                     EventData.listaEventiCompleta = events;
