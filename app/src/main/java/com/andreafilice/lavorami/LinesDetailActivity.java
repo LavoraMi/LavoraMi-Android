@@ -163,10 +163,11 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipInterscambi.setVisibility(View.GONE);
         }*/
 
-        chipMappa.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
-        chipLavori.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
-        chipInterscambi.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
-        chipArrivi.setTypeface(Typeface.create("@font/inter_medium",Typeface.BOLD));
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.inter);
+        chipMappa.setTypeface(typeface, Typeface.BOLD);
+        chipLavori.setTypeface(typeface, Typeface.BOLD);
+        chipInterscambi.setTypeface(typeface, Typeface.BOLD);
+        chipArrivi.setTypeface(typeface, Typeface.BOLD);
 
         aggiornaUI();
         MapView mapView = findViewById(R.id.mapView);

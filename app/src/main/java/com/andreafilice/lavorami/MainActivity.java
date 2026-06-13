@@ -280,14 +280,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
+            super.onPageSelected(position);
 
-                btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
-                btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
-                if(position == 3)
-                    askForNotificationPermission();
-                if(position == 5)
-                    askForPositionPermission();
+            btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
+            btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
+            if(position == 3)
+                askForNotificationPermission();
+            if(position == 5)
+                askForPositionPermission();
             }
         });
 
