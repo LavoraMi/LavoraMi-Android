@@ -243,9 +243,8 @@ public class MainActivity extends AppCompatActivity {
             /// In this section, we ask the permission of notifications to the user, beacuse in this Index there is the "Notification" page.
             if(currentPage == 3)
                 askForNotificationPermission();
-            if(currentPage == 5){
+            if(currentPage == 5)
                 askForPositionPermission();
-            }
         });
 
         Button btnSetupSkip = findViewById(R.id.btnSetupSkip);
@@ -525,7 +524,8 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,110*densita);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
-                } else {
+                }
+                else {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,110*densita);
                 }
@@ -1016,6 +1016,8 @@ public class MainActivity extends AppCompatActivity {
 
         for (EventDescriptor item : events) {
             terminated = item.getEndDateMillis();
+            
+            long limiteMassimo = now - 86400000L;
 
             switch (categoria) {
                 case LE_TUE_LINEE:
@@ -1025,27 +1027,27 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         }
                     }
-
                     break;
+
                 case TUTTI:
-                    if (terminated > now)
+                    if (terminated > limiteMassimo)
                         filtrata.add(item);
                     break;
 
                 case BUS:
-                    if (isBus(item) && terminated > now) filtrata.add(item);
+                    if (isBus(item) && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case TRAM:
-                    if(isTram(item) && terminated > now) filtrata.add(item);
+                    if(isTram(item) && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case METROPOLITANA:
-                    if (isMetro(item) && terminated > now) filtrata.add(item);
+                    if (isMetro(item) && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case TRENO:
-                    if (isTreno(item) && terminated > now) filtrata.add(item);
+                    if (isTreno(item) && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case IN_CORSO:
@@ -1060,27 +1062,27 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case DI_ATM:
-                    if(item.company.equalsIgnoreCase("ATM") && terminated > now) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("ATM") && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case DI_TRENORD:
-                    if(item.company.equalsIgnoreCase("Trenord") && terminated > now) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("Trenord") && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case DI_MOVIBUS:
-                    if(item.company.equalsIgnoreCase("Movibus") && terminated > now) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case DI_STAV:
-                    if(item.company.equalsIgnoreCase("STAV") && terminated > now) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("STAV") && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case DI_STAR:
-                    if(item.company.equalsIgnoreCase("STAR") && terminated > now) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("STAR") && terminated > limiteMassimo) filtrata.add(item);
                     break;
 
                 case DI_AUTOGUIDOVIE:
-                    if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > now) filtrata.add(item);
+                    if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > limiteMassimo) filtrata.add(item);
                     break;
             }
         }
