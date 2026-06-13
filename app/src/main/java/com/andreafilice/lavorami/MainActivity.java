@@ -193,6 +193,17 @@ public class MainActivity extends AppCompatActivity {
             );
 
             loadUserPreferences();
+
+            if(!DataManager.getBoolData(DataKeys.KEY_POPUP_NEW, false)) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Salva le tue Linee!")
+                        .setMessage("Con il nuovo aggiornamento, puoi salvare Le Tue Linee e le Linee Preferite sul tuo Account! Potrebbe essere necessario fare il logout e poi il login. Per gestire i tuoi dati, vai in: Impostazioni > Account > Preferenze Dati.")
+                        .setPositiveButton("Chiudi", ((dialog, which) -> {
+                            DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
+                        }))
+                        .create()
+                        .show();
+            }
         }
 
         //*SETUP PAGES
