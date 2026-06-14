@@ -1151,11 +1151,11 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S3": return "Saronno - Milano Cadorna";
             case "S4": return "Camnago-Lentate - Milano Cadorna";
             case "S5": return "Varese - Treviglio";
-            case "S6": return "Novara - Pioltello-Limito / Treviglio";
+            case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio. MODIFICHE CIRCOLAZIONE.
             case "S7": return "Lecco - Milano Pta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Pta Garibaldi";
             case "S9": return "Saronno - Albairate-Vermezzo";
-            case "S11": return "Rho - Como S. Giovanni";
+            case "S11": return "Milano Pta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni. MODIFICHE CIRCOLAZIONE.
             case "S12": return "Melegnano - Cormano";
             case "S13": return "Pavia - Milano Bovisa";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
