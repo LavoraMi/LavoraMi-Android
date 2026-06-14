@@ -1093,6 +1093,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             interruzioneTratta.setVisibility(View.VISIBLE);
 
         mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://cantieri.trenord.it/it/lavori-tra-rho-e-milano-certosa"));
+        interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://cantieri.trenord.it/it/lavori-tra-rho-e-milano-certosa"));
 
         tvLavori.setText((numeroLavori > 0) ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
