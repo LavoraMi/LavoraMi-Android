@@ -1647,7 +1647,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
     }
 
-    // Helper per aggiornare i padding solo se sono diversi dai correnti
     private void safelyUpdatePadding(Chip chip, int iconStart, int iconEnd, int textStart, int textEnd) {
         if (chip.getIconStartPadding() != iconStart) chip.setIconStartPadding(iconStart);
         if (chip.getIconEndPadding() != iconEnd) chip.setIconEndPadding(iconEnd);
@@ -1733,6 +1732,14 @@ public class LinesDetailActivity extends AppCompatActivity {
                 }
                 else
                     colorFirst = Color.parseColor("#4CAF50");
+
+                if(first.minutesFromNow > 5)
+                    holder.iconFirstClock.setImageDrawable(getDrawable(R.drawable.ic_clock_three));
+                else {
+                    if(first.minutesFromNow < 1) holder.iconFirstClock.setImageDrawable(getDrawable(R.drawable.ic_clock_one));
+                    if(first.minutesFromNow < 2) holder.iconFirstClock.setImageDrawable(getDrawable(R.drawable.ic_clock_two));
+                    else holder.iconFirstClock.setImageDrawable(getDrawable(R.drawable.ic_clock_three));
+                }
 
                 holder.iconFirstClock.setColorFilter(colorFirst);
                 holder.txtFirstMins.setTextColor(colorFirst);
