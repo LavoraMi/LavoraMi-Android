@@ -144,7 +144,7 @@
                 android:fontFamily="@font/inter"
                 android:textSize="12sp"
                 android:paddingTop="5dp"
-                android:text="QUESTA LINEA HA UNA TRATTA INTERROTTA."
+                android:text="@string/trackInterruptedInfo"
                 android:textStyle="bold" />
 
             <ImageView
