@@ -28,8 +28,8 @@ android {
         applicationId = "com.andreafilice.lavorami"
         minSdk = 24
         targetSdk = 36
-        versionCode = 42
-        versionName = "1.1.10"
+        versionCode = 43
+        versionName = "1.1.11"
         var buildNumber = "14062026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
