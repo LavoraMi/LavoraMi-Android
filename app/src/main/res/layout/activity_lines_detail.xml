@@ -582,8 +582,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/lineDetailPage"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -591,49 +591,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/stopSelectorLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/selectAStop"
+            app:startIconDrawable="@drawable/ic_location"
+            app:boxBackgroundColor="@color/background_app"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxStrokeColor="@color/box_stroke_color"
+            app:hintTextColor="@color/text_primary"
+            app:endIconTint="@color/BUS"
+            app:boxCornerRadiusBottomEnd="10dp">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/dropdownFermate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/font_main"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#1A000000" />
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/arriviNested"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="80dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/stopSelectorLayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/selectAStop"
-                    app:startIconDrawable="@drawable/ic_location"
-                    app:boxBackgroundColor="@color/background_app"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:hintTextColor="@color/text_primary"
-                    app:endIconTint="@color/BUS"
-                    app:boxCornerRadiusBottomEnd="10dp">
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/dropdownFermate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:textColor="@color/text_primary"
-                        android:fontFamily="@font/font_main"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="#1A000000" />
+                android:paddingBottom="16dp">
 
                 <ProgressBar
                     android:id="@+id/arriviProgressBar"
