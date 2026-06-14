@@ -127,7 +127,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.cardView.setStrokeColor(Color.parseColor("#FD272D"));
             itemHolder.cardView.setStrokeWidth(dpToPx(itemHolder.itemView.getContext(), 2));
             itemHolder.cardView.setCardElevation(dpToPx(itemHolder.itemView.getContext(), 10));
-        } else {
+        }
+        else {
             itemHolder.bannerImportante.setVisibility(View.GONE);
             itemHolder.cardView.setStrokeWidth(0);
             itemHolder.cardView.setCardElevation(dpToPx(itemHolder.itemView.getContext(), 4));

@@ -708,8 +708,11 @@ public class LinesDetailActivity extends AppCompatActivity {
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 TextView desc = card.findViewById(R.id.txtDescription);
                 ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
+                boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
+                String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
+
                 if (titolo != null) titolo.setText(evento.getTitle());
-                if (desc != null) desc.setText(evento.getDetails());
+                if (desc != null) desc.setText(cleanDet);
                 if (desc != null) desc.setVisibility(View.GONE);
                 if(openCloseIcon != null) openCloseIcon.setImageResource(R.drawable.ic_down);
 
