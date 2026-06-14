@@ -664,10 +664,21 @@
                         android:layout_height="wrap_content"
                         android:text="@string/noRoutesToday"
                         android:textAlignment="center"
-                        android:textColor="@color/subtitle"
+                        android:textColor="@color/text_primary"
                         android:fontFamily="@font/font_main"
                         android:textSize="16sp"
                         android:layout_marginTop="10dp"/>
+
+                    <TextView
+                        android:id="@+id/arriviEmptyStateTextSecondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra."
+                        android:textAlignment="center"
+                        android:textColor="@color/subtitle"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/font_main"
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
