@@ -128,6 +128,13 @@ public class LibrariesActivity extends AppCompatActivity {
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
+                        "AndroidX Security Crypto",
+                        "1.1.0",
+                        "Apache License 2.0",
+                        "Copyright The Android Open Source Project",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
                         "AndroidX Test JUnit",
                         "2.0.1",
                         "Apache License 2.0",

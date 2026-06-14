@@ -25,7 +25,7 @@ googleServices = "4.4.4"
 firebaseBom = "34.14.1"
 mlkitTranslate = "17.0.3"
 activityKtx = "1.13.0"
-androidx-security-crypto = "1.1.0-alpha06"
+androidx-security-crypto = "1.1.0"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
