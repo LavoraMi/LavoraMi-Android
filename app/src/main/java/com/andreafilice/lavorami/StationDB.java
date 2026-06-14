@@ -442,6 +442,7 @@ public class StationDB {
         stations.add(new MetroStation("Pregana Milanese", 45.51011, 9.00279, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51851, 9.02764, "Main", "S6"));
         stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S6"));
+        /* MODIFICHE CIRCOLAZIONE: La tratta S6 è limitata da Novara a Rho. NON ELIMINARE
         stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52802, 9.05644, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52859, 9.05897, "Main", "S6"));
@@ -508,7 +509,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.51275, 9.5445, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51391, 9.57049, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51436, 9.57557, "Main", "S6"));
-        stations.add(new MetroStation("Treviglio", 45.51531, 9.58864, "Main", "S6"));
+        stations.add(new MetroStation("Treviglio", 45.51531, 9.58864, "Main", "S6"));*/
         return stations;
     }
 
@@ -601,10 +602,11 @@ public class StationDB {
         stations.add(new MetroStation("Sesto S. Giovanni", 45.54126, 9.23903, "Main", "S11"));
         stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Main", "S11"));
         stations.add(new MetroStation("Milano Pta Garibaldi", 45.48449, 9.18737, "Main", "S11"));
+        /* MODIFICHE CIRCOLAZIONE: Questa tratta è attiva solo tra Milano Porta Garibaldi a Como.
         stations.add(new MetroStation("Milano Villapizzone", 45.50202, 9.15092, "Main", "S11"));
         stations.add(new MetroStation("Milano Certosa", 45.50683, 9.13593, "Main", "S11"));
         stations.add(new MetroStation("Rho FieraMilano", 45.52113, 9.0885, "Main", "S11"));
-        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S11"));
+        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S11"));*/
         return stations;
     }
 
