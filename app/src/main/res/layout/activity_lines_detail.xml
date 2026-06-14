@@ -127,6 +127,35 @@
                 app:tint="@color/subtitle" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/interruzioneTratta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/subtitle"
+                android:fontFamily="@font/inter"
+                android:textSize="12sp"
+                android:paddingTop="5dp"
+                android:text="QUESTA LINEA HA UNA TRATTA INTERROTTA."
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/mapTrackBtn"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_info"
+                app:tint="@color/subtitle" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/attestazioneLinea"
             android:layout_width="wrap_content"
