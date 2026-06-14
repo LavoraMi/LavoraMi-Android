@@ -673,7 +673,7 @@
                         android:id="@+id/arriviEmptyStateTextSecondary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Per oggi non c'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra."
+                        android:text="@string/noRoutesDeps"
                         android:textAlignment="center"
                         android:textColor="@color/subtitle"
                         android:layout_marginTop="2dp"
