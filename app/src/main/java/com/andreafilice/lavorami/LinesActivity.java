@@ -241,68 +241,70 @@ public class LinesActivity extends AppCompatActivity {
 
                     //*RECENT LINES
                     titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
-                    findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() &&  isRecentEmpty) ? View.VISIBLE : View.GONE);
+                    findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() && isRecentEmpty) ? View.VISIBLE : View.GONE);
                     containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
+
+                    boolean[] firstContainerTracker = { false };
 
                     //*METRO LINES
                     titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
                     containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
-                    setUpMargin(headerMetro, (onlyOneActive() && !query.isEmpty()));
+                    setUpMargin(headerMetro, isFirstVisibleContainer(hasMetro, firstContainerTracker));
 
                     //*SUBURBAN LINES
                     titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
                     containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleSub, onlyOneActive());
+                    setUpMargin(titleSub, isFirstVisibleContainer(hasSub, firstContainerTracker));
 
                     //*REGIO EXPRESS LINES
                     titleRegio.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
                     containerRegioExpress.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleRegio, onlyOneActive());
+                    setUpMargin(titleRegio, isFirstVisibleContainer(hasRegioExpress, firstContainerTracker));
 
                     //*REGIONAL LINES
                     titleRegional.setVisibility(hasRegional ? View.VISIBLE : View.GONE);
                     containerRegional.setVisibility(hasRegional ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleRegional, onlyOneActive());
+                    setUpMargin(titleRegional, isFirstVisibleContainer(hasRegional, firstContainerTracker));
 
                     //*MXP LINES
                     titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
                     containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleMXP, onlyOneActive());
+                    setUpMargin(titleMXP, isFirstVisibleContainer(hasMXP, firstContainerTracker));
 
                     //*TRANSFRONTALIERE LINES
                     titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
                     containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleTrans, onlyOneActive());
+                    setUpMargin(titleTrans, isFirstVisibleContainer(hasTrans, firstContainerTracker));
 
                     //*TRAM LINES
                     titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
                     containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleTram, onlyOneActive());
+                    setUpMargin(titleTram, isFirstVisibleContainer(hasTram, firstContainerTracker));
 
                     //*FILOBUS LINES
                     titleFilobus.setVisibility(hasFilobus ? View.VISIBLE : View.GONE);
                     containerFilobus.setVisibility(hasFilobus ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleFilobus, onlyOneActive());
+                    setUpMargin(titleFilobus, isFirstVisibleContainer(hasFilobus, firstContainerTracker));
 
                     //*MOVIBUS LINES
                     titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
                     containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleMovibus, onlyOneActive());
+                    setUpMargin(titleMovibus, isFirstVisibleContainer(hasMovibus, firstContainerTracker));
 
                     //*STAV LINES
                     titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
                     containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleStav, onlyOneActive());
+                    setUpMargin(titleStav, isFirstVisibleContainer(hasStav, firstContainerTracker));
 
                     //*STAR LINES
                     titleSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
                     containerSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleSTAR, onlyOneActive());
+                    setUpMargin(titleSTAR, isFirstVisibleContainer(hasSTAR, firstContainerTracker));
 
                     //*AUTOGUIDOVIE LINES
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
-                    setUpMargin(titleAutoguidovie, onlyOneActive());
+                    setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
 
                     if (tvNoResults != null){
                         tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
@@ -687,15 +689,17 @@ public class LinesActivity extends AppCompatActivity {
         DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, recentLinesSet);
     }
 
-    private boolean onlyOneActive() {
-        /// This methods get all the values and return if only one value is active.
+    private boolean isFirstVisibleContainer(boolean isContainerActive, boolean[] tracker) {
+        /// This method fix the issue where EVERY LinearLayout is set to 0dp.
 
-        boolean[] values = {hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasStav, hasSTAR, hasAuto};
-        int totalActive = 0;
+        if (!isContainerActive)  return false;
 
-        for(boolean value: values) {if (value) totalActive++;}
+        if (!tracker[0]) {
+            tracker[0] = true;
+            return true;
+        }
 
-        return totalActive == 1;
+        return false;
     }
 
     private void syncYourLinesToSupabase(Set<String> yourLinesSet) {
