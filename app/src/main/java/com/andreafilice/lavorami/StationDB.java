@@ -3200,8 +3200,16 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.48314, 8.95250, "Main", "z620"));
         stations.add(new MetroStation("Vittuone, Milano 22", 45.48344,8.95359, "Main", "z620"));
         stations.add(new MetroStation("Vittuone, Milano 7", 45.48531, 8.96102, "Main", "z620"));
-        stations.add(new MetroStation("Sedriano, Magenta 11", 0, 0, "Main", "z620"));
-        stations.add(new MetroStation("Sedriano, Fagnani/Europa", 0, 0, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48593, 8.96340, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48595, 8.96357, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48593, 8.96397, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48603, 8.96411, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48616, 8.96433, "Main", "z620"));
+        stations.add(new MetroStation("Sedriano, Magenta 11", 45.48701, 8.96768, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48746, 8.96917, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48749, 8.96965, "Main", "z620"));
+        stations.add(new MetroStation("NO_DRAW", 45.48748, 8.96999, "Main", "z620"));
+        stations.add(new MetroStation("Sedriano, Fagnani/Europa", 45.48745, 8.97685, "Main", "z620"));
         stations.add(new MetroStation("Bareggio, Novara/Roma", 0, 0, "Main", "z620"));
         stations.add(new MetroStation("Bareggio, Milano/Leoncavallo", 0, 0, "Main", "z620"));
         stations.add(new MetroStation("Cornaredo, Dubini,S.Pietro all'Olmo", 0, 0, "Main", "z620"));
