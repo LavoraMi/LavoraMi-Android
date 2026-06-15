@@ -1087,17 +1087,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        //*MODIFICHE CIRCOLAIZONE
-        /// La linea S6 e S11 hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
-        LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
-        ImageView mapTrackBtn = findViewById(R.id.mapTrackBtn);
-
-        if(nomeLinea.equalsIgnoreCase("S6") || nomeLinea.equalsIgnoreCase("S11"))
-            interruzioneTratta.setVisibility(View.VISIBLE);
-
-        mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://cantieri.trenord.it/it/lavori-tra-rho-e-milano-certosa"));
-        interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://cantieri.trenord.it/it/lavori-tra-rho-e-milano-certosa"));
-
         tvLavori.setText((numeroLavori > 0) ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
 
@@ -1112,6 +1101,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                     String[] lineeDeviate = strikeCDNResponse.getLinesDeviation();
                     String[] linkLinee = strikeCDNResponse.getLinesDeviationLinks();
                     String[] gtfsSupportedLines = strikeCDNResponse.getSupportedGTFSLines();
+                    String[] suburbanInterruptions = strikeCDNResponse.getSuburbanWithInterruptions();
+                    String[] suburbanLinks = strikeCDNResponse.getSuburbanInterruptionLinks();
                     int i = 0;
 
                     LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
@@ -1127,6 +1118,21 @@ public class LinesDetailActivity extends AppCompatActivity {
                             mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, lineLink));
                         }
                         i++;
+                    }
+
+                    //*MODIFICHE CIRCOLAIZONE
+                    /// Le linee suburbane hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
+                    LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
+                    ImageView mapTrackBtn = findViewById(R.id.mapTrackBtn);
+
+                    for (int j = 0; j < suburbanInterruptions.length; j++) {
+                        int finalJ = j;
+
+                        if(suburbanInterruptions[j].contains(nomeLinea)) {
+                            interruzioneTratta.setVisibility(View.VISIBLE);
+                            mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, suburbanLinks[finalJ]));
+                            interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, suburbanLinks[finalJ]));
+                        }
                     }
 
                     if(Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {

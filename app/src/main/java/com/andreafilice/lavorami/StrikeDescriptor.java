@@ -27,8 +27,12 @@ public class StrikeDescriptor {
     private String[] linesDeviationLinks;
     @SerializedName("linesSupportedGTFS")
     private String[] supportedGTFSLines;
+    @SerializedName("suburbanWithInterruptions")
+    private String[] suburbanWithInterruptions;
+    @SerializedName("suburbanInterruptionLinks")
+    private String[] suburbanInterruptionLinks;
 
-    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines) {
+    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeDate = strikeDate;
@@ -37,6 +41,8 @@ public class StrikeDescriptor {
         this.linesDeviation = linesDeviation;
         this.linesDeviationLinks = linesDeviationLinks;
         this.supportedGTFSLines = supportedGTFSLines;
+        this.suburbanWithInterruptions = suburbanWithInterruptions;
+        this.suburbanInterruptionLinks = suburbanInterruptionLinks;
     }
 
     //*GETTERS
@@ -49,4 +55,6 @@ public class StrikeDescriptor {
     public String[] getLinesDeviation() {return linesDeviation;}
     public String[] getLinesDeviationLinks(){return linesDeviationLinks;}
     public String[] getSupportedGTFSLines() {return supportedGTFSLines;}
+    public String[] getSuburbanWithInterruptions() {return suburbanWithInterruptions;}
+    public String[] getSuburbanInterruptionLinks() {return suburbanInterruptionLinks;}
 }
