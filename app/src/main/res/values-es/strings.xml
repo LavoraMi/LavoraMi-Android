@@ -393,6 +393,6 @@
     <string name="titlePopUpPolicy">¡Salva tus Líneas!</string>
     <string name="depsPopUpPolicy">¡Con la nueva actualización, puedes guardar tus rutas y tus rutas favoritas en tu cuenta! Es posible que tengas que cerrar sesión y volver a iniciar sesión. Para gestionar tus datos, ve a: Ajustes > Cuenta > Preferencias Datos.</string>
     <string name="mainDeveloperText">Desarrollador Principal:</string>
-    <string name="trackInterruptedInfo">ESTA LÍNEA TIENE UN TRAMO INTERRUMPIDO.</string>
+    <string name="trackInterruptedInfo">EINTERRUPCIONES EN LA LÍNEA POR OBRAS.</string>
     <string name="noRoutesDeps">Hoy no hay ningún trayecto programado para esta parada; prueba a elegir otra.</string>
 </resources>

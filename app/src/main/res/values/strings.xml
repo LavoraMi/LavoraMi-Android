@@ -392,6 +392,6 @@
     <string name="titlePopUpPolicy">Salva le tue Linee!</string>
     <string name="depsPopUpPolicy">Con il nuovo aggiornamento, puoi salvare Le Tue Linee e le Linee Preferite sul tuo Account! Potrebbe essere necessario fare il logout e poi il login. Per gestire i tuoi dati, vai in: Impostazioni > Account > Preferenze Dati.</string>
     <string name="mainDeveloperText">Sviluppatore Principale:</string>
-    <string name="trackInterruptedInfo">QUESTA LINEA HA UNA TRATTA INTERROTTA.</string>
+    <string name="trackInterruptedInfo">INTERRUZIONI SULLA LINEA PER LAVORI.</string>
     <string name="noRoutesDeps">Per oggi non c\'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra.</string>
 </resources>
