@@ -80,7 +80,7 @@ public class StationDB {
         stations.add(new MetroStation("Lambrate FS", 45.48423, 9.235, "Main", "M2"));
         stations.add(new MetroStation("Udine", 45.49145, 9.23688, "Main", "M2"));
         stations.add(new MetroStation("Cimiano", 45.50004, 9.24142, "Main", "M2"));
-        stations.add(new MetroStation("Crescenzago", 45.50521, 9.24822, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.50521, 9.24822, "Main", "M2")); // CRESCENZAGO
         stations.add(new MetroStation("Cascina Gobba", 45.51114, 9.26052, "Main", "M2"));
         stations.add(new MetroStation("Cologno Sud", 45.52021, 9.27492, "Cologno", "M2"));
         stations.add(new MetroStation("Cologno Centro", 45.52747, 9.28296, "Cologno", "M2"));
