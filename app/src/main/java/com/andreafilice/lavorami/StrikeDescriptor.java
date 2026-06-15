@@ -9,7 +9,12 @@ public class StrikeDescriptor {
     /// @String isStrikeEnabled -> Returns a String but the values are: true <i>or</i> false.
     /// @String strikeDate -> Is the date of the Strike, catched from the JSON File.
     /// @String strikeCompanies -> Are the companies that make this Strike and their services can suffer problems.
-    /// @String strikeGuaranteed -> Returns a String but the values are: sono garantite <i>or</i> non sono garantite.
+    /// @String strikeGuaranteed -> Returns a String that tells exactly which hours the service is guaranteed.
+    /// @String[] linesDeviation -> Returns an array of Strings of Tram lines that have works on the track.
+    /// @String[] linesDeviationLinks -> Returns an array of Strings containing the works for Tram with works on the track.
+    /// @String[] supportedGTFSLines -> Returns an array of Strings for control the Bus Lines available for GTFS feature.
+    /// @String[] suburbanWithInterruptions -> Returns an array of Strings containing the suburban lines with works on the track.
+    /// @String[] suburbanInterruptionLinks -> Returns an array of Strings containing the works for suburban lines with works on the track.
 
     @SerializedName("enableStrike")
     private String isStrikeEnabled;
