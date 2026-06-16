@@ -1208,7 +1208,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     for (int j = 0; j < suburbanInterruptions.length; j++) {
                         int finalJ = j;
 
-                        if(suburbanInterruptions[j].contains(nomeLinea)) {
+                        if(suburbanInterruptions[j].equalsIgnoreCase(nomeLinea)) {
                             interruzioneTratta.setVisibility(View.VISIBLE);
                             mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, suburbanLinks[finalJ]));
                             interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, suburbanLinks[finalJ]));
