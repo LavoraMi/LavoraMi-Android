@@ -49,6 +49,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.mapbox.maps.plugin.gestures.GesturesUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -141,7 +142,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
 
         if (nomeLinea == null) nomeLinea = "M1";
-        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z"))){ // && !(busLinesWithMap.contains(nomeLinea))
+        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z")&& !(busLinesWithMap.contains(nomeLinea)))){ // && !(busLinesWithMap.contains(nomeLinea))
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -158,10 +159,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipArrivi.setChecked(false);
         }
 
-        /*if(tipoDiLinea.contains("Movibus")){
+        if(tipoDiLinea.contains("Movibus")){
             caricaFermateInterscambio();
             chipInterscambi.setVisibility(View.GONE);
-        }*/
+        }
 
         Typeface typeface = ResourcesCompat.getFont(this, R.font.inter);
         chipMappa.setTypeface(typeface, Typeface.BOLD);
@@ -537,6 +538,42 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
 
+
+        if(tipoDiLinea.contains("Movibus")) {
+            GesturesUtils.getGestures(mapView).addOnMapClickListener(new com.mapbox.maps.plugin.gestures.OnMapClickListener() {
+                @Override
+                public boolean onMapClick(@NonNull com.mapbox.geojson.Point point) {
+
+                    com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
+
+                    //aumento tolleranza del click
+                    float tolerance = 20f;
+
+                    com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
+                            new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
+                            new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
+                    );
+
+                    mapView.getMapboxMap().queryRenderedFeatures(
+                            new com.mapbox.maps.RenderedQueryGeometry(screenBox),
+                            new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
+                            expected -> {
+                                if (expected.isValue() && !expected.getValue().isEmpty()) {
+                                    com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
+                                    com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+
+                                    if (clickedFeature.hasProperty("name")) {
+                                        String stationName = clickedFeature.getStringProperty("name");
+                                        selezionaFermataDaMappa(stationName);
+                                    }
+                                }
+                            }
+                    );
+                    return true;
+                }
+            });
+        }
+
         if (!tutteLeStazioni.isEmpty()) {
             double latMedia = 0, lngMedia = 0;
 
@@ -631,6 +668,49 @@ public class LinesDetailActivity extends AppCompatActivity {
             index++;
 
             MapboxHelper.addLineLayer(mapView, "line-source-branch-" + index, "line-layer-branch-" + index, points, hexColor, isPlanned);
+        }
+    }
+    private void selezionaFermataDaMappa(String nomeStazioneMappa) {
+        if (routeData == null || routeData.stops == null || dropdownFermate == null) {
+            Toast.makeText(this, "Mappa pronta, ma sto ancora caricando gli orari...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //UI ELEMENTS
+        ActivityUtils.triggerFeedback(this);
+        findViewById(R.id.mapCard).setVisibility(View.GONE);
+        arriviWrapper.setVisibility(View.VISIBLE);
+        arriviNested.setVisibility(View.VISIBLE);
+
+        Chip chipMappa = findViewById(R.id.chipMappa);
+        Chip chipArrivi = findViewById(R.id.chipArrivi);
+
+        chipArrivi.setChecked(true);
+        chipMappa.setChecked(false);
+
+        updateChipGroupSizes(detActionGroup);
+
+
+
+        String stopIdTrovato = null;
+        String nomeFermataTrovato = null;
+
+        for (Map.Entry<String, GTFSHelper.GTFSStop> entry : routeData.stops.entrySet()) {
+            String nomeGTFS = entry.getValue().name;
+
+            if (nomeGTFS.equalsIgnoreCase(nomeStazioneMappa)) {
+
+                stopIdTrovato = entry.getKey();
+                nomeFermataTrovato = nomeGTFS;
+                break;
+            }
+        }
+
+        if (stopIdTrovato != null) {
+            selectedStopId = stopIdTrovato;
+
+            dropdownFermate.setText(nomeFermataTrovato, false);
+            updateArriviList();
         }
     }
 

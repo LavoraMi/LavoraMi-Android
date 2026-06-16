@@ -71,7 +71,7 @@ object MapboxHelper {
 
             style.addLayer(circleLayer("marker-layer", "marker-source") {
                 circleColor(literal(hexColor))
-                circleRadius(4.5)
+                circleRadius(5.0)
                 circleStrokeColor(literal("#FFFFFF"))
                 circleStrokeWidth(2.0)
             })
