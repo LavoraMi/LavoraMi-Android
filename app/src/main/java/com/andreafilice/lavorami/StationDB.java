@@ -499,19 +499,35 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS3() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Milano Cadorna", 45.46843, 9.17553, "Main", "S3"));
-        stations.add(new MetroStation("Milano Domodossola", 45.48089, 9.16224, "Main", "S3"));
-        stations.add(new MetroStation("Milano Bovisa", 45.50257, 9.15925, "Main", "S3"));
-        stations.add(new MetroStation("Milano Quarto Oggiaro", 45.51918, 9.14562, "Main", "S3"));
-        stations.add(new MetroStation("Novate Milanese", 45.533, 9.13238, "Main", "S3"));
-        stations.add(new MetroStation("Bollate Centro", 45.54289, 9.12283, "Main", "S3"));
-        stations.add(new MetroStation("Bollate Nord", 45.55262, 9.11209, "Main", "S3"));
-        stations.add(new MetroStation("Garbagnate Parco Delle Groane", 45.57108, 9.09097, "Main", "S3"));
-        stations.add(new MetroStation("Garbagnate Milanese", 45.58014, 9.08042, "Main", "S3"));
-        stations.add(new MetroStation("Cesate", 45.5908, 9.06631, "Main", "S3"));
-        stations.add(new MetroStation("Caronno Pertusella", 45.5981, 9.05794, "Main", "S3"));
-        stations.add(new MetroStation("Saronno Sud", 45.61235, 9.04557, "Main", "S3"));
         stations.add(new MetroStation("Saronno", 45.62534, 9.03075, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.62222, 9.03503, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.62111, 9.03663, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.62055, 9.03738, "Main", "S3"));
+        stations.add(new MetroStation("Saronno Sud", 45.61235, 9.04557, "Main", "S3"));
+        stations.add(new MetroStation("Caronno Pertusella", 45.5981, 9.05794, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.59291, 9.06421, "Main", "S3"));
+        stations.add(new MetroStation("Cesate", 45.5908, 9.06631, "Main", "S3"));
+        stations.add(new MetroStation("Garbagnate Milanese", 45.58014, 9.08042, "Main", "S3"));
+        stations.add(new MetroStation("Garbagnate Parco Delle Groane", 45.57108, 9.09097, "Main", "S3"));
+        stations.add(new MetroStation("Bollate Nord", 45.55262, 9.11209, "Main", "S3"));
+        stations.add(new MetroStation("Bollate Centro", 45.54289, 9.12283, "Main", "S3"));
+        stations.add(new MetroStation("Novate Milanese", 45.533, 9.13238, "Main", "S3"));
+        stations.add(new MetroStation("Milano Quarto Oggiaro", 45.51918, 9.14562, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.50806, 9.15509, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.50617, 9.15685, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.5055, 9.15771, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.50477, 9.15824, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.5043, 9.15852, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.50376, 9.15876, "Main", "S3"));
+        stations.add(new MetroStation("Milano Bovisa", 45.50257, 9.15925, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.50046, 9.15957, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.49641, 9.1601, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.49394, 9.16044, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.49002, 9.161, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.49002, 9.161, "Main", "S3"));
+        stations.add(new MetroStation("Milano Domodossola", 45.48089, 9.16224, "Main", "S3"));
+        stations.add(new MetroStation("NO_DRAW", 45.47308, 9.16977, "Main", "S3"));
+        stations.add(new MetroStation("Milano Cadorna", 45.46843, 9.17553, "Main", "S3"));
         return stations;
     }
 
