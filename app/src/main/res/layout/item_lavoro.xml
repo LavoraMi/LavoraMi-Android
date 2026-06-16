@@ -76,6 +76,18 @@
                 app:layout_constraintStart_toEndOf="@id/iconEvent"
                 app:layout_constraintTop_toTopOf="@id/iconEvent" />
 
+            <ImageView
+                android:id="@+id/iconLuogo"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_work_location"
+                app:tint="@color/text_primary"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iconEvent"/>
+
             <TextView
                 android:id="@+id/txtRoute"
                 android:layout_width="0dp"

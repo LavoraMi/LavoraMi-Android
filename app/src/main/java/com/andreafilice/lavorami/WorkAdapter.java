@@ -64,6 +64,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         LinearLayout bannerImportante;
         ImageView cardImage;
         ImageView openCloseIcon;
+        ImageView locationIcon;
         TextView titleText, trattaText, startDateText, endDateText,companyText, descriptionText;
         ChipGroup chipGroupLinee;
         ProgressBar progressBar;
@@ -75,6 +76,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             bannerImportante = itemView.findViewById(R.id.bannerImportante);
             cardImage = itemView.findViewById(R.id.iconEvent);
             openCloseIcon = itemView.findViewById(R.id.open_close_descriprion);
+            locationIcon = itemView.findViewById(R.id.iconLuogo);
             titleText = itemView.findViewById(R.id.txtTitle);
             trattaText = itemView.findViewById(R.id.txtRoute);
             startDateText = itemView.findViewById(R.id.txtStartDate);
@@ -155,7 +157,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final String detailsForTranslation = cleanedDetails;
         itemHolder.translateBtn.setOnClickListener(v -> {
             //*VARIABLES
-            /// In this section of the code, we initialize some components that we will user later in the code.
+            /// In this section of the code, we initialize some components that we will use later in the code.
             Context context = v.getContext();
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
             View sheetView = LayoutInflater.from(context).inflate(R.layout.item_sheet_translated, null);
@@ -251,6 +253,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 chip.setCheckable(false);
 
                 itemHolder.chipGroupLinee.addView(chip);
+                itemHolder.locationIcon.setVisibility(View.VISIBLE);
             }
         }
     }
