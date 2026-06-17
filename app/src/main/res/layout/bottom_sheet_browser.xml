@@ -87,11 +87,22 @@
             android:foreground="?attr/selectableItemBackgroundBorderless">
 
             <ImageView
+                android:id="@+id/icon_character"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_character_browser"
-                android:tint="@android:color/white" />
+                android:tint="@android:color/white"
+                android:alpha="1.0" />
+
+            <ImageView
+                android:id="@+id/icon_zoom_hint"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_zoom"
+                android:tint="@android:color/white"
+                android:alpha="0.0" />
         </FrameLayout>
 
     </RelativeLayout>

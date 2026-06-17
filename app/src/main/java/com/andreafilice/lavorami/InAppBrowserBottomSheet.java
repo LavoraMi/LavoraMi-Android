@@ -20,6 +20,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +41,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private ImageButton shareBtn;
     private ImageButton doneBtn;
     private ImageButton openBrowserBtn;
+    private ImageView iconCharacter;
+    private ImageView iconZoomHint;
 
     private LinearLayout actionsPill;
     private FrameLayout zoomBtn;
@@ -106,6 +109,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         shareBtn = view.findViewById(R.id.share_btn);
         doneBtn = view.findViewById(R.id.done_btn);
         openBrowserBtn = view.findViewById(R.id.open_browser_btn);
+        iconCharacter = view.findViewById(R.id.icon_character);
+        iconZoomHint = view.findViewById(R.id.icon_zoom_hint);
 
         actionsPill = view.findViewById(R.id.actions_pill);
 
@@ -116,7 +121,46 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
         setupWebView();
         loadInitialUrl();
+
+        tintHandler.postDelayed(() -> {
+            if (getContext() != null) startZoomHintAnimation();
+        }, 5000);
+
         setupClickListeners(closeBtn);
+    }
+
+    private void startZoomHintAnimation() {
+        if (iconCharacter == null || iconZoomHint == null) return;
+
+        iconCharacter.setAlpha(1f);
+        iconZoomHint.setAlpha(0f);
+
+        long fadeDuration = 400;
+
+        iconCharacter.animate()
+                .alpha(0f)
+                .setDuration(fadeDuration)
+                .start();
+
+        iconZoomHint.animate()
+                .alpha(1f)
+                .setDuration(fadeDuration)
+                .start();
+
+        tintHandler.postDelayed(() -> {
+            if (getContext() == null || iconCharacter == null) return;
+
+            iconZoomHint.animate()
+                    .alpha(0f)
+                    .setDuration(fadeDuration)
+                    .start();
+
+            iconCharacter.animate()
+                    .alpha(1f)
+                    .setDuration(fadeDuration)
+                    .start();
+
+        }, 3000);
     }
 
     private void showZoomPopup(View anchorView) {
