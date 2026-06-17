@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.PixelCopy;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -48,6 +49,23 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private FrameLayout zoomBtn;
 
     private final Handler tintHandler = new Handler(Looper.getMainLooper());
+
+    private final String[] ALLOWED_DOMAINS = {
+        "lavorami.it",
+        "www.lavorami.it",
+        "docs.google.com",
+        "trenord.it",
+        "atm.it",
+        "giromilano.atm.it",
+        "tilo.ch",
+        "malpensaexpress.it",
+        "movibus.it",
+        "stavautolinee.it",
+        "starmobility.it",
+        "autoguidovie.it",
+        "patreon.com",
+        "buymeacoffee.com"
+    };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
         InAppBrowserBottomSheet fragment = new InAppBrowserBottomSheet();
@@ -291,6 +309,20 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         });
     }
 
+    private boolean isDomainAllowed(String urlString) {
+        Uri uri = Uri.parse(urlString);
+        String host = uri.getHost();
+
+        if (host != null) {
+            for (String domain : ALLOWED_DOMAINS) {
+                if (host.equals(domain) || host.endsWith("." + domain)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private void loadInitialUrl() {
         String url = getArguments() != null ? getArguments().getString("url") : null;
         if (url != null && !url.isEmpty()) {
@@ -301,8 +333,16 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
             if (url.toLowerCase().contains(".pdf"))
                 url = "https://docs.google.com/gview?embedded=true&url=" + url;
 
-            urlText.setText(url);
-            webView.loadUrl(url);
+
+            if (isDomainAllowed(url)) {
+                urlText.setText(url);
+                webView.loadUrl(url);
+            }
+            else {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                if (getContext() != null) getContext().startActivity(intent);
+                dismiss();
+            }
         }
     }
 
