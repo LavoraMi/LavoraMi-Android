@@ -42,6 +42,7 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private ImageButton openBrowserBtn;
 
     private LinearLayout actionsPill;
+    private FrameLayout zoomBtn;
 
     private final Handler tintHandler = new Handler(Looper.getMainLooper());
 
@@ -109,10 +110,46 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         actionsPill = view.findViewById(R.id.actions_pill);
 
         FrameLayout closeBtn = view.findViewById(R.id.close_btn);
+        zoomBtn = view.findViewById(R.id.zoom_btn);
+
+        zoomBtn.setOnClickListener(v -> showZoomPopup(v));
 
         setupWebView();
         loadInitialUrl();
         setupClickListeners(closeBtn);
+    }
+
+    private void showZoomPopup(View anchorView) {
+        if (getContext() == null || webView == null) return;
+
+        View popupView = LayoutInflater.from(getContext()).inflate(R.layout.popup_zoom, null);
+
+        android.widget.PopupWindow popupWindow = new android.widget.PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+        );
+
+        popupWindow.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        ImageButton btnZoomIn = popupView.findViewById(R.id.btn_zoom_in);
+        ImageButton btnZoomOut = popupView.findViewById(R.id.btn_zoom_out);
+
+        btnZoomIn.setOnClickListener(v -> {
+            webView.zoomIn();
+            ActivityUtils.triggerFeedback(getContext());
+        });
+
+        btnZoomOut.setOnClickListener(v -> {
+            webView.zoomOut();
+            ActivityUtils.triggerFeedback(getContext());
+        });
+
+        int xOffset = -120;
+        int yOffset = 10;
+
+        popupWindow.showAsDropDown(anchorView, xOffset, yOffset);
     }
 
     private void setupWebView() {
@@ -196,6 +233,9 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
             if (!url.startsWith("http://") && !url.startsWith("https://"))
                 url = "https://" + url;
+
+            if (url.toLowerCase().contains(".pdf"))
+                url = "https://docs.google.com/gview?embedded=true&url=" + url;
 
             urlText.setText(url);
             webView.loadUrl(url);

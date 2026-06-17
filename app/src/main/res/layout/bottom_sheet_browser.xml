@@ -74,6 +74,26 @@
                 android:progressTint="@color/redMetro"
                 style="?android:attr/progressBarStyleHorizontal" />
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/zoom_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/circle_background_dark"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_character_browser"
+                android:tint="@android:color/white" />
+        </FrameLayout>
+
     </RelativeLayout>
 
     <WebView
