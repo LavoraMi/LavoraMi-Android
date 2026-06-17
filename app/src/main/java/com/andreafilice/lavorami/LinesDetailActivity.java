@@ -455,12 +455,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
     private boolean getLineLimitation() {
         /// This method is a refactor one that checks if the current line selected is available ONLY ON WORKING DAYS.
 

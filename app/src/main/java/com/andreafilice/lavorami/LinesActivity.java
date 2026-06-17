@@ -356,13 +356,15 @@ public class LinesActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
+        reloadSavedLines();
+
         reloadRecentLines();
+
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
         }
-        
-        linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
     }
 
     public void reloadRecentLines() {
@@ -618,7 +620,7 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     public void reloadSavedLines(){
-        LinearLayout [] containers = {containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerMXP, containerTram, containerTrans, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
+        LinearLayout [] containers = {containerRecent, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
         for (LinearLayout container : containers) {
             int numeroLinee = container.getChildCount();
 
