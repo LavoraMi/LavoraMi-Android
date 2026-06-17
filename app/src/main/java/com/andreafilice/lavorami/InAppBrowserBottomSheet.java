@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.PixelCopy;
 import android.view.View;
@@ -34,6 +35,7 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private WebView webView;
     private ProgressBar progressBar;
     private TextView urlText;
+    private TextView urlTitleText;
 
     private ImageButton shareBtn;
     private ImageButton doneBtn;
@@ -98,6 +100,7 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         webView = view.findViewById(R.id.webview);
         progressBar = view.findViewById(R.id.progress_bar);
         urlText = view.findViewById(R.id.url_text);
+        urlTitleText = view.findViewById(R.id.webTitle);
 
         shareBtn = view.findViewById(R.id.share_btn);
         doneBtn = view.findViewById(R.id.done_btn);
@@ -129,6 +132,11 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
                 urlText.setText(url);
+                urlTitleText.setText(webView.getTitle());
+
+                if(webView.getTitle().isEmpty() || urlTitleText.getText().isEmpty())
+                    urlTitleText.setText("LavoraMi");
+
                 tintHandler.postDelayed(InAppBrowserBottomSheet.this::updateAdaptiveTint, 300);
             }
         });
@@ -136,32 +144,32 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         webView.setWebChromeClient(new android.webkit.WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                if (newProgress < 100) {
-                    if (progressBar.getVisibility() == View.GONE) {
+            if (newProgress < 100) {
+                if (progressBar.getVisibility() == View.GONE) {
+                    progressBar.setAlpha(1f);
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                    progressBar.setProgress(newProgress, true);
+                else
+                    progressBar.setProgress(newProgress);
+            }
+            else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                    progressBar.setProgress(100, true);
+                else
+                    progressBar.setProgress(100);
+
+                progressBar.animate()
+                    .alpha(0f)
+                    .setDuration(400)
+                    .withEndAction(() -> {
+                        progressBar.setVisibility(View.GONE);
                         progressBar.setAlpha(1f);
-                        progressBar.setVisibility(View.VISIBLE);
-                    }
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                        progressBar.setProgress(newProgress, true);
-                    else
-                        progressBar.setProgress(newProgress);
-                }
-                else {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                        progressBar.setProgress(100, true);
-                    else
-                        progressBar.setProgress(100);
-
-                    progressBar.animate()
-                        .alpha(0f)
-                        .setDuration(400)
-                        .withEndAction(() -> {
-                            progressBar.setVisibility(View.GONE);
-                            progressBar.setAlpha(1f);
-                        })
-                        .start();
-                }
+                    })
+                    .start();
+            }
             }
         });
 
