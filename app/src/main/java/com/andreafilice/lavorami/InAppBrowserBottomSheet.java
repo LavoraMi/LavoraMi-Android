@@ -27,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
@@ -55,6 +56,17 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {return inflater.inflate(R.layout.bottom_sheet_browser, container, false);}
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        BottomSheetDialog dialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+        
+        dialog.getBehavior().setState(BottomSheetBehavior.STATE_EXPANDED);
+        dialog.getBehavior().setSkipCollapsed(true);
+
+        return dialog;
+    }
 
     @Override
     public void onStart() {
@@ -111,13 +123,45 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {progressBar.setVisibility(View.VISIBLE);}
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {}
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
                 urlText.setText(url);
                 tintHandler.postDelayed(InAppBrowserBottomSheet.this::updateAdaptiveTint, 300);
+            }
+        });
+
+        webView.setWebChromeClient(new android.webkit.WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (newProgress < 100) {
+                    if (progressBar.getVisibility() == View.GONE) {
+                        progressBar.setAlpha(1f);
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                        progressBar.setProgress(newProgress, true);
+                    else
+                        progressBar.setProgress(newProgress);
+                }
+                else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                        progressBar.setProgress(100, true);
+                    else
+                        progressBar.setProgress(100);
+
+                    progressBar.animate()
+                        .alpha(0f)
+                        .setDuration(400)
+                        .withEndAction(() -> {
+                            progressBar.setVisibility(View.GONE);
+                            progressBar.setAlpha(1f);
+                        })
+                        .start();
+                }
             }
         });
 
