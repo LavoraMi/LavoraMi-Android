@@ -185,7 +185,7 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
     private void setupClickListeners(FrameLayout closeBtn) {
         closeBtn.setOnClickListener(v -> dismiss());
-        doneBtn.setOnClickListener(v -> dismiss());
+        doneBtn.setOnClickListener(v -> webView.reload());
         shareBtn.setOnClickListener(v -> shareCurrentUrl());
 
         openBrowserBtn.setOnClickListener(v -> openInExternalBrowser());
