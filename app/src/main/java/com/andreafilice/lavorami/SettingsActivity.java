@@ -286,7 +286,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
         btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@applavorami.official"));
-        btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://lavorami.it"));
+        btnWebsite.setOnClickListener(v -> InAppBrowserBottomSheet.newInstance("https://lavorami.it").show(getSupportFragmentManager(), "browser"));
     }
 
     @Override

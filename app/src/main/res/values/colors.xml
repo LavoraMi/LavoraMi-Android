@@ -51,4 +51,5 @@
     <color name="bottomBarFade">#A1FFFFFF</color>
     <color name="bottomBarIconTint">#000000</color>
     <color name="bottomBarPillTint">#A2A2A2</color>
+    <color name="top_bar_black">#1C1C1E</color>
 </resources>
