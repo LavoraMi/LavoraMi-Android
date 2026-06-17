@@ -115,7 +115,7 @@ public class NotificationSettings extends AppCompatActivity {
             switchStrikeNotifications.setClickable(isChecked);
             switchPushNotifications.setClickable(isChecked);
 
-            switchNotificationsGeneral.setTrackTintMode(isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            switchNotificationsGeneral.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchStartWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchEndWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchStrikeNotifications.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
