@@ -193,7 +193,7 @@ public class LinesActivity extends AppCompatActivity {
 
         for (int i = 0; i < infoButtons.length; i++) {
             int finalI = i;
-            infoButtons[i].setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, infoUrls[finalI]));
+            infoButtons[i].setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), infoUrls[finalI]));
         }
 
         //* SEARCH BAR

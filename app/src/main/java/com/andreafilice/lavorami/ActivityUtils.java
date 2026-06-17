@@ -12,6 +12,7 @@ import android.os.VibratorManager;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 public class ActivityUtils {
     public static void changeActivity(Context context, Class<?> destinationLayout) {
@@ -38,13 +39,11 @@ public class ActivityUtils {
         context.startActivity(browserIntent);
     }
 
-    public static void openURLWithTabBuilder(Context context, String url) {
+    public static void openURLWithTabBuilder(FragmentManager manager, String url) {
         ///@PARAMETER
         /// String url is the URL to open in-app Browser.
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
 
-        CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(context, Uri.parse(url));
+        InAppBrowserBottomSheet.newInstance(url).show(manager, "browser");
     }
 
     public static void triggerFeedback(Context context) {

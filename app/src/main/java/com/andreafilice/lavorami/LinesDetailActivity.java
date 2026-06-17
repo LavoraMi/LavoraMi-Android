@@ -1193,9 +1193,9 @@ public class LinesDetailActivity extends AppCompatActivity {
                             String lineLink = linkLinee[i];
 
                             deviazioneLinea.setVisibility(View.VISIBLE);
-                            deviazioneLinea.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, lineLink));
+                            deviazioneLinea.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), lineLink));
                             mapDeviationBtn.setVisibility((lineLink.equalsIgnoreCase("null")) ? View.GONE : View.VISIBLE);
-                            mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, lineLink));
+                            mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), lineLink));
                         }
                         i++;
                     }
@@ -1210,8 +1210,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                         if(suburbanInterruptions[j].equalsIgnoreCase(nomeLinea)) {
                             interruzioneTratta.setVisibility(View.VISIBLE);
-                            mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, suburbanLinks[finalJ]));
-                            interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, suburbanLinks[finalJ]));
+                            mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), suburbanLinks[finalJ]));
+                            interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), suburbanLinks[finalJ]));
                         }
                     }
 

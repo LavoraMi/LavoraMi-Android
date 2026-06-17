@@ -265,7 +265,7 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this section, we add a listener to the "Support Us" button in Settings View.
         RelativeLayout supportBtn = findViewById(R.id.btnSupportUs);
 
-        supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, "https://www.buymeacoffee.com/lavorami"));
+        supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami"));
 
         //*MAPS INFOS
         /// In this section, we add a listener to the "Info about Maps" button in Settings View.
