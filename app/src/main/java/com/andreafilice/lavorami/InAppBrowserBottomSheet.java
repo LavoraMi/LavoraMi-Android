@@ -117,7 +117,10 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         FrameLayout closeBtn = view.findViewById(R.id.close_btn);
         zoomBtn = view.findViewById(R.id.zoom_btn);
 
-        zoomBtn.setOnClickListener(v -> showZoomPopup(v));
+        zoomBtn.setOnClickListener(v -> {
+            showZoomPopup(v);
+            ActivityUtils.triggerFeedback(getContext());
+        });
 
         setupWebView();
         loadInitialUrl();
@@ -287,11 +290,25 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     }
 
     private void setupClickListeners(FrameLayout closeBtn) {
-        closeBtn.setOnClickListener(v -> dismiss());
-        doneBtn.setOnClickListener(v -> webView.reload());
-        shareBtn.setOnClickListener(v -> shareCurrentUrl());
+        closeBtn.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(getContext());
+            dismiss();
+        });
 
-        openBrowserBtn.setOnClickListener(v -> openInExternalBrowser());
+        doneBtn.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(getContext());
+            webView.reload();
+        });
+
+        shareBtn.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(getContext());
+            shareCurrentUrl();
+        });
+
+        openBrowserBtn.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(getContext());
+            openInExternalBrowser();
+        });
     }
 
     private void shareCurrentUrl() {
