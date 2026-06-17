@@ -183,20 +183,37 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         ImageButton btnZoomIn = popupView.findViewById(R.id.btn_zoom_in);
         ImageButton btnZoomOut = popupView.findViewById(R.id.btn_zoom_out);
 
+        updateZoomButtonsState(btnZoomIn, btnZoomOut);
+
         btnZoomIn.setOnClickListener(v -> {
             webView.zoomIn();
             ActivityUtils.triggerFeedback(getContext());
+            v.postDelayed(() -> updateZoomButtonsState(btnZoomIn, btnZoomOut), 150);
         });
 
         btnZoomOut.setOnClickListener(v -> {
             webView.zoomOut();
             ActivityUtils.triggerFeedback(getContext());
+            v.postDelayed(() -> updateZoomButtonsState(btnZoomIn, btnZoomOut), 150);
         });
 
         int xOffset = -120;
         int yOffset = 10;
 
         popupWindow.showAsDropDown(anchorView, xOffset, yOffset);
+    }
+
+    private void updateZoomButtonsState(ImageButton btnIn, ImageButton btnOut) {
+        if (webView == null) return;
+
+        boolean canZoomIn = webView.canZoomIn();
+        boolean canZoomOut = webView.canZoomOut();
+
+        btnIn.setEnabled(canZoomIn);
+        btnIn.setAlpha(canZoomIn ? 1.0f : 0.4f);
+
+        btnOut.setEnabled(canZoomOut);
+        btnOut.setAlpha(canZoomOut ? 1.0f : 0.4f);
     }
 
     private void setupWebView() {
