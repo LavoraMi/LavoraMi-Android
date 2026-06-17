@@ -132,7 +132,13 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
             public void onPageFinished(WebView view, String url) {
                 progressBar.setVisibility(View.GONE);
                 urlText.setText(url);
-                urlTitleText.setText(webView.getTitle());
+
+                String title = webView.getTitle();
+
+                if(title.length() > 30)
+                    title = title.substring(0, 27) + "...";
+
+                urlTitleText.setText(title);
 
                 if(webView.getTitle().isEmpty() || urlTitleText.getText().isEmpty())
                     urlTitleText.setText("LavoraMi");
