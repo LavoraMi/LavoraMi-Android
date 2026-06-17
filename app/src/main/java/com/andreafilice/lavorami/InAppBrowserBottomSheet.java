@@ -165,6 +165,11 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
             }
         });
 
+        webView.setOnTouchListener((v, event) -> {
+            v.getParent().requestDisallowInterceptTouchEvent(webView.getScrollY() > 0);
+            return false;
+        });
+
         webView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             tintHandler.removeCallbacksAndMessages(null);
             tintHandler.postDelayed(this::updateAdaptiveTint, 150);
