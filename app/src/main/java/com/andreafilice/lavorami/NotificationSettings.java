@@ -120,14 +120,27 @@ public class NotificationSettings extends AppCompatActivity {
             switchEndWorks.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchStrikeNotifications.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             switchPushNotifications.setTrackTintMode((isChecked) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
+            ActivityUtils.triggerFeedback(this);
             saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);
         });
 
         /// Set the OnClickListener for ALL the Switches.
-        switchStartWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
-        switchEndWorks.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
-        switchStrikeNotifications.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
-        switchPushNotifications.setOnClickListener(v -> {saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);});
+        switchStartWorks.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);
+        });
+        switchEndWorks.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);
+        });
+        switchStrikeNotifications.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);
+        });
+        switchPushNotifications.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            saveDatas(switchNotificationsGeneral, switchStartWorks, switchEndWorks, switchStrikeNotifications, switchPushNotifications);
+        });
 
         //*TIME PICKER
         /// In this section of the code, we let the user decide at what time
