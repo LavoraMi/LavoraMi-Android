@@ -108,29 +108,28 @@
 
             <ImageButton
                 android:id="@+id/share_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_share"
+                android:src="@drawable/ic_share_browser"
                 android:scaleType="centerInside"
-                android:padding="14dp"
-                android:contentDescription="Condividi" />
+                android:padding="14dp" />
 
             <ImageButton
                 android:id="@+id/done_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_refresh"
+                android:src="@drawable/ic_refresh_browser"
                 android:scaleType="centerInside"
                 android:padding="14dp" />
 
             <ImageButton
                 android:id="@+id/open_browser_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_accessibility"
+                android:src="@drawable/ic_browser"
                 android:scaleType="centerInside"
                 android:padding="14dp"/>
         </LinearLayout>
