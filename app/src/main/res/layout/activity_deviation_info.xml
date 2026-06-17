@@ -67,7 +67,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/ic_single_branch"
+                android:src="@drawable/ic_map_info"
                 app:tint="#E41414" />
 
             <TextView
