@@ -311,7 +311,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tram"
+                android:text="@string/tramLinesScroll"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 android:fontFamily="@font/font_main"

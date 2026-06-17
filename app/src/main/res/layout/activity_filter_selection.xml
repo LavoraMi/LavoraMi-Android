@@ -183,7 +183,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/inter"
-                            android:text="Tram"
+                            android:text="@string/tramLinesScroll"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 

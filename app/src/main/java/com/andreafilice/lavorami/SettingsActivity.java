@@ -435,7 +435,7 @@ public class SettingsActivity extends AppCompatActivity {
             case LE_TUE_LINEE: return getString(R.string.yourLinesPrefix);
             case TUTTI: return getString(R.string.allFilter);
             case BUS: return "Bus";
-            case TRAM: return "Tram";
+            case TRAM: return getString(R.string.tramLinesScroll);
             case METROPOLITANA: return getString(R.string.metroFilter);
             case TRENO: return getString(R.string.trainFilter);
             case IN_CORSO: return getString(R.string.inProgressFilter);
@@ -446,7 +446,7 @@ public class SettingsActivity extends AppCompatActivity {
             case DI_STAV: return getString(R.string.stavFilter);
             case DI_STAR: return getString(R.string.starFilter);
             case DI_AUTOGUIDOVIE: return getString(R.string.autoguidovieFilter);
-            default: return "Errore";
+            default: return getString(R.string.error);
         }
     }
 

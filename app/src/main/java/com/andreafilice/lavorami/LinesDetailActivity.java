@@ -143,7 +143,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
 
         if (nomeLinea == null) nomeLinea = "M1";
-        if ((tipoDiLinea.contains("Tram") && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z")&& !(busLinesWithMap.contains(nomeLinea)))){ // && !(busLinesWithMap.contains(nomeLinea))
+        if ((tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z")&& !(busLinesWithMap.contains(nomeLinea)))){ // && !(busLinesWithMap.contains(nomeLinea))
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -151,7 +151,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             containerLavori.setVisibility(View.VISIBLE);
             caricaEventiFiltrati();
 
-            if(!tipoDiLinea.contains("Tram"))
+            if(!tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
                 caricaFermateInterscambio();
 
             chipMappa.setChecked(false);
@@ -1421,7 +1421,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
     }
 
-    public boolean haveMapAvailable(){return tipoDiLinea.contains("Tram") || this.nomeLinea.contains("z");}
+    public boolean haveMapAvailable(){return tipoDiLinea.contains(getString(R.string.tramLinesScroll)) || this.nomeLinea.contains("z");}
 
     public String getFrequenza(String lineName){
         switch(lineName) {
