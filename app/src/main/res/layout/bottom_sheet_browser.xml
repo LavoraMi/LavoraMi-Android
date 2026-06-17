@@ -8,6 +8,13 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_bar"
+        android:layout_alignParentBottom="true" />
+
     <RelativeLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
@@ -33,7 +40,7 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_close_browser"
-                android:tint="@android:color/white" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <LinearLayout
@@ -94,8 +101,8 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_character_browser"
-                android:tint="@android:color/white"
-                android:alpha="1.0" />
+                android:alpha="1.0"
+                app:tint="@android:color/white" />
 
             <ImageView
                 android:id="@+id/icon_zoom_hint"
@@ -103,18 +110,11 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_zoom"
-                android:tint="@android:color/white"
-                android:alpha="0.0" />
+                android:alpha="0.0"
+                app:tint="@android:color/white" />
         </FrameLayout>
 
     </RelativeLayout>
-
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/top_bar"
-        android:layout_alignParentBottom="true" />
 
     <RelativeLayout
         android:id="@+id/bottom_bar"
