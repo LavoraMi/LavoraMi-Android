@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami;
 
+import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
+
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -130,14 +132,14 @@ public class AccountManagement extends AppCompatActivity {
 
         //*GET METADATA
         /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
-        SupabaseANON = getMetaData("supabaseANON");
-        SupabaseURL = getMetaData("supabaseURL");
+        SupabaseANON = getMetaData(this, "supabaseANON");
+        SupabaseURL = getMetaData(this, "supabaseURL");
 
         ///In this section of the code, we initialize the SessionManager for save the credentials of the Logged Account.
         sessionManager = new SessionManager(this);
 
         /// In this section of the code, we initialize the GoogleSignInClient for SignIn with Google
-        String webClientID = getMetaData("googleAPI");
+        String webClientID = getMetaData(this, "googleAPI");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(webClientID)
@@ -704,25 +706,6 @@ public class AccountManagement extends AppCompatActivity {
 
         String[] names = name.split(" ");
         return names[0];
-    }
-
-    private String getMetaData(String key){
-        /// This function get from our AndroidManifest.xml the values of .env files.
-        /// @PARAMETER
-        /// String key is the actual key of the value that we need to grab from the manifest file.
-
-        try {
-            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Bundle bundle = info.metaData;
-
-            if(bundle != null)
-                return bundle.getString(key);
-        }
-        catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
-        }
-        return null;
     }
 
     private void showBiometricPrompt() {

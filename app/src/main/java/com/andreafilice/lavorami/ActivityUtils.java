@@ -2,12 +2,16 @@ package com.andreafilice.lavorami;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.os.VibratorManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
@@ -64,5 +68,24 @@ public class ActivityUtils {
             else
                 vibrator.vibrate(20);
         }
+    }
+
+    public static String getMetaData(Context context, String key){
+        /// This function get from our AndroidManifest.xml the values of .env files.
+        /// @PARAMETER
+        /// String key is the actual key of the value that we need to grab from the manifest file.
+
+        try {
+            ApplicationInfo info = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = info.metaData;
+
+            if(bundle != null)
+                return bundle.getString(key);
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(context, context.getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
+        }
+        return null;
     }
 }

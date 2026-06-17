@@ -169,10 +169,10 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         View popupView = LayoutInflater.from(getContext()).inflate(R.layout.popup_zoom, null);
 
         android.widget.PopupWindow popupWindow = new android.widget.PopupWindow(
-                popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                true
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
         );
 
         popupWindow.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));

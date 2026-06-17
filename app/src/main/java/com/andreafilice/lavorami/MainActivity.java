@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami;
 
+import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -158,8 +160,8 @@ public class MainActivity extends AppCompatActivity {
 
         //*GET METADATA
         /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
-        SupabaseANON = getMetaData("supabaseANON");
-        SupabaseURL = getMetaData("supabaseURL");
+        SupabaseANON = getMetaData(this, "supabaseANON");
+        SupabaseURL = getMetaData(this, "supabaseURL");
 
         /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
         if(SupabaseURL != null){
@@ -1172,7 +1174,8 @@ public class MainActivity extends AppCompatActivity {
                 if (isFilled[0]) {
                     heartIcon.setImageResource(R.drawable.ic_heart);
                     heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.heartColor)));
-                } else {
+                }
+                else {
                     heartIcon.setImageResource(R.drawable.ic_heart_empty);
                     heartIcon.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
                 }
@@ -1196,22 +1199,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialog.show();
-    }
-
-    private String getMetaData(String key){
-        /// This function get from our AndroidManifest.xml the values of .env files.
-        /// @PARAMETER
-        /// String key is the actual key of the value that we need to grab from the manifest file.
-
-        try {
-            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Bundle bundle = info.metaData;
-
-            if(bundle != null)
-                return bundle.getString(key);
-        }
-        catch (PackageManager.NameNotFoundException e) {Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
-        return null;
     }
 
     private void loadUserPreferences() {

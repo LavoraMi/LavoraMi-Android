@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
+import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
@@ -102,7 +103,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MapboxHelper.init(getMetaData("MAPBOX_KEY"));
+        MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines_detail);
 
@@ -178,8 +179,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         //*GET METADATA
         /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
-        SupabaseANON = getMetaData("supabaseANON");
-        SupabaseURL = getMetaData("supabaseURL");
+        SupabaseANON = getMetaData(this, "supabaseANON");
+        SupabaseURL = getMetaData(this, "supabaseURL");
 
         /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
         if(SupabaseURL != null){
@@ -1762,25 +1763,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         handler.removeCallbacksAndMessages(null);
         executor.shutdownNow();
         interchangeHandler.removeCallbacksAndMessages(null);
-    }
-
-    private String getMetaData(String key){
-        /// This function get from our AndroidManifest.xml the values of .env files.
-        /// @PARAMETER
-        /// String key is the actual key of the value that we need to grab from the manifest file.
-
-        try {
-            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Bundle bundle = info.metaData;
-
-            if(bundle != null)
-                return bundle.getString(key);
-        }
-        catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
-        }
-        return null;
     }
 
     private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ArrivalsView> {

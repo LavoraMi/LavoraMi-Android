@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.ActivityUtils.changeActivity;
+import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.app.AlertDialog;
 import android.content.ClipData;
@@ -66,8 +67,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         //*GET METADATA
         /// In this section of the code, we initialize the SupabaseURL and SupabaseANON variables for performance boost.
-        SupabaseANON = getMetaData("supabaseANON");
-        SupabaseURL = getMetaData("supabaseURL");
+        SupabaseANON = getMetaData(this, "supabaseANON");
+        SupabaseURL = getMetaData(this, "supabaseURL");
 
         /// In this section of the code, we initialize the Supabase Server from the keys of the .env file.
         if(SupabaseURL != null){
@@ -450,7 +451,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void setStarIcons(ImageView[] icons, RelativeLayout[] layouts, String[] lineCodes) {
-        //TODO: Comment better this code.
+        /// This function set the stars icons in Settings -> Favourites section.
+        /// @PARAMETERS
+        /// ImageView[] icons are the ID of the icons to set the draggable.
+        /// RelativeLayout[] layouts are the ID of the buttons to set.
+        /// String[] linesCodes are the codes to save into the DataManager script.
+
         for (int i = 0; i < icons.length; i++) {
             int finalI = i;
 
@@ -527,24 +533,5 @@ public class SettingsActivity extends AppCompatActivity {
                     ThemeSettings.setTheme();
                     loadFavorites(images, lines);
                 }).show();
-    }
-
-    private String getMetaData(String key){
-        /// This function get from our AndroidManifest.xml the values of .env files.
-        /// @PARAMETER
-        /// String key is the actual key of the value that we need to grab from the manifest file.
-
-        try {
-            ApplicationInfo info = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            Bundle bundle = info.metaData;
-
-            if(bundle != null)
-                return bundle.getString(key);
-        }
-        catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-            Log.d("ERROR", "Impossibile trovare questo valore. ERROR MESSAGE: " + e.getMessage());
-        }
-        return null;
     }
 }
