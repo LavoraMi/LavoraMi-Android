@@ -351,14 +351,14 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         // CHIP ICON COLOR
         ColorStateList chipIconColors = new ColorStateList(
-                new int[][] {
-                        new int[]{ android.R.attr.state_checked },
-                        new int[]{ -android.R.attr.state_checked }
-                },
-                new int[] {
-                        ContextCompat.getColor(this, R.color.White),
-                        coloreLinea
-                }
+            new int[][] {
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
+            },
+            new int[] {
+                ContextCompat.getColor(this, R.color.White),
+                coloreLinea
+            }
         );
         chipMappa.setChipIconTint(chipIconColors);
         chipLavori.setChipIconTint(chipIconColors);
@@ -367,14 +367,14 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         // CHIP TEXT COLOR
         ColorStateList chipTextColor = new ColorStateList(
-                new int[][]{
-                        new int[]{ android.R.attr.state_checked },
-                        new int[]{ -android.R.attr.state_checked }
-                },
-                new int[]{
-                        ContextCompat.getColor(this, R.color.White),      // selezionata > bianco
-                        Color.TRANSPARENT                                  // non selezionata > invisibile
-                }
+            new int[][]{
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
+            },
+            new int[]{
+                ContextCompat.getColor(this, R.color.White),
+                Color.TRANSPARENT
+            }
         );
         chipMappa.setTextColor(chipTextColor);
         chipLavori.setTextColor(chipTextColor);
@@ -703,8 +703,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         updateChipGroupSizes(detActionGroup);
 
-
-
         String stopIdTrovato = null;
         String nomeFermataTrovato = null;
 
@@ -732,31 +730,26 @@ public class LinesDetailActivity extends AppCompatActivity {
             MapboxHelper.zoomToUserLocation(mapViewRef);
         else {
             androidx.core.app.ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
-                    LOCATION_PERMISSION_REQUEST_CODE
+                this,
+                new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
+                LOCATION_PERMISSION_REQUEST_CODE
             );
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0
                     && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                // Permesso appena concesso
                 if (mapViewRef != null) {
                     MapboxHelper.enableUserLocation(mapViewRef, false);
                     MapboxHelper.zoomToUserLocation(mapViewRef);
                 }
             } else {
-                Toast.makeText(this,
-                        getString(R.string.locationPermissionDenied),
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.locationPermissionDenied), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -1756,17 +1749,12 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private int getChipTextResId(int chipId) {
-
         if (chipId == R.id.chipMappa) return R.string.mapChip;
-
         if (chipId == R.id.chipLavoriInCorso) return R.string.lineWorksChip;
-
         if (chipId == R.id.chipInterscambi) return R.string.interchangesChip;
-
         if (chipId == R.id.chipArrivi) return R.string.arrivalsChipText;
 
         return 0;
-
     }
 
     @Override
