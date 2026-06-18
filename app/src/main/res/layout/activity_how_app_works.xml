@@ -279,7 +279,7 @@
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="20dp"
-                android:text="Oppure salva una linea nella sezione Le tue linee per vedere, tramite l'apposito filtro, solo i lavori che interessano a te."
+                android:text="@string/operatorTextDeps2"
                 android:textAlignment="center" />
 
             <LinearLayout

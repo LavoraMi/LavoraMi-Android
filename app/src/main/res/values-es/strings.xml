@@ -398,4 +398,5 @@
     <string name="openLinkDepsText">Selecciona la forma en la que quieres abrir los enlaces.</string>
     <string name="busKey">Autobús</string>
     <string name="arrivalsNotLoaded">Carga de horarios aún no completada...ù</string>
+    <string name="operatorTextDeps2">O bien guarda una línea en la sección \"Tus líneas\" para ver, mediante el filtro correspondiente, solo los trabajos que te interesan.</string>
 </resources>
