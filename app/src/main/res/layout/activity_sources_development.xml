@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".SourcesDevelopment">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -16,7 +16,9 @@
         android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:shapeAppearanceOverlay="@style/RoundedCorners"
+        app:strokeWidth="1dp"
+        android:src="@drawable/ic_app"/>
 
     <TextView
         android:id="@+id/appName"
@@ -39,12 +41,10 @@
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/font_main"
         android:text="@string/appVersionFull"
         android:textColor="#808080"
         app:layout_constraintEnd_toEndOf="@+id/appName"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/appName"
         app:layout_constraintTop_toBottomOf="@+id/appName" />
 
@@ -59,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,10 +103,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter"
+                android:justificationMode="inter_word"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="@string/disclaimer_text"
-                android:justificationMode="inter_word"
                 android:textSize="14sp" />
 
             <View
@@ -181,7 +182,7 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:textStyle="bold" />
-            
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -191,6 +192,7 @@
                 android:textAlignment="center"
                 android:textSize="22sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -248,17 +250,17 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/inter"
                 android:text="@string/supportText"
                 android:textAlignment="center"
-                android:textSize="14sp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp" />
+                android:textSize="14sp" />
 
-           <com.google.android.material.button.MaterialButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPatreon"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
@@ -267,15 +269,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="@string/parteonSupport"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_support"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCofee"
@@ -286,15 +288,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="@string/buyACoffeSupport"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_buymeacoffee"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <View
                 android:layout_width="150dp"
@@ -322,15 +324,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="Instagram"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_instagram"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnTikTok"
@@ -341,15 +343,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="TikTok"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_tiktok"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <View
                 android:layout_width="150dp"
@@ -377,15 +379,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="@string/bugReport"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_bug"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnWebsite"
@@ -396,15 +398,15 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/font_main"
                 android:text="@string/webSite"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_globe"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <View
                 android:layout_width="150dp"
@@ -432,15 +434,15 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/font_main"
                 android:text="@string/credits"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_libraries"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPrivacyPolicy"
@@ -451,15 +453,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="Privacy Policy"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_policy"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnTermsService"
@@ -470,15 +472,15 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
                 android:text="@string/terminiDiServizio"
+                android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textAllCaps="false"
                 app:icon="@drawable/ic_terms_conditions"
-                app:iconSize="30dp"
+                app:iconGravity="textStart"
                 app:iconPadding="12dp"
-                app:iconTint="#FF5252"
-                app:iconGravity="textStart" />
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
         </LinearLayout>
     </ScrollView>
 
@@ -487,9 +489,10 @@
         android:layout_width="58dp"
         android:layout_height="43dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="20dp"
         android:background="@color/background_app"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back"

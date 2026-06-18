@@ -8,16 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".HowAppWorks">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/appIcon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="52dp"
-        android:contentDescription="App Icon"
+        android:src="@drawable/ic_app"
+        app:shapeAppearanceOverlay="@style/RoundedCorners"
+        app:strokeWidth="1dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtAppName"
@@ -61,15 +62,17 @@
         android:layout_width="58dp"
         android:layout_height="43dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:background="@color/background_app"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back"
         app:tint="?attr/colorControlNormal" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,8 +118,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/progressBarText"
                 android:textAlignment="center" />
 
@@ -213,8 +216,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/choseOperatorText"
                 android:textAlignment="center" />
 
@@ -306,8 +309,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/choseYourLineText"
                 android:textAlignment="center" />
 
@@ -424,8 +427,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/viewInterchangesText"
                 android:textAlignment="center" />
 
@@ -621,8 +624,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/worksiteStopText"
                 android:textAlignment="center" />
 
@@ -640,10 +643,10 @@
                     android:id="@+id/cardExampleWork"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground">
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="16dp">
 
                     <ImageView
                         android:id="@+id/iconWorksiteCard"
@@ -861,8 +864,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/viewLinesOnMapText"
                 android:textAlignment="center" />
 
@@ -922,8 +925,8 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="20dp"
                 android:text="@string/updateYourselfText"
                 android:textAlignment="center" />
 
