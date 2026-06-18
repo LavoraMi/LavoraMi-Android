@@ -393,4 +393,7 @@
     <string name="mainDeveloperText">Lead Developer:</string>
     <string name="trackInterruptedInfo">SERVICE DISRUPTIONS DUE TO WORKS ON THE LINE.</string>
     <string name="noRoutesDeps">There are no scheduled services for this stop today; please try another one.</string>
+    <string name="openLinkMainText">Open link:</string>
+    <string name="inAppText">In App</string>
+    <string name="openLinkDepsText">Select how you want links to open.</string>
 </resources>

@@ -392,4 +392,7 @@
     <string name="mainDeveloperText">Sviluppatore Principale:</string>
     <string name="trackInterruptedInfo">INTERRUZIONI SULLA LINEA PER LAVORI.</string>
     <string name="noRoutesDeps">Per oggi non c\'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra.</string>
+    <string name="openLinkMainText">Apri link:</string>
+    <string name="inAppText">In App</string>
+    <string name="openLinkDepsText">Seleziona la modalità in cui aprire i link.</string>
 </resources>

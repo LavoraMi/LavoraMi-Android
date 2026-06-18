@@ -393,4 +393,7 @@
     <string name="mainDeveloperText">Desarrollador Principal:</string>
     <string name="trackInterruptedInfo">EINTERRUPCIONES EN LA LÍNEA POR OBRAS.</string>
     <string name="noRoutesDeps">Hoy no hay ningún trayecto programado para esta parada; prueba a elegir otra.</string>
+    <string name="openLinkMainText">Abrir enlace:</string>
+    <string name="inAppText">En App</string>
+    <string name="openLinkDepsText">Selecciona la forma en la que quieres abrir los enlaces.</string>
 </resources>

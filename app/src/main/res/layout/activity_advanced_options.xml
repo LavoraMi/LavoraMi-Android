@@ -444,7 +444,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="36dp"
                             android:fontFamily="@font/font_main"
-                            android:text="Apri link:"
+                            android:text="@string/openLinkMainText"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
                     </RelativeLayout>
@@ -461,7 +461,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/inter"
-                            android:text="In App"
+                            android:text="@string/inAppText"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 
@@ -517,7 +517,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter"
-                android:text="Seleziona la modalità in cui aprire i link."
+                android:text="@string/openLinkDepsText"
                 android:textColor="#8E8E93"
                 android:textSize="13sp"  />
 
