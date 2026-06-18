@@ -64,7 +64,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         "starmobility.it",
         "autoguidovie.it",
         "patreon.com",
-        "buymeacoffee.com"
+        "buymeacoffee.com",
+        "comune.milano.it"
     };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
@@ -237,6 +238,7 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private void setupWebView() {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setAllowContentAccess(false);
         settings.setDomStorageEnabled(true);
         settings.setDatabaseEnabled(true);
         settings.setLoadWithOverviewMode(true);
