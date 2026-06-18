@@ -319,9 +319,24 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
-        aggiornaInfoSuperiori();
-        preloadInterscambi();
 
+        //*FETCH VARS
+        /// In this section of the code, we fetch the variables from the .json file in cdn
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+
+        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
+            @Override
+            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+                if(response.isSuccessful()) {
+                    strikeCDNResponse = response.body();
+                    aggiornaInfoSuperiori();
+                    preloadInterscambi();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
+        });
         //*SAVE TO "YOUR LINES"
         /// In this section we save the line currently selected to the Array of "your lines".
         updateSavedLines();
@@ -338,11 +353,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
 
         ColorStateList chipBgColor = new ColorStateList(
-                new int[][]{
-                        new int[]{ android.R.attr.state_checked },
-                        new int[]{ -android.R.attr.state_checked }
-                },
-                new int[]{ coloreLinea, coloreDefault }
+            new int[][]{
+                new int[]{ android.R.attr.state_checked },
+                new int[]{ -android.R.attr.state_checked }
+            },
+            new int[]{ coloreLinea, coloreDefault }
         );
         chipMappa.setChipBackgroundColor(chipBgColor);
         chipLavori.setChipBackgroundColor(chipBgColor);
@@ -509,14 +524,15 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void onMapReady(MapView mapView) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
-        boolean isPassanteClosed = false;
 
+        //*FETCH VARS
+        /// In this section of the code, we fetch the variables from the .json file in cdn
         APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
 
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
             @Override
             public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
-                if(response.isSuccessful()){
+                if(response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     elaboraStazioni(layoutMaps, layoutLoadingMap, mapView);
                 }
@@ -1252,18 +1268,18 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
 
-            case "S1": return "Saronno - Lodi";
+            case "S1": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
             case "S2": return "Seveso - Milano Rogoredo"; //* Mariano Comense - Milano Rogoredo
             case "S3": return "Saronno - Milano Cadorna";
             case "S4": return "Camnago-Lentate - Milano Cadorna";
-            case "S5": return "Gallarate - Treviglio"; //* Varese - Treviglio
+            case "S5": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Treviglio" : "Gallarate - Treviglio"; //* Varese - Treviglio
             case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
             case "S7": return "Triuggio - Milano Pta Garibaldi"; //* Lecco - Milano Pta Garibaldi
             case "S8": return "Lecco - Carnate - Milano Pta Garibaldi";
             case "S9": return "Saronno - Albairate-Vermezzo";
             case "S11": return "Milano Pta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni
             case "S12": return "Melegnano - Cormano";
-            case "S13": return "Garbagnate Milanese - Pavia";
+            case "S13": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 
