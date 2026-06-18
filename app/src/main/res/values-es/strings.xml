@@ -279,14 +279,14 @@
     <string name="downloadAssets">Descargando los elementos necesarios...</string>
     <string name="errorTranslating">Se ha producido un error durante la traducción.</string>
     <string name="choseYourLineText">Guarda como favorita la línea que usas cada día para verla enseguida en la sección \"Tus Líneas\" y, cuando haya obras en ella, ya estarás informado.</string>
-    <string name="viewInterchanges">Ver las Intercambios</string>
+    <string name="viewInterchanges">Intercambios</string>
     <string name="viewInterchangesText">Visualiza las líneas que hacen intercambios con TU línea o, en el caso de los autobuses, dónde tienen parada final con correspondencia.</string>
     <string name="worksiteStop">Parada en Obras</string>
     <string name="worksiteStopText">No solo \"obras en curso\": te explicamos qué tipo de trabajo se está realizando y las consecuencias que puede tener ese tramo en obras (desvíos, paradas suspendidas...).</string>
     <string name="fermataExample">Obras de mejora de infraestructuras en el tramo Palazzolo, Camnago Lenate, Seveso con modificaciones en la circulación de trenes</string>
     <string name="rallentamento">Ralentización</string>
     <string name="disclaimerAppFunctions">Todos los ejemplos mostrados son meramente ilustrativos y pueden referirse a eventos actuales o pasados.</string>
-    <string name="viewLinesOnMap">Ver las líneas en el Mapa</string>
+    <string name="viewLinesOnMap">Mapas</string>
     <string name="viewLinesOnMapText">Visualiza los recorridos de tus líneas favoritas en el mapa para no perderte y saber siempre adónde vas.</string>
     <string name="lineaAttesta">"ACTUALMENTE LA LÍNEA LLEGA HASTA: "</string>
     <string name="accessibilityTitle">ACCESIBILIDAD DE LA LÍNEA:</string>
@@ -350,7 +350,7 @@
     <string name="latestVersionSupported">"Última versión compatible: "</string>
     <string name="updateNow">Actualizar ahora</string>
     <string name="starLines">Líneas STAR</string>
-    <string name="choseOperator">Elige tus actualizaciones</string>
+    <string name="choseOperator">Elige tus líneas</string>
     <string name="choseOperatorText">Elige tus operadores de transporte más utilizados en los ajustes y, al añadirlos a favoritos, recibirás de inmediato las obras de ese operador.</string>
     <string name="feedbackText">Activar Vibración Táctil</string>
     <string name="feedbackTextDeps">Activa la vibración táctil en determinadas pantallas o botones.</string>

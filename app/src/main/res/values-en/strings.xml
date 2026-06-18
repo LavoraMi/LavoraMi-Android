@@ -279,14 +279,14 @@
     <string name="downloadAssets">Downloading necessary files...</string>
     <string name="errorTranslating">An error occurred while translating.</string>
     <string name="choseYourLineText">Save the line you use every day as a favorite so you can see it immediately in the \"Your Lines\" section, and when there\'s work on it, you\'ll be updated.</string>
-    <string name="viewInterchanges">View changes</string>
+    <string name="viewInterchanges">Changes</string>
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
     <string name="worksiteStop">Worksite Stop</string>
     <string name="worksiteStopText">Not just \"work in progress\" we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc.).</string>
     <string name="fermataExample">Infrastructure upgrade works on the Palazzolo, Camnago Lenate, and Seveso sections, with changes to train traffic</string>
     <string name="rallentamento">Slowdown</string>
     <string name="disclaimerAppFunctions">All examples given are for illustrative purposes only and may be current or past events.</string>
-    <string name="viewLinesOnMap">View lines on the Map</string>
+    <string name="viewLinesOnMap">Maps</string>
     <string name="viewLinesOnMapText">View the routes of your favorite lines on the map, so you don\'t get lost and always know where you are going.</string>
     <string name="lineaAttesta">"THE LINE CURRENTLY TERMINATES AT: "</string>
     <string name="accessibilityTitle">LINE ACCESSIBILITY:</string>
@@ -350,7 +350,7 @@
     <string name="latestVersionSupported">"Latest supported version: "</string>
     <string name="updateNow">Update Now</string>
     <string name="starLines">STAR Lines</string>
-    <string name="choseOperator">Choose your updates</string>
+    <string name="choseOperator">Choose your lines</string>
     <string name="choseOperatorText">Choose your most used transport operators in your settings and, by adding them to your favourites, you will immediately receive new works.</string>
     <string name="feedbackText">Enable Haptic Feedback</string>
     <string name="feedbackTextDeps">Enable Haptic Feedback on certain buttons or screens.</string>
