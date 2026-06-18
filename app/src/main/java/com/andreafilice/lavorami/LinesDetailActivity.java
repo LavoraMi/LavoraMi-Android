@@ -1252,7 +1252,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S9": return "Saronno - Albairate-Vermezzo";
             case "S11": return "Milano Pta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni. MODIFICHE CIRCOLAZIONE.
             case "S12": return "Melegnano - Cormano";
-            case "S13": return "Pavia - Milano Bovisa";
+            case "S13": return "Garbagnate Milanese - Pavia";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 

@@ -908,6 +908,18 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS13() {
         List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Garbagnate Milanese", 45.58014, 9.08042, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.57108, 9.09097, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.55262, 9.11209, "Main", "S13"));
+        stations.add(new MetroStation("Bollate Centro", 45.54289, 9.12283, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.533, 9.13238, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.51918, 9.14562, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.50806, 9.15509, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.50617, 9.15685, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.5055, 9.15771, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.50477, 9.15824, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.5043, 9.15852, "Main", "S13"));
+        stations.add(new MetroStation("NO_DRAW", 45.50376, 9.15876, "Main", "S13"));
         stations.add(new MetroStation("Milano Bovisa", 45.50257, 9.15925, "Main", "S13"));
         stations.add(new MetroStation("NO_DRAW", 45.49897, 9.16027, "Main", "S13"));
         stations.add(new MetroStation("NO_DRAW", 45.49846, 9.16051, "Main", "S13"));
