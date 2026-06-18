@@ -75,13 +75,13 @@
 
             <ProgressBar
                 android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="120dp"
-                android:layout_height="2dp"
+                android:layout_height="4dp"
                 android:layout_below="@id/top_bar"
                 android:layout_centerHorizontal="true"
                 android:visibility="gone"
-                android:progressTint="@color/redMetro"
-                style="?android:attr/progressBarStyleHorizontal" />
+                android:progressDrawable="@drawable/rounded_progress_bar" />
         </LinearLayout>
 
         <FrameLayout
