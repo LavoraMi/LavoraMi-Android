@@ -403,6 +403,7 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS2() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Seveso e Rogoredo
         stations.add(new MetroStation("Mariano Comense", 45.69358, 9.18141, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.67783, 9.17024, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.67703, 9.16952, "Main", "S2"));
@@ -420,12 +421,11 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.65177, 9.14074, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.65083, 9.14018, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.65019, 9.14008, "Main", "S2"));
-        stations.add(new MetroStation("NO_DRAW", 45.64966, 9.14011, "Main", "S2"));
+        stations.add(new MetroStation("NO_DRAW", 45.64966, 9.14011, "Main", "S2"));*/
         stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.64507, 9.14113, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.64208, 9.14166, "Main", "S2"));
         stations.add(new MetroStation("Cesano Maderno", 45.6307, 9.14177, "Main", "S2"));
-        stations.add(new MetroStation("NO_DRAW", 45.61244, 9.14142, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.61244, 9.14142, "Main", "S2"));
         stations.add(new MetroStation("Boviso Masciago", 45.61199, 9.14128, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.61129, 9.14151, "Main", "S2"));
@@ -591,11 +591,12 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS5() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Gallarate e Treviglio fino al 5 Luglio
         stations.add(new MetroStation("Varese", 45.81625, 8.83295, "Main", "S5"));
         stations.add(new MetroStation("Gazzada Schianno Morazzone", 45.77868, 8.82473, "Main", "S5"));
         stations.add(new MetroStation("Castronno", 45.74525, 8.81051, "Main", "S5"));
         stations.add(new MetroStation("Albizzate - Solbiate Arno", 45.7233, 8.80628, "Main", "S5"));
-        stations.add(new MetroStation("Cavaria", 45.69814, 8.80371, "Main", "S5"));
+        stations.add(new MetroStation("Cavaria", 45.69814, 8.80371, "Main", "S5"));*/
         stations.add(new MetroStation("Gallarate", 45.65974, 8.79853, "Main", "S5"));
         stations.add(new MetroStation("Busto Arsizio", 45.61593, 8.86589, "Main", "S5"));
         stations.add(new MetroStation("Legnano", 45.5937, 8.91087, "Main", "S5"));
@@ -728,6 +729,7 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS7() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Triuggio e Milano Pta Garibaldi
         stations.add(new MetroStation("Lecco", 45.85637, 9.3934, "Main", "S7"));
         stations.add(new MetroStation("Valmadrera", 45.84641, 9.36801, "Main", "S7"));
         stations.add(new MetroStation("Civate", 45.83133, 9.35275, "Main", "S7"));
@@ -739,7 +741,7 @@ public class StationDB {
         stations.add(new MetroStation("Renate - Veduggio", 45.7284, 9.27997, "Main", "S7"));
         stations.add(new MetroStation("Besana", 45.70274, 9.28303, "Main", "S7"));
         stations.add(new MetroStation("Villa Raverio", 45.69038, 9.26172, "Main", "S7"));
-        stations.add(new MetroStation("Carate Calo'", 45.67642, 9.25213, "Main", "S7"));
+        stations.add(new MetroStation("Carate Calo'", 45.67642, 9.25213, "Main", "S7"));*/
         stations.add(new MetroStation("Triuggio - Ponte Albiate", 45.65892, 9.26682, "Main", "S7"));
         stations.add(new MetroStation("Macherio - Canonica", 45.64556, 9.2869, "Main", "S7"));
         stations.add(new MetroStation("Biassono - Lesmo Parco", 45.63221, 9.29829, "Main", "S7"));
@@ -826,7 +828,7 @@ public class StationDB {
     public static List<MetroStation> getStationsS12() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Cormano Cusano Milanino", 45.5457, 9.17379, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.53374, 9.1728, "Main", "S2"));
+        stations.add(new MetroStation("NO_DRAW", 45.53374, 9.1728, "Main", "S12"));
         stations.add(new MetroStation("NO_DRAW", 45.53116, 9.1725, "Main", "S12"));
         stations.add(new MetroStation("NO_DRAW", 45.52997, 9.17209, "Main", "S12"));
         stations.add(new MetroStation("NO_DRAW", 45.52846, 9.17132, "Main", "S12"));
