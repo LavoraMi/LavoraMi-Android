@@ -397,4 +397,5 @@
     <string name="inAppText">En App</string>
     <string name="openLinkDepsText">Selecciona la forma en la que quieres abrir los enlaces.</string>
     <string name="busKey">Autobús</string>
+    <string name="arrivalsNotLoaded">Carga de horarios aún no completada...ù</string>
 </resources>

@@ -667,7 +667,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
     private void selezionaFermataDaMappa(String nomeStazioneMappa) {
         if (routeData == null || routeData.stops == null || dropdownFermate == null) {
-            Toast.makeText(this, "Mappa pronta, ma sto ancora caricando gli orari...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.arrivalsNotLoaded, Toast.LENGTH_SHORT).show();
             return;
         }
 
