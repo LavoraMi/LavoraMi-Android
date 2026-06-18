@@ -131,7 +131,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="36dp"
-                            android:fontFamily="@font/inter"
+                            android:fontFamily="@font/font_main"
                             android:text="@string/fileFormatTitle"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
