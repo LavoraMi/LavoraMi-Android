@@ -320,7 +320,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
         aggiornaInfoSuperiori();
-        fetchDeviations();
         preloadInterscambi();
 
         //*SAVE TO "YOUR LINES"
@@ -510,9 +509,27 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void onMapReady(MapView mapView) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
+        boolean isPassanteClosed = false;
 
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+
+        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
+            @Override
+            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+                if(response.isSuccessful()){
+                    strikeCDNResponse = response.body();
+                    elaboraStazioni(layoutMaps, layoutLoadingMap, mapView);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
+        });
+    }
+
+    private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
-        for (MetroStation s : StationDB.getAllStations()) {
+        for (MetroStation s : StationDB.getAllStations(strikeCDNResponse.isPassanteWorkEnabled())) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
                 tutteLeStazioni.add(s);
         }
@@ -540,29 +557,27 @@ public class LinesDetailActivity extends AppCompatActivity {
                 public boolean onMapClick(@NonNull com.mapbox.geojson.Point point) {
 
                     com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
-
-                    //aumento tolleranza del click
                     float tolerance = 20f;
 
                     com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
-                            new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
-                            new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
+                        new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
+                        new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
                     );
 
                     mapView.getMapboxMap().queryRenderedFeatures(
-                            new com.mapbox.maps.RenderedQueryGeometry(screenBox),
-                            new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
-                            expected -> {
-                                if (expected.isValue() && !expected.getValue().isEmpty()) {
-                                    com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
-                                    com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+                        new com.mapbox.maps.RenderedQueryGeometry(screenBox),
+                        new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
+                        expected -> {
+                            if (expected.isValue() && !expected.getValue().isEmpty()) {
+                                com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
+                                com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
 
-                                    if (clickedFeature.hasProperty("name")) {
-                                        String stationName = clickedFeature.getStringProperty("name");
-                                        selezionaFermataDaMappa(stationName);
-                                    }
+                                if (clickedFeature.hasProperty("name")) {
+                                    String stationName = clickedFeature.getStringProperty("name");
+                                    selezionaFermataDaMappa(stationName);
                                 }
                             }
+                        }
                     );
                     return true;
                 }
@@ -588,10 +603,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         layoutMaps.setAlpha(0f);
         layoutMaps.animate().alpha(1f).setDuration(300).start();
         layoutLoadingMap.setVisibility(View.GONE);
+
         mapViewRef = mapView;
         ImageButton positionButton = findViewById(R.id.positionButton);
+
         positionButton.setImageTintList(ColorStateList.valueOf(coloreLinea));
         positionButton.setOnClickListener(v -> positionButtonClick());
+        
         if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
             MapboxHelper.enableUserLocation(mapViewRef, false);
     }

@@ -4491,7 +4491,7 @@ public class StationDB {
         );
     }
 
-    public static List<MetroStation> getAllStations() {
+    public static List<MetroStation> getAllStations(boolean isPassanteClosed) {
         if(CACHED_STATIONS == null) {
             List<MetroStation> allStations = new ArrayList<>();
             allStations.addAll(getStationsM1());
@@ -4500,18 +4500,26 @@ public class StationDB {
             allStations.addAll(getStationsM4());
             allStations.addAll(getStationsM5());
 
-            allStations.addAll(getStationsS1());
+            if(isPassanteClosed) {
+                allStations.addAll(getStationsS1_ClosedPassante());
+                allStations.addAll(getStationsS5_ClosedPassante());
+                allStations.addAll(getStationsS13_ClosedPassante());
+            }
+            else {
+                allStations.addAll(getStationsS1());
+                allStations.addAll(getStationsS5());
+                allStations.addAll(getStationsS13());
+            }
+
             allStations.addAll(getStationsS2());
             allStations.addAll(getStationsS3());
             allStations.addAll(getStationsS4());
-            allStations.addAll(getStationsS5_ClosedPassante());
             allStations.addAll(getStationsS6());
             allStations.addAll(getStationsS7());
             allStations.addAll(getStationsS8());
             allStations.addAll(getStationsS9());
             allStations.addAll(getStationsS11());
             allStations.addAll(getStationsS12());
-            allStations.addAll(getStationsS13());
             allStations.addAll(getStationsS19());
             allStations.addAll(getStationsS31());
 
