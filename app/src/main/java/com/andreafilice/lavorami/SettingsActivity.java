@@ -434,7 +434,7 @@ public class SettingsActivity extends AppCompatActivity {
         switch(toCompare) {
             case LE_TUE_LINEE: return getString(R.string.yourLinesPrefix);
             case TUTTI: return getString(R.string.allFilter);
-            case BUS: return "Bus";
+            case BUS: return getString(R.string.busKey);
             case TRAM: return getString(R.string.tramLinesScroll);
             case METROPOLITANA: return getString(R.string.metroFilter);
             case TRENO: return getString(R.string.trainFilter);

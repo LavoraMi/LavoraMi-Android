@@ -396,4 +396,5 @@
     <string name="openLinkMainText">Abrir enlace:</string>
     <string name="inAppText">En App</string>
     <string name="openLinkDepsText">Selecciona la forma en la que quieres abrir los enlaces.</string>
+    <string name="busKey">Autobús</string>
 </resources>

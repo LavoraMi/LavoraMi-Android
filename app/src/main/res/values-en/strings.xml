@@ -396,4 +396,5 @@
     <string name="openLinkMainText">Open link:</string>
     <string name="inAppText">In App</string>
     <string name="openLinkDepsText">Select how you want links to open.</string>
+    <string name="busKey">Bus</string>
 </resources>
