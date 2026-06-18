@@ -2,12 +2,18 @@ package com.andreafilice.lavorami;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -153,6 +159,43 @@ public class AdvancedOptions extends AppCompatActivity {
         TextView descButtonTranslate = findViewById(R.id.descButtonTranslate);
         translateButtonCard.setVisibility((langCode.equalsIgnoreCase("it")) ? View.VISIBLE : View.GONE);
         descButtonTranslate.setVisibility(translateButtonCard.getVisibility());
+
+        //*DEFAULT BROWSER
+        /// In this section of the code, we get the Default Browser setting preference of the user.
+        TextView textBrowser = findViewById(R.id.textBrowser);
+
+        Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://"));
+        ResolveInfo resolveInfo = getPackageManager().resolveActivity(browserIntent, PackageManager.MATCH_DEFAULT_ONLY);
+
+        if(resolveInfo == null) {
+            String browserName = "Chrome";
+            textBrowser.setText(browserName);
+        }
+        else {
+            String browserName = resolveInfo.loadLabel(getPackageManager()).toString();
+            textBrowser.setText(browserName);
+        }
+
+        //*DEFAULT BROWSER CARD
+        /// In this section of the code, we save the value selected by the user in LavoraMi.
+        RelativeLayout inAppLayout = findViewById(R.id.inApp), defaultBrowserLayout = findViewById(R.id.defaultBrowser);
+        ImageView checkmarkInApp = findViewById(R.id.checkedInApp), checkmarkDefaultBrowser = findViewById(R.id.checkedDefaultBrowser);
+        BrowserSelectedType selectedType = BrowserSelectedType.valueOf(DataManager.getStringData(DataKeys.KEY_OPEN_LINK_TYPE, "IN_APP"));
+
+        checkmarkInApp.setVisibility((selectedType == BrowserSelectedType.IN_APP) ? View.VISIBLE : View.GONE);
+        checkmarkDefaultBrowser.setVisibility((selectedType == BrowserSelectedType.DEFAULT) ? View.VISIBLE : View.GONE);
+
+        inAppLayout.setOnClickListener(v -> {
+            DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
+            checkmarkInApp.setVisibility(View.VISIBLE);
+            checkmarkDefaultBrowser.setVisibility(View.GONE);
+        });
+
+        defaultBrowserLayout.setOnClickListener(v -> {
+            DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.DEFAULT.toString());
+            checkmarkInApp.setVisibility(View.GONE);
+            checkmarkDefaultBrowser.setVisibility(View.VISIBLE);
+        });
     }
 
 

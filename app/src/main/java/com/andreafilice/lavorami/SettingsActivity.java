@@ -266,7 +266,7 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this section, we add a listener to the "Support Us" button in Settings View.
         RelativeLayout supportBtn = findViewById(R.id.btnSupportUs);
 
-        supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami"));
+        supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami"));
 
         //*MAPS INFOS
         /// In this section, we add a listener to the "Info about Maps" button in Settings View.
@@ -287,7 +287,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
         btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@applavorami.official"));
-        btnWebsite.setOnClickListener(v -> InAppBrowserBottomSheet.newInstance("https://lavorami.it").show(getSupportFragmentManager(), "browser"));
+        btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it"));
     }
 
     @Override

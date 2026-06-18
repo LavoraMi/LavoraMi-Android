@@ -213,8 +213,8 @@ public class AccountManagement extends AppCompatActivity {
         EditText passwordLogin = findViewById(R.id.etLoginPassword);
         CardView btnLogin = findViewById(R.id.btnLogin);
 
-        termsBtnLogin.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), "https://www.lavorami.it/termsofservice"));
-        policyBtnLogin.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), "https://www.lavorami.it/privacypolicy"));
+        termsBtnLogin.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.lavorami.it/termsofservice"));
+        policyBtnLogin.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.lavorami.it/privacypolicy"));
 
         tvGoToSignup.setOnClickListener(v -> {
             loginView.setVisibility(View.GONE);
@@ -273,8 +273,8 @@ public class AccountManagement extends AppCompatActivity {
         TextView btnTermsSignup = findViewById(R.id.termsBtnSignUp);
         TextView btnPolicySignup = findViewById(R.id.policyBtnSignUp);
 
-        btnTermsSignup.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), "https://www.lavorami.it/termsofservice"));
-        btnPolicySignup.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(getSupportFragmentManager(), "https://www.lavorami.it/privacypolicy"));
+        btnTermsSignup.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.lavorami.it/termsofservice"));
+        btnPolicySignup.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.lavorami.it/privacypolicy"));
 
         EditText emailSignUp = findViewById(R.id.etSignupEmail);
         EditText passwordSignUp = findViewById(R.id.etSignupPassword);

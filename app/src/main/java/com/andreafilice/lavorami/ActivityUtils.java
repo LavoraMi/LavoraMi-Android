@@ -43,11 +43,16 @@ public class ActivityUtils {
         context.startActivity(browserIntent);
     }
 
-    public static void openURLWithTabBuilder(FragmentManager manager, String url) {
+    public static void openURLWithTabBuilder(Context context, FragmentManager manager, String url) {
         ///@PARAMETER
         /// String url is the URL to open in-app Browser.
 
-        InAppBrowserBottomSheet.newInstance(url).show(manager, "browser");
+        BrowserSelectedType selectedType = BrowserSelectedType.valueOf(DataManager.getStringData(DataKeys.KEY_OPEN_LINK_TYPE, "IN_APP"));
+
+        Log.d("BROWSER_TYPE", selectedType.toString());
+
+        if(selectedType == BrowserSelectedType.IN_APP) InAppBrowserBottomSheet.newInstance(url).show(manager, "browser");
+        else openURL(context, url);
     }
 
     public static void triggerFeedback(Context context) {

@@ -407,6 +407,121 @@
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardChooseLinkType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/disclosureBg"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingHorizontal="16dp">
+
+                        <ImageView
+                            android:id="@+id/descImage"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_globe"
+                            app:tint="@color/redMetro"
+                            android:visibility="visible"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="36dp"
+                            android:fontFamily="@font/font_main"
+                            android:text="Apri link:"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/inApp"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter"
+                            android:text="In App"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/checkedInApp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check"
+                            app:tint="@color/redMetro"
+                            android:visibility="visible"/>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="60dp"
+                        android:background="#38383A" />
+
+                    <RelativeLayout
+                        android:id="@+id/defaultBrowser"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:id="@+id/textBrowser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter"
+                            android:text="default_browser"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp" />
+                        <ImageView
+                            android:id="@+id/checkedDefaultBrowser"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check"
+                            app:tint="@color/redMetro"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter"
+                android:text="Seleziona la modalità in cui aprire i link."
+                android:textColor="#8E8E93"
+                android:textSize="13sp"  />
+
+            <androidx.cardview.widget.CardView
                 android:id="@+id/btnCacheMemory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
