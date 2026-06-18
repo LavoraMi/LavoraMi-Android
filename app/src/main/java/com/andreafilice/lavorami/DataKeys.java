@@ -2,7 +2,7 @@ package com.andreafilice.lavorami;
 
 public enum DataKeys {
     /// This Enumerator is for Keep the KEYS all saved in a single file
-    /// And avoid mismatches with Strings.
+    /// and avoid mismatches with Strings.
     /// @PARAMETER no Parameters in this Enumerator.
     /// @FALLBACK Fallback Rule: no Fallback rules.
 
@@ -30,5 +30,5 @@ public enum DataKeys {
     KEY_HINT_SAVED_LINES_CLOSED,
     KEY_SAVE_DB_FAVORITES,
     KEY_SAVE_DB_YOUR_LINES,
-    KEY_POPUP_NEW
+    KEY_OPEN_LINK_TYPE
 }

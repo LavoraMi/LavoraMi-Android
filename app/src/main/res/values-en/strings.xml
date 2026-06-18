@@ -390,8 +390,6 @@
     <string name="error">Error</string>
     <string name="syncErrorMessageToast">An error occurred whilst syncing with the server. Please try again.</string>
     <string name="infoMapsText">Info about Maps</string>
-    <string name="titlePopUpPolicy">Save your Lines!</string>
-    <string name="depsPopUpPolicy">With the new update, you can save your Routes and Favourite Routes to your account! You may need to log out and then log back in. To manage your data, go to: Settings > Account > Data Preferences.</string>
     <string name="mainDeveloperText">Lead Developer:</string>
     <string name="trackInterruptedInfo">SERVICE DISRUPTIONS DUE TO WORKS ON THE LINE.</string>
     <string name="noRoutesDeps">There are no scheduled services for this stop today; please try another one.</string>

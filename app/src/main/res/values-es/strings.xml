@@ -390,8 +390,6 @@
     <string name="error">Error</string>
     <string name="syncErrorMessageToast">Se ha producido un error durante la sincronización con el servidor. Inténtalo de nuevo.</string>
     <string name="infoMapsText">Información sobre los Mapas</string>
-    <string name="titlePopUpPolicy">¡Salva tus Líneas!</string>
-    <string name="depsPopUpPolicy">¡Con la nueva actualización, puedes guardar tus rutas y tus rutas favoritas en tu cuenta! Es posible que tengas que cerrar sesión y volver a iniciar sesión. Para gestionar tus datos, ve a: Ajustes > Cuenta > Preferencias Datos.</string>
     <string name="mainDeveloperText">Desarrollador Principal:</string>
     <string name="trackInterruptedInfo">EINTERRUPCIONES EN LA LÍNEA POR OBRAS.</string>
     <string name="noRoutesDeps">Hoy no hay ningún trayecto programado para esta parada; prueba a elegir otra.</string>

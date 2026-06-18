@@ -197,6 +197,7 @@
                     </RelativeLayout>
                 </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:id="@+id/infoFiles"
                     android:layout_width="match_parent"

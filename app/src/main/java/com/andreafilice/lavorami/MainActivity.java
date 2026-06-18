@@ -195,17 +195,6 @@ public class MainActivity extends AppCompatActivity {
             );
 
             loadUserPreferences();
-
-            if(!DataManager.getBoolData(DataKeys.KEY_POPUP_NEW, false)) {
-                new AlertDialog.Builder(this)
-                        .setTitle(R.string.titlePopUpPolicy)
-                        .setMessage(R.string.depsPopUpPolicy)
-                        .setPositiveButton(R.string.closePopUp, ((dialog, which) -> {
-                            DataManager.saveBoolData(DataKeys.KEY_POPUP_NEW, true);
-                        }))
-                        .create()
-                        .show();
-            }
         }
 
         //*SETUP PAGES
