@@ -341,8 +341,8 @@
     <string name="deviationMapTxt">ESTA LÍNEA ESTÁ SUJETA A DESVÍOS.</string>
     <string name="notShowAnymore">No mostrar más</string>
     <string name="tutorialTitle">¿Cómo puedo añadir una línea a favoritos?</string>
-    <string name="tutorialExplenation1">Encontrarás todas las líneas pulsando el icono:</string>
-    <string name="tutorialExplenation2">y solo tendrás que pulsar el corazón como se muestra aquí</string>
+    <string name="tutorialExplanation1">Encontrarás todas las líneas pulsando el icono:</string>
+    <string name="tutorialExplanation2">Y solo tendrás que pulsar el corazón como se muestra aquí</string>
     <string name="howItWorks">¿Cómo funciona?</string>
     <string name="understood">Entendido</string>
     <string name="obsoleteTitle">Estás usando una versión obsoleta.</string>

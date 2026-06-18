@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
             android:gravity="center"
-            android:text="@string/tutorialExplenation1"
+            android:text="@string/tutorialExplanation1"
             android:textColor="@color/subtitle"
             android:textSize="13sp" />
 
@@ -53,7 +53,7 @@
             android:fontFamily="@font/inter"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:text="@string/tutorialExplenation2"
+            android:text="@string/tutorialExplanation2"
             android:textColor="@color/subtitle"
             android:layout_marginBottom="10dp"
             android:textSize="13sp" />
@@ -87,7 +87,7 @@
                 android:backgroundTint="@color/M1"
                 android:gravity="center"
                 android:text="M1"
-                android:fontFamily="@font/font_main"
+                android:fontFamily="@font/inter"
                 android:textColor="@color/White"
                 android:textSize="13sp"
                 android:textStyle="bold" />
