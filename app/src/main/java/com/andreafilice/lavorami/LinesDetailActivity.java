@@ -172,6 +172,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipArrivi.setTypeface(typeface, Typeface.BOLD);
 
         aggiornaUI();
+
+        Log.d("DEBUG_ARRIVI", "1. onCreate completato. Nome Linea ricevuto: " + nomeLinea);
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
 
@@ -330,6 +332,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     aggiornaInfoSuperiori();
+                    fetchDeviations();
                     preloadInterscambi();
                 }
             }
@@ -349,7 +352,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
-        int coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(this, nomeLinea)));
+        coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(this, nomeLinea)));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
 
         ColorStateList chipBgColor = new ColorStateList(
@@ -544,6 +547,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
+        Log.d("DEBUG_ARRIVI", "2. elaboraStazioni() ENTRATO CORRETTAMENTE!");
+
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
         for (MetroStation s : StationDB.getAllStations(strikeCDNResponse.isPassanteWorkEnabled())) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
@@ -565,7 +570,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor, hexColorText);
 
         disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
-
 
         if(tipoDiLinea.contains("Movibus")) {
             GesturesUtils.getGestures(mapView).addOnMapClickListener(new com.mapbox.maps.plugin.gestures.OnMapClickListener() {
@@ -1606,6 +1610,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     routeData = route;
                     if (arriviProgressBar != null) arriviProgressBar.setVisibility(View.GONE);
                     setupStopDropdown();
+                    Log.d("DEBUG_ARRIVI", "3. Stazioni trovate nel DB/CDN");
                 });
             }
 
@@ -1729,14 +1734,14 @@ public class LinesDetailActivity extends AppCompatActivity {
                     float totalContentWidth = iconSize + itemSpacing + textWidth;
 
                     int calculatedStartPadding = 0;
-                    if (remainingWidth > totalContentWidth) {
+                    if (remainingWidth > totalContentWidth)
                         calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
-                    }
 
                     chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
                     safelyUpdatePadding(chip, calculatedStartPadding, (int) itemSpacing, 0, 0);
 
-                } else {
+                }
+                else {
                     if (params.width != unselectedWidth) {
                         params.width = unselectedWidth;
                         chip.setLayoutParams(params);
