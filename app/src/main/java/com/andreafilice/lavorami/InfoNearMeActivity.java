@@ -19,7 +19,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.mapbox.maps.Image;
 import com.mapbox.maps.MapView;
 
 import kotlin.Unit;
@@ -31,6 +30,7 @@ public class InfoNearMeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_near_me);
@@ -40,29 +40,22 @@ public class InfoNearMeActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Back button
         ImageView backBtn = findViewById(R.id.backBtn);
         Button buttonClose= findViewById(R.id.btn_close);
         backBtn.setOnClickListener(v -> finish());
         buttonClose.setOnClickListener(v -> finish());
 
-        // Position button
         ImageButton positionButton = findViewById(R.id.positionButton);
-        positionButton.setOnClickListener(v -> {
-            if (mapView != null) MapboxHelper.zoomToUserLocationCircle(mapView);
-        });
+        positionButton.setOnClickListener(v -> {if (mapView != null) MapboxHelper.zoomToUserLocationCircle(mapView);});
 
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
         mapView = findViewById(R.id.mapView);
 
-        boolean darkMode = (getResources().getConfiguration().uiMode
-                & android.content.res.Configuration.UI_MODE_NIGHT_MASK)
-                == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+        boolean darkMode = (getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
 
         MapboxHelper.loadMap(mapView, darkMode, loadedMapView -> {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
                 MapboxHelper.getUserLocationOnce(loadedMapView, (lat, lng) -> {
                     MapboxHelper.setCamera(loadedMapView, lat, lng, 9.5);
@@ -70,8 +63,8 @@ public class InfoNearMeActivity extends AppCompatActivity {
                     showMap(layoutMaps, layoutLoadingMap);
                 });
 
-            } else {
-                // Nessun permesso: Milano come fallback
+            }
+            else {
                 MapboxHelper.setCamera(loadedMapView, 45.4654, 9.1859, 11.0);
                 showMap(layoutMaps, layoutLoadingMap);
             }
