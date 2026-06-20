@@ -4958,7 +4958,7 @@ public class StationDB {
         );
     }
 
-    public static List<InterchangeInfo> getFullInterchanges(Context context) {
+    public static List<InterchangeInfo> getMetroInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* METRO LINES
@@ -5041,6 +5041,27 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Gorgonzola M2", new String[]{"M2", "z403", "Z407", "z411", "z419"}, "tram.fill.tunnel"));
         interchanges.add(new InterchangeInfo("Cascina Antonietta M2", new String[]{"M2"}, "tram.fill.tunnel"));
         interchanges.add(new InterchangeInfo("Gessate M2", new String[]{"M2", "z404", "z405"}, "tram.fill.tunnel"));
+
+        /// Metro M3
+        interchanges.add(new InterchangeInfo("Comasina", new String[]{"M3", "NM3", "35", "41", "52", "83", "89", "165", "705", "729"}, "bus.fill"));
+        interchanges.add(new InterchangeInfo("Affori FN", new String[]{"M3", "NM3", "S2", "S4", "R16", "35", "40", "41", "52", "70"}, "lightrail"));
+        interchanges.add(new InterchangeInfo("Affori Centro", new String[]{"M3", "NM3", "70"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Dergano", new String[]{"M3", "NM3", "70"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Maciachini", new String[]{"M3", "NM3", "2", "4", "70"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Zara", new String[]{"M3", "NM3", "M5", "7", "31", "51", "60", "82", "Filobus 90", "Filobus 91", "Filobus 92", "166"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Sondrio", new String[]{"M3", "NM3", "43", "81", "Filobus 90", "Filobus 91", "Filobus 92"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Repubblica FS", new String[]{"M3", "NM3", "S1", "S2", "S5", "S6", "S12", "S13", "1", "9", "33", "43"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Turati", new String[]{"M3", "NM3", "1", "43", "84"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Montenapoleone", new String[]{"M3", "1", "96"}, "building.columns.fill"));
+        interchanges.add(new InterchangeInfo("Missori", new String[]{"M3", "NM3", "M4", "12", "15", "16", "19", "24", "N15", "N24"}, "building.columns.fill"));
+        interchanges.add(new InterchangeInfo("Crocetta", new String[]{"M3", "NM3", "16", "24", "65", "N24"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Porta Romana", new String[]{"M3", "NM3", "9", "62", "65", "N26"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Lodi TIBB", new String[]{"M3", "NM3", "S9", "S19", "R31", "65", "Filobus 90", "Filobus 91", "Filobus 92"}, "figure.walk"));
+        interchanges.add(new InterchangeInfo("Brenta", new String[]{"M3", "NM3", "34", "65"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Corvetto", new String[]{"M3", "NM3", "84", "Filobus 93", "95"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Porto di Mare", new String[]{"M3", "NM3", "77", "95"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Rogoredo FS", new String[]{"M3", "NM3", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "RE13", "77", "88", "95", "140"}, "lightrail"));
+        interchanges.add(new InterchangeInfo("San Donato", new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"}, "bus.fill"));
 
         return interchanges;
     }
