@@ -5063,6 +5063,27 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Rogoredo FS", new String[]{"M3", "NM3", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "RE13", "77", "88", "95", "140"}, "lightrail"));
         interchanges.add(new InterchangeInfo("San Donato", new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"}, "bus.fill"));
 
+        /// Metro M4
+        interchanges.add(new InterchangeInfo("Linate Aereoporto", new String[]{"M4", "NM4", "183", "901", "903", "923", "973", "z409"}, "airplane.departure"));
+        interchanges.add(new InterchangeInfo("Repetti", new String[]{"M4", "NM4", "12", "27", "45", "175", "N27"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Stazione Forlanini FS", new String[]{"M4", "NM4", "S5", "S6", "S9", "R38", "RE8", "RE13", "12", "27", "45", "175", "973", "N27"}, "lightrail"));
+        interchanges.add(new InterchangeInfo("Argonne", new String[]{"M4", "NM4", "38", "45", "54", "Filobus 93", "175"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Susa", new String[]{"M4", "NM4", "38", "54", "Filobus 90", "Filobus 91"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Dateo FS", new String[]{"M4", "NM4", "S1", "S2", "S5", "S6", "S12", "S13", "54", "61", "Filobus 92"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Tricolore", new String[]{"M4", "NM4", "9", "19", "61"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Sforza - Policlinico", new String[]{"M3", "NM3", "M4", "NM4", "16", "24", "65", "96", "97", "N24"}, "figure.walk"));
+        interchanges.add(new InterchangeInfo("Santa Sofia", new String[]{"M4", "NM4", "15", "96", "97", "N15"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Vetra", new String[]{"M4", "NM4", "3", "96", "97"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("De Amicis", new String[]{"M4", "NM4", "NM2", "2", "14", "96", "97"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Coni Zugna", new String[]{"M4", "NM4", "2", "10", "58"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("California", new String[]{"M4", "NM4", "58", "68"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Bolivar", new String[]{"M4", "NM4", "58", "85", "Filobus 90", "Filobus 91"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Tolstoj", new String[]{"M4", "NM4", "58"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Frattini", new String[]{"M4", "NM4", "58", "98"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Gelsomini", new String[]{"M4", "NM4", "50", "58", "64"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Segneri", new String[]{"M4", "NM4", "50", "64"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("San Cristoforo FS", new String[]{"M4", "NM4", "S9", "S19", "R31", "47", "49", "95", "324", "325", "326", "351", "z553"}, "lightrail"));
+
         return interchanges;
     }
 
