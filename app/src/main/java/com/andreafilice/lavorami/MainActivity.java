@@ -6,11 +6,9 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -521,14 +519,23 @@ public class MainActivity extends AppCompatActivity {
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                     else {
+                        findViewById(R.id.infoNearMe).setVisibility(View.GONE);
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
                         findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                 }
+                else if(checkedId == R.id.chipNearMe){
+                    findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
+                    View infoNearMe = findViewById(R.id.infoNearMe);
+                    infoNearMe.setVisibility(View.VISIBLE);
+                    findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
+                    infoNearMe.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoNearMeActivity.class));
+                }
                 else {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
+                    findViewById(R.id.infoNearMe).setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,112*densita);
                 }
                 if (checkedId == View.NO_ID)

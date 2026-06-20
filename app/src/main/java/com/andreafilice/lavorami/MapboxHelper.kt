@@ -1,5 +1,8 @@
 package com.andreafilice.lavorami
 
+import kotlin.math.cos
+import kotlin.math.sin
+
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.LineString
@@ -18,6 +21,7 @@ import com.mapbox.maps.extension.style.expressions.dsl.generated.literal
 import com.mapbox.maps.plugin.animation.easeTo
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
+import com.mapbox.maps.extension.style.layers.generated.fillLayer
 
 object MapboxHelper {
     //*INITIALIZE MAP
@@ -183,6 +187,82 @@ object MapboxHelper {
             }
         }
         mapView.location.addOnIndicatorPositionChangedListener(listener)
+    }
+
+    @JvmStatic
+    fun zoomToUserLocationCircle(mapView: MapView) {
+        val listener = object : OnIndicatorPositionChangedListener {
+            override fun onIndicatorPositionChanged(point: Point) {
+                mapView.location.removeOnIndicatorPositionChangedListener(this)
+                mapView.mapboxMap.easeTo(
+                    CameraOptions.Builder()
+                        .center(point)
+                        .build(),
+                    com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
+                        duration(600L)
+                    },
+                    object : android.animation.Animator.AnimatorListener {
+                        override fun onAnimationEnd(animation: android.animation.Animator) {
+                            mapView.mapboxMap.easeTo(
+                                CameraOptions.Builder()
+                                    .zoom(9.5)
+                                    .build(),
+                                com.mapbox.maps.plugin.animation.MapAnimationOptions.mapAnimationOptions {
+                                    duration(400L)
+                                }
+                            )
+                        }
+                        override fun onAnimationStart(animation: android.animation.Animator) {}
+                        override fun onAnimationCancel(animation: android.animation.Animator) {}
+                        override fun onAnimationRepeat(animation: android.animation.Animator) {}
+                    }
+                )
+            }
+        }
+        mapView.location.addOnIndicatorPositionChangedListener(listener)
+    }
+
+    @JvmStatic
+    fun drawRadiusCircle(mapView: MapView, lat: Double, lng: Double, radiusMeters: Double, hexColor: String) {
+        val circlePoints = (0..360).map { i ->
+            val angle = Math.toRadians(i.toDouble())
+            val dLat = (radiusMeters / 111320.0) * cos(angle)
+            val dLng = (radiusMeters / (111320.0 * cos(Math.toRadians(lat)))) * sin(angle)
+            Point.fromLngLat(lng + dLng, lat + dLat)
+        }
+
+        val feature = Feature.fromGeometry(com.mapbox.geojson.Polygon.fromLngLats(listOf(circlePoints)))
+        val fc = FeatureCollection.fromFeatures(listOf(feature))
+
+        mapView.mapboxMap.getStyle { style ->
+            style.addSource(geoJsonSource("radius-source") { featureCollection(fc) })
+
+            style.addLayer(fillLayer("radius-fill-layer", "radius-source") {
+                fillColor(literal(hexColor))
+                fillOpacity(0.15)
+            })
+
+            style.addLayer(lineLayer("radius-line-layer", "radius-source") {
+                lineColor(literal(hexColor))
+                lineWidth(2.0)
+            })
+        }
+    }
+    interface LocationCallback {
+        ///we use an interface to not import kotiln class in main (too heavy)
+        fun onLocation(lat: Double, lng: Double)
+    }
+
+    @JvmStatic
+    fun getUserLocationOnce(mapView: MapView, callback: LocationCallback) {
+        enableUserLocation(mapView, false)
+
+        val listenerRef = arrayOfNulls<OnIndicatorPositionChangedListener>(1)
+        listenerRef[0] = OnIndicatorPositionChangedListener { point ->
+            mapView.location.removeOnIndicatorPositionChangedListener(listenerRef[0]!!)
+            callback.onLocation(point.latitude(), point.longitude())
+        }
+        mapView.location.addOnIndicatorPositionChangedListener(listenerRef[0]!!)
     }
 
     interface MapReadyCallback {
