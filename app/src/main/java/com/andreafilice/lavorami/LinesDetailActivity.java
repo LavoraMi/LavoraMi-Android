@@ -59,6 +59,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -76,6 +77,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LinesDetailActivity extends AppCompatActivity {
     private String nomeLinea;
     private String tipoDiLinea;
+    private String selectedBranch = null;
     private View lavoriNested;
     private View interscambiNested;
     private View lavoriWrapper;
@@ -950,9 +952,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             String searchTag = nomeLinea.trim().toUpperCase();
             List<InterchangeInfo> interchanges = null;
 
-            if(tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
+            if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
                 interchanges = StationDB.getInterchangesTrams();
-            else if(tipoDiLinea.contains("Filobus"))
+            else if (tipoDiLinea.contains("Filobus"))
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
                 interchanges = StationDB.getMetroInterchanges();
@@ -960,7 +962,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 interchanges = StationDB.getInterchanges(this);
 
             List<InterchangeInfo> matched = new ArrayList<>();
-
             for (InterchangeInfo info : interchanges) {
                 if (info.getLines() == null) continue;
                 for (String line : info.getLines()) {
@@ -971,89 +972,137 @@ public class LinesDetailActivity extends AppCompatActivity {
                 }
             }
 
+            Collections.sort(matched, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
+
+            Set<String> branchSet = new LinkedHashSet<>();
+            for (InterchangeInfo info : matched) {
+                if (info.getBranch() != null && !info.getBranch().isEmpty())
+                    branchSet.add(info.getBranch());
+            }
+            List<String> availableBranches = new ArrayList<>(branchSet);
+            boolean hasMultipleBranches = availableBranches.size() > 1;
+
             interchangeHandler.post(() -> {
-                LinearLayout container = findViewById(R.id.containerInterscambi);
-                if (container == null) return;
-                container.removeAllViews();
-
-                List<View> cards = new ArrayList<>();
-
-                boolean isMetro = isLineaMetro();
-                int lineColor = isMetro ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
-
-                for (InterchangeInfo evento : matched) {
-                    View card = getLayoutInflater().inflate(isMetro ? R.layout.item_interchange : R.layout.interchange_info_old, container, false);
-
-                    if (isMetro) {
-                        TextView titolo = card.findViewById(R.id.txtTitle);
-                        if (titolo != null)
-                            titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALA ROMANA" : evento.getKey().toUpperCase());
-
-                        ImageView icona = card.findViewById(R.id.iconTransport);
-                        if (icona != null) {
-                            icona.setImageResource(evento.getCardImageID());
-                            icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-                        }
-
-                        ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-
-                        if (chipGroup != null && evento.getLines() != null) {
-                            chipGroup.removeAllViews();
-                            for (String lineName : evento.getLines()){
-                                if(!lineName.equalsIgnoreCase(nomeLinea))
-                                    chipGroup.addView(createChip(lineName));
-                            }
-                        }
-
-                        applyMetroLineColor(card, lineColor);
-
-                        if (cards.isEmpty()) {
-                            View lineTop = card.findViewById(R.id.lineTop);
-                            if (lineTop != null) lineTop.setVisibility(View.INVISIBLE);
-                        }
-                    }
-                    else {
-                        ImageView icona = card.findViewById(R.id.iconTransport);
-                        if (icona != null) {
-                            icona.setImageResource(evento.getCardImageID());
-                            icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-                        }
-
-                        TextView titolo = card.findViewById(R.id.txtTitle);
-                        TextView desc = card.findViewById(R.id.txtLineCode);
-                        TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
-
-                        if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
-                        if (titolo != null)
-                            titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
-                        if (desc != null) desc.setText(nomeLinea);
-
-                        int color = ContextCompat.getColor(this, R.color.text_primary);
-                        ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
-
-                        ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-                        if (chipGroup != null && evento.getLines() != null) {
-                            chipGroup.removeAllViews();
-                            for (String lineName : evento.getLines())
-                                chipGroup.addView(createChip(lineName));
-                        }
-                    }
-
-                    cards.add(card);
+                Button btnBranch = findViewById(R.id.buttonSelectBranch);
+                if (btnBranch != null) {
+                    btnBranch.setVisibility(hasMultipleBranches ? View.VISIBLE : View.GONE);
+                    btnBranch.setOnClickListener(v -> showBranchDialog(availableBranches, matched));
                 }
 
-                if (isMetro && !cards.isEmpty()) {
-                    View lineBottom = cards.get(cards.size() - 1).findViewById(R.id.lineBottom);
-                    if (lineBottom != null) lineBottom.setVisibility(View.INVISIBLE);
-                }
-
-                for (View card : cards) container.addView(card);
-
+                renderInterscambi(matched);
                 interscambiWrapper.setVisibility(View.GONE);
                 interscambiNested.setVisibility(View.GONE);
                 interscambiPreloaded = true;
             });
         });
+    }
+
+    private void showBranchDialog(List<String> branches, List<InterchangeInfo> allMatched) {
+        String[] items = new String[branches.size() + 1];
+
+        items[0] = getString(R.string.allBranches);
+        for (int i = 0; i < branches.size(); i++)
+            items[i + 1] = branches.get(i);
+
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.selectBranch))
+            .setItems(items, (dialog, which) -> {
+                selectedBranch = (which == 0) ? null : branches.get(which - 1);
+
+                Button btnBranch = findViewById(R.id.buttonSelectBranch);
+                if (btnBranch != null)
+                    btnBranch.setText(selectedBranch != null ? selectedBranch : getString(R.string.allBranches));
+
+                renderInterscambi(allMatched);
+            })
+            .show();
+    }
+
+    private void renderInterscambi(List<InterchangeInfo> allMatched) {
+        LinearLayout container = findViewById(R.id.containerInterscambi);
+        if (container == null) return;
+        container.removeAllViews();
+
+        List<InterchangeInfo> toShow = new ArrayList<>();
+        for (InterchangeInfo info : allMatched) {
+            if (selectedBranch == null || selectedBranch.equals(info.getBranch()))
+                toShow.add(info);
+        }
+
+        boolean isMetro = isLineaMetro();
+        int lineColor = isMetro ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+
+        List<View> cards = new ArrayList<>();
+        for (InterchangeInfo evento : toShow) {
+            View card = getLayoutInflater().inflate(isMetro ? R.layout.item_interchange : R.layout.interchange_info_old, container, false);
+
+            if (isMetro) {
+                TextView titolo = card.findViewById(R.id.txtTitle);
+                if (titolo != null)
+                    titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALA ROMANA" : evento.getKey().toUpperCase());
+
+                ImageView icona = card.findViewById(R.id.iconTransport);
+                if (icona != null) {
+                    icona.setImageResource(evento.getCardImageID());
+                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                }
+
+                ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+
+                if (chipGroup != null && evento.getLines() != null) {
+                    chipGroup.removeAllViews();
+                    for (String lineName : evento.getLines()){
+                        if(!lineName.equalsIgnoreCase(nomeLinea))
+                            chipGroup.addView(createChip(lineName));
+                    }
+                }
+
+                applyMetroLineColor(card, lineColor);
+
+                if (cards.isEmpty()) {
+                    View lineTop = card.findViewById(R.id.lineTop);
+                    if (lineTop != null) lineTop.setVisibility(View.INVISIBLE);
+                }
+            }
+            else {
+                ImageView icona = card.findViewById(R.id.iconTransport);
+                if (icona != null) {
+                    icona.setImageResource(evento.getCardImageID());
+                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                }
+
+                TextView titolo = card.findViewById(R.id.txtTitle);
+                TextView desc = card.findViewById(R.id.txtLineCode);
+                TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
+
+                if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+                if (titolo != null)
+                    titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
+                if (desc != null) desc.setText(nomeLinea);
+
+                int color = ContextCompat.getColor(this, R.color.text_primary);
+                ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
+
+                ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                if (chipGroup != null && evento.getLines() != null) {
+                    chipGroup.removeAllViews();
+                    for (String lineName : evento.getLines())
+                        chipGroup.addView(createChip(lineName));
+                }
+            }
+
+            cards.add(card);
+        }
+
+        if (isMetro && !cards.isEmpty()) {
+            View lineTop = cards.get(0).findViewById(R.id.lineTop);
+            View lineBottom = cards.get(cards.size()-1).findViewById(R.id.lineBottom);
+
+            if (lineTop != null) lineTop.setVisibility(View.INVISIBLE);
+            if (lineBottom != null) lineBottom.setVisibility(View.INVISIBLE);
+        }
+
+        for (View card : cards) container.addView(card);
     }
 
     private void caricaInterscambiLinee() {

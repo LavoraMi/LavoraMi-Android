@@ -562,6 +562,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone">
 
+        <Button
+            android:id="@+id/buttonSelectBranch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/allBranches"
+            android:fontFamily="@font/font_main"
+            android:textSize="13sp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:drawableStart="@drawable/ic_transfer"
+            android:drawablePadding="6dp"
+            android:visibility="gone" />
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/interscambiNested"
             android:layout_width="match_parent"
