@@ -516,7 +516,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.matches("9[0-3]"))
             detTitolo.setText("Filobus " + nomeLinea);
 
-        detBadge.setText(nomeLinea);
+        detBadge.setText((nomeLinea.startsWith("MXP")) ? "MXP" : nomeLinea);
         int colorResId = StationDB.getLineColor(this, nomeLinea);
         int coloreEffettivo = ContextCompat.getColor(this, colorResId);
 
