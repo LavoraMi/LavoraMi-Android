@@ -4958,7 +4958,7 @@ public class StationDB {
         );
     }
 
-    public static List<InterchangeInfo> getMetroInterchanges(Context context) {
+    public static List<InterchangeInfo> getMetroInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* METRO LINES
