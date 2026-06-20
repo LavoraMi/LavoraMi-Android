@@ -978,13 +978,16 @@ public class LinesDetailActivity extends AppCompatActivity {
                     if (isMetro) {
                         TextView titolo = card.findViewById(R.id.txtTitle);
                         if (titolo != null)
-                            titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
+                            titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALA ROMANA" : evento.getKey().toUpperCase());
 
                         ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+
                         if (chipGroup != null && evento.getLines() != null) {
                             chipGroup.removeAllViews();
-                            for (String lineName : evento.getLines())
-                                chipGroup.addView(createChip(lineName));
+                            for (String lineName : evento.getLines()){
+                                if(!lineName.equalsIgnoreCase(nomeLinea))
+                                    chipGroup.addView(createChip(lineName));
+                            }
                         }
 
                         applyMetroLineColor(card, lineColor);
