@@ -50,13 +50,26 @@
         app:layout_constraintStart_toEndOf="@id/dotInterchange"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/iconTransport"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="8dp"
+        app:tint="@color/text_primary"
+        tools:src="@drawable/ic_train"
+        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintTop_toTopOf="@id/scrollChips"
+        app:layout_constraintBottom_toBottomOf="@id/scrollChips" />
+
     <HorizontalScrollView
+        android:id="@+id/scrollChips"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginStart="10dp"
         android:scrollbars="none"
-        app:layout_constraintStart_toStartOf="@id/txtTitle"
+        app:layout_constraintStart_toEndOf="@id/iconTransport"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtTitle"
         app:layout_constraintBottom_toBottomOf="parent">

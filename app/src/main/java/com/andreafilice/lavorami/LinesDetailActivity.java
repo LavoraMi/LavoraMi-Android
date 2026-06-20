@@ -989,6 +989,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                         if (titolo != null)
                             titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALA ROMANA" : evento.getKey().toUpperCase());
 
+                        ImageView icona = card.findViewById(R.id.iconTransport);
+                        if (icona != null) {
+                            icona.setImageResource(evento.getCardImageID());
+                            icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                        }
+
                         ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
 
                         if (chipGroup != null && evento.getLines() != null) {
