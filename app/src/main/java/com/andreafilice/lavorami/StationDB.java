@@ -5084,6 +5084,23 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Segneri", new String[]{"M4", "NM4", "50", "64"}, "tram.fill.tunnel"));
         interchanges.add(new InterchangeInfo("San Cristoforo FS", new String[]{"M4", "NM4", "S9", "S19", "R31", "47", "49", "95", "324", "325", "326", "351", "z553"}, "lightrail"));
 
+        /// Metro M5
+        interchanges.add(new InterchangeInfo("Bignami", new String[]{"M5", "4", "31", "713", "728"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Ponale", new String[]{"M5", "4", "31", "51", "172"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Bicocca", new String[]{"M5", "4", "7", "31", "52", "172", "783"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Ca'Granda", new String[]{"M5", "4", "5", "7", "31", "86", "172"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Istria", new String[]{"M5", "5", "7", "31", "42"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Marche", new String[]{"M5", "5", "7", "31"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Isola", new String[]{"M5"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Monumentale", new String[]{"M5", "10", "12", "14", "70"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Cenisio", new String[]{"M5", "12", "14"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Gerusalemme", new String[]{"M5"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Domodossola FN", new String[]{"M5", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "19"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Tre Torri", new String[]{"M5"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("Portello", new String[]{"M5", "48", "78"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("San Siro Ippodromo", new String[]{"M5", "16"}, "tram.fill.tunnel"));
+        interchanges.add(new InterchangeInfo("San Siro Stadio", new String[]{"M5", "Stadio", "16", "49"}, "stadium.fill"));
+
         return interchanges;
     }
 
