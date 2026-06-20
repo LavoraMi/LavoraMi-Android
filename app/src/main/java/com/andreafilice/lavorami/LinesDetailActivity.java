@@ -10,6 +10,8 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -629,7 +631,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         positionButton.setImageTintList(ColorStateList.valueOf(coloreLinea));
         positionButton.setOnClickListener(v -> positionButtonClick());
-        
+
         if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
             MapboxHelper.enableUserLocation(mapViewRef, false);
     }
@@ -923,6 +925,26 @@ public class LinesDetailActivity extends AppCompatActivity {
         ((ImageView)findViewById(R.id.emptyViewIcon)).setImageResource((EventData.networkError) ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
     }
 
+    private boolean isLineaMetro() {return nomeLinea != null && nomeLinea.startsWith("M") && !nomeLinea.startsWith("MXP");}
+
+    private void applyMetroLineColor(View card, int lineColor) {
+        View lineTop = card.findViewById(R.id.lineTop);
+        if (lineTop != null) lineTop.setBackgroundColor(lineColor);
+
+        View lineBottom = card.findViewById(R.id.lineBottom);
+        if (lineBottom != null) lineBottom.setBackgroundColor(lineColor);
+
+        View dot = card.findViewById(R.id.dotInterchange);
+        if (dot != null) {
+            Drawable background = dot.getBackground();
+            if (background instanceof GradientDrawable) {
+                GradientDrawable gd = (GradientDrawable) background.mutate();
+                float density = getResources().getDisplayMetrics().density;
+                gd.setStroke((int) (3 * density), lineColor);
+            }
+        }
+    }
+
     private void preloadInterscambi() {
         executor.execute(() -> {
             String searchTag = nomeLinea.trim().toUpperCase();
@@ -947,35 +969,64 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 List<View> cards = new ArrayList<>();
 
+                boolean isMetro = isLineaMetro();
+                int lineColor = isMetro ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+
                 for (InterchangeInfo evento : matched) {
-                    View card = getLayoutInflater().inflate(R.layout.item_interchange, container, false);
+                    View card = getLayoutInflater().inflate(isMetro ? R.layout.item_interchange : R.layout.interchange_info_old, container, false);
 
-                    ImageView icona = card.findViewById(R.id.iconTransport);
-                    if (icona != null) {
-                        icona.setImageResource(evento.getCardImageID());
-                        icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                    if (isMetro) {
+                        TextView titolo = card.findViewById(R.id.txtTitle);
+                        if (titolo != null)
+                            titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
+
+                        ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                        if (chipGroup != null && evento.getLines() != null) {
+                            chipGroup.removeAllViews();
+                            for (String lineName : evento.getLines())
+                                chipGroup.addView(createChip(lineName));
+                        }
+
+                        applyMetroLineColor(card, lineColor);
+
+                        if (cards.isEmpty()) {
+                            View lineTop = card.findViewById(R.id.lineTop);
+                            if (lineTop != null) lineTop.setVisibility(View.INVISIBLE);
+                        }
                     }
+                    else {
+                        ImageView icona = card.findViewById(R.id.iconTransport);
+                        if (icona != null) {
+                            icona.setImageResource(evento.getCardImageID());
+                            icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                        }
 
-                    TextView titolo = card.findViewById(R.id.txtTitle);
-                    TextView desc = card.findViewById(R.id.txtLineCode);
-                    TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
+                        TextView titolo = card.findViewById(R.id.txtTitle);
+                        TextView desc = card.findViewById(R.id.txtLineCode);
+                        TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
 
-                    if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
-                    if (titolo != null)
-                        titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
-                    if (desc != null) desc.setText(nomeLinea);
+                        if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+                        if (titolo != null)
+                            titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
+                        if (desc != null) desc.setText(nomeLinea);
 
-                    int color = ContextCompat.getColor(this, R.color.text_primary);
-                    ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
+                        int color = ContextCompat.getColor(this, R.color.text_primary);
+                        ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
 
-                    ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-                    if (chipGroup != null && evento.getLines() != null) {
-                        chipGroup.removeAllViews();
-                        for (String lineName : evento.getLines())
-                            chipGroup.addView(createChip(lineName));
+                        ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                        if (chipGroup != null && evento.getLines() != null) {
+                            chipGroup.removeAllViews();
+                            for (String lineName : evento.getLines())
+                                chipGroup.addView(createChip(lineName));
+                        }
                     }
 
                     cards.add(card);
+                }
+
+                if (isMetro && !cards.isEmpty()) {
+                    View lineBottom = cards.get(cards.size() - 1).findViewById(R.id.lineBottom);
+                    if (lineBottom != null) lineBottom.setVisibility(View.INVISIBLE);
                 }
 
                 for (View card : cards) container.addView(card);
@@ -1013,6 +1064,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         String searchTag = nomeLinea.trim().toUpperCase();
         List<InterchangeInfo> interchanges = tipoDiLinea.contains("Tram") ? StationDB.getInterchangesTrams() : (tipoDiLinea.contains("Filobus") ? StationDB.getInterchangesFilobus() : StationDB.getInterchanges(this));
 
+        List<View> cards = new ArrayList<>();
+        boolean isMetro = isLineaMetro();
+        int lineColor = isMetro ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+
         for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;
 
@@ -1027,33 +1082,60 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (matchFound) {
                 foundAtLeastOne = true;
 
-                View card = getLayoutInflater().inflate(R.layout.item_interchange, container, false);
+                View card = getLayoutInflater().inflate(isMetro ? R.layout.item_interchange : R.layout.interchange_info_old, container, false);
 
-                ImageView icona = card.findViewById(R.id.iconTransport);
-                if (icona != null) {
-                    icona.setImageResource(evento.getCardImageID());
-                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                if (isMetro) {
+                    TextView titolo = card.findViewById(R.id.txtTitle);
+                    if (titolo != null) titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
+
+                    ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                    if (chipGroup != null && evento.getLines() != null) {
+                        chipGroup.removeAllViews();
+                        for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
+                    }
+
+                    applyMetroLineColor(card, lineColor);
+
+                    if (cards.isEmpty()) {
+                        View lineTop = card.findViewById(R.id.lineTop);
+                        if (lineTop != null) lineTop.setVisibility(View.INVISIBLE);
+                    }
+                }
+                else {
+                    ImageView icona = card.findViewById(R.id.iconTransport);
+                    if (icona != null) {
+                        icona.setImageResource(evento.getCardImageID());
+                        icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                    }
+
+                    TextView titolo = card.findViewById(R.id.txtTitle);
+                    TextView desc = card.findViewById(R.id.txtLineCode);
+                    TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
+
+                    if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
+                    if (titolo != null) titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
+                    if (desc != null) desc.setText(nomeLinea);
+
+                    int color = ContextCompat.getColor(this, R.color.text_primary);
+                    ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
+
+                    ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                    if (chipGroup != null && evento.getLines() != null) {
+                        chipGroup.removeAllViews();
+                        for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
+                    }
                 }
 
-                TextView titolo = card.findViewById(R.id.txtTitle);
-                TextView desc = card.findViewById(R.id.txtLineCode);
-                TextView txtStationSubtitle = card.findViewById(R.id.txtStationSubtitle);
-
-                if (txtStationSubtitle != null) txtStationSubtitle.setText(evento.getKey());
-                if (titolo != null) titolo.setText((evento.getKey().equals("Lodi TIBB")) ? "Milano Scalo Romana" : evento.getKey());
-                if (desc != null) desc.setText(nomeLinea);
-
-                int color = ContextCompat.getColor(this, R.color.text_primary);
-                ImageViewCompat.setImageTintList(card.findViewById(R.id.iconTransport), ColorStateList.valueOf(color));
-
-                ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-                if (chipGroup != null && evento.getLines() != null) {
-                    chipGroup.removeAllViews();
-                    for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
-                }
-                container.addView(card);
+                cards.add(card);
             }
         }
+
+        if (isMetro && !cards.isEmpty()) {
+            View lineBottom = cards.get(cards.size() - 1).findViewById(R.id.lineBottom);
+            if (lineBottom != null) lineBottom.setVisibility(View.INVISIBLE);
+        }
+
+        for (View card : cards) container.addView(card);
 
         wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
         if (interscambiNested != null) interscambiNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
