@@ -89,4 +89,5 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.google.mlkit.translate)
     implementation(libs.androidx.security.crypto)
+    implementation(libs.mapbox.sdk.services)
 }

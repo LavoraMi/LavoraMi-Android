@@ -7,6 +7,7 @@ junit-jupiter = "6.1.0"
 android-junit5-plugin = "2.0.1"
 espressoCore = "3.7.0"
 appcompat = "1.7.1"
+mapboxSdkServices = "7.10.0"
 material = "1.14.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
@@ -37,6 +38,7 @@ junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-para
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+mapbox-sdk-services = { module = "com.mapbox.mapboxsdk:mapbox-sdk-services", version.ref = "mapboxSdkServices" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }

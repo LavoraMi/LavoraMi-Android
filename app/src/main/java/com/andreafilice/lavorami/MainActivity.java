@@ -64,6 +64,11 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.mapbox.api.geocoding.v6.MapboxV6Geocoding;
+import com.mapbox.api.geocoding.v6.V6ForwardGeocodingRequestOptions;
+import com.mapbox.api.geocoding.v6.models.V6Response;
+import com.mapbox.api.geocoding.v6.models.V6Feature;
+import com.mapbox.geojson.Point;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -372,6 +377,9 @@ public class MainActivity extends AppCompatActivity {
                 case LE_TUE_LINEE:
                     filterGroup.check(R.id.chipYourLines);
                     break;
+                case NEAR_ME:
+                    filterGroup.check(R.id.chipNearMe);
+                    break;
                 case TUTTI:
                     filterGroup.check(R.id.chipAll);
                     break;
@@ -530,6 +538,7 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
                     View infoNearMe = findViewById(R.id.infoNearMe);
                     infoNearMe.setVisibility(View.VISIBLE);
+                    askForPositionPermission();
                     findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
                     infoNearMe.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoNearMeActivity.class));
                 }
@@ -679,6 +688,7 @@ public class MainActivity extends AppCompatActivity {
 
         int[] chipIDS = {
             R.id.chipYourLines,
+            R.id.chipNearMe,
             R.id.chipAll,
             R.id.chipBus,
             R.id.chipTram,
@@ -696,6 +706,7 @@ public class MainActivity extends AppCompatActivity {
 
         CategoriesEnum[] arrayEnums = {
             CategoriesEnum.LE_TUE_LINEE,
+            CategoriesEnum.NEAR_ME,
             CategoriesEnum.TUTTI,
             CategoriesEnum.BUS,
             CategoriesEnum.TRAM,
@@ -1062,6 +1073,11 @@ public class MainActivity extends AppCompatActivity {
                         filtrata.add(item);
                     break;
 
+                case NEAR_ME:
+                    double[] luogo = getWorkPosition(item);
+
+                    break;
+
                 case BUS:
                     if (isBus(item) && terminated > limiteMassimo) filtrata.add(item);
                     break;
@@ -1139,6 +1155,60 @@ public class MainActivity extends AppCompatActivity {
             if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
         }
         return false;
+    }
+
+    private double[] getWorkPosition(EventDescriptor item) {
+        if (item == null) return null;
+
+        String roads = item.getRoads();
+        if (roads == null || roads.isEmpty()) return null;
+
+        final double[] result = new double[2];
+
+        geocodeAddress(roads, (latitude, longitude) -> {
+            result[0] = latitude;
+            result[1] = longitude;
+        });
+
+        return result;
+    }
+
+    private void geocodeAddress(String address, OnCoordinatesReady callback) {
+        V6ForwardGeocodingRequestOptions requestOptions = V6ForwardGeocodingRequestOptions
+                .builder(address)
+                .autocomplete(false)
+                .build();
+
+        MapboxV6Geocoding mapboxGeocoding = MapboxV6Geocoding.builder(
+                "MAPBOX_KEY",
+                requestOptions
+        ).build();
+
+        mapboxGeocoding.enqueueCall(new Callback<V6Response>() {
+            @Override
+            public void onResponse(Call<V6Response> call, Response<V6Response> response) {
+                if (response.body() == null) return;
+
+                List<V6Feature> results = response.body().features();
+                if (!results.isEmpty()) {
+                    V6Feature firstFeature = results.get(0);
+                    Point point = (Point) firstFeature.geometry();
+                    double latitude  = point.latitude();
+                    double longitude = point.longitude();
+                    callback.onReady(latitude, longitude);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<V6Response> call, Throwable throwable) {
+                Log.e("Geocoder", "Errore geocoding", throwable);
+            }
+        });
+    }
+
+    // Interfaccia callback
+    interface OnCoordinatesReady {
+        void onReady(double latitude, double longitude);
     }
 
     private void showTutorialDialog() {
