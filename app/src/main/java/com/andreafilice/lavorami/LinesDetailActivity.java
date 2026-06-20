@@ -89,6 +89,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private GTFSHelper.GTFSRoute routeData;
     private String selectedStopId;
     private int coloreLinea;
+    private boolean foundAtLeastOne = false;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable arriviRunnable;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -247,7 +248,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 cardMappa.setVisibility(View.VISIBLE);
                 containerLavori.setVisibility(View.GONE);
                 containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             }
             else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()) {
                 chipMappa.setChecked(false);
@@ -256,7 +256,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 cardMappa.setVisibility(View.GONE);
                 containerLavori.setVisibility(View.VISIBLE);
                 containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyViewContainer).setVisibility(View.VISIBLE);
             }
 
             updateChipGroupSizes(detActionGroup);
@@ -340,6 +339,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
         });
+
         //*SAVE TO "YOUR LINES"
         /// In this section we save the line currently selected to the Array of "your lines".
         updateSavedLines();
@@ -768,11 +768,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                     MapboxHelper.enableUserLocation(mapViewRef, false);
                     MapboxHelper.zoomToUserLocation(mapViewRef);
                 }
-            } else {
-                Toast.makeText(this, getString(R.string.locationPermissionDenied), Toast.LENGTH_SHORT).show();
             }
+            else
+                Toast.makeText(this, getString(R.string.locationPermissionDenied), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void caricaEventiFiltrati() {
         LinearLayout container = findViewById(R.id.containerLavori);
         View wrapper = findViewById(R.id.lavoriSezioneWrapper);
@@ -780,8 +781,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (container == null || wrapper == null) return;
 
+        foundAtLeastOne = false;
         container.removeAllViews();
-        boolean foundAtLeastOne = false;
 
         String searchTag = (nomeLinea.matches("9[0-3]")) ? ("FILOBUS " + nomeLinea.trim()) : nomeLinea.trim().toUpperCase();
 
