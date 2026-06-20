@@ -948,7 +948,16 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void preloadInterscambi() {
         executor.execute(() -> {
             String searchTag = nomeLinea.trim().toUpperCase();
-            List<InterchangeInfo> interchanges = tipoDiLinea.contains(getString(R.string.tramLinesScroll)) ? StationDB.getInterchangesTrams() : (tipoDiLinea.contains("Filobus") ? StationDB.getInterchangesFilobus() : (isLineaMetro() ? StationDB.getMetroInterchanges() : StationDB.getInterchanges(this)));
+            List<InterchangeInfo> interchanges = null;
+
+            if(tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
+                interchanges = StationDB.getInterchangesTrams();
+            else if(tipoDiLinea.contains("Filobus"))
+                interchanges = StationDB.getInterchangesFilobus();
+            else if (isLineaMetro())
+                interchanges = StationDB.getMetroInterchanges();
+            else
+                interchanges = StationDB.getInterchanges(this);
 
             List<InterchangeInfo> matched = new ArrayList<>();
 
