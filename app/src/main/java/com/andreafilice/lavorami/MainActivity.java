@@ -566,6 +566,7 @@ public class MainActivity extends AppCompatActivity {
         /// In this section of the code, we define the Chip colors for better visibility.
         Chip[] filterChips = {
             findViewById(R.id.chipYourLines),
+            findViewById(R.id.chipNearMe),
             findViewById(R.id.chipAll),
             findViewById(R.id.chipBus),
             findViewById(R.id.chipTram),
