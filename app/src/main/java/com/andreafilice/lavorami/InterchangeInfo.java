@@ -39,6 +39,10 @@ public class InterchangeInfo {
                 return R.drawable.ic_bus;
             case "tram.fill":
                 return R.drawable.ic_tram;
+            case "stadium.fill":
+                return R.drawable.ic_stadium;
+            case "building.columns.fill":
+                return R.drawable.ic_culture_point;
             default:
                 return R.drawable.empty_image;
         }
