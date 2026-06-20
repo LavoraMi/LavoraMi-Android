@@ -281,7 +281,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lavori vicino a te"
+                android:text="Vicino a me"
                 android:textColor="@color/text_primary"
                 app:chipBackgroundColor="@color/selector_chip_filter"
                 app:chipIcon="@drawable/ic_location"
