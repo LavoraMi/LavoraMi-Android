@@ -961,16 +961,16 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             Set<String> seenKeys = new LinkedHashSet<>();
             List<InterchangeInfo> matched = new ArrayList<>();
+
             for (InterchangeInfo info : interchanges) {
-                if (info.getLines() == null) continue;
-                for (String line : info.getLines()) {
-                    if (line != null && line.trim().toUpperCase().equals(searchTag)) {
-                        if (!seenKeys.contains(info.getKey())) {
-                            seenKeys.add(info.getKey());
-                            matched.add(info);
-                        }
-                        break;
-                    }
+                if (info.getLines() == null || info.getLines().length == 0) continue;
+                String primaryLine = info.getLines()[0].trim().toUpperCase();
+                if (!primaryLine.equals(searchTag)) continue;
+
+                String compositeKey = info.getKey() + "|" + searchTag;
+                if (!seenKeys.contains(compositeKey)) {
+                    seenKeys.add(compositeKey);
+                    matched.add(info);
                 }
             }
 
@@ -1070,12 +1070,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         List<InterchangeInfo> mainItems = new ArrayList<>();
         Map<String, List<InterchangeInfo>> branchMap = new LinkedHashMap<>();
-        Set<String> seenKeys = new HashSet<>();
 
         for (InterchangeInfo info : allMatched) {
-            if (seenKeys.contains(info.getKey())) continue;
-            seenKeys.add(info.getKey());
-
             if ("Main".equals(info.getBranch()))
                 mainItems.add(info);
             else {
@@ -1203,7 +1199,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         for (InterchangeInfo evento : interchanges) {
             if (evento.getLines() == null) continue;
-            if (seenKeys.contains(evento.getKey())) continue;
+            String compositeKey = evento.getKey() + "|" + searchTag;
+            if (seenKeys.contains(compositeKey)) continue;
 
             boolean matchFound = false;
             for (String lineInEvent : evento.getLines()) {
@@ -1214,7 +1211,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
 
             if (matchFound) {
-                seenKeys.add(evento.getKey());
+                seenKeys.add(compositeKey);
                 foundAtLeastOne = true;
 
                 View card = getLayoutInflater().inflate(isMetro ? R.layout.item_interchange : R.layout.interchange_info_old, container, false);
