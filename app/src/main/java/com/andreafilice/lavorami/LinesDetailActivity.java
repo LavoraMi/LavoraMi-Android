@@ -1086,9 +1086,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
+        Collections.sort(mainItems, (a, b) -> Integer.compare(b.getLineOrder(), a.getLineOrder()));
+
         for (List<InterchangeInfo> list : branchMap.values())
-            Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
+            Collections.sort(list, (a, b) -> Integer.compare(b.getLineOrder(), a.getLineOrder()));
 
         List<InterchangeInfo> toShow = new ArrayList<>();
         if (selectedBranch == null) {
@@ -1098,6 +1099,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         else {
             List<InterchangeInfo> selected = branchMap.get(selectedBranch);
             if (selected != null) toShow.addAll(selected);
+            toShow.addAll(mainItems);
         }
 
         boolean isMetro = isLineaMetro();
@@ -1113,7 +1115,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     icona.setImageResource(evento.getCardImageID());
                     icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
                 }
-                 
+
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 if (titolo != null)
                     titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALO ROMANA" : evento.getKey().toUpperCase());
