@@ -1085,10 +1085,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        Collections.sort(mainItems, (a, b) -> Integer.compare(b.getLineOrder(), a.getLineOrder()));
+        Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
         for (List<InterchangeInfo> list : branchMap.values())
-            Collections.sort(list, (a, b) -> Integer.compare(b.getLineOrder(), a.getLineOrder()));
+            Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
         List<InterchangeInfo> toShow = new ArrayList<>();
         if (selectedBranch == null) {
