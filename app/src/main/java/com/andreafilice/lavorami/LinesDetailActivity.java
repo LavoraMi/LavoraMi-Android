@@ -178,7 +178,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         aggiornaUI();
 
-        Log.d("DEBUG_ARRIVI", "1. onCreate completato. Nome Linea ricevuto: " + nomeLinea);
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
 
@@ -551,7 +550,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
-        Log.d("DEBUG_ARRIVI", "2. elaboraStazioni() ENTRATO CORRETTAMENTE!");
 
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
         for (MetroStation s : StationDB.getAllStations(strikeCDNResponse.isPassanteWorkEnabled())) {
@@ -1033,7 +1031,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         ChipGroup chipGroup = new ChipGroup(this);
         chipGroup.setSingleSelection(true);
         chipGroup.setChipSpacingHorizontal(px12);
-        
+
         for (String branch : branches) {
             Chip chip = new Chip(this);
             chip.setText(branch);
@@ -1830,7 +1828,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                     routeData = route;
                     if (arriviProgressBar != null) arriviProgressBar.setVisibility(View.GONE);
                     setupStopDropdown();
-                    Log.d("DEBUG_ARRIVI", "3. Stazioni trovate nel DB/CDN");
                 });
             }
 
