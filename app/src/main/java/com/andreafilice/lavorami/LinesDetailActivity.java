@@ -989,9 +989,15 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean hasMultipleBranches = !availableBranches.isEmpty();
 
             interchangeHandler.post(() -> {
+                if (selectedBranch == null && hasMultipleBranches)
+                    selectedBranch = availableBranches.get(0);
+
                 Button btnBranch = findViewById(R.id.buttonSelectBranch);
                 if (btnBranch != null) {
                     btnBranch.setVisibility(hasMultipleBranches ? View.VISIBLE : View.GONE);
+                    if (hasMultipleBranches)
+                        btnBranch.setText(selectedBranch);
+
                     btnBranch.setOnClickListener(v -> showBranchDialog(availableBranches, matched));
                 }
 
@@ -1027,15 +1033,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         ChipGroup chipGroup = new ChipGroup(this);
         chipGroup.setSingleSelection(true);
         chipGroup.setChipSpacingHorizontal(px12);
-
-        Chip chipAll = new Chip(this);
-        chipAll.setText(getString(R.string.allBranches));
-        chipAll.setCheckable(true);
-        chipAll.setChecked(selectedBranch == null);
-        chipAll.setChipBackgroundColorResource(selectedBranch == null ? R.color.disclosureBg : R.color.text_primary);
-        chipAll.setTypeface(ResourcesCompat.getFont(this, R.font.font_main), Typeface.BOLD);
-        chipGroup.addView(chipAll);
-
+        
         for (String branch : branches) {
             Chip chip = new Chip(this);
             chip.setText(branch);
@@ -1051,13 +1049,13 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (checkedIds.isEmpty()) return;
             int checkedId = checkedIds.get(0);
             View checkedChip = group.findViewById(checkedId);
-            int idx = group.indexOfChild(checkedChip);
 
-            selectedBranch = (idx == 0) ? null : branches.get(idx - 1);
+            int idx = group.indexOfChild(checkedChip);
+            selectedBranch = branches.get(idx);
 
             Button btnBranch = findViewById(R.id.buttonSelectBranch);
             if (btnBranch != null)
-                btnBranch.setText(selectedBranch != null ? selectedBranch : getString(R.string.allBranches));
+                btnBranch.setText(selectedBranch);
 
             renderInterscambi(allMatched);
             dialog.dismiss();
