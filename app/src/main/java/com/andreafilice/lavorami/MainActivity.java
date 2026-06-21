@@ -11,6 +11,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +45,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -64,11 +66,17 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.mapbox.api.geocoding.v6.MapboxV6Geocoding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.Priority;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+/*import com.mapbox.api.geocoding.v6.MapboxV6Geocoding;
 import com.mapbox.api.geocoding.v6.V6ForwardGeocodingRequestOptions;
 import com.mapbox.api.geocoding.v6.models.V6Response;
 import com.mapbox.api.geocoding.v6.models.V6Feature;
-import com.mapbox.geojson.Point;
+import com.mapbox.geojson.Point;*/
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -103,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean strikeBannerClosed = false;
     private boolean  definitelyClosedSavedLinesHint;
     public static boolean alreadyRefreshedLines = false;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -1055,7 +1062,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (EventDescriptor item : events) {
             terminated = item.getEndDateMillis();
-            
+
             long limiteMassimo = now - 86400000L;
 
             switch (categoria) {
@@ -1074,7 +1081,20 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case NEAR_ME:
-                    double[] luogo = getWorkPosition(item);
+                    double[] coordinateLavoro = new double[2];
+                    double[] coordinateUtente = new double[2];
+                    /*getWorkCoordinates(item, (latitude, longitude) -> {
+                        coordinateLavoro[0] = latitude;
+                        coordinateLavoro[1] = longitude;
+                    });*/
+                    getUserCoordinates((lat, lon) -> {
+                        coordinateUtente[0] = lat;
+                        coordinateUtente[1] = lon;
+                    });
+                    if (calcolaDistanzaKm(coordinateUtente[0], coordinateUtente[1],
+                            coordinateLavoro[0], coordinateLavoro[1]) <= 10.0) { //10.0 km (modificabile)
+                        filtrata.add(item);
+                    }
 
                     break;
 
@@ -1157,20 +1177,41 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    private double[] getWorkPosition(EventDescriptor item) {
-        if (item == null) return null;
+    /*private void getWorkCoordinates(EventDescriptor item, OnCoordinatesReady callback) {
+        if (item == null) {
+            callback.onReady(0, 0);
+            return;
+        }
 
-        String roads = item.getRoads();
-        if (roads == null || roads.isEmpty()) return null;
+        String[] roads = item.getRoads().split("[-/,]");
+        // Filtra subito le stringhe vuote
+        List<String> validRoads = new ArrayList<>();
+        for (String road : roads) {
+            if (road != null && !road.trim().isEmpty()) {
+                validRoads.add(road.trim());
+            }
+        }
 
-        final double[] result = new double[2];
+        if (validRoads.isEmpty()) {
+            callback.onReady(0, 0);
+            return;
+        }
 
-        geocodeAddress(roads, (latitude, longitude) -> {
-            result[0] = latitude;
-            result[1] = longitude;
-        });
+        double[] result = {0, 0};
+        int[] completedCount = {0}; // array per poterlo usare nella lambda
+        int total = validRoads.size();
 
-        return result;
+        for (String road : validRoads) {
+            geocodeAddress(road, (latitude, longitude) -> {
+                result[0] += latitude;
+                result[1] += longitude;
+                completedCount[0]++;
+
+                if (completedCount[0] == total) {
+                    callback.onReady(result[0] / total, result[1] / total);
+                }
+            });
+        }
     }
 
     private void geocodeAddress(String address, OnCoordinatesReady callback) {
@@ -1180,7 +1221,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         MapboxV6Geocoding mapboxGeocoding = MapboxV6Geocoding.builder(
-                "MAPBOX_KEY",
+                BuildConfig.MAPBOX_TOKEN,
                 requestOptions
         ).build();
 
@@ -1204,11 +1245,67 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Geocoder", "Errore geocoding", throwable);
             }
         });
-    }
+    }*/
 
-    // Interfaccia callback
     interface OnCoordinatesReady {
         void onReady(double latitude, double longitude);
+    }
+
+    public void getUserCoordinates(OnCoordinatesReady callback) {
+        FusedLocationProviderClient fusedClient =
+                LocationServices.getFusedLocationProviderClient(this);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            askForPositionPermission();
+            return;
+        }
+
+        fusedClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (location != null && isLocationFresh(location)) {
+                callback.onReady(location.getLatitude(), location.getLongitude());
+                return;
+            }
+
+            // lastLocation assente o vecchia: richiedi una fix fresca
+            LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 0)
+                    .setMaxUpdates(1)           // una sola fix, poi si ferma
+                    .setWaitForAccurateLocation(false)
+                    .build();
+
+            LocationCallback locationCallback = new LocationCallback() {
+                @Override
+                public void onLocationResult(@NonNull LocationResult result) {
+                    Location fresh = result.getLastLocation();
+                    fusedClient.removeLocationUpdates(this);
+                    if (fresh != null) {
+                        callback.onReady(fresh.getLatitude(), fresh.getLongitude());
+                    }
+                }
+            };
+
+            fusedClient.requestLocationUpdates(request, locationCallback, Looper.getMainLooper());
+        });
+    }
+
+    private static final long MAX_LOCATION_AGE_MS = 5 * 60 * 1000;
+    private boolean isLocationFresh(Location location) {
+        return System.currentTimeMillis() - location.getTime() < MAX_LOCATION_AGE_MS;
+    }
+
+    private double calcolaDistanzaKm(double lat1, double lon1, double lat2, double lon2) {
+        final int RAGGIO_TERRA = 6371; // km
+
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return RAGGIO_TERRA * c;
     }
 
     private void showTutorialDialog() {

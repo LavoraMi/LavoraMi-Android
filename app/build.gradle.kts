@@ -39,6 +39,7 @@ android {
         manifestPlaceholders["API_MAPBOX_TOKEN"] = mapboxToken
         manifestPlaceholders["API_SUPABASE_ANON"] = apiSupabaseANON
         manifestPlaceholders["API_GOOGLE_SIGNUP"] = googleLoginAPI
+        buildConfigField("String", "MAPBOX_TOKEN", "\"${mapboxToken}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -50,6 +51,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    buildFeatures {
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -67,6 +71,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.fragment)
+    implementation(libs.play.services.location)
     implementation(libs.recyclerview)
     implementation(libs.androidx.biometric)
     implementation(libs.cardview)
