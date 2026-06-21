@@ -977,11 +977,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
 
             Set<String> branchSet = new LinkedHashSet<>();
+
             for (InterchangeInfo info : matched) {
-                String b = info.getBranch();
-                if (b != null && !b.isEmpty() && !b.equals("Main"))
-                    branchSet.add(b);
+                String branch = info.getBranch();
+
+                if (branch != null && !branch.isEmpty() && !branch.equals("Main"))
+                    branchSet.add(branch);
             }
+
             List<String> availableBranches = new ArrayList<>(branchSet);
             boolean hasMultipleBranches = !availableBranches.isEmpty();
 
