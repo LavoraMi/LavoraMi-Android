@@ -1108,6 +1108,12 @@ public class LinesDetailActivity extends AppCompatActivity {
             View card = getLayoutInflater().inflate(isMetro ? R.layout.item_interchange : R.layout.interchange_info_old, container, false);
 
             if (isMetro) {
+                ImageView icona = card.findViewById(R.id.iconTransport);
+                if (icona != null) {
+                    icona.setImageResource(evento.getCardImageID());
+                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+                }
+                 
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 if (titolo != null)
                     titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALO ROMANA" : evento.getKey().toUpperCase());
