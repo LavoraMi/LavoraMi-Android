@@ -45,6 +45,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.button.MaterialButton;
 import com.mapbox.maps.MapView;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
@@ -1032,12 +1033,55 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipGroup.setSingleSelection(true);
         chipGroup.setChipSpacingHorizontal(px12);
 
+        int lineColor = coloreLinea;
+        int uncheckedBg = Color.BLACK;
+        int uncheckedStroke = Color.GRAY;
+
+        float strokeWidthDp = 1.5f;
+        int strokeWidthPx = (int)(strokeWidthDp * getResources().getDisplayMetrics().density);
+
         for (String branch : branches) {
             Chip chip = new Chip(this);
             chip.setText(branch);
             chip.setCheckable(true);
             chip.setChecked(branch.equals(selectedBranch));
             chip.setTypeface(ResourcesCompat.getFont(this, R.font.font_main), Typeface.BOLD);
+
+            ColorStateList bgStates = new ColorStateList(
+                new int[][]{
+                    new int[]{ android.R.attr.state_checked },
+                    new int[]{ -android.R.attr.state_checked }
+                },
+                new int[]{ lineColor, uncheckedBg }
+            );
+            chip.setChipBackgroundColor(bgStates);
+
+            ColorStateList strokeStates = new ColorStateList(
+                new int[][]{
+                    new int[]{ android.R.attr.state_checked },
+                    new int[]{ -android.R.attr.state_checked }
+                },
+                new int[]{ lineColor, uncheckedStroke }
+            );
+            chip.setChipStrokeColor(strokeStates);
+            chip.setChipStrokeWidth(strokeWidthPx);
+
+            ColorStateList textStates = new ColorStateList(
+                new int[][]{
+                    new int[]{ android.R.attr.state_checked },
+                    new int[]{ -android.R.attr.state_checked }
+                },
+                new int[]{ Color.WHITE, Color.WHITE }
+            );
+            chip.setTextColor(textStates);
+
+            float density = getResources().getDisplayMetrics().density;
+            int heightPx = (int)(36 * density);
+            chip.setChipMinHeight(heightPx);
+            chip.setMinHeight(heightPx);
+            chip.setChipStartPadding(px12);
+            chip.setChipEndPadding(px12);
+
             chipGroup.addView(chip);
         }
 
@@ -1047,7 +1091,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (checkedIds.isEmpty()) return;
             int checkedId = checkedIds.get(0);
             View checkedChip = group.findViewById(checkedId);
-
             int idx = group.indexOfChild(checkedChip);
             selectedBranch = branches.get(idx);
 
