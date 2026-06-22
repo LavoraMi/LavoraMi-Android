@@ -1113,7 +1113,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 if (titolo != null)
-                    titolo.setText(evento.getKey().equals("Lodi TIBB") ? "MILANO SCALO ROMANA" : evento.getKey().toUpperCase());
+                    titolo.setText(evento.getKey().toUpperCase());
 
                 ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
                 if (chipGroup != null && evento.getLines() != null) {
