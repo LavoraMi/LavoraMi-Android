@@ -398,6 +398,5 @@
     <string name="busKey">Bus</string>
     <string name="arrivalsNotLoaded">Caricamento degli orari non ancora completato...</string>
     <string name="operatorTextDeps2">Oppure salva una linea nella sezione \"Le tue linee\" per vedere, tramite l\'apposito filtro, solo i lavori che interessano a te.</string>
-    <string name="allBranches">Tutti i rami</string>
     <string name="selectBranch">Scegli il ramo</string>
 </resources>
