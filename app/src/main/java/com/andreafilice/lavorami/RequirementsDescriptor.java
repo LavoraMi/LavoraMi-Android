@@ -30,7 +30,7 @@ public class RequirementsDescriptor {
     /// Set-up the Getter to use into MainActivity.java for get some values.
     public String getMinimumVersionAndroid(){return this.minimumVersionAndroid;}
     public boolean isMaintenanceEnabled(){return maintenanceModeEnabled.equalsIgnoreCase("true");}
-    public boolean isMaintenanceDebugEnabled(){return maintenanceModeDebug.equalsIgnoreCase("false");}
+    public boolean isMaintenanceDebugEnabled(){return maintenanceModeDebug.equalsIgnoreCase("true");}
     public String getMaintenanceDeps(){return this.maintenanceDeps;}
     public String getMaintenanceDepsEnglish(){return this.maintenanceDepsEnglish;}
     public String getMaintenanceDepsSpanish(){return this.maintenanceDepsSpanish;}

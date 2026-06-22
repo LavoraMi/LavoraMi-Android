@@ -5074,12 +5074,12 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Susa", new String[]{"M4", "NM4", "38", "54", "Filobus 90", "Filobus 91"}, "tram.fill.tunnel", "Main", 4));
         interchanges.add(new InterchangeInfo("Dateo FS", new String[]{"M4", "NM4", "S1", "S2", "S5", "S6", "S12", "S13", "54", "61", "Filobus 92"}, "tram.fill.tunnel", "Main", 5));
         interchanges.add(new InterchangeInfo("Tricolore", new String[]{"M4", "NM4", "9", "19", "61"}, "tram.fill.tunnel", "Main", 6));
-        interchanges.add(new InterchangeInfo("San Babila M1 M4", new String[]{"M1", "NM1", "M4", "NM4", "NM3", "61", "84"}, "tram.fill.tunnel", "Main", 7));
-        interchanges.add(new InterchangeInfo("Sforza - Policlinico", new String[]{"M3", "NM3", "M4", "NM4", "16", "24", "65", "96", "97", "N24"}, "figure.walk", "Main", 8));
+        interchanges.add(new InterchangeInfo("San Babila M1 M4", new String[]{"M4", "NM4", "M1", "NM1", "NM3", "61", "84"}, "tram.fill.tunnel", "Main", 7));
+        interchanges.add(new InterchangeInfo("Sforza - Policlinico", new String[]{"M4", "NM4", "M3", "NM3", "16", "24", "65", "96", "97", "N24"}, "figure.walk", "Main", 8));
         interchanges.add(new InterchangeInfo("Santa Sofia", new String[]{"M4", "NM4", "15", "96", "97", "N15"}, "tram.fill.tunnel", "Main", 9));
         interchanges.add(new InterchangeInfo("Vetra", new String[]{"M4", "NM4", "3", "96", "97"}, "tram.fill.tunnel", "Main", 10));
         interchanges.add(new InterchangeInfo("De Amicis", new String[]{"M4", "NM4", "NM2", "2", "14", "96", "97"}, "tram.fill.tunnel", "Main", 11));
-        interchanges.add(new InterchangeInfo("S. Ambrogio M2 M4", new String[]{"M2", "NM2", "M4", "NM4", "50", "96", "97"}, "tram.fill.tunnel", "Main", 12));
+        interchanges.add(new InterchangeInfo("S. Ambrogio M2 M4", new String[]{"M4", "NM4", "M2", "NM2", "50", "96", "97"}, "tram.fill.tunnel", "Main", 12));
         interchanges.add(new InterchangeInfo("Coni Zugna", new String[]{"M4", "NM4", "2", "10", "58"}, "tram.fill.tunnel", "Main", 13));
         interchanges.add(new InterchangeInfo("California", new String[]{"M4", "NM4", "58", "68"}, "tram.fill.tunnel", "Main", 14));
         interchanges.add(new InterchangeInfo("Bolivar", new String[]{"M4", "NM4", "58", "85", "Filobus 90", "Filobus 91"}, "tram.fill.tunnel", "Main", 15));
