@@ -67,7 +67,6 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.fragment)
-    implementation(libs.play.services.location)
     implementation(libs.recyclerview)
     implementation(libs.androidx.biometric)
     implementation(libs.cardview)
