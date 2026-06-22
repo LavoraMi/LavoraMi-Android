@@ -30,7 +30,7 @@ android {
         targetSdk = 36
         versionCode = 43
         versionName = "1.1.12"
-        var buildNumber = "20062026"
+        var buildNumber = "22062026"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
         resValue("string", "appVersionFull", ("$versionName ($buildNumber)"))
@@ -39,7 +39,6 @@ android {
         manifestPlaceholders["API_MAPBOX_TOKEN"] = mapboxToken
         manifestPlaceholders["API_SUPABASE_ANON"] = apiSupabaseANON
         manifestPlaceholders["API_GOOGLE_SIGNUP"] = googleLoginAPI
-        buildConfigField("String", "MAPBOX_TOKEN", "\"${mapboxToken}\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -51,9 +50,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    buildFeatures {
-        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -94,5 +90,4 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.google.mlkit.translate)
     implementation(libs.androidx.security.crypto)
-    implementation(libs.mapbox.sdk.services)
 }

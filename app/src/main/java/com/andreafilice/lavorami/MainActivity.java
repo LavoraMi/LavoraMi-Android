@@ -66,17 +66,6 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.Priority;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationResult;
-/*import com.mapbox.api.geocoding.v6.MapboxV6Geocoding;
-import com.mapbox.api.geocoding.v6.V6ForwardGeocodingRequestOptions;
-import com.mapbox.api.geocoding.v6.models.V6Response;
-import com.mapbox.api.geocoding.v6.models.V6Feature;
-import com.mapbox.geojson.Point;*/
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -384,9 +373,6 @@ public class MainActivity extends AppCompatActivity {
                 case LE_TUE_LINEE:
                     filterGroup.check(R.id.chipYourLines);
                     break;
-                case NEAR_ME:
-                    filterGroup.check(R.id.chipNearMe);
-                    break;
                 case TUTTI:
                     filterGroup.check(R.id.chipAll);
                     break;
@@ -534,24 +520,14 @@ public class MainActivity extends AppCompatActivity {
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                     else {
-                        findViewById(R.id.infoNearMe).setVisibility(View.GONE);
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
                         findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                 }
-                else if(checkedId == R.id.chipNearMe){
+               else {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
-                    View infoNearMe = findViewById(R.id.infoNearMe);
-                    infoNearMe.setVisibility(View.VISIBLE);
-                    askForPositionPermission();
-                    findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
-                    infoNearMe.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoNearMeActivity.class));
-                }
-                else {
-                    findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
-                    findViewById(R.id.infoNearMe).setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,112*densita);
                 }
                 if (checkedId == View.NO_ID)
@@ -582,7 +558,6 @@ public class MainActivity extends AppCompatActivity {
         /// In this section of the code, we define the Chip colors for better visibility.
         Chip[] filterChips = {
             findViewById(R.id.chipYourLines),
-            findViewById(R.id.chipNearMe),
             findViewById(R.id.chipAll),
             findViewById(R.id.chipBus),
             findViewById(R.id.chipTram),
@@ -695,7 +670,6 @@ public class MainActivity extends AppCompatActivity {
 
         int[] chipIDS = {
             R.id.chipYourLines,
-            R.id.chipNearMe,
             R.id.chipAll,
             R.id.chipBus,
             R.id.chipTram,
@@ -713,7 +687,6 @@ public class MainActivity extends AppCompatActivity {
 
         CategoriesEnum[] arrayEnums = {
             CategoriesEnum.LE_TUE_LINEE,
-            CategoriesEnum.NEAR_ME,
             CategoriesEnum.TUTTI,
             CategoriesEnum.BUS,
             CategoriesEnum.TRAM,
@@ -1080,24 +1053,6 @@ public class MainActivity extends AppCompatActivity {
                         filtrata.add(item);
                     break;
 
-                case NEAR_ME:
-                    double[] coordinateLavoro = new double[2];
-                    double[] coordinateUtente = new double[2];
-                    /*getWorkCoordinates(item, (latitude, longitude) -> {
-                        coordinateLavoro[0] = latitude;
-                        coordinateLavoro[1] = longitude;
-                    });*/
-                    getUserCoordinates((lat, lon) -> {
-                        coordinateUtente[0] = lat;
-                        coordinateUtente[1] = lon;
-                    });
-                    if (calcolaDistanzaKm(coordinateUtente[0], coordinateUtente[1],
-                            coordinateLavoro[0], coordinateLavoro[1]) <= 10.0) { //10.0 km (modificabile)
-                        filtrata.add(item);
-                    }
-
-                    break;
-
                 case BUS:
                     if (isBus(item) && terminated > limiteMassimo) filtrata.add(item);
                     break;
@@ -1175,137 +1130,6 @@ public class MainActivity extends AppCompatActivity {
             if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
         }
         return false;
-    }
-
-    /*private void getWorkCoordinates(EventDescriptor item, OnCoordinatesReady callback) {
-        if (item == null) {
-            callback.onReady(0, 0);
-            return;
-        }
-
-        String[] roads = item.getRoads().split("[-/,]");
-        // Filtra subito le stringhe vuote
-        List<String> validRoads = new ArrayList<>();
-        for (String road : roads) {
-            if (road != null && !road.trim().isEmpty()) {
-                validRoads.add(road.trim());
-            }
-        }
-
-        if (validRoads.isEmpty()) {
-            callback.onReady(0, 0);
-            return;
-        }
-
-        double[] result = {0, 0};
-        int[] completedCount = {0}; // array per poterlo usare nella lambda
-        int total = validRoads.size();
-
-        for (String road : validRoads) {
-            geocodeAddress(road, (latitude, longitude) -> {
-                result[0] += latitude;
-                result[1] += longitude;
-                completedCount[0]++;
-
-                if (completedCount[0] == total) {
-                    callback.onReady(result[0] / total, result[1] / total);
-                }
-            });
-        }
-    }
-
-    private void geocodeAddress(String address, OnCoordinatesReady callback) {
-        V6ForwardGeocodingRequestOptions requestOptions = V6ForwardGeocodingRequestOptions
-                .builder(address)
-                .autocomplete(false)
-                .build();
-
-        MapboxV6Geocoding mapboxGeocoding = MapboxV6Geocoding.builder(
-                BuildConfig.MAPBOX_TOKEN,
-                requestOptions
-        ).build();
-
-        mapboxGeocoding.enqueueCall(new Callback<V6Response>() {
-            @Override
-            public void onResponse(Call<V6Response> call, Response<V6Response> response) {
-                if (response.body() == null) return;
-
-                List<V6Feature> results = response.body().features();
-                if (!results.isEmpty()) {
-                    V6Feature firstFeature = results.get(0);
-                    Point point = (Point) firstFeature.geometry();
-                    double latitude  = point.latitude();
-                    double longitude = point.longitude();
-                    callback.onReady(latitude, longitude);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<V6Response> call, Throwable throwable) {
-                Log.e("Geocoder", "Errore geocoding", throwable);
-            }
-        });
-    }*/
-
-    interface OnCoordinatesReady {
-        void onReady(double latitude, double longitude);
-    }
-
-    public void getUserCoordinates(OnCoordinatesReady callback) {
-        FusedLocationProviderClient fusedClient =
-                LocationServices.getFusedLocationProviderClient(this);
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            askForPositionPermission();
-            return;
-        }
-
-        fusedClient.getLastLocation().addOnSuccessListener(this, location -> {
-            if (location != null && isLocationFresh(location)) {
-                callback.onReady(location.getLatitude(), location.getLongitude());
-                return;
-            }
-
-            // lastLocation assente o vecchia: richiedi una fix fresca
-            LocationRequest request = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 0)
-                    .setMaxUpdates(1)           // una sola fix, poi si ferma
-                    .setWaitForAccurateLocation(false)
-                    .build();
-
-            LocationCallback locationCallback = new LocationCallback() {
-                @Override
-                public void onLocationResult(@NonNull LocationResult result) {
-                    Location fresh = result.getLastLocation();
-                    fusedClient.removeLocationUpdates(this);
-                    if (fresh != null) {
-                        callback.onReady(fresh.getLatitude(), fresh.getLongitude());
-                    }
-                }
-            };
-
-            fusedClient.requestLocationUpdates(request, locationCallback, Looper.getMainLooper());
-        });
-    }
-
-    private static final long MAX_LOCATION_AGE_MS = 5 * 60 * 1000;
-    private boolean isLocationFresh(Location location) {
-        return System.currentTimeMillis() - location.getTime() < MAX_LOCATION_AGE_MS;
-    }
-
-    private double calcolaDistanzaKm(double lat1, double lon1, double lat2, double lon2) {
-        final int RAGGIO_TERRA = 6371; // km
-
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lon2 - lon1);
-
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return RAGGIO_TERRA * c;
     }
 
     private void showTutorialDialog() {

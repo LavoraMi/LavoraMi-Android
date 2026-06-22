@@ -2,7 +2,6 @@ package com.andreafilice.lavorami;
 
 public enum CategoriesEnum {
     LE_TUE_LINEE,
-    NEAR_ME,
     TUTTI,
     BUS,
     TRAM,

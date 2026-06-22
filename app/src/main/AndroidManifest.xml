@@ -100,9 +100,6 @@
             android:exported="false"
             android:parentActivityName=".LinesActivity" />
         <activity
-            android:name=".InfoNearMeActivity"
-            android:exported="false"/>
-        <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
             android:exported="true">

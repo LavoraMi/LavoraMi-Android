@@ -7,7 +7,6 @@ junit-jupiter = "6.1.0"
 android-junit5-plugin = "2.0.1"
 espressoCore = "3.7.0"
 appcompat = "1.7.1"
-mapboxSdkServices = "7.10.0"
 material = "1.14.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
@@ -27,7 +26,6 @@ firebaseBom = "34.15.0"
 mlkitTranslate = "17.0.3"
 activityKtx = "1.13.0"
 androidx-security-crypto = "1.1.0"
-playServicesLocation = "21.3.0"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -39,7 +37,6 @@ junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-para
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-mapbox-sdk-services = { module = "com.mapbox.mapboxsdk:mapbox-sdk-services", version.ref = "mapboxSdkServices" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
@@ -59,7 +56,6 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 google-mlkit-translate = { group = "com.google.mlkit", name = "translate", version.ref = "mlkitTranslate" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "androidx-security-crypto" }
-play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
