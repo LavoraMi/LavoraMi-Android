@@ -177,7 +177,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipInterscambi.setTypeface(typeface, Typeface.BOLD);
         chipArrivi.setTypeface(typeface, Typeface.BOLD);
 
-        aggiornaUI();
+        new Thread(() -> aggiornaUI()).start();
 
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
@@ -1149,10 +1149,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             if (isMetro) {
                 ImageView icona = card.findViewById(R.id.iconTransport);
-                if (icona != null) {
+                if (icona != null) 
                     icona.setImageResource(evento.getCardImageID());
-                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-                }
 
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 if (titolo != null)
