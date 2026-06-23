@@ -1149,7 +1149,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             if (isMetro) {
                 ImageView icona = card.findViewById(R.id.iconTransport);
-                if (icona != null) 
+                if (icona != null)
                     icona.setImageResource(evento.getCardImageID());
 
                 TextView titolo = card.findViewById(R.id.txtTitle);
