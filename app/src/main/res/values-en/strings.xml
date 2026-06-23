@@ -400,4 +400,5 @@
     <string name="arrivalsNotLoaded">Schedules loading not yet complete...</string>
     <string name="operatorTextDeps2">Alternatively, save a route in the \"Your Lines\" section to use the filter to view only the journeys that interest you.</string>
     <string name="selectBranch">Choose Branch</string>
+    <string name="noInterchangesView">Stop with no interchanges.</string>
 </resources>

@@ -86,7 +86,7 @@
                 android:fontFamily="@font/inter"
                 android:textColor="@color/subtitle"
                 android:textSize="15sp"
-                android:text="Fermata senza interscambi."
+                android:text="@string/noInterchangesView"
                 android:visibility="gone"/>
 
             <com.google.android.material.chip.ChipGroup
