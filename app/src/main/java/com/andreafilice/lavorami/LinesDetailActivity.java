@@ -1159,11 +1159,16 @@ public class LinesDetailActivity extends AppCompatActivity {
                 ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
                 if (chipGroup != null && evento.getLines() != null) {
                     chipGroup.removeAllViews();
+
                     for (String lineName : evento.getLines()) {
                         if (!lineName.equalsIgnoreCase(nomeLinea))
                             chipGroup.addView(createChip(lineName));
                     }
                 }
+
+                TextView emptyInterchanges = card.findViewById(R.id.noInterchangesTxt);
+                if(chipGroup.getChildCount() == 0)
+                    emptyInterchanges.setVisibility(View.VISIBLE);
 
                 applyMetroLineColor(card, lineColor);
             }
