@@ -782,20 +782,16 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (container == null || wrapper == null) return;
 
-        // Mostra subito uno stato di caricamento
         container.removeAllViews();
         wrapper.setVisibility(View.GONE);
         emptyView.setVisibility(View.GONE);
 
-        String searchTag = nomeLinea.matches("9[0-3]")
-                ? "FILOBUS " + nomeLinea.trim()
-                : nomeLinea.trim().toUpperCase();
+        String searchTag = nomeLinea.matches("9[0-3]") ? "FILOBUS " + nomeLinea.trim() : nomeLinea.trim().toUpperCase();
 
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
 
         executor.execute(() -> {
-            // Filtraggio in background
             List<EventDescriptor> eventiTrovati = new ArrayList<>();
 
             for (EventDescriptor evento : EventData.listaEventiCompleta) {
@@ -809,26 +805,19 @@ public class LinesDetailActivity extends AppCompatActivity {
                 }
             }
 
-            // Inflate e preparazione card in background
             List<View> cards = new ArrayList<>();
             LayoutInflater inflater = LayoutInflater.from(this);
 
             for (EventDescriptor evento : eventiTrovati) {
                 View card = inflater.inflate(R.layout.item_lavoro, container, false);
 
-                boolean important = evento.getDetails() != null
-                        && evento.getDetails().contains("[LAVORO IMPORTANTE]");
-                String cleanDet = important
-                        ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim()
-                        : evento.getDetails();
+                boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
+                String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
 
-                // Prepara i dati da applicare dopo sul main thread
-                // (non tocchiamo le View qui, solo raccogliamo i valori)
                 card.setTag(new Object[]{evento, cleanDet, langCode});
                 cards.add(card);
             }
 
-            // Render sul main thread
             runOnUiThread(() -> {
                 boolean found = !cards.isEmpty();
 
@@ -842,8 +831,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     ImageView icona = card.findViewById(R.id.iconEvent);
                     if (icona != null) {
                         icona.setImageResource(evento.getCardImageID());
-                        icona.setImageTintList(ColorStateList.valueOf(
-                                ContextCompat.getColor(this, R.color.text_primary)));
+                        icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
                     }
 
                     TextView titolo = card.findViewById(R.id.txtTitle);
@@ -864,10 +852,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                         ActivityUtils.triggerFeedback(this);
                     });
 
-                    TextView txtInizio  = card.findViewById(R.id.txtStartDate);
-                    TextView txtFine    = card.findViewById(R.id.txtEndDate);
+                    TextView txtInizio = card.findViewById(R.id.txtStartDate);
+                    TextView txtFine = card.findViewById(R.id.txtEndDate);
                     TextView companyTxt = card.findViewById(R.id.txtOperator);
-                    TextView roadsTxt   = card.findViewById(R.id.txtRoute);
+                    TextView roadsTxt = card.findViewById(R.id.txtRoute);
 
                     if (txtInizio != null) txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
                     if (txtFine != null)   txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
@@ -878,13 +866,11 @@ public class LinesDetailActivity extends AppCompatActivity {
                     if (pb != null) {
                         int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
                         pb.setProgress(perc);
-                        pb.setProgressTintList(ColorStateList.valueOf(
-                                perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
+                        pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
                     }
 
                     Button btnTranslate = card.findViewById(R.id.btnTranslate);
-                    boolean showTranslate = !lang.equalsIgnoreCase("it")
-                            || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
+                    boolean showTranslate = !lang.equalsIgnoreCase("it") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
                     btnTranslate.setVisibility(showTranslate ? View.VISIBLE : View.GONE);
                     btnTranslate.setOnClickListener(v -> mostraBottomSheetTraduzione(evento, cleanDet, lang));
 
@@ -897,18 +883,13 @@ public class LinesDetailActivity extends AppCompatActivity {
                     container.addView(card);
                 }
 
-                // Aggiorna visibilità
                 foundAtLeastOne = found;
                 wrapper.setVisibility(found ? View.VISIBLE : View.GONE);
                 lavoriNested.setVisibility(found ? View.VISIBLE : View.GONE);
                 emptyView.setVisibility(found ? View.GONE : View.VISIBLE);
 
-                ((TextView) findViewById(R.id.emptyView)).setText(
-                        EventData.networkError
-                                ? getString(R.string.noInternetConnectionError)
-                                : getString(R.string.noWorksOnThisLine));
-                ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(
-                        EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+                ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError)  : getString(R.string.noWorksOnThisLine));
+                ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
             });
         });
     }
@@ -917,13 +898,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View sheetView = LayoutInflater.from(this).inflate(R.layout.item_sheet_translated, null);
 
-        ShimmerFrameLayout loadingLayout  = sheetView.findViewById(R.id.loadingLayout);
-        LinearLayout layoutDefault        = sheetView.findViewById(R.id.layoutDefault);
-        LinearLayout layoutTerms          = sheetView.findViewById(R.id.layoutPrivacy);
-        Button acceptTerms                = sheetView.findViewById(R.id.btnContinue);
-        Button cancelTerms                = sheetView.findViewById(R.id.btnCancel);
-        TextView downloadingText          = sheetView.findViewById(R.id.textDownloading);
-        boolean isAcceptingTerms          = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
+        ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
+        LinearLayout layoutDefault = sheetView.findViewById(R.id.layoutDefault);
+        LinearLayout layoutTerms = sheetView.findViewById(R.id.layoutPrivacy);
+        Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
+        Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
+        TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
+        boolean isAcceptingTerms = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
 
         loadingLayout.startShimmer();
         bottomSheetDialog.setContentView(sheetView);
@@ -1017,7 +998,9 @@ public class LinesDetailActivity extends AppCompatActivity {
                 Button btnBranch = findViewById(R.id.buttonSelectBranch);
                 if (btnBranch != null) {
                     btnBranch.setVisibility(hasMultipleBranches ? View.VISIBLE : View.GONE);
+
                     if (hasMultipleBranches) btnBranch.setText(selectedBranch);
+
                     btnBranch.setOnClickListener(v -> {
                         ActivityUtils.triggerFeedback(this);
                         showBranchDialog(availableBranches, matched);
@@ -1026,8 +1009,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 interscambiPreloaded = true;
 
-                // Se l'utente è già sulla tab interscambi, mostra subito senza aspettare
-                // che riprema la chip
                 Chip chipInterscambi = findViewById(R.id.chipInterscambi);
                 if (chipInterscambi != null && chipInterscambi.isChecked())
                     mostraInterscambiCaricati(matched);
@@ -1113,9 +1094,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             chip.setChecked(branch.equals(selectedBranch));
             chip.setOnClickListener(v -> {
-                if (branch.equals(selectedBranch)) {
+                if (branch.equals(selectedBranch))
                     dialog.dismiss();
-                }
             });
 
             chipGroup.addView(chip);
@@ -1141,9 +1121,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private final Map<String, List<View>> branchViewCache = new LinkedHashMap<>();
-    private void prebuildAllBranchViews(List<InterchangeInfo> allMatched,
-                                        LinearLayout container,
-                                        Runnable onComplete) {
+    private void prebuildAllBranchViews(List<InterchangeInfo> allMatched, LinearLayout container, Runnable onComplete) {
         executor.execute(() -> {
             Map<String, List<InterchangeInfo>> branchMap = new LinkedHashMap<>();
             List<InterchangeInfo> mainItems = new ArrayList<>();
@@ -1151,9 +1129,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (InterchangeInfo info : allMatched) {
                 if ("Main".equals(info.getBranch()))
                     mainItems.add(info);
-                else {
+                else
                     branchMap.computeIfAbsent(info.getBranch(), k -> new ArrayList<>()).add(info);
-                }
             }
 
             Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
@@ -1161,19 +1138,14 @@ public class LinesDetailActivity extends AppCompatActivity {
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
             boolean isMetro = isLineaMetro();
-            int lineColor = isMetro
-                    ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea))
-                    : 0;
+            int lineColor = isMetro ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
 
-            // Costruisce le view per ogni branch in background
             Map<String, List<View>> cache = new LinkedHashMap<>();
 
-            // Branch "Main" — sempre presente
             List<View> mainViews = buildViewsForList(mainItems, inflater, container, isMetro, lineColor);
             cache.put("Main", mainViews);
 
-            // Un entry per ogni branch specifico (già include Main in coda)
             for (Map.Entry<String, List<InterchangeInfo>> entry : branchMap.entrySet()) {
                 List<InterchangeInfo> combined = new ArrayList<>(entry.getValue());
                 combined.addAll(mainItems);
@@ -1188,18 +1160,14 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
     }
 
-    private List<View> buildViewsForList(List<InterchangeInfo> items,
-                                         LayoutInflater inflater,
-                                         LinearLayout container,
-                                         boolean isMetro,
-                                         int lineColor) {
+    private List<View> buildViewsForList(List<InterchangeInfo> items, LayoutInflater inflater, LinearLayout container, boolean isMetro, int lineColor) {
         List<View> views = new ArrayList<>();
 
         for (InterchangeInfo evento : items) {
             View card = inflater.inflate(
-                    isMetro ? R.layout.item_interchange : R.layout.interchange_info_old,
-                    container,
-                    false
+                isMetro ? R.layout.item_interchange : R.layout.interchange_info_old,
+                container,
+                false
             );
 
             if (isMetro) {
@@ -1223,17 +1191,17 @@ public class LinesDetailActivity extends AppCompatActivity {
                     emptyInterchanges.setVisibility(View.VISIBLE);
 
                 applyMetroLineColor(card, lineColor);
-            } else {
+            }
+            else {
                 ImageView icona = card.findViewById(R.id.iconTransport);
                 if (icona != null) {
                     icona.setImageResource(evento.getCardImageID());
-                    icona.setImageTintList(ColorStateList.valueOf(
-                            ContextCompat.getColor(this, R.color.text_primary)));
+                    icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
                 }
 
-                TextView titolo          = card.findViewById(R.id.txtTitle);
-                TextView desc            = card.findViewById(R.id.txtLineCode);
-                TextView txtStationSub   = card.findViewById(R.id.txtStationSubtitle);
+                TextView titolo = card.findViewById(R.id.txtTitle);
+                TextView desc = card.findViewById(R.id.txtLineCode);
+                TextView txtStationSub = card.findViewById(R.id.txtStationSubtitle);
 
                 if (txtStationSub != null) txtStationSub.setText(evento.getKey());
                 if (titolo != null)
@@ -1250,10 +1218,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             views.add(card);
         }
 
-        // Nasconde le linee Metro di testa e coda
         if (isMetro && !views.isEmpty()) {
             View lineTop = views.get(0).findViewById(R.id.lineTop);
             View lineBottom = views.get(views.size() - 1).findViewById(R.id.lineBottom);
+
             if (lineTop != null) lineTop.setVisibility(View.INVISIBLE);
             if (lineBottom != null) lineBottom.setVisibility(View.INVISIBLE);
         }
@@ -1269,21 +1237,19 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         container.removeAllViews();
         for (View v : views) {
-            // Rimuove dal vecchio parent se necessario (una view può stare in un solo container)
             if (v.getParent() != null)
                 ((ViewGroup) v.getParent()).removeView(v);
+
             container.addView(v);
         }
     }
 
     private void caricaInterscambiLinee() {
         if (interscambiPreloaded) {
-            // Cache già pronta, mostra subito
             mostraInterscambiCaricati(null);
             return;
         }
 
-        // Ancora in caricamento: mostra il loading state e aspetta
         if (interscambiWrapper != null) interscambiWrapper.setVisibility(View.VISIBLE);
         if (interscambiNested != null) interscambiNested.setVisibility(View.GONE);
         if (interscambiLoadingState != null) interscambiLoadingState.setVisibility(View.VISIBLE);
@@ -1295,13 +1261,11 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void mostraInterscambiCaricati(List<InterchangeInfo> allMatched) {
-        // Nascondi il loading
         if (interscambiLoadingState != null) interscambiLoadingState.setVisibility(View.GONE);
 
         LinearLayout container = findViewById(R.id.containerInterscambi);
         boolean hasChildren = container != null && container.getChildCount() > 0;
 
-        // Se il container è vuoto applicalo dalla cache ora
         if (!hasChildren && allMatched != null)
             applyBranchFromCache(container, allMatched);
 
@@ -1457,19 +1421,17 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] suburbanInterruptions = cdnData.getSuburbanWithInterruptions();
         String[] suburbanLinks = cdnData.getSuburbanInterruptionLinks();
 
-        LinearLayout deviazioneLinea  = findViewById(R.id.deviazioneLinea);
-        ImageView    mapDeviationBtn  = findViewById(R.id.mapDeviationBtn);
+        LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
+        ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
 
         int i = 0;
         for (String linea : lineeDeviate) {
             if (linea.equals(nomeLinea)) {
                 String lineLink = linkLinee[i];
                 deviazioneLinea.setVisibility(View.VISIBLE);
-                deviazioneLinea.setOnClickListener(v ->
-                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
+                deviazioneLinea.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
                 mapDeviationBtn.setVisibility(lineLink.equalsIgnoreCase("null") ? View.GONE : View.VISIBLE);
-                mapDeviationBtn.setOnClickListener(v ->
-                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
+                mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
             }
             i++;
         }
@@ -1477,16 +1439,14 @@ public class LinesDetailActivity extends AppCompatActivity {
         //*MODIFICHE CIRCOLAIZONE
         /// Le linee suburbane hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
         LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
-        ImageView    mapTrackBtn        = findViewById(R.id.mapTrackBtn);
+        ImageView mapTrackBtn = findViewById(R.id.mapTrackBtn);
 
         for (int j = 0; j < suburbanInterruptions.length; j++) {
             int finalJ = j;
             if (suburbanInterruptions[j].equalsIgnoreCase(nomeLinea)) {
                 interruzioneTratta.setVisibility(View.VISIBLE);
-                mapTrackBtn.setOnClickListener(v ->
-                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
-                interruzioneTratta.setOnClickListener(v ->
-                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
+                mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
+                interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
             }
         }
 
@@ -1494,9 +1454,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
             updateChipGroupSizes(detActionGroup);
             loadGTFSData();
-        } else {
-            findViewById(R.id.chipArrivi).setVisibility(View.GONE);
         }
+        else
+            findViewById(R.id.chipArrivi).setVisibility(View.GONE);
     }
 
     private boolean isDarkMode() {
@@ -1922,16 +1882,15 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void updateChipGroupSizes(ChipGroup chipGroup) {
-        // Se il layout non è ancora pronto, aspetta il primo pass completo
         if (chipGroup.getWidth() == 0) {
             chipGroup.getViewTreeObserver().addOnGlobalLayoutListener(
-                    new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            chipGroup.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            updateChipGroupSizes(chipGroup);
-                        }
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        chipGroup.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        updateChipGroupSizes(chipGroup);
                     }
+                }
             );
             return;
         }
@@ -1964,10 +1923,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         int totalUnselectedSpace = visibleUnselectedCount * unselectedWidth;
         int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
 
-        // Applica senza animazione al primo layout, con animazione per i cambi successivi
         boolean animate = chipGroup.getTag() != null;
-        if (animate)
-            TransitionManager.beginDelayedTransition(chipGroup, new ChangeBounds().setDuration(250));
+        if (animate) TransitionManager.beginDelayedTransition(chipGroup, new ChangeBounds().setDuration(250));
         chipGroup.setTag(Boolean.TRUE);
 
         for (int i = 0; i < totalVisibleCount; i++) {
@@ -1982,20 +1939,19 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 int textResId = getChipTextResId(chip.getId());
                 String targetText = chip.getContext().getString(textResId);
-                if (!targetText.equals(chip.getText().toString()))
-                    chip.setText(targetText);
+                if (!targetText.equals(chip.getText().toString())) chip.setText(targetText);
 
                 float textWidth = chip.getPaint().measureText(targetText);
                 float iconSize = chip.getChipIconSize();
                 float itemSpacing = 6 * density;
                 float totalContentWidth = iconSize + itemSpacing + textWidth;
                 int calculatedStartPadding = 0;
-                if (remainingWidth > totalContentWidth)
-                    calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
+                if (remainingWidth > totalContentWidth) calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
 
                 chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
                 safelyUpdatePadding(chip, calculatedStartPadding, (int) itemSpacing, 0, 0);
-            } else {
+            }
+            else {
                 if (params.width != unselectedWidth) {
                     params.width = unselectedWidth;
                     chip.setLayoutParams(params);
@@ -2003,8 +1959,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 if (chip.getText().length() > 0) chip.setText("");
 
-                chip.setChipBackgroundColor(ColorStateList.valueOf(
-                        ColorUtils.setAlphaComponent(coloreLinea, 38)));
+                chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(coloreLinea, 38)));
                 float iconSize = chip.getChipIconSize();
                 int calculatedIconPadding = (int) ((unselectedWidth - iconSize - 10) / 2);
                 safelyUpdatePadding(chip, calculatedIconPadding, 0, 0, 0);
