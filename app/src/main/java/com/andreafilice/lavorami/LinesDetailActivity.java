@@ -1160,8 +1160,14 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
-        for (List<InterchangeInfo> list : branchMap.values())
-            Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
+        if(selectedBranch.equalsIgnoreCase("Assago Milanofiori Forum") || selectedBranch.equalsIgnoreCase("P.Za Abbiategrasso")) {
+            for (List<InterchangeInfo> list : branchMap.values())
+                Collections.sort(list, (a, b) -> Integer.compare(b.getLineOrder(), a.getLineOrder()));
+        }
+        else {
+            for (List<InterchangeInfo> list : branchMap.values())
+                Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
+        }
 
         List<InterchangeInfo> toShow = new ArrayList<>();
         if (selectedBranch == null) {
@@ -1169,9 +1175,17 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (List<InterchangeInfo> list : branchMap.values()) toShow.addAll(list);
         }
         else {
-            List<InterchangeInfo> selected = branchMap.get(selectedBranch);
-            if (selected != null) toShow.addAll(selected);
-            toShow.addAll(mainItems);
+            if(selectedBranch.equalsIgnoreCase("Assago Milanofiori Forum") || selectedBranch.equalsIgnoreCase("P.Za Abbiategrasso")) {
+                toShow.addAll(mainItems);
+
+                List<InterchangeInfo> selected = branchMap.get(selectedBranch);
+                if (selected != null) toShow.addAll(selected);
+            }
+            else {
+                List<InterchangeInfo> selected = branchMap.get(selectedBranch);
+                if (selected != null) toShow.addAll(selected);
+                toShow.addAll(mainItems);
+            }
         }
 
         boolean isMetro = isLineaMetro();
