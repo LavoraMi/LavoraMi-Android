@@ -997,7 +997,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                     if (hasMultipleBranches)
                         btnBranch.setText(selectedBranch);
 
-                    btnBranch.setOnClickListener(v -> showBranchDialog(availableBranches, matched));
+                    btnBranch.setOnClickListener(v -> {
+                            ActivityUtils.triggerFeedback(this);
+                            showBranchDialog(availableBranches, matched);
+                    });
                 }
 
                 renderInterscambi(matched);
@@ -1040,6 +1043,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         float strokeWidthDp = 1.5f;
         int strokeWidthPx = (int)(strokeWidthDp * getResources().getDisplayMetrics().density);
 
+        chipGroup.setSelectionRequired(true);
+
         for (String branch : branches) {
             Chip chip = new Chip(this);
             chip.setText(branch);
@@ -1081,6 +1086,13 @@ public class LinesDetailActivity extends AppCompatActivity {
             chip.setMinHeight(heightPx);
             chip.setChipStartPadding(px12);
             chip.setChipEndPadding(px12);
+
+            chip.setChecked(branch.equals(selectedBranch));
+            chip.setOnClickListener(v -> {
+                if (branch.equals(selectedBranch)) {
+                    dialog.dismiss(); 
+                }
+            });
 
             chipGroup.addView(chip);
         }
@@ -1902,6 +1914,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         dropdownFermate.setAdapter(adapter);
 
         dropdownFermate.setOnItemClickListener((parent, view, position, id) -> {
+            ActivityUtils.triggerFeedback(this);
             selectedStopId = stopIds.get(position);
             updateArriviList();
         });
