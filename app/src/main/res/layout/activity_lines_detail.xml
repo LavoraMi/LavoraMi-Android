@@ -569,16 +569,26 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:visibility="gone">
 
-            <ProgressBar
-                android:id="@+id/interscambiProgressBar"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="10dp"/>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/loaderInterchanges"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="@+id/customBottomBar"
+                app:layout_constraintTop_toBottomOf="@+id/contentBarrier"
+                app:shimmer_auto_start="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/loader_interchanges" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <TextView
                 android:id="@+id/interscambiLoadingText"
