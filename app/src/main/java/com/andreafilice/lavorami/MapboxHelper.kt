@@ -23,8 +23,14 @@ import com.mapbox.maps.extension.style.layers.generated.fillLayer
 object MapboxHelper {
     //*INITIALIZE MAP
     /// In this section, we initialize the values of the MapBox API with the LavoraMi token.
+    private var initialized = false
+    private var cachedKey: String? = null
     @JvmStatic
-    fun init(token: String) { com.mapbox.common.MapboxOptions.accessToken = token }
+    fun init(token: String) {
+        if (initialized && token != null && token == cachedKey) return
+        cachedKey = token
+        initialized = true
+        com.mapbox.common.MapboxOptions.accessToken = token }
 
     //*API-INTERACTION METHODS
     /// This methods are used to interact with MapBox API, developed for Kotlin language

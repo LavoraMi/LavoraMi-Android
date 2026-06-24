@@ -111,6 +111,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines_detail);
 

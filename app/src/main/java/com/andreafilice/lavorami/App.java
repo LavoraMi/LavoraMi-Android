@@ -8,6 +8,5 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         DataManager.init(this);
-        MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
     }
 }
