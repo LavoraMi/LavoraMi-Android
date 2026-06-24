@@ -35,9 +35,7 @@ object MapboxHelper {
          * @param darkMode checks if the DarkMode is enabled by the User and apply the current style.
          * @param onReady is the function callback to enable when the Map is Ready and Loaded.
         */
-
         val style = if (darkMode) "mapbox://styles/mapbox/dark-v11" else "mapbox://styles/mapbox/streets-v12"
-
         mapView.mapboxMap.loadStyle(style) { onReady.onReady(mapView) }
     }
 
@@ -66,17 +64,14 @@ object MapboxHelper {
          * @param hexColor is the color of the line in hexa notation.
          * @param textHexColor is the hex color of labels, if is light, set to black.
          */
-
         mapView.mapboxMap.getStyle { style ->
             style.addSource(geoJsonSource("marker-source") { featureCollection(FeatureCollection.fromFeatures(features)) })
-
             style.addLayer(circleLayer("marker-layer", "marker-source") {
                 circleColor(literal(hexColor))
                 circleRadius(5.0)
                 circleStrokeColor(literal("#FFFFFF"))
                 circleStrokeWidth(2.0)
             })
-
             style.addLayer(symbolLayer("marker-label-layer", "marker-source") {
                 textField(get("name"))
                 textSize(11.0)
@@ -97,7 +92,6 @@ object MapboxHelper {
          * @param longitude is the longitude of the point.
          * @param name is the name of the station to display.
          */
-
         val props = com.google.gson.JsonObject()
         props.addProperty("name", name)
 
@@ -114,10 +108,8 @@ object MapboxHelper {
          * @param hexColor is the color of the line in hexa notation.
          * @param dashed is a condition if the branch is now under construction or not.
          */
-
         mapView.mapboxMap.getStyle { style ->
             style.addSource(geoJsonSource(sourceId) { feature(Feature.fromGeometry(LineString.fromLngLats(points))) })
-
             style.addLayer(lineLayer(layerId, sourceId) {
                 lineColor(literal(hexColor))
                 lineWidth(4.0)
