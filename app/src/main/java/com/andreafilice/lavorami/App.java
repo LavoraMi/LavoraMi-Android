@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 import android.app.Application;
 
 public class App extends Application {
@@ -7,5 +8,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         DataManager.init(this);
+        MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
     }
 }

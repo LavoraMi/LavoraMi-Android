@@ -3,6 +3,7 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
+import android.accessibilityservice.GestureDescription;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -21,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
@@ -109,7 +111,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines_detail);
 
@@ -180,7 +181,17 @@ public class LinesDetailActivity extends AppCompatActivity {
         new Thread(() -> aggiornaUI()).start();
 
         MapView mapView = findViewById(R.id.mapView);
-        MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {onMapReady(mapViewReady);});
+        MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {
+            if (strikeCDNResponse != null) {
+                onMapReady(mapViewReady, strikeCDNResponse);
+            } else {
+                // la callback della mappa è arrivata prima della rete: aspetta
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    if (strikeCDNResponse != null)
+                        onMapReady(mapViewReady, strikeCDNResponse);
+                }, 300);
+            }
+        });
 
         sessionManager = new SessionManager(this);
 
@@ -332,10 +343,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
             @Override
             public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     aggiornaInfoSuperiori();
-                    fetchDeviations();
+                    fetchDeviations(strikeCDNResponse);
                     preloadInterscambi();
                 }
             }
@@ -528,32 +539,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         detBadge.getBackground().setTintMode(PorterDuff.Mode.SRC_IN);
     }
 
-    private void onMapReady(MapView mapView) {
+    private void onMapReady(MapView mapView, StrikeDescriptor cdnData) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
-
-        //*FETCH VARS
-        /// In this section of the code, we fetch the variables from the .json file in cdn
-        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
-
-        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
-            @Override
-            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
-                if(response.isSuccessful()) {
-                    strikeCDNResponse = response.body();
-                    elaboraStazioni(layoutMaps, layoutLoadingMap, mapView);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
-        });
+        elaboraStazioni(layoutMaps, layoutLoadingMap, mapView, cdnData);
     }
 
-    private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
+    private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, StrikeDescriptor cdnData) {
 
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
-        for (MetroStation s : StationDB.getAllStations(strikeCDNResponse.isPassanteWorkEnabled())) {
+        for (MetroStation s : StationDB.getAllStations(cdnData.isPassanteWorkEnabled())) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
                 tutteLeStazioni.add(s);
         }
@@ -784,146 +779,172 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (container == null || wrapper == null) return;
 
-        foundAtLeastOne = false;
+        // Mostra subito uno stato di caricamento
         container.removeAllViews();
+        wrapper.setVisibility(View.GONE);
+        emptyView.setVisibility(View.GONE);
 
-        String searchTag = (nomeLinea.matches("9[0-3]")) ? ("FILOBUS " + nomeLinea.trim()) : nomeLinea.trim().toUpperCase();
+        String searchTag = nomeLinea.matches("9[0-3]")
+                ? "FILOBUS " + nomeLinea.trim()
+                : nomeLinea.trim().toUpperCase();
 
-        for (EventDescriptor evento : EventData.listaEventiCompleta) {
-            if (evento.getLines() == null) continue;
+        String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
+        String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
 
-            boolean matchFound = false;
-            for (String lineInEvent : evento.getLines()) {
-                if (lineInEvent != null) {
-                    if (lineInEvent.trim().toUpperCase().equals(searchTag)) {
-                        matchFound = true;
+        executor.execute(() -> {
+            // Filtraggio in background
+            List<EventDescriptor> eventiTrovati = new ArrayList<>();
+
+            for (EventDescriptor evento : EventData.listaEventiCompleta) {
+                if (evento.getLines() == null || evento.isEventTerminated()) continue;
+
+                for (String lineInEvent : evento.getLines()) {
+                    if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag)) {
+                        eventiTrovati.add(evento);
                         break;
                     }
                 }
             }
 
-            if (matchFound && !evento.isEventTerminated()) {
-                foundAtLeastOne = true;
+            // Inflate e preparazione card in background
+            List<View> cards = new ArrayList<>();
+            LayoutInflater inflater = LayoutInflater.from(this);
 
-                View card = getLayoutInflater().inflate(R.layout.item_lavoro, container, false);
-                String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
-                String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
+            for (EventDescriptor evento : eventiTrovati) {
+                View card = inflater.inflate(R.layout.item_lavoro, container, false);
 
-                ImageView icona = card.findViewById(R.id.iconEvent);
-                if (icona != null) {
-                    icona.setImageResource(evento.getCardImageID());
-                    icona.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-                }
+                boolean important = evento.getDetails() != null
+                        && evento.getDetails().contains("[LAVORO IMPORTANTE]");
+                String cleanDet = important
+                        ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim()
+                        : evento.getDetails();
 
-                TextView titolo = card.findViewById(R.id.txtTitle);
-                TextView desc = card.findViewById(R.id.txtDescription);
-                ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
-                boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
-                String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
-
-                if (titolo != null) titolo.setText(evento.getTitle());
-                if (desc != null) desc.setText(cleanDet);
-                if (desc != null) desc.setVisibility(View.GONE);
-                if(openCloseIcon != null) openCloseIcon.setImageResource(R.drawable.ic_down);
-
-                card.setOnClickListener(v -> {
-                    boolean isExpanded = desc.getVisibility() == View.VISIBLE;
-                    desc.setVisibility((isExpanded) ? View.GONE: View.VISIBLE);
-                    openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
-                    ActivityUtils.triggerFeedback(this);
-                });
-
-                TextView txtInizio = card.findViewById(R.id.txtStartDate);
-                TextView txtFine = card.findViewById(R.id.txtEndDate);
-                TextView companyTxt = card.findViewById(R.id.txtOperator);
-                TextView roadsTxt = card.findViewById(R.id.txtRoute);
-
-                //*TRANSLATE BUTTON
-                Button btnTranslate = card.findViewById(R.id.btnTranslate);
-                btnTranslate.setVisibility((!langCode.equalsIgnoreCase("it") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false)) ? View.VISIBLE : View.GONE);
-
-                btnTranslate.setOnClickListener(v -> {
-                    //*VARIABLES
-                    /// In this section of the code, we initialize some components that we will user later in the code.
-                    BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-                    View sheetView = LayoutInflater.from(this).inflate(R.layout.item_sheet_translated, null);
-                    ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
-                    LinearLayout layoutDefault = sheetView.findViewById(R.id.layoutDefault);
-                    LinearLayout layoutTerms = sheetView.findViewById(R.id.layoutPrivacy);
-                    Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
-                    Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
-                    TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
-                    boolean isAcceptingTerms = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
-
-                    loadingLayout.startShimmer();
-                    bottomSheetDialog.setContentView(sheetView);
-
-                    bottomSheetDialog.show();
-
-                    if(isAcceptingTerms) {
-                        layoutTerms.setVisibility(View.GONE);
-                        layoutDefault.setVisibility(View.VISIBLE);
-                        downloadingText.setVisibility(View.GONE);
-
-                        boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
-                        String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
-                        translateStrings(sheetView, evento, cleanedDetails, langCode, loadingLayout);
-                    }
-                    else {
-                        layoutDefault.setVisibility(View.GONE);
-                        layoutTerms.setVisibility(View.VISIBLE);
-
-                        acceptTerms.setOnClickListener(view -> {
-                            layoutDefault.setVisibility(View.VISIBLE);
-                            layoutTerms.setVisibility(View.GONE);
-                            downloadingText.setVisibility(View.VISIBLE);
-
-                            boolean isImportant = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
-                            String cleanedDetails = isImportant ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
-
-                            translateStrings(sheetView, evento, cleanedDetails, langCode, loadingLayout);
-                        });
-
-                        cancelTerms.setOnClickListener(unusued -> {bottomSheetDialog.cancel();});
-                    }
-                });
-
-                int color = ContextCompat.getColor(this, R.color.text_primary);
-                ImageViewCompat.setImageTintList(card.findViewById(R.id.iconEvent), ColorStateList.valueOf(color));
-
-                if (txtInizio != null)
-                    txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
-                if (txtFine != null)
-                    txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
-                if(companyTxt != null)
-                    companyTxt.setText(evento.getCompany());
-                if(roadsTxt != null)
-                    roadsTxt.setText(evento.getRoads());
-
-                ProgressBar pb = card.findViewById(R.id.progressBarDate);
-                if (pb != null) {
-                    int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
-                    pb.setProgress(perc);
-                    pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ?
-                            Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
-                }
-
-                ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-
-                if (chipGroup != null && evento.getLines() != null) {
-                    chipGroup.removeAllViews();
-
-                    for (String lineName : evento.getLines()) {chipGroup.addView(createChip(lineName));}
-                }
-                container.addView(card);
+                // Prepara i dati da applicare dopo sul main thread
+                // (non tocchiamo le View qui, solo raccogliamo i valori)
+                card.setTag(new Object[]{evento, cleanDet, langCode});
+                cards.add(card);
             }
-        }
 
-        wrapper.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
-        lavoriNested.setVisibility((foundAtLeastOne) ? View.VISIBLE : View.GONE);
-        emptyView.setVisibility((foundAtLeastOne) ? View.GONE : View.VISIBLE);
-        ((TextView)findViewById(R.id.emptyView)).setText((EventData.networkError) ? ContextCompat.getString(this, R.string.noInternetConnectionError) : ContextCompat.getString(this, R.string.noWorksOnThisLine));
-        ((ImageView)findViewById(R.id.emptyViewIcon)).setImageResource((EventData.networkError) ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+            // Render sul main thread
+            runOnUiThread(() -> {
+                boolean found = !cards.isEmpty();
+
+                for (View card : cards) {
+                    Object[] tag = (Object[]) card.getTag();
+                    EventDescriptor evento = (EventDescriptor) tag[0];
+                    String cleanDet = (String) tag[1];
+                    String lang = (String) tag[2];
+                    card.setTag(null);
+
+                    ImageView icona = card.findViewById(R.id.iconEvent);
+                    if (icona != null) {
+                        icona.setImageResource(evento.getCardImageID());
+                        icona.setImageTintList(ColorStateList.valueOf(
+                                ContextCompat.getColor(this, R.color.text_primary)));
+                    }
+
+                    TextView titolo = card.findViewById(R.id.txtTitle);
+                    TextView desc   = card.findViewById(R.id.txtDescription);
+                    ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
+
+                    if (titolo != null) titolo.setText(evento.getTitle());
+                    if (desc != null) {
+                        desc.setText(cleanDet);
+                        desc.setVisibility(View.GONE);
+                    }
+                    if (openCloseIcon != null) openCloseIcon.setImageResource(R.drawable.ic_down);
+
+                    card.setOnClickListener(v -> {
+                        boolean isExpanded = desc.getVisibility() == View.VISIBLE;
+                        desc.setVisibility(isExpanded ? View.GONE : View.VISIBLE);
+                        openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
+                        ActivityUtils.triggerFeedback(this);
+                    });
+
+                    TextView txtInizio  = card.findViewById(R.id.txtStartDate);
+                    TextView txtFine    = card.findViewById(R.id.txtEndDate);
+                    TextView companyTxt = card.findViewById(R.id.txtOperator);
+                    TextView roadsTxt   = card.findViewById(R.id.txtRoute);
+
+                    if (txtInizio != null) txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
+                    if (txtFine != null)   txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
+                    if (companyTxt != null) companyTxt.setText(evento.getCompany());
+                    if (roadsTxt != null)   roadsTxt.setText(evento.getRoads());
+
+                    ProgressBar pb = card.findViewById(R.id.progressBarDate);
+                    if (pb != null) {
+                        int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
+                        pb.setProgress(perc);
+                        pb.setProgressTintList(ColorStateList.valueOf(
+                                perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
+                    }
+
+                    Button btnTranslate = card.findViewById(R.id.btnTranslate);
+                    boolean showTranslate = !lang.equalsIgnoreCase("it")
+                            || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
+                    btnTranslate.setVisibility(showTranslate ? View.VISIBLE : View.GONE);
+                    btnTranslate.setOnClickListener(v -> mostraBottomSheetTraduzione(evento, cleanDet, lang));
+
+                    ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+                    if (chipGroup != null && evento.getLines() != null) {
+                        chipGroup.removeAllViews();
+                        for (String lineName : evento.getLines()) chipGroup.addView(createChip(lineName));
+                    }
+
+                    container.addView(card);
+                }
+
+                // Aggiorna visibilità
+                foundAtLeastOne = found;
+                wrapper.setVisibility(found ? View.VISIBLE : View.GONE);
+                lavoriNested.setVisibility(found ? View.VISIBLE : View.GONE);
+                emptyView.setVisibility(found ? View.GONE : View.VISIBLE);
+
+                ((TextView) findViewById(R.id.emptyView)).setText(
+                        EventData.networkError
+                                ? getString(R.string.noInternetConnectionError)
+                                : getString(R.string.noWorksOnThisLine));
+                ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(
+                        EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+            });
+        });
+    }
+
+    private void mostraBottomSheetTraduzione(EventDescriptor evento, String cleanDet, String langCode) {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View sheetView = LayoutInflater.from(this).inflate(R.layout.item_sheet_translated, null);
+
+        ShimmerFrameLayout loadingLayout  = sheetView.findViewById(R.id.loadingLayout);
+        LinearLayout layoutDefault        = sheetView.findViewById(R.id.layoutDefault);
+        LinearLayout layoutTerms          = sheetView.findViewById(R.id.layoutPrivacy);
+        Button acceptTerms                = sheetView.findViewById(R.id.btnContinue);
+        Button cancelTerms                = sheetView.findViewById(R.id.btnCancel);
+        TextView downloadingText          = sheetView.findViewById(R.id.textDownloading);
+        boolean isAcceptingTerms          = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
+
+        loadingLayout.startShimmer();
+        bottomSheetDialog.setContentView(sheetView);
+        bottomSheetDialog.show();
+
+        if (isAcceptingTerms) {
+            layoutTerms.setVisibility(View.GONE);
+            layoutDefault.setVisibility(View.VISIBLE);
+            downloadingText.setVisibility(View.GONE);
+            translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+        } else {
+            layoutDefault.setVisibility(View.GONE);
+            layoutTerms.setVisibility(View.VISIBLE);
+
+            acceptTerms.setOnClickListener(v -> {
+                layoutDefault.setVisibility(View.VISIBLE);
+                layoutTerms.setVisibility(View.GONE);
+                downloadingText.setVisibility(View.VISIBLE);
+                DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
+                translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+            });
+
+            cancelTerms.setOnClickListener(v -> bottomSheetDialog.cancel());
+        }
     }
 
     private boolean isLineaMetro() {return nomeLinea != null && nomeLinea.startsWith("M") && !nomeLinea.startsWith("MXP");}
@@ -1090,7 +1111,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             chip.setChecked(branch.equals(selectedBranch));
             chip.setOnClickListener(v -> {
                 if (branch.equals(selectedBranch)) {
-                    dialog.dismiss(); 
+                    dialog.dismiss();
                 }
             });
 
@@ -1469,65 +1490,53 @@ public class LinesDetailActivity extends AppCompatActivity {
         tvLavori.setText((numeroLavori > 0) ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
 
-    public void fetchDeviations() {
-        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+    public void fetchDeviations(StrikeDescriptor cdnData) {
+        String[] lineeDeviate = cdnData.getLinesDeviation();
+        String[] linkLinee = cdnData.getLinesDeviationLinks();
+        String[] gtfsSupportedLines = cdnData.getSupportedGTFSLines();
+        String[] suburbanInterruptions = cdnData.getSuburbanWithInterruptions();
+        String[] suburbanLinks = cdnData.getSuburbanInterruptionLinks();
 
-        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
-            @Override
-            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
-                if(response.isSuccessful()){
-                    strikeCDNResponse = response.body();
-                    String[] lineeDeviate = strikeCDNResponse.getLinesDeviation();
-                    String[] linkLinee = strikeCDNResponse.getLinesDeviationLinks();
-                    String[] gtfsSupportedLines = strikeCDNResponse.getSupportedGTFSLines();
-                    String[] suburbanInterruptions = strikeCDNResponse.getSuburbanWithInterruptions();
-                    String[] suburbanLinks = strikeCDNResponse.getSuburbanInterruptionLinks();
-                    int i = 0;
+        LinearLayout deviazioneLinea  = findViewById(R.id.deviazioneLinea);
+        ImageView    mapDeviationBtn  = findViewById(R.id.mapDeviationBtn);
 
-                    LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
-                    ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
-
-                    for(String linea : lineeDeviate) {
-                        if(linea.equals(nomeLinea)){
-                            String lineLink = linkLinee[i];
-
-                            deviazioneLinea.setVisibility(View.VISIBLE);
-                            deviazioneLinea.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, getSupportFragmentManager(), lineLink));
-                            mapDeviationBtn.setVisibility((lineLink.equalsIgnoreCase("null")) ? View.GONE : View.VISIBLE);
-                            mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, getSupportFragmentManager(), lineLink));
-                        }
-                        i++;
-                    }
-
-                    //*MODIFICHE CIRCOLAIZONE
-                    /// Le linee suburbane hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
-                    LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
-                    ImageView mapTrackBtn = findViewById(R.id.mapTrackBtn);
-
-                    for (int j = 0; j < suburbanInterruptions.length; j++) {
-                        int finalJ = j;
-
-                        if(suburbanInterruptions[j].equalsIgnoreCase(nomeLinea)) {
-                            interruzioneTratta.setVisibility(View.VISIBLE);
-                            mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, getSupportFragmentManager(), suburbanLinks[finalJ]));
-                            interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(LinesDetailActivity.this, getSupportFragmentManager(), suburbanLinks[finalJ]));
-                        }
-                    }
-
-                    if(Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
-                        findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
-                        updateChipGroupSizes(detActionGroup);
-
-                        loadGTFSData();
-                    }
-                    else
-                        findViewById(R.id.chipArrivi).setVisibility(View.GONE);
-                }
+        int i = 0;
+        for (String linea : lineeDeviate) {
+            if (linea.equals(nomeLinea)) {
+                String lineLink = linkLinee[i];
+                deviazioneLinea.setVisibility(View.VISIBLE);
+                deviazioneLinea.setOnClickListener(v ->
+                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
+                mapDeviationBtn.setVisibility(lineLink.equalsIgnoreCase("null") ? View.GONE : View.VISIBLE);
+                mapDeviationBtn.setOnClickListener(v ->
+                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
             }
+            i++;
+        }
 
-            @Override
-            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
-        });
+        //*MODIFICHE CIRCOLAIZONE
+        /// Le linee suburbane hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
+        LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
+        ImageView    mapTrackBtn        = findViewById(R.id.mapTrackBtn);
+
+        for (int j = 0; j < suburbanInterruptions.length; j++) {
+            int finalJ = j;
+            if (suburbanInterruptions[j].equalsIgnoreCase(nomeLinea)) {
+                interruzioneTratta.setVisibility(View.VISIBLE);
+                mapTrackBtn.setOnClickListener(v ->
+                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
+                interruzioneTratta.setOnClickListener(v ->
+                        ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
+            }
+        }
+
+        if (Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
+            findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
+            updateChipGroupSizes(detActionGroup);
+            loadGTFSData();
+        } else {
+            findViewById(R.id.chipArrivi).setVisibility(View.GONE);
+        }
     }
 
     private boolean isDarkMode() {
@@ -1953,84 +1962,94 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void updateChipGroupSizes(ChipGroup chipGroup) {
-        chipGroup.post(() -> {
-            int childCount = chipGroup.getChildCount();
-            if (childCount == 0) return;
+        // Se il layout non è ancora pronto, aspetta il primo pass completo
+        if (chipGroup.getWidth() == 0) {
+            chipGroup.getViewTreeObserver().addOnGlobalLayoutListener(
+                    new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            chipGroup.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            updateChipGroupSizes(chipGroup);
+                        }
+                    }
+            );
+            return;
+        }
 
-            float density = chipGroup.getContext().getResources().getDisplayMetrics().density;
-            int unselectedWidth = (int) (70 * density);
-            float chipSpacing = chipGroup.getChipSpacingHorizontal();
-            int totalWidth = chipGroup.getWidth() - chipGroup.getPaddingLeft() - chipGroup.getPaddingRight();
+        int childCount = chipGroup.getChildCount();
+        if (childCount == 0) return;
 
-            ArrayList<Chip> visibleChips = new ArrayList<>(childCount);
-            Chip selectedChip = null;
+        float density = chipGroup.getContext().getResources().getDisplayMetrics().density;
+        int unselectedWidth = (int) (70 * density);
+        float chipSpacing = chipGroup.getChipSpacingHorizontal();
+        int totalWidth = chipGroup.getWidth() - chipGroup.getPaddingLeft() - chipGroup.getPaddingRight();
 
-            for (int i = 0; i < childCount; i++) {
-                View child = chipGroup.getChildAt(i);
-                if (child instanceof Chip && child.getVisibility() != View.GONE) {
-                    Chip chip = (Chip) child;
-                    visibleChips.add(chip);
-                    if (chip.isChecked())
-                        selectedChip = chip;
-                }
+        ArrayList<Chip> visibleChips = new ArrayList<>(childCount);
+        Chip selectedChip = null;
+
+        for (int i = 0; i < childCount; i++) {
+            View child = chipGroup.getChildAt(i);
+            if (child instanceof Chip && child.getVisibility() != View.GONE) {
+                Chip chip = (Chip) child;
+                visibleChips.add(chip);
+                if (chip.isChecked()) selectedChip = chip;
             }
+        }
 
-            int totalVisibleCount = visibleChips.size();
-            if (totalVisibleCount == 0) return;
+        int totalVisibleCount = visibleChips.size();
+        if (totalVisibleCount == 0) return;
 
-            int visibleUnselectedCount = totalVisibleCount - (selectedChip != null ? 1 : 0);
-            int totalSpacingSpace = (int) ((totalVisibleCount - 1) * chipSpacing);
-            int totalUnselectedSpace = visibleUnselectedCount * unselectedWidth;
-            int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
+        int visibleUnselectedCount = totalVisibleCount - (selectedChip != null ? 1 : 0);
+        int totalSpacingSpace = (int) ((totalVisibleCount - 1) * chipSpacing);
+        int totalUnselectedSpace = visibleUnselectedCount * unselectedWidth;
+        int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
 
+        // Applica senza animazione al primo layout, con animazione per i cambi successivi
+        boolean animate = chipGroup.getTag() != null;
+        if (animate)
             TransitionManager.beginDelayedTransition(chipGroup, new ChangeBounds().setDuration(250));
+        chipGroup.setTag(Boolean.TRUE);
 
-            for (int i = 0; i < totalVisibleCount; i++) {
-                Chip chip = visibleChips.get(i);
-                ViewGroup.LayoutParams params = chip.getLayoutParams();
+        for (int i = 0; i < totalVisibleCount; i++) {
+            Chip chip = visibleChips.get(i);
+            ViewGroup.LayoutParams params = chip.getLayoutParams();
 
-                if (chip == selectedChip) {
-                    if (params.width != remainingWidth) {
-                        params.width = remainingWidth;
-                        chip.setLayoutParams(params);
-                    }
-
-                    int textResId = getChipTextResId(chip.getId());
-                    String targetText = chip.getContext().getString(textResId);
-
-                    if (!targetText.equals(chip.getText().toString()))
-                        chip.setText(targetText);
-
-                    float textWidth = chip.getPaint().measureText(targetText);
-                    float iconSize = chip.getChipIconSize();
-                    float itemSpacing = 6 * density;
-                    float totalContentWidth = iconSize + itemSpacing + textWidth;
-
-                    int calculatedStartPadding = 0;
-                    if (remainingWidth > totalContentWidth)
-                        calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
-
-                    chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
-                    safelyUpdatePadding(chip, calculatedStartPadding, (int) itemSpacing, 0, 0);
-
+            if (chip == selectedChip) {
+                if (params.width != remainingWidth) {
+                    params.width = remainingWidth;
+                    chip.setLayoutParams(params);
                 }
-                else {
-                    if (params.width != unselectedWidth) {
-                        params.width = unselectedWidth;
-                        chip.setLayoutParams(params);
-                    }
 
-                    if (chip.getText().length() > 0)
-                        chip.setText("");
+                int textResId = getChipTextResId(chip.getId());
+                String targetText = chip.getContext().getString(textResId);
+                if (!targetText.equals(chip.getText().toString()))
+                    chip.setText(targetText);
 
-                    chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(coloreLinea, 38)));
-                    float iconSize = chip.getChipIconSize();
-                    int calculatedIconPadding = (int) ((unselectedWidth - iconSize - 10) / 2);
+                float textWidth = chip.getPaint().measureText(targetText);
+                float iconSize = chip.getChipIconSize();
+                float itemSpacing = 6 * density;
+                float totalContentWidth = iconSize + itemSpacing + textWidth;
+                int calculatedStartPadding = 0;
+                if (remainingWidth > totalContentWidth)
+                    calculatedStartPadding = (int) ((remainingWidth - totalContentWidth) / 2);
 
-                    safelyUpdatePadding(chip, calculatedIconPadding, 0, 0, 0);
+                chip.setChipBackgroundColor(ColorStateList.valueOf(coloreLinea));
+                safelyUpdatePadding(chip, calculatedStartPadding, (int) itemSpacing, 0, 0);
+            } else {
+                if (params.width != unselectedWidth) {
+                    params.width = unselectedWidth;
+                    chip.setLayoutParams(params);
                 }
+
+                if (chip.getText().length() > 0) chip.setText("");
+
+                chip.setChipBackgroundColor(ColorStateList.valueOf(
+                        ColorUtils.setAlphaComponent(coloreLinea, 38)));
+                float iconSize = chip.getChipIconSize();
+                int calculatedIconPadding = (int) ((unselectedWidth - iconSize - 10) / 2);
+                safelyUpdatePadding(chip, calculatedIconPadding, 0, 0, 0);
             }
-        });
+        }
     }
 
     private void safelyUpdatePadding(Chip chip, int iconStart, int iconEnd, int textStart, int textEnd) {
