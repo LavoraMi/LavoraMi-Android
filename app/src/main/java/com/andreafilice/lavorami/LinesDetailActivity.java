@@ -744,7 +744,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
-        
+
         List<EventDescriptor> eventiTrovati = new ArrayList<>();
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
