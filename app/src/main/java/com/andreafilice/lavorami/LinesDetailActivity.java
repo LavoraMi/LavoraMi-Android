@@ -258,24 +258,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             arriviWrapper.setVisibility(View.GONE);
             arriviNested.setVisibility(View.GONE);
             caricaEventiFiltrati();
-
-            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()) {
-                chipMappa.setChecked(true);
-                chipLavori.setChecked(false);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.VISIBLE);
-                containerLavori.setVisibility(View.GONE);
-                containerInterscambi.setVisibility(View.GONE);
-            }
-            else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()) {
-                chipMappa.setChecked(false);
-                chipLavori.setChecked(true);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.GONE);
-                containerLavori.setVisibility(View.VISIBLE);
-                containerInterscambi.setVisibility(View.GONE);
-            }
-
             updateChipGroupSizes(detActionGroup);
         });
 
@@ -290,26 +272,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             arriviNested.setVisibility(View.GONE);
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             caricaInterscambiLinee();
-
-            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && haveMapAvailable()) {
-                chipMappa.setChecked(false);
-                chipLavori.setChecked(true);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.GONE);
-                containerLavori.setVisibility(View.VISIBLE);
-                containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyViewContainer).setVisibility(View.VISIBLE);
-            }
-            else if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !haveMapAvailable()) {
-                chipMappa.setChecked(true);
-                chipLavori.setChecked(false);
-                chipArrivi.setChecked(false);
-                cardMappa.setVisibility(View.VISIBLE);
-                containerLavori.setVisibility(View.GONE);
-                containerInterscambi.setVisibility(View.GONE);
-                findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
-            }
-
             updateChipGroupSizes(detActionGroup);
         });
 
@@ -325,14 +287,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.VISIBLE);
             arriviNested.setVisibility(View.VISIBLE);
-
-            if (!chipLavori.isChecked() && !chipMappa.isChecked() && !chipInterscambi.isChecked() && !chipArrivi.isChecked()) {
-                chipArrivi.setChecked(true);
-                chipMappa.setChecked(false);
-                chipLavori.setChecked(false);
-                chipInterscambi.setChecked(false);
-            }
-
             updateChipGroupSizes(detActionGroup);
         });
 
@@ -790,108 +744,104 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
+        
+        List<EventDescriptor> eventiTrovati = new ArrayList<>();
 
-        executor.execute(() -> {
-            List<EventDescriptor> eventiTrovati = new ArrayList<>();
+        for (EventDescriptor evento : EventData.listaEventiCompleta) {
+            if (evento.getLines() == null || evento.isEventTerminated()) continue;
 
-            for (EventDescriptor evento : EventData.listaEventiCompleta) {
-                if (evento.getLines() == null || evento.isEventTerminated()) continue;
-
-                for (String lineInEvent : evento.getLines()) {
-                    if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag)) {
-                        eventiTrovati.add(evento);
-                        break;
-                    }
+            for (String lineInEvent : evento.getLines()) {
+                if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag)) {
+                    eventiTrovati.add(evento);
+                    break;
                 }
             }
+        }
 
-            List<View> cards = new ArrayList<>();
-            LayoutInflater inflater = LayoutInflater.from(this);
+        List<View> cards = new ArrayList<>();
+        LayoutInflater inflater = LayoutInflater.from(this);
 
-            for (EventDescriptor evento : eventiTrovati) {
-                View card = inflater.inflate(R.layout.item_lavoro, container, false);
+        for (EventDescriptor evento : eventiTrovati) {
+            View card = inflater.inflate(R.layout.item_lavoro, container, false);
 
-                boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
-                String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
+            boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
+            String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
 
-                card.setTag(new Object[]{evento, cleanDet, langCode});
-                cards.add(card);
+            card.setTag(new Object[]{evento, cleanDet, langCode});
+            cards.add(card);
+        }
+
+        boolean found = !cards.isEmpty();
+
+        for (View card : cards) {
+            Object[] tag = (Object[]) card.getTag();
+            EventDescriptor evento = (EventDescriptor) tag[0];
+            String cleanDet = (String) tag[1];
+            String lang = (String) tag[2];
+            card.setTag(null);
+
+            ImageView icona = card.findViewById(R.id.iconEvent);
+            if (icona != null) {
+                icona.setImageResource(evento.getCardImageID());
+                icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
             }
 
-            runOnUiThread(() -> {
-                boolean found = !cards.isEmpty();
+            TextView titolo = card.findViewById(R.id.txtTitle);
+            TextView desc   = card.findViewById(R.id.txtDescription);
+            ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
 
-                for (View card : cards) {
-                    Object[] tag = (Object[]) card.getTag();
-                    EventDescriptor evento = (EventDescriptor) tag[0];
-                    String cleanDet = (String) tag[1];
-                    String lang = (String) tag[2];
-                    card.setTag(null);
+            if (titolo != null) titolo.setText(evento.getTitle());
+            if (desc != null) {
+                desc.setText(cleanDet);
+                desc.setVisibility(View.GONE);
+            }
+            if (openCloseIcon != null) openCloseIcon.setImageResource(R.drawable.ic_down);
 
-                    ImageView icona = card.findViewById(R.id.iconEvent);
-                    if (icona != null) {
-                        icona.setImageResource(evento.getCardImageID());
-                        icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
-                    }
-
-                    TextView titolo = card.findViewById(R.id.txtTitle);
-                    TextView desc   = card.findViewById(R.id.txtDescription);
-                    ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
-
-                    if (titolo != null) titolo.setText(evento.getTitle());
-                    if (desc != null) {
-                        desc.setText(cleanDet);
-                        desc.setVisibility(View.GONE);
-                    }
-                    if (openCloseIcon != null) openCloseIcon.setImageResource(R.drawable.ic_down);
-
-                    card.setOnClickListener(v -> {
-                        boolean isExpanded = desc.getVisibility() == View.VISIBLE;
-                        desc.setVisibility(isExpanded ? View.GONE : View.VISIBLE);
-                        openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
-                        ActivityUtils.triggerFeedback(this);
-                    });
-
-                    TextView txtInizio = card.findViewById(R.id.txtStartDate);
-                    TextView txtFine = card.findViewById(R.id.txtEndDate);
-                    TextView companyTxt = card.findViewById(R.id.txtOperator);
-                    TextView roadsTxt = card.findViewById(R.id.txtRoute);
-
-                    if (txtInizio != null) txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
-                    if (txtFine != null)   txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
-                    if (companyTxt != null) companyTxt.setText(evento.getCompany());
-                    if (roadsTxt != null)   roadsTxt.setText(evento.getRoads());
-
-                    ProgressBar pb = card.findViewById(R.id.progressBarDate);
-                    if (pb != null) {
-                        int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
-                        pb.setProgress(perc);
-                        pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
-                    }
-
-                    Button btnTranslate = card.findViewById(R.id.btnTranslate);
-                    boolean showTranslate = !lang.equalsIgnoreCase("it") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
-                    btnTranslate.setVisibility(showTranslate ? View.VISIBLE : View.GONE);
-                    btnTranslate.setOnClickListener(v -> mostraBottomSheetTraduzione(evento, cleanDet, lang));
-
-                    ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-                    if (chipGroup != null && evento.getLines() != null) {
-                        chipGroup.removeAllViews();
-                        for (String lineName : evento.getLines()) chipGroup.addView(createChip(lineName));
-                    }
-
-                    container.addView(card);
-                }
-
-                foundAtLeastOne = found;
-                wrapper.setVisibility(found ? View.VISIBLE : View.GONE);
-                lavoriNested.setVisibility(found ? View.VISIBLE : View.GONE);
-                emptyView.setVisibility(found ? View.GONE : View.VISIBLE);
-
-                ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError)  : getString(R.string.noWorksOnThisLine));
-                ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+            card.setOnClickListener(v -> {
+                boolean isExpanded = desc.getVisibility() == View.VISIBLE;
+                desc.setVisibility(isExpanded ? View.GONE : View.VISIBLE);
+                openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
+                ActivityUtils.triggerFeedback(this);
             });
-        });
+
+            TextView txtInizio = card.findViewById(R.id.txtStartDate);
+            TextView txtFine = card.findViewById(R.id.txtEndDate);
+            TextView companyTxt = card.findViewById(R.id.txtOperator);
+            TextView roadsTxt = card.findViewById(R.id.txtRoute);
+
+            if (txtInizio != null) txtInizio.setText(EventDescriptor.formattaData(evento.getStartDate()));
+            if (txtFine != null)   txtFine.setText(EventDescriptor.formattaData(evento.getEndDate()));
+            if (companyTxt != null) companyTxt.setText(evento.getCompany());
+            if (roadsTxt != null)   roadsTxt.setText(evento.getRoads());
+
+            ProgressBar pb = card.findViewById(R.id.progressBarDate);
+            if (pb != null) {
+                int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
+                pb.setProgress(perc);
+                pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
+            }
+
+            Button btnTranslate = card.findViewById(R.id.btnTranslate);
+            boolean showTranslate = !lang.equalsIgnoreCase("it") || DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
+            btnTranslate.setVisibility(showTranslate ? View.VISIBLE : View.GONE);
+            btnTranslate.setOnClickListener(v -> mostraBottomSheetTraduzione(evento, cleanDet, lang));
+
+            ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+            if (chipGroup != null && evento.getLines() != null) {
+                chipGroup.removeAllViews();
+                for (String lineName : evento.getLines()) chipGroup.addView(createChip(lineName));
+            }
+
+            container.addView(card);
+        }
+
+        foundAtLeastOne = found;
+        wrapper.setVisibility(found ? View.VISIBLE : View.GONE);
+        lavoriNested.setVisibility(found ? View.VISIBLE : View.GONE);
+        emptyView.setVisibility(found ? View.GONE : View.VISIBLE);
+
+        ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError)  : getString(R.string.noWorksOnThisLine));
+        ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
     }
 
     private void mostraBottomSheetTraduzione(EventDescriptor evento, String cleanDet, String langCode) {
@@ -1266,8 +1216,23 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout container = findViewById(R.id.containerInterscambi);
         boolean hasChildren = container != null && container.getChildCount() > 0;
 
-        if (!hasChildren && allMatched != null)
-            applyBranchFromCache(container, allMatched);
+        if (!hasChildren) {
+            if (allMatched != null)
+                applyBranchFromCache(container, allMatched);
+            else if (interscambiPreloaded && !branchViewCache.isEmpty()) {
+                String key = (selectedBranch != null) ? selectedBranch : "Main";
+                List<View> cachedViews = branchViewCache.get(key);
+
+                if (cachedViews != null && !cachedViews.isEmpty()) {
+                    container.removeAllViews();
+                    
+                    for (View v : cachedViews) {
+                        if (v.getParent() != null) ((ViewGroup) v.getParent()).removeView(v);
+                        container.addView(v);
+                    }
+                }
+            }
+        }
 
         hasChildren = container != null && container.getChildCount() > 0;
 
