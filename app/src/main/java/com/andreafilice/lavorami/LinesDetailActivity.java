@@ -1223,7 +1223,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 String key = (selectedBranch != null) ? selectedBranch : "Main";
                 List<View> cachedViews = branchViewCache.get(key);
 
-                if (cachedViews != null && !cachedViews.isEmpty()) {
+                if (cachedViews != null && !cachedViews.isEmpty() && container != null) {
                     container.removeAllViews();
                     
                     for (View v : cachedViews) {
