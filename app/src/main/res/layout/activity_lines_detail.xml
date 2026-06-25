@@ -591,15 +591,6 @@
                 </LinearLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <TextView
-                android:id="@+id/interscambiLoadingText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/interchangesLoading"
-                android:textColor="@color/subtitle"
-                android:fontFamily="@font/font_main"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
