@@ -1282,8 +1282,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         if (mNativeAds != null && !mNativeAds.isEmpty()) {
             for (NativeAd ad : mNativeAds) {
-                ad.destroy();
+                if (ad != null) {
+                    ad.destroy();
+                }
             }
+            mNativeAds.clear();
         }
         super.onDestroy();
     }
