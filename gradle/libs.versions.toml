@@ -12,6 +12,7 @@ activity = "1.13.0"
 constraintlayout = "2.2.1"
 mapbox = "11.25.0"
 fragment = "1.8.9"
+playServicesAds = "25.4.0"
 recyclerview = "1.4.0"
 cardview = "1.0.0"
 retrofit = "3.0.0"
@@ -26,6 +27,7 @@ firebaseBom = "34.15.0"
 mlkitTranslate = "17.0.3"
 activityKtx = "1.13.0"
 androidx-security-crypto = "1.1.0"
+userMessagingPlatform = "4.0.0"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -42,6 +44,7 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
 mapbox-maps = { group = "com.mapbox.maps", name = "android-ndk27", version.ref = "mapbox" }
+play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometricAuth" }
 cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
@@ -56,6 +59,7 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 google-mlkit-translate = { group = "com.google.mlkit", name = "translate", version.ref = "mlkitTranslate" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "androidx-security-crypto" }
+user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
 
 [plugins]
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }

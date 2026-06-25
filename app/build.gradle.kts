@@ -75,6 +75,8 @@ dependencies {
     testImplementation(libs.junit.jupiter.params)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(libs.play.services.ads)
+    implementation(libs.user.messaging.platform)
     implementation(libs.gson)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)

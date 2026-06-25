@@ -11,7 +11,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,6 +59,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
@@ -100,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean strikeBannerClosed = false;
     private boolean  definitelyClosedSavedLinesHint;
     public static boolean alreadyRefreshedLines = false;
+    private List<NativeAd> mNativeAds = new ArrayList<>();
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -195,6 +202,10 @@ public class MainActivity extends AppCompatActivity {
 
             loadUserPreferences();
         }
+
+        MobileAds.initialize(this, initializationStatus -> {
+            loadNativeAds();
+        });
 
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
@@ -732,6 +743,11 @@ public class MainActivity extends AppCompatActivity {
             adapter = new WorkAdapter(this, eventsDisplay);
             adapter.setFilteredList(eventsDisplay);
             recyclerView.setAdapter(adapter);
+            adapter = new WorkAdapter(MainActivity.this, new ArrayList<>(events));
+            if (!mNativeAds.isEmpty()) {
+                adapter.setAdsList(mNativeAds);
+            }
+            recyclerView.setAdapter(adapter);
 
             applicaFiltroCategoria(categoryToFilter);
             checkForStrikes();
@@ -1132,6 +1148,66 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    private void loadNativeAds() {
+        // IMPORTANTE: Questo è l'ID di TEST ufficiale di Google per i Native Ads. Usa questo in sviluppo!
+        //In release usa quello su AdMob su LavoraMi android
+        String TEST_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110";
+
+        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder().build();
+
+        // 15 annunci
+        loadAdsInBatches(TEST_AD_UNIT_ID, nativeAdOptions, 15);
+    }
+
+    private void loadAdsInBatches(String adUnitId, NativeAdOptions options, int totalDesired) {
+        final int BATCH_SIZE = 5;
+        final int[] loadedCount = {0};
+
+        loadNextBatch(adUnitId, options, totalDesired, BATCH_SIZE, loadedCount);
+    }
+
+    private void loadNextBatch(String adUnitId, NativeAdOptions options, int totalDesired, int batchSize, int[] loadedCount) {
+        if (loadedCount[0] >= totalDesired) {
+            return;
+        }
+
+        int remaining = totalDesired - loadedCount[0];
+        int toLoad = Math.min(batchSize, remaining);
+
+        AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
+                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+                    @Override
+                    public void onNativeAdLoaded(NativeAd nativeAd) {
+                        mNativeAds.add(nativeAd);
+                        loadedCount[0]++;
+
+                        if (adapter != null) {
+                            adapter.setAdsList(mNativeAds);
+                        }
+
+                        if (loadedCount[0] % batchSize == 0 || loadedCount[0] >= totalDesired) {
+                            if (loadedCount[0] < totalDesired) {
+                                loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
+                            }
+                        }
+                    }
+                })
+                .withAdListener(new com.google.android.gms.ads.AdListener() {
+                    @Override
+                    public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
+                        Log.e("ADMOB", "Fallito: " + adError.getMessage());
+                        // fallback
+                        if (loadedCount[0] < totalDesired) {
+                            loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
+                        }
+                    }
+                })
+                .withNativeAdOptions(options)
+                .build();
+
+        adLoader.loadAds(new AdRequest.Builder().build(), toLoad);
+    }
+
     private void showTutorialDialog() {
         final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -1200,5 +1276,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(String error) {Toast.makeText(MainActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();}
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mNativeAds != null && !mNativeAds.isEmpty()) {
+            for (NativeAd ad : mNativeAds) {
+                ad.destroy();
+            }
+        }
+        super.onDestroy();
     }
 }
