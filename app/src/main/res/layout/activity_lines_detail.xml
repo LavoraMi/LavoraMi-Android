@@ -587,6 +587,7 @@
                     android:orientation="vertical">
 
                     <include layout="@layout/loader_interchanges" />
+                    <include layout="@layout/loader_interchanges" />
                 </LinearLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
