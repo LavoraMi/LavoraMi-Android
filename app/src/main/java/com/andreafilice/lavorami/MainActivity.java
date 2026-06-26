@@ -935,8 +935,23 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
             ImageView closeBtn = findViewById(R.id.closeBtn);
             View strikeOpenClose = findViewById(R.id.strikeOpenClose);
+            View liveBarrier = findViewById(R.id.liveBarrier);
+            LinearLayout liveLayout = findViewById(R.id.liveLayout);
+            TextView liveText = findViewById(R.id.liveText);
+            View liveDot = findViewById(R.id.liveDot);
 
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled()) ? View.VISIBLE : View.GONE);
+            if (strikeDescriptor.isStrikeToday()) {
+                liveBarrier.setVisibility(View.VISIBLE);
+                liveLayout.setVisibility(View.VISIBLE);
+                liveText.setSelected(true);
+                android.view.animation.Animation blinkAnim = android.view.animation.AnimationUtils.loadAnimation(this, R.anim.live_blink);
+                liveDot.startAnimation(blinkAnim);
+            }
+            else {
+                liveLayout.setVisibility(View.GONE);
+                liveDot.clearAnimation();
+            }
 
             //*UPDATE TEXT VALUES
             String formattedTextDate = String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate());

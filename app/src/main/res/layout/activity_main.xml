@@ -202,6 +202,56 @@
                         android:textSize="14sp" />
                 </LinearLayout>
                 <View
+                    android:id="@+id/liveBarrier"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="4dp"
+                    android:background="@color/GRAY"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/liveLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginVertical="4dp"
+                    android:visibility="gone">
+
+                <View
+                    android:id="@+id/liveDot"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/circle_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/font_main"
+                    android:text="LIVE: "
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/liveText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/subtitle"
+                    android:fontFamily="@font/font_main"
+                    android:text="Sciopero in corso · Aggiornamenti automatici ogni minuto"
+                    android:textSize="14sp"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"
+                    android:scrollHorizontally="true"/>
+
+
+            </LinearLayout>
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="4dp"

@@ -1,6 +1,9 @@
 package com.andreafilice.lavorami;
 
 import com.google.gson.annotations.SerializedName;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class StrikeDescriptor {
     /// In this class, we get from the CDN the values of the strike and parse that datas into this Class.
@@ -66,4 +69,18 @@ public class StrikeDescriptor {
     public String[] getSupportedGTFSLines() {return supportedGTFSLines;}
     public String[] getSuburbanWithInterruptions() {return suburbanWithInterruptions;}
     public String[] getSuburbanInterruptionLinks() {return suburbanInterruptionLinks;}
+
+    public boolean isStrikeToday() {
+        if (strikeDate == null || strikeDate.trim().isEmpty()) {
+            return false;
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
+            String todayString = sdf.format(new Date());
+            return todayString.equals(this.strikeDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
