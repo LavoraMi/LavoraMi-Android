@@ -955,6 +955,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 liveLayout.setVisibility(View.GONE);
+                liveBarrier.setVisibility(View.GONE);
                 liveDot.clearAnimation();
             }
 
