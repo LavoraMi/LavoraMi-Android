@@ -201,7 +201,7 @@
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
                 </LinearLayout>
-                
+
                 <View
                     android:id="@+id/liveBarrier"
                     android:layout_width="match_parent"
@@ -231,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/font_main"
-                    android:text="LIVE: "
+                    android:text="@string/liveTitle"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"/>
