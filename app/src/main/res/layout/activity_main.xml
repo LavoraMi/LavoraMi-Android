@@ -208,7 +208,7 @@
                     android:layout_height="1dp"
                     android:layout_marginVertical="4dp"
                     android:background="@color/GRAY"
-                    android:visibility="gone"/>
+                    android:visibility="visible"/>
 
                 <LinearLayout
                     android:id="@+id/liveLayout"
@@ -274,7 +274,7 @@
                         android:layout_marginStart="6dp"
                         android:fontFamily="@font/font_main"
                         android:text="@string/strikeBannerAderenti"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/subtitle"
                         android:textSize="13sp" />
 
                     <TextView
