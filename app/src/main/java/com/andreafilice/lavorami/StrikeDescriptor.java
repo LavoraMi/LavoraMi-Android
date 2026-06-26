@@ -31,6 +31,8 @@ public class StrikeDescriptor {
     private String strikeCompanies;
     @SerializedName("guaranteed")
     private String strikeGuaranteed;
+    @SerializedName("strikeUpdateLive")
+    private String strikeUpdateLive;
     @SerializedName("linesAffectedbyDeviation")
     private String[] linesDeviation;
     @SerializedName("linesDeviationLinks")
@@ -42,9 +44,10 @@ public class StrikeDescriptor {
     @SerializedName("suburbanInterruptionLinks")
     private String[] suburbanInterruptionLinks;
 
-    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks) {
+    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
+        this.strikeUpdateLive = strikeUpdateLive;
         this.enablePassanteWork = enablePassanteWork;
         this.strikeDate = strikeDate;
         this.strikeCompanies = strikeCompanies;
@@ -64,6 +67,7 @@ public class StrikeDescriptor {
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}
+    public String getStrikeUpdateLive() {return strikeUpdateLive;}
     public String[] getLinesDeviation() {return linesDeviation;}
     public String[] getLinesDeviationLinks(){return linesDeviationLinks;}
     public String[] getSupportedGTFSLines() {return supportedGTFSLines;}
