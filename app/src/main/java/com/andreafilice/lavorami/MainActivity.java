@@ -933,19 +933,24 @@ public class MainActivity extends AppCompatActivity {
             TextView strikeDesc = findViewById(R.id.strikeDesc);
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
             TextView strikeCompanies = findViewById(R.id.strikeCompanies);
+            TextView liveText = findViewById(R.id.liveText);
+
             ImageView closeBtn = findViewById(R.id.closeBtn);
+
             View strikeOpenClose = findViewById(R.id.strikeOpenClose);
             View liveBarrier = findViewById(R.id.liveBarrier);
-            LinearLayout liveLayout = findViewById(R.id.liveLayout);
-            TextView liveText = findViewById(R.id.liveText);
             View liveDot = findViewById(R.id.liveDot);
+
+            LinearLayout liveLayout = findViewById(R.id.liveLayout);
 
             strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled()) ? View.VISIBLE : View.GONE);
             if (strikeDescriptor.isStrikeToday()) {
+                Animation blinkAnim = AnimationUtils.loadAnimation(this, R.anim.live_blink);
+
                 liveBarrier.setVisibility(View.VISIBLE);
                 liveLayout.setVisibility(View.VISIBLE);
                 liveText.setSelected(true);
-                Animation blinkAnim = AnimationUtils.loadAnimation(this, R.anim.live_blink);
+                liveText.setText(strikeDescriptor.getStrikeUpdateLive());
                 liveDot.startAnimation(blinkAnim);
             }
             else {
