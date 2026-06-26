@@ -241,7 +241,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/subtitle"
                     android:fontFamily="@font/font_main"
-                    android:text="Sciopero in corso · Aggiornamenti automatici ogni minuto"
+                    tools:text="Sciopero in corso"
                     android:textSize="14sp"
                     android:ellipsize="marquee"
                     android:marqueeRepeatLimit="marquee_forever"
