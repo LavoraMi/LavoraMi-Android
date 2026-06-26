@@ -201,6 +201,7 @@
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
                 </LinearLayout>
+                
                 <View
                     android:id="@+id/liveBarrier"
                     android:layout_width="match_parent"
@@ -248,9 +249,7 @@
                     android:singleLine="true"
                     android:scrollHorizontally="true"/>
 
-
             </LinearLayout>
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
