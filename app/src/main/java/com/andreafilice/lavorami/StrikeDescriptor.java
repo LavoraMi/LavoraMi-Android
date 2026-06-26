@@ -9,10 +9,12 @@ public class StrikeDescriptor {
     /// In this class, we get from the CDN the values of the strike and parse that datas into this Class.
     /// @SerializedName are the original names from the JSON file of our CDN
     /// @ATTRIBUTES
-    /// @String isStrikeEnabled -> Returns a String but the values are: true <i>or</i> false.
+    /// @String isStrikeEnabled -> Returns a String but the values are: true or false.
     /// @String strikeDate -> Is the date of the Strike, catched from the JSON File.
     /// @String strikeCompanies -> Are the companies that make this Strike and their services can suffer problems.
     /// @String strikeGuaranteed -> Returns a String that tells exactly which hours the service is guaranteed.
+    /// @String strikeUpdateLive -> Returns a String that contains the live status of the strike, such as: which lines are deviated.
+    /// @String enablePassanteWork -> Returns a String but the values are: true or false.
     /// @String[] linesDeviation -> Returns an array of Strings of Tram lines that have works on the track.
     /// @String[] linesDeviationLinks -> Returns an array of Strings containing the works for Tram with works on the track.
     /// @String[] supportedGTFSLines -> Returns an array of Strings for control the Bus Lines available for GTFS feature.
