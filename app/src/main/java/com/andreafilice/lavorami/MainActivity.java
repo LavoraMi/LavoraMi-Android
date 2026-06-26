@@ -945,7 +945,7 @@ public class MainActivity extends AppCompatActivity {
                 liveBarrier.setVisibility(View.VISIBLE);
                 liveLayout.setVisibility(View.VISIBLE);
                 liveText.setSelected(true);
-                android.view.animation.Animation blinkAnim = android.view.animation.AnimationUtils.loadAnimation(this, R.anim.live_blink);
+                Animation blinkAnim = AnimationUtils.loadAnimation(this, R.anim.live_blink);
                 liveDot.startAnimation(blinkAnim);
             }
             else {
