@@ -1160,7 +1160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadAdsInBatches(String adUnitId, NativeAdOptions options, int totalDesired) {
-        final int BATCH_SIZE = 5;
+        final int BATCH_SIZE = 3;
         final int[] loadedCount = {0};
 
         loadNextBatch(adUnitId, options, totalDesired, BATCH_SIZE, loadedCount);
