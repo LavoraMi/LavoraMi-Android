@@ -454,7 +454,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             txtHeadline.setText(nativeAd.getHeadline());
             txtBody.setText(nativeAd.getBody());
-            btnCallToAction.setText(nativeAd.getCallToAction());
+            btnCallToAction.setText(R.string.install);
 
             if (nativeAd.getIcon() != null) {
                 imgIcon.setImageDrawable(nativeAd.getIcon().getDrawable());

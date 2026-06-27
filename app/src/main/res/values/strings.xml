@@ -400,4 +400,5 @@
     <string name="operatorTextDeps2">Oppure salva una linea nella sezione \"Le tue linee\" per vedere, tramite l\'apposito filtro, solo i lavori che interessano a te.</string>
     <string name="selectBranch">Scegli il ramo</string>
     <string name="noInterchangesView">Fermata senza interscambi.</string>
+    <string name="install">INSTALLA</string>
 </resources>

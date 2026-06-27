@@ -401,4 +401,5 @@
     <string name="operatorTextDeps2">O bien guarda una línea en la sección \"Tus líneas\" para ver, mediante el filtro correspondiente, solo los trabajos que te interesan.</string>
     <string name="selectBranch">Elige la rama</string>
     <string name="noInterchangesView">Parada sin transbordos.</string>
+    <string name="install">INSTALAR</string>
 </resources>
