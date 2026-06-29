@@ -1221,9 +1221,8 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(true)
                 .create();
 
-        if (dialog.getWindow() != null) {
+        if (dialog.getWindow() != null) 
             dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-        }
 
         //* SETUP ANIMATION
         ImageButton heartIcon = dialogView.findViewById(R.id.buttonAddLine);
@@ -1234,9 +1233,7 @@ public class MainActivity extends AppCompatActivity {
         Runnable heartAnimation = new Runnable() {
             @Override
             public void run() {
-                // Inverti lo stato: se era vuoto diventa pieno, e viceversa
                 isFilled[0] = !isFilled[0];
-
 
                 if (isFilled[0]) {
                     heartIcon.setImageResource(R.drawable.ic_heart);
@@ -1252,9 +1249,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        // Avvia l'animazione
         handler.post(heartAnimation);
-
 
         Button btnClose = dialogView.findViewById(R.id.btn_close_tutorial);
         btnClose.setOnClickListener(v -> dialog.dismiss());
