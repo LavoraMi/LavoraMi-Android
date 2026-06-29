@@ -89,4 +89,6 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.google.mlkit.translate)
     implementation(libs.androidx.security.crypto)
+    implementation(libs.play.services.ads)
+    implementation(libs.user.messaging.platform)
 }
