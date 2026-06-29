@@ -401,4 +401,5 @@
     <string name="selectBranch">Scegli il ramo</string>
     <string name="noInterchangesView">Fermata senza interscambi.</string>
     <string name="liveTitle">LIVE:</string>
+    <string name="installText">INSTALLA</string>
 </resources>

@@ -402,4 +402,5 @@
     <string name="selectBranch">Elige la rama</string>
     <string name="noInterchangesView">Parada sin transbordos.</string>
     <string name="liveTitle">"EN DIRECTO: "</string>
+    <string name="installText">INSTALAR</string>
 </resources>

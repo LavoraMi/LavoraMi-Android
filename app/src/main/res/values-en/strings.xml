@@ -402,4 +402,5 @@
     <string name="selectBranch">Choose Branch</string>
     <string name="noInterchangesView">Stop with no interchanges.</string>
     <string name="liveTitle">"LIVE: "</string>
+    <string name="installText">INSTALL</string>
 </resources>

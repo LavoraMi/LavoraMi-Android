@@ -432,10 +432,12 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void bindAd(NativeAd nativeAd) {
+            Typeface mainNormal = ResourcesCompat.getFont(context, R.font.font_main);
 
             txtHeadline.setText(nativeAd.getHeadline());
             txtBody.setText(nativeAd.getBody());
-            btnCallToAction.setText(nativeAd.getCallToAction());
+            btnCallToAction.setText(R.string.installText);
+            btnCallToAction.setTypeface(mainNormal);
 
             if (nativeAd.getIcon() != null) {
                 imgIcon.setImageDrawable(nativeAd.getIcon().getDrawable());
