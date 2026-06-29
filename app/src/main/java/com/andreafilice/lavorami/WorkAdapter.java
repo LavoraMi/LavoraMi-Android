@@ -117,7 +117,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             int adCountBefore = 0;
             for (int i = 0; i < position; i++) if (getItemViewType(i) == TYPE_AD) adCountBefore++;
             int realPosition = position - adCountBefore;
-            
+
             if (position > 4 && adsList != null && !adsList.isEmpty()) realPosition = position - 1;
 
             if (realPosition >= eventList.size()) {

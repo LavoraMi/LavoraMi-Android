@@ -59,6 +59,13 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdOptions;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -100,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean strikeBannerClosed = false;
     private boolean  definitelyClosedSavedLinesHint;
     public static boolean alreadyRefreshedLines = false;
+    private List<NativeAd> mNativeAds = new ArrayList<>();
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -195,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
 
             loadUserPreferences();
         }
+
+        MobileAds.initialize(this, initializationStatus -> {loadNativeAds();});
 
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
@@ -733,6 +743,11 @@ public class MainActivity extends AppCompatActivity {
             adapter.setFilteredList(eventsDisplay);
             recyclerView.setAdapter(adapter);
 
+            adapter = new WorkAdapter(MainActivity.this, new ArrayList<>(events));
+            if (!mNativeAds.isEmpty()) adapter.setAdsList(mNativeAds);
+
+            recyclerView.setAdapter(adapter);
+
             applicaFiltroCategoria(categoryToFilter);
             checkForStrikes();
             return;
@@ -1151,6 +1166,49 @@ public class MainActivity extends AppCompatActivity {
             if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
         }
         return false;
+    }
+
+    private void loadNativeAds() {
+        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder().build();
+
+        loadAdsInBatches(getMetaData(this, "AdUnitID"), nativeAdOptions, 15);
+    }
+
+    private void loadAdsInBatches(String adUnitId, NativeAdOptions options, int totalDesired) {
+        final int BATCH_SIZE = 5;
+        final int[] loadedCount = {0};
+
+        loadNextBatch(adUnitId, options, totalDesired, BATCH_SIZE, loadedCount);
+    }
+
+    private void loadNextBatch(String adUnitId, NativeAdOptions options, int totalDesired, int batchSize, int[] loadedCount) {
+        if (loadedCount[0] >= totalDesired) return;
+
+        int remaining = totalDesired - loadedCount[0];
+        int toLoad = Math.min(batchSize, remaining);
+
+        AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
+            .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+                @Override
+                public void onNativeAdLoaded(NativeAd nativeAd) {
+                    mNativeAds.add(nativeAd);
+                    loadedCount[0]++;
+
+                    if (adapter != null) adapter.setAdsList(mNativeAds);
+                    if (loadedCount[0] % batchSize == 0 || loadedCount[0] >= totalDesired) if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
+                }
+            })
+            .withAdListener(new com.google.android.gms.ads.AdListener() {
+                @Override
+                public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
+                    Log.e("ADMOB", "Fallito: " + adError.getMessage());
+                    if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
+                }
+            })
+            .withNativeAdOptions(options)
+            .build();
+
+        adLoader.loadAds(new AdRequest.Builder().build(), toLoad);
     }
 
     private void showTutorialDialog() {

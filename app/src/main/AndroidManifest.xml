@@ -125,10 +125,12 @@
         <meta-data
             android:name="googleAPI"
             android:value="${API_GOOGLE_SIGNUP}" />
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-1768959234616789~4040714131"/>
+            android:value="${GOOGLE_ADS_APPLICATION_ID}"/>
+        <meta-data
+            android:name="AdUnitID"
+            android:value="${GOOGLE_ADS_UNIT_ID}"/>
 
         <receiver
             android:name=".NotificationReceiver"

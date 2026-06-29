@@ -16,7 +16,9 @@ if (envFile.exists())
 val mapboxToken = envProperties.getProperty("API_MAPBOX_TOKEN", "")
 val apiSupabaseURL = envProperties.getProperty("API_SUPABASE_URL", "")
 val apiSupabaseANON = envProperties.getProperty("API_SUPABASE_ANON", "")
-val googleLoginAPI= envProperties.getProperty("API_GOOGLE_SIGNUP", "")
+val googleLoginAPI = envProperties.getProperty("API_GOOGLE_SIGNUP", "")
+val adMobApplicationID = envProperties.getProperty("GOOGLE_ADS_APPLICATION_ID", "")
+val adMobUnitID = envProperties.getProperty("GOOGLE_ADS_UNIT_ID", "")
 
 android {
     namespace = "com.andreafilice.lavorami"
@@ -39,6 +41,8 @@ android {
         manifestPlaceholders["API_MAPBOX_TOKEN"] = mapboxToken
         manifestPlaceholders["API_SUPABASE_ANON"] = apiSupabaseANON
         manifestPlaceholders["API_GOOGLE_SIGNUP"] = googleLoginAPI
+        manifestPlaceholders["GOOGLE_ADS_APPLICATION_ID"] = adMobApplicationID
+        manifestPlaceholders["GOOGLE_ADS_UNIT_ID"] = adMobUnitID
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
