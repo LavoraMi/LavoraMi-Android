@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private WorkAdapter adapter;
     private CategoriesEnum defaultCategory;
     private boolean hasCompletedSetup;
-    private static ExecutorService threadManager = Executors.newFixedThreadPool(8);
+    private static ExecutorService threadManager = Executors.newFixedThreadPool(3);
     private StrikeDescriptor strikeCDNResponse;
     private ImageButton btnRefresh;
     private MaterialButton btnSetupNext;
@@ -536,7 +536,7 @@ public class MainActivity extends AppCompatActivity {
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                 }
-               else {
+                else {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,112*densita);
                 }
@@ -738,14 +738,10 @@ public class MainActivity extends AppCompatActivity {
             eventsDisplay = new ArrayList<>(events);
 
             recyclerView = findViewById(R.id.recyclerView);
-            recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-            adapter = new WorkAdapter(this, eventsDisplay);
-            adapter.setFilteredList(eventsDisplay);
-            recyclerView.setAdapter(adapter);
+            if (recyclerView.getLayoutManager() == null) recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
             adapter = new WorkAdapter(MainActivity.this, new ArrayList<>(events));
             if (!mNativeAds.isEmpty()) adapter.setAdsList(mNativeAds);
-
             recyclerView.setAdapter(adapter);
 
             applicaFiltroCategoria(categoryToFilter);
@@ -1018,7 +1014,7 @@ public class MainActivity extends AppCompatActivity {
         if (testo == null || testo.trim().isEmpty()) {
             for (EventDescriptor item : events){
                 long now = System.currentTimeMillis();
-                long terminated = DateUtils.toMillis(item.getEndDate());
+                long terminated = item.getEndDateMillis();
 
                 if(terminated > now)
                     listaFiltrata.add(item);
@@ -1034,7 +1030,7 @@ public class MainActivity extends AppCompatActivity {
         for (EventDescriptor item : events) {
             boolean found = false;
             long now = System.currentTimeMillis();
-            long terminated = DateUtils.toMillis(item.getEndDate());
+            long terminated = item.getEndDateMillis();
 
             if(item.getRoads().toLowerCase().contains(testoLower) || item.getDetails().toLowerCase().contains(testoLower))
                 found = true;
@@ -1064,15 +1060,13 @@ public class MainActivity extends AppCompatActivity {
 
         List<EventDescriptor> filtrata = new ArrayList<>();
         Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
-        long oggi = System.currentTimeMillis();
 
         long now = System.currentTimeMillis();
-        long terminated;
+        long limiteMassimo = now - 86400000L;
 
         for (EventDescriptor item : events) {
-            terminated = item.getEndDateMillis();
-
-            long limiteMassimo = now - 86400000L;
+            long terminated = item.getEndDateMillis();
+            long start = item.getStartDateMillis();
 
             switch (categoria) {
                 case LE_TUE_LINEE:
@@ -1106,14 +1100,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case IN_CORSO:
-                    long start = item.getStartDateMillis();
-                    long end = item.getEndDateMillis();
-                    if (start > 0 && end > 0 && oggi >= start && oggi <= end)  filtrata.add(item);
+                    if (start > 0 && terminated > 0 && now >= start && now <= terminated)  filtrata.add(item);
                     break;
 
                 case PROGRAMMATI:
-                    long startP = item.getStartDateMillis();
-                    if (startP > 0 && oggi < startP)  filtrata.add(item);
+                    if (start > 0 && now < start)  filtrata.add(item);
                     break;
 
                 case DI_ATM:
@@ -1282,7 +1273,7 @@ public class MainActivity extends AppCompatActivity {
             for (NativeAd ad : mNativeAds) if (ad != null) ad.destroy();
             mNativeAds.clear();
         }
-        
+
         super.onDestroy();
     }
 }
