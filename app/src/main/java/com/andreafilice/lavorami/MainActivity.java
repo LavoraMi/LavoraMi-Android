@@ -1221,7 +1221,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(true)
                 .create();
 
-        if (dialog.getWindow() != null) 
+        if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         //* SETUP ANIMATION
@@ -1274,5 +1274,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(String error) {Toast.makeText(MainActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();}
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mNativeAds != null && !mNativeAds.isEmpty()) {
+            for (NativeAd ad : mNativeAds) if (ad != null) ad.destroy();
+            mNativeAds.clear();
+        }
+        
+        super.onDestroy();
     }
 }
