@@ -1,15 +1,20 @@
 package com.andreafilice.lavorami;
 
 import com.google.gson.annotations.SerializedName;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class StrikeDescriptor {
     /// In this class, we get from the CDN the values of the strike and parse that datas into this Class.
     /// @SerializedName are the original names from the JSON file of our CDN
     /// @ATTRIBUTES
-    /// @String isStrikeEnabled -> Returns a String but the values are: true <i>or</i> false.
+    /// @String isStrikeEnabled -> Returns a String but the values are: true or false.
     /// @String strikeDate -> Is the date of the Strike, catched from the JSON File.
     /// @String strikeCompanies -> Are the companies that make this Strike and their services can suffer problems.
     /// @String strikeGuaranteed -> Returns a String that tells exactly which hours the service is guaranteed.
+    /// @String strikeUpdateLive -> Returns a String that contains the live status of the strike, such as: which lines are deviated.
+    /// @String enablePassanteWork -> Returns a String but the values are: true or false.
     /// @String[] linesDeviation -> Returns an array of Strings of Tram lines that have works on the track.
     /// @String[] linesDeviationLinks -> Returns an array of Strings containing the works for Tram with works on the track.
     /// @String[] supportedGTFSLines -> Returns an array of Strings for control the Bus Lines available for GTFS feature.
@@ -28,6 +33,8 @@ public class StrikeDescriptor {
     private String strikeCompanies;
     @SerializedName("guaranteed")
     private String strikeGuaranteed;
+    @SerializedName("strikeUpdateLive")
+    private String strikeUpdateLive;
     @SerializedName("linesAffectedbyDeviation")
     private String[] linesDeviation;
     @SerializedName("linesDeviationLinks")
@@ -39,9 +46,10 @@ public class StrikeDescriptor {
     @SerializedName("suburbanInterruptionLinks")
     private String[] suburbanInterruptionLinks;
 
-    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks) {
+    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
+        this.strikeUpdateLive = strikeUpdateLive;
         this.enablePassanteWork = enablePassanteWork;
         this.strikeDate = strikeDate;
         this.strikeCompanies = strikeCompanies;
@@ -61,9 +69,24 @@ public class StrikeDescriptor {
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}
+    public String getStrikeUpdateLive() {return strikeUpdateLive;}
     public String[] getLinesDeviation() {return linesDeviation;}
     public String[] getLinesDeviationLinks(){return linesDeviationLinks;}
     public String[] getSupportedGTFSLines() {return supportedGTFSLines;}
     public String[] getSuburbanWithInterruptions() {return suburbanWithInterruptions;}
     public String[] getSuburbanInterruptionLinks() {return suburbanInterruptionLinks;}
+
+    public boolean isStrikeToday() {
+        if (strikeDate == null || strikeDate.trim().isEmpty()) {
+            return false;
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
+            String todayString = sdf.format(new Date());
+            return todayString.equals(this.strikeDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
