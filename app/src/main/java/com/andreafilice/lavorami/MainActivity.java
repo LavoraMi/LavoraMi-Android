@@ -1208,9 +1208,9 @@ public class MainActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_saved_lines, null);
 
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(dialogView)
-                .setCancelable(true)
-                .create();
+            .setView(dialogView)
+            .setCancelable(true)
+            .create();
 
         if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
