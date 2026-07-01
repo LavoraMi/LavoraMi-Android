@@ -27,13 +27,6 @@ public interface SupabaseAPI {
         @Header("Authorization") String bearerToken
     );
 
-    @PUT("auth/v1/user")
-    Call<Void> updatePassword(
-        @Header("apikey") String apiKey,
-        @Header("Authorization") String bearerToken,
-        @Body SupabaseModels.PasswordRequest request
-    );
-
     @POST("auth/v1/token?grant_type=refresh_token")
     Call<SupabaseModels.AuthResponse> refreshToken(
         @Header("apikey") String apiKey,

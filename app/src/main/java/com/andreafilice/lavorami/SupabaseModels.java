@@ -55,17 +55,6 @@ public class SupabaseModels {
         }
     }
 
-    /// This class is a Callback class for the 'changePassword' method.
-    /// @ATTRIBUTES
-    /// @String password is the New password from the EditText component into the Dialog in AccountManagement.java
-    public static class PasswordRequest {
-        public String password;
-        public PasswordRequest(String password) {
-            this.password = password;
-        }
-    }
-
-
     /// This class is a Callback class from the 'loginWithGoogle' method.
     /// @ATTRIBUTES
     /// @String provider is the LoginProvider to contact for SignIn with that Provider.
