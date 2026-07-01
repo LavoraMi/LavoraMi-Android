@@ -29,7 +29,7 @@
     <string name="logoutAccount">Cerrar sesión</string>
     <string name="createAccount">Crear Cuenta</string>
     <string name="createAccountDeps">Regístrate para empezar.</string>
-    <string name="fullNameAccount">Nombre completo</string>
+    <string name="fullNameAccount">Nombre usuario</string>
     <string name="signUpWithGoogle">Registrarse con Google</string>
     <string name="signUpAccount">Registrarse</string>
     <string name="haiAccountButton">¿Ya tienes una cuenta?</string>

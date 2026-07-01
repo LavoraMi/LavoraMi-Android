@@ -29,7 +29,7 @@
     <string name="logoutAccount">Sign out</string>
     <string name="createAccount">Create Account</string>
     <string name="createAccountDeps">Sign up to get started.</string>
-    <string name="fullNameAccount">Full Name</string>
+    <string name="fullNameAccount">Username</string>
     <string name="signUpWithGoogle">Sign Up with Google</string>
     <string name="signUpAccount">Sign Up</string>
     <string name="haiAccountButton">"Do you already have an account? "</string>
