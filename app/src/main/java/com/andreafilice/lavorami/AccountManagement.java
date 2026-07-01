@@ -643,18 +643,14 @@ public class AccountManagement extends AppCompatActivity {
         container.setOrientation(LinearLayout.VERTICAL);
 
         int padding = (int) (getResources().getDisplayMetrics().density * 16);
-        container.setPadding(padding, padding, padding, padding);
+        container.setPadding(padding, 0, padding, 0);
 
         EditText inputField = new EditText(this);
         inputField.setHint("Nome Utente");
-        inputField.setText(sessionManager.getUserName());
         inputField.setInputType(android.text.InputType.TYPE_CLASS_TEXT);
         inputField.setTextSize(16);
-        inputField.setTextColor(ContextCompat.getColor(this, R.color.White));
-        inputField.setHintTextColor(ContextCompat.getColor(this, R.color.subtitle));
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.bottomMargin = (int) (getResources().getDisplayMetrics().density * 16);
         inputField.setLayoutParams(params);
 
         container.addView(inputField);
