@@ -405,4 +405,6 @@
     <string name="installText">INSTALL</string>
     <string name="editUserNameTitle">Edit Username</string>
     <string name="editUserNameDeps">Enter a new username for your Account.</string>
+    <string name="emptyUserNameToast">The username cannot be left blank</string>
+    <string name="usernameUpdated">Your username has been updated successfully!</string>
 </resources>

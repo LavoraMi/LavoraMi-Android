@@ -664,7 +664,7 @@ public class AccountManagement extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.continueButtonPopUp), (dialog, which) -> {
                     String newUsername = inputField.getText().toString().trim();
 
-                    if(newUsername.isEmpty()) Toast.makeText(AccountManagement.this, "Empty", Toast.LENGTH_SHORT).show();
+                    if(newUsername == null || newUsername.trim().isEmpty()) Toast.makeText(AccountManagement.this, R.string.emptyUserNameToast, Toast.LENGTH_SHORT).show();
                     else performUsernameUpdate(newUsername);
                 })
                 .setNegativeButton(getString(R.string.cancelPopUp), (dialog, which) -> {dialog.cancel();})
@@ -680,12 +680,7 @@ public class AccountManagement extends AppCompatActivity {
         /// @CALLBACKS Shows success/error Toast messages and updates UI accordingly.
 
         if(!sessionManager.isLoggedIn()) {
-            //Toast.makeText(this, getString(R.string.notLoggedIn), Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(newFullName == null || newFullName.trim().isEmpty()) {
-            //Toast.makeText(this, getString(R.string.emptyFullNameError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -696,8 +691,7 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()) {
-                    Log.d("ACCOUNT", "Username updated successfully");
-                    //Toast.makeText(AccountManagement.this, getString(R.string.usernameUpdatedSuccess), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, getString(R.string.usernameUpdated), Toast.LENGTH_SHORT).show();
 
                     sessionManager.saveSession(sessionManager.getToken(), sessionManager.getRefreshToken(), sessionManager.getUserEmail(), newFullName, sessionManager.isLoggedInWithGoogle());
 
@@ -705,17 +699,11 @@ public class AccountManagement extends AppCompatActivity {
                     fullNameTextLoginPage.setText(newFullName);
                     updateUI();
                 }
-                else {
-                    Log.e("ACCOUNT", "Username update failed. Status: " + response.code());
-                    Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                }
+                else Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("ACCOUNT", "Username update error: " + t.getMessage());
-                Toast.makeText(AccountManagement.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
-            }
+            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(AccountManagement.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();}
         });
     }
 
