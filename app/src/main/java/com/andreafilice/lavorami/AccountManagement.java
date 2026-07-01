@@ -246,7 +246,7 @@ public class AccountManagement extends AppCompatActivity {
         CardView btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         CardView btnChooseDataPreferences = findViewById(R.id.btnDataPreferences);
         CardView btnRequestYourDatas = findViewById(R.id.btnRequestYourDatas);
-        ImageView btnChangeUsername = findViewById(R.id.btnChangeUsername);
+        LinearLayout btnChangeUsername = findViewById(R.id.btnChangeUsername);
 
         btnLogout.setOnClickListener(v -> {showConfirmLogout();});
         btnChangePassword.setOnClickListener(v -> {changePassword();});

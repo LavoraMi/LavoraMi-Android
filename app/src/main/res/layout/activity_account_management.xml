@@ -571,10 +571,13 @@
                     android:textSize="18sp" />
 
                 <LinearLayout
+                    android:id="@+id/btnChangeUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -594,13 +597,10 @@
                         android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/btnChangeUsername"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_marginStart="10dp"
                         android:src="@drawable/ic_edit_nickname"
-                        android:clickable="true"
-                        android:focusable="true"
                         app:tint="@color/subtitle" />
                 </LinearLayout>
 
