@@ -82,4 +82,11 @@ public interface SupabaseAPI {
         @Query("user_email") String userEmail,
         @Query("select") String select
     );
+
+    @PUT("auth/v1/user")
+    Call<Void> updateUsername(
+            @Header("apikey") String apiKey,
+            @Header("Authorization") String bearerToken,
+            @Body SupabaseModels.UpdateUserRequest request
+    );
 }

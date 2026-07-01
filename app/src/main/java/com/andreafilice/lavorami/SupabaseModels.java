@@ -116,4 +116,13 @@ public class SupabaseModels {
             this.enable_your_lines = enable_your_lines;
         }
     }
+
+    public static class UpdateUserRequest {
+        public Map<String, Object> data;
+
+        public UpdateUserRequest(String fullName) {
+            this.data = new java.util.HashMap<>();
+            this.data.put("full_name", fullName);
+        }
+    }
 }

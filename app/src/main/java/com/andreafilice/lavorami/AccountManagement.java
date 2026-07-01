@@ -246,12 +246,14 @@ public class AccountManagement extends AppCompatActivity {
         CardView btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
         CardView btnChooseDataPreferences = findViewById(R.id.btnDataPreferences);
         CardView btnRequestYourDatas = findViewById(R.id.btnRequestYourDatas);
+        ImageView btnChangeUsername = findViewById(R.id.btnChangeUsername);
 
         btnLogout.setOnClickListener(v -> {showConfirmLogout();});
         btnChangePassword.setOnClickListener(v -> {changePassword();});
         btnDeleteAccount.setOnClickListener(v -> {deleteAccount();});
         btnChooseDataPreferences.setOnClickListener(v -> ActivityUtils.changeActivity(this, DatabaseDataPreferences.class));
         btnRequestYourDatas.setOnClickListener(v -> {ActivityUtils.changeActivity(this, RequestUserDatas.class);});
+        btnChangeUsername.setOnClickListener(v -> updateUsername());
 
         //*RESET PASSWORD VIEW
         /// In this section of the code, we set the button triggers and more for the RESET PASSWORD View.
@@ -634,6 +636,89 @@ public class AccountManagement extends AppCompatActivity {
                         }
                     });
                 }).show();
+    }
+
+    public void updateUsername() {
+        LinearLayout container = new LinearLayout(this);
+        container.setOrientation(LinearLayout.VERTICAL);
+
+        int padding = (int) (getResources().getDisplayMetrics().density * 16);
+        container.setPadding(padding, padding, padding, padding);
+
+        EditText inputField = new EditText(this);
+        inputField.setHint("Nome Utente");
+        inputField.setText(sessionManager.getUserName());
+        inputField.setInputType(android.text.InputType.TYPE_CLASS_TEXT);
+        inputField.setTextSize(16);
+        inputField.setTextColor(ContextCompat.getColor(this, R.color.White));
+        inputField.setHintTextColor(ContextCompat.getColor(this, R.color.subtitle));
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.bottomMargin = (int) (getResources().getDisplayMetrics().density * 16);
+        inputField.setLayoutParams(params);
+
+        container.addView(inputField);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Aggiorna nome utente")
+                .setMessage("desc")
+                .setView(container)
+                .setPositiveButton(getString(R.string.continueButtonPopUp), (dialog, which) -> {
+                    String newUsername = inputField.getText().toString().trim();
+
+                    if(newUsername.isEmpty()) Toast.makeText(AccountManagement.this, "Empty", Toast.LENGTH_SHORT).show();
+                    else performUsernameUpdate(newUsername);
+                })
+                .setNegativeButton(getString(R.string.cancelPopUp), (dialog, which) -> {dialog.cancel();})
+                .create()
+                .show();
+    }
+
+    public void performUsernameUpdate(String newFullName) {
+        /// This method updates the user's full name in Supabase.
+        /// @PARAMETERS
+        /// String newFullName is the new full name to set for the user.
+        /// @CALLS updateUsername endpoint from SupabaseAPI with proper authentication.
+        /// @CALLBACKS Shows success/error Toast messages and updates UI accordingly.
+
+        if(!sessionManager.isLoggedIn()) {
+            //Toast.makeText(this, getString(R.string.notLoggedIn), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(newFullName == null || newFullName.trim().isEmpty()) {
+            //Toast.makeText(this, getString(R.string.emptyFullNameError), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String bearerToken = "Bearer " + sessionManager.getToken();
+        SupabaseModels.UpdateUserRequest request = new SupabaseModels.UpdateUserRequest(newFullName);
+
+        api.updateUsername(SupabaseANON, bearerToken, request).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()) {
+                    Log.d("ACCOUNT", "Username updated successfully");
+                    //Toast.makeText(AccountManagement.this, getString(R.string.usernameUpdatedSuccess), Toast.LENGTH_SHORT).show();
+
+                    sessionManager.saveSession(sessionManager.getToken(), sessionManager.getRefreshToken(), sessionManager.getUserEmail(), newFullName, sessionManager.isLoggedInWithGoogle());
+
+                    if(tvProfileName != null) tvProfileName.setText(newFullName);
+                    fullNameTextLoginPage.setText(newFullName);
+                    updateUI();
+                }
+                else {
+                    Log.e("ACCOUNT", "Username update failed. Status: " + response.code());
+                    Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("ACCOUNT", "Username update error: " + t.getMessage());
+                Toast.makeText(AccountManagement.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void changePassword(){

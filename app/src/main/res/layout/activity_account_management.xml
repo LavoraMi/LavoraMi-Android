@@ -525,7 +525,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -592,6 +592,16 @@
                         android:text="full_name"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/btnChangeUsername"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_edit_nickname"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:tint="@color/subtitle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -882,7 +892,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
