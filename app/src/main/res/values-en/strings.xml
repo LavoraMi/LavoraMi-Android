@@ -403,4 +403,6 @@
     <string name="noInterchangesView">Stop with no interchanges.</string>
     <string name="liveTitle">"LIVE: "</string>
     <string name="installText">INSTALL</string>
+    <string name="editUserNameTitle">Edit Username</string>
+    <string name="editUserNameDeps">Enter a new username for your Account.</string>
 </resources>

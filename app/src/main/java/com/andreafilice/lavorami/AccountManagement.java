@@ -648,7 +648,7 @@ public class AccountManagement extends AppCompatActivity {
         container.setPadding(padding, 0, padding, 0);
 
         EditText inputField = new EditText(this);
-        inputField.setHint("Nome Utente");
+        inputField.setHint(R.string.fullNameAccount);
         inputField.setInputType(android.text.InputType.TYPE_CLASS_TEXT);
         inputField.setTextSize(16);
 
@@ -658,8 +658,8 @@ public class AccountManagement extends AppCompatActivity {
         container.addView(inputField);
 
         new AlertDialog.Builder(this)
-                .setTitle("Aggiorna nome utente")
-                .setMessage("desc")
+                .setTitle(R.string.editUserNameTitle)
+                .setMessage(R.string.editUserNameDeps)
                 .setView(container)
                 .setPositiveButton(getString(R.string.continueButtonPopUp), (dialog, which) -> {
                     String newUsername = inputField.getText().toString().trim();

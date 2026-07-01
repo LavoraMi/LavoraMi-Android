@@ -403,4 +403,6 @@
     <string name="noInterchangesView">Parada sin transbordos.</string>
     <string name="liveTitle">"EN DIRECTO: "</string>
     <string name="installText">INSTALAR</string>
+    <string name="editUserNameTitle">Modificar Nombre Usuario</string>
+    <string name="editUserNameDeps">Introduce un nuevo nombre de usuario para tu Cuenta.</string>
 </resources>

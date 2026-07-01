@@ -402,4 +402,6 @@
     <string name="noInterchangesView">Fermata senza interscambi.</string>
     <string name="liveTitle">LIVE:</string>
     <string name="installText">INSTALLA</string>
+    <string name="editUserNameTitle">Modifica Nome Utente</string>
+    <string name="editUserNameDeps">Inserisci un nuovo nome utente per il tuo Account.</string>
 </resources>
