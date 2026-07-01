@@ -14,6 +14,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -672,6 +673,48 @@ public class AccountManagement extends AppCompatActivity {
                 .show();
     }
 
+    public void selectUsername() {
+        /// In this method, we call the performUsernameUpdate method because the user doesn't have a username.
+
+        LinearLayout container = new LinearLayout(this);
+        container.setOrientation(LinearLayout.VERTICAL);
+
+        int padding = (int) (getResources().getDisplayMetrics().density * 16);
+        container.setPadding(padding, 0, padding, 0);
+
+        EditText inputField = new EditText(this);
+        inputField.setHint(R.string.fullNameAccount);
+        inputField.setInputType(android.text.InputType.TYPE_CLASS_TEXT);
+        inputField.setTextSize(16);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        inputField.setLayoutParams(params);
+
+        container.addView(inputField);
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Inserisci Nome Utente")
+                .setMessage("Il tuo Account non ha un nome utente, inseriscine uno.")
+                .setView(container)
+                .setPositiveButton(getString(R.string.continueButtonPopUp), null)
+                .create();
+
+        dialog.setOnShowListener(d -> {
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(v -> {
+                String newUsername = inputField.getText().toString().trim();
+
+                if (newUsername.isEmpty()) Toast.makeText(AccountManagement.this, R.string.emptyUserNameToast, Toast.LENGTH_SHORT).show();
+                else {
+                    performUsernameUpdate(newUsername);
+                    dialog.dismiss();
+                }
+            });
+        });
+
+        dialog.show();
+    }
+
     public void performUsernameUpdate(String newFullName) {
         /// This method updates the user's full name in Supabase.
         /// @PARAMETERS
@@ -737,6 +780,8 @@ public class AccountManagement extends AppCompatActivity {
             lockedScreen.setVisibility(View.GONE);
 
             fullNameTextLoginPage.setText(ContextCompat.getString(this, R.string.welcomeAccountLoggedIn) + getNameFromFullName(sessionManager.getUserName()));
+            if(sessionManager.getUserName().isEmpty() || sessionManager.getUserName().toString().trim() == "" || sessionManager.getUserName().toString().equalsIgnoreCase("user")) selectUsername();
+
             tvProfileName.setText(sessionManager.getUserName());
             tvProfileEmail.setText(sessionManager.getUserEmail());
             signingInWithGoogleView.setVisibility(View.GONE);
