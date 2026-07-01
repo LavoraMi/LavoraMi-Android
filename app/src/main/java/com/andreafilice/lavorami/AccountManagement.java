@@ -780,7 +780,7 @@ public class AccountManagement extends AppCompatActivity {
             lockedScreen.setVisibility(View.GONE);
 
             fullNameTextLoginPage.setText(ContextCompat.getString(this, R.string.welcomeAccountLoggedIn) + getNameFromFullName(sessionManager.getUserName()));
-            if(sessionManager.getUserName().isEmpty() || sessionManager.getUserName().toString().trim() == "" || sessionManager.getUserName().toString().equalsIgnoreCase("user")) selectUsername();
+            if(sessionManager.getUserName().isEmpty() || sessionManager.getUserName().trim().equalsIgnoreCase("") || sessionManager.getUserName().equalsIgnoreCase("user")) selectUsername();
 
             tvProfileName.setText(sessionManager.getUserName());
             tvProfileEmail.setText(sessionManager.getUserEmail());
