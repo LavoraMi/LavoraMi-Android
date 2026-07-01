@@ -28,7 +28,7 @@
     <string name="logoutAccount">Esci</string>
     <string name="createAccount">Crea Account</string>
     <string name="createAccountDeps">Registrati per iniziare.</string>
-    <string name="fullNameAccount">Nome completo</string>
+    <string name="fullNameAccount">Nome utente</string>
     <string name="signUpWithGoogle">Registrati con Google</string>
     <string name="signUpAccount">Registrati</string>
     <string name="haiAccountButton">Hai già un Account?</string>
