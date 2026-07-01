@@ -37,6 +37,7 @@ import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -47,7 +48,9 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     static Context context;
     private List<EventDescriptor> eventList;
+    private static Typeface sFontMainNormal;
     private List<NativeAd> adsList;
+    private final List<Integer> adPositions = new ArrayList<>();
     private final String langCode;
     private final boolean showTranslateButton;
     private static final int TYPE_LAVORO = 0;
@@ -73,7 +76,25 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void setAdsList(List<NativeAd> ads) {
         this.adsList = (ads != null) ? ads : new ArrayList<>();
+        recomputeAdPositions();
         notifyDataSetChanged();
+    }
+
+    public void addAd(NativeAd ad) {
+        if (ad == null) return;
+
+        this.adsList.add(ad);
+        recomputeAdPositions();
+
+        if (!adPositions.isEmpty()) notifyItemChanged(adPositions.get(adPositions.size() - 1));
+    }
+
+
+    private void recomputeAdPositions() {
+        adPositions.clear();
+
+        int count = getItemCount();
+        for (int i = 0; i < count; i++) if (getItemViewType(i) == TYPE_AD) adPositions.add(i);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -220,16 +241,15 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         else {
             AdViewHolder adHolder = (AdViewHolder) holder;
 
-            int adCount = 0;
-            for (int i = 0; i <= position; i++) if (getItemViewType(i) == TYPE_AD) adCount++;
-            int adIndex = adCount - 1;
+            int adIndex = Collections.binarySearch(adPositions, position);
 
             if (adIndex >= 0 && adIndex < adsList.size()) {
                 adHolder.itemView.setVisibility(View.VISIBLE);
                 adHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 adHolder.bindAd(adsList.get(adIndex));
-            } else {
+            }
+            else {
                 adHolder.itemView.setVisibility(View.GONE);
                 adHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
             }
@@ -374,8 +394,11 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void setFilteredList(List<EventDescriptor> filteredList) {
         List<EventDescriptor> newList = (filteredList != null) ? filteredList : new ArrayList<>();
+
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new EventDiffCallback(this.eventList, newList));
         this.eventList = newList;
+        recomputeAdPositions();
+
         diffResult.dispatchUpdatesTo(this);
     }
 
@@ -435,12 +458,12 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void bindAd(NativeAd nativeAd) {
-            Typeface mainNormal = ResourcesCompat.getFont(context, R.font.font_main);
+            if (sFontMainNormal == null) sFontMainNormal = ResourcesCompat.getFont(context, R.font.font_main);
 
             txtHeadline.setText(nativeAd.getHeadline());
             txtBody.setText(nativeAd.getBody());
             btnCallToAction.setText(R.string.installText);
-            btnCallToAction.setTypeface(mainNormal);
+            btnCallToAction.setTypeface(sFontMainNormal);
 
             if (nativeAd.getIcon() != null) {
                 imgIcon.setImageDrawable(nativeAd.getIcon().getDrawable());

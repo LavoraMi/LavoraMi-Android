@@ -1185,7 +1185,7 @@ public class MainActivity extends AppCompatActivity {
                     mNativeAds.add(nativeAd);
                     loadedCount[0]++;
 
-                    if (adapter != null) adapter.setAdsList(mNativeAds);
+                    if (adapter != null) adapter.addAd(nativeAd);
                     if (loadedCount[0] % batchSize == 0 || loadedCount[0] >= totalDesired) if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
                 }
             })
