@@ -639,6 +639,8 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     public void updateUsername() {
+        /// In this method, we call the performUsernameUpdate method asking a prompt to the user.
+
         LinearLayout container = new LinearLayout(this);
         container.setOrientation(LinearLayout.VERTICAL);
 
