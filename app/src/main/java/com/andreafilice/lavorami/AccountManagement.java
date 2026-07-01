@@ -693,8 +693,8 @@ public class AccountManagement extends AppCompatActivity {
         container.addView(inputField);
 
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Inserisci Nome Utente")
-                .setMessage("Il tuo Account non ha un nome utente, inseriscine uno.")
+                .setTitle(R.string.insertNicknameTitle)
+                .setMessage(R.string.insertNicknameDeps)
                 .setView(container)
                 .setPositiveButton(getString(R.string.continueButtonPopUp), null)
                 .create();

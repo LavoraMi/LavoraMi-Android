@@ -407,4 +407,6 @@
     <string name="editUserNameDeps">Enter a new username for your Account.</string>
     <string name="emptyUserNameToast">The username cannot be left blank</string>
     <string name="usernameUpdated">Your username has been updated successfully!</string>
+    <string name="insertNicknameTitle">Enter Your Username</string>
+    <string name="insertNicknameDeps">Your account does not have a username. Please enter one.</string>
 </resources>

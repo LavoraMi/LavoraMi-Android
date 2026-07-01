@@ -406,4 +406,6 @@
     <string name="editUserNameDeps">Inserisci un nuovo nome utente per il tuo Account.</string>
     <string name="emptyUserNameToast">Il nome utente non può essere vuoto</string>
     <string name="usernameUpdated">Nome utente aggiornato correttamente!</string>
+    <string name="insertNicknameTitle">Inserisci Nome Utente</string>
+    <string name="insertNicknameDeps">Il tuo Account non ha un nome utente, inseriscine uno.</string>
 </resources>
