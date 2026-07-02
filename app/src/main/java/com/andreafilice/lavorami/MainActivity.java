@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editSearch;
     private int indexHintAnimation;
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable searchRunnable;
 
     //*DATABASE SYNCH VARIABLES
     /// In this section of the code, we will create the variables for synch datas to DB ones.
@@ -488,11 +489,14 @@ public class MainActivity extends AppCompatActivity {
                     filterGroup.clearCheck();
                     editSearch.setCompoundDrawables(searchIcon, null, deleteIcon, null);
                 }
-                else
-                    editSearch.setCompoundDrawables(searchIcon, null, null, null);
+                else editSearch.setCompoundDrawables(searchIcon, null, null, null);
 
-                String testoRicerca = s.toString().toLowerCase().trim();
-                filtra(testoRicerca, s.toString());
+                final String testoRicerca = s.toString().toLowerCase().trim();
+                final String testoOriginale = s.toString();
+
+                if (searchRunnable != null) handler.removeCallbacks(searchRunnable);
+                searchRunnable = () -> filtra(testoRicerca, testoOriginale);
+                handler.postDelayed(searchRunnable, 250);
             }
 
             @Override
