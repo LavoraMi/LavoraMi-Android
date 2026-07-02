@@ -493,7 +493,15 @@ public class MainActivity extends AppCompatActivity {
 
                     editSearch.setCompoundDrawables(searchIcon, null, deleteIcon, null);
                 }
-                else editSearch.setCompoundDrawables(searchIcon, null, null, null);
+                else {
+                    editSearch.setCompoundDrawables(searchIcon, null, null, null);
+
+                    if (filterGroup != null && filterGroup.getCheckedChipId() == View.NO_ID) {
+                        filterGroup.setOnCheckedChangeListener(null);
+                        filterGroup.check(R.id.chipAll);
+                        filterGroup.setOnCheckedChangeListener(chipCheckedChangeListener);
+                    }
+                }
 
                 final String testoRicerca = s.toString().toLowerCase().trim();
                 final String testoOriginale = s.toString();
