@@ -93,6 +93,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<EventDescriptor> events = new ArrayList<EventDescriptor>();
     private ArrayList<EventDescriptor> eventsDisplay = new ArrayList<EventDescriptor>();
+    private final List<NativeAd> pendingBatch = new ArrayList<>();
     private ShimmerFrameLayout loadingLayout;
     private LinearLayout errorLayout;
     private WorkAdapter adapter;
@@ -1162,7 +1163,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadNativeAds() {
         NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder().build();
 
-        loadAdsInBatches(getMetaData(this, "AdUnitID"), nativeAdOptions, 15);
+        loadAdsInBatches(getMetaData(this, "AdUnitID"), nativeAdOptions, 8);
     }
 
     private void loadAdsInBatches(String adUnitId, NativeAdOptions options, int totalDesired) {
@@ -1183,10 +1184,16 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onNativeAdLoaded(NativeAd nativeAd) {
                     mNativeAds.add(nativeAd);
+                    pendingBatch.add(nativeAd);
                     loadedCount[0]++;
 
-                    if (adapter != null) adapter.addAd(nativeAd);
-                    if (loadedCount[0] % batchSize == 0 || loadedCount[0] >= totalDesired) if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
+                    if (loadedCount[0] % batchSize == 0 || loadedCount[0] >= totalDesired) {
+                        if (adapter != null) {
+                            adapter.addAdsBatch(new ArrayList<>(pendingBatch));
+                            pendingBatch.clear();
+                        }
+                        if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
+                    }
                 }
             })
             .withAdListener(new com.google.android.gms.ads.AdListener() {

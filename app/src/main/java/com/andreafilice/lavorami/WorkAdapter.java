@@ -53,8 +53,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final List<Integer> adPositions = new ArrayList<>();
     private final String langCode;
     private final boolean showTranslateButton;
-    private static final int TYPE_LAVORO = 0;
-    private static final int TYPE_AD = 1;
+    public static final int TYPE_LAVORO = 0;
+    public static final int TYPE_AD = 1;
 
     public WorkAdapter(Context context, List<EventDescriptor> eventList) {
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
@@ -80,15 +80,14 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public void addAd(NativeAd ad) {
-        if (ad == null) return;
+    public void addAdsBatch(List<NativeAd> newAds) {
+        if (newAds == null || newAds.isEmpty()) return;
 
-        this.adsList.add(ad);
+        this.adsList.addAll(newAds);
+
         recomputeAdPositions();
-
-        if (!adPositions.isEmpty()) notifyItemChanged(adPositions.get(adPositions.size() - 1));
+        notifyDataSetChanged();
     }
-
 
     private void recomputeAdPositions() {
         adPositions.clear();
@@ -240,19 +239,20 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         else {
             AdViewHolder adHolder = (AdViewHolder) holder;
-
             int adIndex = Collections.binarySearch(adPositions, position);
+
+            holder.setIsRecyclable(false);
 
             if (adIndex >= 0 && adIndex < adsList.size()) {
                 adHolder.itemView.setVisibility(View.VISIBLE);
-                adHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+                ViewGroup.LayoutParams lp = adHolder.itemView.getLayoutParams();
+                if (!(lp instanceof RecyclerView.LayoutParams) || lp.height != ViewGroup.LayoutParams.WRAP_CONTENT)
+                    adHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
                 adHolder.bindAd(adsList.get(adIndex));
             }
-            else {
-                adHolder.itemView.setVisibility(View.GONE);
-                adHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
-            }
+            else adHolder.itemView.setVisibility(View.GONE);
         }
     }
 
@@ -447,6 +447,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private final TextView txtBody;
         private final Button btnCallToAction;
         private final ImageView imgIcon;
+        private NativeAd boundAd;
 
         public AdViewHolder(View itemView) {
             super(itemView);
@@ -457,9 +458,13 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imgIcon = itemView.findViewById(R.id.ad_app_icon);
         }
 
-        public void bindAd(NativeAd nativeAd) {
-            if (sFontMainNormal == null) sFontMainNormal = ResourcesCompat.getFont(context, R.font.font_main);
+        public NativeAd getBoundAd() { return boundAd; }
 
+        public void bindAd(NativeAd nativeAd) {
+            if (boundAd == nativeAd) return;
+            boundAd = nativeAd;
+
+            if (sFontMainNormal == null) sFontMainNormal = ResourcesCompat.getFont(context, R.font.font_main);
             txtHeadline.setText(nativeAd.getHeadline());
             txtBody.setText(nativeAd.getBody());
             btnCallToAction.setText(R.string.installText);
@@ -469,8 +474,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 imgIcon.setImageDrawable(nativeAd.getIcon().getDrawable());
                 imgIcon.setVisibility(View.VISIBLE);
             }
-            else
-                imgIcon.setVisibility(View.GONE);
+            else imgIcon.setVisibility(View.GONE);
 
             nativeAdView.setHeadlineView(txtHeadline);
             nativeAdView.setBodyView(txtBody);
