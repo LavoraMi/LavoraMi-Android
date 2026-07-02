@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
     private int indexHintAnimation;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable searchRunnable;
+    private ChipGroup.OnCheckedChangeListener chipCheckedChangeListener;
 
     //*DATABASE SYNCH VARIABLES
     /// In this section of the code, we will create the variables for synch datas to DB ones.
@@ -486,7 +487,10 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 hintSwitcher.setVisibility(s.length() > 0 ? View.GONE : View.VISIBLE);
                 if (s.length() > 0 && filterGroup != null) {
+                    filterGroup.setOnCheckedChangeListener(null);
                     filterGroup.clearCheck();
+                    filterGroup.setOnCheckedChangeListener(chipCheckedChangeListener);
+
                     editSearch.setCompoundDrawables(searchIcon, null, deleteIcon, null);
                 }
                 else editSearch.setCompoundDrawables(searchIcon, null, null, null);
@@ -522,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
         //* LISTENER PER I FILTRI (CHIP)
         definitelyClosedSavedLinesHint = DataManager.getBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, false);
         if (filterGroup != null) {
-            filterGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            chipCheckedChangeListener = (group, checkedId) -> {
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
                 int densita = (int)getResources().getDisplayMetrics().density;
                 if (checkedId == R.id.chipYourLines) {
@@ -560,7 +564,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 recyclerView.scrollToPosition(0);
-            });
+            };
+            filterGroup.setOnCheckedChangeListener(chipCheckedChangeListener);
         }
 
         //*SETUP LANGUAGE
