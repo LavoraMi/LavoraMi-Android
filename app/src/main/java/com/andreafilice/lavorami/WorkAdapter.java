@@ -55,7 +55,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final boolean showTranslateButton;
     public static final int TYPE_LAVORO = 0;
     public static final int TYPE_AD = 1;
-    private final Object listLock = new Object(); 
+    private final Object listLock = new Object();
 
     public WorkAdapter(Context context, List<EventDescriptor> eventList) {
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");

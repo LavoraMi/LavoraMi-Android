@@ -549,11 +549,9 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
                     findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,112*densita);
                 }
-                if (checkedId == View.NO_ID)
-                    filterGroup.check(R.id.chipAll);
+                if (checkedId == View.NO_ID) filterGroup.check(R.id.chipAll);
                 else {
-                    if (checkedId != R.id.chipAll)
-                        editSearch.setText("");
+                    if (checkedId != R.id.chipAll) editSearch.setText("");
                     Chip selectedChip = findViewById(checkedId);
 
                     if (selectedChip != null) {
