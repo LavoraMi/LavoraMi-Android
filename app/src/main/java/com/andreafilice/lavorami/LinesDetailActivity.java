@@ -223,6 +223,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+            chipMappa.setChecked(true);
 
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
@@ -250,6 +251,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipLavori.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+            chipLavori.setChecked(true);
 
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
@@ -266,6 +268,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipInterscambi.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+            chipInterscambi.setChecked(true);
 
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
@@ -283,6 +286,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipArrivi.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+            chipArrivi.setChecked(true);
 
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
@@ -1235,7 +1239,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 if (cachedViews != null && !cachedViews.isEmpty() && container != null) {
                     container.removeAllViews();
-                    
+
                     for (View v : cachedViews) {
                         if (v.getParent() != null) ((ViewGroup) v.getParent()).removeView(v);
                         container.addView(v);
