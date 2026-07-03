@@ -23,15 +23,14 @@ public class ActivityUtils {
         ///@PARAMETER
         /// Class<?> destinationLayout is a destination activity which this function change.
 
-        Intent layoutChange = new Intent(context, destinationLayout);
-        layoutChange.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        layoutChange.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(context, destinationLayout);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
 
         Bundle animOptions = ActivityOptionsCompat
-                .makeCustomAnimation(context, 0, 0)
+                .makeCustomAnimation(context, R.anim.zoom_in_bounce, R.anim.zoom_out_overlap)
                 .toBundle();
 
-        context.startActivity(layoutChange, animOptions);
+        context.startActivity(intent, animOptions);
     }
 
     public static void openURL(Context context, String url) {
