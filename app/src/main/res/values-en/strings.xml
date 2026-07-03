@@ -409,4 +409,7 @@
     <string name="usernameUpdated">Your username has been updated successfully!</string>
     <string name="insertNicknameTitle">Enter Your Username</string>
     <string name="insertNicknameDeps">Your account does not have a username. Please enter one.</string>
+    <string name="customiseTitle">Customise</string>
+    <string name="nicknameEmptyError">The Username cannot be left blank.</string>
+    <string name="nicknameEqualError">Your new Username cannot be the same as your current Username.</string>
 </resources>

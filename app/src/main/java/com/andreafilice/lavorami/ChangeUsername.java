@@ -158,7 +158,7 @@ public class ChangeUsername extends AppCompatActivity {
 
         boolean isEnabled = !isEmpty && !isSameAsCurrentUsername && !isElaboratingRequest;
         errorText.setVisibility((isEnabled) ? View.GONE : View.VISIBLE);
-        errorText.setText((isEmpty) ? "Il Nome Utente non può essere vuoto." : "Il nuovo Nome Utente non può essere uguale al tuo Nome Utente attuale");
+        errorText.setText((isEmpty) ? getString(R.string.nicknameEmptyError) : getString(R.string.nicknameEqualError));
 
         updateButtonTint(buttonContinue, isEnabled);
     }
