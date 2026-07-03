@@ -3,7 +3,10 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.content.pm.ActivityInfo;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -12,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,6 +24,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import okhttp3.OkHttpClient;
@@ -36,6 +42,7 @@ public class ChangeUsername extends AppCompatActivity {
     SupabaseDataManager dataManager;
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
+    private boolean isElaboratingRequest = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +86,23 @@ public class ChangeUsername extends AppCompatActivity {
 
         //* LISTENERS
         /// In this section of the code, we will setup the listeners for the "Continue" button
-        LinearLayout buttonContinue = findViewById(R.id.buttonContinue);
+        MaterialButton buttonContinue = findViewById(R.id.buttonContinue);
         TextInputEditText usernameEditText = findViewById(R.id.usernameEditText);
 
-        buttonContinue.setOnClickListener(v -> performUsernameUpdate(usernameEditText.getText().toString()));
+        updateButtonState(buttonContinue, usernameEditText);
+
+        buttonContinue.setOnClickListener(v -> performUsernameUpdate(usernameEditText.getText().toString(), usernameEditText, buttonContinue));
+        usernameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {}
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {updateButtonState(buttonContinue, usernameEditText);}
+        });
     }
 
-    public void performUsernameUpdate(String newFullName) {
+    public void performUsernameUpdate(String newFullName, TextInputEditText usernameEditText, MaterialButton buttonContinue) {
         /// This method updates the user's full name in Supabase.
         /// @PARAMETERS
         /// String newFullName is the new full name to set for the user.
@@ -99,6 +116,7 @@ public class ChangeUsername extends AppCompatActivity {
 
         String bearerToken = "Bearer " + sessionManager.getToken();
         SupabaseModels.UpdateUserRequest request = new SupabaseModels.UpdateUserRequest(newFullName);
+        isElaboratingRequest = true;
 
         api.updateUsername(SupabaseANON, bearerToken, request).enqueue(new Callback<Void>() {
             @Override
@@ -107,14 +125,43 @@ public class ChangeUsername extends AppCompatActivity {
                     Toast.makeText(ChangeUsername.this, getString(R.string.usernameUpdated), Toast.LENGTH_SHORT).show();
 
                     sessionManager.saveSession(sessionManager.getToken(), sessionManager.getRefreshToken(), sessionManager.getUserEmail(), newFullName, sessionManager.isLoggedInWithGoogle());
-
+                    usernameEditText.setText("");
+                    updateButtonState(buttonContinue, usernameEditText);
                     finish();
                 }
                 else Toast.makeText(ChangeUsername.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {Toast.makeText(ChangeUsername.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();}
+            public void onFailure(Call<Void> call, Throwable t) {
+                isElaboratingRequest = false;
+                updateButtonState(buttonContinue, usernameEditText);
+                Toast.makeText(ChangeUsername.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+            }
         });
+    }
+
+    private void updateButtonState(MaterialButton buttonContinue, TextInputEditText usernameEditText) {
+        /// This method is a refactor one and check all the conditions before apply the 'updateButtonTint' method
+        /// @PARAMETERS
+        /// MaterialButton btnToApply is the button to Apply the method
+        /// TextInputEditText usernameEditText is the field to check if is empty or other conditions
+
+        String currentUsername = usernameEditText.getText().toString().trim();
+        boolean isEmpty = currentUsername.isEmpty();
+        boolean isSameAsCurrentUsername = currentUsername.equals(sessionManager.getUserName());
+
+        boolean isEnabled = !isEmpty && !isSameAsCurrentUsername && !isElaboratingRequest;
+
+        updateButtonTint(buttonContinue, isEnabled);
+    }
+
+    public void updateButtonTint(MaterialButton btnToApply, boolean isValid) {
+        /// This method is a refactor one and apply the colors to the CardViews.
+        /// @PARAMETERS
+        /// MaterialButton btnToApply is the button to Apply this colors
+        /// boolean isValid is the actual value to apply, if is valid or not.
+
+        btnToApply.setBackgroundTintList(isValid ? ColorStateList.valueOf(ContextCompat.getColor(ChangeUsername.this, R.color.redMetro)) : ColorStateList.valueOf(ContextCompat.getColor(ChangeUsername.this, R.color.GRAY)));
     }
 }

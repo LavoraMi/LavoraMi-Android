@@ -118,7 +118,7 @@
                 android:fontFamily="@font/font_main"/>
 
             <LinearLayout
-                android:id="@+id/buttonContinue"
+                android:id="@+id/buttonContinueLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -126,7 +126,7 @@
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSetupNext"
+                    android:id="@+id/buttonContinue"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:backgroundTint="@color/redMetro"
