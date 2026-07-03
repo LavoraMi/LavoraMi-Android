@@ -934,8 +934,21 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             for (InterchangeInfo info : interchanges) {
                 if (info.getLines() == null || info.getLines().length == 0) continue;
-                String primaryLine = info.getLines()[0].trim().toUpperCase();
-                if (!primaryLine.equals(searchTag)) continue;
+
+                boolean match = false;
+                if (isLineaMetro()) {
+                    String primaryLine = info.getLines()[0].trim().toUpperCase();
+                    match = primaryLine.equals(searchTag);
+                }
+                else {
+                    for (String line : info.getLines()) {
+                        if (line.trim().toUpperCase().equals(searchTag)) {
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+                if (!match) continue;
 
                 String compositeKey = info.getKey() + "|" + searchTag;
                 if (!seenKeys.contains(compositeKey)) {
@@ -962,9 +975,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 Button btnBranch = findViewById(R.id.buttonSelectBranch);
                 if (btnBranch != null) {
                     btnBranch.setVisibility(hasMultipleBranches ? View.VISIBLE : View.GONE);
-
                     if (hasMultipleBranches) btnBranch.setText(selectedBranch);
-
                     btnBranch.setOnClickListener(v -> {
                         ActivityUtils.triggerFeedback(this);
                         showBranchDialog(availableBranches, matched);
