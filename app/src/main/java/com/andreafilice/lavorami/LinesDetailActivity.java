@@ -185,9 +185,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {
-            if (strikeCDNResponse != null) {
-                onMapReady(mapViewReady, strikeCDNResponse);
-            } else {
+            if (strikeCDNResponse != null) onMapReady(mapViewReady, strikeCDNResponse);
+            else {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     if (strikeCDNResponse != null) onMapReady(mapViewReady, strikeCDNResponse);
                 }, 300);
@@ -224,15 +223,18 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.GONE);
+
             lavoriWrapper.setVisibility(View.GONE);
             lavoriNested.setVisibility(View.GONE);
             interscambiWrapper.setVisibility(View.GONE);
             interscambiNested.setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.GONE);
             arriviNested.setVisibility(View.GONE);
+
             findViewById(R.id.lavoriSezioneWrapper).setVisibility(View.GONE);
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
 
@@ -248,43 +250,53 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipLavori.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
             containerInterscambi.setVisibility(View.GONE);
+
             interscambiWrapper.setVisibility(View.GONE);
             interscambiNested.setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.GONE);
             arriviNested.setVisibility(View.GONE);
+
             caricaEventiFiltrati();
             updateChipGroupSizes(detActionGroup);
         });
 
         chipInterscambi.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.VISIBLE);
+
             lavoriWrapper.setVisibility(View.GONE);
             lavoriNested.setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.GONE);
             arriviNested.setVisibility(View.GONE);
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
+
             caricaInterscambiLinee();
             updateChipGroupSizes(detActionGroup);
         });
 
         chipArrivi.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.GONE);
             containerInterscambi.setVisibility(View.GONE);
+
             lavoriWrapper.setVisibility(View.GONE);
             lavoriNested.setVisibility(View.GONE);
             interscambiWrapper.setVisibility(View.GONE);
             interscambiNested.setVisibility(View.GONE);
+
             findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
             arriviWrapper.setVisibility(View.VISIBLE);
             arriviNested.setVisibility(View.VISIBLE);
+
             updateChipGroupSizes(detActionGroup);
         });
 
