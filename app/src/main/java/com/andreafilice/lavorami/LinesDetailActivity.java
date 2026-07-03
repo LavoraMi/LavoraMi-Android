@@ -188,10 +188,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (strikeCDNResponse != null) {
                 onMapReady(mapViewReady, strikeCDNResponse);
             } else {
-                // la callback della mappa è arrivata prima della rete: aspetta
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    if (strikeCDNResponse != null)
-                        onMapReady(mapViewReady, strikeCDNResponse);
+                    if (strikeCDNResponse != null) onMapReady(mapViewReady, strikeCDNResponse);
                 }, 300);
             }
         });
