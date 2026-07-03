@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ad_body"
-                android:backgroundTint="@color/bottomBarPillTint"
+                android:backgroundTint="@color/redMetro"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
