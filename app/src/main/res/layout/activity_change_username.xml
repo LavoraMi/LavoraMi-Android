@@ -25,8 +25,7 @@
             android:paddingBottom="10dp">
 
             <TextView
-                android:layout_width="wrap_c
-                ontent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Personalizza"
                 android:fontFamily="@font/font_main"
