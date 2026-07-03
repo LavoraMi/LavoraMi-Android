@@ -48,6 +48,9 @@
             android:name=".InfoAccessibility"
             android:exported="false" />
         <activity
+            android:name=".ChangeUsername"
+            android:exported="false" />
+        <activity
             android:name=".MaintenanceActivity"
             android:exported="false" />
         <activity

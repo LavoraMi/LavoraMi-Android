@@ -254,7 +254,7 @@ public class AccountManagement extends AppCompatActivity {
         btnDeleteAccount.setOnClickListener(v -> {deleteAccount();});
         btnChooseDataPreferences.setOnClickListener(v -> ActivityUtils.changeActivity(this, DatabaseDataPreferences.class));
         btnRequestYourDatas.setOnClickListener(v -> {ActivityUtils.changeActivity(this, RequestUserDatas.class);});
-        btnChangeUsername.setOnClickListener(v -> updateUsername());
+        btnChangeUsername.setOnClickListener(v -> ActivityUtils.changeActivity(AccountManagement.this, ChangeUsername.class));
 
         //*RESET PASSWORD VIEW
         /// In this section of the code, we set the button triggers and more for the RESET PASSWORD View.
@@ -637,40 +637,6 @@ public class AccountManagement extends AppCompatActivity {
                         }
                     });
                 }).show();
-    }
-
-    public void updateUsername() {
-        /// In this method, we call the performUsernameUpdate method asking a prompt to the user.
-
-        LinearLayout container = new LinearLayout(this);
-        container.setOrientation(LinearLayout.VERTICAL);
-
-        int padding = (int) (getResources().getDisplayMetrics().density * 16);
-        container.setPadding(padding, 0, padding, 0);
-
-        EditText inputField = new EditText(this);
-        inputField.setHint(R.string.fullNameAccount);
-        inputField.setInputType(android.text.InputType.TYPE_CLASS_TEXT);
-        inputField.setTextSize(16);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        inputField.setLayoutParams(params);
-
-        container.addView(inputField);
-
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.editUserNameTitle)
-                .setMessage(R.string.editUserNameDeps)
-                .setView(container)
-                .setPositiveButton(getString(R.string.continueButtonPopUp), (dialog, which) -> {
-                    String newUsername = inputField.getText().toString().trim();
-
-                    if(newUsername == null || newUsername.trim().isEmpty()) Toast.makeText(AccountManagement.this, R.string.emptyUserNameToast, Toast.LENGTH_SHORT).show();
-                    else performUsernameUpdate(newUsername);
-                })
-                .setNegativeButton(getString(R.string.cancelPopUp), (dialog, which) -> {dialog.cancel();})
-                .create()
-                .show();
     }
 
     public void selectUsername() {
