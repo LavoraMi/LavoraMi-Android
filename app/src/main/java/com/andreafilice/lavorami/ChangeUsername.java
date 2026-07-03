@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -88,6 +89,7 @@ public class ChangeUsername extends AppCompatActivity {
         //* LISTENERS
         /// In this section of the code, we will setup the listeners for the "Continue" button
         MaterialButton buttonContinue = findViewById(R.id.buttonContinue);
+        ImageButton backBtn = findViewById(R.id.backBtn);
         TextInputEditText usernameEditText = findViewById(R.id.usernameEditText);
 
         updateButtonState(buttonContinue, usernameEditText);
@@ -101,6 +103,7 @@ public class ChangeUsername extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {updateButtonState(buttonContinue, usernameEditText);}
         });
+        backBtn.setOnClickListener(v -> finish());
     }
 
     public void performUsernameUpdate(String newFullName, TextInputEditText usernameEditText, MaterialButton buttonContinue) {
