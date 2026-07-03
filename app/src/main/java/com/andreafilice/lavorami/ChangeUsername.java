@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -148,10 +149,13 @@ public class ChangeUsername extends AppCompatActivity {
         /// TextInputEditText usernameEditText is the field to check if is empty or other conditions
 
         String currentUsername = usernameEditText.getText().toString().trim();
+        TextView errorText = findViewById(R.id.errorText);
         boolean isEmpty = currentUsername.isEmpty();
         boolean isSameAsCurrentUsername = currentUsername.equals(sessionManager.getUserName());
 
         boolean isEnabled = !isEmpty && !isSameAsCurrentUsername && !isElaboratingRequest;
+        errorText.setVisibility((isEnabled) ? View.GONE : View.VISIBLE);
+        errorText.setText((isEmpty) ? "Il Nome Utente non può essere vuoto." : "Il nuovo Nome Utente non può essere uguale al tuo Nome Utente attuale");
 
         updateButtonTint(buttonContinue, isEnabled);
     }
