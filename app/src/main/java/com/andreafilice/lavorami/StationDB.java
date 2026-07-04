@@ -31,7 +31,7 @@ public class StationDB {
         stations.add(new MetroStation("Duomo", 45.46443, 9.18927, "Main", "M1"));
         stations.add(new MetroStation("Cordusio", 45.46539, 9.18635, "Main", "M1"));
         stations.add(new MetroStation("Cairoli", 45.4682, 9.18225, "Main", "M1"));
-        stations.add(new MetroStation("Cadorna FN", 45.4682, 9.17588, "Main", "M1"));
+        stations.add(new MetroStation("Cadorna FN Triennale", 45.4682, 9.17588, "Main", "M1"));
         stations.add(new MetroStation("Conciliazione", 45.46749, 9.1663, "Main", "M1"));
         stations.add(new MetroStation("Pagano", 45.46828, 9.16077, "Main", "M1"));
         stations.add(new MetroStation("Buonarroti", 45.47054, 9.1552, "Rho", "M1"));
@@ -101,7 +101,7 @@ public class StationDB {
         stations.add(new MetroStation("Porta Genova FS", 45.45273, 9.16972, "Main", "M2"));
         stations.add(new MetroStation("S. Agostino", 45.45834, 9.16977, "Main", "M2"));
         stations.add(new MetroStation("S. Ambrogio", 45.46185, 9.17325, "Main", "M2"));
-        stations.add(new MetroStation("Cadorna FN", 45.4682, 9.17588, "Main", "M2"));
+        stations.add(new MetroStation("Cadorna FN Triennale", 45.4682, 9.17588, "Main", "M2"));
         stations.add(new MetroStation("Lanza", 45.47196, 9.18273, "Main", "M2"));
         stations.add(new MetroStation("Moscova", 45.4775, 9.18471, "Main", "M2"));
         stations.add(new MetroStation("Garibaldi FS", 45.48351, 9.18671, "Main", "M2"));
