@@ -947,7 +947,7 @@ public class MainActivity extends AppCompatActivity {
         //*CHECK FOR MAINTENANCE
         /// Check if LavoraMi is in maintenance mode and get the details from the CDN.
         boolean isInMaintenanceMode = descriptor.isMaintenanceEnabled();
-        maintenanceDetails = (langCode.equalsIgnoreCase("en")) ? descriptor.getMaintenanceDepsEnglish() : descriptor.getMaintenanceDeps();
+        maintenanceDetails = (langCode.equalsIgnoreCase("en")) ? descriptor.getMaintenanceDepsEnglish() : langCode.equalsIgnoreCase("es") ? descriptor.getMaintenanceDepsSpanish() :  descriptor.getMaintenanceDeps();
 
         if(isInMaintenanceMode)
             ActivityUtils.changeActivity(this, MaintenanceActivity.class);
