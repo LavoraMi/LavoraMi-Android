@@ -1580,7 +1580,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z644": return "Arconate - Parabiago";
             case "Z646": return "Castano Primo - Magenta FS";
             case "Z647": return "Cornaredo - Castano Primo";
-            case "Z648": return "Arconate - Busto Garolfo - Molino Dorino M1";
             case "Z649": return "Magenta - Arluno - Molino Dorino M1";
 
             case "Z501": return "Milano Famagosta - Binasco";

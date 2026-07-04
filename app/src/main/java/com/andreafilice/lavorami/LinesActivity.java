@@ -497,7 +497,7 @@ public class LinesActivity extends AppCompatActivity {
         String[] movibusLines = {"z601", "z602", "z603", "z6C3", "z606", "z611", "z612",
                 "z616", "z617", "z618", "z619", "z620", "z621", "z622",
                 "z625", "z627", "z636", "z641", "z642", "z643", "z644",
-                "z646", "z647", "z648", "z649"};
+                "z646", "z647", "z649"};
         for (String line : movibusLines) {
             aggiungiLinea(containerMovibus, line, R.color.BUS, "Movibus");
         }
