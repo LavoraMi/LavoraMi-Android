@@ -195,7 +195,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Mapbox Maps SDK for Android",
-                        "11.25.0",
+                        "11.25.1",
                         "Mapbox Terms of Service",
                         "Copyright (c) Mapbox",
                         "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
