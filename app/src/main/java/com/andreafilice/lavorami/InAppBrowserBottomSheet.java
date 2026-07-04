@@ -12,9 +12,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.PixelCopy;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -25,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,6 +52,15 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private FrameLayout zoomBtn;
 
     private final Handler tintHandler = new Handler(Looper.getMainLooper());
+    private PinchZoomGestureListener pinchZoomListener;
+    private PDFViewerHelper pdfViewerHelper;
+
+    private static final long LOAD_TIMEOUT = 20000;
+    private Handler loadTimeoutHandler;
+    private Runnable loadTimeoutRunnable;
+
+    private boolean isPdfUrl = false;
+    private String originalUrl = "";
 
     private final String[] ALLOWED_DOMAINS = {
         "lavorami.it",
@@ -65,7 +77,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         "autoguidovie.it",
         "patreon.com",
         "buymeacoffee.com",
-        "comune.milano.it"
+        "comune.milano.it",
+        "cdnjs.cloudflare.com"
     };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
@@ -80,7 +93,9 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {return inflater.inflate(R.layout.bottom_sheet_browser, container, false);}
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.bottom_sheet_browser, container, false);
+    }
 
     @NonNull
     @Override
@@ -136,12 +151,24 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         FrameLayout closeBtn = view.findViewById(R.id.close_btn);
         zoomBtn = view.findViewById(R.id.zoom_btn);
 
+        loadTimeoutHandler = new Handler(Looper.getMainLooper());
+        pdfViewerHelper = new PDFViewerHelper(getContext());
+        pdfViewerHelper.clearOldCache();
+
         zoomBtn.setOnClickListener(v -> {
             showZoomPopup(v);
             ActivityUtils.triggerFeedback(getContext());
         });
 
         setupWebView();
+
+        webView.setOnTouchListener((v, event) -> {
+            if (pinchZoomListener != null) pinchZoomListener.onTouch(event);
+
+            v.getParent().requestDisallowInterceptTouchEvent(webView.getScrollY() > 0);
+            return false;
+        });
+
         loadInitialUrl();
 
         tintHandler.postDelayed(() -> {
@@ -245,26 +272,58 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         settings.setUseWideViewPort(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 
+        settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        settings.setEnableSmoothTransition(true);
+
+        settings.setBuiltInZoomControls(true);
+        settings.setDisplayZoomControls(false);
+        settings.setSupportZoom(true);
+
+        if (getContext() != null) pinchZoomListener = new PinchZoomGestureListener(getContext(), webView);
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {}
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                progressBar.setVisibility(View.VISIBLE);
+                progressBar.setAlpha(1f);
+                progressBar.setProgress(0);
+
+                scheduleLoadTimeout();
+            }
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                cancelLoadTimeout();
                 progressBar.setVisibility(View.GONE);
                 urlText.setText(url);
 
                 String title = webView.getTitle();
 
-                if(title.length() > 30)
+                if(title != null && title.length() > 30)
                     title = title.substring(0, 27) + "...";
 
-                urlTitleText.setText(title);
-
-                if(webView.getTitle().isEmpty() || urlTitleText.getText().isEmpty())
+                if(title != null && !title.isEmpty())
+                    urlTitleText.setText(title);
+                else
                     urlTitleText.setText("LavoraMi");
 
                 tintHandler.postDelayed(InAppBrowserBottomSheet.this::updateAdaptiveTint, 300);
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                cancelLoadTimeout();
+
+                Log.e("WebViewError", "Errore: " + (error != null ? error.getDescription() : "Unknown"));
+
+                String errorMsg = "<html><body style='text-align:center; padding:50px; font-family:sans-serif; background:#f5f5f5;'>" +
+                        "<h2 style='color:#d32f2f;'>Errore nel caricamento</h2>" +
+                        "<p style='color:#666;'>Impossibile caricare la pagina. Controlla la connessione e riprova.</p>" +
+                        "<p style='font-size:12px; color:#999;'>" + (error != null ? error.getDescription() : "") + "</p>" +
+                        "</body></html>";
+
+                view.loadData(errorMsg, "text/html", "utf-8");
             }
         });
 
@@ -300,15 +359,29 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
             }
         });
 
-        webView.setOnTouchListener((v, event) -> {
-            v.getParent().requestDisallowInterceptTouchEvent(webView.getScrollY() > 0);
-            return false;
-        });
-
         webView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             tintHandler.removeCallbacksAndMessages(null);
             tintHandler.postDelayed(this::updateAdaptiveTint, 150);
         });
+    }
+
+    private void scheduleLoadTimeout() {
+        cancelLoadTimeout();
+
+        loadTimeoutRunnable = () -> {
+            if (progressBar != null && progressBar.getVisibility() == View.VISIBLE) {
+                Log.w("WebViewTimeout", "Timeout caricamento pagina - forzatura completamento");
+                cancelLoadTimeout();
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "Caricamento lento - riprova se necessario", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        loadTimeoutHandler.postDelayed(loadTimeoutRunnable, LOAD_TIMEOUT);
+    }
+
+    private void cancelLoadTimeout() {
+        if (loadTimeoutHandler != null && loadTimeoutRunnable != null) loadTimeoutHandler.removeCallbacks(loadTimeoutRunnable);
     }
 
     private boolean isDomainAllowed(String urlString) {
@@ -332,13 +405,14 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
             if (!url.startsWith("http://") && !url.startsWith("https://"))
                 url = "https://" + url;
 
-            if (url.toLowerCase().contains(".pdf"))
-                url = "https://docs.google.com/gview?embedded=true&url=" + url;
-
+            originalUrl = url;
+            isPdfUrl = url.toLowerCase().endsWith(".pdf");
 
             if (isDomainAllowed(url)) {
                 urlText.setText(url);
-                webView.loadUrl(url);
+
+                if (isPdfUrl) loadPDFWithPDFJS(url);
+                else webView.loadUrl(url);
             }
             else {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -346,6 +420,44 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
                 dismiss();
             }
         }
+    }
+
+    private void loadPDFWithPDFJS(String pdfUrl) {
+        if (pdfViewerHelper == null) {
+            webView.loadUrl(pdfUrl);
+            return;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        pdfViewerHelper.downloadPDFIfNeeded(pdfUrl, new PDFViewerHelper.PDFDownloadCallback() {
+            @Override
+            public void onSuccess(String pdfPath) {
+                if (getContext() != null) {
+                    String htmlContent = pdfViewerHelper.generatePDFViewerHTML(pdfUrl);
+                    webView.loadDataWithBaseURL(
+                        "file://",
+                        htmlContent,
+                        "text/html",
+                        "utf-8",
+                        null
+                    );
+
+                    Log.d("PDFLoader", "PDF caricato con PDF.js: " + pdfUrl);
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Log.e("PDFLoader", "Errore caricamento PDF: " + e.getMessage(), e);
+
+                if (pdfUrl.toLowerCase().contains(".pdf")) {
+                    String googleViewerUrl = "https://docs.google.com/gview?embedded=true&url=" + pdfUrl;
+                    webView.loadUrl(googleViewerUrl);
+                    Toast.makeText(getContext(), "Usando visualizzatore alternativo", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void setupClickListeners(FrameLayout closeBtn) {
@@ -356,7 +468,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
         doneBtn.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(getContext());
-            webView.reload();
+            if (isPdfUrl) loadPDFWithPDFJS(originalUrl);
+            else webView.reload();
         });
 
         shareBtn.setOnClickListener(v -> {
@@ -371,19 +484,21 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     }
 
     private void shareCurrentUrl() {
-        if (webView.getUrl() == null) return;
+        String urlToShare = isPdfUrl ? originalUrl : webView.getUrl();
+        if (urlToShare == null) return;
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, webView.getUrl());
+        intent.putExtra(Intent.EXTRA_TEXT, urlToShare);
 
-        startActivity(Intent.createChooser(intent, "Share"));
+        startActivity(Intent.createChooser(intent, "Condividi"));
     }
 
     private void openInExternalBrowser() {
-        if (webView.getUrl() == null) return;
+        String urlToOpen = isPdfUrl ? originalUrl : webView.getUrl();
+        if (urlToOpen == null) return;
 
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(webView.getUrl()));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToOpen));
         startActivity(intent);
     }
 
@@ -452,11 +567,13 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
     @Override
     public void onDestroyView() {
+        cancelLoadTimeout();
         tintHandler.removeCallbacksAndMessages(null);
 
         if (webView != null) {
             webView.stopLoading();
             webView.setWebViewClient(null);
+            webView.setWebChromeClient(null);
             webView.destroy();
         }
 
