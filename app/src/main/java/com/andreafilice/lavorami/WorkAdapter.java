@@ -50,7 +50,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<EventDescriptor> eventList;
     private static Typeface sFontMainNormal;
     private List<NativeAd> adsList;
-    private final List<Integer> adPositions = new ArrayList<>();
+    private final List<Object> combinedList = new ArrayList<>();
     private final String langCode;
     private final boolean showTranslateButton;
     public static final int TYPE_LAVORO = 0;
@@ -75,10 +75,31 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             sColorWhite = ContextCompat.getColor(context, R.color.White);
     }
 
+    private void recomputeCombinedList() {
+        synchronized (listLock) {
+            combinedList.clear();
+            if (eventList == null || eventList.isEmpty()) return;
+
+            int adIndex = 0;
+            for (int i = 0; i < eventList.size(); i++) {
+                if (adIndex < adsList.size() && combinedList.size() > 0 && combinedList.size() % 7 == 5) {
+                    combinedList.add(adsList.get(adIndex));
+                    adIndex++;
+                }
+                combinedList.add(eventList.get(i));
+            }
+
+            while (adIndex < adsList.size() && adsList.get(adIndex) != null) {
+                combinedList.add(adsList.get(adIndex));
+                adIndex++;
+            }
+        }
+    }
+
     public void setAdsList(List<NativeAd> ads) {
         synchronized (listLock) {
             this.adsList = (ads != null) ? ads : new ArrayList<>();
-            recomputeAdPositions();
+            recomputeCombinedList();
         }
         notifyDataSetChanged();
     }
@@ -88,16 +109,9 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         synchronized (listLock) {
             this.adsList.addAll(newAds);
-            recomputeAdPositions();
+            recomputeCombinedList();
         }
         notifyDataSetChanged();
-    }
-
-    private void recomputeAdPositions() {
-        adPositions.clear();
-
-        int count = getItemCount();
-        for (int i = 0; i < count; i++) if (getItemViewType(i) == TYPE_AD) adPositions.add(i);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -144,189 +158,126 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        synchronized (listLock) {
-            if (getItemViewType(position) == TYPE_LAVORO) {
-                ViewHolder itemHolder = (ViewHolder) holder;
+        Object item = combinedList.get(position);
+        Context ctx = holder.itemView.getContext();
 
-                int realPosition = getRealEventPosition(position);
+        if (holder instanceof ViewHolder) {
+            ViewHolder itemHolder = (ViewHolder) holder;
+            EventDescriptor event = (EventDescriptor) item;
 
-                if (realPosition < 0 || realPosition >= eventList.size()) {
-                    itemHolder.itemView.setVisibility(View.GONE);
-                    return;
-                }
+            itemHolder.cardImage.setImageResource(event.getCachedCardImageID());
+            int textColor = ContextCompat.getColor(ctx, R.color.text_primary);
+            ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(textColor));
 
-                EventDescriptor item = eventList.get(realPosition);
+            itemHolder.titleText.setText(event.getTitle());
+            itemHolder.trattaText.setText(event.getRoads());
+            itemHolder.startDateText.setText(event.getFormattedStartDate());
+            itemHolder.endDateText.setText(event.getFormattedEndDate());
+            itemHolder.companyText.setText(event.getCompany());
 
-                String finalStartDate = formattaData(item.getStartDate());
-                String finalEndDate   = formattaData(item.getEndDate());
-                int color = ContextCompat.getColor(itemHolder.itemView.getContext(), R.color.text_primary);
+            String details = event.getDetails();
+            boolean isImportant = details != null && details.contains("[LAVORO IMPORTANTE]");
+            itemHolder.descriptionText.setText(isImportant ? details.replace("[LAVORO IMPORTANTE]", "").trim() : details);
 
-                ImageViewCompat.setImageTintList(itemHolder.cardImage, ColorStateList.valueOf(color));
-                itemHolder.cardImage.setImageResource(item.getCardImageID());
-                itemHolder.titleText.setText(item.getTitle());
-                itemHolder.trattaText.setText(item.getRoads());
-                itemHolder.startDateText.setText(finalStartDate);
-                itemHolder.endDateText.setText(finalEndDate);
-                itemHolder.companyText.setText(item.getCompany());
-
-                boolean isImportant = item.getDetails() != null && item.getDetails().contains("[LAVORO IMPORTANTE]");
-                String cleanedDetails = isImportant ? item.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : item.getDetails();
-
-                itemHolder.descriptionText.setText(cleanedDetails);
-
-                if (isImportant) {
-                    itemHolder.bannerImportante.setVisibility(View.VISIBLE);
-                    itemHolder.cardView.setStrokeColor(sColorRed); // FIX 1: usa costante statica
-                    itemHolder.cardView.setStrokeWidth(dpToPx(itemHolder.itemView.getContext(), 2));
-                    itemHolder.cardView.setCardElevation(dpToPx(itemHolder.itemView.getContext(), 10));
-                }
-                else {
-                    itemHolder.bannerImportante.setVisibility(View.GONE);
-                    itemHolder.cardView.setStrokeWidth(0);
-                    itemHolder.cardView.setCardElevation(dpToPx(itemHolder.itemView.getContext(), 4));
-                }
-
-                itemHolder.descriptionText.setVisibility(View.GONE);
-                itemHolder.openCloseIcon.setImageResource(R.drawable.ic_down);
-
-                itemHolder.itemView.setOnClickListener(v -> {
-                    boolean isExpanded = itemHolder.descriptionText.getVisibility() == View.VISIBLE;
-                    itemHolder.descriptionText.setVisibility(isExpanded ? View.GONE : View.VISIBLE);
-                    itemHolder.openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
-                    ActivityUtils.triggerFeedback(context);
-                });
-
-                int progressPercentage = calcolaPercentuale(item.getStartDateMillis(), item.getEndDateMillis());
-                itemHolder.progressBar.setProgress(progressPercentage);
-                itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(progressPercentage == 100 ? sColorGreen : sColorRed));
-
-                itemHolder.translateBtn.setVisibility(showTranslateButton ? View.VISIBLE : View.GONE);
-
-                final String detailsForTranslation = cleanedDetails;
-                itemHolder.translateBtn.setOnClickListener(v -> {
-                    Context ctx = v.getContext();
-                    BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(ctx);
-                    View sheetView = LayoutInflater.from(ctx).inflate(R.layout.item_sheet_translated, null);
-                    ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
-                    LinearLayout layoutDefault = sheetView.findViewById(R.id.layoutDefault);
-                    LinearLayout layoutTerms = sheetView.findViewById(R.id.layoutPrivacy);
-                    Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
-                    Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
-                    TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
-                    boolean isAcceptingTerms = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
-
-                    loadingLayout.startShimmer();
-                    bottomSheetDialog.setContentView(sheetView);
-                    bottomSheetDialog.show();
-
-                    if (isAcceptingTerms) {
-                        layoutTerms.setVisibility(View.GONE);
-                        layoutDefault.setVisibility(View.VISIBLE);
-                        downloadingText.setVisibility(View.GONE);
-                        translateStrings(sheetView, item, detailsForTranslation, langCode, loadingLayout);
-                    }
-                    else {
-                        layoutDefault.setVisibility(View.GONE);
-                        layoutTerms.setVisibility(View.VISIBLE);
-                        acceptTerms.setOnClickListener(view -> {
-                            layoutDefault.setVisibility(View.VISIBLE);
-                            layoutTerms.setVisibility(View.GONE);
-                            downloadingText.setVisibility(View.VISIBLE);
-                            DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
-                            translateStrings(sheetView, item, detailsForTranslation, langCode, loadingLayout);
-                        });
-                        cancelTerms.setOnClickListener(unused -> bottomSheetDialog.cancel());
-                    }
-                });
-
-                bindChips(itemHolder, item);
-                itemHolder.locationIcon.setVisibility((item.getLines() != null && item.getLines().length > 0) ? View.VISIBLE : View.GONE);
+            if (isImportant) {
+                itemHolder.bannerImportante.setVisibility(View.VISIBLE);
+                itemHolder.cardView.setStrokeWidth(dpToPx(ctx, 2));
+                itemHolder.cardView.setStrokeColor(sColorRed);
+                itemHolder.cardView.setCardElevation(dpToPx(ctx, 10));
             }
             else {
-                AdViewHolder adHolder = (AdViewHolder) holder;
-                int adIndex = Collections.binarySearch(adPositions, position);
-
-                holder.setIsRecyclable(false);
-
-                if (adIndex >= 0 && adIndex < adsList.size()) {
-                    adHolder.itemView.setVisibility(View.VISIBLE);
-
-                    ViewGroup.LayoutParams lp = adHolder.itemView.getLayoutParams();
-                    if (!(lp instanceof RecyclerView.LayoutParams) || lp.height != ViewGroup.LayoutParams.WRAP_CONTENT)
-                        adHolder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-                    adHolder.bindAd(adsList.get(adIndex));
-                }
-                else adHolder.itemView.setVisibility(View.GONE);
+                itemHolder.bannerImportante.setVisibility(View.GONE);
+                itemHolder.cardView.setStrokeWidth(0);
+                itemHolder.cardView.setCardElevation(dpToPx(ctx, 4));
             }
-        }
-    }
 
-    private int getRealEventPosition(int adapterPosition) {
-        if (adsList == null || adsList.isEmpty()) return adapterPosition;
-        if (eventList.size() >= 6 && adapterPosition > 4) return adapterPosition - 1;
-        return adapterPosition;
+            itemHolder.descriptionText.setVisibility(View.GONE);
+            itemHolder.openCloseIcon.setRotation(-90f);
+
+            itemHolder.itemView.setOnClickListener(v -> {
+                boolean isExpanded = itemHolder.descriptionText.getVisibility() == View.VISIBLE;
+                itemHolder.descriptionText.setVisibility(isExpanded ? View.GONE : View.VISIBLE);
+                itemHolder.openCloseIcon.animate().rotation(isExpanded ? -90f : 0f).setDuration(200).start();
+                ActivityUtils.triggerFeedback(context);
+            });
+
+            int progress = calcolaPercentuale(event.getStartDateMillis(), event.getEndDateMillis());
+            itemHolder.progressBar.setProgress(progress);
+            itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(progress == 100 ? sColorGreen : sColorRed));
+
+            itemHolder.translateBtn.setVisibility(showTranslateButton ? View.VISIBLE : View.GONE);
+            bindChips(itemHolder, event);
+            itemHolder.locationIcon.setVisibility((event.getLines() != null && event.getLines().length > 0) ? View.VISIBLE : View.GONE);
+        }
+        else if (holder instanceof AdViewHolder) ((AdViewHolder) holder).bindAd((NativeAd) item);
     }
 
     private void bindChips(ViewHolder holder, EventDescriptor item) {
         String[] lines = item.getLines();
-        String chipKey = (lines != null && lines.length > 0) ? String.join(",", lines) : "";
+        String chipKey = item.getCachedLinesString();
         String cachedKey = (String) holder.chipGroupLinee.getTag();
 
         if (chipKey.equals(cachedKey)) return;
-
-        holder.chipGroupLinee.removeAllViews();
         holder.chipGroupLinee.setTag(chipKey);
 
-        if (lines == null || lines.length == 0) return;
-
         Context ctx = holder.itemView.getContext();
-        float density = ctx.getResources().getDisplayMetrics().density;
-        int heightPx = (int) (26 * density);
+        int lineCount = (lines != null) ? lines.length : 0;
+        int childCount = holder.chipGroupLinee.getChildCount();
 
-        for (String nome : lines) {
-            String nomePulito = nome.trim();
-            Chip chip = new Chip(ctx);
-            chip.setText(nomePulito);
+        for (int i = 0; i < Math.max(lineCount, childCount); i++) {
+            if (i < lineCount) {
+                String nomePulito = lines[i].trim();
+                Chip chip;
+                if (i < childCount) {
+                    chip = (Chip) holder.chipGroupLinee.getChildAt(i);
+                    chip.setVisibility(View.VISIBLE);
+                }
+                else {
+                    chip = new Chip(ctx);
+                    float density = ctx.getResources().getDisplayMetrics().density;
+                    int heightPx = (int) (26 * density);
+                    chip.setShapeAppearanceModel(chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build());
+                    chip.setEnsureMinTouchTargetSize(false);
+                    chip.setChipMinHeight(heightPx);
+                    chip.setMinHeight(heightPx);
+                    chip.setChipStartPadding(0f);
+                    chip.setChipEndPadding(0f);
+                    chip.setTextStartPadding(15f);
+                    chip.setTextEndPadding(15f);
+                    chip.setChipStrokeWidth(0f);
+                    chip.setTextSize(13f);
+                    chip.setTypeface(sFontInterBold);
+                    chip.setTextColor(sColorWhite);
+                    chip.setCloseIconVisible(false);
+                    chip.setClickable(false);
+                    chip.setCheckable(false);
+                    holder.chipGroupLinee.addView(chip);
+                }
 
-            chip.setShapeAppearanceModel(chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build());
+                if (!nomePulito.equals(chip.getText().toString())) {
+                    chip.setText(nomePulito);
+                    int[] cachedColors = item.getCachedChipColors();
+                    int colorRes = (cachedColors != null && i < cachedColors.length) ? cachedColors[i] : R.color.OTHER_LINES;
+                    chip.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(ctx, colorRes)));
 
-            if (nomePulito.contains("Filobus")) {
-                chip.setChipIcon(ContextCompat.getDrawable(ctx, R.drawable.ic_bolt));
-                chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
-                chip.setIconStartPadding(10);
+                    if (nomePulito.contains("Filobus")) {
+                        chip.setChipIcon(ContextCompat.getDrawable(ctx, R.drawable.ic_bolt));
+                        chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                        chip.setIconStartPadding(10);
+                    }
+                    else if (nomePulito.contains("N")) {
+                        chip.setChipIcon(ContextCompat.getDrawable(ctx, R.drawable.ic_dark));
+                        chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
+                        chip.setIconStartPadding(10);
+                    }
+                    else chip.setChipIcon(null);
+                }
             }
-            else if (nomePulito.contains("N")) {
-                chip.setChipIcon(ContextCompat.getDrawable(ctx, R.drawable.ic_dark));
-                chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
-                chip.setIconStartPadding(10);
-            }
-
-            chip.setEnsureMinTouchTargetSize(false);
-            chip.setChipMinHeight(heightPx);
-            chip.setMinHeight(heightPx);
-            chip.setChipStartPadding(0f);
-            chip.setChipEndPadding(0f);
-            chip.setTextStartPadding(15f);
-            chip.setTextEndPadding(15f);
-            chip.setChipStrokeWidth(0f);
-            chip.setTextSize(13f);
-            chip.setTypeface(sFontInterBold);
-
-            int coloreLinea = StationDB.getLineColor(ctx, nomePulito);
-            chip.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(ctx, coloreLinea)));
-            chip.setTextColor(sColorWhite);
-
-            chip.setCloseIconVisible(false);
-            chip.setClickable(false);
-            chip.setCheckable(false);
-
-            holder.chipGroupLinee.addView(chip);
+            else holder.chipGroupLinee.getChildAt(i).setVisibility(View.GONE);
         }
     }
 
-    public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails,
-                                        String langCode, ShimmerFrameLayout loadingLayout) {
+    public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails, String langCode, ShimmerFrameLayout loadingLayout) {
         MaterialButton btnCopy = sheetView.findViewById(R.id.btn_copy);
         TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
 
@@ -375,48 +326,19 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public int getItemCount() {
-        synchronized (listLock) {
-            if (eventList == null || eventList.isEmpty()) return 0;
-            if (adsList == null || adsList.isEmpty()) return eventList.size();
-            if (eventList.size() >= 6) return eventList.size() + 1;
-
-            int totalSlots = (eventList.size() / 7) + 1;
-            int maxAds = Math.min(totalSlots, adsList.size());
-            return eventList.size() + maxAds;
-        }
-    }
-
+    public int getItemCount() {return combinedList.size();}
     @Override
-    public int getItemViewType(int position) {
-        synchronized (listLock) {
-            if (adsList == null || adsList.isEmpty()) return TYPE_LAVORO;
-            if (position == 4 && !adsList.isEmpty() && eventList.size() >= 6) return TYPE_AD;
-            if (position == getItemCount() - 1 && adsList.size() > 0) return TYPE_AD;
-
-            if (position % 8 == 7 && position != 7) {
-                int adIndex = (position + 1) / 8 - 1;
-                if (adIndex < adsList.size()) return TYPE_AD;
-            }
-            return TYPE_LAVORO;
-        }
-    }
+    public int getItemViewType(int position) {return (combinedList.get(position) instanceof NativeAd) ? TYPE_AD : TYPE_LAVORO;}
 
     public void setFilteredList(List<EventDescriptor> filteredList) {
-        List<EventDescriptor> newList = (filteredList != null) ? filteredList : new ArrayList<>();
-        boolean hasAds;
-        DiffUtil.DiffResult diffResult = null;
-
+        List<EventDescriptor> newList = (filteredList != null) ? new ArrayList<>(filteredList) : new ArrayList<>();
+        
         synchronized (listLock) {
-            hasAds = adsList != null && !adsList.isEmpty();
-            if (!hasAds) diffResult = DiffUtil.calculateDiff(new EventDiffCallback(this.eventList, newList));
-
             this.eventList = newList;
-            recomputeAdPositions();
+            recomputeCombinedList();
         }
 
-        if (hasAds || diffResult == null) notifyDataSetChanged();
-        else diffResult.dispatchUpdatesTo(this);
+        notifyDataSetChanged();
     }
 
     private int calcolaPercentuale(long start, long end) {

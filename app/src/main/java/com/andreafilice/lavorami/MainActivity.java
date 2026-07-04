@@ -6,6 +6,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -75,6 +76,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -814,8 +816,7 @@ public class MainActivity extends AppCompatActivity {
                         threadManager.submit(() -> {
                             for (int j = batchStart; j < batchEnd; j++) {
                                 EventDescriptor lavoro = datiRaw.get(j);
-                                lavoro.setEndDateMillis(DateUtils.toMillis(lavoro.getEndDate()));
-                                lavoro.setStartDateMillis(DateUtils.toMillis(lavoro.getStartDate()));
+                                lavoro.precalculate(MainActivity.this);
                             }
 
                             int completati = completedBatches.incrementAndGet();
@@ -831,9 +832,15 @@ public class MainActivity extends AppCompatActivity {
 
                                     if (adapter == null) {
                                         adapter = new WorkAdapter(MainActivity.this, new ArrayList<>(events));
-                                        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-                                        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                                        recyclerView.setAdapter(adapter);
+                                        if (!mNativeAds.isEmpty()) adapter.setAdsList(mNativeAds);
+
+                                        RecyclerView rv = findViewById(R.id.recyclerView);
+                                        rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                                        rv.setHasFixedSize(true);
+                                        rv.setItemViewCacheSize(20);
+                                        rv.setDrawingCacheEnabled(true);
+                                        rv.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+                                        rv.setAdapter(adapter);
                                     }
 
                                     applicaFiltroCategoria(getCategory());
@@ -1022,134 +1029,116 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void filtra(String testo, String testoOriginale) {
-        List<EventDescriptor> listaFiltrata = new ArrayList<>();
-
         if (adapter == null || events == null || events.isEmpty() || errorLayout.getVisibility() == View.VISIBLE)
             return;
 
         if (testo == null || testo.trim().isEmpty()) {
-            for (EventDescriptor item : events){
-                long now = System.currentTimeMillis();
+            applicaFiltroCategoria(getCategory());
+            return;
+        }
+
+        threadManager.execute(() -> {
+            List<EventDescriptor> listaFiltrata = new ArrayList<>();
+            String testoLower = testo.toLowerCase().trim();
+            long now = System.currentTimeMillis();
+
+            for (EventDescriptor item : events) {
+                boolean found = false;
                 long terminated = item.getEndDateMillis();
 
-                if(terminated > now)
-                    listaFiltrata.add(item);
-            }
-            adapter.setFilteredList(listaFiltrata);
+                if(item.getRoads().toLowerCase().contains(testoLower) || item.getDetails().toLowerCase().contains(testoLower) || item.getTitle().toLowerCase().contains(testoLower))
+                    found = true;
 
-            checkForEmptyList(events, testo, testoOriginale);
-            return;
-        }
-
-        String testoLower = testo.toLowerCase().trim();
-
-        for (EventDescriptor item : events) {
-            boolean found = false;
-            long now = System.currentTimeMillis();
-            long terminated = item.getEndDateMillis();
-
-            if(item.getRoads().toLowerCase().contains(testoLower) || item.getDetails().toLowerCase().contains(testoLower))
-                found = true;
-
-            if (!found && item.getLines() != null) {
-                for (String line : item.getLines()) {
-                    if (line != null && (line.toLowerCase().contains(testoLower))) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            if (found && terminated > now)
-                listaFiltrata.add(item);
-        }
-
-        adapter.setFilteredList(listaFiltrata);
-        checkForEmptyList(listaFiltrata, testo, testoOriginale);
-    }
-
-    private void applicaFiltroCategoria(CategoriesEnum categoria) {
-        if(adapter == null || errorLayout.getVisibility() == View.VISIBLE)
-            return;
-
-        if (events == null || events.isEmpty())
-            return;
-
-        List<EventDescriptor> filtrata = new ArrayList<>();
-        Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
-
-        long now = System.currentTimeMillis();
-        long limiteMassimo = now - 86400000L;
-
-        for (EventDescriptor item : events) {
-            long terminated = item.getEndDateMillis();
-            long start = item.getStartDateMillis();
-
-            switch (categoria) {
-                case LE_TUE_LINEE:
-                    for(String line: item.lines) {
-                        if(linesSaved.contains(line)){
-                            filtrata.add(item);
+                if (!found && item.getLines() != null) {
+                    for (String line : item.getLines()) {
+                        if (line != null && (line.toLowerCase().contains(testoLower))) {
+                            found = true;
                             break;
                         }
                     }
-                    break;
-
-                case TUTTI:
-                    if (terminated > limiteMassimo)
-                        filtrata.add(item);
-                    break;
-
-                case BUS:
-                    if (isBus(item) && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case TRAM:
-                    if(isTram(item) && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case METROPOLITANA:
-                    if (isMetro(item) && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case TRENO:
-                    if (isTreno(item) && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case IN_CORSO:
-                    if (start > 0 && terminated > 0 && now >= start && now <= terminated)  filtrata.add(item);
-                    break;
-
-                case PROGRAMMATI:
-                    if (start > 0 && now < start)  filtrata.add(item);
-                    break;
-
-                case DI_ATM:
-                    if(item.company.equalsIgnoreCase("ATM") && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case DI_TRENORD:
-                    if(item.company.equalsIgnoreCase("Trenord") && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case DI_MOVIBUS:
-                    if(item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case DI_STAV:
-                    if(item.company.equalsIgnoreCase("STAV") && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case DI_STAR:
-                    if(item.company.equalsIgnoreCase("STAR") && terminated > limiteMassimo) filtrata.add(item);
-                    break;
-
-                case DI_AUTOGUIDOVIE:
-                    if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > limiteMassimo) filtrata.add(item);
-                    break;
+                }
+                if (found && terminated > now)
+                    listaFiltrata.add(item);
             }
-        }
-        adapter.setFilteredList(filtrata);
-        checkForEmptyList(filtrata, "null", "");
+
+            runOnUiThread(() -> {
+                adapter.setFilteredList(new ArrayList<>(listaFiltrata));
+                checkForEmptyList(listaFiltrata, testo, testoOriginale);
+            });
+        });
+    }
+
+    private void applicaFiltroCategoria(CategoriesEnum categoria) {
+        if(adapter == null || errorLayout.getVisibility() == View.VISIBLE || events == null || events.isEmpty())
+            return;
+
+        threadManager.execute(() -> {
+            List<EventDescriptor> filtrata = new ArrayList<>();
+            Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
+
+            long now = System.currentTimeMillis();
+            long limiteMassimo = now - 86400000L;
+
+            for (EventDescriptor item : events) {
+                long terminated = item.getEndDateMillis();
+                long start = item.getStartDateMillis();
+
+                switch (categoria) {
+                    case LE_TUE_LINEE:
+                        for(String line: item.lines) {
+                            if(linesSaved.contains(line)){
+                                filtrata.add(item);
+                                break;
+                            }
+                        }
+                        break;
+                    case TUTTI:
+                        if (terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case BUS:
+                        if (isBus(item) && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case TRAM:
+                        if(isTram(item) && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case METROPOLITANA:
+                        if (isMetro(item) && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case TRENO:
+                        if (isTreno(item) && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case IN_CORSO:
+                        if (start > 0 && terminated > 0 && now >= start && now <= terminated) filtrata.add(item);
+                        break;
+                    case PROGRAMMATI:
+                        if (start > 0 && now < start) filtrata.add(item);
+                        break;
+                    case DI_ATM:
+                        if(item.company.equalsIgnoreCase("ATM") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_TRENORD:
+                        if(item.company.equalsIgnoreCase("Trenord") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_MOVIBUS:
+                        if(item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_STAV:
+                        if(item.company.equalsIgnoreCase("STAV") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_STAR:
+                        if(item.company.equalsIgnoreCase("STAR") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_AUTOGUIDOVIE:
+                        if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                }
+            }
+
+            runOnUiThread(() -> {
+                adapter.setFilteredList(filtrata);
+                checkForEmptyList(filtrata, "null", "");
+            });
+        });
     }
 
     private boolean isTram(EventDescriptor item) {return (item.typeOfTransport.contains("tram") && !item.typeOfTransport.equalsIgnoreCase("tram.fill.tunnel"));}
@@ -1176,52 +1165,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadNativeAds() {
-        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder().build();
+        String adUnitId = getMetaData(this, "AdUnitID");
 
-        loadAdsInBatches(getMetaData(this, "AdUnitID"), nativeAdOptions, 8);
+        boolean isDebug = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+        if (isDebug) adUnitId = "ca-app-pub-3940256099942544/2247696110";
+
+        if (adUnitId == null || adUnitId.isEmpty() || adUnitId.contains("${")) {
+            Log.e("ADMOB", "AdUnitID non configurato o non valido");
+            return;
+        }
+        
+        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
+            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+            .setRequestMultipleImages(false)
+            .setReturnUrlsForImageAssets(false)
+            .build();
+
+        loadAdsOneByOne(adUnitId, nativeAdOptions, 5); // Alzato a 5 per bilanciare profitto e performance
     }
 
-    private void loadAdsInBatches(String adUnitId, NativeAdOptions options, int totalDesired) {
-        final int BATCH_SIZE = 5;
-        final int[] loadedCount = {0};
-
-        loadNextBatch(adUnitId, options, totalDesired, BATCH_SIZE, loadedCount);
-    }
-
-    private void loadNextBatch(String adUnitId, NativeAdOptions options, int totalDesired, int batchSize, int[] loadedCount) {
-        if (loadedCount[0] >= totalDesired) return;
-
-        int remaining = totalDesired - loadedCount[0];
-        int toLoad = Math.min(batchSize, remaining);
+    private void loadAdsOneByOne(String adUnitId, NativeAdOptions options, int totalDesired) {
+        if (mNativeAds.size() >= totalDesired) return;
 
         AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
-            .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                @Override
-                public void onNativeAdLoaded(NativeAd nativeAd) {
-                    mNativeAds.add(nativeAd);
-                    pendingBatch.add(nativeAd);
-                    loadedCount[0]++;
+            .forNativeAd(nativeAd -> {
+                Log.d("ADMOB", "Ad caricata con successo!");
+                mNativeAds.add(nativeAd);
+                runOnUiThread(() -> {if (adapter != null) adapter.addAdsBatch(Collections.singletonList(nativeAd));});
 
-                    if (loadedCount[0] % batchSize == 0 || loadedCount[0] >= totalDesired) {
-                        if (adapter != null) {
-                            adapter.addAdsBatch(new ArrayList<>(pendingBatch));
-                            pendingBatch.clear();
-                        }
-                        if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
-                    }
-                }
+                if (mNativeAds.size() < totalDesired) new Handler(Looper.getMainLooper()).postDelayed(() -> loadAdsOneByOne(adUnitId, options, totalDesired), 2000);
             })
             .withAdListener(new com.google.android.gms.ads.AdListener() {
                 @Override
-                public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
-                    Log.e("ADMOB", "Fallito: " + adError.getMessage());
-                    if (loadedCount[0] < totalDesired) loadNextBatch(adUnitId, options, totalDesired, batchSize, loadedCount);
-                }
+                public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");}
             })
             .withNativeAdOptions(options)
             .build();
 
-        adLoader.loadAds(new AdRequest.Builder().build(), toLoad);
+        adLoader.loadAd(new AdRequest.Builder().build());
     }
 
     private void showTutorialDialog() {

@@ -20,11 +20,19 @@ public class EventDescriptor {
     protected String company;
     private long startDateMillis;
     private long endDateMillis;
+    private String formattedStartDate;
+    private String formattedEndDate;
+    private int cardImageResId = -1;
+    private String linesString;
+    private int[] chipColors;
 
-    private static final SimpleDateFormat SERVER_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault());
-    private static final SimpleDateFormat DISPLAY_FORMAT = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+    private static final ThreadLocal<SimpleDateFormat> SERVER_FORMAT = ThreadLocal.withInitial(() -> {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return sdf;
+    });
 
-    static {SERVER_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));}
+    private static final ThreadLocal<SimpleDateFormat> DISPLAY_FORMAT = ThreadLocal.withInitial(() -> {return new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());});
 
     public EventDescriptor(String title, String titleIcon, String typeOfTransport, String roads, String[] lines, String startDate, String endDate, String details, String company) {
         this.title = title;
@@ -38,6 +46,27 @@ public class EventDescriptor {
         this.company = company;
     }
 
+    public void precalculate(android.content.Context context) {
+        this.startDateMillis = DateUtils.toMillis(startDate);
+        this.endDateMillis = DateUtils.toMillis(endDate);
+        this.formattedStartDate = formattaData(startDate);
+        this.formattedEndDate = formattaData(endDate);
+        this.cardImageResId = getTitleIconID(titleIcon);
+        this.linesString = (lines != null) ? String.join(", ", lines) : "";
+
+        if (lines != null) {
+            chipColors = new int[lines.length];
+            for (int i = 0; i < lines.length; i++) {
+                chipColors[i] = StationDB.getLineColor(context, lines[i].trim());
+            }
+        }
+    }
+
+    public int[] getCachedChipColors() { return chipColors; }
+    public String getFormattedStartDate() { return formattedStartDate != null ? formattedStartDate : (formattedStartDate = formattaData(startDate)); }
+    public String getFormattedEndDate() { return formattedEndDate != null ? formattedEndDate : (formattedEndDate = formattaData(endDate)); }
+    public int getCachedCardImageID() { return cardImageResId != -1 ? cardImageResId : (cardImageResId = getTitleIconID(titleIcon)); }
+    public String getCachedLinesString() { return linesString != null ? linesString : (linesString = (lines != null ? String.join(", ", lines) : "")); }
     public int getCardImageID() {
         return getTitleIconID(this.titleIcon);
     }
@@ -96,8 +125,8 @@ public class EventDescriptor {
         if (initialDate == null) return null;
 
         try {
-            Date finalDate = SERVER_FORMAT.parse(initialDate);
-            return DISPLAY_FORMAT.format(finalDate);
+            Date finalDate = SERVER_FORMAT.get().parse(initialDate);
+            return DISPLAY_FORMAT.get().format(finalDate);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -123,7 +152,7 @@ public class EventDescriptor {
         if (dateString == null) return 0;
 
         try {
-            Date date = SERVER_FORMAT.parse(dateString);
+            Date date = SERVER_FORMAT.get().parse(dateString);
             return (date != null) ? date.getTime() : 0;
         }
         catch (Exception e) {
