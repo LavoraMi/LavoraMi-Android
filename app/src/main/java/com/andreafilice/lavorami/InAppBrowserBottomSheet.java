@@ -53,7 +53,6 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
     private final Handler tintHandler = new Handler(Looper.getMainLooper());
     private PinchZoomGestureListener pinchZoomListener;
-    private PDFViewerHelper pdfViewerHelper;
 
     private static final long LOAD_TIMEOUT = 20000;
     private Handler loadTimeoutHandler;
@@ -77,8 +76,7 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         "autoguidovie.it",
         "patreon.com",
         "buymeacoffee.com",
-        "comune.milano.it",
-        "cdnjs.cloudflare.com"
+        "comune.milano.it"
     };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
@@ -152,8 +150,6 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         zoomBtn = view.findViewById(R.id.zoom_btn);
 
         loadTimeoutHandler = new Handler(Looper.getMainLooper());
-        pdfViewerHelper = new PDFViewerHelper(getContext());
-        pdfViewerHelper.clearOldCache();
 
         zoomBtn.setOnClickListener(v -> {
             showZoomPopup(v);
@@ -423,41 +419,12 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     }
 
     private void loadPDFWithPDFJS(String pdfUrl) {
-        if (pdfViewerHelper == null) {
-            webView.loadUrl(pdfUrl);
-            return;
-        }
-
         progressBar.setVisibility(View.VISIBLE);
 
-        pdfViewerHelper.downloadPDFIfNeeded(pdfUrl, new PDFViewerHelper.PDFDownloadCallback() {
-            @Override
-            public void onSuccess(String pdfPath) {
-                if (getContext() != null) {
-                    String htmlContent = pdfViewerHelper.generatePDFViewerHTML(pdfUrl);
-                    webView.loadDataWithBaseURL(
-                        "file://",
-                        htmlContent,
-                        "text/html",
-                        "utf-8",
-                        null
-                    );
+        String googleViewerUrl = "https://docs.google.com/gview?embedded=true&url=" + pdfUrl;
+        webView.loadUrl(googleViewerUrl);
 
-                    Log.d("PDFLoader", "PDF caricato con PDF.js: " + pdfUrl);
-                }
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Log.e("PDFLoader", "Errore caricamento PDF: " + e.getMessage(), e);
-
-                if (pdfUrl.toLowerCase().contains(".pdf")) {
-                    String googleViewerUrl = "https://docs.google.com/gview?embedded=true&url=" + pdfUrl;
-                    webView.loadUrl(googleViewerUrl);
-                    Toast.makeText(getContext(), "Usando visualizzatore alternativo", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        Log.d("PDFLoader", "PDF caricato con Google Docs Viewer: " + pdfUrl);
     }
 
     private void setupClickListeners(FrameLayout closeBtn) {
