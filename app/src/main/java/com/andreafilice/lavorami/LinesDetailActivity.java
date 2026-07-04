@@ -338,7 +338,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         //*CHIP BACKGROUND COLOR
         /// In this section of the code we setup the Chip Background color when selected and when is not selected.
-        coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.text_primary : StationDB.getLineColor(this, nomeLinea)));
+        coloreLinea = ContextCompat.getColor(this, (nomeLinea.equalsIgnoreCase("S12") ? R.color.GRAY : StationDB.getLineColor(this, nomeLinea)));
         int coloreDefault = ContextCompat.getColor(this, R.color.background_app);
 
         ColorStateList chipBgColor = new ColorStateList(
