@@ -4761,14 +4761,14 @@ public class StationDB {
         List<InterchangeInfo> interchanges = new ArrayList<>();
         interchanges.add(new InterchangeInfo(
                 "Molino Dorino MM",
-                new String[]{"M1", "z601", "z606", "z617", "z620", "z621", "z648", "z649"},
+                new String[]{"M1", "NM1", "35", "69", "80", "424", "528", "z601", "z606", "z617", "z620", "z621", "z649"},
                 new String[] {"z601", "z606", "z617", "z620", "z621", "z648", "z649"},
                 "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Milano Cadorna FN",
-                new String[]{"M1", "M2", "MXP", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "z602", "z603", "z6C3"},
+                new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
                 new String[]{"z602", "z603", "z6C3"},
                 "tram.fill.tunnel"
         ));
@@ -4803,14 +4803,14 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Bisceglie MM",
-                new String[]{"M1", "z551", "z560"},
+                new String[]{"M1", "NM1", "47", "58", "63", "76", "78", "321", "322", "323", "327", "433", "z551", "z560"},
                 new String[]{"z551", "z560"},
                 "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "Romolo FS",
-                new String[]{"M2", "S9", "S19", "R31"},
+                new String[]{"M2", "NM2", "S9", "S19", "R31", "47", "Filobus 90", "Filobus 91", "71", "324", "325", "z553"},
                 new String[] {"z553"},
                 "train.side.front.car"
         ));
@@ -4866,14 +4866,14 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Linate Aereoporto",
-                new String[]{"M4", "z409"},
+                new String[]{"M4", "NM4", "183", "901", "903", "923", "973", "z409"},
                 new String[] {"z409"},
                 "airplane.departure"
         ));
 
         interchanges.add(new InterchangeInfo(
                 "San Donato M3",
-                new String[]{"M3", "z410", "z411", "z412", "z413", "z415", "z420"},
+                new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"},
                 new String[] {"z410", "z412", "z413", "z415", "z420"},
                 "tram.fill.tunnel"
         ));
@@ -4915,7 +4915,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Famagosta M2",
-                new String[] {"M2", "z501", "z509", "z510", "z515", "z516"},
+                new String[] {"M2", "NM2", "46", "59", "71", "74", "95", "98", "z501", "z509", "z510", "z515", "z516"},
                 new String[]{"z501", "z509", "z510", "z515", "z516"},
                 "tram.fill.tunnel"
         ));
