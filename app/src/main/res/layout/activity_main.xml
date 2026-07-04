@@ -613,9 +613,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:fontFamily="@font/font_main"
+            android:fontFamily="@font/inter"
             android:text="@string/noInternetConnectionError"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/subtitle"
             android:textSize="16sp" />
 
         <Button
@@ -626,10 +626,11 @@
             android:backgroundTint="@color/redMetro"
             android:text="@string/retry"
             android:textColor="@color/White"
-            app:icon="@drawable/ic_refresh"
+            app:icon="@drawable/ic_reload"
             app:iconGravity="textStart"
             app:iconPadding="10dp"
-            app:iconTint="@color/White" />
+            app:iconTint="@color/White"
+            android:fontFamily="@font/font_main"/>
 
         <TextView
             android:id="@+id/errorDeps"
@@ -638,9 +639,10 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
-            android:fontFamily="@font/font_main"
+            android:fontFamily="@font/inter"
             android:text="_message"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/subtitle"
+            android:textAlignment="center"
             android:textSize="12sp" />
     </LinearLayout>
 
