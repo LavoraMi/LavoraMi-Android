@@ -115,10 +115,6 @@ public class HowAppWorks extends AppCompatActivity {
         };
         handler.post(starAnimation);
 
-        //*MAP THEME
-        /// In this section of the code, we set up the map image based from the Value of Theme Saved
-        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
         //*EXPAND WORK
         ImageView worksiteArrowDesc = findViewById(R.id.worksiteArrowDesc);
         TextView txtWorksiteStopExample = findViewById(R.id.txtWorksiteStopExample);
