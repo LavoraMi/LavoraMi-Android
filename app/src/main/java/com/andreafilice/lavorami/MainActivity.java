@@ -67,6 +67,9 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
+import com.google.android.ump.ConsentInformation;
+import com.google.android.ump.ConsentRequestParameters;
+import com.google.android.ump.UserMessagingPlatform;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -111,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean  definitelyClosedSavedLinesHint;
     public static boolean alreadyRefreshedLines = false;
     private List<NativeAd> mNativeAds = new ArrayList<>();
+    private ConsentInformation consentInformation;
+    private boolean mobileAdsInitialized = false;
+    private boolean adsRequested = false;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -209,12 +215,19 @@ public class MainActivity extends AppCompatActivity {
             loadUserPreferences();
         }
 
-        MobileAds.initialize(this, initializationStatus -> {loadNativeAds();});
+        MobileAds.initialize(this, initializationStatus -> {
+            mobileAdsInitialized = true;
+            maybeLoadAds();
+        });
 
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
         /// This method is also used into the iOS version of LavoraMi.
         hasCompletedSetup = DataManager.getBoolData(DataKeys.KEY_END_SETUP, false);
+
+        if (hasCompletedSetup) {
+            requestConsentInfoUpdate();
+        }
 
         ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
         if(hasCompletedSetup)
@@ -253,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
                 setupOverlay.setVisibility(View.GONE);
                 findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
                 hasCompletedSetup = true;
+                requestConsentInfoUpdate();
                 downloadJSONData(defaultCategory, false);
             }
 
@@ -274,6 +288,8 @@ public class MainActivity extends AppCompatActivity {
                         DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
                         setupOverlay.setVisibility(View.GONE);
                         findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
+                        hasCompletedSetup = true;
+                        requestConsentInfoUpdate();
                         askForNotificationPermission();
                         askForPositionPermission();
                     }))
@@ -1164,6 +1180,29 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    private void requestConsentInfoUpdate() {
+        ConsentRequestParameters params = new ConsentRequestParameters.Builder().build();
+        consentInformation = UserMessagingPlatform.getConsentInformation(this);
+
+        consentInformation.requestConsentInfoUpdate(this, params, () -> {
+            UserMessagingPlatform.loadAndShowConsentFormIfRequired(this, formError -> {
+                if (formError != null) Log.e("UMP", formError.getMessage());
+                maybeLoadAds();
+            });
+        }, formError -> {
+            Log.e("UMP", formError.getMessage());
+            maybeLoadAds();
+        });
+    }
+
+    private void maybeLoadAds() {
+        if (mobileAdsInitialized && hasCompletedSetup && !adsRequested
+                && consentInformation != null && consentInformation.canRequestAds()) {
+            adsRequested = true;
+            loadNativeAds();
+        }
+    }
+
     private void loadNativeAds() {
         String adUnitId = getMetaData(this, "AdUnitID");
 
@@ -1174,7 +1213,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("ADMOB", "AdUnitID non configurato o non valido");
             return;
         }
-        
+
         NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
             .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
             .setRequestMultipleImages(false)
