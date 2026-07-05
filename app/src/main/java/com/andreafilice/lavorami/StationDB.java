@@ -5107,7 +5107,7 @@ public class StationDB {
         /// Metro M2
         interchanges.add(new InterchangeInfo("Gessate", new String[]{"M2", "z404", "z405"}, "tram.fill.tunnel", "Gessate", 0));
         interchanges.add(new InterchangeInfo("Cascina Antonietta", new String[]{"M2"}, "tram.fill.tunnel", "Gessate", 1));
-        interchanges.add(new InterchangeInfo("Gorgonzola", new String[]{"M2", "z403", "Z407", "z411", "z419"}, "tram.fill.tunnel", "Gessate", 2));
+        interchanges.add(new InterchangeInfo("Gorgonzola", new String[]{"M2", "z403", "z407", "z411", "z419"}, "tram.fill.tunnel", "Gessate", 2));
         interchanges.add(new InterchangeInfo("Villa Pompea", new String[]{"M2"}, "tram.fill.tunnel", "Gessate", 3));
         interchanges.add(new InterchangeInfo("Bussero", new String[]{"M2"}, "tram.fill.tunnel", "Gessate", 4));
         interchanges.add(new InterchangeInfo("Cassina de Pecchi", new String[]{"M2"}, "tram.fill.tunnel", "Gessate", 5));
