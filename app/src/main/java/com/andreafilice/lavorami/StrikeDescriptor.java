@@ -25,8 +25,6 @@ public class StrikeDescriptor {
     private String isStrikeEnabled;
     @SerializedName("enableStrikeDebug")
     private String enableStrikeDebug;
-    @SerializedName("enablePassanteWork")
-    private String enablePassanteWork;
     @SerializedName("date")
     private String strikeDate;
     @SerializedName("companies")
@@ -45,6 +43,8 @@ public class StrikeDescriptor {
     private String[] suburbanWithInterruptions;
     @SerializedName("suburbanInterruptionLinks")
     private String[] suburbanInterruptionLinks;
+    @SerializedName("enablePassanteWork")
+    private String enablePassanteWork;
 
     public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks) {
         this.isStrikeEnabled = isStrikeEnabled;
@@ -65,7 +65,7 @@ public class StrikeDescriptor {
     /// Set-up the Getters to use into activities for get some values.
     public boolean isStrikeEnabled() {return isStrikeEnabled.equals("true");}
     public boolean isStrikeEnabledDebug() {return enableStrikeDebug.equals("true");}
-    public boolean isPassanteWorkEnabled() {return enablePassanteWork.equals("true");}
+    public boolean isPassanteWorkEnabled() {return enablePassanteWork.equalsIgnoreCase("true");}
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}
