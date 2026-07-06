@@ -5263,6 +5263,21 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Milano Porta Vittoria", new String[]{"S2", "S1", "S5", "S6", "S12", "S13", "Filobus 91", "Filobus 93"}, "tram.fill.tunnel", "Main", 18));
         interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"S2", "S1", "S9", "S12", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 19));
 
+        /// Suburbano S3
+        interchanges.add(new InterchangeInfo("Saronno", new String[]{"S3", "S1", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Saronno Sud", new String[]{"S3", "S1", "S9"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Caronno Pertusella", new String[]{"S3", "S1"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Cesate", new String[]{"S3", "S1"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Garbagnate Milaese", new String[]{"S3", "S1", "S13", "RE13"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Garbagnate Parco Delle Groane", new String[]{"S3", "S1"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Bollate Nord", new String[]{"S3", "S1"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Bollate Centro", new String[]{"S3", "S1", "S13", "RE13"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Novate Milanese", new String[]{"S3", "S1"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Milano Quarto Oggiaro", new String[]{"S3", "S1", "40"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"S3", "S1", "S2", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "Filobus 92"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Milano Domodossola", new String[]{"S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"}, "tram.fill.tunnel", "Main", 11));
+        interchanges.add(new InterchangeInfo("Milano Cadorna", new String[]{"S3", "S4", "R16", "RE17", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"}, "tram.fill.tunnel", "Main", 12));
+
         return interchanges;
     }
 
