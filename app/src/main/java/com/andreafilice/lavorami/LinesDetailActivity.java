@@ -131,7 +131,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"));
         ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z620"));
-        ArrayList<String> suburbanWithNewInterchanges = new ArrayList<>(Arrays.asList("S1"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -897,7 +896,16 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private boolean isLineaMetro() {return nomeLinea != null && nomeLinea.startsWith("M") && !nomeLinea.startsWith("MXP");}
-    private boolean isLineaSuburbano() {return nomeLinea != null && nomeLinea.startsWith("S");}
+    private boolean isLineaSuburbano() {
+        ArrayList<String> suburbanWithNewGraphic = new ArrayList<>(Arrays.asList("S1", "S2"));
+        boolean isValid = false;
+
+        for(int i = 0; i < suburbanWithNewGraphic.size(); i++){
+            if (suburbanWithNewGraphic.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
+        }
+
+        return nomeLinea != null && nomeLinea.startsWith("S") && isValid;
+    }
 
     private void applyMetroLineColor(View card, int lineColor) {
         View lineTop = card.findViewById(R.id.lineTop);
@@ -928,7 +936,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
                 interchanges = StationDB.getMetroInterchanges();
-            else if (isLineaSuburbano() && nomeLinea.equalsIgnoreCase("S1"))
+            else if (isLineaSuburbano())
                 interchanges = StationDB.getSuburbanInterchanges();
             else
                 interchanges = StationDB.getInterchanges(this);
@@ -940,7 +948,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (info.getLines() == null || info.getLines().length == 0) continue;
 
                 boolean match = false;
-                if (isLineaMetro() || (isLineaSuburbano() && nomeLinea.equalsIgnoreCase("S1"))) {
+                if (isLineaMetro() || (isLineaSuburbano())) {
                     String primaryLine = info.getLines()[0].trim().toUpperCase();
                     match = primaryLine.equals(searchTag);
                 }
@@ -1117,7 +1125,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
             boolean isMetro = isLineaMetro();
-            boolean isSuburban = (isLineaSuburbano() && nomeLinea.equalsIgnoreCase("S1"));
+            boolean isSuburban = (isLineaSuburbano());
 
             int lineColor = (isMetro || isSuburban) ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
