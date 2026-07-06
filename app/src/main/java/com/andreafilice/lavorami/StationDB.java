@@ -5278,6 +5278,21 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Milano Domodossola", new String[]{"S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"}, "tram.fill.tunnel", "Main", 11));
         interchanges.add(new InterchangeInfo("Milano Cadorna", new String[]{"S3", "S4", "R16", "RE17", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"}, "tram.fill.tunnel", "Main", 12));
 
+        /// Suburbano S4
+        interchanges.add(new InterchangeInfo("Camnago - Lentate", new String[]{"S4", "S11"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Seveso", new String[]{"S4", "S2", "R16"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Cesano Maderno", new String[]{"S4", "S2", "S9", "R16", "z250"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Boviso Masciago", new String[]{"S4", "S2", "R16"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Varedo", new String[]{"S4", "S2", "R16"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Palazzolo Milanese", new String[]{"S4", "S2", "R16"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Paderno Dugnano", new String[]{"S4", "S2", "R16", "566"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Cormano Cusano Milanino", new String[]{"S4", "S2", "R16", "727"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Milano Bruzzano Parco Nord", new String[]{"S4", "S2", "R16"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Milano Affori", new String[]{"S4", "S2", "R16", "M3", "NM3", "35", "40", "41", "52", "70"}, "tram.fill.tunnel", "Main", 10));
+        interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"S4", "S1", "S2", "S3", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "Filobus 92"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Milano Domodossola", new String[]{"S4", "S3", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "M5", "1", "19"}, "tram.fill.tunnel", "Main", 12));
+        interchanges.add(new InterchangeInfo("Milano Cadorna", new String[]{"S4", "S3", "R16", "RE17", "R22", "R27", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"}, "tram.fill.tunnel", "Main", 13));
+
         return interchanges;
     }
 
