@@ -1486,11 +1486,11 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
             case "S7": return "Lecco - Milano Pta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Pta Garibaldi";
-            case "S9": return "Milano Rogoredo - Saronno / Milano S. Cristoforo - Albairate Vermezzo "; //* Saronno - Albairate Vermezzo
+            case "S9": return "Saronno - Albairate Vermezzo";
             case "S11": return "Milano Pta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni
             case "S12": return "Melegnano - Cormano";
             case "S13": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia";
-            case "S19": return "Albairate Vermezzo - Milano S. Cristoforo"; //* Albairate Vermezzo - Milano Rogoredo
+            case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 
             case "R1": return "Bergamo - Brescia";

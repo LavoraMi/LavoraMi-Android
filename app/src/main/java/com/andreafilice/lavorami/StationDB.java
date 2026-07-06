@@ -993,8 +993,6 @@ public class StationDB {
         stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Main", "S9"));
         stations.add(new MetroStation("Milano Lambrate", 45.48475, 9.23678, "Main", "S9"));
         stations.add(new MetroStation("Milano Forlanini", 45.46438, 9.23691, "Main", "S9"));
-        stations.add(new MetroStation("Milano Rogoredo", 45.43386, 9.23911, "Main", "S9"));
-        /* MODIFICHE CIRCOLAZIONE: Non si transita tra Scalo Romana e Albairate.
         stations.add(new MetroStation("Milano Scalo Romana", 45.44585, 9.21303, "Main", "S9"));
         stations.add(new MetroStation("Milano Tibaldi - Bocconi", 45.44394, 9.18506, "Main", "S9"));
         stations.add(new MetroStation("Milano Romolo", 45.44335, 9.1675, "Main", "S9"));
@@ -1003,7 +1001,7 @@ public class StationDB {
         stations.add(new MetroStation("Cesano Boscone", 45.43044, 9.09158, "Main", "S9"));
         stations.add(new MetroStation("Trezzano sul Naviglio", 45.42025, 9.0669, "Main", "S9"));
         stations.add(new MetroStation("Gaggiano", 45.40874, 9.03118, "Main", "S9"));
-        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "S9"));*/
+        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "S9"));
         return stations;
     }
 
@@ -1404,7 +1402,6 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS19() {
         List<MetroStation> stations = new ArrayList<>();
-        /* MODIFICHE CIRCOLAZIONE: Manutenzione ponte Naviglio Grande
         stations.add(new MetroStation("Milano Rogoredo", 45.4336, 9.2383, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.44368, 9.23497, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.44466, 9.23462, "Main", "S19"));
@@ -1462,7 +1459,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.4478, 9.15177, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.44513, 9.14033, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.44493, 9.13938, "Main", "S19"));
-        stations.add(new MetroStation("NO_DRAW", 45.44466, 9.13841, "Main", "S19"));*/
+        stations.add(new MetroStation("NO_DRAW", 45.44466, 9.13841, "Main", "S19"));
         stations.add(new MetroStation("Milano S. Cristoforo", 45.44235, 9.13016, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.44038, 9.1231, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.43969, 9.12073, "Main", "S19"));
