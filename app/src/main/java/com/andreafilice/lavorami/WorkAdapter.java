@@ -344,10 +344,13 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private int calcolaPercentuale(long start, long end) {
         long now = System.currentTimeMillis();
         long totalDuration = end - start;
+
         if (totalDuration <= 0) return 100;
+
         long elapsed = now - start;
         double fraction = (double) elapsed / totalDuration;
         double clamped = Math.max(0.0, Math.min(fraction, 1.0));
+
         return (int) (clamped * 100);
     }
 
