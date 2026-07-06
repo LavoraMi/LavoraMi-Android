@@ -1470,7 +1470,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S4": return "Camnago-Lentate - Milano Cadorna";
             case "S5": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Treviglio" : "Gallarate - Treviglio"; //* Varese - Treviglio
             case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
-            case "S7": return "Triuggio - Milano Pta Garibaldi"; //* Lecco - Milano Pta Garibaldi
+            case "S7": return "Lecco - Milano Pta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Pta Garibaldi";
             case "S9": return "Milano Rogoredo - Saronno / Milano S. Cristoforo - Albairate Vermezzo "; //* Saronno - Albairate Vermezzo
             case "S11": return "Milano Pta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni
