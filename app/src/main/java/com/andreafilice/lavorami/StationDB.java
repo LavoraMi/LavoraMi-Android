@@ -654,6 +654,7 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS4() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE ALLA CIRCOLAZIONE: I treni della linea S4 circolano tra Palazzolo Milanese e Cadorna FN Triennale.
         stations.add(new MetroStation("Camnago - Lentate", 45.66837, 9.13328, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66643, 9.13467, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66412, 9.13586, "Main", "S4"));
@@ -675,7 +676,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.60795, 9.1435, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.59736, 9.15218, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.5963, 9.1528, "Main", "S4"));
-        stations.add(new MetroStation("Varedo", 45.59555, 9.15341, "Main", "S4"));
+        stations.add(new MetroStation("Varedo", 45.59555, 9.15341, "Main", "S4"));*/
         stations.add(new MetroStation("Palazzolo Milanese", 45.58107, 9.15667, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.57158, 9.15773, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.57054, 9.15782, "Main", "S4"));

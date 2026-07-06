@@ -1481,7 +1481,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S1": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
             case "S2": return "Seveso - Milano Rogoredo"; //* Mariano Comense - Milano Rogoredo
             case "S3": return "Saronno - Milano Cadorna";
-            case "S4": return "Camnago-Lentate - Milano Cadorna";
+            case "S4": return "Palazzolo Milanese - Milano Cadorna"; //* Camnago-Lentate - Milano Cadorna
             case "S5": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Treviglio" : "Gallarate - Treviglio"; //* Varese - Treviglio
             case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
             case "S7": return "Lecco - Milano Pta Garibaldi";
