@@ -5210,6 +5210,40 @@ public class StationDB {
         return interchanges;
     }
 
+    public static List<InterchangeInfo> getSuburbanInterchanges() {
+        List<InterchangeInfo> interchanges = new ArrayList<>();
+
+        //* SUBURBAN LINES
+        /// Suburbano S1
+        interchanges.add(new InterchangeInfo("Saronno", new String[]{"S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Saronno Sud", new String[]{"S1", "S3", "S9"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Caronno Pertusella", new String[]{"S1", "S3"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Cesate", new String[]{"S1", "S3"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Garbagnate Milaese", new String[]{"S1", "S3", "S13", "RE13"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Garbagnate Parco Delle Groane", new String[]{"S1", "S3"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Bollate Nord", new String[]{"S1", "S3"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Bollate Centro", new String[]{"S1", "S3", "S13", "RE13"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Novate Milanese", new String[]{"S1", "S3"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Milano Quarto Oggiaro", new String[]{"S1", "S3", "40"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "Filobus 92"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Milano Lancetti", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "2", "Filobus 92"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 12));
+        interchanges.add(new InterchangeInfo("Milano Repubblica", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "M3", "NM3", "1", "9", "33", "43"}, "tram.fill.tunnel", "Main", 13));
+        interchanges.add(new InterchangeInfo("Milano Porta Venezia", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "M1", "NM1", "5", "9", "33"}, "tram.fill.tunnel", "Main", 14));
+        interchanges.add(new InterchangeInfo("Milano Dateo", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "M1", "NM1", "5", "9", "33", "M4", "NM4", "54", "61", "Filobus 92"}, "tram.fill.tunnel", "Main", 15));
+        interchanges.add(new InterchangeInfo("Milano Porta Vittoria", new String[]{"S1", "S2", "S5", "S6", "S12", "S13", "Filobus 91", "Filobus 93"}, "tram.fill.tunnel", "Main", 16));
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"S1", "S2", "S9", "S12", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("San Donato Milanese", new String[]{"S1", "S12"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Borgolombardo", new String[]{"S1", "S12", "132"}, "lightrail", "Main", 19));
+        interchanges.add(new InterchangeInfo("San Giuliano Milanese", new String[]{"S1", "S12", "121"}, "lightrail", "Main", 20));
+        interchanges.add(new InterchangeInfo("Melegnano", new String[]{"S1", "S12"}, "lightrail", "Main", 21));
+        interchanges.add(new InterchangeInfo("San Zenone Al Lambro", new String[]{"S1"}, "lightrail", "Main", 22));
+        interchanges.add(new InterchangeInfo("Tavazzano", new String[]{"S1"}, "lightrail", "Main", 23));
+        interchanges.add(new InterchangeInfo("Lodi", new String[]{"S1", "R38", "RE11", "RV"}, "lightrail", "Main", 24));
+
+        return interchanges;
+    }
+
     public static List<MetroStation> getAllStations(boolean isPassanteClosed) {
         if(CACHED_STATIONS == null) {
             List<MetroStation> allStations = new ArrayList<>();

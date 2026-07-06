@@ -131,6 +131,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "3", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"));
         ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z620"));
+        ArrayList<String> suburbanWithNewInterchanges = new ArrayList<>(Arrays.asList("S1"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -896,6 +897,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private boolean isLineaMetro() {return nomeLinea != null && nomeLinea.startsWith("M") && !nomeLinea.startsWith("MXP");}
+    private boolean isLineaSuburbano() {return nomeLinea != null && nomeLinea.startsWith("S");}
 
     private void applyMetroLineColor(View card, int lineColor) {
         View lineTop = card.findViewById(R.id.lineTop);
@@ -926,6 +928,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
                 interchanges = StationDB.getMetroInterchanges();
+            else if (isLineaSuburbano() && nomeLinea.equalsIgnoreCase("S1"))
+                interchanges = StationDB.getSuburbanInterchanges();
             else
                 interchanges = StationDB.getInterchanges(this);
 
@@ -936,7 +940,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (info.getLines() == null || info.getLines().length == 0) continue;
 
                 boolean match = false;
-                if (isLineaMetro()) {
+                if (isLineaMetro() || (isLineaSuburbano() && nomeLinea.equalsIgnoreCase("S1"))) {
                     String primaryLine = info.getLines()[0].trim().toUpperCase();
                     match = primaryLine.equals(searchTag);
                 }
@@ -1113,18 +1117,20 @@ public class LinesDetailActivity extends AppCompatActivity {
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
             boolean isMetro = isLineaMetro();
-            int lineColor = isMetro ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+            boolean isSuburban = (isLineaSuburbano() && nomeLinea.equalsIgnoreCase("S1"));
+
+            int lineColor = (isMetro || isSuburban) ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
 
             Map<String, List<View>> cache = new LinkedHashMap<>();
 
-            List<View> mainViews = buildViewsForList(mainItems, inflater, container, isMetro, lineColor);
+            List<View> mainViews = buildViewsForList(mainItems, inflater, container, (isMetro || isSuburban), lineColor);
             cache.put("Main", mainViews);
 
             for (Map.Entry<String, List<InterchangeInfo>> entry : branchMap.entrySet()) {
                 List<InterchangeInfo> combined = new ArrayList<>(entry.getValue());
                 combined.addAll(mainItems);
-                List<View> views = buildViewsForList(combined, inflater, container, isMetro, lineColor);
+                List<View> views = buildViewsForList(combined, inflater, container, (isMetro || isSuburban), lineColor);
                 cache.put(entry.getKey(), views);
             }
 
