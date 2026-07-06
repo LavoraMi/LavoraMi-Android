@@ -1588,7 +1588,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.64507, 10.03565, "Main", "S31"));
         stations.add(new MetroStation("NO_DRAW", 45.64528, 10.03644, "Main", "S31"));
         stations.add(new MetroStation("NO_DRAW", 45.64563, 10.03713, "Main", "S31"));
-        stations.add(new MetroStation("NO_DRAW", 45.6459, 10.03738, "Main", "S31"));
         stations.add(new MetroStation("NO_DRAW", 45.64616, 10.038, "Main", "S31"));
         stations.add(new MetroStation("NO_DRAW", 45.64656, 10.03937, "Main", "S31"));
         stations.add(new MetroStation("NO_DRAW", 45.64685, 10.04013, "Main", "S31"));
