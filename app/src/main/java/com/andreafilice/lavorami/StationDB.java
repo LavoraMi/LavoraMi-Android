@@ -932,7 +932,6 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS7() {
         List<MetroStation> stations = new ArrayList<>();
-        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Triuggio e Milano Pta Garibaldi
         stations.add(new MetroStation("Lecco", 45.85637, 9.3934, "Main", "S7"));
         stations.add(new MetroStation("Valmadrera", 45.84641, 9.36801, "Main", "S7"));
         stations.add(new MetroStation("Civate", 45.83133, 9.35275, "Main", "S7"));
@@ -944,7 +943,7 @@ public class StationDB {
         stations.add(new MetroStation("Renate - Veduggio", 45.7284, 9.27997, "Main", "S7"));
         stations.add(new MetroStation("Besana", 45.70274, 9.28303, "Main", "S7"));
         stations.add(new MetroStation("Villa Raverio", 45.69038, 9.26172, "Main", "S7"));
-        stations.add(new MetroStation("Carate Calo'", 45.67642, 9.25213, "Main", "S7"));*/
+        stations.add(new MetroStation("Carate Calo'", 45.67642, 9.25213, "Main", "S7"));
         stations.add(new MetroStation("Triuggio - Ponte Albiate", 45.65892, 9.26682, "Main", "S7"));
         stations.add(new MetroStation("Macherio - Canonica", 45.64556, 9.2869, "Main", "S7"));
         stations.add(new MetroStation("Biassono - Lesmo Parco", 45.63221, 9.29829, "Main", "S7"));
