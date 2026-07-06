@@ -138,10 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-
-                if (viewPager != null) {
+                if (viewPager != null)
                     viewPager.setUserInputEnabled(true);
-                }
 
                 if(isGranted){
                     Log.d("PERMISSIONS", "Notifiche concesse!");
