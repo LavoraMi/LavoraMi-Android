@@ -2029,7 +2029,22 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 holder.iconFirstClock.setColorFilter(colorFirst);
                 holder.txtFirstMins.setTextColor(colorFirst);
-                holder.txtFirstMins.setText(first.minutesFromNow == 0 ? getString(R.string.leavingTitle) : first.minutesFromNow + " min");
+
+                if (first.minutesFromNow == 0) {
+                    holder.txtFirstMins.setText(getString(R.string.leavingTitle));
+                }
+                else if (first.minutesFromNow >= 60) {
+                    int hours = first.minutesFromNow / 60;
+                    int mins = first.minutesFromNow % 60;
+
+                    if (mins == 0)
+                        holder.txtFirstMins.setText(hours + " h");
+                    else
+                        holder.txtFirstMins.setText(hours + " h " + mins + " min");
+                }
+                else {
+                    holder.txtFirstMins.setText(first.minutesFromNow + " min");
+                }
                 holder.txtFirstTime.setText(first.time);
 
                 holder.containerOtherDepartures.removeAllViews();
@@ -2043,7 +2058,17 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                         TextView txtMins = otherDepView.findViewById(R.id.txtSecMins);
                         TextView txtTime = otherDepView.findViewById(R.id.txtSecTime);
-                        txtMins.setText(dep.minutesFromNow + " min");
+                        if (dep.minutesFromNow >= 60) {
+                            int hours = dep.minutesFromNow / 60;
+                            int mins = dep.minutesFromNow % 60;
+
+                            if (mins == 0)
+                                txtMins.setText(hours + " h");
+                            else
+                                txtMins.setText(hours + " h " + mins + " min");
+                        } else
+                            txtMins.setText(dep.minutesFromNow + " min");
+
                         txtTime.setText(dep.time);
 
                         holder.containerOtherDepartures.addView(otherDepView);
