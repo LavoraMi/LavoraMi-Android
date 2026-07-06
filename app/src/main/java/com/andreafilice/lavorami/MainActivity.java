@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable searchRunnable;
     private ChipGroup.OnCheckedChangeListener chipCheckedChangeListener;
+    private ViewPager2 viewPager;
 
     //*DATABASE SYNCH VARIABLES
     /// In this section of the code, we will create the variables for synch datas to DB ones.
@@ -137,6 +138,11 @@ public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+
+                if (viewPager != null) {
+                    viewPager.setUserInputEnabled(true);
+                }
+
                 if(isGranted){
                     Log.d("PERMISSIONS", "Notifiche concesse!");
                     if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty())
@@ -152,6 +158,11 @@ public class MainActivity extends AppCompatActivity {
             });
     private final ActivityResultLauncher<String> requestLocationPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+
+                if (viewPager != null) {
+                    viewPager.setUserInputEnabled(true);
+                }
+
                 if (isGranted)
                     btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
                 else
@@ -247,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
         pages.add(new SetupModels.SetupPage(getString(R.string.setupAccessibilityTitle), getString(R.string.setupDepsAccessiblity), R.drawable.ic_accessibility, ""));
         pages.add(new SetupModels.SetupPage(getString(R.string.setupTitle5), getString(R.string.setupDeps5), R.drawable.ic_lock, getString(R.string.setupMiniDetails)));
 
-        ViewPager2 viewPager = findViewById(R.id.setupViewPager);
+        viewPager = findViewById(R.id.setupViewPager);
         SetupModels.SetupAdapter adapter = new SetupModels.SetupAdapter(pages);
         viewPager.setAdapter(adapter);
 
@@ -684,6 +695,7 @@ public class MainActivity extends AppCompatActivity {
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.GRAY)));
                 btnSetupNext.setEnabled(false);
+                viewPager.setUserInputEnabled(false);
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
             }
             else {
@@ -697,6 +709,7 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.GRAY)));
             btnSetupNext.setEnabled(false);
+            viewPager.setUserInputEnabled(false);
             requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
         } else {
             btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
