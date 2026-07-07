@@ -59,6 +59,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
     private static ExecutorService threadManager = Executors.newFixedThreadPool(3);
     private StrikeDescriptor strikeCDNResponse;
     private ImageButton btnRefresh;
+    private  SwipeRefreshLayout swipeRefreshLayout;
     private MaterialButton btnSetupNext;
     private Animation animSpin;
     static String maintenanceDetails = "";
@@ -327,6 +329,7 @@ public class MainActivity extends AppCompatActivity {
         errorLayout = findViewById(R.id.errorNetwork);
         animSpin = AnimationUtils.loadAnimation(this, R.anim.rotate_360);
         btnRefresh = findViewById(R.id.buttonRefresh);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
         if(loadingLayout != null){
             loadingLayout.startShimmer();
@@ -392,6 +395,24 @@ public class MainActivity extends AppCompatActivity {
             editSearch.setText("");
             downloadJSONData(getCategory(), true);}
         );
+
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.M1,
+                R.color.M2,
+                R.color.M3,
+                R.color.M4,
+                R.color.M5
+        );
+        swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.bottomBarPillTint));
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
+            editSearch.clearFocus();
+            editSearch.setText("");
+            downloadJSONData(getCategory(), true);
+        });
+
 
         btnRefreshOnError.setOnClickListener(v -> {
             InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -775,6 +796,7 @@ public class MainActivity extends AppCompatActivity {
             if (loadingLayout != null) {
                 loadingLayout.setVisibility(View.GONE);
                 btnRefresh.clearAnimation();
+                swipeRefreshLayout.setRefreshing(false);
                 errorLayout.setVisibility(View.GONE);
                 findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
             }
@@ -876,6 +898,7 @@ public class MainActivity extends AppCompatActivity {
                                         loadingLayout.stopShimmer();
                                         loadingLayout.setVisibility(View.GONE);
                                         btnRefresh.clearAnimation();
+                                        swipeRefreshLayout.setRefreshing(false);
                                         findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
                                     }
                                 });
@@ -901,6 +924,7 @@ public class MainActivity extends AppCompatActivity {
                     errorLayout.setVisibility(View.VISIBLE);
                     strikeBanner.setVisibility(View.GONE);
                     btnRefresh.clearAnimation();
+                    swipeRefreshLayout.setRefreshing(false);
 
                     /// In this section of the code, we check the android version and adapt the style to that version.
                     iconWiFi.setImageResource((Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) ? R.drawable.ic_no_wifi_connection : R.drawable.ic_wifi_slash_android10_previous);

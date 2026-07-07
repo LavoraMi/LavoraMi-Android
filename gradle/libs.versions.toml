@@ -28,6 +28,7 @@ activityKtx = "1.13.0"
 androidx-security-crypto = "1.1.0"
 playServicesAds = "25.4.0"
 userMessagingPlatform = "4.0.0"
+swiperefreshlayout = "1.2.0"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -60,6 +61,7 @@ google-mlkit-translate = { group = "com.google.mlkit", name = "translate", versi
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "androidx-security-crypto" }
 user-messaging-platform = { module = "com.google.android.ump:user-messaging-platform", version.ref = "userMessagingPlatform" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
