@@ -713,12 +713,11 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS5() {
         List<MetroStation> stations = new ArrayList<>();
-        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Gallarate e Treviglio fino al 5 Luglio
         stations.add(new MetroStation("Varese", 45.81625, 8.83295, "Main", "S5"));
         stations.add(new MetroStation("Gazzada Schianno Morazzone", 45.77868, 8.82473, "Main", "S5"));
         stations.add(new MetroStation("Castronno", 45.74525, 8.81051, "Main", "S5"));
         stations.add(new MetroStation("Albizzate - Solbiate Arno", 45.7233, 8.80628, "Main", "S5"));
-        stations.add(new MetroStation("Cavaria", 45.69814, 8.80371, "Main", "S5"));*/
+        stations.add(new MetroStation("Cavaria", 45.69814, 8.80371, "Main", "S5"));
         stations.add(new MetroStation("Gallarate", 45.65974, 8.79853, "Main", "S5"));
         stations.add(new MetroStation("Busto Arsizio", 45.61593, 8.86589, "Main", "S5"));
         stations.add(new MetroStation("Legnano", 45.5937, 8.91087, "Main", "S5"));
