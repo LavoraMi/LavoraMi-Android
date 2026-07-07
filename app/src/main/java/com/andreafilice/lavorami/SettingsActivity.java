@@ -130,7 +130,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             ActivityUtils.triggerFeedback(this);
             trenordLayout.setVisibility((trenordLayout.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
-            arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
+            arrowDisclosure.animate().rotation((trenordLayout.getVisibility() == View.GONE) ? 180 : 270).setDuration(200).start();
         });
 
         RelativeLayout groupATM = findViewById(R.id.groupATM);
@@ -140,7 +140,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             ActivityUtils.triggerFeedback(this);
             atmLayout.setVisibility((atmLayout.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
-            arrowDisclosure.setRotation((arrowDisclosure.getRotation() == 270) ? 180 : 270);
+            arrowDisclosure.animate().rotation((atmLayout.getVisibility() == View.GONE) ? 180 : 270).setDuration(200).start();
         });
 
         //*UI UPDATES
