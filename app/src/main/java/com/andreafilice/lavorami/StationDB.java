@@ -525,6 +525,7 @@ public class StationDB {
     public static List<MetroStation> getStationsS2() {
         List<MetroStation> stations = new ArrayList<>();
         /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Seveso e Rogoredo
+                                   Questa modifica è fino al 12 Dicembre.
         stations.add(new MetroStation("Mariano Comense", 45.69358, 9.18141, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.67783, 9.17024, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.67703, 9.16952, "Main", "S2"));
@@ -655,6 +656,7 @@ public class StationDB {
     public static List<MetroStation> getStationsS4() {
         List<MetroStation> stations = new ArrayList<>();
         /* MODIFICHE ALLA CIRCOLAZIONE: I treni della linea S4 circolano tra Palazzolo Milanese e Cadorna FN Triennale.
+                                        Questa modifica è fino al 12 Dicembre.
         stations.add(new MetroStation("Camnago - Lentate", 45.66837, 9.13328, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66643, 9.13467, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66412, 9.13586, "Main", "S4"));
@@ -1059,6 +1061,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.51851, 9.02764, "Main", "S6"));
         stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S6"));
         /* MODIFICHE CIRCOLAZIONE: La tratta S6 è limitata da Novara a Rho. NON ELIMINARE
+                                   Queste modifica è fino all'13 Settembre.
         stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52802, 9.05644, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52859, 9.05897, "Main", "S6"));
@@ -1326,6 +1329,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.48408, 9.18822, "Main", "S11"));
         stations.add(new MetroStation("Milano Pta Garibaldi", 45.48449, 9.18737, "Main", "S11"));
         /* MODIFICHE CIRCOLAZIONE: Questa tratta è attiva solo tra Milano Porta Garibaldi a Como.
+                                   Questa modifica è fino al 13 settembre.
         stations.add(new MetroStation("Milano Villapizzone", 45.50202, 9.15092, "Main", "S11"));
         stations.add(new MetroStation("Milano Certosa", 45.50683, 9.13593, "Main", "S11"));
         stations.add(new MetroStation("Rho FieraMilano", 45.52113, 9.0885, "Main", "S11"));
