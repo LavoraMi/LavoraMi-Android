@@ -216,7 +216,7 @@
                         android:id="@+id/iconAll"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:src="@drawable/ic_location"
+                        android:src="@drawable/ic_all_lines"
                         app:tint="@color/desc"
                         android:clickable="true"
                         android:focusable="true"/>
