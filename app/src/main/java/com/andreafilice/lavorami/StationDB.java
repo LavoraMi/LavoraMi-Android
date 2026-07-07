@@ -3195,6 +3195,8 @@ public class StationDB {
 
     public static List<MetroStation> getStationsMXP1() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: Lavori di manutenzione tra Gallarate e Malpensa T2
+                                   Questa modifica rimane fino al 24 Luglio.
         stations.add(new MetroStation("Gallarate",  45.65974,  8.79853,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.66166,  8.79602,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.66354,  8.7938,  "Main","MXP1"));
@@ -3243,7 +3245,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW",  45.65301,  8.72957,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.65225,  8.72808,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.65145,  8.72692,  "Main","MXP1"));
-        stations.add(new MetroStation("NO_DRAW",  45.65104,  8.72515,  "Main","MXP1"));
+        stations.add(new MetroStation("NO_DRAW",  45.65104,  8.72515,  "Main","MXP1"));*/
         stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.64847,  8.7129,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.64736,  8.71028,  "Main","MXP1"));
