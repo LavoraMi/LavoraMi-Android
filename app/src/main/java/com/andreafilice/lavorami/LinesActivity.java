@@ -88,15 +88,12 @@ public class LinesActivity extends AppCompatActivity {
             applyState(expanded, true);
         }
 
-        // show = deve essere aperta o chiusa adesso; animate = anima la freccetta
         void applyState(boolean show, boolean animate) {
             container.setVisibility(show ? View.VISIBLE : View.GONE);
             float targetRotation = show ? 270f : 180f;
-            if (animate) {
-                arrow.animate().rotation(targetRotation).setDuration(200).start();
-            } else {
-                arrow.setRotation(targetRotation);
-            }
+
+            if (animate) arrow.animate().rotation(targetRotation).setDuration(200).start();
+            else arrow.setRotation(targetRotation);
         }
     }
 
@@ -195,33 +192,33 @@ public class LinesActivity extends AppCompatActivity {
         /// Create a For-Loop for set automatically the action of the button.
 
         ImageView[] infoButtons = {
-                findViewById(R.id.infoIconMetro),
-                findViewById(R.id.infoIconSuburbane),
-                findViewById(R.id.infoIconRegioExpress),
-                findViewById(R.id.infoIconRegional),
-                findViewById(R.id.infoIconTransfrontaliere),
-                findViewById(R.id.infoIconMXP),
-                findViewById(R.id.infoIconTram),
-                findViewById(R.id.infoIconFilobus),
-                findViewById(R.id.infoIconMovibus),
-                findViewById(R.id.infoIconStav),
-                findViewById(R.id.infoIconStar),
-                findViewById(R.id.infoIconAutoGuidoVie)
+            findViewById(R.id.infoIconMetro),
+            findViewById(R.id.infoIconSuburbane),
+            findViewById(R.id.infoIconRegioExpress),
+            findViewById(R.id.infoIconRegional),
+            findViewById(R.id.infoIconTransfrontaliere),
+            findViewById(R.id.infoIconMXP),
+            findViewById(R.id.infoIconTram),
+            findViewById(R.id.infoIconFilobus),
+            findViewById(R.id.infoIconMovibus),
+            findViewById(R.id.infoIconStav),
+            findViewById(R.id.infoIconStar),
+            findViewById(R.id.infoIconAutoGuidoVie)
         };
 
         String[] infoUrls = {
-                "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg",
-                "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
-                "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
-                "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
-                "https://www.tilo.ch",
-                "https://www.malpensaexpress.it",
-                "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
-                "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
-                "https://movibus.it/news/",
-                "https://stavautolinee.it/reti-servite/",
-                "https://starmobility.it/orari-autobus/",
-                "https://autoguidovie.it/it/avvisi"
+            "https://giromilano.atm.it/assets/images/schema_rete_metro.jpg",
+            "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
+            "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
+            "https://www.trenord.it/linee-e-orari/circolazione/le-nostre-linee/",
+            "https://www.tilo.ch",
+            "https://www.malpensaexpress.it",
+            "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
+            "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
+            "https://movibus.it/news/",
+            "https://stavautolinee.it/reti-servite/",
+            "https://starmobility.it/orari-autobus/",
+            "https://autoguidovie.it/it/avvisi"
         };
 
         for (int i = 0; i < infoButtons.length; i++) {
@@ -358,7 +355,6 @@ public class LinesActivity extends AppCompatActivity {
         findViewById(R.id.headerRecentSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
         findViewById(R.id.groupRecent).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
 
-
         boolean hasRecent = (searchLines.getText().toString().isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
         titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
         containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
@@ -409,6 +405,7 @@ public class LinesActivity extends AppCompatActivity {
 
         findViewById(R.id.emptyViewRecent).setVisibility((!isRecentEmpty) ? View.GONE : View.VISIBLE);
     }
+
     private LineGroup setupGroup(int headerId, int arrowId, int cardId, LinearLayout container) {
         View header = findViewById(headerId);
         ImageView arrow = findViewById(arrowId);
