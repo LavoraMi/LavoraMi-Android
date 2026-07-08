@@ -5564,11 +5564,11 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Buttafava", new String[]{"S7"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Biassono - Lesmo Parco", new String[]{"S7"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Macherio - Canonica", new String[]{"S7"}, "lightrail", "Main", 8));
-        interchanges.add(new InterchangeInfo("Triuggio - Ponte Albiate", new String[]{"S7", "z233"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Triuggio - Ponte Albiate", new String[]{"S7", "z233"}, "bus.fill", "Main", 9));
         interchanges.add(new InterchangeInfo("Carate Calò", new String[]{"S7"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Villa Raverio", new String[]{"S7"}, "lightrail", "Main", 11));
-        interchanges.add(new InterchangeInfo("Besana", new String[]{"S7", "z323", "z242"}, "lightrail", "Main", 12));
-        interchanges.add(new InterchangeInfo("Renate - Veduggio", new String[]{"S7", "z242"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Besana", new String[]{"S7", "z323", "z242"}, "bus.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Renate - Veduggio", new String[]{"S7", "z242"}, "bus.fill", "Main", 13));
         interchanges.add(new InterchangeInfo("Cassago Nibionno Bulciago", new String[]{"S7"}, "lightrail", "Main", 14));
         interchanges.add(new InterchangeInfo("Costa Masnaga", new String[]{"S7"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Molteno", new String[]{"S7", "R18"}, "lightrail", "Main", 16));
