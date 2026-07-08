@@ -495,9 +495,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             detTitolo.setText("STAR Mobility");
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie");
-        if(nomeLinea.startsWith("R"))
+        if(nomeLinea.startsWith("R") && !nomeLinea.equalsIgnoreCase("RE80"))
             detTitolo.setText(String.format("%s %s", getString(R.string.regionalLinesScroll), nomeLinea));
-        if(nomeLinea.startsWith("RE"))
+        if(nomeLinea.startsWith("RE") && !nomeLinea.equalsIgnoreCase("RE80"))
             detTitolo.setText("Regio Express " + nomeLinea);
         if(nomeLinea.matches("9[0-3]"))
             detTitolo.setText("Filobus " + nomeLinea);
@@ -916,7 +916,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (tiloLines.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
         }
 
-        return nomeLinea != null && nomeLinea.startsWith("S") && isValid;
+        return nomeLinea != null && isValid;
     }
 
     private void applyMetroLineColor(View card, int lineColor) {
