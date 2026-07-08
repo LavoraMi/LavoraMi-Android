@@ -5578,6 +5578,21 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Valmadrera", new String[]{"S7", "R18"}, "lightrail", "Main", 20));
         interchanges.add(new InterchangeInfo("Lecco", new String[]{"S7", "S8", "R7", "R13", "R18", "RE8"}, "lightrail", "Main", 21));
 
+        /// Suburbano S8
+        interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"S8", "S1", "S2", "S5", "S6", "S7", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Milano Greco Pirelli", new String[]{"S8", "S7", "S9", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Sesto S. Giovanni", new String[]{"S8", "S7", "S9", "S11", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729"}, "tram.fill.tunnel", "Main", 2));
+        interchanges.add(new InterchangeInfo("Monza", new String[]{"S8", "S7", "S9", "S11", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z201", "z203", "z205", "z206", "z208", "z211", "z213", "z221", "z222", "z228"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Arcore", new String[]{"S8", "R13", "R14", "z208"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Carnate Usmate", new String[]{"S8", "R13", "R14", "RE8"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Osnago", new String[]{"S8"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Cernusco - Merate", new String[]{"S8", "R13", "RE8"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Olgiate - Calco - Brivio", new String[]{"S8"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Airuno", new String[]{"S8"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Calolziocorte Olginate", new String[]{"S8", "R7", "RE8"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Lecco Maggianico", new String[]{"S8"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Lecco", new String[]{"S8", "S7", "R7", "R13", "R18", "RE8"}, "lightrail", "Main", 12));
+
         return interchanges;
     }
 
