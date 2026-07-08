@@ -516,6 +516,7 @@ public class SettingsActivity extends AppCompatActivity {
                     DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
                     DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
                     DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true);
+                    DataManager.saveBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true);
                     DataManager.saveBoolData(DataKeys.KEY_OPEN_ALL_LINES, true);
                     DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
                     DataManager.saveIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
