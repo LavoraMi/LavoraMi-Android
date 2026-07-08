@@ -1684,6 +1684,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S12":
             case "S13":
             case "S19":
+            case "S20":
             case "MXP1":
             case "MXP2":
                 return "30 min.";

@@ -467,8 +467,8 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         // TILO
-        String[] tiloLines = {"S10", "S30", "S40", "S50", "RE80"};
-        int[] tiloColors = {R.color.S10, R.color.S30, R.color.S40, R.color.S50, R.color.RE80};
+        String[] tiloLines = {"S10", "S20", "S30", "S40", "S50", "RE80"};
+        int[] tiloColors = {R.color.S10, R.color.S20, R.color.S30, R.color.S40, R.color.S50, R.color.RE80};
         for (int i = 0; i < tiloLines.length; i++) {
             int finalI = i;
             aggiungiLinea(containerTrans, tiloLines[finalI], tiloColors[finalI], ContextCompat.getString(this, R.string.tilo));

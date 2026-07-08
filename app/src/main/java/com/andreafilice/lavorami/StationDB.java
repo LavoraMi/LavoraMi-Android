@@ -3100,6 +3100,21 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsS20() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Castione Arbedo",  46.22363,  9.04148,  "Main","S20"));
+        stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S20"));
+        stations.add(new MetroStation("Giubiasco",  46.17381,  9.00359,  "Main","S20"));
+        stations.add(new MetroStation("S. Antonino",  46.16041,  8.97392,  "Main","S20"));
+        stations.add(new MetroStation("Cadenazzo",  46.15262,  8.94168,  "Main","S20"));
+        stations.add(new MetroStation("Riazzino",  46.17532,  8.88625,  "Main","S20"));
+        stations.add(new MetroStation("Gordola",  46.17915,  8.86585,  "Main","S20"));
+        stations.add(new MetroStation("Tenero",  46.1774,  8.85186,  "Main","S20"));
+        stations.add(new MetroStation("Minusio",  46.174,  8.81956,  "Main","S20"));
+        stations.add(new MetroStation("Locarno",  46.17264,  8.80166,  "Main","S20"));
+        return stations;
+    }
+
     public static List<MetroStation> getStationsS50() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Biasca",  46.35198,  8.97416,  "Main","S50"));
@@ -5800,6 +5815,7 @@ public class StationDB {
             allStations.addAll(getStationsRE13());
 
             allStations.addAll(getStationsS10());
+            allStations.addAll(getStationsS20());
             allStations.addAll(getStationsS30());
             allStations.addAll(getStationsS40());
             allStations.addAll(getStationsS50());
@@ -5872,6 +5888,8 @@ public class StationDB {
             //TILO LINES
             case "S10":
                 return R.color.S10;
+            case "S20":
+                return R.color.S20;
             case "S30":
                 return R.color.S30;
             case "S40":
