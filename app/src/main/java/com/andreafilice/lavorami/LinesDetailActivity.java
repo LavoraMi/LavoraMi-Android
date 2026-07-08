@@ -1176,8 +1176,11 @@ public class LinesDetailActivity extends AppCompatActivity {
                 }
 
                 TextView emptyInterchanges = card.findViewById(R.id.noInterchangesTxt);
-                if (chipGroup != null && chipGroup.getChildCount() == 0 && emptyInterchanges != null)
+                ImageView iconTransport = card.findViewById(R.id.iconTransport);
+                if (chipGroup != null && chipGroup.getChildCount() == 0 && emptyInterchanges != null) {
                     emptyInterchanges.setVisibility(View.VISIBLE);
+                    iconTransport.setImageResource(R.drawable.ic_no_interchanges);
+                }
 
                 applyMetroLineColor(card, lineColor);
             }
