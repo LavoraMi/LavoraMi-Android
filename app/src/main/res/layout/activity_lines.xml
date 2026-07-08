@@ -199,1235 +199,732 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/allLines"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="25dp"
-                android:orientation="vertical">
+                android:id="@+id/headerMetro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleMetro"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/iconAll"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_all_lines"
-                        app:tint="@color/desc"
-                        android:clickable="true"
-                        android:focusable="true"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/subTitleAll"
+                        android:id="@+id/subTitleMM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tutte le linee"
+                        android:text="@string/metroLinesTitle"
                         android:textColor="@color/text_primary"
-                        android:layout_marginStart="8dp"
                         android:textSize="20sp"
                         android:fontFamily="@font/font_main" />
+
+                    <TextView
+                        android:id="@+id/subTitleMetroDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ATM"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconMetro"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
             </LinearLayout>
 
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardMetro"
+            <LinearLayout
+                android:id="@+id/groupMetro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerSuburbane"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleSuburbane"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerMetro"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconMetroHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_metro"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowMetro"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconMetro"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowMetro"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleMetro"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconMetroHeader"
-                            android:layout_toStartOf="@id/infoIconMetro"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleMM"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/metroLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main" />
-
-                            <TextView
-                                android:id="@+id/subTitleMetroDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ATM"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupMetro"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleS"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/suburbanLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardSub"
+                    <TextView
+                        android:id="@+id/subTitleSuburbaneDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trenord"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconSuburbane"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupSub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerRegional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleRegional"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerSuburbane"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconSubHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_slines"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowSub"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconSuburbane"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowSub"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleSuburbane"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconSubHeader"
-                            android:layout_toStartOf="@id/infoIconSuburbane"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleS"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/suburbanLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main" />
-
-                            <TextView
-                                android:id="@+id/subTitleSuburbaneDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Trenord"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupSub"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleR"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/regionalLines"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardRegional"
+                    <TextView
+                        android:id="@+id/subTitleRDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trenord"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconRegional"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerRegioExpress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleRegio"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerRegional"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconRegionalHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_rlines"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowRegional"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconRegional"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowRegional"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleRegional"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconRegionalHeader"
-                            android:layout_toStartOf="@id/infoIconRegional"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleR"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/regionalLines"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main" />
-
-                            <TextView
-                                android:id="@+id/subTitleRDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Trenord"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupR"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleRE"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/regioExpressLines"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardRegioExpress"
+                    <TextView
+                        android:id="@+id/subTitleREDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trenord"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconRegioExpress"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupRE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerTransfrontaliere"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleTrans"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerRegioExpress"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconRegioHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/icon_relines"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowRegioExpress"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconRegioExpress"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowRegioExpress"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleRegio"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconRegioHeader"
-                            android:layout_toStartOf="@id/infoIconRegioExpress"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleRE"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/regioExpressLines"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main" />
-
-                            <TextView
-                                android:id="@+id/subTitleREDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Trenord"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupRE"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleTR"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/tiloLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardTrans"
+                    <TextView
+                        android:id="@+id/subTitleTransDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TILO"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconTransfrontaliere"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupTrans"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerMXP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleMXP"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerTransfrontaliere"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconTransHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_train"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowTrans"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconTransfrontaliere"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowTrans"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleTrans"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconTransHeader"
-                            android:layout_toStartOf="@id/infoIconTransfrontaliere"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleTR"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/tiloLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleTransDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TILO"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupTrans"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleMalpensa"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/malpensaExpressLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardMXP"
+                    <TextView
+                        android:id="@+id/subTitleMXPDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trenord"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconMXP"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupMXP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerTram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleTram"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerMXP"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconMXPHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_train"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowMXP"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconMXP"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowMXP"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleMXP"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconMXPHeader"
-                            android:layout_toStartOf="@id/infoIconMXP"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleMalpensa"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/malpensaExpressLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleMXPDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Trenord"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupMXP"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleTm"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/tramLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardTram"
+                    <TextView
+                        android:id="@+id/subTitleTramDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ATM"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconTram"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupTram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerFilobus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleFilobus"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerTram"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconTramHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_tram"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowTram"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconTram"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowTram"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleTram"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconTramHeader"
-                            android:layout_toStartOf="@id/infoIconTram"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleTm"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/tramLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleTramDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ATM"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupTram"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleFilo"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/filobusLinesDesc"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardFilobus"
+                    <TextView
+                        android:id="@+id/subTitleFilobusDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ATM"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconFilobus"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupFilobus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerMovibus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleMovibus"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerFilobus"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconFilobusHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_bus"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowFilobus"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconFilobus"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowFilobus"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleFilobus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconFilobusHeader"
-                            android:layout_toStartOf="@id/infoIconFilobus"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleFilo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/filobusLinesDesc"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleFilobusDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ATM"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupFilobus"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleMovi"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/busLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardMovibus"
+                    <TextView
+                        android:id="@+id/subTitleMovibusDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Movibus"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconMovibus"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupMovibus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerSTAR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleStar"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerMovibus"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconMovibusHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_bus"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowMovibus"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconMovibus"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowMovibus"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"/>
-
-                        <LinearLayout
-                            android:id="@+id/subTitleMovibus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconMovibusHeader"
-                            android:layout_toStartOf="@id/infoIconMovibus"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleMovi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/busLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleMovibusDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Movibus"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupMovibus"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleSR"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/busLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardStar"
+                    <TextView
+                        android:id="@+id/subTitleStarDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STAR Mobility"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconStar"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:contentDescription="Info"
+                    android:focusable="true"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupStar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_line_group"
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerSTAV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleStav"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerSTAR"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconStarHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_bus"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowStar"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconStar"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowStar"
-                            android:layout_centerVertical="true"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc" />
-
-                        <LinearLayout
-                            android:id="@+id/subTitleStar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconStarHeader"
-                            android:layout_toStartOf="@id/infoIconStar"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleSR"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/busLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleStarDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="STAR Mobility"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupStar"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleSV"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/busLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardStav"
+                    <TextView
+                        android:id="@+id/subTitleStavDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STAV"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconStav"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:contentDescription="Info"
+                    android:focusable="true"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupStav"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_line_group"
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/headerAutoguidovie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/subTitleAutoGuidoVie"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/headerSTAV"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconStavHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_bus"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowStav"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconStav"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowStav"
-                            android:layout_centerVertical="true"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc" />
-
-                        <LinearLayout
-                            android:id="@+id/subTitleStav"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconStavHeader"
-                            android:layout_toStartOf="@id/infoIconStav"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleSV"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/busLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleStavDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="STAV"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupStav"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/subTitleAutoguidovie"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:text="@string/busLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/font_main"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardAutoguidovie"
+                    <TextView
+                        android:id="@+id/subTitleAutoguidovieDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Autoguidovie"
+                        android:textColor="@color/desc"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/inter" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconAutoGuidoVie"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:clickable="true"
+                    android:contentDescription="Info"
+                    android:focusable="true"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/groupAutoGuidoVie"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_line_group"
+                android:divider="@drawable/line_divider"
+                android:orientation="vertical"
                 android:layout_marginBottom="76dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:showDividers="middle">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:id="@+id/headerAutoguidovie"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:paddingHorizontal="16dp">
-
-                        <ImageView
-                            android:id="@+id/iconAutoguidovieHeader"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_bus"
-                            app:tint="@color/redMetro" />
-
-                        <ImageView
-                            android:id="@+id/arrowAutoguidovie"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:rotation="180"
-                            android:src="@drawable/ic_back"
-                            app:tint="@color/text_primary" />
-
-                        <ImageView
-                            android:id="@+id/infoIconAutoGuidoVie"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_toStartOf="@id/arrowAutoguidovie"
-                            android:layout_centerVertical="true"
-                            android:contentDescription="Info"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/desc" />
-
-                        <LinearLayout
-                            android:id="@+id/subTitleAutoGuidoVie"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_toEndOf="@id/iconAutoguidovieHeader"
-                            android:layout_toStartOf="@id/infoIconAutoGuidoVie"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/subTitleAutoguidovie"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/busLinesTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/font_main"/>
-
-                            <TextView
-                                android:id="@+id/subTitleAutoguidovieDesc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Autoguidovie"
-                                android:textColor="@color/desc"
-                                android:textSize="13sp"
-                                android:fontFamily="@font/inter" />
-
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/groupAutoGuidoVie"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_line_group"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingBottom="8dp"
-                        android:divider="@drawable/line_divider"
-                        android:showDividers="middle">
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/floatingBottomBar"
         android:layout_width="wrap_content"

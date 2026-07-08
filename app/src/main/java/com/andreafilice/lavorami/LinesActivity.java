@@ -8,7 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
-import android.graphics.LinearGradient;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,14 +47,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
-    LinearLayout titleRecent;
-    private LineGroup metroGroup, subGroup, regioGroup, regionalGroup, mxpGroup, transGroup, tramGroup, filobusGroup, movibusGroup, stavGroup, starGroup, autoGroup;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
     boolean linesLoaded = false;
-    private boolean allOpened;
     boolean isRecentEmpty = false;
     private Set<String> recentLinesSet = new LinkedHashSet<>();
     private final Handler searchHandler = new Handler(Looper.getMainLooper());
@@ -71,34 +68,6 @@ public class LinesActivity extends AppCompatActivity {
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
 
-    private class LineGroup {
-        final View header;
-        final ImageView arrow;
-        final View card;
-        final LinearLayout container;
-        boolean expanded = DataManager.getBoolData(DataKeys.KEY_OPEN_ALL_LINES, true);
-
-        LineGroup(View header, ImageView arrow, View card, LinearLayout container) {
-            this.header = header;
-            this.arrow = arrow;
-            this.card = card;
-            this.container = container;
-        }
-
-        void toggle() {
-            expanded = !expanded;
-            applyState(expanded, true);
-        }
-
-        void applyState(boolean show, boolean animate) {
-            container.setVisibility(show ? View.VISIBLE : View.GONE);
-            float targetRotation = show ? 270f : 180f;
-
-            if (animate) arrow.animate().rotation(targetRotation).setDuration(200).start();
-            else arrow.setRotation(targetRotation);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +81,7 @@ public class LinesActivity extends AppCompatActivity {
         //*INITIALIZE COMPONENTS
         /// In this section of the code, we initialize all the containers for the sub-menus.
         containerRecent = findViewById(R.id.groupRecent);
+        headerMetro = findViewById(R.id.headerMetro);
         containerMetro = findViewById(R.id.groupMetro);
         containerSub = findViewById(R.id.groupSub);
         containerRegioExpress = findViewById(R.id.groupRE);
@@ -126,18 +96,18 @@ public class LinesActivity extends AppCompatActivity {
         containerAutoGuidovie = findViewById(R.id.groupAutoGuidoVie);
 
         titleRecent = findViewById(R.id.headerRecentSearch);
-        metroGroup = setupGroup(R.id.headerMetro, R.id.arrowMetro, R.id.cardMetro, containerMetro);
-        subGroup = setupGroup(R.id.headerSuburbane, R.id.arrowSub, R.id.cardSub, containerSub);
-        regionalGroup = setupGroup(R.id.headerRegional, R.id.arrowRegional, R.id.cardRegional, containerRegional);
-        regioGroup = setupGroup(R.id.headerRegioExpress, R.id.arrowRegioExpress, R.id.cardRegioExpress, containerRegioExpress);
-        transGroup = setupGroup(R.id.headerTransfrontaliere, R.id.arrowTrans, R.id.cardTrans, containerTrans);
-        mxpGroup = setupGroup(R.id.headerMXP, R.id.arrowMXP, R.id.cardMXP, containerMXP);
-        tramGroup = setupGroup(R.id.headerTram, R.id.arrowTram, R.id.cardTram, containerTram);
-        filobusGroup = setupGroup(R.id.headerFilobus, R.id.arrowFilobus, R.id.cardFilobus, containerFilobus);
-        movibusGroup = setupGroup(R.id.headerMovibus, R.id.arrowMovibus, R.id.cardMovibus, containerMovibus);
-        stavGroup = setupGroup(R.id.headerSTAV, R.id.arrowStav, R.id.cardStav, containerStav);
-        starGroup = setupGroup(R.id.headerSTAR, R.id.arrowStar, R.id.cardStar, containerSTAR);
-        autoGroup = setupGroup(R.id.headerAutoguidovie, R.id.arrowAutoguidovie, R.id.cardAutoguidovie, containerAutoGuidovie);
+        titleMetro = findViewById(R.id.headerMetro);
+        titleSub = findViewById(R.id.headerSuburbane);
+        titleRegio = findViewById(R.id.headerRegioExpress);
+        titleRegional = findViewById(R.id.headerRegional);
+        titleMXP = findViewById(R.id.headerMXP);
+        titleTrans = findViewById(R.id.headerTransfrontaliere);
+        titleTram = findViewById(R.id.headerTram);
+        titleFilobus = findViewById(R.id.headerFilobus);
+        titleMovibus = findViewById(R.id.headerMovibus);
+        titleStav = findViewById(R.id.headerSTAV);
+        titleSTAR = findViewById(R.id.headerSTAR);
+        titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
         tvNoResults = findViewById(R.id.emptyView);
 
         loadingLayout = findViewById(R.id.loadingLayout);
@@ -276,20 +246,67 @@ public class LinesActivity extends AppCompatActivity {
                     findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() && isRecentEmpty) ? View.VISIBLE : View.GONE);
                     containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
 
-                    boolean isSearching = !query.isEmpty();
+                    boolean[] firstContainerTracker = { false };
 
-                    updateGroupForSearch(metroGroup, hasMetro, isSearching);
-                    updateGroupForSearch(subGroup, hasSub, isSearching);
-                    updateGroupForSearch(regioGroup, hasRegioExpress, isSearching);
-                    updateGroupForSearch(regionalGroup, hasRegional, isSearching);
-                    updateGroupForSearch(mxpGroup, hasMXP, isSearching);
-                    updateGroupForSearch(transGroup, hasTrans, isSearching);
-                    updateGroupForSearch(tramGroup, hasTram, isSearching);
-                    updateGroupForSearch(filobusGroup, hasFilobus, isSearching);
-                    updateGroupForSearch(movibusGroup, hasMovibus, isSearching);
-                    updateGroupForSearch(stavGroup, hasStav, isSearching);
-                    updateGroupForSearch(starGroup, hasSTAR, isSearching);
-                    updateGroupForSearch(autoGroup, hasAuto, isSearching);
+                    //*METRO LINES
+                    titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+                    containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
+                    setUpMargin(headerMetro, isFirstVisibleContainer(hasMetro, firstContainerTracker));
+
+                    //*SUBURBAN LINES
+                    titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+                    containerSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleSub, isFirstVisibleContainer(hasSub, firstContainerTracker));
+
+                    //*REGIO EXPRESS LINES
+                    titleRegio.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
+                    containerRegioExpress.setVisibility(hasRegioExpress ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleRegio, isFirstVisibleContainer(hasRegioExpress, firstContainerTracker));
+
+                    //*REGIONAL LINES
+                    titleRegional.setVisibility(hasRegional ? View.VISIBLE : View.GONE);
+                    containerRegional.setVisibility(hasRegional ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleRegional, isFirstVisibleContainer(hasRegional, firstContainerTracker));
+
+                    //*MXP LINES
+                    titleMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+                    containerMXP.setVisibility(hasMXP ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleMXP, isFirstVisibleContainer(hasMXP, firstContainerTracker));
+
+                    //*TRANSFRONTALIERE LINES
+                    titleTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+                    containerTrans.setVisibility(hasTrans ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleTrans, isFirstVisibleContainer(hasTrans, firstContainerTracker));
+
+                    //*TRAM LINES
+                    titleTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                    containerTram.setVisibility(hasTram ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleTram, isFirstVisibleContainer(hasTram, firstContainerTracker));
+
+                    //*FILOBUS LINES
+                    titleFilobus.setVisibility(hasFilobus ? View.VISIBLE : View.GONE);
+                    containerFilobus.setVisibility(hasFilobus ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleFilobus, isFirstVisibleContainer(hasFilobus, firstContainerTracker));
+
+                    //*MOVIBUS LINES
+                    titleMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+                    containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleMovibus, isFirstVisibleContainer(hasMovibus, firstContainerTracker));
+
+                    //*STAV LINES
+                    titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                    containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleStav, isFirstVisibleContainer(hasStav, firstContainerTracker));
+
+                    //*STAR LINES
+                    titleSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
+                    containerSTAR.setVisibility(hasSTAR ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleSTAR, isFirstVisibleContainer(hasSTAR, firstContainerTracker));
+
+                    //*AUTOGUIDOVIE LINES
+                    titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                    containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
 
                     if (tvNoResults != null){
                         tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
@@ -344,25 +361,6 @@ public class LinesActivity extends AppCompatActivity {
 
         reloadRecentLines();
 
-        boolean currentOpenAll = DataManager.getBoolData(DataKeys.KEY_OPEN_ALL_LINES, true);
-        if (currentOpenAll != allOpened) {
-            applyGlobalOpenState(currentOpenAll);
-            allOpened = currentOpenAll;
-        }
-
-        metroGroup.applyState(metroGroup.expanded, false);
-        subGroup.applyState(subGroup.expanded, false);
-        regionalGroup.applyState(regionalGroup.expanded, false);
-        regioGroup.applyState(regioGroup.expanded, false);
-        transGroup.applyState(transGroup.expanded, false);
-        mxpGroup.applyState(mxpGroup.expanded, false);
-        tramGroup.applyState(tramGroup.expanded, false);
-        filobusGroup.applyState(filobusGroup.expanded, false);
-        movibusGroup.applyState(movibusGroup.expanded, false);
-        stavGroup.applyState(stavGroup.expanded, false);
-        starGroup.applyState(starGroup.expanded, false);
-        autoGroup.applyState(autoGroup.expanded, false);
-
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
@@ -375,6 +373,8 @@ public class LinesActivity extends AppCompatActivity {
         findViewById(R.id.subTitleSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
         findViewById(R.id.headerRecentSearch).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
         findViewById(R.id.groupRecent).setVisibility((DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)) ? View.VISIBLE : View.GONE);
+
+        setUpMargin(headerMetro, !(DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true)));
 
         boolean hasRecent = (searchLines.getText().toString().isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
         titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
@@ -425,43 +425,6 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         findViewById(R.id.emptyViewRecent).setVisibility((!isRecentEmpty) ? View.GONE : View.VISIBLE);
-    }
-
-    private void applyGlobalOpenState(boolean open) {
-        metroGroup.expanded = open;
-        subGroup.expanded = open;
-        regionalGroup.expanded = open;
-        regioGroup.expanded = open;
-        transGroup.expanded = open;
-        mxpGroup.expanded = open;
-        tramGroup.expanded = open;
-        filobusGroup.expanded = open;
-        movibusGroup.expanded = open;
-        stavGroup.expanded = open;
-        starGroup.expanded = open;
-        autoGroup.expanded = open;
-    }
-
-    private LineGroup setupGroup(int headerId, int arrowId, int cardId, LinearLayout container) {
-        View header = findViewById(headerId);
-        ImageView arrow = findViewById(arrowId);
-        View card = findViewById(cardId);
-        LineGroup group = new LineGroup(header, arrow, card, container);
-
-        if (allOpened)
-            group.toggle();
-
-        header.setOnClickListener(v -> {
-            ActivityUtils.triggerFeedback(this);
-            group.toggle();
-        });
-        return group;
-    }
-
-    private void updateGroupForSearch(LineGroup group, boolean hasMatch, boolean isSearching) {
-        group.card.setVisibility(hasMatch ? View.VISIBLE : View.GONE);
-        boolean shouldShow = isSearching ? hasMatch : group.expanded;
-        group.applyState(shouldShow, false);
     }
 
     private void loadLines(){
@@ -563,6 +526,7 @@ public class LinesActivity extends AppCompatActivity {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }
 
+        //Stop the Shimmer animation.
         loadingLayout.setVisibility(View.GONE);
     }
 
@@ -698,6 +662,17 @@ public class LinesActivity extends AppCompatActivity {
         return trovatoAtLeastOne;
     }
 
+    private void setUpMargin(LinearLayout layout, boolean isActive) {
+        /// In this method, we adjust the Layout Margins when searching for a transport category.
+        /// @PARAMETERS
+        /// LinearLayout layout is the Header of the transport category.
+        /// boolean isActive is the bool variable that define if a Header is enable (the user is searching for that) or not.
+
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) layout.getLayoutParams();
+
+        layoutParams.topMargin = isActive ? 0 : (int)(20 * getResources().getDisplayMetrics().density);
+    }
+
     private void insertRecentLine(String nameLine, String description) {
         /// In this function, we add the line that the user have clicked to the recent researched ones.
         /// @PARAMETERS
@@ -717,6 +692,18 @@ public class LinesActivity extends AppCompatActivity {
         DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, recentLinesSet);
     }
 
+    private boolean isFirstVisibleContainer(boolean isContainerActive, boolean[] tracker) {
+        /// This method fix the issue where EVERY LinearLayout is set to 0dp.
+
+        if (!isContainerActive)  return false;
+
+        if (!tracker[0]) {
+            tracker[0] = true;
+            return true;
+        }
+
+        return false;
+    }
 
     private void syncYourLinesToSupabase(Set<String> yourLinesSet) {
         if (sessionManager != null && sessionManager.isLoggedIn()) {
