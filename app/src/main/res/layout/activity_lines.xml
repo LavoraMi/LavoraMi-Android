@@ -364,7 +364,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_slines"
-                            app:tint="@color/S5" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowSub"
@@ -463,7 +463,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_rlines"
-                            app:tint="@color/REGIONAL" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowRegional"
@@ -661,7 +661,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_train"
-                            app:tint="@color/S30" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowTrans"
@@ -760,7 +760,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_train"
-                            app:tint="@color/MXP" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowMXP"
@@ -859,7 +859,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_tram"
-                            app:tint="@color/TRAM" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowTram"
@@ -958,7 +958,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_bus"
-                            app:tint="@color/FILOBUS" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowFilobus"
@@ -1057,7 +1057,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_bus"
-                            app:tint="@color/BUS" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowMovibus"
@@ -1156,7 +1156,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_bus"
-                            app:tint="@color/BUS" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowStar"
@@ -1255,7 +1255,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_bus"
-                            app:tint="@color/BUS" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowStav"
@@ -1355,7 +1355,7 @@
                             android:layout_height="24dp"
                             android:layout_centerVertical="true"
                             android:src="@drawable/ic_bus"
-                            app:tint="@color/BUS" />
+                            app:tint="@color/redMetro" />
 
                         <ImageView
                             android:id="@+id/arrowAutoguidovie"
