@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.graphics.LinearGradient;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -54,6 +55,7 @@ public class LinesActivity extends AppCompatActivity {
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
     boolean linesLoaded = false;
+    private boolean allOpened;
     boolean isRecentEmpty = false;
     private Set<String> recentLinesSet = new LinkedHashSet<>();
     private final Handler searchHandler = new Handler(Looper.getMainLooper());
@@ -74,7 +76,7 @@ public class LinesActivity extends AppCompatActivity {
         final ImageView arrow;
         final View card;
         final LinearLayout container;
-        boolean expanded = false;
+        boolean expanded = DataManager.getBoolData(DataKeys.KET_OPEN_ALL_LINES, false);
 
         LineGroup(View header, ImageView arrow, View card, LinearLayout container) {
             this.header = header;
@@ -342,6 +344,25 @@ public class LinesActivity extends AppCompatActivity {
 
         reloadRecentLines();
 
+        boolean currentOpenAll = DataManager.getBoolData(DataKeys.KET_OPEN_ALL_LINES, false);
+        if (currentOpenAll != allOpened) {
+            applyGlobalOpenState(currentOpenAll);
+            allOpened = currentOpenAll;
+        }
+
+        metroGroup.applyState(metroGroup.expanded, false);
+        subGroup.applyState(subGroup.expanded, false);
+        regionalGroup.applyState(regionalGroup.expanded, false);
+        regioGroup.applyState(regioGroup.expanded, false);
+        transGroup.applyState(transGroup.expanded, false);
+        mxpGroup.applyState(mxpGroup.expanded, false);
+        tramGroup.applyState(tramGroup.expanded, false);
+        filobusGroup.applyState(filobusGroup.expanded, false);
+        movibusGroup.applyState(movibusGroup.expanded, false);
+        stavGroup.applyState(stavGroup.expanded, false);
+        starGroup.applyState(starGroup.expanded, false);
+        autoGroup.applyState(autoGroup.expanded, false);
+
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
@@ -406,11 +427,30 @@ public class LinesActivity extends AppCompatActivity {
         findViewById(R.id.emptyViewRecent).setVisibility((!isRecentEmpty) ? View.GONE : View.VISIBLE);
     }
 
+    private void applyGlobalOpenState(boolean open) {
+        metroGroup.expanded = open;
+        subGroup.expanded = open;
+        regionalGroup.expanded = open;
+        regioGroup.expanded = open;
+        transGroup.expanded = open;
+        mxpGroup.expanded = open;
+        tramGroup.expanded = open;
+        filobusGroup.expanded = open;
+        movibusGroup.expanded = open;
+        stavGroup.expanded = open;
+        starGroup.expanded = open;
+        autoGroup.expanded = open;
+    }
+    
     private LineGroup setupGroup(int headerId, int arrowId, int cardId, LinearLayout container) {
         View header = findViewById(headerId);
         ImageView arrow = findViewById(arrowId);
         View card = findViewById(cardId);
         LineGroup group = new LineGroup(header, arrow, card, container);
+
+        if (allOpened)
+            group.toggle();
+
         header.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             group.toggle();

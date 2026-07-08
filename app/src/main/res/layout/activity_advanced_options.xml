@@ -73,63 +73,6 @@
                     android:paddingHorizontal="16dp">
 
                     <ImageView
-                        android:id="@+id/iconMaster"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_message_error"
-                        app:tint="#FF453A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconMaster"
-                        android:fontFamily="@font/font_main"
-                        android:text="@string/errorMessagesOptions"
-                        android:textColor="@color/text_primary"
-                        android:textSize="17sp" />
-
-                    <Switch
-                        android:id="@+id/switchErrors"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:checked="false"
-                        android:thumbTint="@color/White"
-                        android:trackTint="#FF453A"
-                        android:trackTintMode="multiply"
-                        tools:ignore="UseSwitchCompatOrMaterialXml" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/inter"
-                android:text="@string/showErrorsDeps"
-                android:textColor="#8E8E93"
-                android:textSize="13sp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:paddingHorizontal="16dp">
-
-                    <ImageView
                         android:id="@+id/iconBanner"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
@@ -173,10 +116,12 @@
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardButtonOpenLines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
+                android:visibility="visible"
                 app:cardBackgroundColor="@color/disclosureBg"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
@@ -187,11 +132,11 @@
                     android:paddingHorizontal="16dp">
 
                     <ImageView
-                        android:id="@+id/iconBiometrics"
+                        android:id="@+id/iconOpenLines"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_fingerprint"
+                        android:src="@drawable/ic_all_lines"
                         app:tint="#FF453A" />
 
                     <TextView
@@ -199,14 +144,14 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconBiometrics"
+                        android:layout_toEndOf="@id/iconOpenLines"
                         android:fontFamily="@font/font_main"
-                        android:text="@string/requireBiometricAuth"
+                        android:text="Tieni sempre aperte le linee"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
                     <Switch
-                        android:id="@+id/switchBiometrics"
+                        android:id="@+id/switchOpenLines"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -220,12 +165,73 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/descButtonOpenLines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter"
-                android:text="@string/requireBiometricAuthDeps"
+                android:text="Mostra le linee già per esteso senza doverle aprire manualmente."
+                android:textColor="#8E8E93"
+                android:textSize="13sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardButtonRecentLines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/disclosureBg"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:id="@+id/iconRecent"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_recent_searches"
+                        app:tint="#FF453A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconRecent"
+                        android:fontFamily="@font/font_main"
+                        android:text="@string/showRecentLinesTitle"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp" />
+
+                    <Switch
+                        android:id="@+id/switchRecent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:checked="true"
+                        android:thumbTint="@color/White"
+                        android:trackTint="#FF453A"
+                        android:trackTintMode="add"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/descButtonRecent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/showRecentLinesDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -347,12 +353,10 @@
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardButtonRecentLines"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
-                android:visibility="visible"
                 app:cardBackgroundColor="@color/disclosureBg"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
@@ -363,11 +367,11 @@
                     android:paddingHorizontal="16dp">
 
                     <ImageView
-                        android:id="@+id/iconRecent"
+                        android:id="@+id/iconBiometrics"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_recent_searches"
+                        android:src="@drawable/ic_fingerprint"
                         app:tint="#FF453A" />
 
                     <TextView
@@ -375,14 +379,14 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconRecent"
+                        android:layout_toEndOf="@id/iconBiometrics"
                         android:fontFamily="@font/font_main"
-                        android:text="@string/showRecentLinesTitle"
+                        android:text="@string/requireBiometricAuth"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
                     <Switch
-                        android:id="@+id/switchRecent"
+                        android:id="@+id/switchBiometrics"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -396,13 +400,12 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/descButtonRecent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter"
-                android:text="@string/showRecentLinesDeps"
+                android:text="@string/requireBiometricAuthDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
@@ -518,6 +521,63 @@
                 android:text="@string/openLinkDepsText"
                 android:textColor="#8E8E93"
                 android:textSize="13sp"  />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/disclosureBg"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:id="@+id/iconMaster"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_message_error"
+                        app:tint="#FF453A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconMaster"
+                        android:fontFamily="@font/font_main"
+                        android:text="@string/errorMessagesOptions"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp" />
+
+                    <Switch
+                        android:id="@+id/switchErrors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:checked="false"
+                        android:thumbTint="@color/White"
+                        android:trackTint="#FF453A"
+                        android:trackTintMode="multiply"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter"
+                android:text="@string/showErrorsDeps"
+                android:textColor="#8E8E93"
+                android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnCacheMemory"
