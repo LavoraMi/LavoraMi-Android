@@ -5366,7 +5366,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("San Donato", new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"}, "bus.fill", "Main", 20));
 
         /// Metro M4
-        interchanges.add(new InterchangeInfo("Linate Aereoporto", new String[]{"M4", "NM4", "183", "901", "903", "923", "973", "z409"}, "airplane.departure", "Main", 0));
+        interchanges.add(new InterchangeInfo("Linate Aereoporto", new String[]{"M4", "Aereoporto", "NM4", "183", "901", "903", "923", "973", "z409"}, "airplane.departure", "Main", 0));
         interchanges.add(new InterchangeInfo("Repetti", new String[]{"M4", "NM4", "12", "27", "45", "175", "N27"}, "tram.fill.tunnel", "Main", 1));
         interchanges.add(new InterchangeInfo("Stazione Forlanini FS", new String[]{"M4", "NM4", "S5", "S6", "S9", "R38", "RE8", "RE13", "12", "27", "45", "175", "973", "N27"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Argonne", new String[]{"M4", "NM4", "38", "45", "54", "Filobus 93", "175"}, "tram.fill.tunnel", "Main", 3));
@@ -5698,8 +5698,8 @@ public class StationDB {
         //* MALPENSA EXPRESS LINES
         /// Malpensa Express 1
         interchanges.add(new InterchangeInfo("Gallarate", new String[]{"MXP1", "S5", "S30", "S50", "R21", "R23", "RV", "RE4", "RE5"}, "lightrail", "Main", 0));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP1", "S50", "MXP2"}, "lightrail", "Main", 1));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP1", "S50", "MXP2"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP1", "Aereoporto", "S50", "MXP2"}, "airplane.departure", "Main", 1));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP1", "Aereoporto", "S50", "MXP2"}, "airplane.departure", "Main", 2));
         interchanges.add(new InterchangeInfo("Ferno - Lonate Pozzolo", new String[]{"MXP1", "S50"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Busto Arsizio Nord", new String[]{"MXP1", "S50", "R27", "MXP2"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Castellanza", new String[]{"MXP1", "R27"}, "lightrail", "Main", 5));
@@ -5710,8 +5710,8 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"MXP1", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "Filobus 90", "Filobus 91", "Filobus 92", "728", "N25", "N26"}, "tram.fill.tunnel", "Main", 10));
 
         /// Malpensa Express 2
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP2", "S50", "MXP1"}, "lightrail", "Main", 0));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP2", "S50", "MXP1"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP2", "Aereoporto", "S50", "MXP1"}, "airplane.departure", "Main", 0));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP2", "Aereoporto", "S50", "MXP1"}, "airplane.departure", "Main", 1));
         interchanges.add(new InterchangeInfo("Busto Arsizio Nord", new String[]{"MXP2", "S50", "R27", "MXP1"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Saronno", new String[]{"MXP2", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "82", "Filobus 92"}, "lightrail", "Main", 4));
