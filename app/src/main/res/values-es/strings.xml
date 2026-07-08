@@ -412,6 +412,4 @@
     <string name="customiseTitle">Personalizar</string>
     <string name="nicknameEmptyError">El nombre de usuario no puede estar vacío.</string>
     <string name="nicknameEqualError">El nuevo nombre de usuario no puede ser igual que tu nombre de usuario actual.</string>
-    <string name="openLinesOptions">Mantengan las líneas abiertas</string>
-    <string name="openLinesDeps">Muestra las líneas totalmente expandidas sin necesidad de abrirlas manualmente.</string>
 </resources>
