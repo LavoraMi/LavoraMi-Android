@@ -1182,8 +1182,6 @@ public class StationDB {
         stations.add(new MetroStation("Saronno", 45.62534, 9.03075, "Main", "S9"));
         stations.add(new MetroStation("Saronno Sud", 45.61235, 9.04557, "Main", "S9"));
         stations.add(new MetroStation("Ceriano Laghetto - Solaro", 45.6249, 9.07936, "Main", "S9"));
-        stations.add(new MetroStation("Ceriano Laghetto Groane", 45.62718, 9.1002, "Main", "S9"));
-        stations.add(new MetroStation("Cesano Maderno Laghetto Groane", 45.63033, 9.12652, "Main", "S9"));
         stations.add(new MetroStation("Cesano Maderno", 45.63073, 9.14209, "Main", "S9"));
         stations.add(new MetroStation("Seveso Baruccana", 45.63807, 9.16292, "Main", "S9"));
         stations.add(new MetroStation("Seregno", 45.64609, 9.20302, "Main", "S9"));
@@ -5601,7 +5599,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Seveso Baruccana", new String[]{"S9"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Seregno", new String[]{"S9", "S11", "RE13", "RE80", "z233"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Desio", new String[]{"S9", "S11", "RE80", "z250", "z251"}, "lightrail", "Main", 6));
-        interchanges.add(new InterchangeInfo("Lissone", new String[]{"S9", "S11", "z227", "z238"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Lissone - Muggiò", new String[]{"S9", "S11", "z227", "z238"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Monza", new String[]{"S9", "S7", "S8", "S11", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z201", "z203", "z205", "z206", "z208", "z211", "z213", "z221", "z222", "z228"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Sesto S. Giovanni", new String[]{"S9", "S7", "S8", "S11", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729"}, "tram.fill.tunnel", "Main", 9));
         interchanges.add(new InterchangeInfo("Milano Greco Pirelli", new String[]{"S9", "S7", "S8", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"}, "lightrail", "Main", 10));
