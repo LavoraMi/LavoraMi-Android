@@ -5702,6 +5702,7 @@ public class StationDB {
             case "S31":
                 return R.color.S31;
             case "AV":
+            case "RV":
                 return R.color.AV;
 
             //TILO LINES
