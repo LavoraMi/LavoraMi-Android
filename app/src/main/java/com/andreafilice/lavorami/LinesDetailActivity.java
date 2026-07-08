@@ -483,8 +483,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             detTitolo.setText(String.format("%s %s", getString(R.string.suburban), nomeLinea));
         if(nomeLinea.matches("^[1-9][0-9]?$"))
             detTitolo.setText(String.format("%s %s", getString(R.string.tramLinesScroll), nomeLinea));
-        if(nomeLinea.equals("S10") || nomeLinea.equals("S30") || nomeLinea.equals("S40") || nomeLinea.equals("S50") || nomeLinea.equals("RE80"))
-            detTitolo.setText("TILO "+ nomeLinea);
+        if(isLineaTilo())
+            detTitolo.setText("TILO " + nomeLinea);
         if(nomeLinea.startsWith("MXP"))
             detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
@@ -903,6 +903,17 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         for(int i = 0; i < suburbanWithNewGraphic.size(); i++){
             if (suburbanWithNewGraphic.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
+        }
+
+        return nomeLinea != null && nomeLinea.startsWith("S") && isValid;
+    }
+
+    private boolean isLineaTilo() {
+        ArrayList<String> tiloLines = new ArrayList<>(Arrays.asList("S10", "S20", "S30", "S40", "S50", "S90", "RE80"));
+        boolean isValid = false;
+
+        for(int i = 0; i < tiloLines.size(); i++){
+            if (tiloLines.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
         }
 
         return nomeLinea != null && nomeLinea.startsWith("S") && isValid;
