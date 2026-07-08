@@ -3181,6 +3181,25 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsS90() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S90"));
+        stations.add(new MetroStation("Giubiasco",  46.17381,  9.00359,  "Main","S90"));
+        stations.add(new MetroStation("Rivera - Bironico",  46.12393,  8.92506,  "Main","S90"));
+        stations.add(new MetroStation("Mezzovico",  46.09432,  8.92854,  "Main","S90"));
+        stations.add(new MetroStation("Taverne - Torricella",  46.05664,  8.93038,  "Main","S90"));
+        stations.add(new MetroStation("Lamone - Cadempino",  46.03982,  8.93238,  "Main","S90"));
+        stations.add(new MetroStation("Lugano",  46.00501,  8.94695,  "Main","S90"));
+        stations.add(new MetroStation("Lugano Paradiso",  45.98917,  8.94656,  "Main","S90"));
+        stations.add(new MetroStation("Melide",  45.95576,  8.94823,  "Main","S90"));
+        stations.add(new MetroStation("Maroggia - Melano",  45.93241,  8.97383,  "Main","S90"));
+        stations.add(new MetroStation("Capolago - Riva S. Vitale",  45.90285,  8.97889,  "Main","S90"));
+        stations.add(new MetroStation("Mendrisio S. Martino",  45.87721,  8.98308,  "Main","S90"));
+        stations.add(new MetroStation("Mendrisio",  45.8691,  8.97878,  "Main","S90"));
+
+        return stations;
+    }
+
     public static List<MetroStation> getStationsRE80() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Locarno",  46.17264,  8.80166,  "Main","RE80"));
@@ -5819,6 +5838,7 @@ public class StationDB {
             allStations.addAll(getStationsS30());
             allStations.addAll(getStationsS40());
             allStations.addAll(getStationsS50());
+            allStations.addAll(getStationsS90());
             allStations.addAll(getStationsRE80());
 
             allStations.addAll(getStationsMXP1());
