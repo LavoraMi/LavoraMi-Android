@@ -5419,7 +5419,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Saronno Sud", new String[]{"S1", "S3", "S9"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Caronno Pertusella", new String[]{"S1", "S3"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Cesate", new String[]{"S1", "S3"}, "lightrail", "Main", 3));
-        interchanges.add(new InterchangeInfo("Garbagnate Milaese", new String[]{"S1", "S3", "S13", "RE13"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Garbagnate Milanese", new String[]{"S1", "S3", "S13", "RE13"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Garbagnate Parco Delle Groane", new String[]{"S1", "S3"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Bollate Nord", new String[]{"S1", "S3"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Bollate Centro", new String[]{"S1", "S3", "S13", "RE13"}, "lightrail", "Main", 7));
@@ -5468,7 +5468,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Saronno Sud", new String[]{"S3", "S1", "S9"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Caronno Pertusella", new String[]{"S3", "S1"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Cesate", new String[]{"S3", "S1"}, "lightrail", "Main", 3));
-        interchanges.add(new InterchangeInfo("Garbagnate Milaese", new String[]{"S3", "S1", "S13", "RE13"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Garbagnate Milanese", new String[]{"S3", "S1", "S13", "RE13"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Garbagnate Parco Delle Groane", new String[]{"S3", "S1"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Bollate Nord", new String[]{"S3", "S1"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Bollate Centro", new String[]{"S3", "S1", "S13", "RE13"}, "lightrail", "Main", 7));
