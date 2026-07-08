@@ -146,7 +146,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconOpenLines"
                         android:fontFamily="@font/font_main"
-                        android:text="Tieni sempre aperte le linee"
+                        android:text="@string/openLinesOptions"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -171,7 +171,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter"
-                android:text="Mostra le linee già per esteso senza doverle aprire manualmente."
+                android:text="@string/openLinesDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 

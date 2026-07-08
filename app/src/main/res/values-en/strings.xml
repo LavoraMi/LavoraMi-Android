@@ -412,4 +412,6 @@
     <string name="customiseTitle">Customise</string>
     <string name="nicknameEmptyError">The Username cannot be left blank.</string>
     <string name="nicknameEqualError">Your new Username cannot be the same as your current Username.</string>
+    <string name="openLinesOptions">Keep the lines open</string>
+    <string name="openLinesDeps">Displays the lines fully expanded without needing to open them manually.</string>
 </resources>

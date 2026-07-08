@@ -441,7 +441,7 @@ public class LinesActivity extends AppCompatActivity {
         starGroup.expanded = open;
         autoGroup.expanded = open;
     }
-    
+
     private LineGroup setupGroup(int headerId, int arrowId, int cardId, LinearLayout container) {
         View header = findViewById(headerId);
         ImageView arrow = findViewById(arrowId);
