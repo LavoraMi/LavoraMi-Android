@@ -5634,6 +5634,20 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Como Camerlata", new String[]{"S11", "S10", "S40", "R17", "R18", "RE7", "RE13", "RE80"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Como San Giovanni", new String[]{"S11", "S10", "S40", "R18", "RE13", "RE80"}, "lightrail", "Main", 16));
 
+        /// Suburbano S12
+        interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"S12", "S1", "S2", "S3", "S4", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82", "Filobus 92"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Milano Lancetti", new String[]{"S12", "S1", "S2", "S5", "S6", "S13", "2", "Filobus 92"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"S12", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 12));
+        interchanges.add(new InterchangeInfo("Milano Repubblica", new String[]{"S12", "S1", "S2", "S5", "S6", "S13", "M3", "NM3", "1", "9", "33", "43"}, "tram.fill.tunnel", "Main", 13));
+        interchanges.add(new InterchangeInfo("Milano Porta Venezia", new String[]{"S12", "S1", "S2", "S5", "S6", "S13", "M1", "NM1", "5", "9", "33"}, "tram.fill.tunnel", "Main", 14));
+        interchanges.add(new InterchangeInfo("Milano Dateo", new String[]{"S12", "S1", "S2", "S5", "S6", "S13", "M4", "NM4", "54", "61", "Filobus 92"}, "tram.fill.tunnel", "Main", 15));
+        interchanges.add(new InterchangeInfo("Milano Porta Vittoria", new String[]{"S12", "S1", "S2", "S5", "S6", "S13", "Filobus 91", "Filobus 93"}, "tram.fill.tunnel", "Main", 16));
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"S12", "S1", "S2", "S9", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("San Donato Milanese", new String[]{"S12", "S1"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Borgolombardo", new String[]{"S12", "S1", "132"}, "lightrail", "Main", 19));
+        interchanges.add(new InterchangeInfo("San Giuliano Milanese", new String[]{"S12", "S1", "121"}, "lightrail", "Main", 20));
+        interchanges.add(new InterchangeInfo("Melegnano", new String[]{"S12", "S1"}, "lightrail", "Main", 21));
+
         return interchanges;
     }
 
