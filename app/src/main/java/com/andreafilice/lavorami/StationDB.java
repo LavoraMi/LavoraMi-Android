@@ -5665,6 +5665,18 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Certosa di Pavia", new String[]{"S13"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Pavia", new String[]{"S13", "R34", "R35", "R36", "R37", "RE13", "RV"}, "lightrail", "Main", 14));
 
+        /// Suburbano S19
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"S19", "S1", "S2", "S9", "S12", "S13", "R31", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Milano Scalo Romana", new String[]{"S19", "S9", "R31", "M3", "NM3", "65", "Filobus 90", "Filobus 91", "Filobus 92"}, "tram.fill.tunnel", "Main", 1));
+        interchanges.add(new InterchangeInfo("Milano Tibaldi", new String[]{"S19", "S9", "R31", "15", "59", "Filobus 90", "Filobus 91"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Milano Romolo", new String[]{"S19", "S9", "R31", "M2", "NM2", "47", "Filobus 90", "Filobus 91", "71", "324", "325", "z553"}, "tram.fill.tunnel", "Main", 3));
+        interchanges.add(new InterchangeInfo("Milano San Cristoforo", new String[]{"S19", "S9", "R31", "M4", "NM4", "47", "49", "95", "324", "325", "326", "351", "z553"}, "tram.fill.tunnel", "Main", 4));
+        interchanges.add(new InterchangeInfo("Corsico", new String[]{"S19", "S9", "R31", "326"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Cesano Boscone", new String[]{"S19", "S9", "R31"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Trezzano Sul Naviglio", new String[]{"S19", "S9", "R31"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Gaggiano", new String[]{"S19", "S9", "R31", "z557"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Albairate Vermezzo", new String[]{"S19", "S9", "R31", "z554"}, "lightrail", "Main", 9));
+
         return interchanges;
     }
 
