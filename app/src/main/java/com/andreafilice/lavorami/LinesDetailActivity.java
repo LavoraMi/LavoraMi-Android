@@ -1553,6 +1553,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S30": return "Cadenazzo - Gallarate";
             case "S40": return "Como - Varese";
             case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
+            case "S90": return "Bellinzona - Mendrisio";
             case "RE80": return "Locarno - Milano Centrale";
 
             case "1": return "Roserio - Greco";
@@ -1685,6 +1686,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S13":
             case "S19":
             case "S20":
+            case "S90":
             case "MXP1":
             case "MXP2":
                 return "30 min.";

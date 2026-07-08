@@ -5896,6 +5896,8 @@ public class StationDB {
                 return R.color.S40;
             case "S50":
                 return R.color.S50;
+            case "S90":
+                return R.color.S90;
             case "RE80":
                 return R.color.RE80;
 
