@@ -5677,6 +5677,18 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Gaggiano", new String[]{"S19", "S9", "R31", "z557"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Albairate Vermezzo", new String[]{"S19", "S9", "R31", "z554"}, "lightrail", "Main", 9));
 
+        /// Suburbano S31
+        interchanges.add(new InterchangeInfo("Brescia", new String[]{"S31", "R1", "R3", "R4", "R5", "R7", "R8", "RE3", "RE6", "AV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Brescia Borgo San Giovanni", new String[]{"S31", "R3"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Brescia Violino", new String[]{"S31", "R3"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Castegnato", new String[]{"S31", "R3"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Paderno Franciacorta", new String[]{"S31", "R3"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Passirano", new String[]{"S31", "R3"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Bornato Calino", new String[]{"S31", "R3", "R9"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Borgonato Adro", new String[]{"S31", "R3"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Provaglio Timoline", new String[]{"S31", "R3"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Iseo", new String[]{"S31", "R3", "R9", "RE3"}, "lightrail", "Main", 9));
+
         return interchanges;
     }
 
