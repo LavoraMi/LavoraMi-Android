@@ -76,7 +76,7 @@ public class LinesActivity extends AppCompatActivity {
         final ImageView arrow;
         final View card;
         final LinearLayout container;
-        boolean expanded = DataManager.getBoolData(DataKeys.KET_OPEN_ALL_LINES, false);
+        boolean expanded = DataManager.getBoolData(DataKeys.KEY_OPEN_ALL_LINES, true);
 
         LineGroup(View header, ImageView arrow, View card, LinearLayout container) {
             this.header = header;
@@ -344,7 +344,7 @@ public class LinesActivity extends AppCompatActivity {
 
         reloadRecentLines();
 
-        boolean currentOpenAll = DataManager.getBoolData(DataKeys.KET_OPEN_ALL_LINES, false);
+        boolean currentOpenAll = DataManager.getBoolData(DataKeys.KEY_OPEN_ALL_LINES, true);
         if (currentOpenAll != allOpened) {
             applyGlobalOpenState(currentOpenAll);
             allOpened = currentOpenAll;
