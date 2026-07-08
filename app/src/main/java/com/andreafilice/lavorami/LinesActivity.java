@@ -47,8 +47,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
-    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
+    LinearLayout containerRecent, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout titleRecent;
+    private LineGroup metroGroup, subGroup, regioGroup, regionalGroup, mxpGroup, transGroup, tramGroup, filobusGroup, movibusGroup, stavGroup, starGroup, autoGroup;
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
@@ -98,9 +99,6 @@ public class LinesActivity extends AppCompatActivity {
             }
         }
     }
-
-    private LineGroup metroGroup, subGroup, regioGroup, regionalGroup, mxpGroup, transGroup,
-            tramGroup, filobusGroup, movibusGroup, stavGroup, starGroup, autoGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
