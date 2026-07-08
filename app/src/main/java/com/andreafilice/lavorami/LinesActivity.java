@@ -563,7 +563,6 @@ public class LinesActivity extends AppCompatActivity {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }
 
-        //Stop the Shimmer animation.
         loadingLayout.setVisibility(View.GONE);
     }
 
@@ -580,7 +579,6 @@ public class LinesActivity extends AppCompatActivity {
         TextView lineBadge = row.findViewById(R.id.lineBadge);
 
         ImageButton buttonAddLine = row.findViewById(R.id.buttonAddLine);
-
 
         if (badge != null && name != null) {
             badge.setText(label);

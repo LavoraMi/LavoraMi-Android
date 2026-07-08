@@ -9,8 +9,7 @@ public class DataManager{
     static SharedPreferences sharedPref;
 
     public static void init(Context context) {
-        if (sharedPref == null)
-            sharedPref = context.getApplicationContext().getSharedPreferences("LavoraMiPreferences", Context.MODE_PRIVATE);
+        if (sharedPref == null) sharedPref = context.getApplicationContext().getSharedPreferences("LavoraMiPreferences", Context.MODE_PRIVATE);
     }
 
     public static void saveStringData(DataKeys key, String value){sharedPref.edit().putString(key.toString(), value).apply();}

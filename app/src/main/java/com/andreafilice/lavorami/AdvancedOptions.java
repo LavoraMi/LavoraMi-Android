@@ -51,17 +51,14 @@ public class AdvancedOptions extends AppCompatActivity {
         if (keyStore.containsAlias(BIOMETRIC_KEY_ALIAS))
             return;
 
-        KeyGenParameterSpec keyGenParameterSpec = new KeyGenParameterSpec.Builder(
-                BIOMETRIC_KEY_ALIAS,
-                KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
-                .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
-                .setUserAuthenticationRequired(true)
-                .setInvalidatedByBiometricEnrollment(true)
-                .build();
+        KeyGenParameterSpec keyGenParameterSpec = new KeyGenParameterSpec.Builder(BIOMETRIC_KEY_ALIAS, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+            .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
+            .setUserAuthenticationRequired(true)
+            .setInvalidatedByBiometricEnrollment(true)
+            .build();
 
-        KeyGenerator keyGenerator = KeyGenerator.getInstance(
-                KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
+        KeyGenerator keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
 
         keyGenerator.init(keyGenParameterSpec);
         keyGenerator.generateKey();
@@ -74,10 +71,7 @@ public class AdvancedOptions extends AppCompatActivity {
     }
 
     private Cipher getCipher() throws Exception {
-        Cipher cipher = Cipher.getInstance(
-                KeyProperties.KEY_ALGORITHM_AES + "/" +
-                        KeyProperties.BLOCK_MODE_CBC + "/" +
-                        KeyProperties.ENCRYPTION_PADDING_PKCS7);
+        Cipher cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/" + KeyProperties.BLOCK_MODE_CBC + "/" + KeyProperties.ENCRYPTION_PADDING_PKCS7);
 
         SecretKey secretKey = getSecretKey();
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -117,7 +111,7 @@ public class AdvancedOptions extends AppCompatActivity {
             DataManager.getBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true),
             DataManager.getBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false),
             DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true),
-            DataManager.getBoolData(DataKeys.KET_OPEN_ALL_LINES, false)
+            DataManager.getBoolData(DataKeys.KET_OPEN_ALL_LINES, true)
         };
 
         Switch[] switches = {
@@ -289,9 +283,7 @@ public class AdvancedOptions extends AppCompatActivity {
         try {
             generateSecretKey();
             cipherForPrompt = getCipher();
-        } catch (Exception e) {
-            Log.e("AdvancedOptions", "Errore durante l'inizializzazione della chiave biometrica", e);
-        }
+        } catch (Exception e) {Log.e("AdvancedOptions", "Errore durante l'inizializzazione della chiave biometrica", e);}
 
         /// In this section of the code, we create the PopUp for log-in with Biometric Auth.
         /// The pop-up UI is different base by Manufacture Implementation.
@@ -337,10 +329,10 @@ public class AdvancedOptions extends AppCompatActivity {
 
         if(biometricsSwitch.isChecked()){
             BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                    .setTitle(ContextCompat.getString(this, R.string.editSettingsPopUpTitle))
-                    .setSubtitle(ContextCompat.getString(this, R.string.editSettingsPopUpDeps))
-                    .setAllowedAuthenticators(authenticators)
-                    .build();
+                .setTitle(ContextCompat.getString(this, R.string.editSettingsPopUpTitle))
+                .setSubtitle(ContextCompat.getString(this, R.string.editSettingsPopUpDeps))
+                .setAllowedAuthenticators(authenticators)
+                .build();
 
             if (cipherForPrompt != null)
                 biometricPrompt.authenticate(promptInfo, new BiometricPrompt.CryptoObject(cipherForPrompt));
