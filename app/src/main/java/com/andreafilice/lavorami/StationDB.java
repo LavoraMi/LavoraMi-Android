@@ -6354,6 +6354,28 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Minusio", new String[]{"S20", "RE80"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Locarno", new String[]{"S20", "RE80"}, "lightrail", "Main", 9));
 
+        /// TILO S30
+        interchanges.add(new InterchangeInfo("Gallarate", new String[]{"S30", "S5", "S50", "R21", "R23", "RV", "RE4", "RE5", "MXP1"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Besnate", new String[]{"S30", "R21"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Mornago Cimbro", new String[]{"S30", "R21"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Ternate Varano Borghi", new String[]{"S30", "R21"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Travedona Biandronno", new String[]{"S30", "R21"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Besozzo", new String[]{"S30", "R21"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Sangiano", new String[]{"S30", "R21"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Laveno Mombello", new String[]{"S30", "R21"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Calde'", new String[]{"S30", "R21"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Porto Valtravaglia", new String[]{"S30", "R21"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Luino", new String[]{"S30", "R21"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Colmegna", new String[]{"S30"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Maccagno", new String[]{"S30"}, "lightrail", "Main", 12));
+        interchanges.add(new InterchangeInfo("Pino - Tronzano", new String[]{"S30"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Ranzo - San Abbondio", new String[]{"S30"}, "lightrail", "Main", 14));
+        interchanges.add(new InterchangeInfo("Gerra", new String[]{"S30"}, "lightrail", "Main", 15));
+        interchanges.add(new InterchangeInfo("San Nazzaro", new String[]{"S30"}, "lightrail", "Main", 16));
+        interchanges.add(new InterchangeInfo("Magradino - Vira", new String[]{"S30"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("Quartino", new String[]{"S30"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Cadenazzo", new String[]{"S20", "S30", "RE80"}, "lightrail", "Main", 19));
+
         return interchanges;
     }
 
