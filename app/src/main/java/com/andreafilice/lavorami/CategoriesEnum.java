@@ -11,6 +11,7 @@ public enum CategoriesEnum {
     PROGRAMMATI,
     DI_ATM,
     DI_TRENORD,
+    DI_TILO,
     DI_MOVIBUS,
     DI_STAV,
     DI_STAR,

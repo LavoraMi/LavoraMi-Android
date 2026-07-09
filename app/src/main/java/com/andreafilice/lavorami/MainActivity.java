@@ -461,6 +461,9 @@ public class MainActivity extends AppCompatActivity {
                 case DI_TRENORD:
                     filterGroup.check(R.id.chipTrenord);
                     break;
+                case DI_TILO:
+                    filterGroup.check(R.id.chipTILO);
+                    break;
                 case DI_MOVIBUS:
                     filterGroup.check(R.id.chipMovibus);
                     break;
@@ -755,6 +758,7 @@ public class MainActivity extends AppCompatActivity {
             R.id.chipProgrammati,
             R.id.chipATM,
             R.id.chipTrenord,
+            R.id.chipTILO,
             R.id.chipMovibus,
             R.id.chipStav,
             R.id.chipStar,
@@ -772,6 +776,7 @@ public class MainActivity extends AppCompatActivity {
             CategoriesEnum.PROGRAMMATI,
             CategoriesEnum.DI_ATM,
             CategoriesEnum.DI_TRENORD,
+            CategoriesEnum.DI_TILO,
             CategoriesEnum.DI_MOVIBUS,
             CategoriesEnum.DI_STAV,
             CategoriesEnum.DI_STAR,
@@ -1169,6 +1174,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case DI_TRENORD:
                         if(item.company.equalsIgnoreCase("Trenord") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_TILO:
+                        if(item.company.equalsIgnoreCase("TILO") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_MOVIBUS:
                         if(item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);

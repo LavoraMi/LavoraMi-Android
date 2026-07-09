@@ -403,6 +403,39 @@
                         android:background="#38383A" />
 
                     <RelativeLayout
+                        android:id="@+id/diTilo"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/inter"
+                            android:text="di TILO"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:id="@+id/checkdiTilo"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/check"
+                            app:tint="@color/redMetro"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="60dp"
+                        android:background="#38383A" />
+
+                    <RelativeLayout
                         android:id="@+id/diMovibus"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"

@@ -49,6 +49,7 @@ public class FilterSelection extends AppCompatActivity {
             findViewById(R.id.checkProgrammati), //? "Programmati"
             findViewById(R.id.checkdiATM), //? "di ATM"
             findViewById(R.id.checkdiTrenord), //? "di Trenord"
+            findViewById(R.id.checkdiTilo), //? "di TILO"
             findViewById(R.id.checkdiMovibus), //? "di Movibus"
             findViewById(R.id.checkdiSTAV), //? "di STAV"
             findViewById(R.id.checkdiSTAR), //? "di STAR"
@@ -66,6 +67,7 @@ public class FilterSelection extends AppCompatActivity {
             findViewById(R.id.programmati), //? "Programmati"
             findViewById(R.id.diATM), //? "di ATM"
             findViewById(R.id.diTrenord), //? "di Trenord"
+            findViewById(R.id.diTilo), //? "di TILO"
             findViewById(R.id.diMovibus), //? "di Movibus"
             findViewById(R.id.diSTAV), //? "di STAV"
             findViewById(R.id.diSTAR), //? "di STAR"
@@ -83,6 +85,7 @@ public class FilterSelection extends AppCompatActivity {
             "Programmati",
             "di_ATM",
             "di_Trenord",
+            "di_TILO",
             "di_Movibus",
             "di_STAV",
             "di_STAR",

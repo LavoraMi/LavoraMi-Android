@@ -451,6 +451,16 @@
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipTILO"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_main"
+                android:text="di TILO"
+                android:textColor="@color/text_primary"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
                 android:id="@+id/chipMovibus"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
