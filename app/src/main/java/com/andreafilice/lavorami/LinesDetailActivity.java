@@ -1171,8 +1171,18 @@ public class LinesDetailActivity extends AppCompatActivity {
             cache.put("Main", mainViews);
 
             for (Map.Entry<String, List<InterchangeInfo>> entry : branchMap.entrySet()) {
-                List<InterchangeInfo> combined = new ArrayList<>(entry.getValue());
-                combined.addAll(mainItems);
+                List<InterchangeInfo> combined = new ArrayList<>();
+                String branchName = entry.getKey();
+
+                if (branchName.equals("P.Za Abbiategrasso") || branchName.equals("Assago Milanofiori Forum")) {
+                    combined.addAll(mainItems);
+                    combined.addAll(entry.getValue());
+                }
+                else {
+                    combined.addAll(entry.getValue());
+                    combined.addAll(mainItems);
+                }
+
                 List<View> views = buildViewsForList(combined, inflater, container, (isMetro || isSuburban || isMalpensaExpress), lineColor);
                 cache.put(entry.getKey(), views);
             }
