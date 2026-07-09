@@ -6321,6 +6321,30 @@ public class StationDB {
         return interchanges;
     }
 
+    public static List<InterchangeInfo> getTILOInterchanges() {
+        List<InterchangeInfo> interchanges = new ArrayList<>();
+
+        //* TILO LINES
+        /// TILO S10
+        interchanges.add(new InterchangeInfo("Como Camerlata", new String[]{"S10", "S11", "S40", "R17", "R18", "RE7", "RE13", "RE80"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Como San Giovanni", new String[]{"S10", "S11", "S40", "R18", "RE13", "RE80"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Chiasso", new String[]{"S10", "S40", "RE80"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Balerna", new String[]{"S10", "S40", "RE80"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Mendrisio", new String[]{"S10", "S40", "S50", "S90", "RE80"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Mendrisio San Martino", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Capolago - Riva San Vitale", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Maroggia - Melano", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Melide", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Lugano Paradiso", new String[]{"S10", "S90"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Lugano", new String[]{"S10", "S40", "S50", "S90", "RE80"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Giubiasco", new String[]{"S10", "S20", "S30", "S90"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S10", "S20", "S30", "S50", "S90"}, "lightrail", "Main", 12));
+        interchanges.add(new InterchangeInfo("Arbedo - Castione", new String[]{"S10", "S20", "S50", "S90"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Biasca", new String[]{"S10", "S50"}, "lightrail", "Main", 14));
+
+        return interchanges;
+    }
+
     public static List<MetroStation> getAllStations(boolean isPassanteClosed) {
         if(CACHED_STATIONS == null) {
             List<MetroStation> allStations = new ArrayList<>();
