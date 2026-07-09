@@ -3565,7 +3565,6 @@ public class StationDB {
         stations.add(new MetroStation("Biasca",  46.35198,  8.97416,  "Main","S50"));
         stations.add(new MetroStation("Castione",  46.22363,  9.0415,  "Main","S50"));
         stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S50"));
-        stations.add(new MetroStation("Giubiasco",  46.17381,  9.00359,  "Main","S50"));
         stations.add(new MetroStation("Lugano",  46.00501,  8.94695,  "Main","S50"));
         stations.add(new MetroStation("Lugano Paradiso",  45.98917,  8.94656,  "Main","S50"));
         stations.add(new MetroStation("Melide",  45.95576,  8.94823,  "Main","S50"));
@@ -6574,7 +6573,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Capolago - Riva San Vitale", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Maroggia - Melano", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Melide", new String[]{"S10", "S50", "S90", "RE80"}, "lightrail", "Main", 8));
-        interchanges.add(new InterchangeInfo("Lugano Paradiso", new String[]{"S10", "S90"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Lugano Paradiso", new String[]{"S10", "S40", "S50", "S90"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Lugano", new String[]{"S10", "S40", "S50", "S90", "RE80"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Giubiasco", new String[]{"S10", "S20", "S30", "S90"}, "lightrail", "Main", 11));
         interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S10", "S20", "S30", "S50", "S90"}, "lightrail", "Main", 12));
