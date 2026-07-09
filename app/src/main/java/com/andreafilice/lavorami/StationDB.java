@@ -3282,33 +3282,6 @@ public class StationDB {
         return stations;
     }
 
-    public static List<MetroStation> getStationsS50() {
-        List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Biasca",  46.35198,  8.97416,  "Main","S50"));
-        stations.add(new MetroStation("Castione",  46.22363,  9.0415,  "Main","S50"));
-        stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S50"));
-        stations.add(new MetroStation("Giubiasco",  46.17381,  9.00359,  "Main","S50"));
-        stations.add(new MetroStation("Lugano",  46.00501,  8.94695,  "Main","S50"));
-        stations.add(new MetroStation("Lugano Paradiso",  45.98917,  8.94656,  "Main","S50"));
-        stations.add(new MetroStation("Melide",  45.95576,  8.94823,  "Main","S50"));
-        stations.add(new MetroStation("Maroggia - Melano",  45.93241,  8.97383,  "Main","S50"));
-        stations.add(new MetroStation("Capolago - Riva S. Vitale",  45.90285,  8.97889,  "Main","S50"));
-        stations.add(new MetroStation("Mendrisio S. Martino",  45.87721,  8.98308,  "Main","S50"));
-        stations.add(new MetroStation("Mendrisio",  45.8691,  8.97878,  "Main","S50"));
-        stations.add(new MetroStation("Stabio",  45.84971,  8.94394,  "Main","S50"));
-        stations.add(new MetroStation("Cantello Gaggiolo",  45.83781,  8.90739,  "Main","S50"));
-        stations.add(new MetroStation("Arcisate",  45.85857,  8.86291,  "Main","S50"));
-        stations.add(new MetroStation("Induno Olona",  45.84587,  8.83802,  "Main","S50"));
-        stations.add(new MetroStation("Varese",  45.81625,  8.83295,  "Main","S50"));
-        stations.add(new MetroStation("Gallarate",  45.65974,  8.79853,  "Main","S50"));
-        stations.add(new MetroStation("Busto Arsizio",  45.61593,  8.86589,  "Main","S50"));
-        stations.add(new MetroStation("Busto Arsizio Nord",  45.60617,  8.85139,  "Main","S50"));
-        stations.add(new MetroStation("Ferno - Lonate Pozzolo",  45.60854,  8.75525,  "Main","S50"));
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","S50"));
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","S50"));
-        return stations;
-    }
-
     public static List<MetroStation> getStationsS30() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Cadenazzo",  46.15262,  8.94168,  "Main","S30"));
@@ -3345,6 +3318,33 @@ public class StationDB {
         stations.add(new MetroStation("Arcisate",  45.85857,  8.86291,  "Main","S40"));
         stations.add(new MetroStation("Induno Olona",  45.84587,  8.83802,  "Main","S40"));
         stations.add(new MetroStation("Varese",  45.81625,  8.83295,  "Main","S40"));
+        return stations;
+    }
+
+    public static List<MetroStation> getStationsS50() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Biasca",  46.35198,  8.97416,  "Main","S50"));
+        stations.add(new MetroStation("Castione",  46.22363,  9.0415,  "Main","S50"));
+        stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S50"));
+        stations.add(new MetroStation("Giubiasco",  46.17381,  9.00359,  "Main","S50"));
+        stations.add(new MetroStation("Lugano",  46.00501,  8.94695,  "Main","S50"));
+        stations.add(new MetroStation("Lugano Paradiso",  45.98917,  8.94656,  "Main","S50"));
+        stations.add(new MetroStation("Melide",  45.95576,  8.94823,  "Main","S50"));
+        stations.add(new MetroStation("Maroggia - Melano",  45.93241,  8.97383,  "Main","S50"));
+        stations.add(new MetroStation("Capolago - Riva S. Vitale",  45.90285,  8.97889,  "Main","S50"));
+        stations.add(new MetroStation("Mendrisio S. Martino",  45.87721,  8.98308,  "Main","S50"));
+        stations.add(new MetroStation("Mendrisio",  45.8691,  8.97878,  "Main","S50"));
+        stations.add(new MetroStation("Stabio",  45.84971,  8.94394,  "Main","S50"));
+        stations.add(new MetroStation("Cantello Gaggiolo",  45.83781,  8.90739,  "Main","S50"));
+        stations.add(new MetroStation("Arcisate",  45.85857,  8.86291,  "Main","S50"));
+        stations.add(new MetroStation("Induno Olona",  45.84587,  8.83802,  "Main","S50"));
+        stations.add(new MetroStation("Varese",  45.81625,  8.83295,  "Main","S50"));
+        stations.add(new MetroStation("Gallarate",  45.65974,  8.79853,  "Main","S50"));
+        stations.add(new MetroStation("Busto Arsizio",  45.61593,  8.86589,  "Main","S50"));
+        stations.add(new MetroStation("Busto Arsizio Nord",  45.60617,  8.85139,  "Main","S50"));
+        stations.add(new MetroStation("Ferno - Lonate Pozzolo",  45.60854,  8.75525,  "Main","S50"));
+        stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","S50"));
+        stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","S50"));
         return stations;
     }
 
