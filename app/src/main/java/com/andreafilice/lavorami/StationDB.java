@@ -1180,9 +1180,9 @@ public class StationDB {
     public static List<MetroStation> getStationsS9() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Saronno", 45.62534, 9.03075, "Main", "S9"));
-        stations.add(new MetroStation("Saronno Sud", 45.61235, 9.04557, "Main", "S9"));
+        stations.add(new MetroStation("Saronno Sud", 45.6127, 9.0457, "Main", "S9"));
         stations.add(new MetroStation("Ceriano Laghetto - Solaro", 45.6249, 9.07936, "Main", "S9"));
-        stations.add(new MetroStation("Cesano Maderno", 45.63073, 9.14209, "Main", "S9"));
+        stations.add(new MetroStation("Cesano Maderno", 45.63202, 9.14178, "Main", "S9"));
         stations.add(new MetroStation("Seveso Baruccana", 45.63807, 9.16292, "Main", "S9"));
         stations.add(new MetroStation("Seregno", 45.64609, 9.20302, "Main", "S9"));
         stations.add(new MetroStation("Desio", 45.62011, 9.21829, "Main", "S9"));
