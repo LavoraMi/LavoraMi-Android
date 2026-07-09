@@ -6376,6 +6376,17 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Quartino", new String[]{"S30"}, "lightrail", "Main", 18));
         interchanges.add(new InterchangeInfo("Cadenazzo", new String[]{"S30", "S20", "RE80"}, "lightrail", "Main", 19));
 
+        /// TILO S40
+        interchanges.add(new InterchangeInfo("Varese", new String[]{"S40", "S5", "S50", "RE5"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Induno Olona", new String[]{"S40", "S50", "RE5"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Arcisate", new String[]{"S40", "S50", "RE5"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Cantello Gaggiolo", new String[]{"S40", "S50"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Stabio", new String[]{"S40", "S50", "RE80"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Mendrisio", new String[]{"S40", "S10", "S50", "S90", "RE80"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Balerna", new String[]{"S40", "S10", "RE80"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Chiasso", new String[]{"S40", "S10", "RE80"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Como San Giovanni", new String[]{"S40", "S10", "S11", "R18", "RE13", "RE80"}, "lightrail", "Main", 8));
+
         return interchanges;
     }
 
