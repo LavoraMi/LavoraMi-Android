@@ -224,6 +224,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             chipMappa.setChecked(true);
+            dismissActiveBranchDialog();
 
             cardMappa.setVisibility(View.VISIBLE);
             containerLavori.setVisibility(View.GONE);
@@ -252,6 +253,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipLavori.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
             chipLavori.setChecked(true);
+            dismissActiveBranchDialog();
 
             cardMappa.setVisibility(View.GONE);
             containerLavori.setVisibility(View.VISIBLE);
@@ -1020,9 +1022,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private BottomSheetDialog activeBranchDialog;
     private void showBranchDialog(List<String> branches, List<InterchangeInfo> allMatched) {
 
-        if (activeBranchDialog != null && activeBranchDialog.isShowing()) {
-            activeBranchDialog.dismiss();
-        }
+        dismissActiveBranchDialog();
 
         BottomSheetDialog dialog = new BottomSheetDialog(this);
 
@@ -1130,6 +1130,13 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         dialog.setContentView(root);
         dialog.show();
+    }
+
+    private void dismissActiveBranchDialog() {
+        if (activeBranchDialog != null && activeBranchDialog.isShowing()) {
+            activeBranchDialog.dismiss();
+        }
+        activeBranchDialog = null;
     }
 
     private final Map<String, List<View>> branchViewCache = new LinkedHashMap<>();
@@ -2051,6 +2058,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         executor.shutdownNow();
         interchangeHandler.removeCallbacksAndMessages(null);
         interchangeHandler.removeCallbacksAndMessages(null);
+        dismissActiveBranchDialog();
     }
 
     private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ArrivalsView> {
