@@ -1936,6 +1936,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private boolean isChipTransitioning = false;
+    private boolean pendingChipUpdate = false;
     private void updateChipGroupSizes(ChipGroup chipGroup) {
         if (chipGroup.getWidth() == 0) {
             chipGroup.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -1950,7 +1951,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             return;
         }
 
-        if (isChipTransitioning) return;
+        if (isChipTransitioning) {
+            pendingChipUpdate = true;
+            return;
+        }
 
         int childCount = chipGroup.getChildCount();
         if (childCount == 0) return;
@@ -1990,6 +1994,11 @@ public class LinesDetailActivity extends AppCompatActivity {
                 @Override
                 public void onTransitionEnd(Transition transition) {
                     isChipTransitioning = false;
+
+                    if (pendingChipUpdate) {
+                        pendingChipUpdate = false;
+                        updateChipGroupSizes(chipGroup);
+                    }
                 }
             });
 
@@ -2098,8 +2107,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     else
                         colorFirst = Color.parseColor("#FF9800");
                 }
-                else
-                    colorFirst = Color.parseColor("#4CAF50");
+                else colorFirst = Color.parseColor("#4CAF50");
 
                 if(first.minutesFromNow > 5)
                     holder.iconFirstClock.setImageDrawable(getDrawable(R.drawable.ic_clock_three));
@@ -2112,21 +2120,16 @@ public class LinesDetailActivity extends AppCompatActivity {
                 holder.iconFirstClock.setColorFilter(colorFirst);
                 holder.txtFirstMins.setTextColor(colorFirst);
 
-                if (first.minutesFromNow == 0) {
-                    holder.txtFirstMins.setText(getString(R.string.leavingTitle));
-                }
+                if (first.minutesFromNow == 0) holder.txtFirstMins.setText(getString(R.string.leavingTitle));
                 else if (first.minutesFromNow >= 60) {
                     int hours = first.minutesFromNow / 60;
                     int mins = first.minutesFromNow % 60;
 
-                    if (mins == 0)
-                        holder.txtFirstMins.setText(hours + " h");
-                    else
-                        holder.txtFirstMins.setText(hours + " h " + mins + " min");
+                    if (mins == 0) holder.txtFirstMins.setText(hours + " h");
+                    else holder.txtFirstMins.setText(hours + " h " + mins + " min");
                 }
-                else {
-                    holder.txtFirstMins.setText(first.minutesFromNow + " min");
-                }
+                else holder.txtFirstMins.setText(first.minutesFromNow + " min");
+
                 holder.txtFirstTime.setText(first.time);
 
                 holder.containerOtherDepartures.removeAllViews();
@@ -2144,13 +2147,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                             int hours = dep.minutesFromNow / 60;
                             int mins = dep.minutesFromNow % 60;
 
-                            if (mins == 0)
-                                txtMins.setText(hours + " h");
-                            else
-                                txtMins.setText(hours + " h " + mins + " min");
-                        } else
-                            txtMins.setText(dep.minutesFromNow + " min");
-
+                            if (mins == 0) txtMins.setText(hours + " h");
+                            else txtMins.setText(hours + " h " + mins + " min");
+                        }
+                        else txtMins.setText(dep.minutesFromNow + " min");
                         txtTime.setText(dep.time);
 
                         holder.containerOtherDepartures.addView(otherDepView);
