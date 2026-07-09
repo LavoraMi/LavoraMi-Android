@@ -1716,7 +1716,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S30": return String.format("2 %s.", getString(R.string.hoursPrefix));
             case "RE80":
             case "S7":
-                return String.format("30 min - %s.", getString(R.string.hourPrefix));
+                return String.format("30 min - 1 %s.", getString(R.string.hourPrefix));
             case "S1":
             case "S2":
             case "S3":
