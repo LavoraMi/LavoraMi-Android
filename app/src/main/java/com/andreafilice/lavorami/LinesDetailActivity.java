@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.transition.ChangeBounds;
+import android.transition.Transition;
+import android.transition.TransitionListenerAdapter;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -1969,27 +1971,19 @@ public class LinesDetailActivity extends AppCompatActivity {
         int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
 
         boolean animate = chipGroup.getTag() != null;
-
         if (animate) {
             isChipTransitioning = true;
 
-            ChangeBounds transition = new ChangeBounds();
-            transition.setDuration(250);
-            transition.addListener(new android.transition.Transition.TransitionListener() {
-                @Override public void onTransitionEnd(android.transition.Transition t) {
+            ChangeBounds changeBounds = new ChangeBounds();
+            changeBounds.setDuration(250);
+            changeBounds.addListener(new TransitionListenerAdapter() {
+                @Override
+                public void onTransitionEnd(Transition transition) {
                     isChipTransitioning = false;
-                    t.removeListener(this);
                 }
-                @Override public void onTransitionCancel(android.transition.Transition t) {
-                    isChipTransitioning = false;
-                    t.removeListener(this);
-                }
-                @Override public void onTransitionStart(android.transition.Transition t) {}
-                @Override public void onTransitionPause(android.transition.Transition t) {}
-                @Override public void onTransitionResume(android.transition.Transition t) {}
             });
 
-            TransitionManager.beginDelayedTransition(chipGroup, transition);
+            TransitionManager.beginDelayedTransition(chipGroup, changeBounds);
         }
         chipGroup.setTag(Boolean.TRUE);
 
