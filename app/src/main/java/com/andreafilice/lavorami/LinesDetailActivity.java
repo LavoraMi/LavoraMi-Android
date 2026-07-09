@@ -1017,8 +1017,19 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
     }
 
+    private BottomSheetDialog activeBranchDialog;
     private void showBranchDialog(List<String> branches, List<InterchangeInfo> allMatched) {
+
+        if (activeBranchDialog != null && activeBranchDialog.isShowing()) {
+            activeBranchDialog.dismiss();
+        }
+
         BottomSheetDialog dialog = new BottomSheetDialog(this);
+
+        activeBranchDialog = dialog;
+        dialog.setOnDismissListener(d -> {
+            if (activeBranchDialog == dialog) activeBranchDialog = null;
+        });
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
@@ -1905,6 +1916,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         handler.postDelayed(arriviRunnable, 10000);
     }
 
+    private boolean isChipTransitioning = false;
     private void updateChipGroupSizes(ChipGroup chipGroup) {
         if (chipGroup.getWidth() == 0) {
             chipGroup.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -1918,6 +1930,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             );
             return;
         }
+
+        if (isChipTransitioning) return;
 
         int childCount = chipGroup.getChildCount();
         if (childCount == 0) return;
@@ -1948,7 +1962,28 @@ public class LinesDetailActivity extends AppCompatActivity {
         int remainingWidth = totalWidth - totalUnselectedSpace - totalSpacingSpace;
 
         boolean animate = chipGroup.getTag() != null;
-        if (animate) TransitionManager.beginDelayedTransition(chipGroup, new ChangeBounds().setDuration(250));
+
+        if (animate) {
+            isChipTransitioning = true;
+
+            ChangeBounds transition = new ChangeBounds();
+            transition.setDuration(250);
+            transition.addListener(new android.transition.Transition.TransitionListener() {
+                @Override public void onTransitionEnd(android.transition.Transition t) {
+                    isChipTransitioning = false;
+                    t.removeListener(this);
+                }
+                @Override public void onTransitionCancel(android.transition.Transition t) {
+                    isChipTransitioning = false;
+                    t.removeListener(this);
+                }
+                @Override public void onTransitionStart(android.transition.Transition t) {}
+                @Override public void onTransitionPause(android.transition.Transition t) {}
+                @Override public void onTransitionResume(android.transition.Transition t) {}
+            });
+
+            TransitionManager.beginDelayedTransition(chipGroup, transition);
+        }
         chipGroup.setTag(Boolean.TRUE);
 
         for (int i = 0; i < totalVisibleCount; i++) {
