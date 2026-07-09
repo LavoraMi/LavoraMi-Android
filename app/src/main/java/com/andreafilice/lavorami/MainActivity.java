@@ -644,6 +644,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.chipProgrammati),
             findViewById(R.id.chipATM),
             findViewById(R.id.chipTrenord),
+            findViewById(R.id.chipTILO),
             findViewById(R.id.chipMovibus),
             findViewById(R.id.chipStav),
             findViewById(R.id.chipStar),
