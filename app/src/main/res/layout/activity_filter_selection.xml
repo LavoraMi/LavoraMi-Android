@@ -414,7 +414,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/inter"
-                            android:text="di TILO"
+                            android:text="@string/diTiloLines"
                             android:textColor="@color/text_primary"
                             android:textSize="17sp" />
 

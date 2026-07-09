@@ -412,4 +412,6 @@
     <string name="customiseTitle">Customise</string>
     <string name="nicknameEmptyError">The Username cannot be left blank.</string>
     <string name="nicknameEqualError">Your new Username cannot be the same as your current Username.</string>
+    <string name="diTiloLines">by TILO</string>
+    <string name="tiloLines">TILO Lines</string>
 </resources>

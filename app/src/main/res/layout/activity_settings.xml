@@ -371,7 +371,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_toEndOf="@+id/iconMainTILO"
                         android:fontFamily="@font/font_main"
-                        android:text="Linee TILO"
+                        android:text="@string/tiloLines"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 

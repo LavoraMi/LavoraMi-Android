@@ -411,4 +411,6 @@
     <string name="customiseTitle">Personalizza</string>
     <string name="nicknameEmptyError">Il Nome Utente non può essere vuoto.</string>
     <string name="nicknameEqualError">Il nuovo Nome Utente non può essere uguale al tuo Nome Utente attuale.</string>
+    <string name="diTiloLines">di TILO</string>
+    <string name="tiloLines">Linee TILO</string>
 </resources>

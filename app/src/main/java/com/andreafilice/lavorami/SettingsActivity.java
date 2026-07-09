@@ -445,7 +445,7 @@ public class SettingsActivity extends AppCompatActivity {
             case PROGRAMMATI: return getString(R.string.scheduledFilter);
             case DI_ATM: return getString(R.string.atmFilter);
             case DI_TRENORD: return getString(R.string.trenordFilter);
-            case DI_TILO: return "di TILO";
+            case DI_TILO: return getString(R.string.diTiloLines);
             case DI_MOVIBUS: return getString(R.string.movibusFilter);
             case DI_STAV: return getString(R.string.stavFilter);
             case DI_STAR: return getString(R.string.starFilter);
