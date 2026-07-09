@@ -6647,6 +6647,21 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Arbedo - Castione", new String[]{"S50", "S10", "S20", "S90"}, "lightrail", "Main", 18));
         interchanges.add(new InterchangeInfo("Biasca", new String[]{"S50", "S10"}, "lightrail", "Main", 19));
 
+        /// TILO S90
+        interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S90", "S10", "S20", "S30", "S50"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Giubiasco", new String[]{"S90", "S10", "S20", "S30"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Rivera - Bironico", new String[]{"S90", "S10", "S50"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Mezzovico", new String[]{"S90", "S10", "S40", "S50"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Taverne - Torricella", new String[]{"S90", "S10", "S40", "S50"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Lamone - Cadempino", new String[]{"S90", "S10", "S40", "S50"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Lugano", new String[]{"S90", "S10", "S40", "S50", "RE80"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Lugano Paradiso", new String[]{"S90", "S10", "S40", "S50"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Melide", new String[]{"S90", "S10", "S50", "RE80"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Maroggia - Melano", new String[]{"S90", "S10", "S50", "RE80"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Capolago - Riva San Vitale", new String[]{"S90", "S10", "S50", "RE80"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Mendrisio San Martino", new String[]{"S90", "S10", "S50", "RE80"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Mendrisio", new String[]{"S90", "S10", "S40", "S50", "RE80"}, "lightrail", "Main", 12));
+
         return interchanges;
     }
 
