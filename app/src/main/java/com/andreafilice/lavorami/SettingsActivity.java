@@ -305,6 +305,7 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
             findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
             findViewById(R.id.busLinesFavorites), //? "Linee Bus"
+            findViewById(R.id.tiloLinesFavorites), //? "Linee TILO"
             findViewById(R.id.movibusLinesFavorites), //? "Linee Movibus"
             findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
             findViewById(R.id.starLinesFavorites), //? "Linee STAR"
@@ -312,25 +313,27 @@ public class SettingsActivity extends AppCompatActivity {
         };
 
         RelativeLayout[] starButtons = {
-                findViewById(R.id.sLinesLayout),
-                findViewById(R.id.rLinesLayout),
-                findViewById(R.id.reLinesLayout),
-                findViewById(R.id.busLinesATMLayout),
-                findViewById(R.id.tramLinesATMLayout),
-                findViewById(R.id.metroLinesATMLayout),
-                findViewById(R.id.disclosureHeaderMovibus),
-                findViewById(R.id.disclosureHeaderStav),
-                findViewById(R.id.disclosureHeaderStar),
-                findViewById(R.id.disclosureHeaderAutoguidovie)
+            findViewById(R.id.sLinesLayout),
+            findViewById(R.id.rLinesLayout),
+            findViewById(R.id.reLinesLayout),
+            findViewById(R.id.busLinesATMLayout),
+            findViewById(R.id.tramLinesATMLayout),
+            findViewById(R.id.metroLinesATMLayout),
+            findViewById(R.id.disclosureHeaderTILO),
+            findViewById(R.id.disclosureHeaderMovibus),
+            findViewById(R.id.disclosureHeaderStav),
+            findViewById(R.id.disclosureHeaderStar),
+            findViewById(R.id.disclosureHeaderAutoguidovie)
         };
 
         String[] lineCodes = {
             "S",
             "R",
             "RE",
-            "Metro",
-            "Tram",
             "Bus",
+            "Tram",
+            "Metro",
+            "Tilo",
             "z6",
             "z55",
             "z50",

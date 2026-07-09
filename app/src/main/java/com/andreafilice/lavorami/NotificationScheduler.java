@@ -11,6 +11,7 @@ import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -36,73 +37,68 @@ public class NotificationScheduler {
             boolean isMatch = false;
 
             if (event.lines != null) {
+                for (String fav : favorites) {
+                    if (isMatch) break;
 
-                for (String line : event.lines) {
-                    if (favorites.contains(line)) {
-                        isMatch = true;
-                        break;
-                    }
-                }
-
-                if (!isMatch) {
-                    for (String fav : favorites) {
-                        if (isMatch) break;
-
-                        switch (fav) {
-                            case "Metro":
-                                for (String line : event.lines) {
-                                    if (line.matches("(?i)M[1-5].*")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "S":
-                                for (String line : event.lines) {
-                                    if (line.matches("(?i)^S\\d+$")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "R":
-                                for (String line : event.lines) {
-                                    if (line.matches("(?i)^R\\d+$")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "RE":
-                                for (String line : event.lines) {
-                                    if (line.matches("(?i)^RE\\d+$")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "Tram":
-                                for (String line : event.lines) {
-                                    if (line.matches("^([1-9]|[1-2][0-9]|3[0-3])$")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "z55":
-                                for (String line : event.lines) {
-                                    if (line.toLowerCase().startsWith("z55") || line.toLowerCase().startsWith("z56")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "z50":
-                                for (String line : event.lines) {
-                                    if (line.toLowerCase().startsWith("z50") || line.toLowerCase().startsWith("z51")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "z6":
-                                for (String line : event.lines) {
-                                    if (line.toLowerCase().startsWith("z6")) { isMatch = true; break; }
-                                }
-                                break;
-                            case "Autoguidovie":
-                                if (event.company != null && event.company.toLowerCase().contains("autoguidovie")) {
-                                    isMatch = true;
-                                }
-                                break;
-                            case "Bus":
-                                for (String line : event.lines) {
-                                    boolean isTram  = line.matches("^([1-9]|[1-2][0-9]|3[0-3])$");
-                                    boolean isMetro = line.matches("(?i)M[1-5].*");
-                                    boolean isTreno = line.matches("(?i)^(S|R|RE|RV).*");
-                                    if (!isTram && !isMetro && !isTreno) { isMatch = true; break; }
-                                }
-                                break;
-                        }
+                    switch (fav) {
+                        case "Metro":
+                            for (String line : event.lines) {
+                                if (line.matches("(?i)M[1-5].*")) { isMatch = true; break; }
+                            }
+                            break;
+                        case "S":
+                            for (String line : event.lines) {
+                                if (line.matches("(?i)^S\\d+$") && !isLineaTilo(line)) { isMatch = true; break; }
+                            }
+                            break;
+                        case "R":
+                            for (String line : event.lines) {
+                                if (line.matches("(?i)^R\\d+$") && !isLineaTilo(line)) { isMatch = true; break; }
+                            }
+                            break;
+                        case "RE":
+                            for (String line : event.lines) {
+                                if (line.matches("(?i)^RE\\d+$") && !isLineaTilo(line)) { isMatch = true; break; }
+                            }
+                            break;
+                        case "Tram":
+                            for (String line : event.lines) {
+                                if (line.matches("^([1-9]|[1-2][0-9]|3[0-3])$")) { isMatch = true; break; }
+                            }
+                            break;
+                        case "Tilo":
+                            for (String line : event.lines) {
+                                if (isLineaTilo(line)) { isMatch = true; break; }
+                            }
+                            break;
+                        case "z55":
+                            for (String line : event.lines) {
+                                if (line.toLowerCase().startsWith("z55") || line.toLowerCase().startsWith("z56")) { isMatch = true; break; }
+                            }
+                            break;
+                        case "z50":
+                            for (String line : event.lines) {
+                                if (line.toLowerCase().startsWith("z50") || line.toLowerCase().startsWith("z51")) { isMatch = true; break; }
+                            }
+                            break;
+                        case "z6":
+                            for (String line : event.lines) {
+                                if (line.toLowerCase().startsWith("z6")) { isMatch = true; break; }
+                            }
+                            break;
+                        case "Autoguidovie":
+                            if (event.company != null && event.company.toLowerCase().contains("autoguidovie")) {
+                                isMatch = true;
+                            }
+                            break;
+                        case "Bus":
+                            for (String line : event.lines) {
+                                boolean isTram  = line.matches("^([1-9]|[1-2][0-9]|3[0-3])$");
+                                boolean isMetro = line.matches("(?i)M[1-5].*");
+                                boolean isTreno = line.matches("(?i)^(S|R|RE|RV).*");
+                                if (!isTram && !isMetro && !isTreno) { isMatch = true; break; }
+                            }
+                            break;
                     }
                 }
             }
@@ -295,6 +291,17 @@ public class NotificationScheduler {
                                 strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
             }
         }
+    }
+
+    private static boolean isLineaTilo(String nomeLinea) {
+        ArrayList<String> tiloLines = new ArrayList<>(Arrays.asList("S10", "S20", "S30", "S40", "S50", "S90", "RE80"));
+        boolean isValid = false;
+
+        for(int i = 0; i < tiloLines.size(); i++){
+            if (tiloLines.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
+        }
+
+        return nomeLinea != null && isValid;
     }
 
     private static boolean isViaChecked(String value) {
