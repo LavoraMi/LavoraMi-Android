@@ -1672,7 +1672,6 @@ public class StationDB {
         return stations;
     }
 
-
     public static List<MetroStation> getStationsS11() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Como S. Giovanni", 45.80901, 9.07279, "Main", "S11"));
