@@ -1806,8 +1806,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S6":
             case "S12":
             case "S13":
+            case "S20":
             case "S40":
             case "S50":
+            case "S90":
             case "RE80":
             case "MXP1":
             case "MXP2":

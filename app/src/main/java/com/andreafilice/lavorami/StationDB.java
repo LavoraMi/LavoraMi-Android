@@ -1393,7 +1393,6 @@ public class StationDB {
         return stations;
     }
 
-
     public static List<MetroStation> getStationsS9() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Saronno", 45.62534, 9.03075, "Main", "S9"));
