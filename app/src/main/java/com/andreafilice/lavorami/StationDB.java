@@ -7162,15 +7162,15 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50746, 8.82959, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50701, 8.82871, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50656, 8.82755, "Main", "z622"));
-        stations.add(new MetroStation("NO_DRAW", 45.50645, 8.82674, "Main", "z622"));
-        stations.add(new MetroStation("NO_DRAW", 45.50557, 8.82178, "Main", "z622"));
+        stations.add(new MetroStation("NO_DRAW", 45.50646, 8.82674, "Main", "z622"));
+        stations.add(new MetroStation("NO_DRAW", 45.50556, 8.82175, "Main", "z622"));
         stations.add(new MetroStation("Cuggiono, Garibaldi fr. 32", 45.50556, 8.82079, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50556, 8.81943, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50555, 8.81831, "Main", "z622"));
-        stations.add(new MetroStation("NO_DRAW", 45.50613, 8.817, "Main", "z622"));
+        stations.add(new MetroStation("NO_DRAW", 45.50613, 8.81697, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50626, 8.81686, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50646, 8.81688, "Main", "z622"));
-        stations.add(new MetroStation("Cuggiono, Della Vittoria fr. 12", 45.50682, 8.81699, "Main", "z622"));
+        stations.add(new MetroStation("Cuggiono, Della Vittoria fr.  12", 45.50682, 8.81699, "Main", "z622"));
         return stations;
     }
 
