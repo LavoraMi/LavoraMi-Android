@@ -246,7 +246,7 @@ public class LinesActivity extends AppCompatActivity {
                     findViewById(R.id.emptyViewRecent).setVisibility((query.isEmpty() && isRecentEmpty) ? View.VISIBLE : View.GONE);
                     containerRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
 
-                    boolean[] firstContainerTracker = { false };
+                    boolean[] firstContainerTracker = { hasRecent };
 
                     //*METRO LINES
                     titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
