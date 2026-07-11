@@ -206,6 +206,9 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemHolder.progressBar.setProgressTintList(ColorStateList.valueOf(progress == 100 ? sColorGreen : sColorRed));
 
             itemHolder.translateBtn.setVisibility(showTranslateButton ? View.VISIBLE : View.GONE);
+            String cleanedDetails = isImportant ? details.replace("[LAVORO IMPORTANTE]", "").trim() : details;
+            itemHolder.translateBtn.setOnClickListener(v -> mostraBottomSheetTraduzione(ctx, event, cleanedDetails, langCode));
+
             bindChips(itemHolder, event);
             itemHolder.locationIcon.setVisibility((event.getLines() != null && event.getLines().length > 0) ? View.VISIBLE : View.GONE);
         }
@@ -274,6 +277,44 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
             else holder.chipGroupLinee.getChildAt(i).setVisibility(View.GONE);
+        }
+    }
+
+    private static void mostraBottomSheetTraduzione(Context ctx, EventDescriptor evento, String cleanDet, String langCode) {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(ctx);
+        View sheetView = LayoutInflater.from(ctx).inflate(R.layout.item_sheet_translated, null);
+
+        ShimmerFrameLayout loadingLayout = sheetView.findViewById(R.id.loadingLayout);
+        LinearLayout layoutDefault = sheetView.findViewById(R.id.layoutDefault);
+        LinearLayout layoutTerms = sheetView.findViewById(R.id.layoutPrivacy);
+        Button acceptTerms = sheetView.findViewById(R.id.btnContinue);
+        Button cancelTerms = sheetView.findViewById(R.id.btnCancel);
+        TextView downloadingText = sheetView.findViewById(R.id.textDownloading);
+        boolean isAcceptingTerms = DataManager.getBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, false);
+
+        loadingLayout.startShimmer();
+        bottomSheetDialog.setContentView(sheetView);
+        bottomSheetDialog.show();
+
+        if (isAcceptingTerms) {
+            layoutTerms.setVisibility(View.GONE);
+            layoutDefault.setVisibility(View.VISIBLE);
+            downloadingText.setVisibility(View.GONE);
+            translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+        }
+        else {
+            layoutDefault.setVisibility(View.GONE);
+            layoutTerms.setVisibility(View.VISIBLE);
+
+            acceptTerms.setOnClickListener(v -> {
+                layoutDefault.setVisibility(View.VISIBLE);
+                layoutTerms.setVisibility(View.GONE);
+                downloadingText.setVisibility(View.VISIBLE);
+                DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
+                translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+            });
+
+            cancelTerms.setOnClickListener(v -> bottomSheetDialog.cancel());
         }
     }
 
