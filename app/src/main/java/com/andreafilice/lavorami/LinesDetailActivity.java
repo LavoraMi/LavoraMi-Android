@@ -672,9 +672,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void disegnaPolilineaRitorno(MapView mapView, List<MetroStation> stazioni, String hexColor) {
-        /// In questa modalità disegniamo SOLO i punti il cui branch contiene la stringa "Ritorno"
-        /// (sia branch=="Ritorno" puro sia branch=="Main - Ritorno" o simili), mantenendo l'ordine
-        /// di inserimento originale della lista, che rappresenta la sequenza geografica del percorso.
         List<Point> points = new ArrayList<>();
 
         for (MetroStation station : stazioni) {
@@ -689,10 +686,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void disegnaPolilineaAndata(MapView mapView, List<MetroStation> stazioni, String hexColor) {
-        /// La dorsale principale è composta da TUTTE le stazioni il cui branch contiene "Main"
-        /// (sia "Main" puro sia "Main - Ritorno", che è un punto di giunzione condiviso),
-        /// mantenendo l'ordine di inserimento originale della lista.
-        /// Escludiamo solo le stazioni con branch ESATTAMENTE "Ritorno" (puro).
         List<MetroStation> stazioniFiltrate = new ArrayList<>();
         for (MetroStation s : stazioni) {
             String branch = s.getBranch();
