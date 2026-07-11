@@ -2182,7 +2182,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 chip.setChipBackgroundColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(coloreLinea, 38)));
                 float iconSize = chip.getChipIconSize();
-                int calculatedIconPadding = (int) ((unselectedWidth - iconSize - 10) / 2);
+                int calculatedIconPadding = (int) ((unselectedWidth - iconSize) / 2);
                 safelyUpdatePadding(chip, calculatedIconPadding, 0, 0, 0);
             }
         }
