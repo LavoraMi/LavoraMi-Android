@@ -366,6 +366,7 @@
                 app:chipIcon="@drawable/ic_location"
                 app:fontFamily="@font/font_main"
                 app:chipIconSize="16dp"
+                app:ensureMinTouchTargetSize="false"
                 app:chipIconVisible="true"/>
 
             <com.google.android.material.chip.Chip
@@ -379,6 +380,7 @@
                 app:chipIcon="@drawable/ic_triangle_warning"
                 app:fontFamily="@font/font_main"
                 app:chipIconSize="18dp"
+                app:ensureMinTouchTargetSize="false"
                 app:chipIconVisible="true"/>
 
             <com.google.android.material.chip.Chip
@@ -392,6 +394,7 @@
                 app:chipIcon="@drawable/ic_transfer"
                 app:fontFamily="@font/font_main"
                 app:chipIconSize="18dp"
+                app:ensureMinTouchTargetSize="false"
                 app:chipIconVisible="true"/>
 
             <com.google.android.material.chip.Chip
@@ -406,6 +409,7 @@
                 app:fontFamily="@font/font_main"
                 app:chipIconSize="18dp"
                 app:chipIconVisible="true"
+                app:ensureMinTouchTargetSize="false"
                 android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
         <LinearLayout

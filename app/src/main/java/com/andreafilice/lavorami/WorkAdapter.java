@@ -240,7 +240,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     float density = ctx.getResources().getDisplayMetrics().density;
                     int heightPx = (int) (26 * density);
                     chip.setShapeAppearanceModel(chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build());
-                    chip.setEnsureMinTouchTargetSize(false);
                     chip.setChipMinHeight(heightPx);
                     chip.setMinHeight(heightPx);
                     chip.setChipStartPadding(0f);
@@ -255,6 +254,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     chip.setClickable(false);
                     chip.setCheckable(false);
                     holder.chipGroupLinee.addView(chip);
+                    chip.setEnsureMinTouchTargetSize(false);
                 }
 
                 if (!nomePulito.equals(chip.getText().toString())) {

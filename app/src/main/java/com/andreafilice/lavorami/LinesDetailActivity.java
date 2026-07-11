@@ -1534,7 +1534,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             chip.setIconStartPadding(10);
         }
 
-        chip.setEnsureMinTouchTargetSize(false);
         chip.setChipMinHeight(heightPx);
         chip.setMinHeight(heightPx);
         chip.setChipStartPadding(0f); chip.setChipEndPadding(0f);
@@ -1549,6 +1548,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setCloseIconVisible(false);
         chip.setClickable(false);
         chip.setCheckable(false);
+        chip.setEnsureMinTouchTargetSize(false);
         return chip;
     }
 

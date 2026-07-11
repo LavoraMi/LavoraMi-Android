@@ -26,3 +26,4 @@ app/google-services.json
 .idea/misc.xml
 .idea/vcs.xml
 .idea/gradle.xml
+.idea/planningMode.xml
