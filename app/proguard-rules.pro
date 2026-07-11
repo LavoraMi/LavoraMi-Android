@@ -16,6 +16,15 @@
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Mapbox Common SDK keep rules
+-keep class com.mapbox.common.** { *; }
+-keep interface com.mapbox.common.** { *; }
+
+# Specifically keep native callback classes
+-keep class * extends com.mapbox.common.ResultCallback { *; }
+-dontwarn com.mapbox.common.**
+
+# Preserve native methods
+-keepclasseswithmembernames class * {
+    native <methods>;
+}

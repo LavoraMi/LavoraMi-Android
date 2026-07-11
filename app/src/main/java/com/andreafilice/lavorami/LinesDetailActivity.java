@@ -107,6 +107,9 @@ public class LinesDetailActivity extends AppCompatActivity {
     private volatile boolean interscambiPreloaded = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private MapView mapViewRef;
+    private MapView pendingMapView;
+    private boolean mapAlreadyLoaded = false;
+    private boolean strikeFetchAttempted = false;
     private boolean modalitaRitorno = false;
     private TextView txtDirezioneMappa;
     private List<MetroStation> ultimeStazioniDisegnate;
@@ -190,12 +193,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {
-            if (strikeCDNResponse != null) onMapReady(mapViewReady, strikeCDNResponse);
-            else {
-                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    if (strikeCDNResponse != null) onMapReady(mapViewReady, strikeCDNResponse);
-                }, 300);
-            }
+            pendingMapView = mapViewReady;
+            checkIfReadyToLoadMap();
         });
 
         sessionManager = new SessionManager(this);
@@ -321,16 +320,22 @@ public class LinesDetailActivity extends AppCompatActivity {
         apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
             @Override
             public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+                strikeFetchAttempted = true;
                 if (response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     aggiornaInfoSuperiori();
                     fetchDeviations(strikeCDNResponse);
                     preloadInterscambi();
                 }
+                checkIfReadyToLoadMap();
             }
 
             @Override
-            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();}
+            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
+                strikeFetchAttempted = true;
+                Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                checkIfReadyToLoadMap();
+            }
         });
 
         //*SAVE TO "YOUR LINES"
@@ -517,6 +522,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         detBadge.getBackground().setTintMode(PorterDuff.Mode.SRC_IN);
     }
 
+    private void checkIfReadyToLoadMap() {
+        if (pendingMapView != null && (strikeCDNResponse != null || strikeFetchAttempted) && !mapAlreadyLoaded) {
+            onMapReady(pendingMapView, strikeCDNResponse);
+            mapAlreadyLoaded = true;
+        }
+    }
+
     private void onMapReady(MapView mapView, StrikeDescriptor cdnData) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
@@ -525,8 +537,9 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, StrikeDescriptor cdnData) {
 
+        boolean passanteWork = (cdnData != null) && cdnData.isPassanteWorkEnabled();
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
-        for (MetroStation s : StationDB.getAllStations(cdnData.isPassanteWorkEnabled())) {
+        for (MetroStation s : StationDB.getAllStations(passanteWork)) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
                 tutteLeStazioni.add(s);
         }
@@ -1593,6 +1606,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     public void fetchDeviations(StrikeDescriptor cdnData) {
+        if (cdnData == null) return;
         String[] lineeDeviate = cdnData.getLinesDeviation();
         String[] linkLinee = cdnData.getLinesDeviationLinks();
         String[] gtfsSupportedLines = cdnData.getSupportedGTFSLines();
@@ -1652,18 +1666,18 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
 
-            case "S1": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
+            case "S1": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
             case "S2": return "Seveso - Milano Rogoredo"; //* Mariano Comense - Milano Rogoredo
             case "S3": return "Saronno - Milano Cadorna";
             case "S4": return "Palazzolo Milanese - Milano Cadorna"; //* Camnago-Lentate - Milano Cadorna
-            case "S5": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Treviglio" : "Varese - Treviglio";
+            case "S5": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Treviglio" : "Varese - Treviglio";
             case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
             case "S7": return "Lecco - Milano Porta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Porta Garibaldi";
             case "S9": return "Saronno - Albairate Vermezzo";
             case "S11": return "Milano Porta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni
             case "S12": return "Melegnano - Cormano";
-            case "S13": return (strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia";
+            case "S13": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 
