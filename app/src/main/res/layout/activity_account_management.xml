@@ -131,7 +131,7 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_lock"
+                            android:src="@drawable/ic_key"
                             app:tint="#8E8E93" />
 
                         <EditText
@@ -997,7 +997,7 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_lock"
+                            android:src="@drawable/ic_key"
                             app:tint="#8E8E93" />
 
                         <EditText
