@@ -107,6 +107,9 @@ public class LinesDetailActivity extends AppCompatActivity {
     private volatile boolean interscambiPreloaded = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private MapView mapViewRef;
+    private boolean modalitaRitorno = false;
+    private TextView txtDirezioneMappa;
+    private List<MetroStation> ultimeStazioniDisegnate;
     SessionManager sessionManager;
     SupabaseAPI api;
     Retrofit retrofitAPI;
@@ -533,14 +536,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
         String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
 
-        List<Feature> markerFeatures = new ArrayList<>();
-        for (MetroStation station : tutteLeStazioni) {
-            if (station.getName().equalsIgnoreCase("NO_DRAW")) continue;
-
-            markerFeatures.add(MapboxHelper.makeStationFeature(station.getLatitude(), station.getLongitude(), station.getName()));
-        }
-
-        MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor, hexColorText);
+        disegnaMarkers(mapView, tutteLeStazioni, hexColor, hexColorText);
 
         disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
 
@@ -603,20 +599,124 @@ public class LinesDetailActivity extends AppCompatActivity {
         positionButton.setImageTintList(ColorStateList.valueOf(coloreLinea));
         positionButton.setOnClickListener(v -> positionButtonClick());
 
+        ///in this section we change the routes only in bus lines with map
+        txtDirezioneMappa = findViewById(R.id.txtDirezioneMappa);
+        ImageButton changeRouteButton = findViewById(R.id.changeRouteButton);
+
+        boolean isBusLine = nomeLinea != null && nomeLinea.startsWith("z");
+        boolean hasRitornoBranch = false;
+        for (MetroStation s : tutteLeStazioni) {
+            if (s.getBranch() != null && s.getBranch().contains("Ritorno")) {
+                hasRitornoBranch = true;
+                break;
+            }
+        }
+
+        if (isBusLine && hasRitornoBranch) {
+            changeRouteButton.setVisibility(View.VISIBLE);
+            changeRouteButton.setImageTintList(ColorStateList.valueOf(coloreLinea));
+
+            ultimeStazioniDisegnate = tutteLeStazioni;
+
+            aggiornaTestoDirezione(tutteLeStazioni);
+            txtDirezioneMappa.setVisibility(View.VISIBLE);
+
+            changeRouteButton.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
+                modalitaRitorno = !modalitaRitorno;
+
+                MapboxHelper.clearAllLineLayers(mapView);
+                MapboxHelper.clearMarkers(mapView);
+
+                disegnaPolilinea(mapView, ultimeStazioniDisegnate, hexColor);
+                disegnaMarkers(mapView, ultimeStazioniDisegnate, hexColor, hexColorText);
+                aggiornaTestoDirezione(ultimeStazioniDisegnate);
+            });
+        }
+        else {
+            changeRouteButton.setVisibility(View.GONE);
+            if (txtDirezioneMappa != null) txtDirezioneMappa.setVisibility(View.GONE);
+        }
+
         if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
             MapboxHelper.enableUserLocation(mapViewRef, false);
+    }
+
+    private void disegnaMarkers(MapView mapView, List<MetroStation> stazioni, String hexColor, String hexColorText) {
+        List<Feature> markerFeatures = new ArrayList<>();
+
+        for (MetroStation station : stazioni) {
+            if (station.getName().equalsIgnoreCase("NO_DRAW")) continue;
+
+            String branch = station.getBranch();
+            boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
+            boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
+
+            boolean includiStazione = modalitaRitorno ? branchHasRitorno : !branchIsOnlyRitorno;
+            if (!includiStazione) continue;
+
+            markerFeatures.add(MapboxHelper.makeStationFeature(station.getLatitude(), station.getLongitude(), station.getName()));
+        }
+
+        MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor, hexColorText);
     }
 
     private void disegnaPolilinea(MapView mapView, List<MetroStation> stazioni, String hexColor) {
         if (stazioni.size() < 2) return;
 
-        Map<String, List<MetroStation>> branchMap = new LinkedHashMap<>();
+        if (modalitaRitorno) {
+            disegnaPolilineaRitorno(mapView, stazioni, hexColor);
+        } else {
+            disegnaPolilineaAndata(mapView, stazioni, hexColor);
+        }
+    }
+
+    private void disegnaPolilineaRitorno(MapView mapView, List<MetroStation> stazioni, String hexColor) {
+        /// In questa modalità disegniamo SOLO i punti il cui branch contiene la stringa "Ritorno"
+        /// (sia branch=="Ritorno" puro sia branch=="Main - Ritorno" o simili), mantenendo l'ordine
+        /// di inserimento originale della lista, che rappresenta la sequenza geografica del percorso.
+        List<Point> points = new ArrayList<>();
+
         for (MetroStation station : stazioni) {
-            if (!branchMap.containsKey(station.getBranch())) branchMap.put(station.getBranch(), new ArrayList<>());
-            branchMap.get(station.getBranch()).add(station);
+            String branch = station.getBranch();
+            if (branch != null && branch.contains("Ritorno"))
+                points.add(Point.fromLngLat(station.getLongitude(), station.getLatitude()));
         }
 
-        List<MetroStation> mainStations = branchMap.containsKey("Main") ? branchMap.get("Main") : new ArrayList<>();
+        if (points.size() < 2) return;
+
+        MapboxHelper.addLineLayer(mapView, "line-source-main", "line-layer-main", points, hexColor, false);
+    }
+
+    private void disegnaPolilineaAndata(MapView mapView, List<MetroStation> stazioni, String hexColor) {
+        /// La dorsale principale è composta da TUTTE le stazioni il cui branch contiene "Main"
+        /// (sia "Main" puro sia "Main - Ritorno", che è un punto di giunzione condiviso),
+        /// mantenendo l'ordine di inserimento originale della lista.
+        /// Escludiamo solo le stazioni con branch ESATTAMENTE "Ritorno" (puro).
+        List<MetroStation> stazioniFiltrate = new ArrayList<>();
+        for (MetroStation s : stazioni) {
+            String branch = s.getBranch();
+            boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
+            if (!branchIsOnlyRitorno) stazioniFiltrate.add(s);
+        }
+
+        if (stazioniFiltrate.size() < 2) return;
+
+        List<MetroStation> mainStations = new ArrayList<>();
+        Map<String, List<MetroStation>> branchSecondari = new LinkedHashMap<>();
+
+        for (MetroStation station : stazioniFiltrate) {
+            String branch = station.getBranch();
+            boolean isPartOfMain = branch != null && branch.contains("Main");
+
+            if (isPartOfMain) {
+                mainStations.add(station);
+            } else {
+                if (!branchSecondari.containsKey(branch)) branchSecondari.put(branch, new ArrayList<>());
+                branchSecondari.get(branch).add(station);
+            }
+        }
+
         int index = 0;
 
         if (mainStations.size() >= 2) {
@@ -625,25 +725,19 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (MetroStation station : mainStations)
                 points.add(Point.fromLngLat(station.getLongitude(), station.getLatitude()));
 
-            //*CALLBACK TO HELPER
-            /// CallBack to add the layer with this current data now extracted.
             MapboxHelper.addLineLayer(mapView, "line-source-main", "line-layer-main", points, hexColor, false);
         }
 
-        for (Map.Entry<String, List<MetroStation>> entry : branchMap.entrySet()) {
-            if (entry.getKey().equals("Main")) continue;
-
+        for (Map.Entry<String, List<MetroStation>> entry : branchSecondari.entrySet()) {
             List<MetroStation> branch = entry.getValue();
             if (branch.isEmpty()) continue;
 
             boolean isPlanned = entry.getKey().toLowerCase().contains("new") || entry.getKey().toLowerCase().contains("nuova");
-            List<MetroStation> pool = isPlanned ? new ArrayList<>(stazioni) : new ArrayList<>(mainStations);
+            List<MetroStation> pool = isPlanned ? new ArrayList<>(stazioniFiltrate) : new ArrayList<>(mainStations);
 
             if (isPlanned) pool.removeIf(s -> s.getBranch().equals(entry.getKey()));
             if (pool.isEmpty()) continue;
 
-            //*GENERATED BY StackOverflow
-            /// This code is taken from StackOverflow forums.
             MetroStation firstS = branch.get(0), lastS = branch.get(branch.size()-1);
             double fd = Double.MAX_VALUE, ld = Double.MAX_VALUE;
 
@@ -676,6 +770,42 @@ public class LinesDetailActivity extends AppCompatActivity {
             MapboxHelper.addLineLayer(mapView, "line-source-branch-" + index, "line-layer-branch-" + index, points, hexColor, isPlanned);
         }
     }
+
+    private void aggiornaTestoDirezione(List<MetroStation> stazioni) {
+        if (txtDirezioneMappa == null || stazioni == null || stazioni.isEmpty()) return;
+
+        List<MetroStation> filtrate = new ArrayList<>();
+        for (MetroStation s : stazioni) {
+            if (s.getName().equalsIgnoreCase("NO_DRAW")) continue;
+
+            String branch = s.getBranch();
+            boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
+            boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
+
+            if (modalitaRitorno) {
+                if (branchHasRitorno) filtrate.add(s);
+            } else {
+                if (!branchIsOnlyRitorno) filtrate.add(s);
+            }
+        }
+
+        if (filtrate.isEmpty()) {
+            txtDirezioneMappa.setText("");
+            return;
+        }
+
+        String destinazione;
+        if (modalitaRitorno) {
+            // Ritorno: prima fermata del branch "Ritorno"
+            destinazione = filtrate.get(0).getName();
+        } else {
+            // Andata: ultima fermata del branch "Main"
+            destinazione = filtrate.get(filtrate.size() - 1).getName();
+        }
+
+        txtDirezioneMappa.setText(String.format("%s → %s", getString(R.string.directionTitleArrivals), destinazione));
+    }
+
     private void selezionaFermataDaMappa(String nomeStazioneMappa) {
         if (routeData == null || routeData.stops == null || dropdownFermate == null) {
             Toast.makeText(this, R.string.arrivalsNotLoaded, Toast.LENGTH_SHORT).show();

@@ -184,6 +184,33 @@ object MapboxHelper {
         mapView.location.addOnIndicatorPositionChangedListener(listener)
     }
 
+    @JvmStatic
+    fun clearAllLineLayers(mapView: MapView) {
+        mapView.mapboxMap.getStyle { style ->
+            val layerIds = style.styleLayers.map { it.id }
+            val sourceIds = style.styleSources.map { it.id }
+
+            for (layerId in layerIds) {
+                if (layerId == "line-layer-main" || layerId.startsWith("line-layer-branch-")) {
+                    style.removeStyleLayer(layerId)
+                }
+            }
+            for (sourceId in sourceIds) {
+                if (sourceId == "line-source-main" || sourceId.startsWith("line-source-branch-")) {
+                    style.removeStyleSource(sourceId)
+                }
+            }
+        }
+    }
+
+    @JvmStatic
+    fun clearMarkers(mapView: MapView) {
+        mapView.mapboxMap.getStyle { style ->
+            if (style.styleLayerExists("marker-label-layer")) style.removeStyleLayer("marker-label-layer")
+            if (style.styleLayerExists("marker-layer")) style.removeStyleLayer("marker-layer")
+            if (style.styleSourceExists("marker-source")) style.removeStyleSource("marker-source")
+        }
+    }
     interface MapReadyCallback {
         //*INTERFACE CLASS
         ///This is the interface to implement into LinesDetailActivity.

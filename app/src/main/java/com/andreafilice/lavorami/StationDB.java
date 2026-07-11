@@ -7323,7 +7323,8 @@ public class StationDB {
     public static List<MetroStation> getStationsZ622(){
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Vittuone, Milano 22", 45.48346, 8.95364, "Main", "z622"));
-        stations.add(new MetroStation("NO_DRAW", 45.48596, 8.96349, "Main", "z622"));
+        stations.add(new MetroStation("Vittuone, Milano fr. 22", 45.48346, 8.95364, "Ritorno", "z622"));
+        stations.add(new MetroStation("NO_DRAW", 45.48596, 8.96349, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.48597, 8.96369, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.48596, 8.96383, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.48594, 8.96393, "Main", "z622"));
@@ -7513,6 +7514,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.51164, 8.8422, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.51128, 8.84058, "Main", "z622"));
         stations.add(new MetroStation("Inveruno, Marconi fr. 65", 45.51091, 8.83779, "Main", "z622"));
+        stations.add(new MetroStation("Inveruno, Marconi 57", 45.51106, 8.83897, "Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.51046, 8.83449, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.51052, 8.83439, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.5105, 8.83428, "Main", "z622"));
@@ -7543,7 +7545,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50613, 8.81697, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50626, 8.81686, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50646, 8.81688, "Main", "z622"));
-        stations.add(new MetroStation("Cuggiono, Della Vittoria fr.  12", 45.50682, 8.81699, "Main", "z622"));
+        stations.add(new MetroStation("Cuggiono, Della Vittoria fr.  12", 45.50682, 8.81699, "Main - Ritorno", "z622"));
         return stations;
     }
 
