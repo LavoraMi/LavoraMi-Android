@@ -199,7 +199,7 @@
                 android:backgroundTint="@color/redMetro"
                 android:text="@string/translateBtnText"
                 android:textColor="@color/White"
-                app:icon="@drawable/ic_translate"
+                app:icon="@drawable/ic_translate_button"
                 android:fontFamily="@font/font_main"
                 app:iconPadding="10dp"
                 app:iconTint="@color/White"
