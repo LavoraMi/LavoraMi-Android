@@ -539,7 +539,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_trash"
+                        android:src="@drawable/ic_trash_new"
                         app:tint="#FF453A" />
 
                     <TextView
