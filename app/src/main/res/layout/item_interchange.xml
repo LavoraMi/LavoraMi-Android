@@ -37,17 +37,20 @@
         app:layout_constraintTop_toTopOf="@id/txtTitle"
         app:layout_constraintBottom_toBottomOf="@id/txtTitle" />
 
-    <TextView
+    <com.andreafilice.lavorami.BouncingMarqueeTextView
         android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/font_main"
         android:textColor="@color/text_primary"
         android:textSize="18sp"
+        android:maxLines="1"
         tools:text="GARIBALDI"
         app:layout_constraintStart_toEndOf="@id/dotInterchange"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
