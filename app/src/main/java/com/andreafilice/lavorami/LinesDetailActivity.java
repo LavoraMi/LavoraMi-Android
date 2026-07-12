@@ -1059,6 +1059,17 @@ public class LinesDetailActivity extends AppCompatActivity {
         return nomeLinea != null && isValid;
     }
 
+    private boolean isLineaTram() {
+        ArrayList<String> tramLines = new ArrayList<>(Arrays.asList("1"));
+        boolean isValid = false;
+
+        for(int i = 0; i < tramLines.size(); i++){
+            if (tramLines.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
+        }
+
+        return nomeLinea != null && isValid && tipoDiLinea.contains(getString(R.string.tramLinesScroll));
+    }
+
     private void applyMetroLineColor(View card, int lineColor) {
         View lineTop = card.findViewById(R.id.lineTop);
         if (lineTop != null) lineTop.setBackgroundColor(lineColor);
@@ -1083,7 +1094,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             List<InterchangeInfo> interchanges;
 
             if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
-                interchanges = StationDB.getInterchangesTrams();
+                if(isLineaTram()) interchanges = StationDB.getTramInterchanges();
+                else interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains("Filobus"))
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
@@ -1104,7 +1116,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (info.getLines() == null || info.getLines().length == 0) continue;
 
                 boolean match = false;
-                if (isLineaMetro() || isLineaSuburbano() || isMalpensaExpress() || isLineaTilo()) {
+                if (isLineaMetro() || isLineaSuburbano() || isMalpensaExpress() || isLineaTilo() || isLineaTram()) {
                     String primaryLine = info.getLines()[0].trim().toUpperCase();
                     match = primaryLine.equals(searchTag);
                 }
@@ -1300,13 +1312,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean isSuburban = isLineaSuburbano();
             boolean isMalpensaExpress = isMalpensaExpress();
             boolean isLineaTilo = isLineaTilo();
+            boolean isLineaTram = isLineaTram();
 
-            int lineColor = (isMetro || isSuburban || isMalpensaExpress || isLineaTilo) ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+            int lineColor = (isMetro || isSuburban || isMalpensaExpress || isLineaTilo || isLineaTram) ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
 
             Map<String, List<View>> cache = new LinkedHashMap<>();
 
-            List<View> mainViews = buildViewsForList(mainItems, inflater, container, (isMetro || isSuburban || isMalpensaExpress || isLineaTilo), lineColor);
+            List<View> mainViews = buildViewsForList(mainItems, inflater, container, (isMetro || isSuburban || isMalpensaExpress || isLineaTilo || isLineaTram), lineColor);
             cache.put("Main", mainViews);
 
             for (Map.Entry<String, List<InterchangeInfo>> entry : branchMap.entrySet()) {
@@ -1322,7 +1335,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     combined.addAll(mainItems);
                 }
 
-                List<View> views = buildViewsForList(combined, inflater, container, (isMetro || isSuburban || isMalpensaExpress || isLineaTilo), lineColor);
+                List<View> views = buildViewsForList(combined, inflater, container, (isMetro || isSuburban || isMalpensaExpress || isLineaTilo || isLineaTram), lineColor);
                 cache.put(entry.getKey(), views);
             }
 
