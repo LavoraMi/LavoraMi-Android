@@ -6873,7 +6873,6 @@ public class StationDB {
         return stations;
     }
 
-
    /*public static List<MetroStation> getStationsTram2() {
        List<MetroStation> stations = new ArrayList<>();
        stations.add(new MetroStation("P.le Negrelli", 45.44360, 9.13933, "Main", "2"));
