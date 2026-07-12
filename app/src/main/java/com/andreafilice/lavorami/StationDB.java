@@ -8403,7 +8403,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.5052, 8.93884, "Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.5053, 8.93867, "Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50548, 8.93721, "Ritorno", "z622"));
-        stations.add(new MetroStation("Arluno, Via Giovanni XXIII 43", 45.50552, 8.93682, "Ritorno", "z622"));
+        stations.add(new MetroStation("Arluno, Via Giovanni XXIII 43", 45.50550, 8.93682, "Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50655, 8.93589, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50573, 8.93616, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50561, 8.93616, "Main - Ritorno", "z622"));
@@ -8482,9 +8482,9 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50066, 8.91987, "Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50082, 8.9198, "Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50097, 8.91963, "Ritorno", "z622"));
-        stations.add(new MetroStation("S.S Ticino, Sp34 FR 300", 45.50129, 8.9191, "Ritorno", "z622"));
+        stations.add(new MetroStation("S.S. Ticino, SP34 fr. 300", 45.50137, 8.9191, "Ritorno", "z622"));
         stations.add(new MetroStation("Arluno, Sp34 300", 45.50172, 8.91865, "Main", "z622"));
-        stations.add(new MetroStation("NO_DRAW", 45.50197, 8.9182, "Main", "z622"));
+        stations.add(new MetroStation("NO_DRAW", 45.50197, 8.9182, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50304, 8.91594, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50323, 8.91537, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50327, 8.91473, "Main - Ritorno", "z622"));
@@ -8504,7 +8504,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50273, 8.90666, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50235, 8.9012, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50435, 8.901, "Main - Ritorno", "z622"));
-        stations.add(new MetroStation("Ossona, Baracca 15", 45.50426, 8.89992, "Ritorno", "z622"));
+        stations.add(new MetroStation("Ossona, Baracca 11", 45.50426, 8.89992, "Ritorno", "z622"));
         stations.add(new MetroStation("Ossona, Baracca 8", 45.50428, 8.89992, "Main", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50423, 8.8993, "Main - Ritorno", "z622"));
         stations.add(new MetroStation("NO_DRAW", 45.50428, 8.89923, "Main - Ritorno", "z622"));
