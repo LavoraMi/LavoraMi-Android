@@ -186,7 +186,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "JUnit",
-                        "6.1.1",
+                        "6.1.2",
                         "Eclipse Public License 1.0",
                         "Copyright (c) 2000-2021 JUnit contributors",
                         "This program and the accompanying materials are made available under the\n" +
