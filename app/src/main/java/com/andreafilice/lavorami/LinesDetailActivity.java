@@ -1093,7 +1093,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             String searchTag = nomeLinea.trim().toUpperCase();
             List<InterchangeInfo> interchanges;
 
-            if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && isLineaTram())
+            if (isLineaTram())
                 interchanges = StationDB.getTramInterchanges();
             else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
