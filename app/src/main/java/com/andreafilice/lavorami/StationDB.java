@@ -6470,6 +6470,7 @@ public class StationDB {
         stations.add(new MetroStation("Via Grassi", 45.51404, 9.12522, "Main", "1"));
         stations.add(new MetroStation("Largo Boccioni", 45.51168, 9.12797, "Main", "1"));
         stations.add(new MetroStation("Via Mambretti", 45.50948, 9.13137, "Main", "1"));
+        stations.add(new MetroStation("Via Palizzi Via Mambretti", 45.50844, 9.13464, "Main", "1"));
         stations.add(new MetroStation("Certosa FS", 45.50778, 9.13729, "Main", "1"));
         stations.add(new MetroStation("V.Le Espinasse Via Palizzi", 45.50281, 9.1387, "Main", "1"));
         stations.add(new MetroStation("P.Le Santorre Di Santarosa", 45.50113, 9.13939, "Main", "1"));
@@ -6511,6 +6512,7 @@ public class StationDB {
         stations.add(new MetroStation("Caiazzo M2", 45.4856, 9.21007, "Main", "1"));
         stations.add(new MetroStation("V.Le Brianza", 45.48764, 9.21222, "Main", "1"));
         stations.add(new MetroStation("Via Venini Via Battaglia", 45.48933, 9.21409, "Main", "1"));
+        stations.add(new MetroStation("Via Venini Via Sauli", 45.49075, 9.21556, "Main", "1"));
         stations.add(new MetroStation("Piazza Morbegno", 45.49259, 9.21644, "Main", "1"));
         stations.add(new MetroStation("Greco Rovereto", 45.49495, 9.21625, "Main", "1"));
         return stations;
