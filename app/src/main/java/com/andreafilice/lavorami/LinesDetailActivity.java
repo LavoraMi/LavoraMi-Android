@@ -1093,9 +1093,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             String searchTag = nomeLinea.trim().toUpperCase();
             List<InterchangeInfo> interchanges;
 
-            if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
-                if(isLineaTram()) interchanges = StationDB.getTramInterchanges();
-                else interchanges = StationDB.getInterchangesTrams();
+            if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && isLineaTram())
+                interchanges = StationDB.getTramInterchanges();
+            else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
+                interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains("Filobus"))
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
@@ -1308,18 +1309,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
-            boolean isMetro = isLineaMetro();
-            boolean isSuburban = isLineaSuburbano();
-            boolean isMalpensaExpress = isMalpensaExpress();
-            boolean isLineaTilo = isLineaTilo();
-            boolean isLineaTram = isLineaTram();
+            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isMalpensaExpress() || isLineaTilo() || isLineaTram());
 
-            int lineColor = (isMetro || isSuburban || isMalpensaExpress || isLineaTilo || isLineaTram) ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+            int lineColor = isValidNewInterface ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
 
             Map<String, List<View>> cache = new LinkedHashMap<>();
 
-            List<View> mainViews = buildViewsForList(mainItems, inflater, container, (isMetro || isSuburban || isMalpensaExpress || isLineaTilo || isLineaTram), lineColor);
+            List<View> mainViews = buildViewsForList(mainItems, inflater, container, isValidNewInterface, lineColor);
             cache.put("Main", mainViews);
 
             for (Map.Entry<String, List<InterchangeInfo>> entry : branchMap.entrySet()) {
@@ -1335,7 +1332,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     combined.addAll(mainItems);
                 }
 
-                List<View> views = buildViewsForList(combined, inflater, container, (isMetro || isSuburban || isMalpensaExpress || isLineaTilo || isLineaTram), lineColor);
+                List<View> views = buildViewsForList(combined, inflater, container, isValidNewInterface, lineColor);
                 cache.put(entry.getKey(), views);
             }
 
