@@ -9715,6 +9715,29 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Piazza Morbegno", new String[]{"1"}, "tram.fill", "Main", 46));
         interchanges.add(new InterchangeInfo("Greco Rovereto", new String[]{"1", "87", "174"}, "tram.fill", "Main", 47));
 
+        /// Tram 7
+        interchanges.add(new InterchangeInfo("Piazzale Lagosta", new String[]{"7", "31", "33", "60"}, "tram.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Zara M3 M5", new String[]{"7", "M3", "NM3", "M5", "31", "51", "60", "82", "Filobus 90", "Filobus 91", "Filobus 92", "166"}, "tram.fill.tunnel", "Main", 1));
+        interchanges.add(new InterchangeInfo("Marche M5", new String[]{"7", "M5", "5", "31"}, "tram.fill.tunnel", "Main", 2));
+        interchanges.add(new InterchangeInfo("Viale Zara Viale Laurana", new String[]{"7", "5", "31"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Istria M5", new String[]{"7", "M5", "5", "31", "42"}, "tram.fill.tunnel", "Main", 4));
+        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via Dolcebuono", new String[]{"7", "5", "31", "42"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Ca' Granda M5", new String[]{"7", "M5", "4", "5", "31", "86", "172"}, "tram.fill.tunnel", "Main", 6));
+        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via Pianell", new String[]{"7", "31"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via S. Marcellina", new String[]{"7", "31"}, "tram.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Via Pulci (Bicocca M5)", new String[]{"7", "M5", "4", "31", "52", "172", "783"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Università Bicocca Scienza", new String[]{"7", "52", "87"}, "building.columns.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Greco Pirelli FS", new String[]{"7", "S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE13", "RE80", "52", "81", "86", "174"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Arcimboldi Ateneo Nuovo", new String[]{"7", "87"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Largo Mattei", new String[]{"7", "86", "174"}, "tram.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Precotto M1", new String[]{"7", "M1", "NM1", "51", "86", "174"}, "tram.fill.tunnel", "Main", 14));
+        interchanges.add(new InterchangeInfo("Via Tremelloni", new String[]{"7"}, "tram.fill", "Main", 15));
+        interchanges.add(new InterchangeInfo("Via Tremelloni Via Anassagora", new String[]{"7"}, "tram.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Via Tremelloni Via Gassman", new String[]{"7", "86"}, "tram.fill", "Main", 17));
+        interchanges.add(new InterchangeInfo("Via Tremelloni Via Tognazzi", new String[]{"7", "86"}, "tram.fill", "Main", 18));
+        interchanges.add(new InterchangeInfo("Via Adriano Via Lussu", new String[]{"7", "53", "56", "86"}, "tram.fill", "Main", 19));
+        interchanges.add(new InterchangeInfo("Via Adriano Via Vipiteno", new String[]{"7", "86"}, "tram.fill", "Main", 20));
+
         return interchanges;
     }
 
