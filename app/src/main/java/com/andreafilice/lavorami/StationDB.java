@@ -7032,14 +7032,14 @@ public class StationDB {
         stations.add(new MetroStation("Via Pulci V.le Sarca", 45.51431, 9.20744, "Main", "7"));
         stations.add(new MetroStation("Università Bicocca Scienza", 45.51362, 9.21131, "Main", "7"));
         stations.add(new MetroStation("Milano Greco Pirelli", 45.51343, 9.21404, "Main", "7"));
-        stations.add(new MetroStation("Arcimboldi Ateneo Nuovo", 45.51598, 9.21386, "Main", "7"));
+        stations.add(new MetroStation("Arcimboldi Ateneo Nuovo", 45.51629, 9.21361, "Main", "7"));
         stations.add(new MetroStation("L.Go Mattei", 45.51395, 9.22123, "Main", "7"));
         stations.add(new MetroStation("Precotto M1", 45.51355, 9.22454, "Main", "7"));
         stations.add(new MetroStation("Tremelloni", 45.5139, 9.22773, "Main", "7"));
         stations.add(new MetroStation("Via Tremelloni Via Anassagora", 45.51429, 9.23108, "Main", "7"));
         stations.add(new MetroStation("Via Tremelloni Via Gassman", 45.5157, 9.23611, "Main", "7"));
         stations.add(new MetroStation("Via Tremelloni Via Tognazzi", 45.51663, 9.24058, "Main", "7"));
-        stations.add(new MetroStation("Via Adriano Via Lassu", 45.51698, 9.24378, "Main", "7"));
+        stations.add(new MetroStation("Via Adriano Via Lassu", 45.51698, 9.24389, "Main", "7"));
         stations.add(new MetroStation("Via Adriano Via Vipiteno", 45.51392, 9.24547, "Main", "7"));
         return stations;
     }
