@@ -619,8 +619,6 @@ public class MainActivity extends AppCompatActivity {
                         applicaFiltroCategoria(categoria);
                     }
                 }
-
-                recyclerView.scrollToPosition(0);
             };
             filterGroup.setOnCheckedChangeListener(chipCheckedChangeListener);
         }
@@ -1197,6 +1195,9 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 adapter.setFilteredList(filtrata);
                 checkForEmptyList(filtrata, "null", "");
+
+                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                recyclerView.post(() -> recyclerView.scrollToPosition(0));
             });
         });
     }
