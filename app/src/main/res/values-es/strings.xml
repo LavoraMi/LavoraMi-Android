@@ -414,4 +414,5 @@
     <string name="nicknameEqualError">El nuevo nombre de usuario no puede ser igual que tu nombre de usuario actual.</string>
     <string name="diTiloLines">de TILO</string>
     <string name="tiloLines">Líneas TILO</string>
+    <string name="stadiumKey">Estadio</string>
 </resources>

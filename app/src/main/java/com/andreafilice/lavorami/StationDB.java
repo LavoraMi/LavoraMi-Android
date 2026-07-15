@@ -9217,7 +9217,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Lotto M1 M5", new String[]{"M5", "M1", "NM1", "48", "49", "68", "78", "Filobus 90", "Filobus 91", "98"}, "tram.fill.tunnel", "Main", 13));
         interchanges.add(new InterchangeInfo("Portello", new String[]{"M5", "48", "78"}, "tram.fill.tunnel", "Main", 14));
         interchanges.add(new InterchangeInfo("San Siro Ippodromo", new String[]{"M5", "16"}, "tram.fill.tunnel", "Main", 15));
-        interchanges.add(new InterchangeInfo("San Siro Stadio", new String[]{"M5", "Stadio", "16", "49"}, "stadium.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("San Siro Stadio", new String[]{"M5", context.getString(R.string.stadiumKey), "16", "49"}, "stadium.fill", "Main", 16));
 
         return interchanges;
     }
