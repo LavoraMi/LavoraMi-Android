@@ -983,7 +983,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
             if (chipGroup != null && evento.getLines() != null) {
                 chipGroup.removeAllViews();
-                for (String lineName : evento.getLines()) chipGroup.addView(createChip(lineName));
+                for (String lineName : evento.getLines()) chipGroup.addView(createChip((lineName.contains("Filobus")) ? lineName.replace("Filobus", getString(R.string.filobusKey)) : lineName));
             }
 
             container.addView(card);
@@ -1559,8 +1559,10 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chip.setChipMinHeight(heightPx);
         chip.setMinHeight(heightPx);
-        chip.setChipStartPadding(0f); chip.setChipEndPadding(0f);
-        chip.setTextStartPadding(15f); chip.setTextEndPadding(15f);
+        chip.setChipStartPadding(0f);
+        chip.setChipEndPadding(0f);
+        chip.setTextStartPadding(15f);
+        chip.setTextEndPadding(15f);
         chip.setChipStrokeWidth(0f);
         chip.setTextSize(13f);
         chip.setTypeface(Typeface.create(ResourcesCompat.getFont(this, R.font.inter), Typeface.BOLD));

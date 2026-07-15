@@ -19,7 +19,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.ImageViewCompat;
-import androidx.recyclerview.widget.DiffUtil; 
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -86,6 +86,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     combinedList.add(adsList.get(adIndex));
                     adIndex++;
                 }
+
                 combinedList.add(eventList.get(i));
             }
 
@@ -101,6 +102,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             this.adsList = (ads != null) ? ads : new ArrayList<>();
             recomputeCombinedList();
         }
+
         notifyDataSetChanged();
     }
 
@@ -232,8 +234,9 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         for (int i = 0; i < Math.max(lineCount, childCount); i++) {
             if (i < lineCount) {
-                String nomePulito = lines[i].trim();
+                String nomePulito = (lines[i].contains("Filobus")) ? lines[i].replace("Filobus", context.getString(R.string.filobusKey)).trim() : lines[i].trim();
                 Chip chip;
+
                 if (i < childCount) {
                     chip = (Chip) holder.chipGroupLinee.getChildAt(i);
                     chip.setVisibility(View.VISIBLE);
@@ -242,6 +245,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     chip = new Chip(ctx);
                     float density = ctx.getResources().getDisplayMetrics().density;
                     int heightPx = (int) (26 * density);
+
                     chip.setShapeAppearanceModel(chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build());
                     chip.setChipMinHeight(heightPx);
                     chip.setMinHeight(heightPx);
@@ -266,7 +270,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     int colorRes = (cachedColors != null && i < cachedColors.length) ? cachedColors[i] : R.color.OTHER_LINES;
                     chip.setChipBackgroundColor(ColorStateList.valueOf(ContextCompat.getColor(ctx, colorRes)));
 
-                    if (nomePulito.contains("Filobus")) {
+                    if (nomePulito.contains(context.getString(R.string.filobusKey))) {
                         chip.setChipIcon(ContextCompat.getDrawable(ctx, R.drawable.ic_bolt));
                         chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
                         chip.setIconStartPadding(10);
