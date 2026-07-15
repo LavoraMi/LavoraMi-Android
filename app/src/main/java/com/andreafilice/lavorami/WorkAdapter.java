@@ -108,10 +108,13 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (newAds == null || newAds.isEmpty()) return;
 
         synchronized (listLock) {
+            List<Object> oldList = new ArrayList<>(combinedList);
             this.adsList.addAll(newAds);
             recomputeCombinedList();
+
+            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new CombinedListDiffCallback(oldList, combinedList));
+            diffResult.dispatchUpdatesTo(this);
         }
-        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -372,14 +375,17 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemViewType(int position) {return (combinedList.get(position) instanceof NativeAd) ? TYPE_AD : TYPE_LAVORO;}
 
     public void setFilteredList(List<EventDescriptor> filteredList) {
-        List<EventDescriptor> newList = (filteredList != null) ? new ArrayList<>(filteredList) : new ArrayList<>();
-        
+        List<EventDescriptor> newList = (filteredList != null) ?
+                new ArrayList<>(filteredList) : new ArrayList<>();
+
         synchronized (listLock) {
+            List<Object> oldList = new ArrayList<>(combinedList);
             this.eventList = newList;
             recomputeCombinedList();
-        }
 
-        notifyDataSetChanged();
+            DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new CombinedListDiffCallback(oldList, combinedList));
+            diffResult.dispatchUpdatesTo(this);
+        }
     }
 
     private int calcolaPercentuale(long start, long end) {
@@ -466,4 +472,37 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             nativeAdView.setNativeAd(nativeAd);
         }
     }
+
+    private static class CombinedListDiffCallback extends DiffUtil.Callback {
+        private final List<Object> oldList;
+        private final List<Object> newList;
+
+        CombinedListDiffCallback(List<Object> oldList, List<Object> newList) {
+            this.oldList = oldList;
+            this.newList = newList;
+        }
+
+        @Override
+        public int getOldListSize() {return oldList.size();}
+        @Override
+        public int getNewListSize() {return newList.size();}
+
+        @Override
+        public boolean areItemsTheSame(int oldPos, int newPos) {
+            Object old = oldList.get(oldPos);
+            Object newItem = newList.get(newPos);
+
+            if (old instanceof EventDescriptor && newItem instanceof EventDescriptor) {
+                EventDescriptor oldDesc = (EventDescriptor) old;
+                EventDescriptor newDesc = (EventDescriptor) newItem;
+
+                return oldDesc.getTitle().equals(newDesc.getTitle()) && oldDesc.getStartDate().equals(newDesc.getStartDate());
+            }
+            return old == newItem;
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldPos, int newPos) {return areItemsTheSame(oldPos, newPos);}
+    }
+
 }
