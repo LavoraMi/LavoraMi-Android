@@ -55,7 +55,7 @@
     <string name="bannerStrikesOptions">Show Strike Banners</string>
     <string name="bannerStrikesDeps">Display the strike banner on the Home page when strikes are taking place.</string>
     <string name="requireBiometricAuth">Request Biometrics</string>
-    <string name="requireBiometricAuthDeps">Request biometric verification to unlock your account section.</string>
+    <string name="requireBiometricAuthDeps">Request biometric verification to unlock your account section. Biometric verification is required to change this setting.</string>
     <string name="cleanCache">Clean Cache Memory</string>
     <string name="cacheMemoryDeps">Clear the cache from your device to free up disk space.</string>
     <string name="cacheMemoryPopUpDeps">Are you sure you want to clear the app\'s cache?</string>

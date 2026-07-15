@@ -54,7 +54,7 @@
     <string name="bannerStrikesOptions">Mostra Banner Scioperi</string>
     <string name="bannerStrikesDeps">Mostra il banner di scioperi nella Home quando sono presenti.</string>
     <string name="requireBiometricAuth">Richiedi Biometria</string>
-    <string name="requireBiometricAuthDeps">Richiedi la Biometria per sbloccare la sezione del tuo Account.</string>
+    <string name="requireBiometricAuthDeps">Richiedi la Biometria per sbloccare la sezione del tuo Account. Per modificare questa opzione è richiesta la verifica biometrica.</string>
     <string name="cleanCache">Pulisci Memoria Cache</string>
     <string name="cacheMemoryDeps">Elimina la memoria Cache dal dispositivo, liberando spazio su disco.</string>
     <string name="cacheMemoryPopUpDeps">Sei sicuro di voler eliminare la memoria Cache dell\'app?</string>

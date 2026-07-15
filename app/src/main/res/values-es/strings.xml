@@ -55,7 +55,7 @@
     <string name="bannerStrikesOptions">Mostrar Banner de Huelgas</string>
     <string name="bannerStrikesDeps">Muestra el banner de huelgas en la pantalla de inicio cuando estén activas.</string>
     <string name="requireBiometricAuth">Requerir Biometría</string>
-    <string name="requireBiometricAuthDeps">Solicita verificación biométrica para desbloquear la sección de tu cuenta.</string>
+    <string name="requireBiometricAuthDeps">Solicita verificación biométrica para desbloquear la sección de tu cuenta. Para modificar esta opción, es necesario realizar una verificación biométrica.</string>
     <string name="cleanCache">Limpiar Memoria Caché</string>
     <string name="cacheMemoryDeps">Elimina la caché del dispositivo liberando espacio en disco.</string>
     <string name="cacheMemoryPopUpDeps">¿Estás seguro de que quieres limpiar la caché de la app?</string>
