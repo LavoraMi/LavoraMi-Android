@@ -1104,9 +1104,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             else if (isLineaSuburbano())
                 interchanges = StationDB.getSuburbanInterchanges();
             else if (isMalpensaExpress())
-                interchanges = StationDB.getMalpensaExpressInterchanges();
+                interchanges = StationDB.getMalpensaExpressInterchanges(this);
             else if(isLineaTilo())
-                interchanges = StationDB.getTILOInterchanges();
+                interchanges = StationDB.getTILOInterchanges(this);
             else
                 interchanges = StationDB.getInterchanges(this);
 

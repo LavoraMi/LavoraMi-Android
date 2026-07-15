@@ -9504,14 +9504,14 @@ public class StationDB {
         return interchanges;
     }
 
-    public static List<InterchangeInfo> getMalpensaExpressInterchanges() {
+    public static List<InterchangeInfo> getMalpensaExpressInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* MALPENSA EXPRESS LINES
         /// Malpensa Express 1
         interchanges.add(new InterchangeInfo("Gallarate", new String[]{"MXP1", "S5", "S30", "S50", "R21", "R23", "RV", "RE4", "RE5"}, "lightrail", "Main", 0));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP1", "Aereoporto", "S50", "MXP2"}, "airplane.departure", "Main", 1));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP1", "Aereoporto", "S50", "MXP2"}, "airplane.departure", "Main", 2));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP1", context.getString(R.string.airportKey), "S50", "MXP2"}, "airplane.departure", "Main", 1));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP1", context.getString(R.string.airportKey), "S50", "MXP2"}, "airplane.departure", "Main", 2));
         interchanges.add(new InterchangeInfo("Ferno - Lonate Pozzolo", new String[]{"MXP1", "S50"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Busto Arsizio Nord", new String[]{"MXP1", "S50", "R27", "MXP2"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Castellanza", new String[]{"MXP1", "R27"}, "lightrail", "Main", 5));
@@ -9522,8 +9522,8 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"MXP1", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "Filobus 90", "Filobus 91", "Filobus 92", "728", "N25", "N26"}, "tram.fill.tunnel", "Main", 10));
 
         /// Malpensa Express 2
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP2", "Aereoporto", "S50", "MXP1"}, "airplane.departure", "Main", 0));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP2", "Aereoporto", "S50", "MXP1"}, "airplane.departure", "Main", 1));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"MXP2", context.getString(R.string.airportKey), "S50", "MXP1"}, "airplane.departure", "Main", 0));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"MXP2", context.getString(R.string.airportKey), "S50", "MXP1"}, "airplane.departure", "Main", 1));
         interchanges.add(new InterchangeInfo("Busto Arsizio Nord", new String[]{"MXP2", "S50", "R27", "MXP1"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Saronno", new String[]{"MXP2", "S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"MXP2", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "82", "Filobus 92"}, "lightrail", "Main", 4));
@@ -9533,7 +9533,7 @@ public class StationDB {
         return interchanges;
     }
 
-    public static List<InterchangeInfo> getTILOInterchanges() {
+    public static List<InterchangeInfo> getTILOInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* TILO LINES
@@ -9600,8 +9600,8 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Como San Giovanni", new String[]{"S40", "S10", "S11", "R18", "RE13", "RE80"}, "lightrail", "Main", 8));
 
         /// TILO S50
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"S50", "Aereoporto", "MXP1", "MXP2"}, "airplane.departure", "Main", 0));
-        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"S50", "Aereoporto", "MXP1", "MXP2"}, "airplane.departure", "Main", 1));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T2", new String[]{"S50", context.getString(R.string.airportKey), "MXP1", "MXP2"}, "airplane.departure", "Main", 0));
+        interchanges.add(new InterchangeInfo("Malpensa Aereoporto T1", new String[]{"S50", context.getString(R.string.airportKey), "MXP1", "MXP2"}, "airplane.departure", "Main", 1));
         interchanges.add(new InterchangeInfo("Ferno - Lonate Pozzolo", new String[]{"S50", "MXP1"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Busto Arsizio Nord", new String[]{"S50", "R27", "MXP1", "MXP2"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Busto Arsizio", new String[]{"S50", "S5", "R21", "R23", "RV", "RE4", "RE5"}, "lightrail", "Main", 4));
