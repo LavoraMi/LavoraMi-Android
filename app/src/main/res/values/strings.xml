@@ -415,4 +415,5 @@
     <string name="tiloLines">Linee TILO</string>
     <string name="stadiumKey">Stadio</string>
     <string name="monumentKey">Monumento</string>
+    <string name="filobusKey">Filobus</string>
 </resources>

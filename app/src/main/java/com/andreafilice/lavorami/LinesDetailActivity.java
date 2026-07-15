@@ -512,7 +512,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.startsWith("RE") && !nomeLinea.equalsIgnoreCase("RE80"))
             detTitolo.setText("Regio Express " + nomeLinea);
         if(nomeLinea.matches("9[0-3]"))
-            detTitolo.setText("Filobus " + nomeLinea);
+            detTitolo.setText(getString(R.string.filobusKey) + " " + nomeLinea);
 
         detBadge.setText((nomeLinea.startsWith("MXP")) ? "MXP" : nomeLinea);
         int colorResId = StationDB.getLineColor(this, nomeLinea);
@@ -596,7 +596,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             latMedia /= tutteLeStazioni.size();
             lngMedia /= tutteLeStazioni.size();
-            double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) || tipoDiLinea.contains("Filobus")) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
+            double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) || tipoDiLinea.contains(getString(R.string.filobusKey))) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
 
             MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
         }
@@ -1097,7 +1097,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 interchanges = StationDB.getTramInterchanges(this);
             else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
-            else if (tipoDiLinea.contains("Filobus"))
+            else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
                 interchanges = StationDB.getMetroInterchanges(this);
@@ -1546,7 +1546,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         float density = getResources().getDisplayMetrics().density;
         int heightPx = (int) (26 * density);
 
-        if(name.contains("Filobus") || name.matches("9[0-3]")){
+        if(name.contains(getString(R.string.filobusKey)) || name.matches("9[0-3]")){
             chip.setChipIcon(ContextCompat.getDrawable(this, R.drawable.ic_bolt));
             chip.setChipIconTint(ColorStateList.valueOf(Color.WHITE));
             chip.setIconStartPadding(10);

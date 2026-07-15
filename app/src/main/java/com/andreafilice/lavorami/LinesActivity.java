@@ -490,7 +490,7 @@ public class LinesActivity extends AppCompatActivity {
         // FILOBUS
         String[] filobusLines = {"90", "91", "92", "93"};
         for (String line : filobusLines) {
-            aggiungiLinea(containerFilobus, line, R.color.FILOBUS, "Filobus");
+            aggiungiLinea(containerFilobus, line, R.color.FILOBUS, getString(R.string.filobusKey));
         }
 
         // MOVIBUS
