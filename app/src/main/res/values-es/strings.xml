@@ -415,4 +415,5 @@
     <string name="diTiloLines">de TILO</string>
     <string name="tiloLines">Líneas TILO</string>
     <string name="stadiumKey">Estadio</string>
+    <string name="monumentKey">Monumento</string>
 </resources>

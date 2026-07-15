@@ -1094,7 +1094,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             List<InterchangeInfo> interchanges;
 
             if (isLineaTram())
-                interchanges = StationDB.getTramInterchanges();
+                interchanges = StationDB.getTramInterchanges(this);
             else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains("Filobus"))

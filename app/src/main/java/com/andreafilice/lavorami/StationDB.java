@@ -9661,7 +9661,7 @@ public class StationDB {
         return interchanges;
     }
 
-    public static List<InterchangeInfo> getTramInterchanges() {
+    public static List<InterchangeInfo> getTramInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* TRAM LINES
@@ -9697,7 +9697,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Via Cusani", new String[]{"1", "14", "96"}, "tram.fill", "Main", 28));
         interchanges.add(new InterchangeInfo("Cordusio M1", new String[]{"1", "M1", "NM1", "12", "16", "19"}, "tram.fill.tunnel", "Main", 29));
         interchanges.add(new InterchangeInfo("Via Grossi", new String[]{"1"}, "tram.fill.tunnel", "Main", 30));
-        interchanges.add(new InterchangeInfo("Teatro Alla Scala", new String[]{"1", "Monumento"}, "building.columns.fill", "Main", 31));
+        interchanges.add(new InterchangeInfo("Teatro Alla Scala", new String[]{"1", context.getString(R.string.monumentKey)}, "building.columns.fill", "Main", 31));
         interchanges.add(new InterchangeInfo("Montenapoleone M3", new String[]{"1", "M3", "96"}, "tram.fill.tunnel", "Main", 32));
         interchanges.add(new InterchangeInfo("Via Manzoni Via Pisoni", new String[]{"1"}, "tram.fill", "Main", 33));
         interchanges.add(new InterchangeInfo("Piazza Cavour", new String[]{"1", "NM3", "84", "96", "97"}, "tram.fill", "Main", 34));
