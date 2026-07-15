@@ -1100,7 +1100,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             else if (tipoDiLinea.contains("Filobus"))
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
-                interchanges = StationDB.getMetroInterchanges();
+                interchanges = StationDB.getMetroInterchanges(this);
             else if (isLineaSuburbano())
                 interchanges = StationDB.getSuburbanInterchanges();
             else if (isMalpensaExpress())

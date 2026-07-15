@@ -9069,7 +9069,7 @@ public class StationDB {
         );
     }
 
-    public static List<InterchangeInfo> getMetroInterchanges() {
+    public static List<InterchangeInfo> getMetroInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* METRO LINES
@@ -9178,7 +9178,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("San Donato", new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"}, "bus.fill", "Main", 20));
 
         /// Metro M4
-        interchanges.add(new InterchangeInfo("Linate Aereoporto", new String[]{"M4", "Aereoporto", "NM4", "183", "901", "903", "923", "973", "z409"}, "airplane.departure", "Main", 0));
+        interchanges.add(new InterchangeInfo("Linate Aereoporto", new String[]{"M4", context.getString(R.string.airportKey), "NM4", "183", "901", "903", "923", "973", "z409"}, "airplane.departure", "Main", 0));
         interchanges.add(new InterchangeInfo("Repetti", new String[]{"M4", "NM4", "12", "27", "45", "175", "N27"}, "tram.fill.tunnel", "Main", 1));
         interchanges.add(new InterchangeInfo("Stazione Forlanini FS", new String[]{"M4", "NM4", "S5", "S6", "S9", "R38", "RE8", "RE13", "12", "27", "45", "175", "973", "N27"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Argonne", new String[]{"M4", "NM4", "38", "45", "54", "Filobus 93", "175"}, "tram.fill.tunnel", "Main", 3));
