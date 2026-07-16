@@ -8559,7 +8559,7 @@ public class StationDB {
         stations.add(new MetroStation("Via Montegani V.Le Da Cermenate", 45.43718, 9.1783, "Main", "3"));
         stations.add(new MetroStation("Via Meda Via Spaventa", 45.44006, 9.17863, "Main", "3"));
         stations.add(new MetroStation("V.Le Tibaldi Via Meda", 45.44315, 9.17902, "Main", "3"));
-        stations.add(new MetroStation("Largo Mahler", 45.44579, 9.17926, "Main", "3"));
+        stations.add(new MetroStation("Largo Mahler", 45.44601, 9.17943, "Main", "3"));
         stations.add(new MetroStation("C.So S. Gottardo Via Lagrange", 45.44861, 9.17974, "Main", "3"));
         stations.add(new MetroStation("Piazza XXIV Maggio", 45.45177, 9.18015, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.45199, 9.18015, "Main", "3"));
