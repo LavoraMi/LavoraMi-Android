@@ -586,13 +586,14 @@ public class MainActivity extends AppCompatActivity {
         definitelyClosedSavedLinesHint = DataManager.getBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, false);
         if (filterGroup != null) {
             chipCheckedChangeListener = (group, checkedId) -> {
-                RecyclerView recyclerView = findViewById(R.id.recyclerView);
                 int densita = (int)getResources().getDisplayMetrics().density;
                 if (checkedId == R.id.chipYourLines) {
                     if (!definitelyClosedSavedLinesHint) {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
+
                         showTutorialDialog();
+                        
                         definitelyClosedSavedLinesHint = true;
                         DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
