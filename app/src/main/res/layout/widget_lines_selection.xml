@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/glass_bottom_bar_bg"
+    android:orientation="vertical"
+    android:gravity="center">
+    
+    <LinearLayout
+        android:id="@+id/chips_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/chip1"
+            android:layout_width="40dp"
+            style="@style/WidgetLineChip" />
+
+        <TextView
+            android:id="@+id/chip2"
+            android:layout_width="40dp"
+            style="@style/WidgetLineChip" />
+
+        <TextView
+            android:id="@+id/chip3"
+            android:layout_width="40dp"
+            style="@style/WidgetLineChip" />
+
+        <TextView
+            android:id="@+id/chip4"
+            android:layout_width="40dp"
+            style="@style/WidgetLineChip" />
+
+        <TextView
+            android:id="@+id/chip5"
+            android:layout_width="40dp"
+            style="@style/WidgetLineChip" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/instructions_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Seleziona la linea che vuoi vedere."
+        android:textColor="#B8C4D9"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
+
+</LinearLayout>

@@ -13,4 +13,19 @@
         <item name="cornerSize">10%</item>
     </style>
     <style name="Theme.LavoraMi" parent="Base.Theme.LavoraMi" />
+    <style name="WidgetLineChip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:background">@drawable/chip_line_bg</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
 </resources>
