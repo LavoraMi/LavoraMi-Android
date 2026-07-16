@@ -496,7 +496,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     View selectedChip = filterGroup.findViewById(checkedId);
                     if (selectedChip != null && (selectedChip != filterGroup.findViewById(R.id.chipAll) && selectedChip != filterGroup.findViewById((R.id.chipBus)))) {
-                        int targetX = selectedChip.getLeft() - 55;//allineato alla search bar
+                        int targetX = selectedChip.getLeft() - 55;
                         filterScroll.smoothScrollTo(targetX, 0);
                     }
                 }
@@ -1265,7 +1265,7 @@ public class MainActivity extends AppCompatActivity {
             .setReturnUrlsForImageAssets(false)
             .build();
 
-        loadAdsOneByOne(adUnitId, nativeAdOptions, 5); // Alzato a 5 per bilanciare profitto e performance
+        loadAdsOneByOne(adUnitId, nativeAdOptions, 5);
     }
 
     private void loadAdsOneByOne(String adUnitId, NativeAdOptions options, int totalDesired) {
