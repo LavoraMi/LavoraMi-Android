@@ -8546,14 +8546,15 @@ public class StationDB {
 
     public static List<MetroStation> getStationsTram3() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Gratosoglio", 45.40365, 9.17444, "Main", "3"));
+        stations.add(new MetroStation("Gratosoglio", 45.40368, 9.17393, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia", 45.40652, 9.17481, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via Saponaro", 45.41018, 9.17447, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Feraboli", 45.41414, 9.17487, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via De Ruggiero", 45.4182, 9.17546, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia (Isola Anita)", 45.42281, 9.17698, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via S. Abbondio", 45.42443, 9.17711, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via Boifava", 45.42655, 9.17728, "Main", "3"));
-        stations.add(new MetroStation("Piazza Abbiategrasso M2", 45.42924, 9.17747, "Main", "3"));
+        stations.add(new MetroStation("Piazza Abbiategrasso M2", 45.42936, 9.17759, "Main", "3"));
         stations.add(new MetroStation("Via Montegani Via Neera", 45.43284, 9.17777, "Main", "3"));
         stations.add(new MetroStation("Via Montegani Via Palmieri", 45.43463, 9.17799, "Main", "3"));
         stations.add(new MetroStation("Via Montegani V.Le Da Cermenate", 45.43718, 9.1783, "Main", "3"));
