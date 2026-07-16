@@ -4644,7 +4644,7 @@ public class StationDB {
     public static List<MetroStation> getStationsS10() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Biasca",  46.35198,  8.97416,  "Main","S10"));
-        stations.add(new MetroStation("Castione",  46.22363,  9.0415,  "Main","S10"));
+        stations.add(new MetroStation("Castione Arbedo",  46.22363,  9.0415,  "Main","S10"));
         stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S10"));
         stations.add(new MetroStation("Giubiasco",  46.17381,  9.00359,  "Main","S10"));
         stations.add(new MetroStation("Lugano",  46.00501,  8.94695,  "Main","S10"));
@@ -5124,7 +5124,7 @@ public class StationDB {
     public static List<MetroStation> getStationsS50() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Biasca",  46.35198,  8.97416,  "Main","S50"));
-        stations.add(new MetroStation("Castione",  46.22363,  9.0415,  "Main","S50"));
+        stations.add(new MetroStation("Castione Arbedo",  46.22363,  9.0415,  "Main","S50"));
         stations.add(new MetroStation("Bellinzona",  46.19543,  9.02951,  "Main","S50"));
         stations.add(new MetroStation("Lugano",  46.00501,  8.94695,  "Main","S50"));
         stations.add(new MetroStation("Lugano Paradiso",  45.98917,  8.94656,  "Main","S50"));
