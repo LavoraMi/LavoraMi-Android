@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:text="@string/widget_selection_text"
-        android:textColor="#B8C4D9"
+        android:textColor="@color/subtitle"
         android:textSize="15sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium" />

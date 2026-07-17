@@ -116,8 +116,8 @@ public class WidgetLines extends AppWidgetProvider {
     };
     private static final LineType[][] CATEGORY_GROUPS = {
             {LineType.METRO},
-            {LineType.SUBURBAN},
-            {LineType.REGIO_EXPRESS, LineType.REGIONAL, LineType.TILO, LineType.MXP},
+            {LineType.SUBURBAN, LineType.MXP},
+            {LineType.REGIO_EXPRESS, LineType.REGIONAL, LineType.TILO},
             {LineType.TRAM, LineType.FILOBUS},
             {LineType.MOVIBUS, LineType.STAR, LineType.STAV, LineType.AUTOGUIDOVIE}
     };
@@ -289,7 +289,7 @@ public class WidgetLines extends AppWidgetProvider {
         views.setTextViewText(R.id.detail_line_chip, info.code);
         views.setInt(R.id.detail_line_chip, "setBackgroundResource", R.drawable.chip_line_bg);
         applyChipTint(views, R.id.detail_line_chip, context, info.colorRes);
-        views.setTextViewText(R.id.detail_line_name, info.type.label + " " + info.code);
+        views.setTextViewText(R.id.detail_line_name, info.type.label.contains("Malpensa") ? info.type.label : info.type.label+ " " + info.code);
         views.setImageViewResource(R.id.detail_type_icon, info.type.iconRes);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
