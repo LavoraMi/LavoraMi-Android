@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Seleziona la linea che vuoi vedere."
+        android:text="@string/widget_selection_text"
         android:textColor="#B8C4D9"
         android:textSize="15sp"
         android:textStyle="bold"

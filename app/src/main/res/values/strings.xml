@@ -416,4 +416,7 @@
     <string name="stadiumKey">Stadio</string>
     <string name="monumentKey">Monumento</string>
     <string name="filobusKey">Filobus</string>
+    <string name="widget_selection_text">Seleziona la linea che vuoi vedere.</string>
+    <string name="widget_detail_inCorso">IN CORSO</string>
+    <string name="widget_detail_programmati">PROGRAMMATI</string>
 </resources>
