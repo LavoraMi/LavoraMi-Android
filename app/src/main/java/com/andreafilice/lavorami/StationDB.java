@@ -11430,6 +11430,26 @@ public class StationDB {
         interchanges.add(new InterchangeInfo("Piazza Morbegno", new String[]{"1"}, "tram.fill", "Main", 46));
         interchanges.add(new InterchangeInfo("Greco Rovereto", new String[]{"1", "87", "174"}, "tram.fill", "Main", 47));
 
+        /// Tram 3
+        /* MODIFICHE TRAM: Questa linea non è completa per via dei lavori in Via Torino e Concorrenti.
+        interchanges.add(new InterchangeInfo("Gratosoglio", new String[]{"3", "15", "79", "167", "N15"}, "tram.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia", new String[]{"3", "15", "230", "N15"}, "tram.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia Via Saponaro", new String[]{"3", "15", "230", "N15"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia Via Feraboli", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia Via De Ruggiero", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 4));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia (Isola Anita)", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia Via S. Abbondio", new String[]{"3", "15"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Via Dei Missaglia Via Boifava", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"3", "M2", "NM2", "15", "65", "79", "230", "N15"}, "tram.fill.tunnel", "Main", 8));
+        interchanges.add(new InterchangeInfo("Via Montegani Via Neera", new String[]{"3", "N15"}, "tram.fill", "Main", 9));
+        interchanges.add(new InterchangeInfo("Via Montegani Via Palmieri", new String[]{"3", "N15"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Via Montegani V.Le Da Cermenate", new String[]{"3", "95", "N15"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Via Meda Via Spaventa", new String[]{"3", "N15"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Viale Tibaldi Via Meda", new String[]{"3", "59", "71", "91", "N15"}, "tram.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Largo Mahler", new String[]{"3", "59", "71", "N15"}, "tram.fill", "Main", 14));
+        interchanges.add(new InterchangeInfo("Corso San Gottardo Via Lagrange", new String[]{"3", "71", "N15"}, "tram.fill", "Main", 15));
+        interchanges.add(new InterchangeInfo("Piazza XXIV Maggio", new String[]{"3", "9", "10", "71", "N15", "N25"}, "tram.fill", "Main", 16));*/
+
         /// Tram 7
         interchanges.add(new InterchangeInfo("Piazzale Lagosta", new String[]{"7", "31", "33", "60"}, "tram.fill", "Main", 0));
         interchanges.add(new InterchangeInfo("Zara M3 M5", new String[]{"7", "M3", "NM3", "M5", "31", "51", "60", "82", "90", "91", "92", "166"}, "tram.fill.tunnel", "Main", 1));
@@ -11457,7 +11477,7 @@ public class StationDB {
     }
 
     public static List<MetroStation> getAllStations(boolean isPassanteClosed) {
-        if(CACHED_STATIONS == null) {
+        if (CACHED_STATIONS == null) {
             List<MetroStation> allStations = new ArrayList<>();
             allStations.addAll(getStationsM1());
             allStations.addAll(getStationsM2());
@@ -11465,12 +11485,11 @@ public class StationDB {
             allStations.addAll(getStationsM4());
             allStations.addAll(getStationsM5());
 
-            if(isPassanteClosed) {
+            if (isPassanteClosed) {
                 allStations.addAll(getStationsS1_ClosedPassante());
                 allStations.addAll(getStationsS5_ClosedPassante());
                 allStations.addAll(getStationsS13_ClosedPassante());
-            }
-            else {
+            } else {
                 allStations.addAll(getStationsS1());
                 allStations.addAll(getStationsS5());
                 allStations.addAll(getStationsS13());
@@ -11645,15 +11664,15 @@ public class StationDB {
                     return R.color.BUS;
                 else if (nomeLinea.contains("Filobus"))
                     return R.color.FILOBUS;
-                else if(nomeLinea.contains("N"))
+                else if (nomeLinea.contains("N"))
                     return R.color.NIGHTLINES;
-                else if(nomeLinea.equals("RE80"))
+                else if (nomeLinea.equals("RE80"))
                     return R.color.RE80;
                 else if (nomeLinea.contains("R") && !nomeLinea.contains("RE"))
                     return R.color.REGIONAL;
                 else if (nomeLinea.contains("RE"))
                     return R.color.RE;
-                else if(nomeLinea.matches("9[0-3]"))
+                else if (nomeLinea.matches("9[0-3]"))
                     return R.color.FILOBUS;
                 else if (nomeLinea.matches("^\\d+$")) {
                     int numero = Integer.parseInt(nomeLinea);
@@ -11662,12 +11681,11 @@ public class StationDB {
                         return R.color.TRAM;
                     else
                         return R.color.OTHER_LINES;
-                }
-                else if (nomeLinea.startsWith("P"))
+                } else if (nomeLinea.startsWith("P"))
                     return R.color.AUTOGUIDOVIE;
-                else if(nomeLinea.startsWith("MXP"))
+                else if (nomeLinea.startsWith("MXP"))
                     return R.color.MXP;
-                else if(nomeLinea.equalsIgnoreCase(context.getString(R.string.airportKey)))
+                else if (nomeLinea.equalsIgnoreCase(context.getString(R.string.airportKey)))
                     return R.color.airport;
                 else
                     return R.color.OTHER_LINES;
