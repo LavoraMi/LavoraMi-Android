@@ -299,12 +299,21 @@ public class WidgetLines extends AppWidgetProvider {
         views.setTextViewText(R.id.detail_in_corso_count, String.valueOf(counts[0]));
         views.setTextViewText(R.id.detail_programmati_count, String.valueOf(counts[1]));
 
+        Intent detailIntent = new Intent();
+        detailIntent.setClassName(context.getPackageName(),
+                "com.andreafilice.lavorami.LinesDetailActivity");
+        detailIntent.putExtra("NOME_LINEA", info.code);
+        detailIntent.putExtra("TIPO_DI_LINEA", info.type.label + " " + info.code);
+        detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
+        PendingIntent detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
+
         Intent backIntent = new Intent(context, WidgetLines.class);
         backIntent.setAction(ACTION_BACK_TO_SELECTION);
         backIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        PendingIntent backPendingIntent = PendingIntent.getBroadcast(
-                context, appWidgetId, backIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent backPendingIntent = PendingIntent.getBroadcast(context, appWidgetId, backIntent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.detail_line_chip, backPendingIntent);
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
