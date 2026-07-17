@@ -6,7 +6,7 @@
     android:background="@drawable/glass_bottom_bar_bg"
     android:orientation="vertical"
     android:gravity="center">
-    
+
     <LinearLayout
         android:id="@+id/chips_container"
         android:layout_width="wrap_content"
@@ -16,27 +16,22 @@
 
         <TextView
             android:id="@+id/chip1"
-            android:layout_width="40dp"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip2"
-            android:layout_width="40dp"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip3"
-            android:layout_width="40dp"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip4"
-            android:layout_width="40dp"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip5"
-            android:layout_width="40dp"
             style="@style/WidgetLineChip" />
 
     </LinearLayout>
