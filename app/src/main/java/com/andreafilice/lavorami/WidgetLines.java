@@ -123,7 +123,7 @@ public class WidgetLines extends AppWidgetProvider {
         addAllWithSharedColor(all, REGIO_LINES, LineType.REGIO_EXPRESS, R.color.RE);
         addAllWithSharedColor(all, REGIONAL_LINES, LineType.REGIONAL, R.color.REGIONAL);
         addAllWithSharedColor(all, TILO_LINES, LineType.TILO, R.color.REGIONAL);
-        addAllWithSharedColor(all, MXP_LINES, LineType.MXP, R.color.REGIONAL);
+        addAllWithSharedColor(all, MXP_LINES, LineType.MXP, R.color.MXP);
         addAllWithSharedColor(all, TRAM_LINES, LineType.TRAM, R.color.TRAM);
         addAllWithSharedColor(all, FILOBUS_LINES, LineType.FILOBUS, R.color.FILOBUS);
         addAllWithSharedColor(all, MOVIBUS_LINES, LineType.MOVIBUS, R.color.BUS);
@@ -250,9 +250,7 @@ public class WidgetLines extends AppWidgetProvider {
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
-
-    private void showDetailView(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId, String lineCode) {
+    private void showDetailView(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String lineCode) {
 
         LineInfo info = findLine(lineCode);
         if (info == null) {
@@ -296,8 +294,10 @@ public class WidgetLines extends AppWidgetProvider {
                     )
             );
         }
-        views.setTextViewText(R.id.detail_in_corso_count, "0");
-        views.setTextViewText(R.id.detail_programmati_count, "0");
+
+        int[] counts = countWorksForLine(info);
+        views.setTextViewText(R.id.detail_in_corso_count, String.valueOf(counts[0]));
+        views.setTextViewText(R.id.detail_programmati_count, String.valueOf(counts[1]));
 
         Intent backIntent = new Intent(context, WidgetLines.class);
         backIntent.setAction(ACTION_BACK_TO_SELECTION);
@@ -308,6 +308,43 @@ public class WidgetLines extends AppWidgetProvider {
         views.setOnClickPendingIntent(R.id.detail_line_chip, backPendingIntent);
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
+
+    private int[] countWorksForLine(LineInfo info) {
+        int inCorso = 0;
+        int programmati = 0;
+
+        String searchTag = (info.type == LineType.FILOBUS)
+                ? "FILOBUS " + info.code.trim()
+                : info.code.trim().toUpperCase();
+
+        long now = System.currentTimeMillis();
+
+        if (EventData.listaEventiCompleta == null) {
+            return new int[]{0, 0};
+        }
+
+        for (EventDescriptor evento : EventData.listaEventiCompleta) {
+            if (evento.getLines() == null || evento.isEventTerminated()) continue;
+
+            boolean matches = false;
+            for (String lineInEvent : evento.getLines()) {
+                if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag)) {
+                    matches = true;
+                    break;
+                }
+            }
+            if (!matches) continue;
+
+            long startMillis = evento.getDateMillis(evento.getStartDate());
+            if (startMillis <= now) {
+                inCorso++;
+            } else {
+                programmati++;
+            }
+        }
+
+        return new int[]{inCorso, programmati};
     }
 
     @Override
