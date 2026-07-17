@@ -23,7 +23,7 @@
             android:id="@+id/detail_line_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="5dp"
             android:text="Metro M1"
             android:textColor="@color/text_primary"
             android:textSize="20sp"
