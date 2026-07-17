@@ -11,6 +11,10 @@ import android.os.Build;
 import android.widget.RemoteViews;
 import androidx.core.content.ContextCompat;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -263,6 +267,19 @@ public class WidgetLines extends AppWidgetProvider {
             return;
         }
 
+        if (EventData.listaEventiCompleta == null || EventData.listaEventiCompleta.isEmpty()) {
+            renderDetailView(context, appWidgetManager, appWidgetId, info, new int[]{0, 0}, true);
+            fetchEventsAndUpdate(context, appWidgetManager, appWidgetId, info);
+            return;
+        }
+
+        int[] counts = countWorksForLine(info);
+        renderDetailView(context, appWidgetManager, appWidgetId, info, counts, false);
+    }
+
+    private void renderDetailView(Context context, AppWidgetManager appWidgetManager,
+                                  int appWidgetId, LineInfo info, int[] counts, boolean loading) {
+
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_detail);
 
         views.setTextViewText(R.id.detail_line_chip, info.code);
@@ -272,32 +289,17 @@ public class WidgetLines extends AppWidgetProvider {
         views.setImageViewResource(R.id.detail_type_icon, info.type.iconRes);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            views.setColorStateList(
-                    R.id.detail_type_icon,
-                    "setImageTintList",
-                    ColorStateList.valueOf(
-                            ContextCompat.getColor(context, R.color.text_primary)
-                    )
-            );
-            views.setColorStateList(
-                    R.id.lavoriInCorsoIcon,
-                    "setImageTintList",
-                    ColorStateList.valueOf(
-                            ContextCompat.getColor(context, R.color.text_primary)
-                    )
-            );
-            views.setColorStateList(
-                    R.id.lavoriProgrammatiIcon,
-                    "setImageTintList",
-                    ColorStateList.valueOf(
-                            ContextCompat.getColor(context, R.color.text_primary)
-                    )
-            );
+            views.setColorStateList(R.id.detail_type_icon, "setImageTintList",
+                    ColorStateList.valueOf(ContextCompat.getColor(context, R.color.text_primary)));
+            views.setColorStateList(R.id.lavoriInCorsoIcon, "setImageTintList",
+                    ColorStateList.valueOf(ContextCompat.getColor(context, R.color.text_primary)));
+            views.setColorStateList(R.id.lavoriProgrammatiIcon, "setImageTintList",
+                    ColorStateList.valueOf(ContextCompat.getColor(context, R.color.text_primary)));
         }
 
-        int[] counts = countWorksForLine(info);
-        views.setTextViewText(R.id.detail_in_corso_count, String.valueOf(counts[0]));
-        views.setTextViewText(R.id.detail_programmati_count, String.valueOf(counts[1]));
+        // Se sta ancora caricando, mostra "…" invece di 0 per non mostrare un dato falso
+        views.setTextViewText(R.id.detail_in_corso_count, loading ? "…" : String.valueOf(counts[0]));
+        views.setTextViewText(R.id.detail_programmati_count, loading ? "…" : String.valueOf(counts[1]));
 
         Intent detailIntent = new Intent();
         detailIntent.setClassName(context.getPackageName(),
@@ -307,16 +309,53 @@ public class WidgetLines extends AppWidgetProvider {
         detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
-        PendingIntent detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent detailPendingIntent = PendingIntent.getActivity(
+                context, detailRequestCode, detailIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
 
         Intent backIntent = new Intent(context, WidgetLines.class);
         backIntent.setAction(ACTION_BACK_TO_SELECTION);
         backIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        PendingIntent backPendingIntent = PendingIntent.getBroadcast(context, appWidgetId, backIntent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent backPendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId, backIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.detail_line_chip, backPendingIntent);
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
+
+    private void fetchEventsAndUpdate(Context context, AppWidgetManager appWidgetManager,
+                                      int appWidgetId, LineInfo info) {
+
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+
+        apiworks.getLavori().enqueue(new Callback<ArrayList<EventDescriptor>>() {
+            @Override
+            public void onResponse(Call<ArrayList<EventDescriptor>> call, Response<ArrayList<EventDescriptor>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ArrayList<EventDescriptor> datiRaw = response.body();
+                    for (EventDescriptor evento : datiRaw) {
+                        evento.precalculate(context.getApplicationContext());
+                    }
+                    EventData.listaEventiCompleta = datiRaw;
+                    EventData.networkError = false;
+                } else {
+                    EventData.networkError = true;
+                }
+
+                int[] counts = (EventData.listaEventiCompleta != null)
+                        ? countWorksForLine(info)
+                        : new int[]{0, 0};
+                renderDetailView(context, appWidgetManager, appWidgetId, info, counts, false);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
+                EventData.networkError = true;
+                renderDetailView(context, appWidgetManager, appWidgetId, info, new int[]{0, 0}, false);
+            }
+        });
     }
 
     private int[] countWorksForLine(LineInfo info) {
