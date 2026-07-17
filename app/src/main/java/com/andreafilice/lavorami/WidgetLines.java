@@ -9,17 +9,18 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.widget.RemoteViews;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class WidgetLines extends AppWidgetProvider {
+
     private static final String PREFS_NAME = "lavorami_widget_prefs";
-    private static final String PREF_SELECTED_LINE = "selected_line_";
+    private static final String PREF_SELECTED_LINE = "selected_line_"; // + appWidgetId
+    private static final String PREF_SHOWN_LINES = "shown_lines_"; // + appWidgetId
+
     public static final String ACTION_SELECT_LINE = "com.andreafilice.lavorami.ACTION_SELECT_LINE";
     public static final String ACTION_BACK_TO_SELECTION = "com.andreafilice.lavorami.ACTION_BACK_TO_SELECTION";
     public static final String EXTRA_LINE_NAME = "extra_line_name";
@@ -60,21 +61,35 @@ public class WidgetLines extends AppWidgetProvider {
     }
 
     private static final String[] METRO_LINES = {"M1", "M2", "M3", "M4", "M5"};
-    private static final String[] SUBURBAN_LINES = {"S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "S19", "S31"};
+
+    private static final String[] SUBURBAN_LINES = {"S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9",
+            "S11", "S12", "S13", "S19", "S31"};
+
     private static final String[] REGIO_LINES = {"RE1", "RE2", "RE3", "RE4", "RE5", "RE6", "RE7", "RE8", "RE11", "RE13"};
+
     private static final String[] REGIONAL_LINES = {"R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R11", "R12",
             "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25", "R27", "R31", "R32", "R33", "R34",
             "R35", "R36", "R37", "R38", "R39", "R40", "R41"};
+
     private static final String[] TILO_LINES = {"S10", "S20", "S30", "S40", "S50", "S90", "RE80"};
+
     private static final String[] MXP_LINES = {"MXP1", "MXP2"};
-    private static final String[] TRAM_LINES = {"1", "2", "3", "4", "5", "7", "9", "10", "12", "14", "15", "16", "19", "24", "27", "31", "33"};
+
+    private static final String[] TRAM_LINES = {"1", "2", "3", "4", "5", "7", "9", "10", "12", "14",
+            "15", "16", "19", "24", "27", "31", "33"};
+
     private static final String[] FILOBUS_LINES = {"90", "91", "92", "93"};
+
     private static final String[] MOVIBUS_LINES = {"z601", "z602", "z603", "z6C3", "z606", "z611", "z612",
             "z616", "z617", "z618", "z619", "z620", "z621", "z622",
             "z625", "z627", "z636", "z641", "z642", "z643", "z644",
             "z646", "z647", "z649"};
+
     private static final String[] STAR_LINES = {"z501", "z509", "z510", "z515", "z516"};
-    private static final String[] STAV_LINES = {"z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560"};
+
+    private static final String[] STAV_LINES = {"z551", "z552", "z553", "z554", "z555", "z556",
+            "z557", "z559", "z560"};
+
     private static final String[] AUTOGUIDOVIE_LINES = {"z401", "z402", "z403", "z404", "z405", "z406",
             "z407", "z409", "z410", "z411", "z412", "z413",
             "z415", "z418", "z419", "z420", "z431", "z432",
@@ -82,11 +97,21 @@ public class WidgetLines extends AppWidgetProvider {
             "z225", "z227", "z228", "z229", "z231", "z232",
             "z233", "z234", "z250", "z251"};
 
-    private static final int[] METRO_COLORS = {R.color.M1, R.color.M2, R.color.M3, R.color.M4, R.color.M5};
+    private static final int[] METRO_COLORS = {
+            R.color.M1, R.color.M2, R.color.M3, R.color.M4, R.color.M5
+    };
+
     private static final int[] SUBURBAN_COLORS = {
             R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
             R.color.S6, R.color.S7, R.color.S8, R.color.S9, R.color.S11,
             R.color.S12, R.color.S13, R.color.S19, R.color.S31
+    };
+    private static final LineType[][] CATEGORY_GROUPS = {
+            {LineType.METRO},
+            {LineType.SUBURBAN},
+            {LineType.REGIO_EXPRESS, LineType.REGIONAL, LineType.TILO, LineType.MXP},
+            {LineType.TRAM, LineType.FILOBUS},
+            {LineType.MOVIBUS, LineType.STAR, LineType.STAV, LineType.AUTOGUIDOVIE}
     };
 
     private List<LineInfo> buildAllLines() {
@@ -129,6 +154,31 @@ public class WidgetLines extends AppWidgetProvider {
         return null;
     }
 
+    /**Sceglie una linea casuale per ciascun gruppo di CATEGORY_GROUPS,**/
+    private List<LineInfo> pickOneLinePerCategory() {
+        List<LineInfo> allLines = buildAllLines();
+        Random random = new Random();
+        List<LineInfo> result = new ArrayList<>();
+
+        for (LineType[] group : CATEGORY_GROUPS) {
+            List<LineInfo> candidatesInGroup = new ArrayList<>();
+            for (LineInfo info : allLines) {
+                for (LineType type : group) {
+                    if (info.type == type) {
+                        candidatesInGroup.add(info);
+                        break;
+                    }
+                }
+            }
+            if (!candidatesInGroup.isEmpty()) {
+                LineInfo chosen = candidatesInGroup.get(random.nextInt(candidatesInGroup.size()));
+                result.add(chosen);
+            }
+        }
+
+        return result;
+    }
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {
@@ -140,17 +190,36 @@ public class WidgetLines extends AppWidgetProvider {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String selectedLine = prefs.getString(PREF_SELECTED_LINE + appWidgetId, null);
 
-        if (selectedLine != null) showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
-        else showSelectionView(context, appWidgetManager, appWidgetId);
+        if (selectedLine != null) {
+            showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
+        } else {
+            showSelectionView(context, appWidgetManager, appWidgetId);
+        }
     }
 
     private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        List<LineInfo> allLines = buildAllLines();
-        List<LineInfo> shuffled = new ArrayList<>(allLines);
-        Collections.shuffle(shuffled, new Random());
 
-        int count = Math.min(5, shuffled.size());
-        List<LineInfo> candidates = shuffled.subList(0, count);
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String shownKey = PREF_SHOWN_LINES + appWidgetId;
+        String saved = prefs.getString(shownKey, null);
+
+        List<LineInfo> candidates = new ArrayList<>();
+
+        if (saved != null && !saved.isEmpty()) {
+            for (String code : saved.split(",")) {
+                if (code.isEmpty()) continue;
+                LineInfo info = findLine(code);
+                if (info != null) candidates.add(info);
+            }
+        }
+
+        if (candidates.isEmpty()) {
+            candidates = pickOneLinePerCategory();
+
+            StringBuilder sb = new StringBuilder();
+            for (LineInfo info : candidates) sb.append(info.code).append(",");
+            prefs.edit().putString(shownKey, sb.toString()).apply();
+        }
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
 
@@ -167,23 +236,31 @@ public class WidgetLines extends AppWidgetProvider {
                 clickIntent.setAction(ACTION_SELECT_LINE);
                 clickIntent.putExtra(EXTRA_LINE_NAME, info.code);
                 clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-                int requestCode = appWidgetId * 10 + i;
+
+                int requestCode = (appWidgetId + "_" + info.code).hashCode();
+
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(
                         context, requestCode, clickIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                 views.setOnClickPendingIntent(chipIds[i], pendingIntent);
+            } else {
+                views.setViewVisibility(chipIds[i], android.view.View.GONE);
             }
-            else views.setViewVisibility(chipIds[i], android.view.View.GONE);
         }
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-    private void showDetailView(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String lineCode) {
+    private void showDetailView(Context context, AppWidgetManager appWidgetManager,
+                                int appWidgetId, String lineCode) {
+
         LineInfo info = findLine(lineCode);
         if (info == null) {
             SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-            prefs.edit().remove(PREF_SELECTED_LINE + appWidgetId).apply();
+            prefs.edit()
+                    .remove(PREF_SELECTED_LINE + appWidgetId)
+                    .remove(PREF_SHOWN_LINES + appWidgetId)
+                    .apply();
             showSelectionView(context, appWidgetManager, appWidgetId);
             return;
         }
@@ -198,25 +275,25 @@ public class WidgetLines extends AppWidgetProvider {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             views.setColorStateList(
-                R.id.detail_type_icon,
-                "setImageTintList",
-                ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.text_primary)
-                )
+                    R.id.detail_type_icon,
+                    "setImageTintList",
+                    ColorStateList.valueOf(
+                            ContextCompat.getColor(context, R.color.text_primary)
+                    )
             );
             views.setColorStateList(
-                R.id.lavoriInCorsoIcon,
-                "setImageTintList",
-                android.content.res.ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.text_primary)
-                )
+                    R.id.lavoriInCorsoIcon,
+                    "setImageTintList",
+                    ColorStateList.valueOf(
+                            ContextCompat.getColor(context, R.color.text_primary)
+                    )
             );
             views.setColorStateList(
-                R.id.lavoriProgrammatiIcon,
-                "setImageTintList",
-                android.content.res.ColorStateList.valueOf(
-                        ContextCompat.getColor(context, R.color.text_primary)
-                )
+                    R.id.lavoriProgrammatiIcon,
+                    "setImageTintList",
+                    ColorStateList.valueOf(
+                            ContextCompat.getColor(context, R.color.text_primary)
+                    )
             );
         }
         views.setTextViewText(R.id.detail_in_corso_count, "0");
@@ -240,7 +317,8 @@ public class WidgetLines extends AppWidgetProvider {
         String action = intent.getAction();
         if (action == null) return;
 
-        int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+        int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                AppWidgetManager.INVALID_APPWIDGET_ID);
         if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) return;
 
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -251,22 +329,25 @@ public class WidgetLines extends AppWidgetProvider {
             prefs.edit().putString(PREF_SELECTED_LINE + appWidgetId, lineCode).apply();
             showDetailView(context, appWidgetManager, appWidgetId, lineCode);
 
-        }
-        else if (ACTION_BACK_TO_SELECTION.equals(action)) {
-            prefs.edit().remove(PREF_SELECTED_LINE + appWidgetId).apply();
+        } else if (ACTION_BACK_TO_SELECTION.equals(action)) {
+            prefs.edit()
+                    .remove(PREF_SELECTED_LINE + appWidgetId)
+                    .remove(PREF_SHOWN_LINES + appWidgetId)
+                    .apply();
             showSelectionView(context, appWidgetManager, appWidgetId);
         }
     }
 
     private void applyChipTint(RemoteViews views, int viewId, Context context, int colorRes) {
         int color = context.getColor(colorRes);
-        if (android.os.Build.VERSION.SDK_INT >= 31) {
+        if (Build.VERSION.SDK_INT >= 31) {
             views.setColorStateList(
                     viewId,
                     "setBackgroundTintList",
-                    android.content.res.ColorStateList.valueOf(color)
+                    ColorStateList.valueOf(color)
             );
+        } else {
+            views.setInt(viewId, "setBackgroundColor", color);
         }
-        else views.setInt(viewId, "setBackgroundColor", color);
     }
 }
