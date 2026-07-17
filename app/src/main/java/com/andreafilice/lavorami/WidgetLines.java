@@ -110,6 +110,10 @@ public class WidgetLines extends AppWidgetProvider {
             R.color.S6, R.color.S7, R.color.S8, R.color.S9, R.color.S11,
             R.color.S12, R.color.S13, R.color.S19, R.color.S31
     };
+
+    private static final int[] TILO_COLORS = {
+            R.color.S10, R.color.S20, R.color.S30, R.color.S40, R.color.S50, R.color.S90, R.color.RE80
+    };
     private static final LineType[][] CATEGORY_GROUPS = {
             {LineType.METRO},
             {LineType.SUBURBAN},
@@ -126,7 +130,7 @@ public class WidgetLines extends AppWidgetProvider {
 
         addAllWithSharedColor(all, REGIO_LINES, LineType.REGIO_EXPRESS, R.color.RE);
         addAllWithSharedColor(all, REGIONAL_LINES, LineType.REGIONAL, R.color.REGIONAL);
-        addAllWithSharedColor(all, TILO_LINES, LineType.TILO, R.color.REGIONAL);
+        addAllWithIndividualColors(all, TILO_LINES, LineType.TILO, TILO_COLORS);
         addAllWithSharedColor(all, MXP_LINES, LineType.MXP, R.color.MXP);
         addAllWithSharedColor(all, TRAM_LINES, LineType.TRAM, R.color.TRAM);
         addAllWithSharedColor(all, FILOBUS_LINES, LineType.FILOBUS, R.color.FILOBUS);
@@ -309,17 +313,13 @@ public class WidgetLines extends AppWidgetProvider {
         detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
-        PendingIntent detailPendingIntent = PendingIntent.getActivity(
-                context, detailRequestCode, detailIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
 
         Intent backIntent = new Intent(context, WidgetLines.class);
         backIntent.setAction(ACTION_BACK_TO_SELECTION);
         backIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        PendingIntent backPendingIntent = PendingIntent.getBroadcast(
-                context, appWidgetId, backIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent backPendingIntent = PendingIntent.getBroadcast(context, appWidgetId, backIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.detail_line_chip, backPendingIntent);
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
