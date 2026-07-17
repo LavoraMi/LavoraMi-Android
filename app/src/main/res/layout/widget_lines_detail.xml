@@ -16,7 +16,8 @@
         <TextView
             android:id="@+id/detail_line_chip"
             style="@style/WidgetLineChip"
-            android:text="M1" />
+            android:text="M1"
+            android:fontFamily="@font/inter"/>
 
         <TextView
             android:id="@+id/detail_line_name"
@@ -27,7 +28,7 @@
             android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:fontFamily="@font/font_main" />
 
         <FrameLayout
             android:layout_width="0dp"
@@ -39,7 +40,6 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/ic_metro"
-            android:contentDescription="Tipo di linea"
             app:tint="@color/text_primary" />
 
     </LinearLayout>
@@ -64,7 +64,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_triangle_warning"
-            android:contentDescription="In corso"
             app:tint="@color/text_primary" />
 
         <TextView
@@ -76,7 +75,7 @@
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:fontFamily="@font/font_main" />
 
         <TextView
             android:id="@+id/detail_in_corso_count"
@@ -84,6 +83,7 @@
             android:layout_height="wrap_content"
             android:text="0"
             android:textColor="@color/text_primary"
+            android:fontFamily="@font/inter"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -102,7 +102,6 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_calendar"
-            android:contentDescription="Programmati"
             app:tint="@color/text_primary" />
 
         <TextView
@@ -114,7 +113,7 @@
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:fontFamily="@font/font_main" />
 
         <TextView
             android:id="@+id/detail_programmati_count"
@@ -122,6 +121,7 @@
             android:layout_height="wrap_content"
             android:text="0"
             android:textColor="@color/text_primary"
+            android:fontFamily="@font/inter"
             android:textSize="18sp"
             android:textStyle="bold" />
 
