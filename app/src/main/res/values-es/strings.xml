@@ -300,7 +300,7 @@
     <string name="partiallyAccessibleDeps">Parcialmente Accesible</string>
     <string name="nonAccessibleDeps">No Accesible</string>
     <string name="accessibilityPart1">Todos los vehículos que operan en esta línea están equipados con rampas de acceso (manuales o eléctricas) y asiento reservado. Además, casi la totalidad de las paradas (más del 90%) dispone de andenes elevados que permiten el embarque de forma autónoma o con asistencia mínima.</string>
-    <string name="accessibilityPart2">La línea presenta algunas limitaciones. Aunque los autobuses son accesibles, muchas paradas del recorrido podrían no disponer de bordillo adaptado o espacio suficiente para la rampa. En otros casos, la accesibilidad solo está garantizada en determinados servicios.</string>
+    <string name="accessibilityPart2">La línea presenta algunas limitaciones. Aunque los vehículos son accesibles, muchas paradas del recorrido podrían no disponer de bordillo adaptado o espacio suficiente para la rampa. En otros casos, la accesibilidad solo está garantizada en determinados servicios.</string>
     <string name="accessibilityPart3">Esta línea no cumple los requisitos mínimos de accesibilidad. Los vehículos pueden tener escalones en la entrada o las infraestructuras viales del recorrido hacen imposible bajar la rampa con seguridad.</string>
     <string name="noLinesFound">Sin resultados para: \"%s\"</string>
     <string name="accessibilityInfoDeps3">LavoraMi obtiene esta información de fuentes autorizadas y fiables; los datos pueden no estar actualizados al último momento.</string>
