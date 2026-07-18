@@ -241,7 +241,10 @@ public class WidgetLines extends AppWidgetProvider {
                         .getLaunchIntentForPackage(context.getPackageName());
                 if (openAppIntent != null) {
                     openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
-                    openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                            | Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
                     int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
 
@@ -385,7 +388,7 @@ public class WidgetLines extends AppWidgetProvider {
 
         return new int[]{inCorso, programmati};
     }
-    
+
     public static void refreshAllWidgets(Context context) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] ids = appWidgetManager.getAppWidgetIds(
