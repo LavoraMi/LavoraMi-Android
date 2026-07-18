@@ -1949,6 +1949,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         switch (line){
             case "M1":
             case "M2":
+            case "M3":
             case "M4":
             case "M5":
             case "S5":
