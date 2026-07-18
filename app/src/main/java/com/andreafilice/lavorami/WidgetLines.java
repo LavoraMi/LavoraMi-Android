@@ -237,9 +237,6 @@ public class WidgetLines extends AppWidgetProvider {
                 applyChipTint(views, chipIds[i], context, info.colorRes);
                 views.setViewVisibility(chipIds[i], android.view.View.VISIBLE);
 
-                // I chip in modalità selezione casuale non impostano più alcuno stato:
-                // premerli apre semplicemente l'app (passando il codice linea come contesto,
-                // cosi l'app puo' eventualmente usarlo in futuro senza cambiare lo stato del widget).
                 Intent openAppIntent = context.getPackageManager()
                         .getLaunchIntentForPackage(context.getPackageName());
                 if (openAppIntent != null) {
@@ -265,7 +262,6 @@ public class WidgetLines extends AppWidgetProvider {
 
         LineInfo info = findLine(lineCode);
         if (info == null) {
-            // Codice linea non più valido/riconosciuto: torna alla vista di selezione casuale.
             DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, "");
             showSelectionView(context, appWidgetManager, appWidgetId);
             return;
@@ -305,8 +301,6 @@ public class WidgetLines extends AppWidgetProvider {
         views.setTextViewText(R.id.detail_in_corso_count, loading ? "…" : String.valueOf(counts[0]));
         views.setTextViewText(R.id.detail_programmati_count, loading ? "…" : String.valueOf(counts[1]));
 
-        // Il widget dettagliato non ha più il tasto "torna alla selezione": l'intera card
-        // apre l'activity di dettaglio dell'app, com'è gia' presente altrove.
         Intent detailIntent = new Intent();
         detailIntent.setClassName(context.getPackageName(),
                 "com.andreafilice.lavorami.LinesDetailActivity");
@@ -391,12 +385,7 @@ public class WidgetLines extends AppWidgetProvider {
 
         return new int[]{inCorso, programmati};
     }
-
-    /**
-     * Da chiamare quando KEY_LINE_WIDGET cambia da fuori (es. dall'activity quando l'utente
-     * preme "aggiungi al widget" o rimuove la linea), per forzare il refresh di tutte le
-     * istanze del widget senza attendere il prossimo update periodico.
-     */
+    
     public static void refreshAllWidgets(Context context) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] ids = appWidgetManager.getAppWidgetIds(
