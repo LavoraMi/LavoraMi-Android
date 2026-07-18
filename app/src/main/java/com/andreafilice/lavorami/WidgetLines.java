@@ -22,11 +22,8 @@ import java.util.Random;
 public class WidgetLines extends AppWidgetProvider {
 
     private static final String PREFS_NAME = "lavorami_widget_prefs";
-    private static final String PREF_SELECTED_LINE = "selected_line_"; // + appWidgetId
     private static final String PREF_SHOWN_LINES = "shown_lines_"; // + appWidgetId
 
-    public static final String ACTION_SELECT_LINE = "com.andreafilice.lavorami.ACTION_SELECT_LINE";
-    public static final String ACTION_BACK_TO_SELECTION = "com.andreafilice.lavorami.ACTION_BACK_TO_SELECTION";
     public static final String EXTRA_LINE_NAME = "extra_line_name";
 
     public enum LineType {
@@ -189,16 +186,16 @@ public class WidgetLines extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        DataManager.init(context);
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
     }
 
     private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String selectedLine = prefs.getString(PREF_SELECTED_LINE + appWidgetId, null);
+        String selectedLine = DataManager.getStringData(DataKeys.KEY_LINE_WIDGET, null);
 
-        if (selectedLine != null) {
+        if (selectedLine != null && !selectedLine.isEmpty()) {
             showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
         } else {
             showSelectionView(context, appWidgetManager, appWidgetId);
@@ -240,17 +237,22 @@ public class WidgetLines extends AppWidgetProvider {
                 applyChipTint(views, chipIds[i], context, info.colorRes);
                 views.setViewVisibility(chipIds[i], android.view.View.VISIBLE);
 
-                Intent clickIntent = new Intent(context, WidgetLines.class);
-                clickIntent.setAction(ACTION_SELECT_LINE);
-                clickIntent.putExtra(EXTRA_LINE_NAME, info.code);
-                clickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+                // I chip in modalità selezione casuale non impostano più alcuno stato:
+                // premerli apre semplicemente l'app (passando il codice linea come contesto,
+                // cosi l'app puo' eventualmente usarlo in futuro senza cambiare lo stato del widget).
+                Intent openAppIntent = context.getPackageManager()
+                        .getLaunchIntentForPackage(context.getPackageName());
+                if (openAppIntent != null) {
+                    openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
+                    openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                int requestCode = (appWidgetId + "_" + info.code).hashCode();
+                    int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
 
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                        context, requestCode, clickIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-                views.setOnClickPendingIntent(chipIds[i], pendingIntent);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(
+                            context, requestCode, openAppIntent,
+                            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                    views.setOnClickPendingIntent(chipIds[i], pendingIntent);
+                }
             } else {
                 views.setViewVisibility(chipIds[i], android.view.View.GONE);
             }
@@ -258,15 +260,13 @@ public class WidgetLines extends AppWidgetProvider {
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
+
     private void showDetailView(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String lineCode) {
 
         LineInfo info = findLine(lineCode);
         if (info == null) {
-            SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-            prefs.edit()
-                    .remove(PREF_SELECTED_LINE + appWidgetId)
-                    .remove(PREF_SHOWN_LINES + appWidgetId)
-                    .apply();
+            // Codice linea non più valido/riconosciuto: torna alla vista di selezione casuale.
+            DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, "");
             showSelectionView(context, appWidgetManager, appWidgetId);
             return;
         }
@@ -305,6 +305,8 @@ public class WidgetLines extends AppWidgetProvider {
         views.setTextViewText(R.id.detail_in_corso_count, loading ? "…" : String.valueOf(counts[0]));
         views.setTextViewText(R.id.detail_programmati_count, loading ? "…" : String.valueOf(counts[1]));
 
+        // Il widget dettagliato non ha più il tasto "torna alla selezione": l'intera card
+        // apre l'activity di dettaglio dell'app, com'è gia' presente altrove.
         Intent detailIntent = new Intent();
         detailIntent.setClassName(context.getPackageName(),
                 "com.andreafilice.lavorami.LinesDetailActivity");
@@ -315,12 +317,7 @@ public class WidgetLines extends AppWidgetProvider {
         int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
         PendingIntent detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
-
-        Intent backIntent = new Intent(context, WidgetLines.class);
-        backIntent.setAction(ACTION_BACK_TO_SELECTION);
-        backIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-        PendingIntent backPendingIntent = PendingIntent.getBroadcast(context, appWidgetId, backIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        views.setOnClickPendingIntent(R.id.detail_line_chip, backPendingIntent);
+        views.setOnClickPendingIntent(R.id.detail_line_chip, detailPendingIntent);
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
@@ -395,32 +392,19 @@ public class WidgetLines extends AppWidgetProvider {
         return new int[]{inCorso, programmati};
     }
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        super.onReceive(context, intent);
-
-        String action = intent.getAction();
-        if (action == null) return;
-
-        int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
-                AppWidgetManager.INVALID_APPWIDGET_ID);
-        if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID) return;
-
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    /**
+     * Da chiamare quando KEY_LINE_WIDGET cambia da fuori (es. dall'activity quando l'utente
+     * preme "aggiungi al widget" o rimuove la linea), per forzare il refresh di tutte le
+     * istanze del widget senza attendere il prossimo update periodico.
+     */
+    public static void refreshAllWidgets(Context context) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-
-        if (ACTION_SELECT_LINE.equals(action)) {
-            String lineCode = intent.getStringExtra(EXTRA_LINE_NAME);
-            prefs.edit().putString(PREF_SELECTED_LINE + appWidgetId, lineCode).apply();
-            showDetailView(context, appWidgetManager, appWidgetId, lineCode);
-
-        } else if (ACTION_BACK_TO_SELECTION.equals(action)) {
-            prefs.edit()
-                    .remove(PREF_SELECTED_LINE + appWidgetId)
-                    .remove(PREF_SHOWN_LINES + appWidgetId)
-                    .apply();
-            showSelectionView(context, appWidgetManager, appWidgetId);
-        }
+        int[] ids = appWidgetManager.getAppWidgetIds(
+                new android.content.ComponentName(context, WidgetLines.class));
+        Intent intent = new Intent(context, WidgetLines.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        context.sendBroadcast(intent);
     }
 
     private void applyChipTint(RemoteViews views, int viewId, Context context, int colorRes) {

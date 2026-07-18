@@ -416,7 +416,9 @@
     <string name="stadiumKey">Stadio</string>
     <string name="monumentKey">Monumento</string>
     <string name="filobusKey">Filobus</string>
-    <string name="widget_selection_text">Seleziona la linea che vuoi vedere.</string>
+    <string name="widget_selection_text">Seleziona la linea in app da mostrare nel widget.</string>
     <string name="widget_detail_inCorso">IN CORSO</string>
     <string name="widget_detail_programmati">PROGRAMMATI</string>
+    <string name="widget_line_added_description">La linea %1$s è stata aggiunta al widget</string>
+    <string name="widget_line_added_title">Linea aggiunta al Widget</string>
 </resources>

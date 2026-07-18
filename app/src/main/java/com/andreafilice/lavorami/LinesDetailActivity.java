@@ -4,6 +4,7 @@ import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.accessibilityservice.GestureDescription;
+import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -16,6 +17,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionListenerAdapter;
@@ -111,6 +113,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private boolean mapAlreadyLoaded = false;
     private boolean strikeFetchAttempted = false;
     private boolean modalitaRitorno = false;
+    private boolean hintWidgetClosed;
     private TextView txtDirezioneMappa;
     private List<MetroStation> ultimeStazioniDisegnate;
     SessionManager sessionManager;
@@ -426,6 +429,65 @@ public class LinesDetailActivity extends AppCompatActivity {
             lineAccessibilityLayout.setVisibility(View.GONE);
             findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
         }
+
+        ImageButton addToWidget = findViewById(R.id.buttonAddInWidget);
+        hintWidgetClosed = DataManager.getBoolData(DataKeys.KEY_HINT_WIDGET_CLOSED, false);
+
+        boolean isCurrentlyInWidget = nomeLinea.equals(DataManager.getStringData(DataKeys.KEY_LINE_WIDGET, ""));
+        if (isCurrentlyInWidget) {
+            addToWidget.setImageResource(R.drawable.ic_added_line_widget);
+            addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.S6)));
+        } else {
+            addToWidget.setImageResource(R.drawable.ic_add_line_widget);
+            addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+        }
+
+        addToWidget.setOnClickListener(v -> {
+            boolean isInWidget = nomeLinea.equals(DataManager.getStringData(DataKeys.KEY_LINE_WIDGET, ""));
+
+            ActivityUtils.triggerFeedback(this);
+            addToWidget.startAnimation(AnimationUtils.loadAnimation(this, R.anim.scale_down_up));
+
+            if (isInWidget) {
+
+                DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, "");
+                addToWidget.setImageResource(R.drawable.ic_add_line_widget);
+                addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
+
+                WidgetLines.refreshAllWidgets(this);
+                return;
+            }
+
+            if (!hintWidgetClosed) {
+                View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_hint_widget_lines, null);
+
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                        .setView(dialogView)
+                        .setCancelable(true)
+                        .create();
+
+                dialog.show();
+
+                if (dialog.getWindow() != null)
+                    dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                DataManager.saveBoolData(DataKeys.KEY_HINT_WIDGET_CLOSED, true);
+                hintWidgetClosed = true;
+
+                TextView descriptionText = dialogView.findViewById(R.id.text_description);
+                descriptionText.setText(getString(R.string.widget_line_added_description, nomeLinea));
+
+                Button btnClose = dialogView.findViewById(R.id.btn_close_tutorial);
+                btnClose.setOnClickListener(v1 -> dialog.dismiss());
+            }
+
+            addToWidget.setImageResource(R.drawable.ic_added_line_widget);
+            addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.S6)));
+
+            DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, nomeLinea);
+
+            WidgetLines.refreshAllWidgets(this);
+        });
     }
 
     private void updateSavedLines() {
