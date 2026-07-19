@@ -617,6 +617,15 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Seriate", new String[]{"R1", "R5"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R1", "R2", "R5", "RE2", "RV"}, "lightrail", "Main", 11));
 
+        /// Regionale R2
+        interchanges.add(new InterchangeInfo("Treviglio", new String[]{"R2", "S5", "S6", "R2", "R4", "R6", "R7", "RE6"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Treviglio Ovest", new String[]{"R2", "RE2", "RV", "z405"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Verdello Dalmine", new String[]{"R2", "RE2", "RV"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Levate", new String[]{"R2"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Stezzano", new String[]{"R2"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Stezzano", new String[]{"R2"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R2", "R1", "R5", "RE2", "RV"}, "lightrail", "Main", 6));
+
         return interchanges;
     }
 
