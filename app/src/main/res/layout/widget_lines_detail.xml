@@ -80,7 +80,6 @@
                 android:text="@string/widget_detail_inCorso"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:fontFamily="@font/font_main" />
 
             <TextView
@@ -118,7 +117,6 @@
                 android:text="@string/widget_detail_programmati"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:fontFamily="@font/font_main" />
 
             <TextView

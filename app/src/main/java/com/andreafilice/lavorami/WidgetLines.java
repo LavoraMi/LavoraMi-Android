@@ -26,7 +26,7 @@ public class WidgetLines extends AppWidgetProvider {
 
     public enum LineType {
         METRO("Metro", R.drawable.ic_metro),
-        SUBURBAN("Linea S", R.drawable.ic_train),
+        SUBURBAN("Suburbano", R.drawable.ic_train),
         REGIO_EXPRESS("Regio Express", R.drawable.ic_train),
         REGIONAL("Regionale", R.drawable.ic_train),
         TILO("TILO", R.drawable.ic_train),

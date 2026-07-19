@@ -16,22 +16,32 @@
 
         <TextView
             android:id="@+id/chip1"
+            android:text="M1"
+            android:backgroundTint="@color/redMetro"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip2"
+            android:text="S5"
+            android:backgroundTint="@color/S5"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip3"
+            android:text="M3"
+            android:backgroundTint="@color/M3"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip4"
+            android:text="S2"
+            android:backgroundTint="@color/S2"
             style="@style/WidgetLineChip" />
 
         <TextView
             android:id="@+id/chip5"
+            android:text="z620"
+            android:backgroundTint="@color/BUS"
             style="@style/WidgetLineChip" />
 
     </LinearLayout>
@@ -45,6 +55,6 @@
         android:textColor="@color/subtitle"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-medium" />
+        android:fontFamily="@font/font_main" />
 
 </LinearLayout>
