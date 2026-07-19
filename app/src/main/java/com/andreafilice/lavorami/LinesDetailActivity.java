@@ -430,6 +430,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
         }
 
+        //*WIDGET SELECTION
+        /// In this section of the code, we handle the Widget Selection for different lines
         ImageButton addToWidget = findViewById(R.id.buttonAddInWidget);
         hintWidgetClosed = DataManager.getBoolData(DataKeys.KEY_HINT_WIDGET_CLOSED, false);
 
@@ -437,7 +439,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (isCurrentlyInWidget) {
             addToWidget.setImageResource(R.drawable.ic_added_line_widget);
             addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.S6)));
-        } else {
+        }
+        else {
             addToWidget.setImageResource(R.drawable.ic_add_line_widget);
             addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
         }
@@ -449,7 +452,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             addToWidget.startAnimation(AnimationUtils.loadAnimation(this, R.anim.scale_down_up));
 
             if (isInWidget) {
-
                 DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, "");
                 addToWidget.setImageResource(R.drawable.ic_add_line_widget);
                 addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_primary)));
@@ -462,14 +464,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                 View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_hint_widget_lines, null);
 
                 AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setView(dialogView)
-                        .setCancelable(true)
-                        .create();
-
+                    .setView(dialogView)
+                    .setCancelable(true)
+                    .create();
                 dialog.show();
 
-                if (dialog.getWindow() != null)
-                    dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+                if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
 
                 DataManager.saveBoolData(DataKeys.KEY_HINT_WIDGET_CLOSED, true);
                 hintWidgetClosed = true;
@@ -1081,7 +1081,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             layoutDefault.setVisibility(View.VISIBLE);
             downloadingText.setVisibility(View.GONE);
             translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
-        } else {
+        }
+        else {
             layoutDefault.setVisibility(View.GONE);
             layoutTerms.setVisibility(View.VISIBLE);
 
