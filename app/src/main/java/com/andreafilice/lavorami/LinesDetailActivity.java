@@ -1167,21 +1167,21 @@ public class LinesDetailActivity extends AppCompatActivity {
             List<InterchangeInfo> interchanges;
 
             /*if (isLineaTram())
-                interchanges = StationDB.getTramInterchanges(this);*/
+                interchanges = InterchangesDB.getTramInterchanges(this);*/
             if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
                 interchanges = StationDB.getInterchangesFilobus();
             else if (isLineaMetro())
-                interchanges = StationDB.getMetroInterchanges(this);
+                interchanges = InterchangesDB.getMetroInterchanges(this);
             else if (isLineaSuburbano())
-                interchanges = StationDB.getSuburbanInterchanges();
+                interchanges = InterchangesDB.getSuburbanInterchanges();
             else if(isLineaRegionale())
-                interchanges = StationDB.getRegionalInterchanges(this);
+                interchanges = InterchangesDB.getRegionalInterchanges(this);
             else if (isMalpensaExpress())
-                interchanges = StationDB.getMalpensaExpressInterchanges(this);
+                interchanges = InterchangesDB.getMalpensaExpressInterchanges(this);
             else if(isLineaTilo())
-                interchanges = StationDB.getTILOInterchanges(this);
+                interchanges = InterchangesDB.getTILOInterchanges(this);
             else
                 interchanges = StationDB.getInterchanges(this);
 
