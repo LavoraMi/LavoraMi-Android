@@ -626,6 +626,38 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Stezzano", new String[]{"R2"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R2", "R1", "R5", "RE2", "RV"}, "lightrail", "Main", 6));
 
+        /// Regionale R3
+        interchanges.add(new InterchangeInfo("Brescia", new String[]{"R3", "S31", "R1", "R4", "R5", "R7", "R8", "RE3", "RE6", "AV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Brescia Borgo San Giovanni", new String[]{"R3", "S31"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Brescia Violino", new String[]{"R3", "S31"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Castegnato", new String[]{"R3", "S31"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Paderno Franciacorta", new String[]{"R3", "S31"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Passirano", new String[]{"R3", "S31"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Bornato Calino", new String[]{"R3", "S31", "R9"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Borgonato Adro", new String[]{"R3", "S31"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Provaglio Timoline", new String[]{"R3", "S31"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Iseo", new String[]{"R3", "S31", "R9", "RE3"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Pilzone", new String[]{"R3"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Sulzano", new String[]{"R3", "R9", "RE3"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Sale Marasino", new String[]{"R3", "RE3"}, "lightrail", "Main", 12));
+        interchanges.add(new InterchangeInfo("Marone Zone", new String[]{"R3", "R9", "RE3"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Vello", new String[]{"R3"}, "lightrail", "Main", 14));
+        interchanges.add(new InterchangeInfo("Toline", new String[]{"R3"}, "lightrail", "Main", 15));
+        interchanges.add(new InterchangeInfo("Pisogne", new String[]{"R3", "R9", "RE3"}, "lightrail", "Main", 16));
+        interchanges.add(new InterchangeInfo("Pian Camuno-Gratacasolo", new String[]{"R3"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("Darfo - Corna", new String[]{"R3", "RE3"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Boario Terme", new String[]{"R3", "RE3"}, "lightrail", "Main", 19));
+        interchanges.add(new InterchangeInfo("Pian Di Borno", new String[]{"R3"}, "lightrail", "Main", 20));
+        interchanges.add(new InterchangeInfo("Cogno - Esine", new String[]{"R3"}, "lightrail", "Main", 21));
+        interchanges.add(new InterchangeInfo("Cividate - Malegno", new String[]{"R3"}, "lightrail", "Main", 22));
+        interchanges.add(new InterchangeInfo("Breno", new String[]{"R3", "RE3"}, "lightrail", "Main", 23));
+        interchanges.add(new InterchangeInfo("Ceto - Cerveno", new String[]{"R3"}, "lightrail", "Main", 24));
+        interchanges.add(new InterchangeInfo("Capo Di Ponte", new String[]{"R3", "RE3"}, "lightrail", "Main", 25));
+        interchanges.add(new InterchangeInfo("Cedegolo", new String[]{"R3", "RE3"}, "lightrail", "Main", 26));
+        interchanges.add(new InterchangeInfo("Malonno", new String[]{"R3", "RE3"}, "lightrail", "Main", 27));
+        interchanges.add(new InterchangeInfo("Sonico", new String[]{"R3"}, "lightrail", "Main", 28));
+        interchanges.add(new InterchangeInfo("Edolo", new String[]{"R3", "RE3"}, "lightrail", "Main", 29));
+
         return interchanges;
     }
 
