@@ -1110,6 +1110,16 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         return nomeLinea != null && nomeLinea.startsWith("S") && isValid;
     }
+    private boolean isLineaRegionale() {
+        ArrayList<String> suburbanWithNewGraphic = new ArrayList<>(Arrays.asList("R1"));
+        boolean isValid = false;
+
+        for(int i = 0; i < suburbanWithNewGraphic.size(); i++){
+            if (suburbanWithNewGraphic.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
+        }
+
+        return nomeLinea != null && nomeLinea.startsWith("R") && isValid;
+    }
 
     private boolean isLineaTilo() {
         ArrayList<String> tiloLines = new ArrayList<>(Arrays.asList("S10", "S20", "S30", "S40", "S50", "S90", "RE80"));
@@ -1166,6 +1176,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 interchanges = StationDB.getMetroInterchanges(this);
             else if (isLineaSuburbano())
                 interchanges = StationDB.getSuburbanInterchanges();
+            else if(isLineaRegionale())
+                interchanges = StationDB.getRegionalInterchanges(this);
             else if (isMalpensaExpress())
                 interchanges = StationDB.getMalpensaExpressInterchanges(this);
             else if(isLineaTilo())
@@ -1180,7 +1192,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (info.getLines() == null || info.getLines().length == 0) continue;
 
                 boolean match = false;
-                if (isLineaMetro() || isLineaSuburbano() || isMalpensaExpress() || isLineaTilo() || isLineaTram()) {
+                if (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isMalpensaExpress() || isLineaTilo() || isLineaTram()) {
                     String primaryLine = info.getLines()[0].trim().toUpperCase();
                     match = primaryLine.equals(searchTag);
                 }
@@ -1372,7 +1384,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
-            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isMalpensaExpress() || isLineaTilo() || isLineaTram());
+            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isMalpensaExpress() || isLineaTilo() || isLineaTram());
 
             int lineColor = isValidNewInterface ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);

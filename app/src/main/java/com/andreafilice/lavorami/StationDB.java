@@ -12263,6 +12263,27 @@ public class StationDB {
         return interchanges;
     }
 
+    public static List<InterchangeInfo> getRegionalInterchanges(Context context) {
+        List<InterchangeInfo> interchanges = new ArrayList<>();
+
+        //* TRAM LINES
+        /// Regionale R1
+        interchanges.add(new InterchangeInfo("Brescia", new String[]{"R1", "S31", "AV", "R3", "R4", "R5", "R7", "R8", "RE3", "RE6"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Ospitaletto Travagliato", new String[]{"R1", "R4", "R5"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Rovato", new String[]{"R1", "R4", "R5", "R7", "R9", "RE6"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Coccaglio", new String[]{"R1", "R5"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Cologne", new String[]{"R1", "R5"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Palazzolo Sull'Oglio", new String[]{"R1", "R5"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Grumello Del Monte", new String[]{"R1", "R5"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Chiuduno", new String[]{"R1", "R5"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Montello Gorlago", new String[]{"R1", "R5"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Albano Sant'Alessandro", new String[]{"R1", "R5"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Seriate", new String[]{"R1", "R5"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R1", "R2", "R5", "RE2", "RV"}, "lightrail", "Main", 11));
+
+        return interchanges;
+    }
+
     public static List<InterchangeInfo> getTramInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
