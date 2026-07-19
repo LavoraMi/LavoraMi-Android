@@ -599,7 +599,7 @@ public class InterchangesDB {
         return interchanges;
     }
 
-    public static List<InterchangeInfo> getRegionalInterchanges(Context context) {
+    public static List<InterchangeInfo> getRegionalInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* TRAM LINES
