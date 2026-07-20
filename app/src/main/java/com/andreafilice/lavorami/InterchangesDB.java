@@ -761,6 +761,28 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Poggiridenti Trevisio Piateda", new String[]{"R12", "RE8"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Sondrio", new String[]{"R12", "R13", "RE8"}, "lightrail", "Main", 8));
 
+        /// Regionale R13
+        interchanges.add(new InterchangeInfo("Lecco", new String[]{"R13", "S7", "S8", "R7", "R18", "RE8"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Abbadia Lariana", new String[]{"R13", "RE8"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Mandello del Lario", new String[]{"R13", "RE8"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Olcio", new String[]{"R13", "RE8"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Lierna", new String[]{"R13", "RE8"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Fiumelatte", new String[]{"R13", "RE8"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Varenna Esino", new String[]{"R13", "RE8"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Bellano Tartavalle Terme", new String[]{"R13", "RE8"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Dervio", new String[]{"R13", "RE8"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Dorio", new String[]{"R13", "RE8"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Piona", new String[]{"R13", "RE8"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Colico", new String[]{"R13", "R11", "RE8"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Delebio", new String[]{"R13"}, "lightrail", "Main", 12));
+        interchanges.add(new InterchangeInfo("Cosio Traona", new String[]{"R13"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Morbegno", new String[]{"R13", "RE8"}, "lightrail", "Main", 14));
+        interchanges.add(new InterchangeInfo("Talamona", new String[]{"R13"}, "lightrail", "Main", 15));
+        interchanges.add(new InterchangeInfo("Ardenno Masino", new String[]{"R13"}, "lightrail", "Main", 16));
+        interchanges.add(new InterchangeInfo("San Pietro Berbenno", new String[]{"R13"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("Castione Andevenno", new String[]{"R13"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Sondrio", new String[]{"R13", "R12", "RE8"}, "lightrail", "Main", 19));
+
         return interchanges;
     }
 
