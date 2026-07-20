@@ -161,9 +161,6 @@
     <string name="manageAccountDeps">Gestisci il tuo Account</string>
     <string name="favoritesDeps">Preferiti</string>
     <string name="trenordLines">Linee Trenord</string>
-    <string name="sLines">Linee S</string>
-    <string name="rLines">Linee R</string>
-    <string name="RELines">Linee RE</string>
     <string name="atmLines">Linee ATM</string>
     <string name="metroLines">Linee Metropolitane</string>
     <string name="tramLines">Linee Tram</string>

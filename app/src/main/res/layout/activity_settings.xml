@@ -211,7 +211,7 @@
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_slines"
                                 app:tint="@color/text_primary" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="@string/sLines" android:textColor="@color/text_primary" android:textSize="15sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="@string/suburbanLinesTitle" android:textColor="@color/text_primary" android:textSize="15sp" />
                             <ImageView android:focusable="true" android:id="@+id/sLinesFavorites" android:clickable="true" android:layout_width="20dp" android:layout_height="20dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
@@ -223,7 +223,7 @@
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_rlines"
                                 app:tint="@color/text_primary" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="@string/rLines" android:textColor="@color/text_primary" android:textSize="15sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="@string/regionalLines" android:textColor="@color/text_primary" android:textSize="15sp" />
                             <ImageView android:focusable="true" android:id="@+id/rLinesFavorites" android:clickable="true" android:layout_width="20dp" android:layout_height="20dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
@@ -235,7 +235,7 @@
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/icon_relines"
                                 app:tint="@color/text_primary" />
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="@string/RELines" android:textColor="@color/text_primary" android:textSize="15sp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="40dp" android:text="@string/regioExpressLines" android:textColor="@color/text_primary" android:textSize="15sp" />
                             <ImageView android:focusable="true" android:id="@+id/reLinesFavorites" android:clickable="true" android:layout_width="20dp" android:layout_height="20dp" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
                     </LinearLayout>

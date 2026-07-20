@@ -162,9 +162,6 @@
     <string name="manageAccountDeps">Manage your Account</string>
     <string name="favoritesDeps">Favorites</string>
     <string name="trenordLines">Trenord Lines</string>
-    <string name="sLines">Suburban Lines</string>
-    <string name="rLines">Regional Lines</string>
-    <string name="RELines">Regio Express Lines</string>
     <string name="atmLines">ATM Lines</string>
     <string name="metroLines">Metro Lines</string>
     <string name="tramLines">Tram Lines</string>
