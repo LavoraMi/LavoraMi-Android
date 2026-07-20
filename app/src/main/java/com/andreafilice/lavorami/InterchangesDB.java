@@ -687,6 +687,19 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Olmeneta", new String[]{"R5", "R6"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Cremona", new String[]{"R5", "R6", "R37", "R39", "R40", "RE11"}, "lightrail", "Main", 7));
 
+        /// Regionale R6
+        interchanges.add(new InterchangeInfo("Treviglio", new String[]{"R6", "S5", "S6", "R2", "R4", "R7", "RE6"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Caravaggio", new String[]{"R6"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Capralba", new String[]{"R6"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Casaletto Vaprio", new String[]{"R6"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Crema", new String[]{"R6"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Madignano", new String[]{"R6"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Castelleone", new String[]{"R6"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Soresina", new String[]{"R6"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Casalbuttano", new String[]{"R6"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Olmeneta", new String[]{"R6", "R5"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Cremona", new String[]{"R6", "R5", "R37", "R39", "R40", "RE11"}, "lightrail", "Main", 10));
+
         return interchanges;
     }
 
