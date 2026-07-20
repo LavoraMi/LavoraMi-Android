@@ -435,8 +435,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Paderno Franciacorta", new String[]{"S31", "R3"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Passirano", new String[]{"S31", "R3"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Bornato Calino", new String[]{"S31", "R3", "R9"}, "lightrail", "Main", 6));
-        interchanges.add(new InterchangeInfo("Borgonato Adro", new String[]{"S31", "R3"}, "lightrail", "Main", 7));
-        interchanges.add(new InterchangeInfo("Provaglio Timoline", new String[]{"S31", "R3"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Borgonato Adro", new String[]{"S31", "R3", "R9"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Provaglio Timoline", new String[]{"S31", "R3", "R9"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Iseo", new String[]{"S31", "R3", "R9", "RE3"}, "lightrail", "Main", 9));
 
         return interchanges;
@@ -730,6 +730,15 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Colorno", new String[]{"R8"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Torrile San Polo", new String[]{"R8"}, "lightrail", "Main", 16));
         interchanges.add(new InterchangeInfo("Parma", new String[]{"R8", "RV"}, "lightrail", "Main", 17));
+
+        /// Regionale R9
+        interchanges.add(new InterchangeInfo("Rovato FN", new String[]{"R9"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Rovato Città", new String[]{"R9"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Cazzago San Martino", new String[]{"R9"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Bornato Calino", new String[]{"R9", "S31", "R3"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Borgonato Adro", new String[]{"R9", "S31", "R3"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Provaglio Timoline", new String[]{"R9", "S31", "R3"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Iseo", new String[]{"R9", "S31", "R3", "RE3"}, "lightrail", "Main", 6));
 
         return interchanges;
     }
