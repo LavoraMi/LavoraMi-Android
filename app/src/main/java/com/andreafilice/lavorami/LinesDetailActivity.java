@@ -1692,7 +1692,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] suburbanLinks = cdnData.getSuburbanInterruptionLinks();
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
+        LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
         ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
+        ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
+
+        if(nomeLinea.equalsIgnoreCase("R15")) lineaFullBus.setVisibility(View.VISIBLE);
+        lineaFullBus.setOnClickListener(v -> showPopUpInfoBuses());
+        infoLineBusesBtn.setOnClickListener(v -> showPopUpInfoBuses());
 
         int i = 0;
         for (String linea : lineeDeviate) {
@@ -1727,6 +1733,21 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
         else
             findViewById(R.id.chipArrivi).setVisibility(View.GONE);
+    }
+
+    private void showPopUpInfoBuses() {
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_info_buses, null);
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setCancelable(true)
+                .create();
+        dialog.show();
+
+        if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        Button btnClose = dialogView.findViewById(R.id.btn_close_tutorial);
+        btnClose.setOnClickListener(v1 -> dialog.dismiss());
     }
 
     private boolean isDarkMode() {
