@@ -750,6 +750,17 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Prata Camportaccio", new String[]{"R11"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Chiavenna", new String[]{"R11", "R13"}, "lightrail", "Main", 7));
 
+        /// Regionale R12
+        interchanges.add(new InterchangeInfo("Tirano", new String[]{"R12", "RE8"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Villa di Tirano", new String[]{"R12", "RE8"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Bianzone", new String[]{"R12", "RE8"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Tresenda Aprica Teglio", new String[]{"R12", "RE8"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("San Giacomo di Teglio", new String[]{"R12", "RE8"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Chiuro", new String[]{"R12", "RE8"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Ponte In Valtellina", new String[]{"R12", "RE8"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Poggiridenti Trevisio Piateda", new String[]{"R12", "RE8"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Sondrio", new String[]{"R12", "R13", "RE8"}, "lightrail", "Main", 8));
+
         return interchanges;
     }
 
