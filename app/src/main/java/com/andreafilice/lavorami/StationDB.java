@@ -4428,7 +4428,6 @@ public class StationDB {
         return stations;
     }
 
-
     public static List<MetroStation> getStationsR7() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Lecco", 45.85637, 9.3934, "Main", "R7"));
