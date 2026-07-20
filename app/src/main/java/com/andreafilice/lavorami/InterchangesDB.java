@@ -709,7 +709,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Pontida", new String[]{"R7"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Ambivere Mapello", new String[]{"R7"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Ponte San Pietro", new String[]{"R7", "R14"}, "lightrail", "Main", 7));
-        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R7", "R1", "R2", "R5", "RE2", "RV"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R7", "R1", "R2", "R5", "RE2", "RV"}, "lightrail", "Main", 8));
 
         return interchanges;
     }
