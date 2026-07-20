@@ -6118,10 +6118,50 @@ public class StationDB {
 
     public static List<MetroStation> getStationsR15() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Carnate Usmate", 45.65318, 9.37493, "Main", "R15"));
-        stations.add(new MetroStation("Lesmo", 45.64466, 9.3093, "Main", "R15"));
+        stations.add(new MetroStation("Seregno", 45.64609, 9.20302, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64497, 9.20449, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64382, 9.20635, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.6432, 9.20739, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64279, 9.20846, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64263, 9.20919, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64248, 9.21003, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64242, 9.21153, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64242, 9.21482, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64248, 9.26411, "Main", "R15"));
         stations.add(new MetroStation("Macherio Sovico", 45.64239, 9.26689, "Main", "R15"));
-        stations.add(new MetroStation("Seregno",  45.64609,  9.20302,  "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64247, 9.2687, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64248, 9.27403, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.6424, 9.27589, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64223, 9.27749, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64189, 9.2801, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.6411, 9.28667, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64104, 9.28798, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64118, 9.2893, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64187, 9.29275, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64418, 9.30442, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64447, 9.30609, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64465, 9.30766, "Main", "R15"));
+        stations.add(new MetroStation("Lesmo", 45.64466, 9.3093, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64499, 9.31246, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64626, 9.3302, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64631, 9.33185, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64626, 9.33287, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64599, 9.33442, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64572, 9.33603, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64551, 9.33762, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64548, 9.33998, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64571, 9.35028, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64599, 9.36203, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64609, 9.36328, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64629, 9.36419, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64661, 9.36508, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64705, 9.36604, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64761, 9.36727, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.64939, 9.37056, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.65024, 9.37186, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.65113, 9.37293, "Main", "R15"));
+        stations.add(new MetroStation("NO_DRAW", 45.65257, 9.37466, "Main", "R15"));
+        stations.add(new MetroStation("Carnate Usmate", 45.65318, 9.37493, "Main", "R15"));
         return stations;
     }
 
