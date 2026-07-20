@@ -615,7 +615,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Montello Gorlago", new String[]{"R1", "R5"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Albano Sant'Alessandro", new String[]{"R1", "R5"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Seriate", new String[]{"R1", "R5"}, "lightrail", "Main", 10));
-        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R1", "R2", "R5", "RE2", "RV"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R1", "R2", "R5", "R7", "R14", "RE2", "RV"}, "lightrail", "Main", 11));
 
         /// Regionale R2
         interchanges.add(new InterchangeInfo("Treviglio", new String[]{"R2", "S5", "S6", "R4", "R6", "R7", "RE6"}, "lightrail", "Main", 0));
@@ -624,7 +624,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Levate", new String[]{"R2"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Stezzano", new String[]{"R2"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Stezzano", new String[]{"R2"}, "lightrail", "Main", 5));
-        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R2", "R1", "R5", "R7", "RE2", "RV"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R2", "R1", "R5", "R7", "R14", "RE2", "RV"}, "lightrail", "Main", 6));
 
         /// Regionale R3
         interchanges.add(new InterchangeInfo("Brescia", new String[]{"R3", "S31", "R1", "R4", "R5", "R7", "R8", "RE3", "RE6", "AV"}, "lightrail", "Main", 0));
@@ -709,7 +709,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Pontida", new String[]{"R7"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Ambivere Mapello", new String[]{"R7"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Ponte San Pietro", new String[]{"R7", "R14"}, "lightrail", "Main", 7));
-        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R7", "R1", "R2", "R5", "RE2", "RV"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R7", "R1", "R2", "R5", "R14", "RE2", "RV"}, "lightrail", "Main", 8));
 
         /// Regionale R8
         interchanges.add(new InterchangeInfo("Brescia", new String[]{"R8", "S31", "AV", "R1", "R3", "R4", "R5", "R7", "RE3", "RE6"}, "lightrail", "Main", 0));
@@ -782,6 +782,20 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("San Pietro Berbenno", new String[]{"R13"}, "lightrail", "Main", 17));
         interchanges.add(new InterchangeInfo("Castione Andevenno", new String[]{"R13"}, "lightrail", "Main", 18));
         interchanges.add(new InterchangeInfo("Sondrio", new String[]{"R13", "R12", "RE8"}, "lightrail", "Main", 19));
+
+        /// Regionale R14
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R14", "R1", "R2", "R5", "R7", "RE2", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Bergamo Ospedale", new String[]{"R14"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Ponte San Pietro", new String[]{"R14", "R7"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Terno D'Isola", new String[]{"R14"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Calusco", new String[]{"R14"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Paderno Robbiate", new String[]{"R14"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Carnate Usmate", new String[]{"R14", "S8", "R13", "RE8"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Arcore", new String[]{"R14", "S8", "R13", "z208"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Monza", new String[]{"R14", "S7", "S8", "S9", "S11", "R7", "R13", "RE8", "RE13", "RE80", "z201", "z203", "z205", "z206", "z208", "z211", "z213", "z221", "z222", "z228"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Sesto S. Giovanni", new String[]{"R14", "S7", "S8", "S9", "S11", "R13", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Milano Greco Pirelli", new String[]{"R14", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"R14", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 11));
 
         return interchanges;
     }
