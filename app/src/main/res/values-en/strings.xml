@@ -419,4 +419,7 @@
     <string name="widget_detail_programmati">SCHEDULED</string>
     <string name="widget_line_added_description">The %1$s line has been added to the widget</string>
     <string name="widget_line_added_title">Line added to the Widget</string>
+    <string name="busPopUpTitle">Route replaced by Bus</string>
+    <string name="busPopUpDeps">This line is currently served entirely by buses, and there are no trains running on this route. It is scheduled to reopen in September 2026 due to engineering works on the S7 (Pedemontana) line. For more information, go to: Lines > S7 > Engineering Works.</string>
+    <string name="lineSubBusTitle">ROUTE FULLY REPLACED BY BUSES.</string>
 </resources>

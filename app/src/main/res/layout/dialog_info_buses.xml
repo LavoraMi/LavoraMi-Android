@@ -24,7 +24,7 @@
             android:layout_marginBottom="6dp"
             android:fontFamily="@font/font_main"
             android:gravity="center"
-            android:text="Linea sostituita da Bus"
+            android:text="@string/busPopUpTitle"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"/>
@@ -36,10 +36,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
             android:gravity="center"
-            android:text="Questa linea è attualmente sostituita interamente da Bus e non c'è alcun treno a servire questa tratta. É prevista una riapertura da Settembre 2026 per via dei lavori collegati alla linea S7 (Pedemontana)."
+            android:text="@string/busPopUpDeps"
             android:textColor="@color/subtitle"
             android:textSize="13sp" />
-
 
         <Button
             android:id="@+id/btn_close_tutorial"

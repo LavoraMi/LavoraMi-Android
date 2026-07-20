@@ -154,7 +154,7 @@
                 android:fontFamily="@font/font_main"
                 android:textSize="12sp"
                 android:paddingTop="5dp"
-                android:text="LINEA SOSTITUITA INTERAMENTE DA BUS."
+                android:text="@string/lineSubBusTitle"
                 android:textStyle="bold" />
 
             <ImageView
