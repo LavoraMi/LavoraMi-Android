@@ -1018,7 +1018,7 @@ public class MainActivity extends AppCompatActivity {
         /// @PARAMETER
         /// StrikeDescriptor strikeDescriptor is the response body from the CDN Request executed before this method.
 
-        if(DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true) && hasCompletedSetup){
+        if(DataManager.getBoolData(DataKeys.KEY_SHOW_BANNERS, true) && hasCompletedSetup) {
             MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
             TextView strikeDesc = findViewById(R.id.strikeDesc);
             TextView strikeGuaranteed = findViewById(R.id.strikeGuaranteed);
