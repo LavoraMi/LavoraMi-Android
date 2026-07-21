@@ -7425,7 +7425,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.51962, 9.03039, "Main", "R21"));
         stations.add(new MetroStation("NO_DRAW", 45.52195, 9.03694, "Main", "R21"));
         stations.add(new MetroStation("NO_DRAW", 45.52291, 9.04023, "Main", "R21"));
-        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "R21"));
+        stations.add(new MetroStation("NO_DRAW", 45.52411, 9.04355, "Main", "R21"));
         stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "R21"));
         stations.add(new MetroStation("NO_DRAW", 45.52802, 9.05644, "Main", "R21"));
         stations.add(new MetroStation("NO_DRAW", 45.52859, 9.05897, "Main", "R21"));
