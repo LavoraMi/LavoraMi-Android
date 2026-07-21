@@ -916,7 +916,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Meina", new String[]{"R23"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Arona", new String[]{"R23", "RE4"}, "lightrail", "Main", 11));
         interchanges.add(new InterchangeInfo("Dormelletto", new String[]{"R23"}, "lightrail", "Main", 12));
-        interchanges.add(new InterchangeInfo("Sesto Calende", new String[]{"R23", "RE4"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Sesto Calende", new String[]{"R23", "R24", "RE4"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Vergiate", new String[]{"R23"}, "lightrail", "Main", 14));
         interchanges.add(new InterchangeInfo("Somma Lombardo", new String[]{"R23"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Casorate Sempione", new String[]{"R23"}, "lightrail", "Main", 16));
