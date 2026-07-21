@@ -251,7 +251,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Cavaria", new String[]{"S5", "RE5"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Gallarate", new String[]{"S5", "S30", "S50", "R21", "R23", "RV", "RE4", "RE5", "MXP1"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Busto Arsizio", new String[]{"S5", "S50", "R21", "R23", "RV", "RE4", "RE5"}, "lightrail", "Main", 6));
-        interchanges.add(new InterchangeInfo("Legnano", new String[]{"S5", "R21", "RV", "RE5", "z601", "z602", "z611", "z627", "z636", "z642"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Legnano", new String[]{"S5", "R21", "R23", "RV", "RE5", "z601", "z602", "z611", "z627", "z636", "z642"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Canegrate", new String[]{"S5", "R21", "z611"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Parabiago", new String[]{"S5", "R21", "R23", "RE5", "z644"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Vanzago Pogliano", new String[]{"S5", "RE5"}, "lightrail", "Main", 10));
@@ -871,7 +871,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Besnate", new String[]{"R21", "S30"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Gallarate", new String[]{"R21", "S5", "S30", "S50", "R23", "RV", "RE4", "RE5", "MXP1"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Busto Arsizio", new String[]{"R21", "S5", "S50", "R23", "RV", "RE4", "RE5"}, "lightrail", "Main", 11));
-        interchanges.add(new InterchangeInfo("Legnano", new String[]{"R21", "S5", "RV", "RE5", "z601", "z602", "z611", "z627", "z636", "z642"}, "lightrail", "Main", 12));
+        interchanges.add(new InterchangeInfo("Legnano", new String[]{"R21", "S5", "R23", "RV", "RE5", "z601", "z602", "z611", "z627", "z636", "z642"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Canegrate", new String[]{"R21", "S5", "z611"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Parabiago", new String[]{"R21", "S5", "R23", "RE5", "z644"}, "lightrail", "Main", 14));
         interchanges.add(new InterchangeInfo("Rho Fiera Milano", new String[]{"R21", "S5", "S6", "S11", "R23", "RE4", "RE5", "AV", "M1", "542", "561"}, "lightrail", "Main", 17));
