@@ -102,7 +102,7 @@
     <string name="averageWaitingTimeTitle">"Frequenza media: "</string>
     <string name="currentWorksTitle">attuali</string>
     <string name="scheduledWorksTitle">programmati</string>
-    <string name="fallbackNoWorks">0 attuali, 0 programmati.</string>
+    <string name="fallbackNoWorks">0 attuali,\n0 programmati.</string>
     <string name="tilo">TILO</string>
     <string name="suburban">Suburbano</string>
     <string name="avvisoSciopero">AVVISO SCIOPERO</string>
