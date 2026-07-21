@@ -114,6 +114,10 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:background="@drawable/bg_status_banner_warning"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="14dp"
             android:clickable="true"
             android:focusable="true"
             android:visibility="gone">
@@ -121,7 +125,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/subtitle"
+                android:textColor="@color/amber_on_banner"
                 android:fontFamily="@font/font_main"
                 android:textSize="12sp"
                 android:paddingTop="5dp"
@@ -134,7 +138,7 @@
                 android:layout_height="17dp"
                 android:layout_marginStart="5dp"
                 android:src="@drawable/ic_info"
-                app:tint="@color/subtitle" />
+                app:tint="@color/amber_on_banner" />
         </LinearLayout>
 
         <LinearLayout
