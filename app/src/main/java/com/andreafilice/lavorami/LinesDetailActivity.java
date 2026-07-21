@@ -1101,7 +1101,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private boolean isMalpensaExpress() {return nomeLinea != null && nomeLinea.startsWith("MXP");}
     private boolean isLineaSuburbano() {return nomeLinea != null && nomeLinea.startsWith("S") && !isLineaTilo();}
     private boolean isLineaRegionale() {
-        ArrayList<String> suburbanWithNewGraphic = new ArrayList<>(Arrays.asList("R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25"));
+        ArrayList<String> suburbanWithNewGraphic = new ArrayList<>(Arrays.asList("R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R11", "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25", "R27"));
         boolean isValid = false;
 
         for(int i = 0; i < suburbanWithNewGraphic.size(); i++){
