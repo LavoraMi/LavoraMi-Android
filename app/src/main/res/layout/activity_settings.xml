@@ -132,16 +132,29 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/favoritesSettings"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/font_main"
-                android:text="@string/favoritesDeps"
-                android:textStyle="bold"
-                android:textColor="#8E8E93"
-                android:textSize="18sp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/favoritesSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/font_main"
+                    android:text="@string/favoritesDeps"
+                    android:textStyle="bold"
+                    android:textColor="#8E8E93"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/infoFavouriteLines"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    android:layout_marginStart="10dp"
+                    app:tint="@color/subtitle"/>
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
