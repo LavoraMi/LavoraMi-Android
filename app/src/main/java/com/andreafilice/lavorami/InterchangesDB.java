@@ -799,8 +799,8 @@ public class InterchangesDB {
 
         /// Regionale R15
         interchanges.add(new InterchangeInfo("Carnate Usmate", new String[]{"R15", "S8", "R13", "R14", "RE8"}, "lightrail", "Main", 0));
-        interchanges.add(new InterchangeInfo("Macherio Sovico", new String[]{"R15"}, "lightrail", "Main", 1));
-        interchanges.add(new InterchangeInfo("Lesmo", new String[]{"R15"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Macherio Sovico", new String[]{"R15"}, "bus.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Lesmo", new String[]{"R15"}, "bus.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Seregno", new String[]{"R15", "S9", "S11", "RE13", "RE80", "z233"}, "lightrail", "Main", 3));
 
         return interchanges;
