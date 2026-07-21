@@ -54,4 +54,5 @@
     <color name="bottomBarIconTint">#000000</color>
     <color name="bottomBarPillTint">#CECECE</color>
     <color name="top_bar_black">#1C1C1E</color>
+    <color name="amber_on_banner">#EF9F27</color>
 </resources>
