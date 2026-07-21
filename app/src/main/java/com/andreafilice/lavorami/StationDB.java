@@ -6745,19 +6745,13 @@ public class StationDB {
     public static List<MetroStation> getStationsR18() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Como S. Giovanni", 45.80901, 9.07279, "Main", "R18"));
-        stations.add(new MetroStation("Como Camerlata", 45.78457, 9.0794, "Main", "R18"));
-        stations.add(new MetroStation("NO_DRAW", 45.78139, 9.07736, "Main", "R18"));
-        stations.add(new MetroStation("NO_DRAW", 45.77799, 9.0738, "Main", "R18"));
-        stations.add(new MetroStation("NO_DRAW", 45.77587, 9.07324, "Main", "R18"));
-        stations.add(new MetroStation("NO_DRAW", 45.77335, 9.0741, "Main", "R18"));
-        stations.add(new MetroStation("NO_DRAW", 45.772, 9.07779, "Main", "R18"));
-        stations.add(new MetroStation("NO_DRAW", 45.77623, 9.08744, "Main", "R18"));
+        stations.add(new MetroStation("Como Camerlata", 45.78413, 9.08078, "Main", "R18"));
         stations.add(new MetroStation("Albate - Trecallo", 45.77753, 9.09582, "Main", "R18"));
         stations.add(new MetroStation("Cantù", 45.75239, 9.13008, "Main", "R18"));
         stations.add(new MetroStation("Brenna - Alzate", 45.75416, 9.18327, "Main", "R18"));
         stations.add(new MetroStation("Anzano del Parco", 45.76505, 9.20267, "Main", "R18"));
         stations.add(new MetroStation("Merone", 45.78032, 9.24342, "Main", "R18"));
-        stations.add(new MetroStation("Moiana", 45.7872, 9.25578, "Main", "R18"));
+        stations.add(new MetroStation("Moiana", 45.78707, 9.25564, "Main", "R18"));
         stations.add(new MetroStation("Casletto - Rogeno", 45.78618, 9.27539, "Main", "R18"));
         stations.add(new MetroStation("Molteno", 45.78085, 9.30171, "Main", "R18"));
         stations.add(new MetroStation("Oggiono", 45.78891, 9.33758, "Main", "R18"));
