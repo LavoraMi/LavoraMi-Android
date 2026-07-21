@@ -287,7 +287,7 @@
     <string name="viewLinesOnMapText">Visualiza los recorridos de tus líneas favoritas en el mapa para no perderte y saber siempre adónde vas.</string>
     <string name="lineaAttesta">"ACTUALMENTE LA LÍNEA LLEGA HASTA: "</string>
     <string name="accessibilityTitle">ACCESIBILIDAD DE LA LÍNEA:</string>
-    <string name="fullyAccessible">Completamente accesible.</string>
+    <string name="fullyAccessible">Totalmente accesible.</string>
     <string name="partiallyTitle">Parcialmente accesible.</string>
     <string name="nonAccessible">No accesible.</string>
     <string name="accessibilityInfoTitle">Accesibilidad</string>

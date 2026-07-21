@@ -331,6 +331,7 @@
                 android:fontFamily="@font/font_main"
                 android:textColor="@color/subtitle"
                 android:textSize="12sp"
+                android:ellipsize="end"
                 android:maxLines="2"/>
 
             <View
