@@ -1638,6 +1638,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setCloseIconVisible(false);
         chip.setClickable(false);
         chip.setCheckable(false);
+        chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        chip.setGravity(android.view.Gravity.CENTER);
         chip.setEnsureMinTouchTargetSize(false);
         return chip;
     }
