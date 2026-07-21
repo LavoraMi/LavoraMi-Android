@@ -312,7 +312,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:gravity="center_vertical">
 
             <ImageView
@@ -331,8 +331,7 @@
                 android:fontFamily="@font/font_main"
                 android:textColor="@color/subtitle"
                 android:textSize="12sp"
-                android:maxLines="2"
-                android:ellipsize="end" />
+                android:maxLines="2"/>
 
             <View
                 android:layout_width="1dp"
