@@ -122,13 +122,20 @@
             android:focusable="true"
             android:visibility="gone">
 
+            <ImageView
+                android:id="@+id/mapDeviationBtn"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_triangle_warning"
+                app:tint="@color/amber_on_banner" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/amber_on_banner"
                 android:fontFamily="@font/font_main"
                 android:textSize="12sp"
-                android:paddingTop="5dp"
                 android:text="@string/tramDeviationsTitle"
                 android:textStyle="bold" />
 
