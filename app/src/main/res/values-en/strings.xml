@@ -287,7 +287,7 @@
     <string name="viewLinesOnMapText">View the routes of your favorite lines on the map, so you don\'t get lost and always know where you are going.</string>
     <string name="lineaAttesta">"THE LINE CURRENTLY TERMINATES AT: "</string>
     <string name="accessibilityTitle">LINE ACCESSIBILITY:</string>
-    <string name="fullyAccessible">Fully accessible.</string>
+    <string name="fullyAccessible">Accessible.</string>
     <string name="partiallyTitle">Partially accessible.</string>
     <string name="nonAccessible">Not accessible.</string>
     <string name="accessibilityInfoTitle">Accessibility</string>
