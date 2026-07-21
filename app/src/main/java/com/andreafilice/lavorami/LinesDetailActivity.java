@@ -427,7 +427,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         //*DISABLE THIS FEATURE FOR BUS LINES.
         if(nomeLinea.contains("z")){
             lineAccessibilityLayout.setVisibility(View.GONE);
-            findViewById(R.id.titleAccessibility).setVisibility(View.GONE);
         }
 
         //*WIDGET SELECTION
@@ -1680,7 +1679,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        tvLavori.setText((numeroLavori > 0) ? String.format("%s %s, %s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
+        tvLavori.setText((numeroLavori > 0) ? String.format("%s %s,\n%s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
 
     public void fetchDeviations(StrikeDescriptor cdnData) {
