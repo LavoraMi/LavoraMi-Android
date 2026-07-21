@@ -8592,15 +8592,48 @@ public class StationDB {
 
     public static List<MetroStation> getStationsR25() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Albonese", 45.29779, 8.7146, "Main", "R25"));
-        stations.add(new MetroStation("Borgo Lavezzaro", 45.31876, 8.70319, "Main", "R25"));
-        stations.add(new MetroStation("Vespolate", 45.3515, 8.67188, "Main", "R25"));
-        stations.add(new MetroStation("Garbagna", 45.38559, 8.66642, "Main", "R25"));
-        stations.add(new MetroStation("NO_DRAW", 45.40708, 8.66339, "Main", "R25"));
-        stations.add(new MetroStation("NO_DRAW", 45.41255, 8.6618, "Main", "R25"));
-        stations.add(new MetroStation("NO_DRAW", 45.41795, 8.65779, "Main", "R25"));
-        stations.add(new MetroStation("NO_DRAW", 45.41795, 8.65779, "Main", "R25"));
         stations.add(new MetroStation("Novara", 45.45111, 8.62451, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.44773, 8.62928, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.44592, 8.63126, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.44455, 8.63246, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.4386, 8.63808, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.429, 8.64718, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41988, 8.65581, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41787, 8.65772, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41613, 8.65935, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41511, 8.6602, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41369, 8.66128, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41163, 8.66231, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.41023, 8.66284, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.40844, 8.66325, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.40613, 8.66353, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.40057, 8.66428, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.38775, 8.66604, "Main", "R25"));
+        stations.add(new MetroStation("Garbagna", 45.38559, 8.66642, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.3821, 8.66677, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.37709, 8.66748, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.37399, 8.66786, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.37081, 8.66829, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.36582, 8.66896, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.35633, 8.67025, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.35532, 8.6704, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.35454, 8.6707, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.35323, 8.67119, "Main", "R25"));
+        stations.add(new MetroStation("Vespolate", 45.3515, 8.67188, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.34925, 8.67355, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.34655, 8.67617, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.34356, 8.67922, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.3318, 8.69093, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.32358, 8.69913, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.32066, 8.70183, "Main", "R25"));
+        stations.add(new MetroStation("Borgo Lavezzaro", 45.31876, 8.70319, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.3163, 8.7049, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.31438, 8.70595, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.31223, 8.70696, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.3094, 8.70855, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.30678, 8.70988, "Main", "R25"));
+        stations.add(new MetroStation("NO_DRAW", 45.30148, 8.7128, "Main", "R25"));
+        stations.add(new MetroStation("Albonese", 45.29779, 8.7146, "Main", "R25"));
         return stations;
     }
 
