@@ -86,7 +86,7 @@
     <string name="tramLinesTitle">Linee Tramviarie</string>
     <string name="busLinesTitle">Linee di Bus</string>
     <string name="linesDirectionsTitle">DIREZIONI:</string>
-    <string name="tramDeviationsTitle">QUESTA LINEA DI TRAM É SOGGETTA A DEVIAZIONI.</string>
+    <string name="tramDeviationsTitle">LINEA DI TRAM SOGGETTA A DEVIAZIONI.</string>
     <string name="waitingTimeLinesDetails">TEMPO DI ATTESA:</string>
     <string name="interchangeStopLinesDetails">FERMATA DI INTERSCAMBIO:</string>
     <string name="noInterchangeStationTitle">Nessuna fermata di interscambio.</string>

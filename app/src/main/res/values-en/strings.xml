@@ -87,7 +87,7 @@
     <string name="tramLinesTitle">Tram Lines</string>
     <string name="busLinesTitle">Bus Lines</string>
     <string name="linesDirectionsTitle">DIRECTIONS:</string>
-    <string name="tramDeviationsTitle">THIS TRAM LINE IS SUBJECT TO ROUTE CHANGES.</string>
+    <string name="tramDeviationsTitle">TRAM ROUTE SUBJECT TO DETOURS.</string>
     <string name="waitingTimeLinesDetails">WAITING TIME:</string>
     <string name="interchangeStopLinesDetails">TRANSFER STATION:</string>
     <string name="noInterchangeStationTitle">No transfer stops.</string>

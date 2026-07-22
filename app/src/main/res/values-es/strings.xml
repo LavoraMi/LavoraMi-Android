@@ -87,7 +87,7 @@
     <string name="tramLinesTitle">Líneas de Tranvía</string>
     <string name="busLinesTitle">Líneas de Autobús</string>
     <string name="linesDirectionsTitle">DIRECCIONES:</string>
-    <string name="tramDeviationsTitle">ESTA LÍNEA DE TRANVÍA ESTÁ SUJETA A DESVÍOS.</string>
+    <string name="tramDeviationsTitle">LÍNEA DE TRANVÍA CON DESVÍOS.</string>
     <string name="waitingTimeLinesDetails">TIEMPO DE ESPERA:</string>
     <string name="interchangeStopLinesDetails">PARADA DE CORRESPONDENCIA:</string>
     <string name="noInterchangeStationTitle">Sin paradas de correspondencia.</string>
