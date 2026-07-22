@@ -939,6 +939,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Vespolate", new String[]{"R25", "REG"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Borgo Lavezzaro", new String[]{"R25", "REG"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Albonese", new String[]{"R25", "REG"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R25", "R31", "R36", "REG", "RV"}, "lightrail", "Main", 5));
 
         /// Regionale R27
         interchanges.add(new InterchangeInfo("Novara Nord", new String[]{"R27"}, "lightrail", "Main", 0));
