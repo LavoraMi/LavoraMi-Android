@@ -9164,18 +9164,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.06327, 9.24911, "Main", "R34"));
         stations.add(new MetroStation("Broni", 45.06623, 9.25893, "Main", "R34"));
         stations.add(new MetroStation("Stradella", 45.07947, 9.30086, "Main", "R34"));
-        stations.add(new MetroStation("Arena Po", 45.08217, 9.36031, "Main", "R34"));
-        stations.add(new MetroStation("Castel S. Giovanni", 45.06313, 9.43678, "Main", "R34"));
-        stations.add(new MetroStation("Sarmato", 45.06291, 9.49108, "Main", "R34"));
-        stations.add(new MetroStation("Rottofreno", 45.06043, 9.54914, "Main", "R34"));
-        stations.add(new MetroStation("S. Nicolò", 45.05868, 9.60648, "Main", "R34"));
-        stations.add(new MetroStation("NO_DRAW", 45.05573, 9.63675, "Main", "R34"));
-        stations.add(new MetroStation("NO_DRAW", 45.05973, 9.68695, "Main", "R34"));
-        stations.add(new MetroStation("NO_DRAW", 45.05994, 9.69216, "Main", "R34"));
-        stations.add(new MetroStation("NO_DRAW", 45.05971, 9.69646, "Main", "R34"));
-        stations.add(new MetroStation("NO_DRAW", 45.05874, 9.70049, "Main", "R34"));
-        stations.add(new MetroStation("NO_DRAW", 45.05705, 9.70329, "Main", "R34"));
-        stations.add(new MetroStation("Piacenza", 45.05196, 9.70609, "Main", "R34"));
         return stations;
     }
 
