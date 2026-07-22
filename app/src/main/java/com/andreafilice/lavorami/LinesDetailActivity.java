@@ -1374,7 +1374,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
-            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isMalpensaExpress() || isLineaTilo() || isLineaTram());
+            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isMalpensaExpress() || isLineaTilo());
 
             int lineColor = isValidNewInterface ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
