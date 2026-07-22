@@ -939,7 +939,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Vespolate", new String[]{"R25", "REG"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Borgo Lavezzaro", new String[]{"R25", "REG"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Albonese", new String[]{"R25", "REG"}, "lightrail", "Main", 4));
-        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R25", "R31", "R36", "REG", "RV"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R25", "R31", "R32", "R36", "REG", "RV"}, "lightrail", "Main", 5));
 
         /// Regionale R27
         interchanges.add(new InterchangeInfo("Novara Nord", new String[]{"R27"}, "lightrail", "Main", 0));
@@ -966,7 +966,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Abbiategrasso", new String[]{"R31", "z551", "z552", "z553", "z555", "z556", "z559"}, "bus.fill", "Main", 6));
         interchanges.add(new InterchangeInfo("Vigevano", new String[]{"R31"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Parona Lomellina", new String[]{"R31"}, "lightrail", "Main", 8));
-        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R31", "R25", "R36", "REG", "RV"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R31", "R25", "R32", "R36", "REG", "RV"}, "lightrail", "Main", 9));
 
         return interchanges;
     }
