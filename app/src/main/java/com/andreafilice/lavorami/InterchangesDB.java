@@ -981,7 +981,7 @@ public class InterchangesDB {
         /// Regionale R33
         interchanges.add(new InterchangeInfo("Pavia", new String[]{"R33", "S13", "R34", "R35", "R36", "R37", "RE13", "RV"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("San Martino Cava", new String[]{"R33", "R34"}, "lightrail", "Main", 1));
-        interchanges.add(new InterchangeInfo("Bressana Bottarone", new String[]{"R33", "R34", "RE13"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Bressana Bottarone", new String[]{"R33", "R34"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Piazzale Lungavilla", new String[]{"R33", "RE13"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Voghera", new String[]{"R33", "R34", "R41", "RE13", "REG", "RV"}, "lightrail", "Main", 4));
 
