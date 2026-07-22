@@ -968,6 +968,16 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Parona Lomellina", new String[]{"R31"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Mortara", new String[]{"R31", "R25", "R32", "R36", "REG", "RV"}, "lightrail", "Main", 9));
 
+        /// Regionale R32
+        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R32", "R25", "R31", "R36", "REG", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Olevano", new String[]{"R32", "R31", "REG"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Valle Lomellina", new String[]{"R32", "R31", "REG"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Sartirana", new String[]{"R32", "R31", "REG"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Torreberetti", new String[]{"R32", "R31", "R35", "REG"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Valenza", new String[]{"R32", "R31", "R35", "REG"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Valmadonna", new String[]{"R32", "R31", "R35", "REG"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Alessandria", new String[]{"R32", "R31", "R35", "RE13", "REG", "RV"}, "lightrail", "Main", 7));
+
         return interchanges;
     }
 
