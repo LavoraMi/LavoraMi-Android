@@ -359,7 +359,7 @@
                 android:layout_width="0dp"
                 android:layout_height="31dp"
                 android:layout_weight="1"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="6dp"
                 android:text=""
                 android:fontFamily="@font/font_main"
                 android:textColor="@color/subtitle"
