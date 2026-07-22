@@ -8851,13 +8851,13 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.43969, 9.12073, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.4392, 9.11913, "Main", "R31"));
         stations.add(new MetroStation("Corsico", 45.43595, 9.10907, "Main", "R31"));
-        stations.add(new MetroStation("Cesano Boscone", 45.43036, 9.09161, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.43036, 9.09161, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.42878, 9.08673, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.42859, 9.08616, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.42837, 9.08549, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.42814, 9.08489, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.42787, 9.0842, "Main", "R31"));
-        stations.add(new MetroStation("Trezzano sul Naviglio", 45.42033, 9.06684, "Main", "R31"));
+        stations.add(new MetroStation("NO_DRAW", 45.42033, 9.06684, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.41448, 9.05333, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.41361, 9.0512, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.41315, 9.04961, "Main", "R31"));
