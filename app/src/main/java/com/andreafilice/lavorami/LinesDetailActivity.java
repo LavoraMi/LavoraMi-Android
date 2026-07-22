@@ -1691,6 +1691,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] gtfsSupportedLines = cdnData.getSupportedGTFSLines();
         String[] suburbanInterruptions = cdnData.getSuburbanWithInterruptions();
         String[] suburbanLinks = cdnData.getSuburbanInterruptionLinks();
+        String[] regionalDeviations = cdnData.getRegionalLinesDeviations();
+        String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
@@ -1714,16 +1716,29 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         //*MODIFICHE CIRCOLAIZONE
-        /// Le linee suburbane hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
+        /// Le linee Suburbane e Regionali hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
         LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
         ImageView mapTrackBtn = findViewById(R.id.mapTrackBtn);
 
+        /// Linee Suburbane
         for (int j = 0; j < suburbanInterruptions.length; j++) {
             int finalJ = j;
+
             if (suburbanInterruptions[j].equalsIgnoreCase(nomeLinea)) {
                 interruzioneTratta.setVisibility(View.VISIBLE);
                 mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
                 interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), suburbanLinks[finalJ]));
+            }
+        }
+
+        /// Linee Regionali
+        for (int a = 0; a < regionalDeviations.length; a++) {
+            int finalA = a;
+
+            if (regionalDeviations[a].equalsIgnoreCase(nomeLinea)) {
+                interruzioneTratta.setVisibility(View.VISIBLE);
+                mapTrackBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), regionalDeviationsLinks[finalA]));
+                interruzioneTratta.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), regionalDeviationsLinks[finalA]));
             }
         }
 
