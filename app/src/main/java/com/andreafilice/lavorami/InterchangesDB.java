@@ -985,6 +985,19 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazzale Lungavilla", new String[]{"R33", "RE13"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Voghera", new String[]{"R33", "R34", "R41", "RE13", "REG", "RV"}, "lightrail", "Main", 4));
 
+        /// Regionale R34
+        interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"R34", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Milano Lambrate", new String[]{"R34", "S9", "R4", "R6", "R7", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"}, "tram.fill.tunnel", "Main", 1));
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"R34", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Pavia", new String[]{"R34", "S13", "R33", "R35", "R36", "R37", "RE13", "RV"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("San Martino Cava", new String[]{"R34", "R33"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Bressana Bottarone", new String[]{"R34", "R33"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Bressana Argine", new String[]{"R34"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Pinarolo Po", new String[]{"R34"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Barbaniello", new String[]{"R34"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Broni", new String[]{"R34", "R41"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Stradella", new String[]{"R34", "R41", "REG", "RV"}, "lightrail", "Main", 10));
+
         return interchanges;
     }
 
