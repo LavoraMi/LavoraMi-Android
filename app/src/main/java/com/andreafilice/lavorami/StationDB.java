@@ -9570,7 +9570,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.14557, 9.06424, "Main", "R36"));
         stations.add(new MetroStation("NO_DRAW", 45.14604, 9.06306, "Main", "R36"));
         stations.add(new MetroStation("NO_DRAW", 45.15023, 9.05381, "Main", "R36"));
-        stations.add(new MetroStation("Vilanova D'Ardenghi", 45.15703, 9.03725, "Main", "R36"));
+        stations.add(new MetroStation("Villanova D'Ardenghi", 45.15703, 9.03725, "Main", "R36"));
         stations.add(new MetroStation("NO_DRAW", 45.16458, 9.0157, "Main", "R36"));
         stations.add(new MetroStation("NO_DRAW", 45.16903, 9.00315, "Main", "R36"));
         stations.add(new MetroStation("Gropello Cairoli", 45.1732, 8.99173, "Main", "R36"));
