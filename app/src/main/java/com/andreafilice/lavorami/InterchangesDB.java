@@ -955,6 +955,18 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Milano Domodossola", new String[]{"R27", "S3", "S4", "R16", "R17", "R22", "RE1", "RE7", "MXP2", "M5", "1", "19"}, "tram.fill.tunnel", "Main", 11));
         interchanges.add(new InterchangeInfo("Milano Cadorna", new String[]{"R27", "S3", "S4", "R16", "R17", "R22", "RE1", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"}, "tram.fill.tunnel", "Main", 12));
 
+        /// Regionale R31
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"R31", "S1", "S2", "S9", "S12", "S13", "S19", "R34", "R38", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Milano Scalo Romana", new String[]{"R31", "S9", "S19", "M3", "NM3", "65", "90", "91", "92"}, "tram.fill.tunnel", "Main", 1));
+        interchanges.add(new InterchangeInfo("Milano Tibaldi", new String[]{"R31", "S9", "S19", "15", "59", "90", "91"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Milano Romolo", new String[]{"R31", "S9", "S19", "M2", "NM2", "47", "90", "91", "71", "324", "325", "z553"}, "tram.fill.tunnel", "Main", 3));
+        interchanges.add(new InterchangeInfo("Milano San Cristoforo", new String[]{"R31", "S9", "S19", "M4", "NM4", "47", "49", "95", "324", "325", "326", "351", "z553"}, "tram.fill.tunnel", "Main", 4));
+        interchanges.add(new InterchangeInfo("Albairate Vermezzo", new String[]{"R31", "S9", "S19", "z554"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Abbiategrasso", new String[]{"R31", "z551", "z552", "z553", "z555", "z556", "z559"}, "bus.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Vigevano", new String[]{"R31"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Parona Lomellina", new String[]{"R31"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Mortara", new String[]{"R31", "R25", "R36", "REG", "RV"}, "lightrail", "Main", 9));
+
         return interchanges;
     }
 
