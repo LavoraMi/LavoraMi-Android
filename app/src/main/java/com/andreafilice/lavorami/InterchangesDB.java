@@ -1043,6 +1043,18 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Casalpusterlengo", new String[]{"R37", "R38", "RE11", "REG", "RV"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Codogno", new String[]{"R37", "R38", "R39", "RE11", "REG", "RV"}, "lightrail", "Main", 13));
 
+        /// Regionale R38
+        interchanges.add(new InterchangeInfo("Piacenza", new String[]{"R38", "R34", "R41", "REG", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Santo Stefano Lodigiano", new String[]{"R38"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Codogno", new String[]{"R38", "R37", "R39", "RE11", "REG", "RV"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Casalpusterlengo", new String[]{"R38", "R37", "RE11", "REG", "RV"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Secugnago", new String[]{"R38", "RE11"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Lodi", new String[]{"R38", "S1", "RE11", "RV"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"R38", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R34", "RE8", "RE11", "RE13", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Milano Forlanini", new String[]{"R38", "S5", "S6", "S9", "RE8", "RE13", "M4", "NM4", "12", "27", "45", "175", "973", "N27"}, "tram.fill.tunnel", "Main", 7));
+        interchanges.add(new InterchangeInfo("Milano Lambrate", new String[]{"R38", "S9", "R4", "R6", "R7", "R34", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"}, "tram.fill.tunnel", "Main", 8));
+        interchanges.add(new InterchangeInfo("Milano Greco Pirelli", new String[]{"R38", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "RE13", "RE80", "7", "52", "81", "86", "174"}, "lightrail", "Main", 9));
+
         return interchanges;
     }
 
