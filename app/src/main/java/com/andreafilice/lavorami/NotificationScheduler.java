@@ -263,33 +263,39 @@ public class NotificationScheduler {
         }
 
         long now = System.currentTimeMillis();
-        long oneDayMillis = 24L * 60 * 60 * 1000;
-
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         int baseId = (strike.getStrikeDate() + strike.getStrikeCompanies() + strike.getStrikeGuaranteed()).hashCode();
         int idStrike = baseId * 10 + 20;
         int idPreStrike = baseId * 10 + 21;
 
-        if (strikeMillis > now) {
-            long notifTime = getStrikeNotificationTime(strikeMillis);
-            if (notifTime > now) {
-                schedule(context, alarmManager, idStrike, notifTime,
-                        context.getString(R.string.strikeNotificationTitle),
-                        String.format(context.getString(R.string.strikeNotificationDeps),
-                                strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
-            }
+        Calendar calStrike = Calendar.getInstance();
+        calStrike.setTimeInMillis(strikeMillis);
+        calStrike.set(Calendar.HOUR_OF_DAY, 7);
+        calStrike.set(Calendar.MINUTE, 0);
+        calStrike.set(Calendar.SECOND, 0);
+
+        long notifTimeStrike = calStrike.getTimeInMillis();
+        if (notifTimeStrike > now) {
+            schedule(context, alarmManager, idStrike, notifTimeStrike,
+                    context.getString(R.string.strikeNotificationTitle),
+                    String.format(context.getString(R.string.strikeNotificationDeps),
+                            strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
         }
 
-        long strikeDayBefore = strikeMillis - oneDayMillis;
-        if (strikeDayBefore > now) {
-            long notifTimePre = getSelectedTime(strikeDayBefore);
-            if (notifTimePre > now) {
-                schedule(context, alarmManager, idPreStrike, notifTimePre,
-                        context.getString(R.string.strikeTomorrowNotificationTitle),
-                        String.format(context.getString(R.string.strikeTomorrowNotificationDeps),
-                                strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
-            }
+        Calendar calPreStrike = Calendar.getInstance();
+        calPreStrike.setTimeInMillis(strikeMillis);
+        calPreStrike.add(Calendar.DAY_OF_MONTH, -1);
+        calPreStrike.set(Calendar.HOUR_OF_DAY, 18);
+        calPreStrike.set(Calendar.MINUTE, 0);
+        calPreStrike.set(Calendar.SECOND, 0);
+
+        long notifTimePreStrike = calPreStrike.getTimeInMillis();
+        if (notifTimePreStrike > now) {
+            schedule(context, alarmManager, idPreStrike, notifTimePreStrike,
+                    context.getString(R.string.strikeTomorrowNotificationTitle),
+                    String.format(context.getString(R.string.strikeTomorrowNotificationDeps),
+                            strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
         }
     }
 
