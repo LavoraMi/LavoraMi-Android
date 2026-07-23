@@ -490,12 +490,7 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()) {
-                    new AlertDialog.Builder(AccountManagement.this)
-                            .setTitle(R.string.popUpConfirmEmail)
-                            .setMessage(R.string.emailPopUpDeps)
-                            .setNegativeButton(R.string.closePopUp, null)
-                            .create()
-                            .show();
+                    DialogHelper.createDefaultDialog(AccountManagement.this, getString(R.string.popUpConfirmEmail), getString(R.string.emailPopUpDeps));
 
                     screenUnlocked = true;
                     updateUI();
@@ -574,15 +569,7 @@ public class AccountManagement extends AppCompatActivity {
         api.resetPassword(SupabaseANON, request).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    new AlertDialog.Builder(AccountManagement.this)
-                            .setTitle(R.string.emailSentTitle)
-                            .setMessage(getString(R.string.emailSentDeps) + email + "!")
-                            .setNegativeButton("Chiudi", null)
-                            .create()
-                            .show();
-                    updateUI();
-                }
+                if (response.isSuccessful()) DialogHelper.createDefaultDialog(AccountManagement.this, getString(R.string.emailSentTitle), getString(R.string.emailSentDeps) + email + "!");
                 else {
                     Log.e("SUPABASE_AUTH", "Error: " + response.code());
                     Toast.makeText(AccountManagement.this, getString(R.string.errorUserNotFoundToast), Toast.LENGTH_SHORT).show();
