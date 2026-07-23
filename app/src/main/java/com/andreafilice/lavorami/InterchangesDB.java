@@ -1064,6 +1064,19 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Cava Tigozzi", new String[]{"R39", "R37", "RE11"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Cremona", new String[]{"R39", "R5", "R6", "R37", "R40", "RE11"}, "lightrail", "Main", 6));
 
+        /// Regionale R40
+        interchanges.add(new InterchangeInfo("Cremona", new String[]{"R40", "R5", "R6", "R37", "R39", "RE11"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Villetta Malagnino", new String[]{"R40", "RE11"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Gazzo Pieve San Giacomo", new String[]{"R40", "RE11"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Torre De' Picenardi", new String[]{"R40", "RE11"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Piadena", new String[]{"R40", "R8", "RE11"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Bozzolo", new String[]{"R40", "RE11"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Marcaria", new String[]{"R40", "RE11"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("San Michele In Bosco", new String[]{"R40", "RE11"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Ospitaletto Mantovano", new String[]{"R40", "RE11"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Castellucchio", new String[]{"R40", "RE11"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Mantova", new String[]{"R40", "RE11", "REG", "RV"}, "lightrail", "Main", 10));
+
         return interchanges;
     }
 
