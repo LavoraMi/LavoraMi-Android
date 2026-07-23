@@ -1055,6 +1055,15 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Milano Lambrate", new String[]{"R38", "S9", "R4", "R6", "R7", "R34", "RE2", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"}, "tram.fill.tunnel", "Main", 8));
         interchanges.add(new InterchangeInfo("Milano Greco Pirelli", new String[]{"R38", "S7", "S8", "S9", "S11", "R4", "R13", "R14", "RE13", "RE80", "7", "52", "81", "86", "174"}, "lightrail", "Main", 9));
 
+        /// Regionale R39
+        interchanges.add(new InterchangeInfo("Codogno", new String[]{"R39", "R37", "R38", "RE11", "REG", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Maleo", new String[]{"R39", "R37", "RE11"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Pizzighettone", new String[]{"R39", "R37", "RE11"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Ponte D'Adda", new String[]{"R39", "R37", "RE11"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Acquanegra Cremonese", new String[]{"R39", "R37"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Cava Tigozzi", new String[]{"R39", "R37", "RE11"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Cremona", new String[]{"R39", "R5", "R6", "R37", "R40", "RE11"}, "lightrail", "Main", 6));
+
         return interchanges;
     }
 
