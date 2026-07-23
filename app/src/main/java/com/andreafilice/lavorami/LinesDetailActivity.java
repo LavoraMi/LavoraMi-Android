@@ -1001,6 +1001,11 @@ public class LinesDetailActivity extends AppCompatActivity {
                 icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
             }
 
+            ImageView iconaLuogo = card.findViewById(R.id.iconLuogo);
+            if (iconaLuogo != null) {
+                iconaLuogo.setVisibility(View.VISIBLE);
+            }
+
             TextView titolo = card.findViewById(R.id.txtTitle);
             TextView desc   = card.findViewById(R.id.txtDescription);
             ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
@@ -1033,7 +1038,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (pb != null) {
                 int perc = evento.calcolaPercentuale(evento.getStartDate(), evento.getEndDate());
                 pb.setProgress(perc);
-                pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FF5252")));
+                pb.setProgressTintList(ColorStateList.valueOf(perc >= 100 ? Color.parseColor("#4CAF50") : Color.parseColor("#FD272D")));
             }
 
             Button btnTranslate = card.findViewById(R.id.btnTranslate);
