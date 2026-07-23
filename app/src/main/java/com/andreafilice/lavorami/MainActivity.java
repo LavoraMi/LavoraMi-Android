@@ -600,13 +600,13 @@ public class MainActivity extends AppCompatActivity {
                     else {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
-                        findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
+                        findViewById(R.id.recyclerView).setPadding(16 *densita,79*densita,16*densita,120*densita);
                         infoSavedLines.setOnClickListener(v -> showTutorialDialog());
                     }
                 }
                 else {
                     findViewById(R.id.infoSavedLine).setVisibility(View.GONE);
-                    findViewById(R.id.recyclerView).setPadding(16 *densita,11*densita,16*densita,112*densita);
+                    findViewById(R.id.recyclerView).setPadding(16 *densita,48*densita,16*densita,112*densita);
                 }
                 if (checkedId == View.NO_ID) filterGroup.check(R.id.chipAll);
                 else {
