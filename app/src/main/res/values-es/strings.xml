@@ -423,4 +423,5 @@
     <string name="busPopUpDeps">Actualmente, esta línea ha sido sustituida íntegramente por autobuses y no hay ningún tren que preste servicio en este tramo. Está prevista una reapertura a partir de septiembre de 2026 debido a las obras relacionadas con la línea S7 (Pedemontana). Consulta más información en: Líneas > S7 > Obras.</string>
     <string name="lineSubBusTitle">LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS.</string>
     <string name="dialogFavouriteLineText">Selecciona los operadores de transporte que utilizas con mayor frecuencia y añádelos a tus favoritos para recibir notificaciones instantáneas sobre nuevos obras.</string>
+    <string name="dialogFavouriteLineTextTitle">Elige tus intereses</string>
 </resources>

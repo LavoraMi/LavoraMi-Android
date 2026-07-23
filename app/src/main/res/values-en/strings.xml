@@ -423,4 +423,5 @@
     <string name="busPopUpDeps">This line is currently served entirely by buses, and there are no trains running on this route. It is scheduled to reopen in September 2026 due to engineering works on the S7 (Pedemontana) line. For more information, go to: Lines > S7 > Works.</string>
     <string name="lineSubBusTitle">ROUTE FULLY REPLACED BY BUSES.</string>
     <string name="dialogFavouriteLineText">Select your most frequently used transport operators and add them to your favorites to receive instant notifications about new works.</string>
+    <string name="dialogFavouriteLineTextTitle">Choose your interests</string>
 </resources>

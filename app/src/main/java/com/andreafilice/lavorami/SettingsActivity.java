@@ -289,7 +289,6 @@ public class SettingsActivity extends AppCompatActivity {
         //*MAPS INFOS
         /// In this section, we add a listener to the "Info about Maps" button in Settings View.
         RelativeLayout btnSeeMaps = findViewById(R.id.btnSeeMaps);
-
         btnSeeMaps.setOnClickListener(v -> ActivityUtils.changeActivity(this, DeviationInfo.class));
 
         //*RESET SETTINGS

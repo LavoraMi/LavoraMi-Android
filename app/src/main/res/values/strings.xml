@@ -421,5 +421,6 @@
     <string name="busPopUpTitle">Linea sostituita da Bus</string>
     <string name="busPopUpDeps">Questa linea è attualmente sostituita interamente da Bus e non c\'è alcun treno a servire questa tratta. É prevista una riapertura da Settembre 2026 per via dei lavori collegati alla linea S7 (Pedemontana). Consulta maggiori info andando su: Linee > S7 > Lavori.</string>
     <string name="lineSubBusTitle">LINEA SOSTITUITA INTERAMENTE DA BUS.</string>
-    <string name="dialogFavouriteLineText">Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con i nuovi lavori.</string>
+    <string name="dialogFavouriteLineText">Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con nuovi lavori.</string>
+    <string name="dialogFavouriteLineTextTitle">Scegli i tuoi interessi</string>
 </resources>
