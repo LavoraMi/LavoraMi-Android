@@ -1077,6 +1077,20 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Castellucchio", new String[]{"R40", "RE11"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Mantova", new String[]{"R40", "RE11", "REG", "RV"}, "lightrail", "Main", 10));
 
+        /// Regionale R41
+        interchanges.add(new InterchangeInfo("Voghera", new String[]{"R41", "R33", "R34", "RE13", "REG", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Casteggio", new String[]{"R41"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("San Giuletta", new String[]{"R41"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Broni", new String[]{"R41", "R34"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Stradella", new String[]{"R41", "R34", "REG", "RV"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Arena Po", new String[]{"R41", "R34"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Castel San Giovanni", new String[]{"R41", "R34", "REG", "RV"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Sarmato", new String[]{"R41", "R34"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Rottofreno", new String[]{"R41", "R34"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("San Nicolo'", new String[]{"R41", "R34", "REG", "RV"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("San Nicolo'", new String[]{"R41", "R34"}, "lightrail", "Main", 10));
+        interchanges.add(new InterchangeInfo("Piacenza", new String[]{"R41", "R38", "R34", "REG", "RV"}, "lightrail", "Main", 11));
+
         return interchanges;
     }
 
