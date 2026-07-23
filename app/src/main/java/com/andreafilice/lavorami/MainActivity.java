@@ -709,7 +709,6 @@ public class MainActivity extends AppCompatActivity {
         CategoriesEnum categorySelected = getCategory();
 
         downloadJSONData(categorySelected, false);
-        checkForStrikes();
     }
 
     private void askForNotificationPermission(){
@@ -959,16 +958,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
-                if (loadingLayout != null) {
-                    boolean showErrorMessage = DataManager.getBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
-                    TextView errorDeps = findViewById(R.id.errorDeps);
+                strikeBanner.setVisibility(View.GONE);
+                if (events == null || events.isEmpty()) {
+                    if (loadingLayout != null) {
+                        boolean showErrorMessage = DataManager.getBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
+                        TextView errorDeps = findViewById(R.id.errorDeps);
 
-                    errorDeps.setText(t.getMessage());
-                    errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
-                    strikeBanner.setVisibility(View.GONE);
+                        errorDeps.setText(t.getMessage());
+                        errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
 
-                    loadingLayout.setVisibility(View.GONE);
-                    errorLayout.setVisibility(View.VISIBLE);
+                        loadingLayout.setVisibility(View.GONE);
+                        errorLayout.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
