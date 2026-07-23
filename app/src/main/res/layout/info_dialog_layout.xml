@@ -24,25 +24,22 @@
             android:layout_marginBottom="6dp"
             android:fontFamily="@font/font_main"
             android:gravity="center"
-            android:text="@string/widget_line_added_title"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/text_primary"/>
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/text_description"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
             android:gravity="center"
-            android:text="@string/widget_line_added_description"
             android:textColor="@color/subtitle"
-            android:textSize="13sp" />
-
+            android:textSize="14sp" />
 
         <Button
-            android:id="@+id/btn_close_tutorial"
+            android:id="@+id/btn_close_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

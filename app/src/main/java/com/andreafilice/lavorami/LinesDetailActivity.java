@@ -459,26 +459,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 return;
             }
 
-            if (!hintWidgetClosed) {
-                View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_hint_widget_lines, null);
-
-                AlertDialog dialog = new AlertDialog.Builder(this)
-                    .setView(dialogView)
-                    .setCancelable(true)
-                    .create();
-                dialog.show();
-
-                if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-                DataManager.saveBoolData(DataKeys.KEY_HINT_WIDGET_CLOSED, true);
-                hintWidgetClosed = true;
-
-                TextView descriptionText = dialogView.findViewById(R.id.text_description);
-                descriptionText.setText(getString(R.string.widget_line_added_description, nomeLinea));
-
-                Button btnClose = dialogView.findViewById(R.id.btn_close_tutorial);
-                btnClose.setOnClickListener(v1 -> dialog.dismiss());
-            }
+            if (!hintWidgetClosed) DialogHelper.createDefaultDialog(this, getString(R.string.widget_line_added_title), getString(R.string.widget_line_added_description, nomeLinea));
 
             addToWidget.setImageResource(R.drawable.ic_added_line_widget);
             addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.S6)));
@@ -1696,8 +1677,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
 
         if(nomeLinea.equalsIgnoreCase("R15")) lineaFullBus.setVisibility(View.VISIBLE);
-        lineaFullBus.setOnClickListener(v -> showPopUpInfoBuses());
-        infoLineBusesBtn.setOnClickListener(v -> showPopUpInfoBuses());
+        lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
+        infoLineBusesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
 
         int i = 0;
         for (String linea : lineeDeviate) {
@@ -1745,21 +1726,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
         else
             findViewById(R.id.chipArrivi).setVisibility(View.GONE);
-    }
-
-    private void showPopUpInfoBuses() {
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_info_buses, null);
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setView(dialogView)
-                .setCancelable(true)
-                .create();
-        dialog.show();
-
-        if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-        Button btnClose = dialogView.findViewById(R.id.btn_close_tutorial);
-        btnClose.setOnClickListener(v1 -> dialog.dismiss());
     }
 
     private boolean isDarkMode() {

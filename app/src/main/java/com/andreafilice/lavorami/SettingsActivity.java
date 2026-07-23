@@ -126,20 +126,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         //*FAVORITES LINES
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
-        infoFavouriteLines.setOnClickListener(v->{
-            View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_info_favourite_lines, null);
-
-            AlertDialog dialog = new AlertDialog.Builder(this)
-                    .setView(dialogView)
-                    .setCancelable(true)
-                    .create();
-            dialog.show();
-
-            if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-            Button btnClose = dialogView.findViewById(R.id.btn_close_dialog);
-            btnClose.setOnClickListener(v1 -> dialog.dismiss());
-        });
+        infoFavouriteLines.setOnClickListener(v -> {DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText));});
 
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {
