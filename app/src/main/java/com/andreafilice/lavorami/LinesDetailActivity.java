@@ -2599,34 +2599,45 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
-        /// In this method, we apply the current line status for images and more
-        statusText.setText(lineStatus);
-
+        int baseColor;
         switch (lineStatus) {
             case "Regolare":
+                baseColor = ContextCompat.getColor(this, R.color.M2);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
-                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.M2));
+                statusText.setText(getString(R.string.metroStatoRegolare));
                 break;
             case "Tratta Sospesa":
+                baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
-                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                statusText.setText(getString(R.string.metroStatoTrattaSospesa));
                 break;
             case "Fermata Sospesa":
+                baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
-                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                statusText.setText(getString(R.string.metroStatoFermataSospesa));
                 break;
             case "Fermate Sospese":
+                baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
-                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                statusText.setText(getString(R.string.metroStatoFermateSospese));
                 break;
             case "Interrotta":
+                baseColor = ContextCompat.getColor(this, R.color.redMetro);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_close_browser);
-                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.redMetro));
+                statusText.setText(getString(R.string.metroStatoInterrotta));
                 break;
             case "Chiusa":
+                baseColor = ContextCompat.getColor(this, R.color.S12);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
-                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.S12));
+                statusText.setText(getString(R.string.metroStatoChiusa));
                 break;
+            default:
+                return;
         }
+        int alpha = Color.alpha(baseColor);
+        int newAlpha = (int) (alpha * 0.65f);
+        int colorWithAlpha = Color.argb(newAlpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor));
+        
+        lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
     }
 }
