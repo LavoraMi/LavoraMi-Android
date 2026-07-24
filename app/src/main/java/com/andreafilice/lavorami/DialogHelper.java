@@ -10,12 +10,12 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 public class DialogHelper {
-    public static void createDefaultDialog(Context context, String titleText, String depsText) throws EmptyDialogParameterException {
+    public static void createDefaultDialog(Context context, @NotNull String titleText, @NotNull String depsText) {
         /// In this method, we create a default dialog with the default action of the button (close dialog).
         /// @PARAMETERS
         /// Context context is the Activity Context where to show the dialog
-        /// String titleText is the main text of the dialog (the bigger one).
-        /// String depsText is the description text of the dialog, long and exhaustive.
+        /// @NotNull String titleText is the main text of the dialog (the bigger one).
+        /// @NotNull String depsText is the description text of the dialog, long and exhaustive.
 
         //*VARIABLES
         /// In this section, we have all the variables for our dialog
@@ -25,11 +25,8 @@ public class DialogHelper {
 
         //*SETUP POPUP
         /// Set-up popup texts and variables
-        if(titleText.isEmpty() || depsText.isEmpty()) throw new EmptyDialogParameterException();
-        else {
-            text_title.setText(titleText);
-            text_description.setText(depsText);
-        }
+        text_title.setText(titleText);
+        text_description.setText(depsText);
 
         AlertDialog dialog = new AlertDialog.Builder(context)
             .setView(dialogView)
@@ -43,7 +40,7 @@ public class DialogHelper {
         btnClose.setOnClickListener(v1 -> dialog.dismiss());
     }
 
-    public static void createCustomDialog(Context context, String titleText, String depsText, Runnable toExecute) throws EmptyDialogParameterException {
+    public static void createCustomDialog(Context context, @NotNull String titleText, @NotNull String depsText, Runnable toExecute) {
         /// In this method, we create a default dialog with the default action of the button (close dialog).
         /// @PARAMETERS
         /// Context context is the Activity Context where to show the dialog
@@ -59,11 +56,8 @@ public class DialogHelper {
 
         //*SETUP POPUP
         /// Set-up popup texts and variables
-        if(titleText.isEmpty() || depsText.isEmpty()) throw new EmptyDialogParameterException();
-        else {
-            text_title.setText(titleText);
-            text_description.setText(depsText);
-        }
+        text_title.setText(titleText);
+        text_description.setText(depsText);
 
         AlertDialog dialog = new AlertDialog.Builder(context)
             .setView(dialogView)
@@ -77,12 +71,12 @@ public class DialogHelper {
         btnClose.setOnClickListener(v1 -> toExecute.run());
     }
 
-    public static void createDefaultAnswerDialog(Context context, String titleText, String depsText, Runnable onContinue) throws EmptyDialogParameterException {
+    public static void createDefaultAnswerDialog(Context context, @NotNull String titleText, @NotNull String depsText, Runnable onContinue) {
         /// In this method, we create a dialog with two buttons: Cancel or Continue.
         /// @PARAMETERS
         /// Context context is the Activity Context where to show the dialog
-        /// String titleText is the main text of the dialog (the bigger one).
-        /// String depsText is the description text of the dialog, long and exhaustive.
+        /// @NotNull String titleText is the main text of the dialog (the bigger one).
+        /// @NotNull String depsText is the description text of the dialog, long and exhaustive.
         /// Runnable onContinue is the action to perform when the user clicks on "Continue" button.
 
         //*VARIABLES
@@ -95,11 +89,8 @@ public class DialogHelper {
 
         //*SETUP POPUP
         /// Set-up popup texts and variables
-        if(titleText.isEmpty() || depsText.isEmpty()) throw new EmptyDialogParameterException();
-        else {
-            text_title.setText(titleText);
-            text_description.setText(depsText);
-        }
+        text_title.setText(titleText);
+        text_description.setText(depsText);
 
         AlertDialog dialog = new AlertDialog.Builder(context)
             .setView(dialogView)
@@ -116,13 +107,13 @@ public class DialogHelper {
         });
     }
 
-    public static void createCustomAnswerDialog(Context context, String titleText, String depsText, String buttonConfirmText, Runnable onContinue) throws EmptyDialogParameterException {
+    public static void createCustomAnswerDialog(Context context, @NotNull String titleText, @NotNull String depsText, @NotNull String buttonConfirmText, Runnable onContinue) {
         /// In this method, we create a dialog with two buttons: Cancel or Continue.
         /// @PARAMETERS
         /// Context context is the Activity Context where to show the dialog
-        /// String titleText is the main text of the dialog (the bigger one).
-        /// String depsText is the description text of the dialog, long and exhaustive.
-        /// String buttonConfirmText is the text to insert into the confirm button.
+        /// @NotNull String titleText is the main text of the dialog (the bigger one).
+        /// @NotNull String depsText is the description text of the dialog, long and exhaustive.
+        /// @NotNull String buttonConfirmText is the text to insert into the confirm button.
         /// Runnable onContinue is the action to perform when the user clicks on "Continue" button.
 
         //*VARIABLES
@@ -135,11 +126,8 @@ public class DialogHelper {
 
         //*SETUP POPUP
         /// Set-up popup texts and variables
-        if(titleText.isEmpty() || depsText.isEmpty()) throw new EmptyDialogParameterException();
-        else {
-            text_title.setText(titleText);
-            text_description.setText(depsText);
-        }
+        text_title.setText(titleText);
+        text_description.setText(depsText);
         btn_close_dialog_confirm.setText(buttonConfirmText);
 
         AlertDialog dialog = new AlertDialog.Builder(context)
