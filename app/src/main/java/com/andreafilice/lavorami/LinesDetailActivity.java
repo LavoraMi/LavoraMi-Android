@@ -316,6 +316,14 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
 
+        //*FETCH METRO STATUS
+        /// In this section of the code, we fetch from our cdn the Realtime Status
+        TextView lineRegolareTxt = findViewById(R.id.lineRegolareTxt);
+        ImageView lineaRegolareIcon = findViewById(R.id.lineaRegolareIcon);
+        LinearLayout lineaRegolareLayout = findViewById(R.id.lineaRegolareLayout);
+
+        checkForMetroStatus(nomeLinea, lineRegolareTxt, lineaRegolareIcon, lineaRegolareLayout);
+
         //*FETCH VARS
         /// In this section of the code, we fetch the variables from the .json file in cdn
         APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
@@ -2430,6 +2438,67 @@ public class LinesDetailActivity extends AppCompatActivity {
                 @Override
                 public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
             });
+        }
+    }
+
+    private void checkForMetroStatus(String lineName, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout){
+        /// In this section of the code, we GET the gtfs file from our CDN and load the Strikes Configuration.
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+
+        apiworks.getMetroStatus().enqueue(new Callback<MetroStatusDescriptor>() {
+            @Override
+            public void onResponse(Call<MetroStatusDescriptor> call, Response<MetroStatusDescriptor> response) {
+                if(response.isSuccessful()){
+                    Log.d("LINEA_STATUS", "Nome Linea: " + lineName);
+                    Log.d("LINEA_STATUS", "Valore linea: " + response.body().getMetroStatus()[0]);
+
+                    switch (lineName) {
+                        case "M1": setupMetroStatus(response.body().getMetroStatus()[0], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
+                        case "M2": setupMetroStatus(response.body().getMetroStatus()[1], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
+                        case "M3": setupMetroStatus(response.body().getMetroStatus()[2], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
+                        case "M4": setupMetroStatus(response.body().getMetroStatus()[3], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
+                        case "M5": setupMetroStatus(response.body().getMetroStatus()[4], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MetroStatusDescriptor> call, Throwable t) {
+                Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
+        /// In this method, we apply the current line status for images and more
+        statusText.setText(lineStatus);
+        Log.d("LINEA_STATUS", "Valore linea: " + lineStatus);
+
+        switch (lineStatus) {
+            case "Regolare":
+                lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_single);
+                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.M2));
+                break;
+            case "Tratta Sospesa":
+                lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
+                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                break;
+            case "Fermata Sospesa":
+                lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
+                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                break;
+            case "Fermate Sospese":
+                lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
+                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                break;
+            case "Interrotta":
+                lineaRegolareIcon.setImageResource(R.drawable.ic_close_browser);
+                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.redMetro));
+                break;
+            case "Chiusa":
+                lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
+                lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.S12));
+                break;
         }
     }
 }

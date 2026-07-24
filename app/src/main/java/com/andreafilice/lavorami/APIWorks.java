@@ -13,4 +13,7 @@ public interface APIWorks {
 
     @GET("requirements.json")
     Call<RequirementsDescriptor> getRequirements();
+
+    @GET("_gtfsStatus.json")
+    Call<MetroStatusDescriptor> getMetroStatus();
 }
