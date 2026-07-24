@@ -41,19 +41,15 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
     private ProgressBar progressBar;
     private TextView urlText;
     private TextView urlTitleText;
-
     private ImageButton shareBtn;
     private ImageButton doneBtn;
     private ImageButton openBrowserBtn;
     private ImageView iconCharacter;
     private ImageView iconZoomHint;
-
     private LinearLayout actionsPill;
     private FrameLayout zoomBtn;
-
     private final Handler tintHandler = new Handler(Looper.getMainLooper());
     private PinchZoomGestureListener pinchZoomListener;
-
     private static final long LOAD_TIMEOUT = 20000;
     private Handler loadTimeoutHandler;
     private Runnable loadTimeoutRunnable;
@@ -76,7 +72,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         "autoguidovie.it",
         "patreon.com",
         "buymeacoffee.com",
-        "comune.milano.it"
+        "comune.milano.it",
+        "company.sbb.ch"
     };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
