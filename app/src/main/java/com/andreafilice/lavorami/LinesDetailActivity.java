@@ -61,13 +61,18 @@ import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
 import com.mapbox.maps.plugin.gestures.GesturesUtils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -433,9 +438,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         infoIconMetro.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoAccessibility.class));
 
         //*DISABLE THIS FEATURE FOR BUS LINES.
-        if(nomeLinea.contains("z")){
-            lineAccessibilityLayout.setVisibility(View.GONE);
-        }
+        if(nomeLinea.contains("z"))lineAccessibilityLayout.setVisibility(View.GONE);
 
         //*WIDGET SELECTION
         /// In this section of the code, we handle the Widget Selection for different lines
@@ -583,7 +586,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
         elaboraStazioni(layoutMaps, layoutLoadingMap, mapView, cdnData);
-        
+
         if(tipoDiLinea.contains("Metro")){
             MapboxHelper.removeScale(mapView);
             findViewById(R.id.lineaRegolareLayout).setVisibility(View.VISIBLE);
@@ -2449,13 +2452,23 @@ public class LinesDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MetroStatusDescriptor> call, Response<MetroStatusDescriptor> response) {
                 if(response.isSuccessful()){
+                    int index;
                     switch (lineName) {
-                        case "M1": setupMetroStatus(response.body().getMetroStatus()[0], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
-                        case "M2": setupMetroStatus(response.body().getMetroStatus()[1], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
-                        case "M3": setupMetroStatus(response.body().getMetroStatus()[2], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
-                        case "M4": setupMetroStatus(response.body().getMetroStatus()[3], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
-                        case "M5": setupMetroStatus(response.body().getMetroStatus()[4], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
+                        case "M1": index = 0; break;
+                        case "M2": index = 1; break;
+                        case "M3": index = 2; break;
+                        case "M4": index = 3; break;
+                        case "M5": index = 4; break;
+                        default: return;
                     }
+
+                    MetroStatusDescriptor body = response.body();
+                    String closingTime = body.getOrariChiusura()[index];
+                    String openingTime = isGiornoFestivo() ? body.getOrariAperturaFestivi()[index] : body.getOrariApertura()[index];
+
+                    if (isMetroChiusaOra(closingTime, openingTime)) setupMetroStatus("Chiusa", statusText, lineaRegolareIcon, lineaRegolareLayout);
+                    else setupMetroStatus(body.getMetroStatus()[index], statusText, lineaRegolareIcon, lineaRegolareLayout);
+
                 }
             }
 
@@ -2464,6 +2477,46 @@ public class LinesDetailActivity extends AppCompatActivity {
                 Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean isGiornoFestivo() {
+        int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        return dayOfWeek == Calendar.SUNDAY;
+    }
+
+    private boolean isMetroChiusaOra(String closingTime, String openingTime) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.ITALY);
+
+            Date parsedClosing = sdf.parse(closingTime);
+            Date parsedOpening = sdf.parse(openingTime);
+            if (parsedClosing == null || parsedOpening == null) return false;
+
+            Calendar now = Calendar.getInstance();
+
+            Calendar closing = (Calendar) now.clone();
+            Calendar closingTmp = Calendar.getInstance();
+            closingTmp.setTime(parsedClosing);
+            closing.set(Calendar.HOUR_OF_DAY, closingTmp.get(Calendar.HOUR_OF_DAY));
+            closing.set(Calendar.MINUTE, closingTmp.get(Calendar.MINUTE));
+            closing.set(Calendar.SECOND, 0);
+            closing.set(Calendar.MILLISECOND, 0);
+
+            Calendar opening = (Calendar) now.clone();
+            Calendar openingTmp = Calendar.getInstance();
+            openingTmp.setTime(parsedOpening);
+            opening.set(Calendar.HOUR_OF_DAY, openingTmp.get(Calendar.HOUR_OF_DAY));
+            opening.set(Calendar.MINUTE, openingTmp.get(Calendar.MINUTE));
+            opening.set(Calendar.SECOND, 0);
+            opening.set(Calendar.MILLISECOND, 0);
+
+            boolean isAfterOrEqualClosing = !now.before(closing);
+            boolean isBeforeOpening = now.before(opening);
+
+            if (closing.before(opening)) return isAfterOrEqualClosing && isBeforeOpening;
+            else return isAfterOrEqualClosing || isBeforeOpening;
+        }
+        catch (ParseException e) {return false;}
     }
 
     private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
