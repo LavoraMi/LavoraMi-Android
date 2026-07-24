@@ -278,7 +278,7 @@ public class WidgetLines extends AppWidgetProvider {
         PendingIntent detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
         views.setOnClickPendingIntent(R.id.detail_line_chip, detailPendingIntent);
-        
+
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
