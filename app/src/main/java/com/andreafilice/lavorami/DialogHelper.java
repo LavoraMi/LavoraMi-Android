@@ -64,14 +64,53 @@ public class DialogHelper {
         }
 
         AlertDialog dialog = new AlertDialog.Builder(context)
-                .setView(dialogView)
-                .setCancelable(true)
-                .create();
+            .setView(dialogView)
+            .setCancelable(true)
+            .create();
         dialog.show();
 
         if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         Button btnClose = dialogView.findViewById(R.id.btn_close_dialog);
         btnClose.setOnClickListener(v1 -> toExecute.run());
+    }
+
+    public static void createDefaultAnswerDialog(Context context, String titleText, String depsText, Runnable onContinue) throws EmptyDialogParameterException {
+        /// In this method, we create a dialog with two buttons: Cancel or Continue.
+        /// @PARAMETERS
+        /// Context context is the Activity Context where to show the dialog
+        /// String titleText is the main text of the dialog (the bigger one).
+        /// String depsText is the description text of the dialog, long and exhaustive.
+        /// Runnable onContinue is the action to perform when the user clicks on "Continue" button.
+
+        //*VARIABLES
+        /// In this section, we have all the variables for our dialog
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.info_dialog_double_layout, null);
+        TextView text_title = dialogView.findViewById(R.id.text_title);
+        TextView text_description = dialogView.findViewById(R.id.text_description);
+        Button btn_close_dialog_cancel = dialogView.findViewById(R.id.btn_close_dialog_cancel);
+        Button btn_close_dialog_confirm = dialogView.findViewById(R.id.btn_close_dialog_confirm);
+
+        //*SETUP POPUP
+        /// Set-up popup texts and variables
+        if(titleText.isEmpty() || depsText.isEmpty()) throw new EmptyDialogParameterException();
+        else {
+            text_title.setText(titleText);
+            text_description.setText(depsText);
+        }
+
+        AlertDialog dialog = new AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create();
+        dialog.show();
+
+        if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        btn_close_dialog_cancel.setOnClickListener(v -> dialog.dismiss());
+        btn_close_dialog_confirm.setOnClickListener(v -> {
+            onContinue.run();
+            dialog.dismiss();
+        });
     }
 }

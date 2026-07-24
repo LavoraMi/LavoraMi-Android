@@ -592,38 +592,39 @@ public class AccountManagement extends AppCompatActivity {
 
         loggingInWithGoogle = false;
 
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.areYouSurePopUp)
-                .setMessage(R.string.deleteAccountTitlePopUp)
-                .setNegativeButton(R.string.cancelPopUp, null)
-                .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
-                    String tokenKey = sessionManager.getToken();
+        Runnable onSuccessAction = new Runnable() {
+            @Override
+            public void run() {
+                String tokenKey = sessionManager.getToken();
 
-                    if(tokenKey == null){
-                        Toast.makeText(this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                        return;
+                if(tokenKey == null){
+                    Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                api.deleteAccount(SupabaseANON, "Bearer " + tokenKey).enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if(response.isSuccessful()) {
+                            sessionManager.logout();
+                            updateUI();
+                            Toast.makeText(AccountManagement.this, getString(R.string.deleteAccountSuccesfullToast), Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                            try {Log.e("DELETE_ERR", response.errorBody().string());} catch (Exception e) {}
+                        }
                     }
 
-                    api.deleteAccount(SupabaseANON, "Bearer " + tokenKey).enqueue(new Callback<Void>() {
-                        @Override
-                        public void onResponse(Call<Void> call, Response<Void> response) {
-                            if(response.isSuccessful()) {
-                                sessionManager.logout();
-                                updateUI();
-                                Toast.makeText(AccountManagement.this, getString(R.string.deleteAccountSuccesfullToast), Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                                try {Log.e("DELETE_ERR", response.errorBody().string());} catch (Exception e) {}
-                            }
-                        }
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
 
-                        @Override
-                        public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }).show();
+        DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.deleteAccountTitlePopUp), onSuccessAction);
     }
 
     public void selectUsername() {
