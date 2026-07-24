@@ -588,7 +588,7 @@
                     app:tint="@color/text_primary"/>
 
                 <TextView
-                    android:id="@+id/lieaRegolareTxt"
+                    android:id="@+id/lineRegolareTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="12dp"
@@ -596,10 +596,10 @@
                     android:paddingBottom="6dp"
                     android:elevation="4dp"
                     android:fontFamily="@font/inter"
+                    android:text=""
                     android:textStyle="bold"
                     android:textSize="13sp"
-                    android:textColor="@color/text_primary"
-                    android:text="REGOLARE"/>
+                    android:textColor="@color/text_primary"/>
             </LinearLayout>
 
             <LinearLayout
