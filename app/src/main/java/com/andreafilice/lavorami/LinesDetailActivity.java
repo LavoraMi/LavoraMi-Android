@@ -2449,9 +2449,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MetroStatusDescriptor> call, Response<MetroStatusDescriptor> response) {
                 if(response.isSuccessful()){
-                    Log.d("LINEA_STATUS", "Nome Linea: " + lineName);
-                    Log.d("LINEA_STATUS", "Valore linea: " + response.body().getMetroStatus()[0]);
-
                     switch (lineName) {
                         case "M1": setupMetroStatus(response.body().getMetroStatus()[0], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
                         case "M2": setupMetroStatus(response.body().getMetroStatus()[1], statusText, lineaRegolareIcon, lineaRegolareLayout); break;
@@ -2472,7 +2469,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
         /// In this method, we apply the current line status for images and more
         statusText.setText(lineStatus);
-        Log.d("LINEA_STATUS", "Valore linea: " + lineStatus);
 
         switch (lineStatus) {
             case "Regolare":
