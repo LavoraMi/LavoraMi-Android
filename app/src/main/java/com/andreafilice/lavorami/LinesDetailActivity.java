@@ -2525,7 +2525,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         switch (lineStatus) {
             case "Regolare":
-                lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_single);
+                lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.M2));
                 break;
             case "Tratta Sospesa":
