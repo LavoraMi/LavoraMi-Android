@@ -368,6 +368,7 @@
                 android:maxLines="2"/>
 
             <View
+                android:id="@+id/dividerAccessibility"
                 android:layout_width="1dp"
                 android:layout_height="31dp"
                 android:background="#38383A" />

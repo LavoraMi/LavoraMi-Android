@@ -434,7 +434,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         infoIconMetro.setOnClickListener(v -> ActivityUtils.changeActivity(this, InfoAccessibility.class));
 
         //*DISABLE THIS FEATURE FOR BUS LINES.
-        if(nomeLinea.contains("z"))lineAccessibilityLayout.setVisibility(View.GONE);
+        if(nomeLinea.contains("z")){
+            lineAccessibilityLayout.setVisibility(View.GONE);
+            findViewById(R.id.dividerAccessibility).setVisibility(View.GONE);
+        }
 
         //*WIDGET SELECTION
         /// In this section of the code, we handle the Widget Selection for different lines
