@@ -1,13 +1,10 @@
 package com.andreafilice.lavorami;
 
+import static com.andreafilice.lavorami.MainActivity.threadManager;
 import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
-import android.accessibilityservice.GestureDescription;
-import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -17,7 +14,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.ContactsContract;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionListenerAdapter;
@@ -46,12 +42,10 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.material.button.MaterialButton;
 import com.mapbox.maps.MapView;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
@@ -77,6 +71,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -952,6 +948,75 @@ public class LinesDetailActivity extends AppCompatActivity {
         wrapper.setVisibility(View.GONE);
         emptyView.setVisibility(View.GONE);
 
+        if (EventData.listaEventiCompleta.isEmpty()) {
+
+            emptyView.setVisibility(View.VISIBLE);
+            ((TextView) findViewById(R.id.emptyView)).setText(getString(R.string.loadingDataInProgress));
+            ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(R.drawable.ic_info);
+
+            APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+
+            apiworks.getLavori().enqueue(new Callback<ArrayList<EventDescriptor>>() {
+                @Override
+                public void onResponse(Call<ArrayList<EventDescriptor>> call, Response<ArrayList<EventDescriptor>> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        ArrayList<EventDescriptor> datiRaw = response.body();
+
+                        int BATCH_SIZE = 50;
+                        int totalBatches = (int) Math.ceil((double) datiRaw.size() / BATCH_SIZE);
+                        AtomicInteger completedBatches = new AtomicInteger(0);
+
+                        if (datiRaw.isEmpty()) {
+                            EventData.listaEventiCompleta = datiRaw;
+                            renderEventiFiltrati();
+                            return;
+                        }
+
+                        for (int i = 0; i < datiRaw.size(); i += BATCH_SIZE) {
+                            final int batchStart = i;
+                            final int batchEnd = Math.min(i + BATCH_SIZE, datiRaw.size());
+
+                            threadManager.submit(() -> {
+                                for (int j = batchStart; j < batchEnd; j++) {
+                                    EventDescriptor lavoro = datiRaw.get(j);
+                                    lavoro.precalculate(LinesDetailActivity.this);
+                                }
+
+                                int completati = completedBatches.incrementAndGet();
+
+                                if (completati == totalBatches) {
+                                    runOnUiThread(() -> {
+                                        // Solo ora la cache è pronta: aggiorniamo e renderizziamo.
+                                        EventData.listaEventiCompleta = datiRaw;
+                                        renderEventiFiltrati();
+                                    });
+                                }
+                            });
+                        }
+                    } else {
+                        mostraErroreCaricamento();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
+                    mostraErroreCaricamento();
+                }
+            });
+
+            return;
+        }
+
+        renderEventiFiltrati();
+    }
+
+    private void renderEventiFiltrati() {
+        LinearLayout container = findViewById(R.id.containerLavori);
+        View wrapper = findViewById(R.id.lavoriSezioneWrapper);
+        View emptyView = findViewById(R.id.emptyViewContainer);
+
+        if (container == null || wrapper == null) return;
+
         String searchTag = nomeLinea.matches("9[0-3]") ? "FILOBUS " + nomeLinea.trim() : nomeLinea.trim().toUpperCase();
 
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
@@ -969,6 +1034,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 }
             }
         }
+
+        container.removeAllViews();
 
         List<View> cards = new ArrayList<>();
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -1057,8 +1124,20 @@ public class LinesDetailActivity extends AppCompatActivity {
         lavoriNested.setVisibility(found ? View.VISIBLE : View.GONE);
         emptyView.setVisibility(found ? View.GONE : View.VISIBLE);
 
-        ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError)  : getString(R.string.noWorksOnThisLine));
+        ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
         ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+    }
+
+    private void mostraErroreCaricamento() {
+        LinearLayout container = findViewById(R.id.containerLavori);
+        View wrapper = findViewById(R.id.lavoriSezioneWrapper);
+        View emptyView = findViewById(R.id.emptyViewContainer);
+        if (wrapper != null) wrapper.setVisibility(View.GONE);
+        if (emptyView != null) emptyView.setVisibility(View.VISIBLE);
+
+        ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
+        ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+        Toast.makeText(LinesDetailActivity.this, "Errore di connessione, riprova", Toast.LENGTH_SHORT).show();
     }
 
     private void mostraBottomSheetTraduzione(EventDescriptor evento, String cleanDet, String langCode) {

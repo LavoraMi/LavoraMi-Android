@@ -424,4 +424,5 @@
     <string name="lineSubBusTitle">LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS.</string>
     <string name="dialogFavouriteLineText">Selecciona los operadores de transporte que utilizas con mayor frecuencia y añádelos a tus favoritos para recibir notificaciones instantáneas sobre nuevos obras.</string>
     <string name="dialogFavouriteLineTextTitle">Elige tus intereses</string>
+    <string name="loadingDataInProgress">Cargando datos…</string>
 </resources>

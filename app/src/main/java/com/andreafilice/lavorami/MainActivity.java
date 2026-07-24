@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     private WorkAdapter adapter;
     private CategoriesEnum defaultCategory;
     private boolean hasCompletedSetup;
-    private static ExecutorService threadManager = Executors.newFixedThreadPool(3);
+    public static ExecutorService threadManager = Executors.newFixedThreadPool(3);
     private StrikeDescriptor strikeCDNResponse;
     private ImageButton btnRefresh;
     private  SwipeRefreshLayout swipeRefreshLayout;
