@@ -2631,8 +2631,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
                 statusText.setText(getString(R.string.metroStatoChiusa));
                 break;
-            default:
-                return;
         }
         int alpha = Color.alpha(baseColor);
         int newAlpha = (int) (alpha * 0.65f);
