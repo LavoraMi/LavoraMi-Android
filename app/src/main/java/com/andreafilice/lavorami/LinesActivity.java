@@ -2,7 +2,6 @@ package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
@@ -386,17 +385,18 @@ public class LinesActivity extends AppCompatActivity {
         recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
 
         if(!recentLinesSet.isEmpty()){
+            Runnable onConfirm = new Runnable() {
+                @Override
+                public void run() {
+                    DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>());
+                    reloadRecentLines();
+                }
+            };
+
             deleteIconRecent.setVisibility(View.VISIBLE);
             deleteIconRecent.setOnClickListener(v -> {
                 ActivityUtils.triggerFeedback(this);
-                new AlertDialog.Builder(this)
-                        .setTitle(R.string.areYouSurePopUp)
-                        .setMessage(R.string.popUpDeleteRecentDeps)
-                        .setNegativeButton(R.string.cancelPopUp, null)
-                        .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
-                            DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>());
-                            reloadRecentLines();
-                        }).show();
+                DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.popUpDeleteRecentDeps), onConfirm);
             });
 
             for (String entry : recentLinesSet) {

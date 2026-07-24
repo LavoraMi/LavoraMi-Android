@@ -2,6 +2,7 @@ package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
+import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -18,7 +19,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.app.AlertDialog;
 import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
@@ -512,13 +512,14 @@ public class AccountManagement extends AppCompatActivity {
         /// This method is a bridge one, is called into the 'setOnClickListener' call for popup to the user a Dialog.
         /// If the answer of the user is 'YES', we call the 'logout()' function, otherwise do nothing.
 
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.areYouSurePopUp)
-                .setMessage(R.string.logoutConfirmationPopUp)
-                .setNegativeButton(R.string.cancelPopUp, null)
-                .setPositiveButton(R.string.logoutAccount, (dialog, which) -> {
-                    logout();
-                }).show();
+        Runnable onConfirm = new Runnable() {
+            @Override
+            public void run() {
+                logout();
+            }
+        };
+
+        DialogHelper.createCustomAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.logoutConfirmationPopUp), getString(R.string.logoutAccount), onConfirm);
     }
 
     private void logout(){
@@ -710,14 +711,15 @@ public class AccountManagement extends AppCompatActivity {
         /// @PARAMETERS
         /// String email is the user Email for send the mail, catched by the method 'sessionManager.getUserEmail()'
 
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.editPasswordAccount)
-                .setMessage(R.string.ediPasswordPopUpTitle)
-                .setNegativeButton(R.string.cancelPopUp, null)
-                .setPositiveButton(R.string.continueButtonPopUp, (dialog, which) -> {
-                    String userEmail = sessionManager.getUserEmail();
-                    sendResetPasswordEmail(userEmail);
-                }).show();
+        Runnable onConfirm = new Runnable() {
+            @Override
+            public void run() {
+                String userEmail = sessionManager.getUserEmail();
+                sendResetPasswordEmail(userEmail);
+            }
+        };
+
+        DialogHelper.createDefaultAnswerDialog(this, getString(R.string.editPasswordAccount), getString(R.string.ediPasswordPopUpTitle), onConfirm);
     }
 
     private void updateUI(){
@@ -949,14 +951,7 @@ public class AccountManagement extends AppCompatActivity {
                 synchProgressBar.setVisibility(View.GONE);
                 infoIconNotSynched.setVisibility(View.VISIBLE);
 
-                infoIconNotSynched.setOnClickListener(v -> {
-                    new AlertDialog.Builder(AccountManagement.this)
-                            .setTitle(R.string.notSynchedDataInfo)
-                            .setMessage(R.string.notSynchedDataInfoDeps)
-                            .setNegativeButton(R.string.closePopUp, null)
-                            .create()
-                            .show();
-                });
+                infoIconNotSynched.setOnClickListener(v -> {DialogHelper.createDefaultDialog(this, getString(R.string.notSynchedDataInfo), getString(R.string.notSynchedDataInfoDeps));});
             }
             else {
                 syncText = getString(R.string.dataSynched);

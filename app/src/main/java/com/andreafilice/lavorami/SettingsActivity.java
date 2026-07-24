@@ -3,7 +3,6 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.ActivityUtils.changeActivity;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
-import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
@@ -507,34 +506,37 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void resetSettings(ImageView[] images, String[] lines){
         ActivityUtils.triggerFeedback(this);
-        new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.areYouSurePopUp))
-                .setMessage(getString(R.string.resetSettingsPopUp))
-                .setNegativeButton(getString(R.string.cancelPopUp), null)
-                .setPositiveButton(getString(R.string.confirmPopUp), (dialog, which) -> {
-                    DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI");
-                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
-                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
-                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
-                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
-                    DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true);
-                    DataManager.saveBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true);
-                    DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
-                    DataManager.saveIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
-                    DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
-                    DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
-                    DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new HashSet<>());
-                    DataManager.saveBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
-                    DataManager.saveBoolData(DataKeys.KEY_SHOW_BANNERS, true);
-                    DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true);
-                    DataManager.saveBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
-                    DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
-                    DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
-                    Toast.makeText(this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
-                    favorites.clear();
-                    reloadDatas();
-                    ThemeSettings.setTheme();
-                    loadFavorites(images, lines);
-                }).show();
+        Runnable deleteAllKeys = new Runnable() {
+            @Override
+            public void run() {
+                DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI");
+                DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
+                DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
+                DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
+                DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
+                DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true);
+                DataManager.saveBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true);
+                DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
+                DataManager.saveIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
+                DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new HashSet<>());
+                DataManager.saveBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
+                DataManager.saveBoolData(DataKeys.KEY_SHOW_BANNERS, true);
+                DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+                DataManager.saveBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
+                DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
+                DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
+
+                Toast.makeText(SettingsActivity.this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
+                favorites.clear();
+                reloadDatas();
+                ThemeSettings.setTheme();
+
+                loadFavorites(images, lines);
+            }
+        };
+
+        DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.resetSettingsPopUp), deleteAllKeys);
     }
 }

@@ -3,7 +3,6 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
@@ -47,6 +46,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -291,21 +291,20 @@ public class MainActivity extends AppCompatActivity {
         Button btnSetupSkip = findViewById(R.id.btnSetupSkip);
         btnSetupSkip.setOnClickListener(v ->{
             /// In this section of the code, we ask the user if he wants to skip the Setup.
-            new AlertDialog.Builder(this)
-                    .setTitle(getString(R.string.areYouSurePopUp))
-                    .setMessage(getString(R.string.skipConfigDeps))
-                    .setNegativeButton(getString(R.string.cancelPopUp), null)
-                    .setPositiveButton(getString(R.string.confirmPopUp), ((dialog, which) -> {
-                        DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
-                        setupOverlay.setVisibility(View.GONE);
-                        findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
-                        hasCompletedSetup = true;
-                        requestConsentInfoUpdate();
-                        askForNotificationPermission();
-                        askForPositionPermission();
-                    }))
-                    .create()
-                    .show();
+            Runnable onConfirm = new Runnable() {
+                @Override
+                public void run() {
+                    DataManager.saveBoolData(DataKeys.KEY_END_SETUP, true);
+                    setupOverlay.setVisibility(View.GONE);
+                    findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
+                    hasCompletedSetup = true;
+                    requestConsentInfoUpdate();
+                    askForNotificationPermission();
+                    askForPositionPermission();
+                }
+            };
+
+            DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.skipConfigDeps), onConfirm);
         });
 
         /// In this section we also set the "NEXT" button to "END" when it's the last Page.

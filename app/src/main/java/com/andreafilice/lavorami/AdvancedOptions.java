@@ -1,6 +1,5 @@
 package com.andreafilice.lavorami;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -136,15 +135,16 @@ public class AdvancedOptions extends AppCompatActivity {
         //*CACHE MEMORY
         /// In this section of the code, we set-up the code to delete the Cache Memory.
         CardView btnCacheMemory = findViewById(R.id.btnCacheMemory);
+        Runnable deleteMemoryConfirm = new Runnable() {
+            @Override
+            public void run() {
+                new Thread(() -> {deleteCache(AdvancedOptions.this);}).start();
+            }
+        };
+
         btnCacheMemory.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.areYouSurePopUp)
-                    .setMessage(R.string.cacheMemoryPopUpDeps)
-                    .setNegativeButton(R.string.cancelPopUp, null)
-                    .setPositiveButton(R.string.confirmPopUp, (dialog, which) -> {
-                        new Thread(() -> {deleteCache(this);}).start();
-                    }).show();
+            DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.cacheMemoryPopUpDeps), deleteMemoryConfirm);
         });
 
         //*TRANSLATE OPTION
