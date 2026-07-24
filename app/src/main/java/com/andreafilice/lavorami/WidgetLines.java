@@ -1,6 +1,7 @@
 package com.andreafilice.lavorami;
 
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
@@ -272,10 +273,12 @@ public class WidgetLines extends AppWidgetProvider {
         detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
-        PendingIntent detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+        stackBuilder.addNextIntentWithParentStack(detailIntent);
+        PendingIntent detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
         views.setOnClickPendingIntent(R.id.detail_line_chip, detailPendingIntent);
-
+        
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 

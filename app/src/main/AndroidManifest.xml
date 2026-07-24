@@ -103,7 +103,13 @@
             android:name=".LinesDetailActivity"
             android:exported="false"
             android:launchMode="singleTop"
-            android:parentActivityName=".LinesActivity" />
+            android:parentActivityName=".LinesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LinesActivity" />
+        </activity>
+
+
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
