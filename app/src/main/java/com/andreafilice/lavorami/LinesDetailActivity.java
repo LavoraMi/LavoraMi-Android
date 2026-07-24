@@ -2599,7 +2599,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
-        int baseColor;
+        int baseColor = ContextCompat.getColor(this, R.color.M2);
+
         switch (lineStatus) {
             case "Regolare":
                 baseColor = ContextCompat.getColor(this, R.color.M2);
