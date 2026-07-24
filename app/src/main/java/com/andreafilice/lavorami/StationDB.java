@@ -11531,6 +11531,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.18836, 9.02296, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.19022, 9.02422, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.19365, 9.02771, "Main", "S10"));
+        /* MODIFICHE CIRCOLAZIONE: Fino al 30 Agosto, la linea S10 è interrotta tra Biasca e Bellinzona.
         stations.add(new MetroStation("Bellinzona", 46.19543, 9.02951, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.19862, 9.03383, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.20095, 9.0364, "Main", "S10"));
@@ -11681,7 +11682,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.34592, 8.97628, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.34609, 8.97628, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.3464, 8.97619, "Main", "S10"));
-        stations.add(new MetroStation("Biasca", 46.35198, 8.97416, "Main", "S10"));
+        stations.add(new MetroStation("Biasca", 46.35198, 8.97416, "Main", "S10"));*/
         return stations;
     }
 
@@ -11845,6 +11846,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.19012, 9.02413, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.19247, 9.02614, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.19377, 9.0279, "Main", "S20"));
+        /* MODIFICHE CIRCOLAZIONE: La linea S20 è interrotta tra Castione e Bellinzona fino al 30 Agosto.
         stations.add(new MetroStation("Bellinzona", 46.19543, 9.02951, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.19862, 9.03383, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.20095, 9.0364, "Main", "S20"));
@@ -11863,7 +11865,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.2178, 9.04174, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.21835, 9.04184, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.2192, 9.04176, "Main", "S20"));
-        stations.add(new MetroStation("Castione Arbedo", 46.22363, 9.04148, "Main", "S20"));
+        stations.add(new MetroStation("Castione Arbedo", 46.22363, 9.04148, "Main", "S20"));*/
         return stations;
     }
 
@@ -13865,6 +13867,7 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS90() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: Dal 27 luglio al 31 luglio e dal 3 al 7 agosto, interruzione tra Mendrisio e Lugano
         stations.add(new MetroStation("Mendrisio", 45.8691, 8.97878, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 45.87217, 8.98214, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 45.87298, 8.9827, "Main", "S90"));
@@ -14037,7 +14040,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.00177, 8.94748, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00225, 8.9475, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00264, 8.94743, "Main", "S90"));
-        stations.add(new MetroStation("NO_DRAW", 46.00409, 8.94705, "Main", "S90"));
+        stations.add(new MetroStation("NO_DRAW", 46.00409, 8.94705, "Main", "S90"));*/
         stations.add(new MetroStation("Lugano", 46.00501, 8.94695, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00636, 8.94638, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00814, 8.94576, "Main", "S90"));

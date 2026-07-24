@@ -1901,12 +1901,12 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             case "MXP1": return "Gallarate - Malpensa T2 - Milano Centrale";
             case "MXP2": return "Malpensa T2 - Milano Cadorna";
-            case "S10": return "Biasca - Como";
-            case "S20": return "Castione - Locarno";
+            case "S10": return "Bellinzona - Como"; //* Biasca - Como
+            case "S20": return "Bellinzona - Locarno"; //* Cadenazzo - Locarno
             case "S30": return "Cadenazzo - Gallarate";
             case "S40": return "Como - Varese";
             case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
-            case "S90": return "Bellinzona - Mendrisio";
+            case "S90": return "Bellinzona - Lugano"; //* Bellinzona - Mendrisio
             case "RE80": return "Locarno - Milano Centrale";
 
             case "1": return "Roserio - Greco";
@@ -2633,6 +2633,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 statusText.setText(getString(R.string.metroStatoChiusa));
                 break;
         }
+
         int alpha = Color.alpha(baseColor);
         int newAlpha = (int) (alpha * 0.65f);
         int colorWithAlpha = Color.argb(newAlpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor));
