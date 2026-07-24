@@ -423,4 +423,10 @@
     <string name="lineSubBusTitle">LINEA SOSTITUITA INTERAMENTE DA BUS.</string>
     <string name="dialogFavouriteLineText">Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con nuovi lavori.</string>
     <string name="dialogFavouriteLineTextTitle">Scegli i tuoi interessi</string>
+    <string name="metroStatoRegolare">Regolare</string>
+    <string name="metroStatoTrattaSospesa">Tratta Sospesa</string>
+    <string name="metroStatoFermataSospesa">Fermata Sospesa</string>
+    <string name="metroStatoFermateSospese">Fermate Sospese</string>
+    <string name="metroStatoInterrotta">Interrotta</string>
+    <string name="metroStatoChiusa">Chiusa</string>
 </resources>

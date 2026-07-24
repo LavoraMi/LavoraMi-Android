@@ -2521,32 +2521,36 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
         /// In this method, we apply the current line status for images and more
-        statusText.setText(lineStatus);
-
         switch (lineStatus) {
             case "Regolare":
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.M2));
+                statusText.setText(getString(R.string.metroStatoRegolare));
                 break;
             case "Tratta Sospesa":
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                statusText.setText(getString(R.string.metroStatoTrattaSospesa));
                 break;
             case "Fermata Sospesa":
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                statusText.setText(getString(R.string.metroStatoFermataSospesa));
                 break;
             case "Fermate Sospese":
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.amber_on_banner));
+                statusText.setText(getString(R.string.metroStatoFermateSospese));
                 break;
             case "Interrotta":
                 lineaRegolareIcon.setImageResource(R.drawable.ic_close_browser);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.redMetro));
+                statusText.setText(getString(R.string.metroStatoInterrotta));
                 break;
             case "Chiusa":
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
                 lineaRegolareLayout.setBackgroundTintList(getColorStateList(R.color.S12));
+                statusText.setText(getString(R.string.metroStatoChiusa));
                 break;
         }
     }

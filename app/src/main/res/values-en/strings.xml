@@ -424,4 +424,10 @@
     <string name="lineSubBusTitle">ROUTE FULLY REPLACED BY BUSES.</string>
     <string name="dialogFavouriteLineText">Select your most frequently used transport operators and add them to your favorites to receive instant notifications about new works.</string>
     <string name="dialogFavouriteLineTextTitle">Choose your interests</string>
+    <string name="metroStatoRegolare">Regular</string>
+    <string name="metroStatoTrattaSospesa">Suspended Route</string>
+    <string name="metroStatoFermataSospesa">Temporary Closure</string>
+    <string name="metroStatoFermateSospese">Temporary Closures</string>
+    <string name="metroStatoInterrotta">Interrupted</string>
+    <string name="metroStatoChiusa">Closed</string>
 </resources>

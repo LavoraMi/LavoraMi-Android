@@ -424,4 +424,10 @@
     <string name="lineSubBusTitle">LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS.</string>
     <string name="dialogFavouriteLineText">Selecciona los operadores de transporte que utilizas con mayor frecuencia y añádelos a tus favoritos para recibir notificaciones instantáneas sobre nuevos obras.</string>
     <string name="dialogFavouriteLineTextTitle">Elige tus intereses</string>
+    <string name="metroStatoRegolare">Normal</string>
+    <string name="metroStatoTrattaSospesa">Trayecto Suspendido</string>
+    <string name="metroStatoFermataSospesa">Parada Suspendida</string>
+    <string name="metroStatoFermateSospese">Paradas Suspendidas</string>
+    <string name="metroStatoInterrotta">Interrumpida</string>
+    <string name="metroStatoChiusa">Cerrada</string>
 </resources>
