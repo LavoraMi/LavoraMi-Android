@@ -11531,8 +11531,8 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.18836, 9.02296, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.19022, 9.02422, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.19365, 9.02771, "Main", "S10"));
-        /* MODIFICHE CIRCOLAZIONE: Fino al 30 Agosto, la linea S10 è interrotta tra Biasca e Bellinzona.
         stations.add(new MetroStation("Bellinzona", 46.19543, 9.02951, "Main", "S10"));
+        /* MODIFICHE CIRCOLAZIONE: Fino al 30 Agosto, la linea S10 è interrotta tra Biasca e Bellinzona.
         stations.add(new MetroStation("NO_DRAW", 46.19862, 9.03383, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.20095, 9.0364, "Main", "S10"));
         stations.add(new MetroStation("NO_DRAW", 46.20339, 9.03842, "Main", "S10"));
@@ -11846,8 +11846,8 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.19012, 9.02413, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.19247, 9.02614, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.19377, 9.0279, "Main", "S20"));
-        /* MODIFICHE CIRCOLAZIONE: La linea S20 è interrotta tra Castione e Bellinzona fino al 30 Agosto.
         stations.add(new MetroStation("Bellinzona", 46.19543, 9.02951, "Main", "S20"));
+        /* MODIFICHE CIRCOLAZIONE: La linea S20 è interrotta tra Castione e Bellinzona fino al 30 Agosto.
         stations.add(new MetroStation("NO_DRAW", 46.19862, 9.03383, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.20095, 9.0364, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.20339, 9.03842, "Main", "S20"));
