@@ -19,6 +19,7 @@ import com.mapbox.maps.plugin.animation.easeTo
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 import com.mapbox.maps.extension.style.layers.generated.fillLayer
+import com.mapbox.maps.plugin.scalebar.scalebar
 
 object MapboxHelper {
     //*INITIALIZE MAP
@@ -43,6 +44,11 @@ object MapboxHelper {
         */
         val style = if (darkMode) "mapbox://styles/mapbox/dark-v11" else "mapbox://styles/mapbox/streets-v12"
         mapView.mapboxMap.loadStyle(style) { onReady.onReady(mapView) }
+    }
+
+    @JvmStatic
+    fun removeScale(mapView: MapView){
+        mapView.scalebar.enabled = false
     }
 
     @JvmStatic

@@ -575,6 +575,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
         elaboraStazioni(layoutMaps, layoutLoadingMap, mapView, cdnData);
+        
+        if(tipoDiLinea.contains("Metro")){
+            MapboxHelper.removeScale(mapView);
+            findViewById(R.id.lineaRegolareLayout).setVisibility(View.VISIBLE);
+        }
     }
 
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, StrikeDescriptor cdnData) {
