@@ -957,17 +957,20 @@ public class AccountManagement extends AppCompatActivity {
                 syncText = getString(R.string.dataSynched);
                 syncIcon = R.drawable.ic_cloud_success_sync;
                 synchProgressBar.setVisibility(View.GONE);
+                infoIconNotSynched.setVisibility(View.GONE);
             }
         }
         else if (dataSyncing != 3) {
             syncText = getString(R.string.dataSyncing);
             syncIcon = R.drawable.ic_cloud_syncing;
             synchProgressBar.setVisibility(View.VISIBLE);
+            infoIconNotSynched.setVisibility(View.GONE);
         }
         else {
             syncText = getString(R.string.dataFailureSync);
             syncIcon = R.drawable.ic_cloud_failed_sync;
             synchProgressBar.setVisibility(View.GONE);
+            infoIconNotSynched.setVisibility(View.GONE);
         }
 
         tvProfileSync.setText(syncText);
