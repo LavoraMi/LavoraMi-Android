@@ -592,7 +592,14 @@
             android:paddingTop="8dp"
             android:paddingBottom="96dp"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
+    <View
+        android:id="@+id/fadeOverlayTop"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:background="@drawable/fade_overlay_top"
+        app:layout_constraintTop_toBottomOf="@id/contentBarrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
