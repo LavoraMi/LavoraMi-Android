@@ -1905,7 +1905,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S20": return "Bellinzona - Locarno"; //* Cadenazzo - Locarno
             case "S30": return "Cadenazzo - Gallarate";
             case "S40": return "Como - Varese";
-            case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
+            case "S50": return "Mendrisio - Malpensa Aeroporto T1-T2";
             case "S90": return "Bellinzona - Lugano"; //* Bellinzona - Mendrisio
             case "RE80": return "Locarno - Milano Centrale";
 

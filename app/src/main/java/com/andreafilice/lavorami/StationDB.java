@@ -13301,6 +13301,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.86574, 8.97455, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 45.86629, 8.97524, "Main", "S50"));
         stations.add(new MetroStation("Mendrisio", 45.8691, 8.97878, "Main", "S50"));
+        /* MODIFICHE CIRCOLAZIONE: La linea S50 è sospesa tra Biasca e Mendrisio. Dal 27 al 31 e dal 3 al 7
         stations.add(new MetroStation("NO_DRAW", 45.87217, 8.98214, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 45.87298, 8.9827, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 45.87399, 8.983, "Main", "S50"));
@@ -13861,7 +13862,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.34592, 8.97628, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 46.34609, 8.97628, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 46.3464, 8.97619, "Main", "S50"));
-        stations.add(new MetroStation("Biasca", 46.35198, 8.97416, "Main", "S50"));
+        stations.add(new MetroStation("Biasca", 46.35198, 8.97416, "Main", "S50"));*/
         return stations;
     }
 
