@@ -571,11 +571,11 @@
                 android:id="@+id/lineaRegolareLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|start"
+                android:layout_gravity="top|end"
                 android:background="@drawable/chip_line_bg"
                 android:backgroundTint="@color/M2"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:visibility="gone">
 
                 <ImageView

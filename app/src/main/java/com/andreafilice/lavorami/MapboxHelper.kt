@@ -19,6 +19,7 @@ import com.mapbox.maps.plugin.animation.easeTo
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 import com.mapbox.maps.extension.style.layers.generated.fillLayer
+import com.mapbox.maps.plugin.compass.compass
 import com.mapbox.maps.plugin.scalebar.scalebar
 
 object MapboxHelper {
@@ -48,6 +49,7 @@ object MapboxHelper {
 
     @JvmStatic
     fun removeScale(mapView: MapView){
+        mapView.compass.position = android.view.Gravity.TOP or android.view.Gravity.START
         mapView.scalebar.enabled = false
     }
 
