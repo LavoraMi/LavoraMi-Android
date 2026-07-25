@@ -72,7 +72,6 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -2609,7 +2608,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 baseColor = ContextCompat.getColor(this, R.color.M2);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 statusText.setText(getString(R.string.metroStatoRegolare));
-                statusText.setPaddingRelative(0, 6, 10, 6);
+                float density = getResources().getDisplayMetrics().density;
+                statusText.setPaddingRelative(0, Math.round(density *6), Math.round(density*10), Math.round(density*6));
                 infoIconStatus.setVisibility(View.GONE);
                 break;
             case "Rallentata":
