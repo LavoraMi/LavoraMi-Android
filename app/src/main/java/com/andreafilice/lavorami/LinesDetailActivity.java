@@ -2659,7 +2659,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
         infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
-        if(!lineStatus.equals("Regolare"))
+        if(!(lineStatus.equals("Regolare") || lineStatus.equals("Chiusa")))
             statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
     }
 }
