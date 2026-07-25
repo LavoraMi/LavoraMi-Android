@@ -2610,6 +2610,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 statusText.setText(getString(R.string.metroStatoRegolare));
                 float density = getResources().getDisplayMetrics().density;
                 statusText.setPaddingRelative(0, Math.round(density *6), Math.round(density*10), Math.round(density*6));
+                statusText.setClickable(false);
+                statusText.setFocusable(false);
                 infoIconStatus.setVisibility(View.GONE);
                 break;
             case "Rallentata":
