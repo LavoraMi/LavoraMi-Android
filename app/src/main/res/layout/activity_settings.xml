@@ -216,7 +216,12 @@
 
                         <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />
 
-                        <RelativeLayout android:id="@+id/sLinesLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout
+                            android:id="@+id/sLinesLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:paddingHorizontal="16dp">
+
                             <ImageView
                                 android:id="@+id/iconS"
                                 android:layout_width="28dp"
@@ -230,6 +235,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="40dp"
+                                android:fontFamily="@font/font_main"
                                 android:text="@string/suburbanLinesTitle"
                                 android:textColor="@color/text_primary"
                                 android:textSize="15sp" />
@@ -246,7 +252,12 @@
                                 app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:id="@+id/rLinesLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout
+                            android:id="@+id/rLinesLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:paddingHorizontal="16dp">
+
                             <ImageView
                                 android:id="@+id/iconR"
                                 android:layout_width="28dp"
@@ -260,6 +271,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="40dp"
+                                android:fontFamily="@font/font_main"
                                 android:text="@string/regionalLines"
                                 android:textColor="@color/text_primary"
                                 android:textSize="15sp" />
@@ -276,7 +288,12 @@
                                 app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:id="@+id/reLinesLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout
+                            android:id="@+id/reLinesLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:paddingHorizontal="16dp">
+
                             <ImageView
                                 android:id="@+id/iconRE"
                                 android:layout_width="28dp"
@@ -290,6 +307,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="40dp"
+                                android:fontFamily="@font/font_main"
                                 android:text="@string/regioExpressLines"
                                 android:textColor="@color/text_primary"
                                 android:textSize="15sp" />
@@ -369,7 +387,12 @@
 
                         <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />
 
-                        <RelativeLayout android:id="@+id/busLinesATMLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout
+                            android:id="@+id/busLinesATMLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:paddingHorizontal="16dp">
+
                             <ImageView
                                 android:id="@+id/iconMetro"
                                 android:layout_width="28dp"
@@ -383,6 +406,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="40dp"
+                                android:fontFamily="@font/font_main"
                                 android:text="@string/metroLines"
                                 android:textColor="@color/text_primary"
                                 android:textSize="15sp" />
@@ -399,7 +423,12 @@
                                 app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:id="@+id/tramLinesATMLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout
+                            android:id="@+id/tramLinesATMLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:paddingHorizontal="16dp">
+
                             <ImageView
                                 android:id="@+id/iconTram"
                                 android:layout_width="28dp"
@@ -413,6 +442,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="40dp"
+                                android:fontFamily="@font/font_main"
                                 android:text="@string/tramLines"
                                 android:textColor="@color/text_primary"
                                 android:textSize="15sp" />
@@ -428,7 +458,12 @@
                                 android:src="@drawable/ic_star_empty" app:tint="#FF9F0A" />
                         </RelativeLayout>
 
-                        <RelativeLayout android:id="@+id/metroLinesATMLayout" android:layout_width="match_parent" android:layout_height="48dp" android:paddingHorizontal="16dp">
+                        <RelativeLayout
+                            android:id="@+id/metroLinesATMLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:paddingHorizontal="16dp">
+
                             <ImageView
                                 android:id="@+id/iconBus"
                                 android:layout_width="28dp"
@@ -442,6 +477,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="40dp"
+                                android:fontFamily="@font/font_main"
                                 android:text="@string/busLines"
                                 android:textColor="@color/text_primary"
                                 android:textSize="15sp" />
