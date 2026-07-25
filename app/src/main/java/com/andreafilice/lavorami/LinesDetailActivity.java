@@ -2550,7 +2550,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                     if (isMetroChiusaOra(closingTime, openingTime)) setupMetroStatus("Chiusa", statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
                     else setupMetroStatus(body.getMetroStatus()[index], statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
-
                 }
             }
 
@@ -2656,5 +2655,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
         infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Stato Attuale Metro", metroMessageStatus));
+        statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Stato Attuale Metro", metroMessageStatus));
     }
 }
