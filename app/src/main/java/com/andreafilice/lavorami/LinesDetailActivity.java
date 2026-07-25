@@ -2547,8 +2547,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                     String closingTime = body.getOrariChiusura()[index];
                     String openingTime = isGiornoFestivo() ? body.getOrariAperturaFestivi()[index] : body.getOrariApertura()[index];
 
-                    if (isMetroChiusaOra(closingTime, openingTime)) setupMetroStatus("Chiusa", statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
-                    else setupMetroStatus(body.getMetroStatus()[index], statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
+                    if (isMetroChiusaOra(closingTime, openingTime))
+                        setupMetroStatus("Chiusa", statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
+                    else
+                        setupMetroStatus(body.getMetroStatus()[index], statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
                 }
             }
 
@@ -2602,14 +2604,14 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout, String metroMessageStatus) {
         int baseColor = ContextCompat.getColor(this, R.color.M2);
         ImageView infoIconStatus = findViewById(R.id.infoLineStatusIcon);
+        float density = getResources().getDisplayMetrics().density;
 
         switch (lineStatus) {
             case "Regolare":
                 baseColor = ContextCompat.getColor(this, R.color.M2);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 statusText.setText(getString(R.string.metroStatoRegolare));
-                float density = getResources().getDisplayMetrics().density;
-                statusText.setPaddingRelative(0, Math.round(density *6), Math.round(density*10), Math.round(density*6));
+                statusText.setPaddingRelative(0, Math.round(density*6), Math.round(density*10), Math.round(density*6));
                 statusText.setClickable(false);
                 statusText.setFocusable(false);
                 infoIconStatus.setVisibility(View.GONE);
@@ -2648,7 +2650,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 baseColor = ContextCompat.getColor(this, R.color.S12);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
                 statusText.setText(getString(R.string.metroStatoChiusa));
-                statusText.setPaddingRelative(0, 6, 10, 6);
+                statusText.setPaddingRelative(0, Math.round(density*6), Math.round(density*10), Math.round(density*6));
                 infoIconStatus.setVisibility(View.GONE);
                 break;
         }
