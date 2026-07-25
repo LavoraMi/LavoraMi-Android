@@ -431,4 +431,5 @@
     <string name="metroStatoFermateSospese">Paradas Suspendidas</string>
     <string name="metroStatoInterrotta">Interrumpida</string>
     <string name="metroStatoChiusa">Cerrada</string>
+    <string name="metroStatoRallentata">Servicio Reducido</string>
 </resources>

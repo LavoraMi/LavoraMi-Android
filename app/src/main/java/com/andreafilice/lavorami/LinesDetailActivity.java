@@ -2610,6 +2610,11 @@ public class LinesDetailActivity extends AppCompatActivity {
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 statusText.setText(getString(R.string.metroStatoRegolare));
                 break;
+            case "Rallentata":
+                baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
+                lineaRegolareIcon.setImageResource(R.drawable.ic_clock_exclamation);
+                statusText.setText(getString(R.string.metroStatoRallentata));
+                break;
             case "Tratta Sospesa":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
