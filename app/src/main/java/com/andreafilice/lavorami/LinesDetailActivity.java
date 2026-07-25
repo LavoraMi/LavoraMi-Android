@@ -2612,8 +2612,6 @@ public class LinesDetailActivity extends AppCompatActivity {
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 statusText.setText(getString(R.string.metroStatoRegolare));
                 statusText.setPaddingRelative(0, Math.round(density*6), Math.round(density*10), Math.round(density*6));
-                statusText.setClickable(false);
-                statusText.setFocusable(false);
                 infoIconStatus.setVisibility(View.GONE);
                 break;
             case "Rallentata":
@@ -2661,6 +2659,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
         infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
-        statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
+        if(!lineStatus.equals("Regolare"))
+            statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
     }
 }
