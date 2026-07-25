@@ -1399,8 +1399,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             chip.setChecked(branch.equals(selectedBranch));
             chip.setOnClickListener(v -> {
-                if (branch.equals(selectedBranch))
-                    dialog.dismiss();
+                ActivityUtils.triggerFeedback(this);
+                if (branch.equals(selectedBranch)) dialog.dismiss();
             });
 
             chipGroup.addView(chip);
