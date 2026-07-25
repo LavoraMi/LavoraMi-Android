@@ -592,7 +592,6 @@
                     android:id="@+id/lineRegolareTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="12dp"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:elevation="4dp"
@@ -601,6 +600,16 @@
                     android:textStyle="bold"
                     android:textSize="13sp"
                     android:textColor="@color/text_primary"/>
+
+                <ImageView
+                    android:id="@+id/infoLineStatusIcon"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_info"
+                    android:layout_gravity="center_vertical"
+                    app:tint="@color/text_primary"/>
             </LinearLayout>
 
             <LinearLayout

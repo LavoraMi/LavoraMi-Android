@@ -11,16 +11,20 @@ public class MetroStatusDescriptor {
     private String[] orariApertura;
     @SerializedName("orariAperturaFestivi")
     private String[] orariAperturaFestivi;
+    @SerializedName("messageCurrentStatus")
+    private String messageCurrentStatus;
 
-    public MetroStatusDescriptor(String[] metroStatus, String[] orariChiusura, String[] orariApertura, String[] orariAperturaFestivi){
+    public MetroStatusDescriptor(String[] metroStatus, String[] orariChiusura, String[] orariApertura, String[] orariAperturaFestivi, String messageCurrentStatus){
         this.metroStatus = metroStatus;
         this.orariChiusura = orariChiusura;
         this.orariApertura = orariApertura;
         this.orariAperturaFestivi = orariAperturaFestivi;
+        this.messageCurrentStatus = messageCurrentStatus;
     }
 
     public String[] getMetroStatus(){return metroStatus;}
     public String[] getOrariChiusura() {return orariChiusura;}
     public String[] getOrariApertura() {return orariApertura;}
     public String[] getOrariAperturaFestivi() {return orariAperturaFestivi;}
+    public String getMessageCurrentStatus() {return messageCurrentStatus;}
 }

@@ -2548,8 +2548,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                     String closingTime = body.getOrariChiusura()[index];
                     String openingTime = isGiornoFestivo() ? body.getOrariAperturaFestivi()[index] : body.getOrariApertura()[index];
 
-                    if (isMetroChiusaOra(closingTime, openingTime)) setupMetroStatus("Chiusa", statusText, lineaRegolareIcon, lineaRegolareLayout);
-                    else setupMetroStatus(body.getMetroStatus()[index], statusText, lineaRegolareIcon, lineaRegolareLayout);
+                    if (isMetroChiusaOra(closingTime, openingTime)) setupMetroStatus("Chiusa", statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
+                    else setupMetroStatus(body.getMetroStatus()[index], statusText, lineaRegolareIcon, lineaRegolareLayout, body.getMessageCurrentStatus());
 
                 }
             }
@@ -2601,44 +2601,52 @@ public class LinesDetailActivity extends AppCompatActivity {
         catch (ParseException e) {return false;}
     }
 
-    private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout) {
+    private void setupMetroStatus(String lineStatus, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout, String metroMessageStatus) {
         int baseColor = ContextCompat.getColor(this, R.color.M2);
+        ImageView infoIconStatus = findViewById(R.id.infoLineStatusIcon);
 
         switch (lineStatus) {
             case "Regolare":
                 baseColor = ContextCompat.getColor(this, R.color.M2);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
                 statusText.setText(getString(R.string.metroStatoRegolare));
+                infoIconStatus.setVisibility(View.GONE);
                 break;
             case "Rallentata":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_clock_exclamation);
                 statusText.setText(getString(R.string.metroStatoRallentata));
+                infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Tratta Sospesa":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 statusText.setText(getString(R.string.metroStatoTrattaSospesa));
+                infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Fermata Sospesa":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 statusText.setText(getString(R.string.metroStatoFermataSospesa));
+                infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Fermate Sospese":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 statusText.setText(getString(R.string.metroStatoFermateSospese));
+                infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Interrotta":
                 baseColor = ContextCompat.getColor(this, R.color.redMetro);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_close_browser);
                 statusText.setText(getString(R.string.metroStatoInterrotta));
+                infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Chiusa":
                 baseColor = ContextCompat.getColor(this, R.color.S12);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
                 statusText.setText(getString(R.string.metroStatoChiusa));
+                infoIconStatus.setVisibility(View.GONE);
                 break;
         }
 
@@ -2647,5 +2655,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         int colorWithAlpha = Color.argb(newAlpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor));
         
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
+        infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Stato Attuale Metro", metroMessageStatus));
     }
 }
