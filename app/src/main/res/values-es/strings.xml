@@ -432,4 +432,5 @@
     <string name="metroStatoInterrotta">Interrumpida</string>
     <string name="metroStatoChiusa">Cerrada</string>
     <string name="metroStatoRallentata">Servicio Reducido</string>
+    <string name="metroStatoTitle">Estado Actual Metro</string>
 </resources>

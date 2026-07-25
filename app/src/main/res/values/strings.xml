@@ -431,4 +431,5 @@
     <string name="metroStatoInterrotta">Interrotta</string>
     <string name="metroStatoChiusa">Chiusa</string>
     <string name="metroStatoRallentata">Rallentata</string>
+    <string name="metroStatoTitle">Stato Attuale Metro</string>
 </resources>

@@ -2654,7 +2654,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         int colorWithAlpha = Color.argb(newAlpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor));
         
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
-        infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Stato Attuale Metro", metroMessageStatus));
-        statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Stato Attuale Metro", metroMessageStatus));
+        infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
+        statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
     }
 }
