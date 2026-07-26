@@ -1190,6 +1190,19 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Milano Domodossola", new String[]{"RE7", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "MXP2", "M5", "1", "19"}, "tram.fill.tunnel", "Main", 7));
         interchanges.add(new InterchangeInfo("Milano Cadorna", new String[]{"RE7", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"}, "tram.fill.tunnel", "Main", 8));
 
+        /// RegioExpress RE8
+        interchanges.add(new InterchangeInfo("Tirano", new String[]{"RE8", "R12"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Tresenda Aprica Teglio", new String[]{"RE8", "R12"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Sondrio", new String[]{"RE8", "R12", "R13"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Morbegno", new String[]{"RE8", "R13"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Colico", new String[]{"RE8", "R11", "R13"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Bellano Tartavalle Terme", new String[]{"RE8", "R13"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Varenna Esino", new String[]{"RE8", "R13"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Mandello del Lario", new String[]{"RE8", "R13"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Lecco", new String[]{"RE8", "S7", "S8", "R7", "R13", "R18"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Monza", new String[]{"RE8", "S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE13", "RE80", "z201", "z203", "z205", "z206", "z208", "z211", "z213", "z221", "z222", "z228"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"RE8", "AV", "R4", "RE2", "RE4", "RE6", "RE11", "RE13", "RE80", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"}, "tram.fill.tunnel", "Main", 10));
+
         return interchanges;
     }
 
