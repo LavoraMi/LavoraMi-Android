@@ -96,4 +96,5 @@ dependencies {
     implementation(libs.androidx.security.crypto)
     implementation(libs.play.services.ads)
     implementation(libs.user.messaging.platform)
+    implementation(libs.firebase.analytics)
 }
