@@ -1143,6 +1143,17 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Malonno", new String[]{"RE3", "R3"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Edolo", new String[]{"RE3", "R3"}, "lightrail", "Main", 13));
 
+        /// RegioExpres RE4
+        interchanges.add(new InterchangeInfo("Domodossola", new String[]{"RE4", "R23"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Verbania - Pallanza", new String[]{"RE4", "R23"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Stresa", new String[]{"RE4", "R23"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Arona", new String[]{"RE4", "R23"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Sesto Calende", new String[]{"RE4", "R23", "R24"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Gallarate", new String[]{"RE4", "S5", "S30", "S50", "R21", "R23", "RV", "RE5", "MXP1"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Busto Arsizio", new String[]{"RE4", "S5", "S50", "R21", "R23", "RV", "RE5"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Rho Fiera Milano", new String[]{"RE4", "S5", "S6", "S11", "R21", "R23", "RE5", "AV", "M1", "542", "561"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"RE4", "AV", "R4", "RE2", "RE6", "RE8", "RE11", "RE13", "RE80", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"}, "tram.fill.tunnel", "Main", 8));
+
         return interchanges;
     }
 
