@@ -988,7 +988,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                                 if (completati == totalBatches) {
                                     runOnUiThread(() -> {
-                                        // Solo ora la cache è pronta: aggiorniamo e renderizziamo.
                                         EventData.listaEventiCompleta = datiRaw;
                                         renderEventiFiltrati();
                                     });
@@ -1002,6 +1001,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
+                    EventData.networkError = true;
                     mostraErroreCaricamento();
                 }
             });
