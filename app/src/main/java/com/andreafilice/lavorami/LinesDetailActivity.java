@@ -1359,6 +1359,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         for (String branch : branches) {
             Chip chip = new Chip(this);
+            chip.setEnsureMinTouchTargetSize(false);
             chip.setText(branch);
             chip.setCheckable(true);
             chip.setChecked(branch.equals(selectedBranch));
@@ -1680,6 +1681,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         /// String name is the name of the line to display.
 
         Chip chip = new Chip(this);
+        chip.setEnsureMinTouchTargetSize(false);
         chip.setText(name);
 
         ShapeAppearanceModel cornerRadius = chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build();

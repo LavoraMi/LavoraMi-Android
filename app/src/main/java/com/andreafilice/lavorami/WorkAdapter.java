@@ -243,6 +243,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
                 else {
                     chip = new Chip(ctx);
+                    chip.setEnsureMinTouchTargetSize(false);
                     float density = ctx.getResources().getDisplayMetrics().density;
                     int heightPx = (int) (26 * density);
 
@@ -263,7 +264,6 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                     chip.setGravity(android.view.Gravity.CENTER);
                     holder.chipGroupLinee.addView(chip);
-                    chip.setEnsureMinTouchTargetSize(false);
                 }
 
                 if (!nomePulito.equals(chip.getText().toString())) {
