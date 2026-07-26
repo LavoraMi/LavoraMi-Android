@@ -13104,7 +13104,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.49707, 9.21866, "Main", "RE6"));
         stations.add(new MetroStation("NO_DRAW", 45.49659, 9.21633, "Main", "RE6"));
         stations.add(new MetroStation("NO_DRAW", 45.49443, 9.21352, "Main", "RE6"));
-        stations.add(new MetroStation("Milano Centrale", 45.48713, 9.20482, "Main", "RE6"));k
+        stations.add(new MetroStation("Milano Centrale", 45.48713, 9.20482, "Main", "RE6"));
         return stations;
     }
 
