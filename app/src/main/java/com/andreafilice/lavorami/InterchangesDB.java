@@ -1166,6 +1166,19 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Rho Fiera Milano", new String[]{"RE5", "S5", "S6", "S11", "R21", "R23", "RE4", "AV", "M1", "542", "561"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"RE5", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 9));
 
+        /// RegioExpres RE6
+        interchanges.add(new InterchangeInfo("Verona Porta Nuova", new String[]{"RE6", "R7", "REG"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Peschiera Del Garda", new String[]{"RE6", "R7", "REG"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Desenzano Sul Garda", new String[]{"RE6", "R7", "REG"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Brescia", new String[]{"RE6", "S31", "AV", "R1", "R3", "R4", "R5", "R7", "R8", "RE3"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Rovato", new String[]{"RE6", "R1", "R4", "R5", "R7", "R9"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Chiari", new String[]{"RE6", "R4"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Romano", new String[]{"RE6", "R4"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Treviglio", new String[]{"RE6", "S5", "S6", "R2", "R4", "R6", "R7"}, "lightrail", "Main", 7));
+        interchanges.add(new InterchangeInfo("Pioltello Limito", new String[]{"RE6", "S5", "S6", "R4", "RE2", "z402"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Milano Lambrate", new String[]{"RE6", "S9", "R4", "R6", "R7", "R34", "R38", "RE2", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"RE6", "AV", "R4", "RE2", "RE4", "RE8", "RE11", "RE13", "RE80", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"}, "tram.fill.tunnel", "Main", 10));
+
         return interchanges;
     }
 
