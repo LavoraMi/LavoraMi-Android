@@ -10858,7 +10858,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.49816, 9.22081, "Garibaldi", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.4975, 9.22257, "Garibaldi", "RE2"));
 
-        stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Greco", "RE2"));
+        /*stations.add(new MetroStation("Milano Greco Pirelli", 45.51288, 9.21416, "Greco", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.51196, 9.21381, "Greco", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.50982, 9.21247, "Greco", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.50826, 9.21182, "Greco", "RE2"));
@@ -10868,7 +10868,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50235, 9.21553, "Greco", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.50027, 9.21794, "Greco", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.49855, 9.22023, "Greco", "RE2"));
-        stations.add(new MetroStation("NO_DRAW", 45.4975, 9.22257, "Greco", "RE2"));
+        stations.add(new MetroStation("NO_DRAW", 45.4975, 9.22257, "Greco", "RE2"));*/
 
         stations.add(new MetroStation("Milano Centrale", 45.48713, 9.20482, "Centrale", "RE2"));
         stations.add(new MetroStation("NO_DRAW", 45.49464, 9.2133, "Centrale", "RE2"));
