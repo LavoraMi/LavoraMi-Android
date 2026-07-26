@@ -2658,8 +2658,14 @@ public class LinesDetailActivity extends AppCompatActivity {
         int colorWithAlpha = Color.argb(newAlpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor));
         
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
-        infoIconStatus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
+        infoIconStatus.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus);
+        });
         if(!(lineStatus.equals("Regolare") || lineStatus.equals("Chiusa")))
-            statusText.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus));
+            statusText.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
+                DialogHelper.createDefaultDialog(this, getString(R.string.metroStatoTitle), metroMessageStatus);
+            });
     }
 }

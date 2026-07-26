@@ -119,7 +119,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         //*FAVORITES LINES
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
-        infoFavouriteLines.setOnClickListener(v -> {DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText));});
+        infoFavouriteLines.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText));
+        });
 
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {
@@ -256,6 +259,7 @@ public class SettingsActivity extends AppCompatActivity {
             try {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                ActivityUtils.triggerFeedback(this);
                 startActivity(intent);
             } catch (android.content.ActivityNotFoundException anfe) {startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));}
         });
@@ -264,12 +268,18 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this section, we add a listener to the "Support Us" button in Settings View.
         RelativeLayout supportBtn = findViewById(R.id.btnSupportUs);
 
-        supportBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami"));
+        supportBtn.setOnClickListener(v ->{
+                ActivityUtils.triggerFeedback(this);
+                ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami");
+        });
 
         //*MAPS INFOS
         /// In this section, we add a listener to the "Info about Maps" button in Settings View.
         RelativeLayout btnSeeMaps = findViewById(R.id.btnSeeMaps);
-        btnSeeMaps.setOnClickListener(v -> ActivityUtils.changeActivity(this, DeviationInfo.class));
+        btnSeeMaps.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, DeviationInfo.class);
+        });
 
         //*RESET SETTINGS
         /// In this section of the code we create the Listener for the Reset Settings button

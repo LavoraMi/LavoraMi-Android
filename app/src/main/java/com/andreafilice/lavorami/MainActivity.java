@@ -392,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
             manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             editSearch.clearFocus();
             editSearch.setText("");
+            ActivityUtils.triggerFeedback(this);
             downloadJSONData(getCategory(), true);}
         );
 
@@ -595,13 +596,19 @@ public class MainActivity extends AppCompatActivity {
                         
                         definitelyClosedSavedLinesHint = true;
                         DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
-                        infoSavedLines.setOnClickListener(v -> showTutorialDialog());
+                        infoSavedLines.setOnClickListener(v ->{
+                            ActivityUtils.triggerFeedback(this);
+                            showTutorialDialog();
+                        });
                     }
                     else {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
                         findViewById(R.id.recyclerView).setPadding(16 *densita,42*densita,16*densita,120*densita);
-                        infoSavedLines.setOnClickListener(v -> showTutorialDialog());
+                        infoSavedLines.setOnClickListener(v ->{
+                            ActivityUtils.triggerFeedback(this);
+                            showTutorialDialog();
+                        });
                     }
                 }
                 else {
