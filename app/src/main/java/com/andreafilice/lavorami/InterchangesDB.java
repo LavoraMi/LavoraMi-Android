@@ -1114,6 +1114,20 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Milano Bovisa", new String[]{"RE1", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE7", "RE13", "MXP1", "MXP2", "82", "92"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Milano Domodossola", new String[]{"RE1", "S3", "S4", "R16", "R17", "R22", "R27", "RE7", "MXP2", "M5", "1", "19"}, "tram.fill.tunnel", "Main", 13));
         interchanges.add(new InterchangeInfo("Milano Cadorna", new String[]{"RE1", "S3", "S4", "R16", "R17", "R22", "R27", "RE7", "MXP2", "M1", "NM1", "M2", "NM2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"}, "tram.fill.tunnel", "Main", 14));
+
+        //* REGIO EXPRESS LINES
+        /// RegioExpres RE2
+        interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"RE2", "AV", "R4", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "MXP1", "M3", "NM3", "M2", "NM2", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"}, "tram.fill.tunnel", "Milano Centrale", 0));
+
+        interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"RE2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Milano Porta Garibaldi", 0));
+        interchanges.add(new InterchangeInfo("Milano Villapizzone", new String[]{"RE2", "S5", "S6", "S11", "R6"}, "lightrail", "Milano Porta Garibaldi", 1));
+
+        interchanges.add(new InterchangeInfo("Milano Lambrate", new String[]{"RE2", "S9", "R4", "R6", "R7", "R34", "R38", "RE6", "RE8", "RE11", "RE13", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Pioltello Limito", new String[]{"RE2", "S5", "S6", "R4", "RE6", "z402"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Treviglio Ovest", new String[]{"RE2", "R2", "RV", "z405"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Verdello Dalmine", new String[]{"RE2", "R2", "RV"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Bergamo", new String[]{"RE2", "R1", "R2", "R5", "R7", "R14", "RV"}, "lightrail", "Main", 4));
+
         return interchanges;
     }
 
