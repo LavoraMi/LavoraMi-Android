@@ -4,6 +4,7 @@ import java.io.File
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.perf)
     alias(libs.plugins.android.junit5) apply false
     id("org.jetbrains.kotlin.android")
 }
@@ -97,4 +98,5 @@ dependencies {
     implementation(libs.play.services.ads)
     implementation(libs.user.messaging.platform)
     implementation(libs.firebase.analytics)
+    implementation(libs.firebase.perf)
 }
