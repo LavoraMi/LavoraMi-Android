@@ -1398,7 +1398,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Farini Viale Stelvio", new String[]{"91", "NM3", "2", "4", "70", "82", "90", "92"}, "tram.fill", "Main", 28));
         interchanges.add(new InterchangeInfo("Via Bernina", new String[]{"91", "90", "92"}, "bus.fill", "Main", 29));
         interchanges.add(new InterchangeInfo("Viale Jenner", new String[]{"91", "90"}, "bus.fill", "Main", 30));
-        interchanges.add(new InterchangeInfo("Piazzale Nigra", new String[]{"91", "2", "90"}, "tram.fill", "Main", 31));
+        interchanges.add(new InterchangeInfo("Piazzale Nigra", new String[]{"91", "2", "90", "92"}, "tram.fill", "Main", 31));
         interchanges.add(new InterchangeInfo("Piazzale Lugano", new String[]{"91", "90"}, "bus.fill", "Main", 32));
         interchanges.add(new InterchangeInfo("Via Mac Mahon Viale Monte Ceneri", new String[]{"91", "12", "90"}, "tram.fill", "Main", 33));
         interchanges.add(new InterchangeInfo("Via Bartolini Viale Monte Ceneri", new String[]{"91", "19", "48", "57", "90"}, "tram.fill", "Main", 34));
@@ -1407,6 +1407,38 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Serra Viale Scarampo", new String[]{"91", "48", "90"}, "tram.fill", "Main", 37));
         interchanges.add(new InterchangeInfo("Piazza Stuparich", new String[]{"91", "48", "90"}, "tram.fill", "Main", 38));
         interchanges.add(new InterchangeInfo("Lotto M1 M5", new String[]{"91", "M1", "NM1", "M5", "48", "49", "68", "78", "90", "98"}, "tram.fill.tunnel", "Main", 39));
+
+        /// Filobus 92
+        interchanges.add(new InterchangeInfo("Via Varè (Bovisa FN)", new String[]{"92", "S1", "S2", "S3", "S4", "S12", "S13", "R16", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "82"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Via Broglio Via Varè", new String[]{"92", "82"}, "bus.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Bausan", new String[]{"92", "2", "82"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Via Imbriani Via Scalvini", new String[]{"92", "2"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Piazzale Nigra", new String[]{"92", "2", "90", "91"}, "tram.fill", "Main", 4));
+        interchanges.add(new InterchangeInfo("Lancetti FS", new String[]{"92", "S1", "S2", "S5", "S6", "S12", "S13", "2"}, "tram.fill.tunnel", "Main", 5));
+        interchanges.add(new InterchangeInfo("Via Bernina", new String[]{"92", "90", "91"}, "bus.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Via Farini Viale Stelvio", new String[]{"92", "NM3", "2", "4", "70", "82", "90", "91"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Viale Stelvio Via Lario", new String[]{"92", "90", "91", "166"}, "bus.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Zara M3 M5", new String[]{"92", "M3", "NM3", "M5", "7", "31", "51", "60", "82", "90", "91", "166"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Viale Sauro Via Oldofredi", new String[]{"92", "90", "91"}, "bus.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Sondrio M3", new String[]{"92", "M3", "NM3", "43", "81", "90", "91"}, "tram.fill.tunnel", "Main", 11));
+        interchanges.add(new InterchangeInfo("Stazione Centrale Via Tonale", new String[]{"92", "5", "10", "42", "90", "91"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Piazza Luigi di Savoia", new String[]{"92", "90", "91"}, "bus.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Caiazzo M2", new String[]{"92", "M2", "NM2", "1", "90", "91"}, "tram.fill.tunnel", "Main", 14));
+        interchanges.add(new InterchangeInfo("Piazzale Loreto Via Pergolesi", new String[]{"92", "M1", "NM1", "M2", "NM2", "39", "55", "56"}, "tram.fill.tunnel", "Main", 15));
+        interchanges.add(new InterchangeInfo("Via Piccini Viale Abruzzi", new String[]{"92"}, "bus.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Piazzale Bacone", new String[]{"92", "81"}, "bus.fill", "Main", 17));
+        interchanges.add(new InterchangeInfo("Viale Abruzzi Via Plinio", new String[]{"92", "60"}, "bus.fill", "Main", 18));
+        interchanges.add(new InterchangeInfo("Piazza Ascoli", new String[]{"92", "5", "19", "33", "60", "61"}, "tram.fill", "Main", 19));
+        interchanges.add(new InterchangeInfo("Viale Dei Mille Piazza Novelli", new String[]{"92", "60", "61", "62"}, "bus.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Dateo M4", new String[]{"92", "M4", "NM4", "S1", "S2", "S5", "S6", "S12", "S13", "54", "61"}, "tram.fill.tunnel", "Main", 21));
+        interchanges.add(new InterchangeInfo("Viale Piceno", new String[]{"92"}, "bus.fill", "Main", 22));
+        interchanges.add(new InterchangeInfo("Piazza Emilia", new String[]{"92", "12", "27", "66", "973", "N27"}, "tram.fill", "Main", 23));
+        interchanges.add(new InterchangeInfo("Via Arconati", new String[]{"92", "12", "66"}, "tram.fill", "Main", 24));
+        interchanges.add(new InterchangeInfo("Via Maestri Campionesi", new String[]{"92", "84"}, "bus.fill", "Main", 25));
+        interchanges.add(new InterchangeInfo("Viale Umbria Via Comelico", new String[]{"92", "16"}, "tram.fill", "Main", 26));
+        interchanges.add(new InterchangeInfo("Viale Umbria Via Muratori", new String[]{"92", "90", "91"}, "bus.fill", "Main", 27));
+        interchanges.add(new InterchangeInfo("Viale Umbria Lodi M3", new String[]{"92", "M3", "NM3", "S9", "S19", "R31", "65", "90", "91"}, "tram.fill.tunnel", "Main", 28));
+        interchanges.add(new InterchangeInfo("Lodi M3", new String[]{"92", "M3", "NM3", "S9", "S19", "R31", "65", "90", "91"}, "tram.fill.tunnel", "Main", 29));
 
         return interchanges;
     }
