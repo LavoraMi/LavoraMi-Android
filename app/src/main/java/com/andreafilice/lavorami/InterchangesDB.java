@@ -982,7 +982,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Pavia", new String[]{"R33", "S13", "R34", "R35", "R36", "R37", "RE13", "RV"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("San Martino Cava", new String[]{"R33", "R34"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Bressana Bottarone", new String[]{"R33", "R34"}, "lightrail", "Main", 2));
-        interchanges.add(new InterchangeInfo("Piazzale Lungavilla", new String[]{"R33", "RE13"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Pizzale Lungavilla", new String[]{"R33", "RE13"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Voghera", new String[]{"R33", "R34", "R41", "RE13", "REG", "RV"}, "lightrail", "Main", 4));
 
         /// Regionale R34
@@ -1216,6 +1216,22 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Marcaria", new String[]{"RE11", "R40"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Castellucchio", new String[]{"RE11", "R40"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Mantova", new String[]{"RE11", "R40", "REG", "RV"}, "lightrail", "Main", 11));
+
+        /// RegioExpress RE13
+        interchanges.add(new InterchangeInfo("Tortona", new String[]{"RE13", "REG", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Voghera", new String[]{"RE13", "R33", "R34", "R41", "REG", "RV"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Pizzale Lungavilla", new String[]{"RE13", "R33"}, "lightrail", "Main", 2));
+        interchanges.add(new InterchangeInfo("Pavia", new String[]{"RE13", "S13", "R33", "R34", "R35", "R36", "R37", "RV"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Milano Rogoredo", new String[]{"RE13", "S1", "S2", "S9", "S12", "S13", "S19", "R31", "R34", "R38", "RE8", "RE11", "M3", "NM3", "77", "88", "95", "140"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Milano Lambrate", new String[]{"RE13", "S9", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RV", "M2", "NM2", "19", "39", "45", "54", "81", "93", "175", "924"}, "tram.fill.tunnel", "Main", 5));
+        interchanges.add(new InterchangeInfo("Milano Centrale", new String[]{"RE13", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE80", "MXP1", "M2", "NM2", "M3", "NM3", "5", "9", "10", "42", "60", "81", "87", "90", "91", "92", "728", "N25", "N26"}, "tram.fill.tunnel", "Main", 6));
+
+        interchanges.add(new InterchangeInfo("Asti", new String[]{"RE13", "SFM 6", "REG", "RV"}, "lightrail", "Asti", 0));
+        interchanges.add(new InterchangeInfo("Alessandria", new String[]{"RE13", "R31", "R32", "R35", "REG", "RV"}, "lightrail", "Asti", 1));
+
+        interchanges.add(new InterchangeInfo("Arquata Scrivia", new String[]{"RE13", "REG", "RV"}, "lightrail", "Arquata Scrivia", 0));
+        interchanges.add(new InterchangeInfo("Novi Ligure", new String[]{"RE13", "REG", "RV"}, "lightrail", "Arquata Scrivia", 1));
+        interchanges.add(new InterchangeInfo("Pozzolo Formigaro", new String[]{"RE13"}, "lightrail", "Arquata Scrivia", 2));
 
         return interchanges;
     }
