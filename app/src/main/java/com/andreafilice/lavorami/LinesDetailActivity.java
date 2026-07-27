@@ -1236,7 +1236,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (tipoDiLinea.contains(getString(R.string.tramLinesScroll))) //&& !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
-                interchanges = StationDB.getInterchangesFilobus();
+                interchanges = InterchangesDB.getFilobusInterchanges();
             else if (isLineaMetro())
                 interchanges = InterchangesDB.getMetroInterchanges(this);
             else if (isLineaSuburbano())
@@ -1259,7 +1259,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (info.getLines() == null || info.getLines().length == 0) continue;
 
                 boolean match = false;
-                if (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || isLineaTram()) {
+                if (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || isLineaTram() || tipoDiLinea.contains(getString(R.string.filobusKey))) {
                     String primaryLine = info.getLines()[0].trim().toUpperCase();
                     match = primaryLine.equals(searchTag);
                 }
@@ -1452,7 +1452,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
-            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo());
+            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || tipoDiLinea.contains(getString(R.string.filobusKey)));
 
             int lineColor = isValidNewInterface ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
