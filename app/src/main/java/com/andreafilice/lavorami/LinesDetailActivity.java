@@ -1935,7 +1935,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
 
             case "90": return String.format("%s (Lotto M1 M5 - Lodi M3)", getString(R.string.circolareDestraDesc));
-            case "91": return String.format("%s (Lodi M3 - Lotto M1 M5)", getString(R.string.circolareDestraDesc));
+            case "91": return String.format("%s (Lodi M3 - Lotto M1 M5)", getString(R.string.circolareSinistraDesc));
             case "92": return "Via Varè (Bovisa FN) - Lodi M3";
             case "93": return "V.Le Omero - Lambrate FS";
 
