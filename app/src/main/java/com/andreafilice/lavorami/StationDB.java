@@ -22756,6 +22756,10 @@ public class StationDB {
             case "M5":
                 return R.color.M5;
 
+            /// SFM LINES
+            case "SFM 6":
+                return R.color.SFM6;
+
             //OTHERS
             default:
                 if (nomeLinea.contains("z"))
