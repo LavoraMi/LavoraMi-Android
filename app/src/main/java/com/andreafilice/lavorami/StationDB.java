@@ -19933,12 +19933,12 @@ public class StationDB {
         stations.add(new MetroStation("V.Le Ca' Granda V.Le Suzzani", 45.50695, 9.1978, "Main", "5"));
         stations.add(new MetroStation("Ca' Granda M5", 45.50643, 9.19989, "Main", "5"));
         stations.add(new MetroStation("V.Le Testi Via Dolcebuono", 45.50384, 9.19893, "Main", "5"));
-        stations.add(new MetroStation("Istria M5", 45.50161, 9.19763, "Main", "5"));
+        stations.add(new MetroStation("Istria M5", 45.50157, 9.19772, "Main", "5"));
         stations.add(new MetroStation("V.Le Zara Via Laurana", 45.49944, 9.19637, "Main", "5"));
         stations.add(new MetroStation("Marche M5", 45.4959, 9.19439, "Main", "5"));
         stations.add(new MetroStation("P.Za Carbonari", 45.49471, 9.19749, "Main", "5"));
         stations.add(new MetroStation("V.Le Lunigiana Via Gioia", 45.49223, 9.2037, "Main", "5"));
-        stations.add(new MetroStation("V.Le Lunigiana", 45.49107, 9.20599, "Main", "5"));
+        stations.add(new MetroStation("V.Le Lunigiana", 45.49135, 9.20558, "Main", "5"));
         stations.add(new MetroStation("Stazione Centrale Via Tonale", 45.48866, 9.20385, "Main", "5"));
         stations.add(new MetroStation("Stazione Centrale M2 M3", 45.48685, 9.20192, "Main", "5"));
         stations.add(new MetroStation("Stazione Centrale P.Za Duca D'Aosta M2 M3", 45.48427, 9.20312, "Main", "5"));
@@ -19952,7 +19952,7 @@ public class StationDB {
         stations.add(new MetroStation("P.Za Aspari", 45.47195, 9.22088, "Main", "5"));
         stations.add(new MetroStation("P.Za Ferravilla", 45.47105, 9.22336, "Main", "5"));
         stations.add(new MetroStation("Via B. Angelico Via Colombo", 45.47087, 9.22649, "Main", "5"));
-        stations.add(new MetroStation("Via B. Angelico Via Aselli", 45.47083, 9.22989, "Main", "5"));
+        stations.add(new MetroStation("Via B. Angelico Via Aselli", 45.47092, 9.23003, "Main", "5"));
         stations.add(new MetroStation("Via B. Angelico Via Paladini", 45.47086, 9.23322, "Main", "5"));
         stations.add(new MetroStation("Via Amadeo Via S. Benigno", 45.47091, 9.23624, "Main", "5"));
         stations.add(new MetroStation("Ortica", 45.47154, 9.23777, "Main", "5"));
