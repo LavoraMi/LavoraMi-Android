@@ -1778,7 +1778,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
 
-        if(nomeLinea.equalsIgnoreCase("R15")) lineaFullBus.setVisibility(View.VISIBLE);
+        if(nomeLinea.equalsIgnoreCase("R15") || nomeLinea.equalsIgnoreCase("R24")) lineaFullBus.setVisibility(View.VISIBLE);
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
         infoLineBusesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
 

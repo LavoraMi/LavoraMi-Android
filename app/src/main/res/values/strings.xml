@@ -419,7 +419,7 @@
     <string name="widget_line_added_description">La linea %1$s è stata aggiunta al widget</string>
     <string name="widget_line_added_title">Linea aggiunta al Widget</string>
     <string name="busPopUpTitle">Linea sostituita da Bus</string>
-    <string name="busPopUpDeps">Questa linea è attualmente sostituita interamente da Bus e non c\'è alcun treno a servire questa tratta. É prevista una riapertura da Settembre 2026 per via dei lavori collegati alla linea S7 (Pedemontana). Consulta maggiori info andando su: Linee > S7 > Lavori.</string>
+    <string name="busPopUpDeps">Questa linea è attualmente sostituita interamente da Autobus e non c\'è alcun treno a servire questa tratta. Il servizio è comunque garantito tra tutte le stazioni della linea.</string>
     <string name="lineSubBusTitle">LINEA SOSTITUITA INTERAMENTE DA BUS.</string>
     <string name="dialogFavouriteLineText">Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con nuovi lavori.</string>
     <string name="dialogFavouriteLineTextTitle">Scegli i tuoi interessi</string>

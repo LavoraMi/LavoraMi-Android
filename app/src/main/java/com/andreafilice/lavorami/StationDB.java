@@ -22785,7 +22785,8 @@ public class StationDB {
                         return R.color.TRAM;
                     else
                         return R.color.OTHER_LINES;
-                } else if (nomeLinea.startsWith("P"))
+                }
+                else if (nomeLinea.startsWith("P"))
                     return R.color.AUTOGUIDOVIE;
                 else if (nomeLinea.startsWith("MXP"))
                     return R.color.MXP;
