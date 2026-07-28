@@ -652,7 +652,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             latMedia /= tutteLeStazioni.size();
             lngMedia /= tutteLeStazioni.size();
-            double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) || tipoDiLinea.contains(getString(R.string.filobusKey))) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
+            double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll))) || tipoDiLinea.contains(getString(R.string.filobusKey)) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
 
             MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
         }

@@ -413,7 +413,7 @@ public class LinesActivity extends AppCompatActivity {
                         deps = getString(R.string.tramLinesScroll);
                     else if (deps.contains("Region"))
                         deps = getString(R.string.regionalLinesScroll);
-                    else if (deps.contains("Trol"))
+                    else if (deps.contains("Trol") || deps.contains("Filo"))
                         deps = getString(R.string.filobusKey);
 
                     aggiungiLinea(containerRecent, title, color, deps);
