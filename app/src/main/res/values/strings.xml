@@ -292,7 +292,7 @@
     <string name="accessibilityInfoTitle">Accessibilità</string>
     <string name="accessibilityInfoDeps">Informazioni sull\'Accessibilità</string>
     <string name="accessibilityInfoDeps2">LavoraMi mostra l\'accessibilità di una linea in base agli impianti nelle stazioni e alla tipologia di mezzo utilizzato.</string>
-    <string name="fullyAccessibleDeps">Completamente Accessibile</string>
+    <string name="fullyAccessibleDeps">Accessibile</string>
     <string name="partiallyAccessibleDeps">Parzialmente Accessibile</string>
     <string name="nonAccessibleDeps">Non Accessibile</string>
     <string name="accessibilityPart1">Tutti i mezzi impiegati su questa linea sono dotati di pedane (manuali o elettriche) e posto riservato. Inoltre, la quasi totalità delle fermate (oltre il 90%) dispone di banchine rialzate che permettono l\'incarrozzamento in autonomia o con assistenza minima.</string>

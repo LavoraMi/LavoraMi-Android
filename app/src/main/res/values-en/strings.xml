@@ -293,7 +293,7 @@
     <string name="accessibilityInfoTitle">Accessibility</string>
     <string name="accessibilityInfoDeps">Accessibility Information</string>
     <string name="accessibilityInfoDeps2">LavoraMi shows the accessibility of a line based on the facilities at stations and the type of transport used.</string>
-    <string name="fullyAccessibleDeps">Fully Accessible</string>
+    <string name="fullyAccessibleDeps">Accessible</string>
     <string name="partiallyAccessibleDeps">Partially Accessible</string>
     <string name="nonAccessibleDeps">Not Accessible</string>
     <string name="accessibilityPart1">All vehicles operating on this route are equipped with boarding ramps (manual or electric) and reserved seating. Furthermore, almost all stops (over 90%) have raised platforms, enabling passengers to board independently or with minimal assistance.</string>

@@ -293,7 +293,7 @@
     <string name="accessibilityInfoTitle">Accesibilidad</string>
     <string name="accessibilityInfoDeps">Información sobre Accesibilidad</string>
     <string name="accessibilityInfoDeps2">LavoraMi muestra la accesibilidad de una línea en función de las instalaciones en las estaciones y del tipo de transporte utilizado.</string>
-    <string name="fullyAccessibleDeps">Completamente Accesible</string>
+    <string name="fullyAccessibleDeps">Accesible</string>
     <string name="partiallyAccessibleDeps">Parcialmente Accesible</string>
     <string name="nonAccessibleDeps">No Accesible</string>
     <string name="accessibilityPart1">Todos los vehículos que operan en esta línea están equipados con rampas de acceso (manuales o eléctricas) y asiento reservado. Además, casi la totalidad de las paradas (más del 90%) dispone de andenes elevados que permiten el embarque de forma autónoma o con asistencia mínima.</string>
