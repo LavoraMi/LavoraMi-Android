@@ -27,3 +27,4 @@ app/google-services.json
 .idea/vcs.xml
 .idea/gradle.xml
 .idea/planningMode.xml
+.kotlin
