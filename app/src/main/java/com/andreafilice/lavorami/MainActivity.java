@@ -393,6 +393,7 @@ public class MainActivity extends AppCompatActivity {
             editSearch.clearFocus();
             editSearch.setText("");
             ActivityUtils.triggerFeedback(this);
+            resetAndReloadAds();
             downloadJSONData(getCategory(), true);}
         );
 
@@ -410,15 +411,17 @@ public class MainActivity extends AppCompatActivity {
             manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             editSearch.clearFocus();
             editSearch.setText("");
+            ActivityUtils.triggerFeedback(this);
+            resetAndReloadAds();
             downloadJSONData(getCategory(), true);
         });
-
 
         btnRefreshOnError.setOnClickListener(v -> {
             InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             manager.hideSoftInputFromWindow(editSearch.getWindowToken(), 0);
             editSearch.clearFocus();
             editSearch.setText("");
+            resetAndReloadAds();
             downloadJSONData(getCategory(), true);
         });
 
@@ -1285,7 +1288,7 @@ public class MainActivity extends AppCompatActivity {
                 mNativeAds.add(nativeAd);
                 runOnUiThread(() -> {if (adapter != null) adapter.addAdsBatch(Collections.singletonList(nativeAd));});
 
-                if (mNativeAds.size() < totalDesired) new Handler(Looper.getMainLooper()).postDelayed(() -> loadAdsOneByOne(adUnitId, options, totalDesired), 2000);
+                if (mNativeAds.size() < totalDesired) new Handler(Looper.getMainLooper()).postDelayed(() -> loadAdsOneByOne(adUnitId, options, totalDesired), 1500);
             })
             .withAdListener(new com.google.android.gms.ads.AdListener() {
                 @Override
@@ -1295,6 +1298,18 @@ public class MainActivity extends AppCompatActivity {
             .build();
 
         adLoader.loadAd(new AdRequest.Builder().build());
+    }
+
+    private void resetAndReloadAds() {
+        if (mNativeAds != null && !mNativeAds.isEmpty()) {
+            for (NativeAd ad : mNativeAds) if (ad != null) ad.destroy();
+            mNativeAds.clear();
+        }
+
+        if (adapter != null) adapter.setAdsList(new ArrayList<>());
+
+        adsRequested = false;
+        maybeLoadAds();
     }
 
     private void showTutorialDialog() {
