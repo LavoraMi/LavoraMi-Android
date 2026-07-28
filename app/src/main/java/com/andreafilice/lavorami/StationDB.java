@@ -21119,7 +21119,6 @@ public class StationDB {
         return stations;
     }
 
-
     public static List<MetroStation> getStationsFilobus90() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Lotto M1 M5", 45.47993, 9.14325, "Main", "90"));
