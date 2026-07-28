@@ -49,8 +49,10 @@ public class VariablesDescriptor {
     private String[] regionalLinesWithDeviations;
     @SerializedName("regionalLinesDeviationLinks")
     private String[] regionalLinesDeviationLinks;
+    @SerializedName("lineeSospeseInteramente")
+    private String[] lineeSospeseInteramente;
 
-    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks) {
+    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeUpdateLive = strikeUpdateLive;
@@ -65,6 +67,7 @@ public class VariablesDescriptor {
         this.suburbanInterruptionLinks = suburbanInterruptionLinks;
         this.regionalLinesWithDeviations = regionalLinesWithDeviations;
         this.regionalLinesDeviationLinks = regionalLinesDeviationLinks;
+        this.lineeSospeseInteramente = lineeSospeseInteramente;
     }
 
     //*GETTERS
@@ -83,11 +86,11 @@ public class VariablesDescriptor {
     public String[] getSuburbanInterruptionLinks() {return suburbanInterruptionLinks;}
     public String[] getRegionalLinesDeviations() {return regionalLinesWithDeviations;}
     public String[] getRegionalLinesDeviationsLinks() {return regionalLinesDeviationLinks;}
+    public String[] getlineeSospeseInteramente() {return lineeSospeseInteramente;}
 
     public boolean isStrikeToday() {
-        if (strikeDate == null || strikeDate.trim().isEmpty()) {
-            return false;
-        }
+        if (strikeDate == null || strikeDate.trim().isEmpty()) return false;
+
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
             String todayString = sdf.format(new Date());

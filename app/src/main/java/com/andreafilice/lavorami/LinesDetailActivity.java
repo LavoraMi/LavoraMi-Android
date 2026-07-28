@@ -1772,10 +1772,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] suburbanLinks = cdnData.getSuburbanInterruptionLinks();
         String[] regionalDeviations = cdnData.getRegionalLinesDeviations();
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
+        String[] linesSuspended = cdnData.getlineeSospeseInteramente();
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
+        LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
         LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
         ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
+        ImageView lineSuspendedInfoBtn = findViewById(R.id.infoLineClosed);
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
 
         if(nomeLinea.equalsIgnoreCase("R15") || nomeLinea.equalsIgnoreCase("R24")) lineaFullBus.setVisibility(View.VISIBLE);
@@ -1792,6 +1795,16 @@ public class LinesDetailActivity extends AppCompatActivity {
                 mapDeviationBtn.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), lineLink));
             }
             i++;
+        }
+
+        for (int b = 0; b < linesSuspended.length; b++) {
+            int finalB = b;
+
+            if (linesSuspended[b].equalsIgnoreCase(nomeLinea)) {
+                lineaSospesa.setVisibility(View.VISIBLE);
+                lineSuspendedInfoBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea sospesa interamente", "Questa linea è stata interrotta per tutto il suo tragitto per via di lavori in quella tratta. Per saperne di più, vai nella sezione Lavori della linea."));
+                lineaSospesa.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea sospesa interamente", "Questa linea è stata interrotta per tutto il suo tragitto per via di lavori in quella tratta. Per saperne di più, vai nella sezione Lavori della linea."));
+            }
         }
 
         //*MODIFICHE CIRCOLAIZONE
