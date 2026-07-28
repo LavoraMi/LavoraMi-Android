@@ -1802,8 +1802,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             if (linesSuspended[b].equalsIgnoreCase(nomeLinea)) {
                 lineaSospesa.setVisibility(View.VISIBLE);
-                lineSuspendedInfoBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea sospesa interamente", "Questa linea è stata interrotta per tutto il suo tragitto per via di lavori in quella tratta. Per saperne di più, vai nella sezione Lavori della linea."));
-                lineaSospesa.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea sospesa interamente", "Questa linea è stata interrotta per tutto il suo tragitto per via di lavori in quella tratta. Per saperne di più, vai nella sezione Lavori della linea."));
+                lineSuspendedInfoBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSuspendedPopUpTitle), getString(R.string.lineSuspendedPopUpDeps)));
+                lineaSospesa.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSuspendedPopUpTitle), getString(R.string.lineSuspendedPopUpDeps)));
             }
         }
 

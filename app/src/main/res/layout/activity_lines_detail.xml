@@ -136,7 +136,7 @@
                 android:textColor="@color/amber_on_banner"
                 android:fontFamily="@font/font_main"
                 android:textSize="13sp"
-                android:text="LINEA INTERAMENTE SOSPESA"
+                android:text="@string/lineSuspendedMainText"
                 android:textStyle="bold" />
 
             <ImageView

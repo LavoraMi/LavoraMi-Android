@@ -432,4 +432,7 @@
     <string name="metroStatoChiusa">Chiusa</string>
     <string name="metroStatoRallentata">Rallentata</string>
     <string name="metroStatoTitle">Stato Attuale Metro</string>
+    <string name="lineSuspendedMainText">LINEA INTERAMENTE SOSPESA</string>
+    <string name="lineSuspendedPopUpTitle">Linea Interamente Sospesa</string>
+    <string name="lineSuspendedPopUpDeps">Questa linea è stata interrotta per tutto il suo tragitto per via di lavori in quella tratta. Per saperne di più, vai nella sezione \"Lavori\" della linea.</string>
 </resources>
