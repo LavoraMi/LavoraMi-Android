@@ -70,5 +70,5 @@ androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "s
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerfPlugin" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 android-application = { id = "com.android.application", version.ref = "agp" }
-ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benMaves" }
+ben-manes-versions = { id = "io.github.ben-manes.versions", version.ref = "benMaves" }
 android-junit5 = { id = "de.mannodermaus.android-junit5", version.ref = "android-junit5-plugin" }
