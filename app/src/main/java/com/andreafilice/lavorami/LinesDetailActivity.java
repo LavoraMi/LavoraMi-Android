@@ -1805,7 +1805,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        //*MODIFICHE CIRCOLAIZONE
+        //*MODIFICHE CIRCOLAZIONE
         /// Le linee Suburbane e Regionali hanno lavori di modifiche della circolazione, in questa sezione mostriamo questa info.
         LinearLayout interruzioneTratta = findViewById(R.id.interruzioneTratta);
         ImageView mapTrackBtn = findViewById(R.id.mapTrackBtn);

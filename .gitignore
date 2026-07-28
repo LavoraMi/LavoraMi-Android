@@ -28,3 +28,4 @@ app/google-services.json
 .idea/gradle.xml
 .idea/planningMode.xml
 .kotlin
+.idea/studiobot.xml
