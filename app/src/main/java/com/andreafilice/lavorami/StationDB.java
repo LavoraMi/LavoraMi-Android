@@ -19744,7 +19744,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.49495, 9.21681, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.49495, 9.21667, "Main", "1"));
         stations.add(new MetroStation("Greco Rovereto", 45.49495, 9.21625, "Main", "1"));
-        stations.add(new MetroStation("NO_DRAW", 45.49495, 9.21626, "Main", "1"));
         return stations;
     }
 
