@@ -11,7 +11,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,7 +44,6 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -64,8 +62,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.android.ump.ConsentInformation;
@@ -106,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     private CategoriesEnum defaultCategory;
     private boolean hasCompletedSetup;
     public static ExecutorService threadManager = Executors.newFixedThreadPool(3);
-    private StrikeDescriptor strikeCDNResponse;
+    private VariablesDescriptor strikeCDNResponse;
     private ImageButton btnRefresh;
     private  SwipeRefreshLayout swipeRefreshLayout;
     private MaterialButton btnSetupNext;
@@ -954,9 +950,9 @@ public class MainActivity extends AppCompatActivity {
         APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
         MaterialCardView strikeBanner = findViewById(R.id.strikeBanner);
 
-        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor> () {
+        apiworks.getStrike().enqueue(new Callback<VariablesDescriptor> () {
             @Override
-            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+            public void onResponse(Call<VariablesDescriptor> call, Response<VariablesDescriptor> response) {
                 if(response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     updateStrike(strikeCDNResponse);
@@ -966,7 +962,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
+            public void onFailure(Call<VariablesDescriptor> call, Throwable t) {
                 strikeBanner.setVisibility(View.GONE);
                 if (events == null || events.isEmpty()) {
                     if (loadingLayout != null) {
@@ -1022,7 +1018,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityUtils.changeActivity(this, ObsoleteVersion.class);
     }
 
-    private void updateStrike(StrikeDescriptor strikeDescriptor) {
+    private void updateStrike(VariablesDescriptor variablesDescriptor) {
         /// In this method, we update the Strike Banner TextViews, with the strikeDetails catched before from the CDN.
         /// In this method, we set also the Advanced Options Key for "Show Strikes Banner" setting.
         /// @PARAMETER
@@ -1043,14 +1039,14 @@ public class MainActivity extends AppCompatActivity {
 
             LinearLayout liveLayout = findViewById(R.id.liveLayout);
 
-            strikeBanner.setVisibility((strikeDescriptor.isStrikeEnabled()) ? View.VISIBLE : View.GONE);
-            if (strikeDescriptor.isStrikeToday()) {
+            strikeBanner.setVisibility((variablesDescriptor.isStrikeEnabled()) ? View.VISIBLE : View.GONE);
+            if (variablesDescriptor.isStrikeToday()) {
                 Animation blinkAnim = AnimationUtils.loadAnimation(this, R.anim.live_blink);
 
                 liveBarrier.setVisibility(View.VISIBLE);
                 liveLayout.setVisibility(View.VISIBLE);
                 liveText.setSelected(true);
-                liveText.setText(strikeDescriptor.getStrikeUpdateLive());
+                liveText.setText(variablesDescriptor.getStrikeUpdateLive());
                 liveDot.startAnimation(blinkAnim);
             }
             else {
@@ -1060,11 +1056,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //*UPDATE TEXT VALUES
-            String formattedTextDate = String.format(getString(R.string.strikeBannerTitle), strikeDescriptor.getStrikeDate());
+            String formattedTextDate = String.format(getString(R.string.strikeBannerTitle), variablesDescriptor.getStrikeDate());
 
             strikeDesc.setText(HtmlCompat.fromHtml(formattedTextDate, HtmlCompat.FROM_HTML_MODE_LEGACY));
-            strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), strikeDescriptor.getStrikeGuaranteed()));
-            strikeCompanies.setText(String.format("%s", strikeDescriptor.getStrikeCompanies()));
+            strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), variablesDescriptor.getStrikeGuaranteed()));
+            strikeCompanies.setText(String.format("%s", variablesDescriptor.getStrikeCompanies()));
 
             strikeOpenClose.setOnClickListener(v -> {
                 ActivityUtils.triggerFeedback(this);

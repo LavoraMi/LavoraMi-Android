@@ -9,7 +9,7 @@ public interface APIWorks {
     Call<ArrayList<EventDescriptor>> getLavori();
 
     @GET("_vars.json")
-    Call<StrikeDescriptor> getStrike();
+    Call<VariablesDescriptor> getStrike();
 
     @GET("requirements.json")
     Call<RequirementsDescriptor> getRequirements();

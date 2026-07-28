@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class StrikeDescriptor {
+public class VariablesDescriptor {
     /// In this class, we get from the CDN the values of the strike and parse that datas into this Class.
     /// @SerializedName are the original names from the JSON file of our CDN
     /// @ATTRIBUTES
@@ -50,7 +50,7 @@ public class StrikeDescriptor {
     @SerializedName("regionalLinesDeviationLinks")
     private String[] regionalLinesDeviationLinks;
 
-    public StrikeDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks) {
+    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeUpdateLive = strikeUpdateLive;

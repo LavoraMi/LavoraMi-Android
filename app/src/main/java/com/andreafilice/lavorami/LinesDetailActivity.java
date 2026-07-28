@@ -89,7 +89,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private View interscambiNested;
     private View lavoriWrapper;
     private View interscambiWrapper;
-    private StrikeDescriptor strikeCDNResponse;
+    private VariablesDescriptor strikeCDNResponse;
     private View arriviWrapper;
     private View arriviNested;
     private LinearLayout interscambiLoadingState;
@@ -328,9 +328,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         /// In this section of the code, we fetch the variables from the .json file in cdn
         APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
 
-        apiworks.getStrike().enqueue(new Callback<StrikeDescriptor>() {
+        apiworks.getStrike().enqueue(new Callback<VariablesDescriptor>() {
             @Override
-            public void onResponse(Call<StrikeDescriptor> call, Response<StrikeDescriptor> response) {
+            public void onResponse(Call<VariablesDescriptor> call, Response<VariablesDescriptor> response) {
                 strikeFetchAttempted = true;
                 if (response.isSuccessful()) {
                     strikeCDNResponse = response.body();
@@ -342,7 +342,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<StrikeDescriptor> call, Throwable t) {
+            public void onFailure(Call<VariablesDescriptor> call, Throwable t) {
                 strikeFetchAttempted = true;
                 Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                 checkIfReadyToLoadMap();
@@ -580,7 +580,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void onMapReady(MapView mapView, StrikeDescriptor cdnData) {
+    private void onMapReady(MapView mapView, VariablesDescriptor cdnData) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
         elaboraStazioni(layoutMaps, layoutLoadingMap, mapView, cdnData);
@@ -591,7 +591,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, StrikeDescriptor cdnData) {
+    private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, VariablesDescriptor cdnData) {
 
         boolean passanteWork = (cdnData != null) && cdnData.isPassanteWorkEnabled();
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
@@ -1763,7 +1763,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         tvLavori.setText((numeroLavori > 0) ? String.format("%s %s,\n%s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
     }
 
-    public void fetchDeviations(StrikeDescriptor cdnData) {
+    public void fetchDeviations(VariablesDescriptor cdnData) {
         if (cdnData == null) return;
         String[] lineeDeviate = cdnData.getLinesDeviation();
         String[] linkLinee = cdnData.getLinesDeviationLinks();

@@ -247,7 +247,7 @@ public class NotificationScheduler {
         }
     }
 
-    public static void scheduleStrikeNotification(Context context, StrikeDescriptor strike) {
+    public static void scheduleStrikeNotification(Context context, VariablesDescriptor strike) {
         boolean isEnabled = DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
         if (!isEnabled) return;
 
