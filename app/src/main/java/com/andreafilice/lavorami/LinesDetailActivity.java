@@ -1798,8 +1798,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         for (int b = 0; b < linesSuspended.length; b++) {
-            int finalB = b;
-
             if (linesSuspended[b].equalsIgnoreCase(nomeLinea)) {
                 lineaSospesa.setVisibility(View.VISIBLE);
                 lineSuspendedInfoBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSuspendedPopUpTitle), getString(R.string.lineSuspendedPopUpDeps)));
