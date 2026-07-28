@@ -22766,8 +22766,6 @@ public class StationDB {
             default:
                 if (nomeLinea.contains("z"))
                     return R.color.BUS;
-                else if (nomeLinea.contains("Filobus"))
-                    return R.color.FILOBUS;
                 else if (nomeLinea.contains("N"))
                     return R.color.NIGHTLINES;
                 else if (nomeLinea.equals("RE80"))
@@ -22776,8 +22774,6 @@ public class StationDB {
                     return R.color.REGIONAL;
                 else if (nomeLinea.contains("RE"))
                     return R.color.RE;
-                else if (nomeLinea.matches("9[0-3]"))
-                    return R.color.FILOBUS;
                 else if (nomeLinea.matches("^\\d+$")) {
                     int numero = Integer.parseInt(nomeLinea);
 

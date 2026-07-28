@@ -109,7 +109,7 @@ public class WidgetLines extends AppWidgetProvider {
         addAllWithIndividualColors(all, TILO_LINES, LineType.TILO, TILO_COLORS);
         addAllWithSharedColor(all, MXP_LINES, LineType.MXP, R.color.MXP);
         addAllWithSharedColor(all, TRAM_LINES, LineType.TRAM, R.color.TRAM);
-        addAllWithSharedColor(all, FILOBUS_LINES, LineType.FILOBUS, R.color.FILOBUS);
+        addAllWithSharedColor(all, FILOBUS_LINES, LineType.FILOBUS, R.color.OTHER_LINES);
         addAllWithSharedColor(all, MOVIBUS_LINES, LineType.MOVIBUS, R.color.BUS);
         addAllWithSharedColor(all, STAR_LINES, LineType.STAR, R.color.BUS);
         addAllWithSharedColor(all, STAV_LINES, LineType.STAV, R.color.BUS);
