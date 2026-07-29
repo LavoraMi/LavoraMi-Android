@@ -20513,7 +20513,7 @@ public class StationDB {
         stations.add(new MetroStation("V.le Coni Zugna Via Solari", 45.4573, 9.16907, "Main", "10"));
         stations.add(new MetroStation("P.le Cantore", 45.45538, 9.17199, "Main", "10"));
         stations.add(new MetroStation("P.ta Genova M2", 45.45341, 9.17002, "Main", "10"));
-        stations.add(new MetroStation("Via Vigevano Via Corsico", 45.45296, 9.17294, "Main", "10"));
+        stations.add(new MetroStation("Via Vigevano Via Corsico", 45.45301, 9.17295, "Main", "10"));
         stations.add(new MetroStation("Via Vigevano V.le Gorizia", 45.45275, 9.17559, "Main", "10"));
         stations.add(new MetroStation("P.za Ventiquattro Maggio", 45.45199, 9.17941, "Main", "10"));
         return stations;
