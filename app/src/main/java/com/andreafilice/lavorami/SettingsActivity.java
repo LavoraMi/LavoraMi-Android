@@ -119,10 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         //*FAVORITES LINES
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
-        infoFavouriteLines.setOnClickListener(v -> {
-            ActivityUtils.triggerFeedback(this);
-            DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText));
-        });
+        infoFavouriteLines.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText)));
 
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {
