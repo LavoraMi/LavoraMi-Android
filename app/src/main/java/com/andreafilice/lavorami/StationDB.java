@@ -20481,26 +20481,26 @@ public class StationDB {
 
     public static List<MetroStation> getStationsTram10() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("V.le Lunigiana", 45.49136, 9.20558, "Main", "10"));
-        stations.add(new MetroStation("Via Schiaparelli Via P.te Seveso", 45.4897, 9.20476, "Main", "10"));
+        stations.add(new MetroStation("V.le Lunigiana", 45.49107, 9.20599, "Main", "10"));
+        stations.add(new MetroStation("Via Schiaparelli Via P.te Seveso", 45.48964, 9.20484, "Main", "10"));
         stations.add(new MetroStation("Stazione Centrale Via Tonale", 45.48866, 9.20385, "Main", "10"));
-        stations.add(new MetroStation("Stazione Centrale M2 M3", 45.48687, 9.20192, "Main", "10"));
+        stations.add(new MetroStation("Stazione Centrale M2 M3", 45.48685, 9.20192, "Main", "10"));
         stations.add(new MetroStation("Via Filzi Via Pirelli", 45.48431, 9.20018, "Main", "10"));
         stations.add(new MetroStation("Via Filzi Via Adda", 45.48316, 9.19939, "Main", "10"));
         stations.add(new MetroStation("P.za S. Gioachimo", 45.48146, 9.19805, "Main", "10"));
         stations.add(new MetroStation("V.le Monte Santo", 45.47978, 9.19489, "Main", "10"));
         stations.add(new MetroStation("P.le Principessa Clotilde (Osp. Fatebenefratelli)", 45.48034, 9.19256, "Main", "10"));
-        stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48082, 9.18907, "Main", "10"));
+        stations.add(new MetroStation("V.le Monte Grappa Via Gioia", 45.48083, 9.18907, "Main", "10"));
         stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.1867, "Main", "10"));
         stations.add(new MetroStation("Via Farini Via Ferrari", 45.48573, 9.18262, "Main", "10"));
         stations.add(new MetroStation("Monumentale M5", 45.48459, 9.18042, "Main", "10"));
-        stations.add(new MetroStation("P.le Cim. Monumentale Via Bramante", 45.48415, 9.17845, "Main", "10"));
+        stations.add(new MetroStation("P.le Cim. Monumentale Via Bramante", 45.48423, 9.17846, "Main", "10"));
         stations.add(new MetroStation("Via Procaccini Via Nono", 45.48403, 9.17567, "Main", "10"));
         stations.add(new MetroStation("Via Procaccini Via Lomazzo", 45.48374, 9.17108, "Main", "10"));
         stations.add(new MetroStation("P.za Gramsci", 45.48202, 9.16815, "Main", "10"));
         stations.add(new MetroStation("C.so Sempione Via Procaccini", 45.48098, 9.16637, "Main", "10"));
         stations.add(new MetroStation("C.so Sempione Via Villasanta", 45.47917, 9.16743, "Main", "10"));
-        stations.add(new MetroStation("C.so Sempione Via Canova", 45.47826, 9.16858, "Main", "10"));
+        stations.add(new MetroStation("C.so Sempione Via Canova", 45.47787, 9.16897, "Main", "10"));
         stations.add(new MetroStation("Arco Della Pace", 45.47639, 9.1714, "Main", "10"));
         stations.add(new MetroStation("Via Pagano Via Canova", 45.47422, 9.17002, "Main", "10"));
         stations.add(new MetroStation("L.go Quinto Alpini", 45.47264, 9.16761, "Main", "10"));
