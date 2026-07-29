@@ -122,6 +122,13 @@ public class LinesDetailActivity extends AppCompatActivity {
     private String SupabaseANON, SupabaseURL;
 
     @Override
+    protected void onNewIntent(android.content.Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        recreate();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         MapboxHelper.init(getMetaData(this, "MAPBOX_KEY"));
         super.onCreate(savedInstanceState);
@@ -163,7 +170,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         nomeLinea = getIntent().getStringExtra("NOME_LINEA");
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
 
+        if (nomeLinea == null) {
+            android.net.Uri deepLinkData = getIntent().getData();
+            if (deepLinkData != null) {
+                nomeLinea = deepLinkData.getQueryParameter("nome");
+                tipoDiLinea = deepLinkData.getQueryParameter("tipo");
+            }
+        }
+
         if (nomeLinea == null) nomeLinea = "M1";
+        if (tipoDiLinea == null) tipoDiLinea = "Metro " + nomeLinea; // fallback difensivo: evita NPE sui .contains() successivi
         if ((tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z")&& !(busLinesWithMap.contains(nomeLinea)))){ // && !(busLinesWithMap.contains(nomeLinea))
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
@@ -844,11 +860,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
             boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
 
-            if (modalitaRitorno) {
-                if (branchHasRitorno) filtrate.add(s);
-            } else {
-                if (!branchIsOnlyRitorno) filtrate.add(s);
-            }
+            if (modalitaRitorno) if (branchHasRitorno) filtrate.add(s);
+            else if (!branchIsOnlyRitorno) filtrate.add(s);
         }
 
         if (filtrate.isEmpty()) {
@@ -857,13 +870,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         String destinazione;
-        if (modalitaRitorno) {
-            // Ritorno: prima fermata del branch "Ritorno"
-            destinazione = filtrate.get(0).getName();
-        } else {
-            // Andata: ultima fermata del branch "Main"
-            destinazione = filtrate.get(filtrate.size() - 1).getName();
-        }
+        if (modalitaRitorno) destinazione = filtrate.get(0).getName();
+        else destinazione = filtrate.get(filtrate.size() - 1).getName();
 
         txtDirezioneMappa.setText(String.format("%s → %s", getString(R.string.directionTitleArrivals), destinazione));
     }
@@ -2672,7 +2680,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         int alpha = Color.alpha(baseColor);
         int newAlpha = (int) (alpha * 0.65f);
         int colorWithAlpha = Color.argb(newAlpha, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor));
-        
+
         lineaRegolareLayout.setBackgroundTintList(ColorStateList.valueOf(colorWithAlpha));
         infoIconStatus.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);

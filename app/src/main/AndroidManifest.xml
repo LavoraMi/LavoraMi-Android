@@ -101,14 +101,25 @@
             android:exported="false" />
         <activity
             android:name=".LinesDetailActivity"
-            android:exported="false"
+            android:exported="true"
             android:launchMode="singleTop"
             android:parentActivityName=".LinesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LinesActivity" />
+
+            <intent-filter android:autoVerify="false">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="lavorami"
+                    android:host="linea" />
+            </intent-filter>
         </activity>
-        
+
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
