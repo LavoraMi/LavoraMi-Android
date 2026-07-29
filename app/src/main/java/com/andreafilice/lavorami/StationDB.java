@@ -20256,7 +20256,7 @@ public class StationDB {
         stations.add(new MetroStation("Via Filzi Via Adda", 45.48316, 9.19939, "Main", "9"));
         stations.add(new MetroStation("P.Za S. Gioachimo", 45.48146, 9.19805, "Main", "9"));
         stations.add(new MetroStation("V.Le Monte Santo", 45.47978, 9.19489, "Main", "9"));
-        stations.add(new MetroStation("Repubblica M3", 45.47788, 9.19775, "Main", "9"));
+        stations.add(new MetroStation("Repubblica M3", 45.47812, 9.19744, "Main", "9"));
         stations.add(new MetroStation("V.Le Vittorio Veneto", 45.47678, 9.20024, "Main", "9"));
         stations.add(new MetroStation("Porta Venezia M1", 45.47418, 9.20594, "Main", "9"));
         stations.add(new MetroStation("V.Le Piave", 45.47225, 9.20654, "Main", "9"));
@@ -20275,8 +20275,8 @@ public class StationDB {
         stations.add(new MetroStation("V.Le Col Di Lana", 45.45213, 9.18346, "Main", "9"));
         stations.add(new MetroStation("Piazza XXIV Maggio", 45.4524, 9.17969, "Main", "9"));
         stations.add(new MetroStation("Via Vigevano V.Le Gorizia", 45.45272, 9.1763, "Main", "9"));
-        stations.add(new MetroStation("P.Le Cantore", 45.45491, 9.17225, "Main", "9"));
-        stations.add(new MetroStation("Porta Genova M2", 45.45341, 9.17002, "Main", "9"));
+        stations.add(new MetroStation("P.Le Cantore", 45.455, 9.17273, "Main", "9"));
+        stations.add(new MetroStation("Porta Genova M2", 45.45352, 9.16988, "Main", "9"));
         return stations;
     }
 
