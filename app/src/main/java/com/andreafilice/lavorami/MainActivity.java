@@ -901,15 +901,14 @@ public class MainActivity extends AppCompatActivity {
                                         rv.setAdapter(adapter);
                                     }
 
-                                    applicaFiltroCategoria(getCategory());
-
                                     if (loadingLayout != null) {
                                         loadingLayout.stopShimmer();
                                         loadingLayout.setVisibility(View.GONE);
                                         btnRefresh.clearAnimation();
                                         swipeRefreshLayout.setRefreshing(false);
-                                        findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
                                     }
+
+                                    applicaFiltroCategoria(getCategory());
                                 });
                             }
                         });
