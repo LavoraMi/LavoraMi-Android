@@ -860,8 +860,12 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
             boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
 
-            if (modalitaRitorno) if (branchHasRitorno) filtrate.add(s);
-            else if (!branchIsOnlyRitorno) filtrate.add(s);
+            if (modalitaRitorno) {
+                if (branchHasRitorno) filtrate.add(s);
+            }
+            else {
+                if (!branchIsOnlyRitorno) filtrate.add(s);
+            }
         }
 
         if (filtrate.isEmpty()) {
@@ -873,7 +877,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (modalitaRitorno) destinazione = filtrate.get(0).getName();
         else destinazione = filtrate.get(filtrate.size() - 1).getName();
 
-        txtDirezioneMappa.setText(String.format("%s → %s", getString(R.string.directionTitleArrivals), destinazione));
+        txtDirezioneMappa.setText(String.format("%s →  %s", getString(R.string.directionTitleArrivals), destinazione));
     }
 
     private void selezionaFermataDaMappa(String nomeStazioneMappa) {
