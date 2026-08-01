@@ -2649,7 +2649,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Tratta Sospesa":
-                baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
+                baseColor = ContextCompat.getColor(this, R.color.redMetro);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
                 statusText.setText(getString(R.string.metroStatoTrattaSospesa));
                 infoIconStatus.setVisibility(View.VISIBLE);
