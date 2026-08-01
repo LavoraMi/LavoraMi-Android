@@ -2512,17 +2512,17 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS12() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Cormano Cusano Milanino", 45.5457, 9.17379, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.53374, 9.1728, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.53116, 9.1725, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.52997, 9.17209, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.52846, 9.17132, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.52131, 9.16743, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.51012, 9.15873, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.50909, 9.15834, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.50826, 9.15818, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.50724, 9.15801, "Main", "S12"));
-        stations.add(new MetroStation("NO_DRAW", 45.50651, 9.15802, "Main", "S12"));
+        stations.add(new MetroStation("Cormano Cusano Milanino", 45.5457, 9.17379, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.53374, 9.1728, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.53116, 9.1725, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.52997, 9.17209, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.52846, 9.17132, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.52131, 9.16743, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.51012, 9.15873, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.50909, 9.15834, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.50826, 9.15818, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.50724, 9.15801, "Cormano - New", "S12"));
+        stations.add(new MetroStation("NO_DRAW", 45.50651, 9.15802, "Cormano - New", "S12"));
         stations.add(new MetroStation("Milano Bovisa", 45.50257, 9.15925, "Main", "S12"));
         stations.add(new MetroStation("NO_DRAW", 45.50137, 9.15976, "Main", "S12"));
         stations.add(new MetroStation("NO_DRAW", 45.50069, 9.15985, "Main", "S12"));
