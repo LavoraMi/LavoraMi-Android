@@ -118,6 +118,8 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.51005, 9.25461, "Main", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51042, 9.25554, "Main", "M2"));
         stations.add(new MetroStation("Cascina Gobba", 45.51114, 9.26052, "Main", "M2"));
+
+        /* MODIFICHE CIRCOLAZIONE: Interrotta tra Cascina Gobba e Cologno fino al 30 agosto.
         stations.add(new MetroStation("NO_DRAW", 45.5116, 9.26272, "Cologno", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51213, 9.26382, "Cologno", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51251, 9.26428, "Cologno", "M2"));
@@ -142,7 +144,8 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.52838, 9.28392, "Cologno", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.52887, 9.28446, "Cologno", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.52966, 9.28539, "Cologno", "M2"));
-        stations.add(new MetroStation("Cologno Nord", 45.53426, 9.29111, "Cologno", "M2"));
+        stations.add(new MetroStation("Cologno Nord", 45.53426, 9.29111, "Cologno", "M2"));*/
+
         stations.add(new MetroStation("NO_DRAW", 45.51143, 9.26254, "Gessate", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51169, 9.26333, "Gessate", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51207, 9.26398, "Gessate", "M2"));
