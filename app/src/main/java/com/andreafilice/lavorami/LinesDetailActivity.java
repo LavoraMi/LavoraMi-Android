@@ -1863,7 +1863,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         switch (linea.toUpperCase().trim()) {
             case "M1": return "Sesto 1° Maggio FS - Rho Fiera / Bisceglie";
-            case "M2": return "Assago Forum / Abbiategrasso - Gessate";
+            case "M2": return "Assago Forum / Abbiategrasso - Gessate"; //* Rimosso "Cologno"
             case "M3": return "San Donato - Comasina";
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
