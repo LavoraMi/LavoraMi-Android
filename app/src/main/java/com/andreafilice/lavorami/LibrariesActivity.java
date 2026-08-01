@@ -94,7 +94,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "AndroidX ConstraintLayout",
-                        "2.2.1",
+                        "2.2.2",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         APACHE_LICENSE_TEXT
@@ -157,14 +157,28 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Firebase BOM",
-                        "34.16.0",
+                        "34.17.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Cloud Messaging",
-                        "34.16.0",
+                        "34.17.0",
+                        "Apache License 2.0",
+                        "Copyright Google LLC",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Firebase Analytics",
+                        "34.17.0",
+                        "Apache License 2.0",
+                        "Copyright Google LLC",
+                        APACHE_LICENSE_TEXT
+                ),
+                new LibraryModel(
+                        "Firebase Performance Monitoring",
+                        "2.0.2",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
