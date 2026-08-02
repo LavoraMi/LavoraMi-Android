@@ -24018,8 +24018,8 @@ public class StationDB {
         List<InterchangeInfo> interchanges = new ArrayList<>();
         interchanges.add(new InterchangeInfo(
                 "Molino Dorino MM",
-                new String[]{"M1", "NM1", "35", "69", "80", "424", "528", "z601", "z606", "z617", "z620", "z621", "z649"},
-                new String[] {"z601", "z606", "z617", "z620", "z621", "z649"},
+                new String[]{"M1", "NM1", "35", "69", "80", "424", "528", "z601", "z617", "z620", "z621", "z649"},
+                new String[] {"z601", "z617", "z620", "z621", "z649"},
                 "tram.fill.tunnel"
         ));
 
@@ -24427,7 +24427,7 @@ public class StationDB {
             allStations.addAll(getStationsZ601());
             allStations.addAll(getStationsZ602());
             allStations.addAll(getStationsZ603());
-            allStations.addAll(getStationsZ606());
+            //allStations.addAll(getStationsZ606());
             allStations.addAll(getStationsZ620());
             allStations.addAll(getStationsZ622());
 
