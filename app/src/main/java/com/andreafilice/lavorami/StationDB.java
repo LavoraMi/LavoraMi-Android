@@ -22719,14 +22719,20 @@ public class StationDB {
     public static List<MetroStation> getStationsZ603(){
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("S.V. Olona, Roma 75", 45.59034, 8.93238, "Main", "z603"));
-        stations.add(new MetroStation("NO_DRAW", 45.58958, 8.93462, "Main", "z603"));
-        stations.add(new MetroStation("NO_DRAW", 45.58971, 8.93471, "Main", "z603"));
-        stations.add(new MetroStation("NO_DRAW", 45.59118, 8.93636, "Main", "z603"));
-        stations.add(new MetroStation("NO_DRAW", 45.59122, 8.93643, "Main", "z603"));
+        stations.add(new MetroStation("S.V. Olona, Roma", 45.59034, 8.93238, "Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.58958, 8.93462, "Main - Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.58971, 8.93471, "Main - Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.59118, 8.93636, "Main - Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.59122, 8.93643, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59119, 8.93651, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59099, 8.93682, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59086, 8.93687, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59079, 8.93704, "Main", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.59111, 8.93713, "Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.59102, 8.93729, "Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.59089, 8.93728, "Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.5908, 8.9372, "Ritorno", "z603"));
+        stations.add(new MetroStation("NO_DRAW", 45.59069, 8.93724, "Ritorno", "z603"));
         stations.add(new MetroStation("S.V. Olona, Ss333 del Sempione/Piave", 45.59045, 8.93736, "Main", "z603"));
         stations.add(new MetroStation("S.V. Olona, Ss33 del Sempione/Parini", 45.59049, 8.93743, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59007, 8.93792, "Main - Ritorno", "z603"));
