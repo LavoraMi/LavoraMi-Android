@@ -24179,9 +24179,9 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
            "Rho, Corso Europa",
-           new String[] {"z601", "z606", "z618", "S5", "S6"},
+           new String[] {"S5", "S6", "S11", "z601", "z606", "z618"},
             new String[]{"z606"},
-           "bus.fill"
+           "train.side.front.car"
         ));
         return interchanges;
     }

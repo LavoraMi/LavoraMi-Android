@@ -289,8 +289,8 @@ public class SettingsActivity extends AppCompatActivity {
         ImageView btnTikTok = findViewById(R.id.btnTikTok);
         ImageView btnWebsite = findViewById(R.id.btnWebsite);
 
-        btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp_official/"));
-        btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@applavorami.official"));
+        btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp/"));
+        btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@lavoramiapp"));
         btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it"));
     }
 
