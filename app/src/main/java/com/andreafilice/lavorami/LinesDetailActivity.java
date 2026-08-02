@@ -1966,7 +1966,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z602": return "Milano Cadorna - Legnano";
             case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
             case "Z6C3": return "San Vittore Olona - Cerro Maggiore - Milano Cadorna";
-            case "Z606": return "Molino Dorino M1 - Cerro Maggiore";
+            case "Z606": return "Cerro Maggiore - Rho";
             case "Z611": return "Legnano - Parabiago";
             case "Z612": return "Legnano - Arese (Il CENTRO)";
             case "Z616": return "Pregnana Milanese - Rho FS";

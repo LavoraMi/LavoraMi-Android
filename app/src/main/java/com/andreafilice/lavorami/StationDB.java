@@ -24176,6 +24176,13 @@ public class StationDB {
                 new String[]{"z501", "z509", "z510", "z515", "z516"},
                 "tram.fill.tunnel"
         ));
+
+        interchanges.add(new InterchangeInfo(
+           "Rho, Corso Europa",
+           new String[] {"z601", "z606", "z618", "S5", "S6"},
+            new String[]{"z606"},
+           "bus.fill"
+        ));
         return interchanges;
     }
 
@@ -24420,6 +24427,7 @@ public class StationDB {
             allStations.addAll(getStationsZ601());
             allStations.addAll(getStationsZ602());
             allStations.addAll(getStationsZ603());
+            allStations.addAll(getStationsZ606());
             allStations.addAll(getStationsZ620());
             allStations.addAll(getStationsZ622());
 
