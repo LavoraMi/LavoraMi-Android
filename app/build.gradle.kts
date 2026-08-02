@@ -4,9 +4,6 @@ import java.io.File
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.services)
-    alias(libs.plugins.firebase.perf)
-    alias(libs.plugins.android.junit5) apply false
-    id("org.jetbrains.kotlin.android")
 }
 
 //DOT ENV INTEGRATION
@@ -23,9 +20,7 @@ val adMobUnitID = envProperties.getProperty("GOOGLE_ADS_UNIT_ID", "")
 
 android {
     namespace = "com.andreafilice.lavorami"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.andreafilice.lavorami"
@@ -59,9 +54,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
     }
 }
 
