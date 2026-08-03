@@ -694,6 +694,7 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS4() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: La linea S4 arriva a Seveso fino al 23 Agosto
         stations.add(new MetroStation("Camnago - Lentate", 45.66837, 9.13328, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66643, 9.13467, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66412, 9.13586, "Main", "S4"));
@@ -702,7 +703,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.65788, 9.13916, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.65668, 9.13972, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.65555, 9.13989, "Main", "S4"));
-        stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S4"));
+        stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S4"));*/
         stations.add(new MetroStation("NO_DRAW", 45.64507, 9.14113, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.64208, 9.14166, "Main", "S4"));
         stations.add(new MetroStation("Cesano Maderno", 45.6307, 9.14177, "Main", "S4"));

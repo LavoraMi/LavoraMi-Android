@@ -148,7 +148,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"));
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z620", "z622"
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z620", "z622"
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -1871,7 +1871,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S1": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
             case "S2": return "Seveso - Milano Rogoredo"; //* Mariano Comense - Milano Rogoredo
             case "S3": return "Saronno - Milano Cadorna";
-            case "S4": return "Camnago-Lentate - Milano Cadorna";
+            case "S4": return "Seveso - Milano Cadorna"; //* Camnago Lentate - Milano Cadorna
             case "S5": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Pioltello Limito" : "Varese - Treviglio";
             case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
             case "S7": return "Lecco - Milano Porta Garibaldi";
