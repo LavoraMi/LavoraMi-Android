@@ -702,8 +702,8 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.66083, 9.13779, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.65788, 9.13916, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.65668, 9.13972, "Main", "S4"));
-        stations.add(new MetroStation("NO_DRAW", 45.65555, 9.13989, "Main", "S4"));
-        stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S4"));*/
+        stations.add(new MetroStation("NO_DRAW", 45.65555, 9.13989, "Main", "S4"));*/
+        stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.64507, 9.14113, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.64208, 9.14166, "Main", "S4"));
         stations.add(new MetroStation("Cesano Maderno", 45.6307, 9.14177, "Main", "S4"));
