@@ -608,8 +608,9 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, VariablesDescriptor cdnData) {
-
         boolean passanteWork = (cdnData != null) && cdnData.isPassanteWorkEnabled();
+        String[] fermateSospese = (cdnData != null) ? cdnData.getstazioniChiuse() : new String[0];
+
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
         for (MetroStation s : StationDB.getAllStations(passanteWork)) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
@@ -621,9 +622,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
         String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
 
-        disegnaMarkers(mapView, tutteLeStazioni, hexColor, hexColorText);
-
         disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
+        disegnaMarkers(mapView, tutteLeStazioni, hexColor, hexColorText, fermateSospese);
 
         if(tipoDiLinea.contains("Movibus")) {
             GesturesUtils.getGestures(mapView).addOnMapClickListener(new com.mapbox.maps.plugin.gestures.OnMapClickListener() {
@@ -714,7 +714,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 MapboxHelper.clearMarkers(mapView);
 
                 disegnaPolilinea(mapView, ultimeStazioniDisegnate, hexColor);
-                disegnaMarkers(mapView, ultimeStazioniDisegnate, hexColor, hexColorText);
+                disegnaMarkers(mapView, ultimeStazioniDisegnate, hexColor, hexColorText, fermateSospese);
                 aggiornaTestoDirezione(ultimeStazioniDisegnate);
             });
         }
@@ -727,8 +727,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             MapboxHelper.enableUserLocation(mapViewRef, false);
     }
 
-    private void disegnaMarkers(MapView mapView, List<MetroStation> stazioni, String hexColor, String hexColorText) {
+    private void disegnaMarkers(MapView mapView, List<MetroStation> stazioni, String hexColor, String hexColorText, String[] fermateSospese) {
         List<Feature> markerFeatures = new ArrayList<>();
+        List<String> fermateSospeseList = (fermateSospese != null) ? Arrays.asList(fermateSospese) : Collections.emptyList();
 
         for (MetroStation station : stazioni) {
             if (station.getName().equalsIgnoreCase("NO_DRAW")) continue;
@@ -740,7 +741,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean includiStazione = modalitaRitorno ? branchHasRitorno : !branchIsOnlyRitorno;
             if (!includiStazione) continue;
 
-            markerFeatures.add(MapboxHelper.makeStationFeature(station.getLatitude(), station.getLongitude(), station.getName()));
+            markerFeatures.add(MapboxHelper.makeStationFeature(station.getLatitude(), station.getLongitude(), station.getName(), nomeLinea, fermateSospeseList));
         }
 
         MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor, hexColorText);

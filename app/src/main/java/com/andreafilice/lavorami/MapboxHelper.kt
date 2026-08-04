@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami
 
+import com.mapbox.maps.extension.style.expressions.generated.Expression
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.LineString
@@ -71,25 +72,73 @@ object MapboxHelper {
     }
 
     @JvmStatic
-    fun addCircleLayer(mapView: MapView, features: List<Feature>, hexColor: String, textHexColor: String = "#FFFFFF") {
+    fun makeStationFeature(latitude: Double, longitude: Double, name: String, lineName: String, closedStations: List<String>): Feature {
+        /** Create the feature for the CircleDraw function
+         * @param lineName is the name of the line to draw.
+         * @param closedStations is the array of stations closed.
+         */
+
+        val props = com.google.gson.JsonObject()
+        props.addProperty("name", name)
+        props.addProperty("closed", isStationClosed(name, lineName, closedStations))
+
+        return Feature.fromGeometry(Point.fromLngLat(longitude, latitude), props)
+    }
+
+    private fun isStationClosed(name: String, lineName: String, closedStations: List<String>): Boolean {
+        /** This function check if the station to draw is closed or open
+         * @param name is the name of the station to draw.
+         * @param lineName is the name of the line of the station.
+         * @param closedStations is the list of all closed stations.
+         */
+
+        return closedStations.any { entry ->
+            val sep = entry.indexOf(":")
+            if (sep == -1) return@any false
+
+            val stationName = entry.substring(0, sep).trim()
+            val stationLine = entry.substring(sep + 1).trim()
+
+            stationName.equals(name, ignoreCase = true) && stationLine.equals(lineName, ignoreCase = true)
+        }
+    }
+
+    @JvmStatic
+    @JvmOverloads
+    fun addCircleLayer(mapView: MapView, features: List<Feature>, hexColor: String, textHexColor: String = "#FFFFFF", closedHexColor: String = "#D32F2F") {
         /** In this function, we draw Circle points on the map, based on the Line color and other variables.
          * @param mapView is the Map Fragment from the Activity Layout.
          * @param features is the list of the points to draw into the mapView Fragment.
          * @param hexColor is the color of the line in hexa notation.
          * @param textHexColor is the hex color of labels, if is light, set to black.
+         * @param closedHexColor is the hex color of closed circle.
          */
+
         mapView.mapboxMap.getStyle { style ->
             style.addSource(geoJsonSource("marker-source") { featureCollection(FeatureCollection.fromFeatures(features)) })
+
+            val isClosedExpr = Expression.eq(get("closed"), literal(true))
+
             style.addLayer(circleLayer("marker-layer", "marker-source") {
-                circleColor(literal(hexColor))
-                circleRadius(5.0)
+                circleColor(Expression.switchCase(isClosedExpr, literal(closedHexColor), literal(hexColor)))
+                circleRadius(Expression.switchCase(isClosedExpr, literal(8.0), literal(5.0)))
                 circleStrokeColor(literal("#FFFFFF"))
                 circleStrokeWidth(2.0)
             })
+
+            style.addLayer(symbolLayer("marker-closed-x-layer", "marker-source") {
+                filter(isClosedExpr)
+                textField(literal("✕"))
+                textSize(11.0)
+                textColor(literal("#FFFFFF"))
+                textAllowOverlap(true)
+                textIgnorePlacement(true)
+            })
+
             style.addLayer(symbolLayer("marker-label-layer", "marker-source") {
                 textField(get("name"))
                 textSize(11.0)
-                textColor(literal(textHexColor))
+                textColor(Expression.switchCase(isClosedExpr, literal(closedHexColor), literal(textHexColor)))
                 textHaloWidth(1.5)
                 textOffset(listOf(0.0, 1.5))
                 textAnchor(TextAnchor.TOP)
