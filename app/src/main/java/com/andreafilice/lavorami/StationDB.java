@@ -24585,7 +24585,7 @@ public class StationDB {
             new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"M2", "3", "15"}, "tram.fill.tunnel"),
             new InterchangeInfo("P.Le Cantore", new String[]{"2", "3", "9", "10", "14"}, "tram.fill"),
             new InterchangeInfo("Maciachini M3", new String[]{"M3", "4"}, "tram.fill.tunnel"),
-            new InterchangeInfo("Ca' Granda M5", new String[]{"M5", "4", "5", "7", "31"}, "tram.fill.tunnel"),
+            new InterchangeInfo("Ca' Granda M5", new String[]{"M5", "5", "7", "31"}, "tram.fill.tunnel"),
             new InterchangeInfo("Bicocca M5", new String[]{"M5", "7", "31"}, "tram.fill.tunnel"),
             new InterchangeInfo("Ponale M5", new String[]{"M5","7", "31"}, "tram.fill.tunnel"),
             new InterchangeInfo("Bignami M5", new String[]{"M5", "7", "31"}, "tram.fill.tunnel"),
