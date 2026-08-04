@@ -19755,6 +19755,7 @@ public class StationDB {
     public static List<MetroStation> getStationsTram3() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Gratosoglio", 45.40368, 9.17393, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Baroni", 45.40383, 9.17463, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia (Scuola Santarosa)", 45.40652, 9.17481, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via Saponaro", 45.41018, 9.17443, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via De Ruggiero", 45.4182, 9.17542, "Main", "3"));
