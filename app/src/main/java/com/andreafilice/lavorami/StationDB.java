@@ -19753,6 +19753,32 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram4() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Via Ricasoli", 45.46812, 9.17943, "Main", "4"));
+        stations.add(new MetroStation("Cairoli M1", 45.46831, 9.18257, "Main", "4"));
+        stations.add(new MetroStation("Lanza M2", 45.4722, 9.18195, "Main", "4"));
+        stations.add(new MetroStation("Arena", 45.4751, 9.18156, "Main", "4"));
+        stations.add(new MetroStation("P.Za Lega Lombarda", 45.47811, 9.18072, "Main", "4"));
+        stations.add(new MetroStation("V.Le Montello", 45.47988, 9.18106, "Main", "4"));
+        stations.add(new MetroStation("P.Le Baiamonti", 45.48171, 9.18143, "Main", "4"));
+        stations.add(new MetroStation("Via Farini Via Ferrari", 45.48534, 9.18199, "Main", "4"));
+        stations.add(new MetroStation("Via Farini Via Valtellina", 45.48922, 9.1831, "Main", "4"));
+        stations.add(new MetroStation("Via Farini Via Alserio", 45.49094, 9.18382, "Main", "4"));
+        stations.add(new MetroStation("Via Farini V.Le Stelvio", 45.49423, 9.18522, "Main", "4"));
+        stations.add(new MetroStation("Maciachini M3", 45.49819, 9.18568, "Main", "4"));
+        stations.add(new MetroStation("Valassina", 45.50111, 9.18823, "Main", "4"));
+        stations.add(new MetroStation("Nizza", 45.50304, 9.18907, "Main", "4"));
+        stations.add(new MetroStation("Niguarda (Ospedale)", 45.50854, 9.18958, "Main", "4"));
+        stations.add(new MetroStation("Girola", 45.51122, 9.19085, "Main", "4"));
+        stations.add(new MetroStation("Niguarda Centro", 45.51445, 9.19135, "Main", "4"));
+        stations.add(new MetroStation("Niguarda Nord", 45.51891, 9.19201, "Main", "4"));
+        stations.add(new MetroStation("Cascina California", 45.52179, 9.19222, "Main", "4"));
+        stations.add(new MetroStation("Niguarda (Parco Nord)", 45.52474, 9.19219, "Main", "4"));
+
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram5() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Niguarda Ospedale", 45.50855, 9.18961, "Main", "5"));
@@ -24763,6 +24789,7 @@ public class StationDB {
             allStations.addAll(getStationsMXP2());
 
             allStations.addAll(getStationsTram1());
+            allStations.addAll(getStationsTram4());
             allStations.addAll(getStationsTram5());
             allStations.addAll(getStationsTram7());
             allStations.addAll(getStationsTram9());
