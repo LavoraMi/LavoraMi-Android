@@ -19752,6 +19752,34 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram3() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Gratosoglio", 45.40368, 9.17393, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia (Scuola Santarosa)", 45.40652, 9.17481, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Saponaro", 45.41018, 9.17443, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via De Ruggiero", 45.4182, 9.17542, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia (Isola Anita)", 45.42281, 9.17693, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via S. Abbondio", 45.42443, 9.17706, "Main", "3"));
+        stations.add(new MetroStation("Via Dei Missaglia Via Boifava", 45.42655, 9.17724, "Main", "3"));
+        stations.add(new MetroStation("Piazza Abbiategrasso M2", 45.42936, 9.17759, "Main", "3"));
+        stations.add(new MetroStation("Via Montegani Via Neera", 45.43284, 9.17777, "Main", "3"));
+        stations.add(new MetroStation("Via Montegani Via Palmieri", 45.43463, 9.17799, "Main", "3"));
+        stations.add(new MetroStation("Via Montegani V.Le Da Cermenate", 45.43718, 9.1783, "Main", "3"));
+        stations.add(new MetroStation("Via Meda Via Spaventa", 45.44006, 9.17863, "Main", "3"));
+        stations.add(new MetroStation("V.Le Tibaldi Via Meda", 45.44315, 9.17902, "Main", "3"));
+        stations.add(new MetroStation("L.Go Mahler", 45.44601, 9.17943, "Main", "3"));
+        stations.add(new MetroStation("C.So S. Gottardo Via Lagrange", 45.44861, 9.17974, "Main", "3"));
+        stations.add(new MetroStation("P.Za XXIV Maggio", 45.45177, 9.18015, "Main", "3"));
+        stations.add(new MetroStation("P.Za S. Eustorgio", 45.45352, 9.18038, "Main", "3"));
+        stations.add(new MetroStation("Colonne Di S. Lorenzo", 45.4572, 9.18096, "Main", "3"));
+        stations.add(new MetroStation("Carrobbio", 45.45991, 9.18122, "Main", "3"));
+        stations.add(new MetroStation("Via Torino Via S. Maria Valle", 45.46069, 9.18307, "Main", "3"));
+        stations.add(new MetroStation("Via Torino Via Palla", 45.46151, 9.18549, "Main", "3"));
+        stations.add(new MetroStation("Duomo M1 M3", 45.46364, 9.187, "Main", "3"));
+
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram4() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Via Ricasoli", 45.46812, 9.17943, "Main", "4"));
@@ -25433,6 +25461,7 @@ public class StationDB {
             allStations.addAll(getStationsMXP2());
 
             allStations.addAll(getStationsTram1());
+            allStations.addAll(getStationsTram3());
             allStations.addAll(getStationsTram4());
             allStations.addAll(getStationsTram5());
             allStations.addAll(getStationsTram7());
