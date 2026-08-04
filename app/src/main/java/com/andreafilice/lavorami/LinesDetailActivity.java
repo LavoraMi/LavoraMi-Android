@@ -857,10 +857,12 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
             boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
 
-            if (modalitaRitorno)
+            if (modalitaRitorno) {
                 if (branchHasRitorno) filtrate.add(s);
-            else
+            }
+            else {
                 if (!branchIsOnlyRitorno) filtrate.add(s);
+            }
         }
 
         if (filtrate.isEmpty()) {

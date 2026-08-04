@@ -264,6 +264,7 @@ object MapboxHelper {
     fun clearMarkers(mapView: MapView) {
         mapView.mapboxMap.getStyle { style ->
             if (style.styleLayerExists("marker-label-layer")) style.removeStyleLayer("marker-label-layer")
+            if (style.styleLayerExists("marker-closed-x-layer")) style.removeStyleLayer("marker-closed-x-layer")
             if (style.styleLayerExists("marker-layer")) style.removeStyleLayer("marker-layer")
             if (style.styleSourceExists("marker-source")) style.removeStyleSource("marker-source")
         }
