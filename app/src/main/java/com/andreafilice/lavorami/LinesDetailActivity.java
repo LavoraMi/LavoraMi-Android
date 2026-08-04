@@ -749,11 +749,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void disegnaPolilinea(MapView mapView, List<MetroStation> stazioni, String hexColor) {
         if (stazioni.size() < 2) return;
 
-        if (modalitaRitorno) {
-            disegnaPolilineaRitorno(mapView, stazioni, hexColor);
-        } else {
-            disegnaPolilineaAndata(mapView, stazioni, hexColor);
-        }
+        if (modalitaRitorno) disegnaPolilineaRitorno(mapView, stazioni, hexColor);
+        else disegnaPolilineaAndata(mapView, stazioni, hexColor);
     }
 
     private void disegnaPolilineaRitorno(MapView mapView, List<MetroStation> stazioni, String hexColor) {
@@ -787,9 +784,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             String branch = station.getBranch();
             boolean isPartOfMain = branch != null && branch.contains("Main");
 
-            if (isPartOfMain) {
-                mainStations.add(station);
-            } else {
+            if (isPartOfMain) mainStations.add(station);
+            else {
                 if (!branchSecondari.containsKey(branch)) branchSecondari.put(branch, new ArrayList<>());
                 branchSecondari.get(branch).add(station);
             }
@@ -860,12 +856,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
             boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
 
-            if (modalitaRitorno) {
+            if (modalitaRitorno)
                 if (branchHasRitorno) filtrate.add(s);
-            }
-            else {
+            else
                 if (!branchIsOnlyRitorno) filtrate.add(s);
-            }
         }
 
         if (filtrate.isEmpty()) {
@@ -907,7 +901,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             String nomeGTFS = entry.getValue().name;
 
             if (nomeGTFS.equalsIgnoreCase(nomeStazioneMappa)) {
-
                 stopIdTrovato = entry.getKey();
                 nomeFermataTrovato = nomeGTFS;
                 break;
@@ -916,7 +909,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (stopIdTrovato != null) {
             selectedStopId = stopIdTrovato;
-
             dropdownFermate.setText(nomeFermataTrovato, false);
             updateArriviList();
         }
@@ -939,8 +931,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0
-                    && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length > 0 && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
                 if (mapViewRef != null) {
                     MapboxHelper.enableUserLocation(mapViewRef, false);
                     MapboxHelper.zoomToUserLocation(mapViewRef);
@@ -1006,9 +997,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                                 }
                             });
                         }
-                    } else {
-                        mostraErroreCaricamento();
-                    }
+                    } else mostraErroreCaricamento();
                 }
 
                 @Override
@@ -1056,7 +1045,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         for (EventDescriptor evento : eventiTrovati) {
             View card = inflater.inflate(R.layout.item_lavoro, container, false);
-
             boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
             String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
 
@@ -1080,9 +1068,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
 
             ImageView iconaLuogo = card.findViewById(R.id.iconLuogo);
-            if (iconaLuogo != null) {
-                iconaLuogo.setVisibility(View.VISIBLE);
-            }
+            if (iconaLuogo != null) iconaLuogo.setVisibility(View.VISIBLE);
 
             TextView titolo = card.findViewById(R.id.txtTitle);
             TextView desc   = card.findViewById(R.id.txtDescription);
@@ -1328,7 +1314,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     private BottomSheetDialog activeBranchDialog;
     private void showBranchDialog(List<String> branches, List<InterchangeInfo> allMatched) {
-
         dismissActiveBranchDialog();
 
         BottomSheetDialog dialog = new BottomSheetDialog(this);
