@@ -23605,7 +23605,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.5953, 8.93837, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59516, 8.93887, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59502, 8.93923, "Ritorno", "z606"));
-        stations.add(new MetroStation("NO_DRAW", 45.59398, 8.9413, "Ritorno", "z606"));
+        stations.add(new MetroStation("Cerro maggiore, Trento T./Canova", 45.59398, 8.9413, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59375, 8.94172, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59377, 8.9418, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59376, 8.94187, "Ritorno", "z606"));
@@ -23981,7 +23981,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.59682, 8.91813, "Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59682, 8.91783, "Main - Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59557, 8.91429, "Main - Ritorno", "z611"));
-        //myMaps 611
         stations.add(new MetroStation("NO_DRAW", 45.59555, 8.91392, "Main", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59562, 8.9138, "Main", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59562, 8.91367, "Main", "z611"));
@@ -25480,6 +25479,7 @@ public class StationDB {
             allStations.addAll(getStationsZ603());
             allStations.addAll(getStationsZ606());
             allStations.addAll(getStationsZ611());
+            allStations.addAll(getStationsZ612());
             allStations.addAll(getStationsZ620());
             allStations.addAll(getStationsZ622());
 
