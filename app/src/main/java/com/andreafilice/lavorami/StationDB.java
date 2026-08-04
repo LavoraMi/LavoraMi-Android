@@ -24249,6 +24249,72 @@ public class StationDB {
         stations.add(new MetroStation("Parabiago, Casorezzo 20", 45.53052, 8.94023, "Ritorno", "z611"));
         return stations;
     }
+
+    public static List<MetroStation> getStationsZ612() {
+        List<MetroStation> stations = new ArrayList<>();
+        //preso da 601
+        stations.add(new MetroStation("Legnano, Tosi fr. 3", 45.59584, 8.91885, "Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Tosi 3", 45.59570, 8.91908, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.596, 8.91874, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.5963, 8.91853, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59665, 8.91845, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59681, 8.91846, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59689, 8.91852, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59698, 8.9185, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59706, 8.9184, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59706, 8.91826, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.597, 8.91812, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59691, 8.91811, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59682, 8.91818, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59675, 8.91828, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.5963, 8.91853, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.596, 8.91874, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59562, 8.91905, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59535, 8.91947, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59529, 8.91948, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59522, 8.91955, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59522, 8.91966, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59527, 8.91971, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59532, 8.91973, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59553, 8.92146, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59561, 8.92188, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59575, 8.92216, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59602, 8.92269, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59636, 8.92311, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59635, 8.92326, "Main", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59643, 8.92307, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59653, 8.92316, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59653, 8.92330, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Main - Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Main", "z612"));
+        stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z612"));
+        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59354, 8.933, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59351, 8.9333, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59362, 8.93348, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59524, 8.93535, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59526, 8.93565, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59536, 8.93722, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59534, 8.93794, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.5953, 8.93837, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59516, 8.93887, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59502, 8.93923, "Ritorno", "z612"));
+        stations.add(new MetroStation("Cerro maggiore, Trento T./Canova", 45.59398, 8.9413, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59375, 8.94172, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59377, 8.9418, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59376, 8.94187, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59372, 8.94188, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59367, 8.94189, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59161, 8.94572, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59146, 8.94609, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59149, 8.9462, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59156, 8.94629, "Ritorno", "z612"));
+        stations.add(new MetroStation("Cerro Maggiore, Cappuccini 42", 45.59227, 8.94704, "Ritorno", "z612"));
+        return stations;
+    }
+
     public static List<MetroStation> getStationsZ620(){
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Magenta, Tobagi", 45.45574, 8.89153, "Main - Ritorno", "z620"));
