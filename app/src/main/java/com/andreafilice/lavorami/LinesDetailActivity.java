@@ -148,7 +148,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "4", "5", "7", "9", "10", "15", "16", "19", "24", "27", "31", "33"));
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z620", "z622"
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z611", "z620", "z622"
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -1955,7 +1955,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
             case "Z6C3": return "San Vittore Olona - Cerro Maggiore - Milano Cadorna";
             case "Z606": return "Cerro Maggiore - Rho";
-            case "Z611": return "Legnano - Parabiago";
+            case "Z611": return "Legnano - Canegrate - Parabiago";
             case "Z612": return "Legnano - Arese (Il CENTRO)";
             case "Z616": return "Pregnana Milanese - Rho FS";
             case "Z617": return "Molino Dorino M1 - Origgio / Lainate";
