@@ -138,7 +138,7 @@ object MapboxHelper {
             style.addLayer(symbolLayer("marker-label-layer", "marker-source") {
                 textField(get("name"))
                 textSize(11.0)
-                textColor(Expression.switchCase(isClosedExpr, literal(closedHexColor), literal(textHexColor)))
+                textColor(textHexColor)
                 textHaloWidth(1.5)
                 textOffset(listOf(0.0, 1.5))
                 textAnchor(TextAnchor.TOP)
