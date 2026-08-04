@@ -90,7 +90,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.43052, 9.16572, "Assago", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43131, 9.16685, "Assago", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.4317, 9.1672, "Assago", "M2"));
-        stations.add(new MetroStation("P.Za Abbiategrasso", 45.42984, 9.17838, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("Piazza Abbiategrasso", 45.42984, 9.17838, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.42979, 9.17633, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43016, 9.17427, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43151, 9.17171, "Abbiategrasso", "M2"));
@@ -291,8 +291,8 @@ public class StationDB {
         stations.add(new MetroStation("Portello", 45.4814, 9.15045, "Main", "M5"));
         stations.add(new MetroStation("Lotto", 45.47909, 9.14454, "Main", "M5"));
         stations.add(new MetroStation("Segesta", 45.47909, 9.13734, "Main", "M5"));
-        stations.add(new MetroStation("S. Siro Ippodromo", 45.47909, 9.12858, "Main", "M5"));
-        stations.add(new MetroStation("S. Siro Stadio", 45.47909, 9.11857, "Main", "M5"));
+        stations.add(new MetroStation("San Siro Ippodromo", 45.47909, 9.12858, "Main", "M5"));
+        stations.add(new MetroStation("San Siro Stadio", 45.47909, 9.11857, "Main", "M5"));
         return stations;
     }
 
