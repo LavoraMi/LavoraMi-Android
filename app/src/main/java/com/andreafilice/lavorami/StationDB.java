@@ -1345,6 +1345,7 @@ public class StationDB {
 
     public static List<MetroStation> getStationsS7() {
         List<MetroStation> stations = new ArrayList<>();
+        /* MODIFICHE CIRCOLAZIONE: La linea S7 non circola tra Milano Porta Garibaldi e Monza fino al 30 Agosto.
         stations.add(new MetroStation("Milano Porta Garibaldi", 45.48449, 9.18737, "Main", "S7"));
         stations.add(new MetroStation("NO_DRAW", 45.48375, 9.18921, "Main", "S7"));
         stations.add(new MetroStation("NO_DRAW", 45.48347, 9.19092, "Main", "S7"));
@@ -1381,7 +1382,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.56757, 9.26606, "Main", "S7"));
         stations.add(new MetroStation("NO_DRAW", 45.56854, 9.26685, "Main", "S7"));
         stations.add(new MetroStation("NO_DRAW", 45.57071, 9.26853, "Main", "S7"));
-        stations.add(new MetroStation("NO_DRAW", 45.57532, 9.27155, "Main", "S7"));
+        stations.add(new MetroStation("NO_DRAW", 45.57532, 9.27155, "Main", "S7"));*/
         stations.add(new MetroStation("Monza", 45.57797, 9.27289, "Main", "S7"));
         stations.add(new MetroStation("NO_DRAW", 45.57939, 9.27469, "Main", "S7"));
         stations.add(new MetroStation("NO_DRAW", 45.57979, 9.27518, "Main", "S7"));
