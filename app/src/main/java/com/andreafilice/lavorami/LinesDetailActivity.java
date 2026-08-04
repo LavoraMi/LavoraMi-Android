@@ -1356,7 +1356,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipGroup.setSelectionRequired(true);
 
         for (String branch : branches) {
-            Chip chip = new Chip(this);
+            Chip chip = new Chip(this, null, com.google.android.material.R.attr.chipStyle);
             chip.setEnsureMinTouchTargetSize(false);
             chip.setText(branch);
             chip.setCheckable(true);
@@ -1678,7 +1678,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         /// @PARAMETERS
         /// String name is the name of the line to display.
 
-        Chip chip = new Chip(this);
+        Chip chip = new Chip(this, null, com.google.android.material.R.attr.chipStyle);
         chip.setEnsureMinTouchTargetSize(false);
         chip.setText(name);
 

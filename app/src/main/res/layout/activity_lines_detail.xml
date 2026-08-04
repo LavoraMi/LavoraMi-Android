@@ -527,8 +527,8 @@
                 app:chipIcon="@drawable/ic_arrivals"
                 app:fontFamily="@font/font_main"
                 app:chipIconSize="18dp"
-                app:chipIconVisible="true"
                 app:ensureMinTouchTargetSize="false"
+                app:chipIconVisible="true"
                 android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
         <LinearLayout

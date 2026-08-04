@@ -242,7 +242,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     chip.setVisibility(View.VISIBLE);
                 }
                 else {
-                    chip = new Chip(ctx);
+                    chip = new Chip(ctx, null, com.google.android.material.R.attr.chipStyle);
                     chip.setEnsureMinTouchTargetSize(false);
                     float density = ctx.getResources().getDisplayMetrics().density;
                     int heightPx = (int) (26 * density);
