@@ -24637,7 +24637,7 @@ public class StationDB {
 
     public static List<InterchangeInfo> getInterchanges(Context context) {
         return Arrays.asList(
-            new InterchangeInfo("Rho Fiera-Milano", new String[]{"M1", "AV", "R21", "R23", "RE4", "RE5", "S5", "S6", "S11"}, "lightrail"),
+            new InterchangeInfo("Rho Fiera Milano", new String[]{"M1", "AV", "R21", "R23", "RE4", "RE5", "S5", "S6", "S11"}, "lightrail"),
             new InterchangeInfo("Lotto", new String[]{"M1", "M5"}, "tram.fill.tunnel"),
             new InterchangeInfo("Cadorna FN", new String[]{"M1", "M2", "R16", "R17", "R22", "R27", "RE1", "RE7", "S3", "S4", "MXP1"}, "lightrail"),
             new InterchangeInfo("Duomo", new String[]{"M1", "M3"}, "tram.fill.tunnel"),
