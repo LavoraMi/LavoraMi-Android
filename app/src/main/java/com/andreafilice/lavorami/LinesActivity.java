@@ -798,45 +798,6 @@ public class LinesActivity extends AppCompatActivity {
         }
     }
 
-    private void loadNativeAds() {
-        String adUnitId = getMetaData(this, "AdUnitID");
-
-        boolean isDebug = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
-        if (isDebug) adUnitId = "ca-app-pub-3940256099942544/2247696110";
-
-        if (adUnitId == null || adUnitId.isEmpty() || adUnitId.contains("${")) {
-            Log.e("ADMOB", "AdUnitID non configurato o non valido");
-            return;
-        }
-
-        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
-            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
-            .setRequestMultipleImages(false)
-            .setReturnUrlsForImageAssets(false)
-            .build();
-
-        loadAllAdsAtOnce(adUnitId, nativeAdOptions, 2);
-    }
-
-    private void loadAllAdsAtOnce(String adUnitId, NativeAdOptions options, int totalDesired) {
-        AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
-            .forNativeAd(nativeAd -> {
-                Log.d("ADMOB", "Ad caricata con successo!");
-                mNativeAds.add(nativeAd);
-                runOnUiThread(() -> addAdToContainer(nativeAd));
-            })
-            .withAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(LoadAdError adError) {
-                Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
-                }
-            })
-            .withNativeAdOptions(options)
-            .build();
-
-        adLoader.loadAds(new AdRequest.Builder().build(), totalDesired);
-    }
-
     private void addAdToContainer(NativeAd nativeAd) {
 
         NativeAdView adView = (NativeAdView) getLayoutInflater()
@@ -878,18 +839,91 @@ public class LinesActivity extends AppCompatActivity {
         containerAds.setVisibility(View.VISIBLE);
     }
 
+    private List<NativeAd> pendingNativeAds = new ArrayList<>();
+    private int pendingAdsExpected = 0;
+    private int pendingAdsReceived = 0;
+
     private void resetAndReloadAds() {
+        // Non tocchiamo ancora le ads vecchie: restano visibili finché le nuove non sono pronte
+        repositionAdsIfNeeded();
+
+        adsRequested = false;
+        pendingNativeAds.clear();
+        pendingAdsReceived = 0;
+        maybeLoadAds();
+    }
+
+    private void loadNativeAds() {
+        String adUnitId = getMetaData(this, "AdUnitID");
+
+        boolean isDebug = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+        if (isDebug) adUnitId = "ca-app-pub-3940256099942544/2247696110";
+
+        if (adUnitId == null || adUnitId.isEmpty() || adUnitId.contains("${")) {
+            Log.e("ADMOB", "AdUnitID non configurato o non valido");
+            return;
+        }
+
+        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
+                .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+                .setRequestMultipleImages(false)
+                .setReturnUrlsForImageAssets(false)
+                .build();
+
+        loadAllAdsAtOnce(adUnitId, nativeAdOptions, 2);
+    }
+
+    private void loadAllAdsAtOnce(String adUnitId, NativeAdOptions options, int totalDesired) {
+        pendingAdsExpected = totalDesired;
+        pendingAdsReceived = 0;
+        pendingNativeAds.clear();
+
+        AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
+                .forNativeAd(nativeAd -> {
+                    Log.d("ADMOB", "Ad caricata con successo!");
+                    pendingNativeAds.add(nativeAd);
+                    pendingAdsReceived++;
+
+                    if (pendingAdsReceived >= pendingAdsExpected) {
+                        runOnUiThread(this::swapInNewAds);
+                    }
+                })
+                .withAdListener(new AdListener() {
+                    @Override
+                    public void onAdFailedToLoad(LoadAdError adError) {
+                        Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
+                        pendingAdsReceived++;
+
+                        if (pendingAdsReceived >= pendingAdsExpected) {
+                            runOnUiThread(() -> {
+                                if (!pendingNativeAds.isEmpty()) {
+                                    swapInNewAds();
+                                }
+                            });
+                        }
+                    }
+                })
+                .withNativeAdOptions(options)
+                .build();
+
+        adLoader.loadAds(new AdRequest.Builder().build(), totalDesired);
+    }
+
+    private void swapInNewAds() {
         for (NativeAd ad : mNativeAds) if (ad != null) ad.destroy();
         mNativeAds.clear();
 
         if (containerAds != null) containerAds.removeAllViews();
-        titleAds.setVisibility(View.GONE);
-        containerAds.setVisibility(View.GONE);
 
-        repositionAdsIfNeeded();
+        mNativeAds.addAll(pendingNativeAds);
+        pendingNativeAds.clear();
 
-        adsRequested = false;
-        maybeLoadAds();
+        for (NativeAd ad : mNativeAds) {
+            addAdToContainer(ad);
+        }
+
+        titleAds.setVisibility(View.VISIBLE);
+        containerAds.setVisibility(View.VISIBLE);
     }
 
     private void repositionAdsIfNeeded() {
