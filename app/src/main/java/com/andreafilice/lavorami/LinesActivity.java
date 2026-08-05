@@ -844,7 +844,6 @@ public class LinesActivity extends AppCompatActivity {
     private int pendingAdsReceived = 0;
 
     private void resetAndReloadAds() {
-        // Non tocchiamo ancora le ads vecchie: restano visibili finché le nuove non sono pronte
         repositionAdsIfNeeded();
 
         adsRequested = false;
@@ -895,11 +894,7 @@ public class LinesActivity extends AppCompatActivity {
                         pendingAdsReceived++;
 
                         if (pendingAdsReceived >= pendingAdsExpected) {
-                            runOnUiThread(() -> {
-                                if (!pendingNativeAds.isEmpty()) {
-                                    swapInNewAds();
-                                }
-                            });
+                            runOnUiThread(() -> swapInNewAds());
                         }
                     }
                 })
@@ -910,20 +905,39 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void swapInNewAds() {
-        for (NativeAd ad : mNativeAds) if (ad != null) ad.destroy();
+
+        List<NativeAd> finalAds = new ArrayList<>(pendingNativeAds);
+
+        int missing = pendingAdsExpected - pendingNativeAds.size();
+        List<NativeAd> oldAdsToKeep = new ArrayList<>();
+        List<NativeAd> oldAdsToDestroy = new ArrayList<>();
+
+        for (int i = 0; i < mNativeAds.size(); i++) {
+            NativeAd oldAd = mNativeAds.get(i);
+            if (i < missing) {
+                oldAdsToKeep.add(oldAd);
+            } else {
+                oldAdsToDestroy.add(oldAd);
+            }
+        }
+
+        finalAds.addAll(oldAdsToKeep);
+
+        for (NativeAd ad : oldAdsToDestroy) if (ad != null) ad.destroy();
+
         mNativeAds.clear();
-
-        if (containerAds != null) containerAds.removeAllViews();
-
-        mNativeAds.addAll(pendingNativeAds);
+        mNativeAds.addAll(finalAds);
         pendingNativeAds.clear();
 
+        if (containerAds != null) containerAds.removeAllViews();
         for (NativeAd ad : mNativeAds) {
             addAdToContainer(ad);
         }
 
-        titleAds.setVisibility(View.VISIBLE);
-        containerAds.setVisibility(View.VISIBLE);
+        if (!mNativeAds.isEmpty()) {
+            titleAds.setVisibility(View.VISIBLE);
+            containerAds.setVisibility(View.VISIBLE);
+        }
     }
 
     private void repositionAdsIfNeeded() {
