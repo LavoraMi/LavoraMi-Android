@@ -851,9 +851,6 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void addAdToContainer(NativeAd nativeAd) {
-        /// Infla il layout della NativeAdView, popola i suoi elementi con i dati
-        /// della NativeAd e la aggiunge a groupAds. Mostra header + container
-        /// solo se c'è almeno una ad presente.
 
         NativeAdView adView = (NativeAdView) getLayoutInflater()
                 .inflate(R.layout.item_card_pubblicita_linee, containerAds, false);
@@ -917,19 +914,17 @@ public class LinesActivity extends AppCompatActivity {
 
         boolean shouldBeAfterRecent = recentLinesSet.size() >= 3;
 
-        // Rimuovi dalla posizione corrente (se presenti nel parent)
         parentScrollLayout.removeView(titleAds);
         parentScrollLayout.removeView(containerAds);
 
         if (shouldBeAfterRecent) {
-            // Inserisci subito dopo groupRecent (containerRecent) e prima di headerMetro
             int indexRecent = parentScrollLayout.indexOfChild(containerRecent);
             int insertIndex = indexRecent + 1;
 
             parentScrollLayout.addView(titleAds, insertIndex);
             parentScrollLayout.addView(containerAds, insertIndex + 1);
-        } else {
-            // Posizione originale: dopo groupMetro, prima di headerSuburbane
+        }
+        else {
             int indexMetro = parentScrollLayout.indexOfChild(containerMetro);
             int insertIndex = indexMetro + 1;
 
