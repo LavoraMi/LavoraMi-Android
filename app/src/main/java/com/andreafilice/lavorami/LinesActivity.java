@@ -67,8 +67,6 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout containerAds;
     LinearLayout titleAds;
     LinearLayout parentScrollLayout;
-
-    // AdMob / UMP
     private ConsentInformation consentInformation;
     private boolean mobileAdsInitialized = false;
     private boolean hasCompletedSetup = false;
@@ -173,22 +171,21 @@ public class LinesActivity extends AppCompatActivity {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient client = new OkHttpClient.Builder()
-                    .addInterceptor(logging)
-                    .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
-                    .build();
+                .addInterceptor(logging)
+                .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
+                .build();
 
             retrofitAPI = new Retrofit.Builder()
-                    .baseUrl(SupabaseURL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
-                    .build();
+                .baseUrl(SupabaseURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
 
             api = retrofitAPI.create(SupabaseAPI.class);
         }
         else
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
-        //MOBILE ADS
         MobileAds.initialize(this, initializationStatus -> {
             mobileAdsInitialized = true;
             maybeLoadAds();
@@ -401,9 +398,6 @@ public class LinesActivity extends AppCompatActivity {
 
         linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         reloadSavedLines();
-
-        reloadRecentLines();
-
         resetAndReloadAds();
 
         if(!searchLines.getText().toString().isEmpty()) {
@@ -704,8 +698,7 @@ public class LinesActivity extends AppCompatActivity {
                     row.setVisibility(View.VISIBLE);
                     trovatoAtLeastOne = true;
                 }
-                else
-                    row.setVisibility(View.GONE);
+                else row.setVisibility(View.GONE);
             }
         }
 
@@ -744,7 +737,6 @@ public class LinesActivity extends AppCompatActivity {
 
     private boolean isFirstVisibleContainer(boolean isContainerActive, boolean[] tracker) {
         /// This method fix the issue where EVERY LinearLayout is set to 0dp.
-
         if (!isContainerActive)  return false;
 
         if (!tracker[0]) {
@@ -799,8 +791,7 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void maybeLoadAds() {
-        if (mobileAdsInitialized && hasCompletedSetup && !adsRequested
-                && consentInformation != null && consentInformation.canRequestAds()) {
+        if (mobileAdsInitialized && hasCompletedSetup && !adsRequested && consentInformation != null && consentInformation.canRequestAds()) {
             adsRequested = true;
             loadNativeAds();
         }
@@ -818,29 +809,29 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
-                .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
-                .setRequestMultipleImages(false)
-                .setReturnUrlsForImageAssets(false)
-                .build();
+            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+            .setRequestMultipleImages(false)
+            .setReturnUrlsForImageAssets(false)
+            .build();
 
         loadAllAdsAtOnce(adUnitId, nativeAdOptions, 2);
     }
 
     private void loadAllAdsAtOnce(String adUnitId, NativeAdOptions options, int totalDesired) {
         AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
-                .forNativeAd(nativeAd -> {
-                    Log.d("ADMOB", "Ad caricata con successo!");
-                    mNativeAds.add(nativeAd);
-                    runOnUiThread(() -> addAdToContainer(nativeAd));
-                })
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(LoadAdError adError) {
-                        Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
-                    }
-                })
-                .withNativeAdOptions(options)
-                .build();
+            .forNativeAd(nativeAd -> {
+                Log.d("ADMOB", "Ad caricata con successo!");
+                mNativeAds.add(nativeAd);
+                runOnUiThread(() -> addAdToContainer(nativeAd));
+            })
+            .withAdListener(new AdListener() {
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
+                }
+            })
+            .withNativeAdOptions(options)
+            .build();
 
         adLoader.loadAds(new AdRequest.Builder().build(), totalDesired);
     }
@@ -862,28 +853,24 @@ public class LinesActivity extends AppCompatActivity {
             bodyView.setText(nativeAd.getBody());
             bodyView.setVisibility(View.VISIBLE);
             adView.setBodyView(bodyView);
-        } else {
-            bodyView.setVisibility(View.GONE);
         }
+        else bodyView.setVisibility(View.GONE);
 
         if (nativeAd.getCallToAction() != null) {
             ctaView.setText(nativeAd.getCallToAction());
             ctaView.setVisibility(View.VISIBLE);
             adView.setCallToActionView(ctaView);
-        } else {
-            ctaView.setVisibility(View.GONE);
         }
+        else ctaView.setVisibility(View.GONE);
 
         if (nativeAd.getIcon() != null) {
             iconView.setImageDrawable(nativeAd.getIcon().getDrawable());
             iconView.setVisibility(View.VISIBLE);
             adView.setIconView(iconView);
-        } else {
-            iconView.setVisibility(View.GONE);
         }
+        else iconView.setVisibility(View.GONE);
 
         adView.setNativeAd(nativeAd);
-
         containerAds.addView(adView);
 
         titleAds.setVisibility(View.VISIBLE);

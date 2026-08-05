@@ -294,9 +294,7 @@
                         android:textColor="@color/desc"
                         android:textSize="13sp"
                         android:fontFamily="@font/inter" />
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -309,7 +307,6 @@
                 android:showDividers="middle"
                 android:visibility="gone">
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/headerSuburbane"

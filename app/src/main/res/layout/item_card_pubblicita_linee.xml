@@ -80,9 +80,6 @@
                 android:textSize="12sp"
                 android:textColor="@color/text_primary"
                 android:textAllCaps="false" />
-
         </LinearLayout>
-
     </LinearLayout>
-
 </com.google.android.gms.ads.nativead.NativeAdView>
