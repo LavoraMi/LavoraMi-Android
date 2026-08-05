@@ -823,20 +823,15 @@ public class LinesActivity extends AppCompatActivity {
                 .setReturnUrlsForImageAssets(false)
                 .build();
 
-        loadAdsOneByOne(adUnitId, nativeAdOptions, 2);
+        loadAllAdsAtOnce(adUnitId, nativeAdOptions, 2);
     }
 
-    private void loadAdsOneByOne(String adUnitId, NativeAdOptions options, int totalDesired) {
-        if (mNativeAds.size() >= totalDesired) return;
-
+    private void loadAllAdsAtOnce(String adUnitId, NativeAdOptions options, int totalDesired) {
         AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
                 .forNativeAd(nativeAd -> {
                     Log.d("ADMOB", "Ad caricata con successo!");
                     mNativeAds.add(nativeAd);
                     runOnUiThread(() -> addAdToContainer(nativeAd));
-
-                    if (mNativeAds.size() < totalDesired)
-                        new Handler(Looper.getMainLooper()).postDelayed(() -> loadAdsOneByOne(adUnitId, options, totalDesired), 100);
                 })
                 .withAdListener(new AdListener() {
                     @Override
@@ -847,7 +842,7 @@ public class LinesActivity extends AppCompatActivity {
                 .withNativeAdOptions(options)
                 .build();
 
-        adLoader.loadAd(new AdRequest.Builder().build());
+        adLoader.loadAds(new AdRequest.Builder().build(), totalDesired);
     }
 
     private void addAdToContainer(NativeAd nativeAd) {
