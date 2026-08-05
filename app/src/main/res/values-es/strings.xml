@@ -436,4 +436,6 @@
     <string name="lineSuspendedMainText">LÍNEA TOTALMENTE SUSPENDIDA.</string>
     <string name="lineSuspendedPopUpTitle">Línea Totalmente Suspendida</string>
     <string name="lineSuspendedPopUpDeps">Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección «Obras» de la línea.</string>
+    <string name="supportLavoraMiTitle">Apoya a LavoraMi</string>
+    <string name="supportLavoraMiDeps">¡Ayúdanos a apoyar a LavoraMi!</string>
 </resources>

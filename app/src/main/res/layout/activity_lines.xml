@@ -281,7 +281,7 @@
                         android:id="@+id/subTitleAdstxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Supporta LavoraMi"
+                        android:text="@string/supportLavoraMiTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="20sp"
                         android:fontFamily="@font/font_main" />
@@ -290,7 +290,7 @@
                         android:id="@+id/subTitleAdsDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Supporta LavoraMi"
+                        android:text="@string/supportLavoraMiDeps"
                         android:textColor="@color/desc"
                         android:textSize="13sp"
                         android:fontFamily="@font/inter" />
