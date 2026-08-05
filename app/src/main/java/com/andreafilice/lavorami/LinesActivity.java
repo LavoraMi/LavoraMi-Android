@@ -398,6 +398,7 @@ public class LinesActivity extends AppCompatActivity {
 
         linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         reloadSavedLines();
+        reloadRecentLines();
         resetAndReloadAds();
 
         if(!searchLines.getText().toString().isEmpty()) {
