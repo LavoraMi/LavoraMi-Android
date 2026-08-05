@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,10 +34,22 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdOptions;
+import com.google.android.gms.ads.nativead.NativeAdView;
+import com.google.android.ump.ConsentInformation;
+import com.google.android.ump.ConsentRequestParameters;
+import com.google.android.ump.UserMessagingPlatform;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import okhttp3.OkHttpClient;
@@ -51,6 +64,16 @@ public class LinesActivity extends AppCompatActivity {
     TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
+    LinearLayout containerAds;
+    LinearLayout titleAds;
+    LinearLayout parentScrollLayout;
+
+    // AdMob / UMP
+    private ConsentInformation consentInformation;
+    private boolean mobileAdsInitialized = false;
+    private boolean hasCompletedSetup = false;
+    private boolean adsRequested = false;
+    private final List<NativeAd> mNativeAds = new ArrayList<>();
     boolean linesLoaded = false;
     boolean isRecentEmpty = false;
     private Set<String> recentLinesSet = new LinkedHashSet<>();
@@ -82,6 +105,7 @@ public class LinesActivity extends AppCompatActivity {
         containerRecent = findViewById(R.id.groupRecent);
         headerMetro = findViewById(R.id.headerMetro);
         containerMetro = findViewById(R.id.groupMetro);
+        containerAds = findViewById(R.id.groupAds);
         containerSub = findViewById(R.id.groupSub);
         containerRegioExpress = findViewById(R.id.groupRE);
         containerRegional = findViewById(R.id.groupR);
@@ -96,6 +120,7 @@ public class LinesActivity extends AppCompatActivity {
 
         titleRecent = findViewById(R.id.headerRecentSearch);
         titleMetro = findViewById(R.id.headerMetro);
+        titleAds = findViewById(R.id.headerAds);
         titleSub = findViewById(R.id.headerSuburbane);
         titleRegio = findViewById(R.id.headerRegioExpress);
         titleRegional = findViewById(R.id.headerRegional);
@@ -109,6 +134,8 @@ public class LinesActivity extends AppCompatActivity {
         titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
         tvNoResults = findViewById(R.id.emptyView);
 
+        parentScrollLayout = (LinearLayout) containerRecent.getParent();
+
         loadingLayout = findViewById(R.id.loadingLayout);
         loadingLayout.startShimmer();
 
@@ -116,7 +143,9 @@ public class LinesActivity extends AppCompatActivity {
             findViewById(R.id.main).postDelayed(() -> {
                 loadLines();
                 linesLoaded = true;
+                hasCompletedSetup = true;
                 findViewById(R.id.nestedLinesView).setVisibility(View.VISIBLE);
+                maybeLoadAds();
             }, 500);
         });
 
@@ -130,6 +159,7 @@ public class LinesActivity extends AppCompatActivity {
         });
 
         recentLinesSet = new LinkedHashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_RECENT_LINES, new LinkedHashSet<>()));
+        repositionAdsIfNeeded();
 
         sessionManager = new SessionManager(this);
 
@@ -157,6 +187,14 @@ public class LinesActivity extends AppCompatActivity {
         }
         else
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+
+        //MOBILE ADS
+        MobileAds.initialize(this, initializationStatus -> {
+            mobileAdsInitialized = true;
+            maybeLoadAds();
+        });
+
+        requestConsentInfoUpdate();
 
         //*WEBSITE LINKS
         /// In this section of the code, we set the default action (OnClick) of the ImageView
@@ -241,6 +279,10 @@ public class LinesActivity extends AppCompatActivity {
                     hasStav = filtraContainer(containerStav, query);
                     hasSTAR = filtraContainer(containerSTAR, query);
                     hasAuto = filtraContainer(containerAutoGuidovie, query);
+
+                    //*HIDE ADS
+                    titleAds.setVisibility(View.GONE);
+                    containerAds.setVisibility(View.GONE);
 
                     //*RECENT LINES
                     titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
@@ -362,6 +404,8 @@ public class LinesActivity extends AppCompatActivity {
 
         reloadRecentLines();
 
+        resetAndReloadAds();
+
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
@@ -429,6 +473,8 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         findViewById(R.id.emptyViewRecent).setVisibility((!isRecentEmpty) ? View.GONE : View.VISIBLE);
+
+        repositionAdsIfNeeded();
     }
 
     private void loadLines(){
@@ -734,6 +780,161 @@ public class LinesActivity extends AppCompatActivity {
                 @Override
                 public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
             });
+        }
+    }
+
+    private void requestConsentInfoUpdate() {
+        ConsentRequestParameters params = new ConsentRequestParameters.Builder().build();
+        consentInformation = UserMessagingPlatform.getConsentInformation(this);
+
+        consentInformation.requestConsentInfoUpdate(this, params, () -> {
+            UserMessagingPlatform.loadAndShowConsentFormIfRequired(this, formError -> {
+                if (formError != null) Log.e("UMP", formError.getMessage());
+                maybeLoadAds();
+            });
+        }, formError -> {
+            Log.e("UMP", formError.getMessage());
+            maybeLoadAds();
+        });
+    }
+
+    private void maybeLoadAds() {
+        if (mobileAdsInitialized && hasCompletedSetup && !adsRequested
+                && consentInformation != null && consentInformation.canRequestAds()) {
+            adsRequested = true;
+            loadNativeAds();
+        }
+    }
+
+    private void loadNativeAds() {
+        String adUnitId = getMetaData(this, "AdUnitID");
+
+        boolean isDebug = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+        if (isDebug) adUnitId = "ca-app-pub-3940256099942544/2247696110";
+
+        if (adUnitId == null || adUnitId.isEmpty() || adUnitId.contains("${")) {
+            Log.e("ADMOB", "AdUnitID non configurato o non valido");
+            return;
+        }
+
+        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
+                .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+                .setRequestMultipleImages(false)
+                .setReturnUrlsForImageAssets(false)
+                .build();
+
+        loadAdsOneByOne(adUnitId, nativeAdOptions, 2);
+    }
+
+    private void loadAdsOneByOne(String adUnitId, NativeAdOptions options, int totalDesired) {
+        if (mNativeAds.size() >= totalDesired) return;
+
+        AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
+                .forNativeAd(nativeAd -> {
+                    Log.d("ADMOB", "Ad caricata con successo!");
+                    mNativeAds.add(nativeAd);
+                    runOnUiThread(() -> addAdToContainer(nativeAd));
+
+                    if (mNativeAds.size() < totalDesired)
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> loadAdsOneByOne(adUnitId, options, totalDesired), 100);
+                })
+                .withAdListener(new AdListener() {
+                    @Override
+                    public void onAdFailedToLoad(LoadAdError adError) {
+                        Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
+                    }
+                })
+                .withNativeAdOptions(options)
+                .build();
+
+        adLoader.loadAd(new AdRequest.Builder().build());
+    }
+
+    private void addAdToContainer(NativeAd nativeAd) {
+        /// Infla il layout della NativeAdView, popola i suoi elementi con i dati
+        /// della NativeAd e la aggiunge a groupAds. Mostra header + container
+        /// solo se c'è almeno una ad presente.
+
+        NativeAdView adView = (NativeAdView) getLayoutInflater()
+                .inflate(R.layout.item_card_pubblicita_linee, containerAds, false);
+
+        ImageView iconView = adView.findViewById(R.id.ad_app_icon);
+        TextView headlineView = adView.findViewById(R.id.ad_headline);
+        TextView bodyView = adView.findViewById(R.id.ad_body);
+        Button ctaView = adView.findViewById(R.id.ad_call_to_action);
+
+        headlineView.setText(nativeAd.getHeadline());
+        adView.setHeadlineView(headlineView);
+
+        if (nativeAd.getBody() != null) {
+            bodyView.setText(nativeAd.getBody());
+            bodyView.setVisibility(View.VISIBLE);
+            adView.setBodyView(bodyView);
+        } else {
+            bodyView.setVisibility(View.GONE);
+        }
+
+        if (nativeAd.getCallToAction() != null) {
+            ctaView.setText(nativeAd.getCallToAction());
+            ctaView.setVisibility(View.VISIBLE);
+            adView.setCallToActionView(ctaView);
+        } else {
+            ctaView.setVisibility(View.GONE);
+        }
+
+        if (nativeAd.getIcon() != null) {
+            iconView.setImageDrawable(nativeAd.getIcon().getDrawable());
+            iconView.setVisibility(View.VISIBLE);
+            adView.setIconView(iconView);
+        } else {
+            iconView.setVisibility(View.GONE);
+        }
+
+        adView.setNativeAd(nativeAd);
+
+        containerAds.addView(adView);
+
+        titleAds.setVisibility(View.VISIBLE);
+        containerAds.setVisibility(View.VISIBLE);
+    }
+
+    private void resetAndReloadAds() {
+        for (NativeAd ad : mNativeAds) if (ad != null) ad.destroy();
+        mNativeAds.clear();
+
+        if (containerAds != null) containerAds.removeAllViews();
+        titleAds.setVisibility(View.GONE);
+        containerAds.setVisibility(View.GONE);
+
+        repositionAdsIfNeeded();
+
+        adsRequested = false;
+        maybeLoadAds();
+    }
+
+    private void repositionAdsIfNeeded() {
+        if (titleAds == null || containerAds == null || parentScrollLayout == null) return;
+
+        boolean shouldBeAfterRecent = recentLinesSet.size() >= 3;
+
+        // Rimuovi dalla posizione corrente (se presenti nel parent)
+        parentScrollLayout.removeView(titleAds);
+        parentScrollLayout.removeView(containerAds);
+
+        if (shouldBeAfterRecent) {
+            // Inserisci subito dopo groupRecent (containerRecent) e prima di headerMetro
+            int indexRecent = parentScrollLayout.indexOfChild(containerRecent);
+            int insertIndex = indexRecent + 1;
+
+            parentScrollLayout.addView(titleAds, insertIndex);
+            parentScrollLayout.addView(containerAds, insertIndex + 1);
+        } else {
+            // Posizione originale: dopo groupMetro, prima di headerSuburbane
+            int indexMetro = parentScrollLayout.indexOfChild(containerMetro);
+            int insertIndex = indexMetro + 1;
+
+            parentScrollLayout.addView(titleAds, insertIndex);
+            parentScrollLayout.addView(containerAds, insertIndex + 1);
         }
     }
 }
