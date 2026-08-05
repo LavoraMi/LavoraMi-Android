@@ -21285,6 +21285,56 @@ public class StationDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram14() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Cimitero Maggiore", 45.50312, 9.12139, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Giorgini", 45.50246, 9.12398, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Cormons", 45.5014, 9.12632, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Gradisca", 45.49976, 9.12992, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Tibullo", 45.49795, 9.1339, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Giannini", 45.49636, 9.13743, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Casella", 45.49437, 9.1418, "Main", "14"));
+        stations.add(new MetroStation("P.Le Accursio", 45.49313, 9.14454, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa Via Grosotto", 45.4918, 9.14746, "Main", "14"));
+        stations.add(new MetroStation("V.Le Certosa V.Le Serra", 45.49017, 9.15106, "Main", "14"));
+        stations.add(new MetroStation("P.Za Firenze", 45.48786, 9.15745, "Main", "14"));
+        stations.add(new MetroStation("P.Za Caneva", 45.48775, 9.16139, "Main", "14"));
+        stations.add(new MetroStation("P.Za Diocleziano", 45.48765, 9.1652, "Main", "14"));
+        stations.add(new MetroStation("Via Cenisio Via Induno", 45.48757, 9.16828, "Main", "14"));
+        stations.add(new MetroStation("Cenisio M5", 45.48743, 9.17325, "Main", "14"));
+        stations.add(new MetroStation("P.Le Cim. Monumentale Via Bramante", 45.48367, 9.1778, "Main", "14"));
+        stations.add(new MetroStation("Via Bramante Via Sarpi", 45.48176, 9.17892, "Main", "14"));
+        stations.add(new MetroStation("P.Za Lega Lombarda", 45.47799, 9.18046, "Main", "14"));
+        stations.add(new MetroStation("Arena", 45.47546, 9.18145, "Main", "14"));
+        stations.add(new MetroStation("Lanza M2", 45.47213, 9.18198, "Main", "14"));
+        stations.add(new MetroStation("Via Cusani", 45.46944, 9.18521, "Main", "14"));
+        stations.add(new MetroStation("Cordusio M1", 45.46627, 9.18618, "Main", "14"));
+        stations.add(new MetroStation("Duomo M1 M3", 45.46331, 9.18774, "Main", "14"));
+        stations.add(new MetroStation("Via Torino Via Palla", 45.46163, 9.1856, "Main", "14"));
+        stations.add(new MetroStation("Via Torino Via S. Maria Valle", 45.46076, 9.18335, "Main", "14"));
+        stations.add(new MetroStation("Carrobbio", 45.45973, 9.17987, "Main", "14"));
+        stations.add(new MetroStation("De Amicis M4", 45.45797, 9.17659, "Main", "14"));
+        stations.add(new MetroStation("P.Le Cantore", 45.45549, 9.17199, "Main", "14"));
+        stations.add(new MetroStation("V.Le Coni Zugna Via Solari", 45.45706, 9.16864, "Main", "14"));
+        stations.add(new MetroStation("Via Montevideo", 45.45624, 9.16586, "Main", "14"));
+        stations.add(new MetroStation("P.Za Del Rosario", 45.45525, 9.16279, "Main", "14"));
+        stations.add(new MetroStation("Via Solari Via Stendhal", 45.45413, 9.15935, "Main", "14"));
+        stations.add(new MetroStation("P.Za Napoli", 45.45216, 9.15326, "Main", "14"));
+        stations.add(new MetroStation("Via Giambellino Via Tolstoj", 45.45148, 9.15118, "Main", "14"));
+        stations.add(new MetroStation("Via Giambellino Via Vignoli", 45.45046, 9.14799, "Main", "14"));
+        stations.add(new MetroStation("Via Brunelleschi", 45.44933, 9.14448, "Main", "14"));
+        stations.add(new MetroStation("Via Giambellino Via Curio Dentato", 45.4487, 9.14253, "Main", "14"));
+        stations.add(new MetroStation("L.Go Gelsomini L.Go Giambellino", 45.44763, 9.13923, "Main", "14"));
+        stations.add(new MetroStation("Via Giambellino Via Odazio", 45.44634, 9.13523, "Main", "14"));
+        stations.add(new MetroStation("Via Giambellino Via Sanniti", 45.44537, 9.13224, "Main", "14"));
+        stations.add(new MetroStation("San Cristoforo", 45.44472, 9.13023, "Main", "14"));
+        stations.add(new MetroStation("Via Gonin Via Giordani", 45.44274, 9.1241, "Main", "14"));
+        stations.add(new MetroStation("Via Gonin Via M Di Lorenteggio", 45.441, 9.11871, "Main", "14"));
+        stations.add(new MetroStation("Lorenteggio", 45.44193, 9.11719, "Main", "14"));
+
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram15() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Rozzano Via G. Rossa", 45.37693, 9.15001, "Main", "15"));
@@ -25797,6 +25847,7 @@ public class StationDB {
             allStations.addAll(getStationsTram7());
             allStations.addAll(getStationsTram9());
             allStations.addAll(getStationsTram10());
+            allStations.addAll(getStationsTram14());
             allStations.addAll(getStationsTram15());
             allStations.addAll(getStationsTram16());
             allStations.addAll(getStationsTram19());
