@@ -179,7 +179,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         if (nomeLinea == null) nomeLinea = "M1";
-        if (tipoDiLinea == null) tipoDiLinea = "Metro " + nomeLinea; // fallback difensivo: evita NPE sui .contains() successivi
+        if (tipoDiLinea == null) tipoDiLinea = "Metro " + nomeLinea;
         if ((tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z")&& !(busLinesWithMap.contains(nomeLinea)))){ // && !(busLinesWithMap.contains(nomeLinea))
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
@@ -684,7 +684,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         positionButton.setImageTintList(ColorStateList.valueOf(coloreLinea));
         positionButton.setOnClickListener(v -> positionButtonClick());
 
-        ///in this section we change the routes only in bus lines with map
+        ///In this section we change the routes only in bus lines with map
         txtDirezioneMappa = findViewById(R.id.txtDirezioneMappa);
         ImageButton changeRouteButton = findViewById(R.id.changeRouteButton);
 
@@ -1024,7 +1024,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (container == null || wrapper == null) return;
 
         String searchTag = nomeLinea.matches("9[0-3]") ? "FILOBUS " + nomeLinea.trim() : nomeLinea.trim().toUpperCase();
-
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "🇮🇹 Italiano");
         String langCode = savedLang.contains("English") ? "en" : (savedLang.contains("Spanish") ? "es" : "it");
 
@@ -1429,9 +1428,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void dismissActiveBranchDialog() {
-        if (activeBranchDialog != null && activeBranchDialog.isShowing()) {
-            activeBranchDialog.dismiss();
-        }
+        if (activeBranchDialog != null && activeBranchDialog.isShowing()) activeBranchDialog.dismiss();
         activeBranchDialog = null;
     }
 
@@ -1442,10 +1439,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             List<InterchangeInfo> mainItems = new ArrayList<>();
 
             for (InterchangeInfo info : allMatched) {
-                if ("Main".equals(info.getBranch()))
-                    mainItems.add(info);
-                else
-                    branchMap.computeIfAbsent(info.getBranch(), k -> new ArrayList<>()).add(info);
+                if ("Main".equals(info.getBranch())) mainItems.add(info);
+                else branchMap.computeIfAbsent(info.getBranch(), k -> new ArrayList<>()).add(info);
             }
 
             Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
@@ -1533,8 +1528,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 TextView txtStationSub = card.findViewById(R.id.txtStationSubtitle);
 
                 if (txtStationSub != null) txtStationSub.setText(evento.getKey());
-                if (titolo != null)
-                    titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
+                if (titolo != null) titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
                 if (desc != null) desc.setText(nomeLinea);
 
                 ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
@@ -2326,12 +2320,12 @@ public class LinesDetailActivity extends AppCompatActivity {
             changeBounds.addListener(new TransitionListenerAdapter() {
                 @Override
                 public void onTransitionEnd(Transition transition) {
-                    isChipTransitioning = false;
+                isChipTransitioning = false;
 
-                    if (pendingChipUpdate) {
-                        pendingChipUpdate = false;
-                        updateChipGroupSizes(chipGroup);
-                    }
+                if (pendingChipUpdate) {
+                    pendingChipUpdate = false;
+                    updateChipGroupSizes(chipGroup);
+                }
                 }
             });
 
