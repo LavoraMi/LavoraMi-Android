@@ -29,3 +29,4 @@ app/google-services.json
 .idea/planningMode.xml
 .kotlin
 .idea/studiobot.xml
+.idea/appInsightsSettings.xml
