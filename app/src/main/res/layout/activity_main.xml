@@ -644,7 +644,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="30dp"
             android:fontFamily="@font/font_main"
+            android:gravity="center"
+            android:textAlignment="center"
             android:text="@string/downloadDataError"
             android:textColor="@color/text_primary"
             android:textSize="20sp" />
