@@ -4,7 +4,7 @@
     <string name="settings">Impostazioni</string>
     <string name="general">Generali</string>
     <string name="lines">Linee</string>
-    <string name="disclaimer_text">LavoraMi è un\'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati. Tutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche al solo scopo di migliorarne la comprensione ed a puro scopo informativo. Non si fornisce alcuna garanzia, esplicita o implicita, riguardo l\'accuratezza, la completezza, l\'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell\'ultimo minuto.  L\'uso dell\'applicazione è interamente a proprio rischio. Lo sviluppatore declina ogni responsabilità per eventuali inesattezze, ritardi, mancati servizi, danni diretti o indiretti derivanti dall\'affidamento sulle informazioni fornite da questa app.  Per le decisioni di viaggio critiche, si raccomanda di fare sempre riferimento ai canali ufficiali, agli annunci sonori e alla segnaletica presente in stazione.  Tutti i marchi, i loghi e i nomi commerciali citati appartengono ai legittimi proprietari.</string>
+    <string name="disclaimer_text">LavoraMi è un\'applicazione indipendente sviluppata da terze parti e NON è in alcun modo affiliata, supportata, autorizzata o sponsorizzata da ATM S.p.A., Trenord S.r.l., Gruppo FNM, RFI o altri enti di trasporto citati. Tutti i dati visualizzati in questa applicazione (orari, stati del servizio, avvisi) sono raccolti da fonti pubbliche al solo scopo di migliorarne la comprensione e a puro scopo informativo. Non si fornisce alcuna garanzia, esplicita o implicita, riguardo l\'accuratezza, la completezza, l\'affidabilità o la tempestività delle informazioni fornite. Le informazioni potrebbero non riflettere variazioni dell\'ultimo minuto. L\'uso dell\'applicazione è interamente a proprio rischio. Lo sviluppatore declina ogni responsabilità per eventuali inesattezze, ritardi, mancati servizi, danni diretti o indiretti derivanti dall\'affidamento sulle informazioni fornite da questa app. Per le decisioni di viaggio critiche, si raccomanda di fare sempre riferimento ai canali ufficiali, agli annunci sonori e alla segnaletica presente in stazione.  Tutti i marchi, i loghi e i nomi commerciali citati appartengono ai legittimi proprietari.</string>
     <string name="fonti_dati">Fonti Dati</string>
     <string name="schermoBloccatoAccount">Schermo Bloccato</string>
     <string name="scannerizzaImpronta">Scannerizza l\'impronta o il viso per continuare</string>
@@ -90,7 +90,7 @@
     <string name="waitingTimeLinesDetails">TEMPO DI ATTESA:</string>
     <string name="interchangeStopLinesDetails">FERMATA DI INTERSCAMBIO:</string>
     <string name="noInterchangeStationTitle">Nessuna fermata di interscambio.</string>
-    <string name="onlyOnWorkingDaysTitle">LA LINEA É ATTIVA SOLO NEI GIORNI LAVORATIVI.</string>
+    <string name="onlyOnWorkingDaysTitle">LA LINEA È ATTIVA SOLO NEI GIORNI LAVORATIVI.</string>
     <string name="worksLineDetails">LAVORI SULLA LINEA:</string>
     <string name="mapChip">Mappa</string>
     <string name="lineWorksChip">Lavori</string>
@@ -117,7 +117,7 @@
     <string name="androidDeveloper">Sviluppatori Android:</string>
     <string name="webDeveloper">Sviluppatori Web:</string>
     <string name="support">Supportaci</string>
-    <string name="supportText">Se ti piace LavoraMi e vuoi tenerla priva di pubblicità, puoi aiutarci facendoci una donazioni tramite Patreon o Buy Me A Coffee!</string>
+    <string name="supportText">Se ti piace LavoraMi, puoi aiutarci facendo una donazione tramite Patreon o Buy Me A Coffee!</string>
     <string name="parteonSupport">Supportaci su Patreon</string>
     <string name="buyACoffeSupport">Supportaci su Buy Me A Coffee</string>
     <string name="followOn">Seguici su:</string>
@@ -147,7 +147,7 @@
     <string name="notificationScheduled">Orario Notifiche</string>
     <string name="notificationTimeDeps">Modifica l\'orario di arrivo delle notifiche.</string>
     <string name="bugIntentSubject">Segnalazione bug LavoraMi su Android</string>
-    <string name="bugIntentBody">INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG): ID Telefono: %s, nVersione Android: %s, Modello e manufacture: %s, %s, Versione Applicazione: %s</string>
+    <string name="bugIntentBody">INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG): ID Telefono: %s, Versione Android: %s, Modello e manufacture: %s, %s, Versione Applicazione: %s</string>
     <string name="helpTitle">Aiuto</string>
     <string name="requestDataTitle">Richiedi i tuoi Dati</string>
     <string name="requestDataDeps">Invia una richiesta al nostro Team per scaricare i tuoi dati.</string>
@@ -274,7 +274,7 @@
     <string name="confirmOptionalDownload">Conferma Download</string>
     <string name="downloadAssets">Download degli elementi necessari...</string>
     <string name="errorTranslating">Si è verificato un errore durante la traduzione.</string>
-    <string name="choseYourLineText">Salva fra i preferiti la linea che usi ogni giorno così da vederla subito nella sezione \"Le tue linee\"  e, quando ci sarà un lavoro su di essa, sarai già aggiornato.</string>
+    <string name="choseYourLineText">Salva fra i preferiti la linea che usi ogni giorno così da vederla subito nella sezione \"Le tue linee\" e, quando ci sarà un lavoro su di essa, sarai già aggiornato.</string>
     <string name="viewInterchanges">Interscambi</string>
     <string name="viewInterchangesText">Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio.</string>
     <string name="worksiteStop">Fermata Cantiere</string>
@@ -315,7 +315,7 @@
     <string name="noLinesSearched">Nessuna linea cercata di recente.</string>
     <string name="directionTitleArrivals">"DIREZIONE: "</string>
     <string name="showRecentLinesTitle">Mostra Ricerche Recenti</string>
-    <string name="showRecentLinesDeps">Mostra le tue ricerche recenti in alto nella pagine delle Linee.</string>
+    <string name="showRecentLinesDeps">Mostra le tue ricerche recenti in alto nella pagina delle Linee.</string>
     <string name="setupAccessibilityTitle">Accessibile, sempre.</string>
     <string name="setupDepsAccessiblity">Guarda se una linea è completamente, parzialmente o per nulla accessibile. Tutto a colpo d\'occhio.</string>
     <string name="hourPrefix">ora</string>
@@ -326,7 +326,7 @@
     <string name="regioExpressLines">Linee Regio Express</string>
     <string name="deviationInfoTitle">Mappe</string>
     <string name="deviationInfoDeps">Informazioni sulle mappe</string>
-    <string name="deviationInfoDeps2">LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poichè sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\"!</string>
+    <string name="deviationInfoDeps2">LavoraMi potrebbe non mostrare il percorso attuale di questa linea, poiché sono in corso deviazioni, interruzioni di tratte del percorso o di stazioni non accessibili. Consultate gli avvisi nella sezione \"Lavori Linea\"!</string>
     <string name="deviationInfoDeps3">LavoraMi prende queste informazioni da fonti autorevoli e affidabili, le eventuali deviazioni di percorso sono indicate nei lavori qui sotto mostrati, potete prendere le eventuali soluzioni di viaggio nell\'apposita sezione.</string>
     <string name="onBoardPersonal">Affidati al personale di bordo</string>
     <string name="onBoardPersonalDeps">Se il tragitto del tuo treno continua attraverso un bus sostitutivo, il personale di bordo ti darà tutte le informazioni necessarie per continuare il tuo viaggio in tranquillità.</string>
@@ -334,7 +334,7 @@
     <string name="seeWorksDeps">La mappa contiene il percorso originale della tratta, guarda le deviazioni di essa nella sezione: \"Lavori Linea\"!</string>
     <string name="incorrectDetails">Segnala eventuali incorrettezze</string>
     <string name="incorrectDetailsDeps">Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!</string>
-    <string name="deviationMapTxt">QUESTA LINEA É SOGGETTA A DEVIAZIONI.</string>
+    <string name="deviationMapTxt">QUESTA LINEA È SOGGETTA A DEVIAZIONI.</string>
     <string name="notShowAnymore">Non mostrare più</string>
     <string name="tutorialTitle">Come posso mettere una linea nei preferiti?</string>
     <string name="tutorialExplanation1">Troverai tutte le linee premendo sull\'icona:</string>
@@ -347,7 +347,7 @@
     <string name="updateNow">Aggiorna ora</string>
     <string name="starLines">Linee STAR</string>
     <string name="choseOperator">Scegli le tue linee</string>
-    <string name="choseOperatorText">Scegli i tuoi operatori di transporti più usati nelle impostazioni e, aggiungendoli ai preferiti, riceverai subito i lavori di quell\'operatore.</string>
+    <string name="choseOperatorText">Scegli i tuoi operatori di trasporti più usati nelle impostazioni e, aggiungendoli ai preferiti, riceverai subito i lavori di quell\'operatore.</string>
     <string name="feedbackText">Attiva Feedback Vibrazione</string>
     <string name="feedbackTextDeps">Attiva i Feedback di vibrazione su alcune schermate o pulsanti.</string>
     <string name="spanishLanguage">Spagnolo</string>
@@ -388,7 +388,7 @@
     <string name="infoMapsText">Info sulle Mappe</string>
     <string name="mainDeveloperText">Sviluppatore Principale:</string>
     <string name="trackInterruptedInfo">INTERRUZIONI SULLA LINEA PER LAVORI.</string>
-    <string name="noRoutesDeps">Per oggi non c\'è nessuna corsa programmata per questa fermata, prova a sceglierne un altra.</string>
+    <string name="noRoutesDeps">Per oggi non c\'è nessuna corsa programmata per questa fermata, prova a sceglierne un\'altra.</string>
     <string name="openLinkMainText">Apri link:</string>
     <string name="inAppText">In App</string>
     <string name="openLinkDepsText">Seleziona la modalità in cui aprire i link.</string>
