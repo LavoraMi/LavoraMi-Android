@@ -1339,7 +1339,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         TextView title = new TextView(this);
         title.setText(getString(R.string.selectBranch));
         title.setTextSize(18);
-        title.setTypeface(cachedFontMainTypeface, Typeface.BOLD);
+        title.setTypeface(ResourcesCompat.getFont(this, R.font.font_main), Typeface.BOLD);
         title.setTextColor(ContextCompat.getColor(this, R.color.text_primary));
 
         LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
