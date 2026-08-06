@@ -149,8 +149,8 @@
 
                 <ImageView
                     android:id="@+id/infoFavouriteLines"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
                     android:src="@drawable/ic_info"
                     android:layout_marginStart="10dp"
                     app:tint="@color/subtitle"/>
