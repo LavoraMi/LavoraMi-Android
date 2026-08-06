@@ -24869,7 +24869,6 @@ public class StationDB {
         //preso da 601
         stations.add(new MetroStation("Legnano, Tosi fr. 3", 45.59584, 8.91885, "Ritorno", "z612"));
         stations.add(new MetroStation("Legnano, Tosi 3", 45.59570, 8.91908, "Main", "z612"));
-        //rotonda della muetrte andata
         stations.add(new MetroStation("NO_DRAW", 45.596, 8.91874, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.5963, 8.91853, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59665, 8.91845, "Main", "z612"));
@@ -24884,7 +24883,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.59675, 8.91828, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.5963, 8.91853, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.596, 8.91874, "Main", "z612"));
-        //fine rotonda della muerte andata
         stations.add(new MetroStation("NO_DRAW", 45.59562, 8.91905, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59535, 8.91947, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59529, 8.91948, "Main", "z612"));
@@ -24906,6 +24904,30 @@ public class StationDB {
         stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Main", "z612"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z612"));
         stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59478, 8.92877, "Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Grigna,Ospedale", 45.59303, 8.92716, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59232, 8.92653, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59279, 8.92561, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.5936, 8.92479, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59371, 8.92465, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59374, 8.92456, "Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Milano/S.Caterina", 45.59373, 8.92432, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59366, 8.92247, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59363, 8.92198, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.5933, 8.92093, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59238, 8.92054, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59211, 8.92053, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59206, 8.92056, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59201, 8.92053, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59195, 8.92051, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59095, 8.92047, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59028, 8.92098, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59016, 8.92103, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.58994, 8.921, "Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Montenevoso/Berchet", 45.59021, 8.92225, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59099, 8.92546, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59184, 8.92754, "Ritorno", "z612"));
+        stations.add(new MetroStation("NO_DRAW", 45.59447, 8.92978, "Ritorno", "z612"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59354, 8.933, "Main - Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59351, 8.9333, "Main - Ritorno", "z612"));
