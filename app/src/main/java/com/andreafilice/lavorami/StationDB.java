@@ -3018,16 +3018,16 @@ public class StationDB {
     public static List<MetroStation> getStationsR1() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Brescia", 45.53252, 10.21297, "Main", "R1"));
-        stations.add(new MetroStation("Ospitaletto Travagliato", 45.54615, 10.07437, "Main", "R1"));
-        stations.add(new MetroStation("Rovato", 45.5523, 10.00101, "Main", "R1"));
-        stations.add(new MetroStation("Coccaglio", 45.56109, 9.97769, "Main", "R1"));
-        stations.add(new MetroStation("Cologne", 45.57669, 9.93554, "Main", "R1"));
-        stations.add(new MetroStation("Palazzolo Sull'Oglio", 45.60238, 9.89489, "Main", "R1"));
-        stations.add(new MetroStation("Grumello Del Monte", 45.63416, 9.86293, "Main", "R1"));
-        stations.add(new MetroStation("Chiuduno", 45.65056, 9.84695, "Main", "R1"));
-        stations.add(new MetroStation("Montello Gorlago", 45.67028, 9.80867, "Main", "R1"));
-        stations.add(new MetroStation("Albano San Alessandro", 45.683, 9.76759, "Main", "R1"));
-        stations.add(new MetroStation("Seriate", 45.68326, 9.72462, "Main", "R1"));
+        stations.add(new MetroStation("Ospitaletto Travagliato", 45.54603, 10.07437, "Main", "R1"));
+        stations.add(new MetroStation("Rovato", 45.55213, 10.00102, "Main", "R1"));
+        stations.add(new MetroStation("Coccaglio", 45.56096, 9.97759, "Main", "R1"));
+        stations.add(new MetroStation("Cologne", 45.57657, 9.93545, "Main", "R1"));
+        stations.add(new MetroStation("Palazzolo Sull'Oglio", 45.6024, 9.89507, "Main", "R1"));
+        stations.add(new MetroStation("Grumello Del Monte", 45.63414, 9.86276, "Main", "R1"));
+        stations.add(new MetroStation("Chiuduno", 45.6505, 9.84681, "Main", "R1"));
+        stations.add(new MetroStation("Montello Gorlago", 45.67018, 9.80847, "Main", "R1"));
+        stations.add(new MetroStation("Albano San Alessandro", 45.68286, 9.76752, "Main", "R1"));
+        stations.add(new MetroStation("Seriate", 45.68316, 9.72466, "Main", "R1"));
         stations.add(new MetroStation("Bergamo", 45.69043, 9.67504, "Main", "R1"));
         return stations;
     }
