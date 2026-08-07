@@ -200,7 +200,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "JUnit",
-                        "6.1.2",
+                        "6.1.3",
                         "Eclipse Public License 1.0",
                         "Copyright (c) 2000-2021 JUnit contributors",
                         "This program and the accompanying materials are made available under the\n" +
@@ -209,7 +209,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Mapbox Maps SDK for Android",
-                        "11.27.1",
+                        "11.28.0",
                         "Mapbox Terms of Service",
                         "Copyright (c) Mapbox",
                         "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
