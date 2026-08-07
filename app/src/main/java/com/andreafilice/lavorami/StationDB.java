@@ -17364,7 +17364,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.86574, 8.97455, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 45.86629, 8.97524, "Main", "S50"));
         stations.add(new MetroStation("Mendrisio", 45.8691, 8.97878, "Main", "S50"));
-        /* MODIFICHE CIRCOLAZIONE: La linea S50 è sospesa tra Biasca e Mendrisio. Dal 27 al 31 e dal 3 al 7
         stations.add(new MetroStation("NO_DRAW", 45.87217, 8.98214, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 45.87298, 8.9827, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 45.87399, 8.983, "Main", "S50"));
@@ -17925,13 +17924,12 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.34592, 8.97628, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 46.34609, 8.97628, "Main", "S50"));
         stations.add(new MetroStation("NO_DRAW", 46.3464, 8.97619, "Main", "S50"));
-        stations.add(new MetroStation("Biasca", 46.35198, 8.97416, "Main", "S50"));*/
+        stations.add(new MetroStation("Biasca", 46.35198, 8.97416, "Main", "S50"));
         return stations;
     }
 
     public static List<MetroStation> getStationsS90() {
         List<MetroStation> stations = new ArrayList<>();
-        /* MODIFICHE CIRCOLAZIONE: Dal 27 luglio al 31 luglio e dal 3 al 7 agosto, interruzione tra Mendrisio e Lugano
         stations.add(new MetroStation("Mendrisio", 45.8691, 8.97878, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 45.87217, 8.98214, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 45.87298, 8.9827, "Main", "S90"));
@@ -18104,7 +18102,7 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 46.00177, 8.94748, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00225, 8.9475, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00264, 8.94743, "Main", "S90"));
-        stations.add(new MetroStation("NO_DRAW", 46.00409, 8.94705, "Main", "S90"));*/
+        stations.add(new MetroStation("NO_DRAW", 46.00409, 8.94705, "Main", "S90"));
         stations.add(new MetroStation("Lugano", 46.00501, 8.94695, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00636, 8.94638, "Main", "S90"));
         stations.add(new MetroStation("NO_DRAW", 46.00814, 8.94576, "Main", "S90"));
