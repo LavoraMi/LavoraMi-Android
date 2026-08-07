@@ -69,8 +69,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:textColor="@color/text_primary"/>
-
+                android:textColor="@color/White"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </com.google.android.gms.ads.nativead.NativeAdView>

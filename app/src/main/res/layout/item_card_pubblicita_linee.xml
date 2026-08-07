@@ -78,7 +78,7 @@
                 android:paddingBottom="6dp"
                 android:backgroundTint="@color/redMetro"
                 android:textSize="12sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/White"
                 android:textAllCaps="false" />
         </LinearLayout>
     </LinearLayout>
