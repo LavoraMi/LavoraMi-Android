@@ -404,6 +404,8 @@ public class LinesActivity extends AppCompatActivity {
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
+            titleAds.setVisibility(View.GONE);
+            containerAds.setVisibility(View.GONE);
         }
     }
 
