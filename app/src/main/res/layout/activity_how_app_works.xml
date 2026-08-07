@@ -400,159 +400,171 @@
                 android:text="@string/viewInterchangesText"
                 android:textAlignment="center" />
 
-            <androidx.cardview.widget.CardView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                app:cardBackgroundColor="@color/disclosureBg"
-                app:cardCornerRadius="12dp">
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <View
+                    android:id="@+id/lineTop"
+                    android:layout_width="3dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/redMetro"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/dotInterchange" />
+
+                <View
+                    android:id="@+id/lineBottom"
+                    android:layout_width="3dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/redMetro"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dotInterchange"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <View
+                    android:id="@+id/dotInterchange"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/circle_interchange_dot"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/txtTitle"
+                    app:layout_constraintBottom_toBottomOf="@id/txtTitle" />
+
+                <com.andreafilice.lavorami.BouncingMarqueeTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/font_main"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:maxLines="1"
+                    android:text="ROMOLO"
+                    app:layout_constraintStart_toEndOf="@id/dotInterchange"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/iconInterchange"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_arrow_left_right"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/text_primary" />
+                <ImageView
+                    android:id="@+id/iconTransport"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="8dp"
+                    app:tint="@color/text_primary"
+                    app:srcCompat="@drawable/ic_train"
+                    app:layout_constraintStart_toStartOf="@id/txtTitle"
+                    app:layout_constraintTop_toTopOf="@id/scrollChips"
+                    app:layout_constraintBottom_toBottomOf="@id/scrollChips" />
 
-                    <TextView
-                        android:id="@+id/txtInterchangeStationName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/font_main"
-                        android:text="Romolo"
-                        android:textColor="@color/text_primary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/iconInterchange"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/iconInterchange"
-                        app:layout_constraintTop_toTopOf="@id/iconInterchange" />
+                <HorizontalScrollView
+                    android:id="@+id/scrollChips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="10dp"
+                    android:scrollbars="none"
+                    app:layout_constraintStart_toEndOf="@id/iconTransport"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTitle"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/layoutInterchangeSubInfo"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/txtInterchangeStationName">
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/txtInterchangeLineCode"
+                            android:id="@+id/noInterchangesTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter"
-                            android:text="M2"
-                            android:textColor="@color/text_primary"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/subtitle"
+                            android:textSize="15sp"
+                            android:text="@string/noInterchangesView"
+                            android:visibility="gone"/>
 
-                        <ImageView
-                            android:id="@+id/iconInterchangeTransport"
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:src="@drawable/ic_train"
-                            app:tint="@color/text_primary" />
-
-                        <TextView
-                            android:id="@+id/txtInterchangeStationSubtitle"
-                            android:layout_width="wrap_content"
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/inter"
-                            android:text="Romolo"
-                            android:textColor="@color/text_primary"
-                            android:textSize="16sp" />
+                            android:scrollbars="none"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <LinearLayout
+                                android:id="@+id/layoutInterchangeBadges"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/badgeM2"
+                                    android:layout_width="40dp"
+                                    android:layout_height="26dp"
+                                    android:background="@drawable/bg_badge_line_shimmer"
+                                    android:backgroundTint="@color/M2"
+                                    android:fontFamily="@font/inter"
+                                    android:gravity="center"
+                                    android:text="M2"
+                                    android:textColor="@color/White"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/badgeR31"
+                                    android:layout_width="42dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@drawable/bg_badge_line_shimmer"
+                                    android:backgroundTint="@color/RE80"
+                                    android:fontFamily="@font/inter"
+                                    android:gravity="center"
+                                    android:text="R31"
+                                    android:textColor="@color/White"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/badgeS9"
+                                    android:layout_width="35dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@drawable/bg_badge_line_shimmer"
+                                    android:backgroundTint="@color/S9"
+                                    android:fontFamily="@font/inter"
+                                    android:gravity="center"
+                                    android:text="S9"
+                                    android:textColor="@color/White"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/badgeS19"
+                                    android:layout_width="42dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@drawable/bg_badge_line_shimmer"
+                                    android:backgroundTint="@color/S19"
+                                    android:fontFamily="@font/inter"
+                                    android:gravity="center"
+                                    android:text="S19"
+                                    android:textColor="@color/White"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
                     </LinearLayout>
-
-                    <HorizontalScrollView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:scrollbars="none"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layoutInterchangeSubInfo">
-
-                        <LinearLayout
-                            android:id="@+id/layoutInterchangeBadges"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/badgeM2"
-                                android:layout_width="40dp"
-                                android:layout_height="26dp"
-                                android:background="@drawable/bg_badge_line_shimmer"
-                                android:backgroundTint="@color/M2"
-                                android:fontFamily="@font/inter"
-                                android:gravity="center"
-                                android:text="M2"
-                                android:textColor="@color/White"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/badgeR31"
-                                android:layout_width="42dp"
-                                android:layout_height="26dp"
-                                android:layout_marginStart="5dp"
-                                android:background="@drawable/bg_badge_line_shimmer"
-                                android:backgroundTint="@color/RE80"
-                                android:fontFamily="@font/inter"
-                                android:gravity="center"
-                                android:text="R31"
-                                android:textColor="@color/White"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/badgeS9"
-                                android:layout_width="35dp"
-                                android:layout_height="26dp"
-                                android:layout_marginStart="5dp"
-                                android:background="@drawable/bg_badge_line_shimmer"
-                                android:backgroundTint="@color/S9"
-                                android:fontFamily="@font/inter"
-                                android:gravity="center"
-                                android:text="S9"
-                                android:textColor="@color/White"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/badgeS19"
-                                android:layout_width="42dp"
-                                android:layout_height="26dp"
-                                android:layout_marginStart="5dp"
-                                android:background="@drawable/bg_badge_line_shimmer"
-                                android:backgroundTint="@color/S19"
-                                android:fontFamily="@font/inter"
-                                android:gravity="center"
-                                android:text="S19"
-                                android:textColor="@color/White"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </HorizontalScrollView>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                </HorizontalScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
                 android:layout_width="match_parent"
