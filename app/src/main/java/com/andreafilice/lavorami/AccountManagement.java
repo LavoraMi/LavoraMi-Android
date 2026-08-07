@@ -77,6 +77,7 @@ public class AccountManagement extends AppCompatActivity {
     TextView tvProfileSync;
     ImageView iconProfileSync;
     ImageView infoIconNotSynched;
+    ImageView retryIconErrorSynched;
     ProgressBar synchProgressBar;
     LinearLayout createdWithGoogle;
     boolean screenUnlocked = false;
@@ -173,6 +174,7 @@ public class AccountManagement extends AppCompatActivity {
         tvProfileSync = findViewById(R.id.tvProfileSync);
         iconProfileSync = findViewById(R.id.iconSync);
         infoIconNotSynched = findViewById(R.id.infoIconNotSynched);
+        retryIconErrorSynched = findViewById(R.id.retryIcon);
         synchProgressBar = findViewById(R.id.synchProgressBar);
 
         if(sessionManager.isLoggedIn()) {
@@ -950,6 +952,7 @@ public class AccountManagement extends AppCompatActivity {
                 syncIcon = R.drawable.ic_cloud_disabled;
                 synchProgressBar.setVisibility(View.GONE);
                 infoIconNotSynched.setVisibility(View.VISIBLE);
+                retryIconErrorSynched.setVisibility(View.GONE);
 
                 infoIconNotSynched.setOnClickListener(v -> {DialogHelper.createDefaultDialog(this, getString(R.string.notSynchedDataInfo), getString(R.string.notSynchedDataInfoDeps));});
             }
@@ -958,6 +961,7 @@ public class AccountManagement extends AppCompatActivity {
                 syncIcon = R.drawable.ic_cloud_success_sync;
                 synchProgressBar.setVisibility(View.GONE);
                 infoIconNotSynched.setVisibility(View.GONE);
+                retryIconErrorSynched.setVisibility(View.GONE);
             }
         }
         else if (dataSyncing != 3) {
@@ -965,12 +969,15 @@ public class AccountManagement extends AppCompatActivity {
             syncIcon = R.drawable.ic_cloud_syncing;
             synchProgressBar.setVisibility(View.VISIBLE);
             infoIconNotSynched.setVisibility(View.GONE);
+            retryIconErrorSynched.setVisibility(View.GONE);
         }
         else {
             syncText = getString(R.string.dataFailureSync);
             syncIcon = R.drawable.ic_cloud_failed_sync;
             synchProgressBar.setVisibility(View.GONE);
             infoIconNotSynched.setVisibility(View.GONE);
+            retryIconErrorSynched.setVisibility(View.VISIBLE);
+            retryIconErrorSynched.setOnClickListener(v -> {fetchUserDataOnInit();});
         }
 
         tvProfileSync.setText(syncText);
