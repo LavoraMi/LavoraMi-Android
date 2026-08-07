@@ -25800,7 +25800,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.52369, 9.03841, "Main", "z616"));
         stations.add(new MetroStation("Rho, A. Volta fr. 50", 45.52447, 9.03783, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52473, 9.03777, "Main", "z616"));
-
         stations.add(new MetroStation("NO_DRAW", 45.52516, 9.04367, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52453, 9.04398, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52447, 9.04398, "Ritorno", "z616"));
@@ -25818,7 +25817,6 @@ public class StationDB {
         stations.add(new MetroStation("Rho, Buon Gesu' 39", 45.52525, 9.03957, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52524, 9.0392, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52501, 9.0377, "Ritorno", "z616"));
-
         stations.add(new MetroStation("NO_DRAW", 45.52479, 9.0377, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.5245, 9.03553, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52454, 9.03548, "Main", "z616"));
