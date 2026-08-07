@@ -278,8 +278,8 @@ public class LinesActivity extends AppCompatActivity {
                     hasAuto = filtraContainer(containerAutoGuidovie, query);
 
                     //*HIDE ADS
-                    titleAds.setVisibility(View.GONE);
-                    containerAds.setVisibility(View.GONE);
+                    titleAds.setVisibility(query.isEmpty() ? View.VISIBLE: View.GONE);
+                    containerAds.setVisibility(query.isEmpty() ? View.VISIBLE: View.GONE);
 
                     //*RECENT LINES
                     titleRecent.setVisibility(hasRecent ? View.VISIBLE : View.GONE);
@@ -404,8 +404,6 @@ public class LinesActivity extends AppCompatActivity {
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
-            titleAds.setVisibility(View.GONE);
-            containerAds.setVisibility(View.GONE);
         }
     }
 
@@ -936,9 +934,13 @@ public class LinesActivity extends AppCompatActivity {
             addAdToContainer(ad);
         }
 
-        if (!mNativeAds.isEmpty()) {
+        if (!mNativeAds.isEmpty() && searchLines.getText().toString().isEmpty()) {
             titleAds.setVisibility(View.VISIBLE);
             containerAds.setVisibility(View.VISIBLE);
+        }
+        else{
+            titleAds.setVisibility(View.GONE);
+            containerAds.setVisibility(View.GONE);
         }
     }
 
