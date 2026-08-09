@@ -26022,7 +26022,6 @@ public class StationDB {
 
     public static List<MetroStation> getStationsZ617() {
         List<MetroStation> stations = new ArrayList<>();
-        //prima parte disegnata
         stations.add(new MetroStation("Origgio, Verdi", 45.6019, 9.02103, "Main", "z617"));
         stations.add(new MetroStation("Origgio, G.Verdi", 45.60192, 9.02117, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.60126, 9.01864, "Main - Ritorno", "z617"));
@@ -26349,7 +26348,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.54743, 9.06166, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.53981, 9.07594, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.53028, 9.09371, "Ritorno", "z617"));
-        //uscita autostrada main
         stations.add(new MetroStation("NO_DRAW", 45.52278, 9.10716, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.52101, 9.10997, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.51962, 9.11245, "Main", "z617"));
@@ -26378,7 +26376,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50539, 9.09181, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.50477, 9.0913, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.50433, 9.09102, "Main", "z617"));
-        //uscita autostrada ritorno
         stations.add(new MetroStation("NO_DRAW", 45.5226, 9.10778, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.52119, 9.11054, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.52096, 9.11107, "Ritorno", "z617"));
@@ -26433,7 +26430,6 @@ public class StationDB {
         stations.add(new MetroStation("NO_DRAW", 45.50711, 9.09449, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.507, 9.09443, "Ritorno", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.50664, 9.09392, "Ritorno", "z617"));
-        //601
         stations.add(new MetroStation("NO_DRAW", 45.50332, 9.09042, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.50222, 9.08986, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.50214, 9.08984, "Main", "z617"));
