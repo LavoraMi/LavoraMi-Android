@@ -150,7 +150,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "14", "15", "16", "19", "24", "27", "31", "33"));
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z620", "z622"
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z620", "z622"
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
