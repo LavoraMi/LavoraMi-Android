@@ -438,4 +438,6 @@
     <string name="lineSuspendedPopUpDeps">Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección «Obras» de la línea.</string>
     <string name="supportLavoraMiTitle">Apoya a LavoraMi</string>
     <string name="supportLavoraMiDeps">¡Ayúdanos a apoyar a LavoraMi!</string>
+    <string name="busPiuDirezioniTitle">AUTOBÚS CON MÚLTIPLES RUTAS</string>
+    <string name="busPiuDirezioniDesc">Esta línea opera con rutas diferentes según la hora del día. Consulta las pantallas informativas antes de subir al autobús.</string>
 </resources>

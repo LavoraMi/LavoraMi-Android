@@ -438,4 +438,6 @@
     <string name="lineSuspendedPopUpDeps">This line has been suspended along its entire route due to engineering works or timetable changes. For more information, please go to the “Works” section for this line.</string>
     <string name="supportLavoraMiTitle">Support LavoraMi</string>
     <string name="supportLavoraMiDeps">Help us support LavoraMi!</string>
+    <string name="busPiuDirezioniTitle">BUS WITH MULTIPLE ROUTES</string>
+    <string name="busPiuDirezioniDesc">This line operates different routes depending on the time of day. Check the information screens before boarding the bus.</string>
 </resources>

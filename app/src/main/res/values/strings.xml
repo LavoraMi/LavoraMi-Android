@@ -437,4 +437,6 @@
     <string name="lineSuspendedPopUpDeps">Questa linea è stata interrotta per tutto il suo tragitto per via di lavori sulla tratta o rimodulazioni di orario. Per saperne di più, vai nella sezione \"Lavori\" della linea.</string>
     <string name="supportLavoraMiTitle">Supporta LavoraMi</string>
     <string name="supportLavoraMiDeps">Aiutaci a sostenere LavoraMi!</string>
+    <string name="busPiuDirezioniTitle">BUS CON PIÙ DIREZIONI</string>
+    <string name="busPiuDirezioniDesc">Questa linea è soggetta a rotte diverse in base alla fascia oraria. Consulta gli schermi informativi prima di salire sul pullman.</string>
 </resources>

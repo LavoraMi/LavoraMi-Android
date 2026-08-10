@@ -1771,13 +1771,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviations = cdnData.getRegionalLinesDeviations();
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
+        //String[] linesMultipleRoutes = {"z619"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
         LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
+        //LinearLayout busMultipleRoutes = findViewById(R.id.busMultipleRoutes);
         ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
         ImageView lineSuspendedInfoBtn = findViewById(R.id.infoLineClosed);
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
+        //ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
 
         if(nomeLinea.equalsIgnoreCase("R15") || nomeLinea.equalsIgnoreCase("R24")) lineaFullBus.setVisibility(View.VISIBLE);
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
@@ -1830,6 +1833,16 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
+        /*
+        ///LINE BUS CON PIU DIREZIONI
+        for (String line : linesMultipleRoutes){
+            if(line.equals(nomeLinea)){
+                busMultipleRoutes.setVisibility(View.VISIBLE);
+                busMultipleRoutesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitle), getString(R.string.busPiuDirezioniDesc)));
+                busMultipleRoutes.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitle), getString(R.string.busPiuDirezioniDesc)));
+            }
+        }
+        */
         if (Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
             findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
             updateChipGroupSizes(detActionGroup);
