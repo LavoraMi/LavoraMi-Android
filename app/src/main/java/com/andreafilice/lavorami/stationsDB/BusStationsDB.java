@@ -1,4 +1,6 @@
-package com.andreafilice.lavorami;
+package com.andreafilice.lavorami.stationsDB;
+
+import com.andreafilice.lavorami.MetroStation;
 
 import java.util.ArrayList;
 import java.util.List;
