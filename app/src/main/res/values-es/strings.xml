@@ -365,7 +365,7 @@
     <string name="circolareDestraDesc">Circular Derecha</string>
     <string name="circolareSinistraDesc">Circular Izquierda</string>
     <string name="homeBottomText">Inicio</string>
-    <string name="locationPermissionDenied">" Permiso de ubicación denegado."</string>
+    <string name="locationPermissionDenied">"Permiso de ubicación denegado."</string>
     <string name="setupTitlePosition">Nunca te pierdas.</string>
     <string name="setupDepsPosition">Activa la ubicación para saber siempre dónde estás y no perderte nunca tu parada.</string>
     <string name="dataPreferencesTitle">Preferencias Datos</string>
@@ -388,13 +388,13 @@
     <string name="syncErrorMessageToast">Se ha producido un error durante la sincronización con el servidor. Inténtalo de nuevo.</string>
     <string name="infoMapsText">Información sobre los Mapas</string>
     <string name="mainDeveloperText">Desarrollador Principal:</string>
-    <string name="trackInterruptedInfo">EINTERRUPCIONES EN LA LÍNEA POR OBRAS.</string>
+    <string name="trackInterruptedInfo">INTERRUPCIONES EN LA LÍNEA POR OBRAS.</string>
     <string name="noRoutesDeps">Hoy no hay ningún trayecto programado para esta parada; prueba a elegir otra.</string>
     <string name="openLinkMainText">Abrir enlace:</string>
     <string name="inAppText">En App</string>
     <string name="openLinkDepsText">Selecciona la forma en la que quieres abrir los enlaces.</string>
     <string name="busKey">Autobús</string>
-    <string name="arrivalsNotLoaded">Carga de horarios aún no completada...ù</string>
+    <string name="arrivalsNotLoaded">Carga de horarios aún no completada...</string>
     <string name="operatorTextDeps2">O bien guarda una línea en la sección \"Tus líneas\" para ver, mediante el filtro correspondiente, solo los trabajos que te interesan.</string>
     <string name="selectBranch">Elige la rama</string>
     <string name="noInterchangesView">Parada sin transbordos.</string>
@@ -422,7 +422,7 @@
     <string name="busPopUpTitle">Línea sustituida por Autobús</string>
     <string name="busPopUpDeps">Actualmente, esta línea ha sido sustituida íntegramente por autobuses y no hay ningún tren que preste servicio en este tramo. No obstante, el servicio está garantizado entre todas las estaciones de la línea.</string>
     <string name="lineSubBusTitle">LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS.</string>
-    <string name="dialogFavouriteLineText">Selecciona los operadores de transporte que utilizas con mayor frecuencia y añádelos a tus favoritos para recibir notificaciones instantáneas sobre nuevos obras.</string>
+    <string name="dialogFavouriteLineText">Selecciona los operadores de transporte que utilizas con mayor frecuencia y añádelos a tus favoritos para recibir notificaciones instantáneas sobre nuevas obras.</string>
     <string name="dialogFavouriteLineTextTitle">Elige tus intereses</string>
     <string name="loadingDataInProgress">Cargando datos…</string>
     <string name="metroStatoRegolare">Normal</string>
@@ -435,7 +435,7 @@
     <string name="metroStatoTitle">Estado Actual Metro</string>
     <string name="lineSuspendedMainText">LÍNEA TOTALMENTE SUSPENDIDA.</string>
     <string name="lineSuspendedPopUpTitle">Línea Totalmente Suspendida</string>
-    <string name="lineSuspendedPopUpDeps">Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección «Obras» de la línea.</string>
+    <string name="lineSuspendedPopUpDeps">Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección "Obras" de la línea.</string>
     <string name="supportLavoraMiTitle">Apoya a LavoraMi</string>
     <string name="supportLavoraMiDeps">¡Ayúdanos a apoyar a LavoraMi!</string>
     <string name="busPiuDirezioniTitle">AUTOBÚS CON MÚLTIPLES RUTAS</string>
