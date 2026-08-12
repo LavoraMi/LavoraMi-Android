@@ -1863,7 +1863,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45095, 9.19672, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45093, 9.19553, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45095, 9.19499, "Main", "9"));
-        stations.add(new MetroStation("V.Le Bigny", 45.45098, 9.1944, "Main", "9"));
+        stations.add(new MetroStation("V.Le Bligny", 45.45098, 9.1944, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45095, 9.19397, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45095, 9.19293, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45096, 9.19124, "Main", "9"));
