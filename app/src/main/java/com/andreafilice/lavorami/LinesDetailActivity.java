@@ -1760,6 +1760,25 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         tvLavori.setText((numeroLavori > 0) ? String.format("%s %s,\n%s %s.", numeroLavoriAttuali, ContextCompat.getString(this, R.string.currentWorksTitle), numeroLavoriProgrammati, ContextCompat.getString(this, R.string.scheduledWorksTitle)) : ContextCompat.getString(this, R.string.fallbackNoWorks));
+        
+        View.OnClickListener gestoreLavoriListener = v -> {
+            Chip chipLavori = findViewById(R.id.chipLavoriInCorso);
+
+            ActivityUtils.triggerFeedback(this);
+            chipLavori.setChecked(true);
+            dismissActiveBranchDialog();
+
+            findViewById(R.id.mapCard).setVisibility(View.GONE);
+            findViewById(R.id.containerLavori).setVisibility(View.VISIBLE);
+            findViewById(R.id.containerInterscambi).setVisibility(View.GONE);
+
+            interscambiWrapper.setVisibility(View.GONE);
+            interscambiNested.setVisibility(View.GONE);
+            arriviWrapper.setVisibility(View.GONE);
+            arriviNested.setVisibility(View.GONE);
+
+            caricaEventiFiltrati();
+            updateChipGroupSizes(detActionGroup);
     }
 
     public void fetchDeviations(VariablesDescriptor cdnData) {
