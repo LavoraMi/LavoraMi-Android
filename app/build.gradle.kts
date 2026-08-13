@@ -91,4 +91,5 @@ dependencies {
     implementation(libs.user.messaging.platform)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.perf)
+    implementation(libs.flexbox)
 }

@@ -106,12 +106,13 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/font_main" />
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/containerOtherDepartures"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical" />
+                app:flexWrap="wrap"
+                app:alignItems="center"
+                app:justifyContent="flex_start" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
