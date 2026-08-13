@@ -1779,6 +1779,10 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             caricaEventiFiltrati();
             updateChipGroupSizes(detActionGroup);
+        };
+
+        findViewById(R.id.iconLavori).setOnClickListener(gestoreLavoriListener);
+        tvLavori.setOnClickListener(gestoreLavoriListener);
     }
 
     public void fetchDeviations(VariablesDescriptor cdnData) {
