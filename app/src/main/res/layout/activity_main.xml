@@ -59,6 +59,7 @@
         android:background="@color/background_app"
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="10dp"
+        android:drawableTint="@color/text_primary"
         android:hint=""
         android:fontFamily="@font/inter"
         android:inputType="text"
