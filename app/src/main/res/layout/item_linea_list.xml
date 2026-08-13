@@ -16,7 +16,8 @@
 
         <TextView
             android:id="@+id/lineBadge"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
+            android:minWidth="40dp"
             android:layout_height="26dp"
             android:background="@drawable/bg_badge_line"
             android:fontFamily="@font/inter"
