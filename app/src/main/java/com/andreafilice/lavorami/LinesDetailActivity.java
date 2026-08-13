@@ -46,6 +46,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.flexbox.FlexboxLayout;
 import com.mapbox.maps.MapView;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
@@ -2515,7 +2516,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals;
             ImageView iconFirstClock;
             View dividerArrivi;
-            LinearLayout containerOtherDepartures;
+            FlexboxLayout containerOtherDepartures;
 
             ArrivalsView(View view) {
                 super(view);
