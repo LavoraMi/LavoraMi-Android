@@ -36,7 +36,8 @@
                 android:layout_toStartOf="@id/ad_attribution"
                 android:textStyle="bold"
                 android:textSize="16sp"
-                android:textColor="@color/text_primary" />
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/font_main"/>
 
             <TextView
                 android:id="@+id/ad_attribution"
@@ -58,7 +59,8 @@
                 android:layout_toEndOf="@id/ad_app_icon"
                 android:layout_marginTop="4dp"
                 android:textSize="14sp"
-                android:textColor="@color/subtitle" />
+                android:textColor="@color/subtitle"
+                android:fontFamily="@font/inter"/>
 
             <Button
                 android:id="@+id/ad_call_to_action"
