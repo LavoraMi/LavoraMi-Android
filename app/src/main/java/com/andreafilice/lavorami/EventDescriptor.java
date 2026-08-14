@@ -100,7 +100,7 @@ public class EventDescriptor {
             case "party.popper.fill":
                 return R.drawable.ic_event;
             case "arrow.up.right":
-                return R.drawable.ic_support_button;
+                return R.drawable.ic_arrow_work;
             default:
                 return R.drawable.empty_image;
         }
