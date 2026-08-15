@@ -448,6 +448,7 @@ public class StationDB {
             allStations.addAll(BusStationsDB.getStationsZ621());
             allStations.addAll(BusStationsDB.getStationsZ622());
             allStations.addAll(BusStationsDB.getStationsZ625());
+            allStations.addAll(BusStationsDB.getStationsZ627());
 
             allStations.addAll(FilobusStationsDB.getStationsFilobus90());
             allStations.addAll(FilobusStationsDB.getStationsFilobus91());
