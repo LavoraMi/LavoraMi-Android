@@ -404,7 +404,7 @@ public class SuburbanStationsDB {
 
     public static List<MetroStation> getStationsS4() {
         List<MetroStation> stations = new ArrayList<>();
-        /* MODIFICHE CIRCOLAZIONE: La linea S4 arriva a Seveso fino al 23 Agosto
+        /* MODIFICHE CIRCOLAZIONE: La linea S4 arriva a Cormano fino al 30 Agosto
         stations.add(new MetroStation("Camnago - Lentate", 45.66837, 9.13328, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66643, 9.13467, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.66412, 9.13586, "Main", "S4"));
@@ -412,7 +412,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.66083, 9.13779, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.65788, 9.13916, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.65668, 9.13972, "Main", "S4"));
-        stations.add(new MetroStation("NO_DRAW", 45.65555, 9.13989, "Main", "S4"));*/
+        stations.add(new MetroStation("NO_DRAW", 45.65555, 9.13989, "Main", "S4"));
         stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.64507, 9.14113, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.64208, 9.14166, "Main", "S4"));
@@ -437,7 +437,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55073, 9.17259, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.54979, 9.17317, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.54909, 9.17339, "Main", "S4"));
-        stations.add(new MetroStation("NO_DRAW", 45.54733, 9.17379, "Main", "S4"));
+        stations.add(new MetroStation("NO_DRAW", 45.54733, 9.17379, "Main", "S4"));*/
         stations.add(new MetroStation("Cormano Cusano Milanino", 45.5457, 9.17379, "Main", "S4"));
         stations.add(new MetroStation("Milano Bruzzano Parco Nord", 45.53374, 9.1728, "Main", "S4"));
         stations.add(new MetroStation("NO_DRAW", 45.53116, 9.1725, "Main", "S4"));
