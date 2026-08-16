@@ -40,7 +40,7 @@ public class MetroStationsDB {
         stations.add(new MetroStation("San Leonardo", 45.50116, 9.10149, "Rho", "M1"));
         stations.add(new MetroStation("Molino Dorino", 45.50516, 9.09323, "Rho", "M1"));
         stations.add(new MetroStation("Pero", 45.50869, 9.08581, "Rho", "M1"));
-        stations.add(new MetroStation("Rho Fiera", 45.51797, 9.08564, "Rho", "M1"));
+        stations.add(new MetroStation("Rho Fiera-Milano", 45.51797, 9.08564, "Rho", "M1"));
         stations.add(new MetroStation("Wagner", 45.46784, 9.15529, "Bisceglie", "M1"));
         stations.add(new MetroStation("De Angeli", 45.46656, 9.14987, "Bisceglie", "M1"));
         stations.add(new MetroStation("Gambara", 45.46499, 9.14295, "Bisceglie", "M1"));
