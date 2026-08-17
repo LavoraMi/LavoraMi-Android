@@ -59,7 +59,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
                 "Legnano",
-                new String[]{"z601", "z602", "z611", "z612", "z627", "z642"},
+                new String[]{"z601", "z602", "z611", "z612", "z627", "z636", "z642"},
                 new String[]{"z611", "z612", "z642", "z627", "z636"},
                 "bus.fill"
         ));
