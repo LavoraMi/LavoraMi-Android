@@ -6881,7 +6881,7 @@ public class RegionalStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.1881, 9.16349, "Main", "R37"));
         stations.add(new MetroStation("NO_DRAW", 45.18563, 9.16512, "Main", "R37"));
         stations.add(new MetroStation("NO_DRAW", 45.18485, 9.1658, "Main", "R37"));
-        stations.add(new MetroStation("Pavia Pta Garibaldi", 45.18421, 9.1667, "Main", "R37"));
+        stations.add(new MetroStation("Pavia Porta Garibaldi", 45.18421, 9.1667, "Main", "R37"));
         stations.add(new MetroStation("NO_DRAW", 45.18368, 9.16819, "Main", "R37"));
         stations.add(new MetroStation("NO_DRAW", 45.18341, 9.16956, "Main", "R37"));
         stations.add(new MetroStation("NO_DRAW", 45.18317, 9.17188, "Main", "R37"));
