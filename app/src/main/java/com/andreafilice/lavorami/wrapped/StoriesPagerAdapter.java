@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class StoriesPagerAdapter extends FragmentStateAdapter {
-
     private final int totalStories;
 
     public StoriesPagerAdapter(@NonNull FragmentActivity activity, int totalStories) {

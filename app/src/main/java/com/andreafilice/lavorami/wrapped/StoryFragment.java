@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.andreafilice.lavorami.R;
 
 public class StoryFragment extends Fragment {
-    ///Questa classe contiene il contenuto di ogni singola storia
     private static final String ARG_POSITION = "position";
 
     public static StoryFragment newInstance(int position) {
@@ -26,8 +25,7 @@ public class StoryFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_story, container, false);
     }
 
@@ -39,13 +37,12 @@ public class StoryFragment extends Fragment {
         TextView title = view.findViewById(R.id.storyTitle);
         title.setText("Storia " + (position + 1));
 
-        // Qui puoi far partire l'animazione di entrata del testo
         title.setAlpha(0f);
         title.setTranslationY(50f);
         title.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(500)
-                .start();
+            .alpha(1f)
+            .translationY(0f)
+            .setDuration(500)
+            .start();
     }
 }

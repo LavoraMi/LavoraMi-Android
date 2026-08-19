@@ -18,15 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WrappedActivity extends AppCompatActivity {
-    ///WrappedActivity (il regista, gestisce timer/progress/navigazione)
-    ///       │
-    ///       ├── contiene → ViewPager2
-    ///       │                   │
-    ///       │                   └── usa → StoriesPagerAdapter (il catalogo)
-    ///       │                                     │
-    ///       │                                     └── crea → StoryFragment (il contenuto di ogni storia)
-    ///
-    private static final int STORY_DURATION_MS = 5000; // durata di ogni storia
+    private static final int STORY_DURATION_MS = 5000;
     private static final int TOTAL_STORIES = 5;
 
     private ViewPager2 viewPager;
@@ -55,15 +47,13 @@ public class WrappedActivity extends AppCompatActivity {
         StoriesPagerAdapter adapter = new StoriesPagerAdapter(this, TOTAL_STORIES);
         viewPager.setAdapter(adapter);
 
-        // Disabilita lo swipe "libero" se vuoi solo avanzamento controllato,
-        // oppure lascialo true per permettere swipe manuale (consigliato)
         viewPager.setUserInputEnabled(true);
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                onStoryChanged(position);
+            super.onPageSelected(position);
+            onStoryChanged(position);
             }
         });
     }
@@ -83,11 +73,10 @@ public class WrappedActivity extends AppCompatActivity {
     }
 
     private void onStoryChanged(int position) {
-        // Segna come "piene" tutte le storie precedenti
         for (int i = 0; i < position; i++) {
             setFillWidth(progressFills.get(i), 1f);
         }
-        // Svuota quelle successive
+
         for (int i = position + 1; i < TOTAL_STORIES; i++) {
             setFillWidth(progressFills.get(i), 0f);
         }
@@ -97,9 +86,7 @@ public class WrappedActivity extends AppCompatActivity {
     }
 
     private void startStoryTimer(int position) {
-        if (currentAnimator != null) {
-            currentAnimator.cancel();
-        }
+        if (currentAnimator != null) currentAnimator.cancel();
 
         View fill = progressFills.get(position);
         setFillWidth(fill, 0f);
@@ -113,11 +100,8 @@ public class WrappedActivity extends AppCompatActivity {
         currentAnimator.addListener(new android.animation.AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(@NonNull android.animation.Animator animation) {
-                if (currentIndex < TOTAL_STORIES) {
-                    goToStory(currentIndex);
-                } else {
-                    finish(); // ultima storia finita, chiudi (o vai a un'altra Activity)
-                }
+                if (currentIndex < TOTAL_STORIES) goToStory(currentIndex);
+                else finish();
             }
         });
         currentAnimator.start();
@@ -134,7 +118,7 @@ public class WrappedActivity extends AppCompatActivity {
     }
 
     private void goToStory(int index) {
-        if (index < 0) return; // già alla prima, ignora tap indietro
+        if (index < 0) return;
         if (index >= TOTAL_STORIES) {
             finish();
             return;
