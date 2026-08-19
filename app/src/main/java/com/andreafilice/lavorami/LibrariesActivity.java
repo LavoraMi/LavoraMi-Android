@@ -216,14 +216,14 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "OkHttp",
-                        "5.5.0",
+                        "5.4.0",
                         "Apache License 2.0",
                         "Copyright 2019 Square, Inc.",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "OkHttp Logging Interceptor",
-                        "5.5.0",
+                        "5.4.0",
                         "Apache License 2.0",
                         "Copyright 2019 Square, Inc.",
                         APACHE_LICENSE_TEXT
