@@ -82,6 +82,8 @@
         app:layout_constraintStart_toStartOf="@id/editSearch"
         app:layout_constraintTop_toTopOf="@id/editSearch" />
 
+    <include layout="@layout/item_banner_wrapped"/>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/strikeBanner"
         android:layout_width="match_parent"
@@ -96,7 +98,7 @@
         app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSearch"
+        app:layout_constraintTop_toBottomOf="@+id/wrappedBanner"
         tools:visibility="visible">
 
         <LinearLayout

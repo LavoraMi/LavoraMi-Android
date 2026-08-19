@@ -4,6 +4,7 @@ import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -236,13 +237,6 @@ public class MainActivity extends AppCompatActivity {
         if (hasCompletedSetup) {
             requestConsentInfoUpdate();
         }
-
-        /*------------TEST------------
-         if(hasCompletedSetup){
-
-            ActivityUtils.changeActivity(this, WrappedActivity.class);
-        }
-         */
 
         ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
         if(hasCompletedSetup)
@@ -939,6 +933,7 @@ public class MainActivity extends AppCompatActivity {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                     strikeBanner.setVisibility(View.GONE);
+                    findViewById(R.id.wrappedBanner).setVisibility(View.GONE);
                     btnRefresh.clearAnimation();
                     swipeRefreshLayout.setRefreshing(false);
 
@@ -963,6 +958,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     updateStrike(strikeCDNResponse);
+                    loadWrapped(strikeCDNResponse);
                 }
                 else
                     strikeBanner.setVisibility(View.GONE);
@@ -1080,6 +1076,24 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.strikeBanner).setVisibility(View.GONE);
 
         new Thread(() -> NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse)).start();
+    }
+
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                DialogHelper.createDefaultDialog(this, "Riguarda il wrapped", "D'ora in poi, troverai il wrapped sotto la sezione \"Account\" nelle impostazioni");
+                DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, true);
+            }
+    );
+    private void loadWrapped(VariablesDescriptor variablesDescriptor) {
+        MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
+
+        wrappedBanner.setVisibility((variablesDescriptor.isWrappedEnabled() && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false)) ? View.VISIBLE : View.GONE);
+
+        wrappedBanner.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            launcher.launch(new Intent(this, WrappedActivity.class));
+        });
     }
 
     private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault) {

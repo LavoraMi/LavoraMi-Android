@@ -15,6 +15,7 @@ public class VariablesDescriptor {
     /// @String strikeGuaranteed -> Returns a String that tells exactly which hours the service is guaranteed.
     /// @String strikeUpdateLive -> Returns a String that contains the live status of the strike, such as: which lines are deviated.
     /// @String enablePassanteWork -> Returns a String but the values are: true or false.
+    /// @String isWrappedEnabled -> Return a String but the values are: true or false.
     /// @String[] linesDeviation -> Returns an array of Strings of Tram lines that have works on the track.
     /// @String[] linesDeviationLinks -> Returns an array of Strings containing the works for Tram with works on the track.
     /// @String[] supportedGTFSLines -> Returns an array of Strings for control the Bus Lines available for GTFS feature.
@@ -53,8 +54,12 @@ public class VariablesDescriptor {
     private String[] lineeSospeseInteramente;
     @SerializedName("stazioniChiuse")
     private String[] stazioniChiuse;
+    @SerializedName("enableWrapped")
+    private String isWrappedEnabled;
+    @SerializedName("enableWrappedDebug")
+    private String isWrappedEnabledDebug;
 
-    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse) {
+    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeUpdateLive = strikeUpdateLive;
@@ -71,12 +76,16 @@ public class VariablesDescriptor {
         this.regionalLinesDeviationLinks = regionalLinesDeviationLinks;
         this.lineeSospeseInteramente = lineeSospeseInteramente;
         this.stazioniChiuse = stazioniChiuse;
+        this.isWrappedEnabled = isWrappedEnabled;
+        this.isWrappedEnabledDebug = isWrappedEnabledDebug;
     }
 
     //*GETTERS
     /// Set-up the Getters to use into activities for get some values.
     public boolean isStrikeEnabled() {return isStrikeEnabled.equals("true");}
     public boolean isStrikeEnabledDebug() {return enableStrikeDebug.equals("true");}
+    public boolean isWrappedEnabled() {return isWrappedEnabled.equals("true");}
+    public boolean isWrappedEnabledDebug() {return isWrappedEnabledDebug.equals("true");}
     public boolean isPassanteWorkEnabled() {return enablePassanteWork.equalsIgnoreCase("true");}
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}

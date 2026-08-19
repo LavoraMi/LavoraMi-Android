@@ -132,6 +132,14 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
+            <include layout="@layout/item_banner_wrapped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="-10dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="14dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

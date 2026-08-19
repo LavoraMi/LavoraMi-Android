@@ -26,6 +26,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.andreafilice.lavorami.wrapped.WrappedActivity;
+import com.google.android.material.card.MaterialCardView;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -98,6 +101,13 @@ public class SettingsActivity extends AppCompatActivity {
         //*SETTINGS BUTTONS
         RelativeLayout accountBtn = findViewById(R.id.btnAccount);
         accountBtn.setOnClickListener(v -> {changeActivity(this, AccountManagement.class);});
+
+        MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
+        wrappedBanner.setVisibility(DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
+        wrappedBanner.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, WrappedActivity.class);
+        });
 
         RelativeLayout sourcesBtn = findViewById(R.id.btnFonts);
         sourcesBtn.setOnClickListener(v -> {changeActivity(this, SourcesDevelopment.class);});
