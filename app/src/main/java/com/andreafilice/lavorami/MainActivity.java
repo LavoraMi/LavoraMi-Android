@@ -39,6 +39,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andreafilice.lavorami.wrapped.WrappedActivity;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -235,6 +236,13 @@ public class MainActivity extends AppCompatActivity {
         if (hasCompletedSetup) {
             requestConsentInfoUpdate();
         }
+
+        /*------------TEST------------
+         if(hasCompletedSetup){
+
+            ActivityUtils.changeActivity(this, WrappedActivity.class);
+        }
+         */
 
         ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
         if(hasCompletedSetup)
