@@ -56,10 +56,6 @@ public class StoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Reset esplicito: se questo fragment viene riutilizzato (view ricreata
-        // senza che l'istanza Fragment venga distrutta), il flag deve ripartire da zero.
-        durationReported = false;
-
         playerView = view.findViewById(R.id.playerView);
         player = new ExoPlayer.Builder(requireContext()).build();
         playerView.setPlayer(player);
@@ -70,18 +66,13 @@ public class StoryFragment extends Fragment {
         MediaItem mediaItem = MediaItem.fromUri(videoUri);
         player.setMediaItem(mediaItem);
         player.prepare();
-        player.setPlayWhenReady(true);
 
         player.addListener(new Player.Listener() {
             @Override
             public void onPlaybackStateChanged(int state) {
-                // STATE_READY = il player conosce già la durata reale del media
                 if (state == Player.STATE_READY && !durationReported) {
                     durationReported = true;
-                    long durationMs = player.getDuration();
-                    if (listener != null && durationMs > 0) {
-                        listener.onVideoDurationReady((int) durationMs);
-                    }
+                    reportDurationIfResumed();
                 }
             }
         });
@@ -90,8 +81,25 @@ public class StoryFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (player != null) {
-            player.play();
+        if (player == null) {
+            return;
+        }
+
+        player.seekTo(0);
+        player.setPlayWhenReady(true);
+
+        if (durationReported) {
+            reportDurationIfResumed();
+        }
+    }
+
+    private void reportDurationIfResumed() {
+        if (player == null || listener == null) {
+            return;
+        }
+        long durationMs = player.getDuration();
+        if (durationMs > 0) {
+            listener.onVideoDurationReady((int) durationMs);
         }
     }
 
