@@ -19,7 +19,6 @@ import java.util.List;
 
 public class WrappedActivity extends AppCompatActivity implements StoryFragment.OnVideoReadyListener {
 
-    private static final int DEFAULT_STORY_DURATION_MS = 5000; // fallback, non più usato dato che tutte le storie sono video
     private static final int TOTAL_STORIES = 5;
 
     private ViewPager2 viewPager;
@@ -27,13 +26,7 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
     private final List<View> progressFills = new ArrayList<>();
     private ValueAnimator currentAnimator;
     private int currentIndex = 0;
-
-    // Storia per cui stiamo aspettando la durata reale del video.
-    // -1 significa "nessuna attesa in corso".
     private int waitingForVideoDurationIndex = -1;
-
-    // Evita che onPageSelected(0) triggerato dal setup iniziale dell'adapter
-    // faccia ripartire due volte la storia 0.
     private boolean isFirstPageSelection = true;
 
     @Override
@@ -92,17 +85,13 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
     private void onStoryChanged(int position) {
         boolean movingForward = position > currentIndex;
 
-        // Storie prima della corrente: piene, istantaneamente.
         for (int i = 0; i < position; i++) {
             setFillWidthInstant(progressFills.get(i), 1f);
         }
-        // Storie dopo la corrente: vuote, istantaneamente.
         for (int i = position + 1; i < TOTAL_STORIES; i++) {
             setFillWidthInstant(progressFills.get(i), 0f);
         }
 
-        // Se stavamo animando/aspettando la storia lasciata, chiudila subito
-        // senza lasciare animazioni residue in coda.
         if (currentAnimator != null) {
             currentAnimator.cancel();
             currentAnimator = null;
@@ -125,13 +114,8 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
         setFillWidthInstant(progressFills.get(position), 0f);
     }
 
-    /**
-     * Callback dal StoryFragment quando conosce la durata reale del video.
-     */
     @Override
     public void onVideoDurationReady(int durationMs) {
-        // Ignora callback tardive di fragment non più "correnti"
-        // (es. l'utente ha già cambiato storia prima che il player fosse pronto).
         if (waitingForVideoDurationIndex == currentIndex) {
             waitingForVideoDurationIndex = -1;
             startStoryTimer(currentIndex, durationMs);
@@ -156,8 +140,6 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
         animator.addListener(new android.animation.AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(@NonNull android.animation.Animator animation) {
-                // L'animatore potrebbe essere stato cancellato perché l'utente
-                // ha cambiato storia manualmente: in quel caso non avanzare.
                 if (currentAnimator != animation) {
                     return;
                 }
@@ -183,10 +165,6 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
         animator.start();
     }
 
-    /**
-     * Imposta la larghezza istantaneamente (nessuna animazione), aspettando
-     * che il parent abbia una larghezza misurata se non è ancora pronto.
-     */
     private void setFillWidthInstant(View fill, float fraction) {
         View parent = (View) fill.getParent();
         if (parent.getWidth() > 0) {
@@ -202,10 +180,6 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
         }
     }
 
-    /**
-     * Usata durante l'animazione: il parent è già misurato a questo punto,
-     * quindi possiamo scrivere la larghezza direttamente senza accodare post().
-     */
     private void setFillWidthDirect(View fill, float fraction) {
         View parent = (View) fill.getParent();
         int totalWidth = parent.getWidth();
