@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable searchRunnable;
     private ChipGroup.OnCheckedChangeListener chipCheckedChangeListener;
     private ViewPager2 viewPager;
+    public static boolean isWrappedEnabled;
 
     //*DATABASE SYNCH VARIABLES
     /// In this section of the code, we will create the variables for synch datas to DB ones.
@@ -1088,7 +1089,8 @@ public class MainActivity extends AppCompatActivity {
     private void loadWrapped(VariablesDescriptor variablesDescriptor) {
         MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
 
-        wrappedBanner.setVisibility((variablesDescriptor.isWrappedEnabled() && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false)) ? View.VISIBLE : View.GONE);
+        isWrappedEnabled = variablesDescriptor.isWrappedEnabled();
+        wrappedBanner.setVisibility(isWrappedEnabled && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
 
         wrappedBanner.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);

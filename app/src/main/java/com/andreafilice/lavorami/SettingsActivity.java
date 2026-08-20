@@ -102,12 +102,7 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout accountBtn = findViewById(R.id.btnAccount);
         accountBtn.setOnClickListener(v -> {changeActivity(this, AccountManagement.class);});
 
-        MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
-        wrappedBanner.setVisibility(DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
-        wrappedBanner.setOnClickListener(v -> {
-            ActivityUtils.triggerFeedback(this);
-            ActivityUtils.changeActivity(this, WrappedActivity.class);
-        });
+       loadWrapped();
 
         RelativeLayout sourcesBtn = findViewById(R.id.btnFonts);
         sourcesBtn.setOnClickListener(v -> {changeActivity(this, SourcesDevelopment.class);});
@@ -557,5 +552,16 @@ public class SettingsActivity extends AppCompatActivity {
         };
 
         DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.resetSettingsPopUp), deleteAllKeys);
+    }
+
+    public void loadWrapped(){
+        MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
+
+        wrappedBanner.setVisibility((DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) && MainActivity.isWrappedEnabled) ? View.VISIBLE : View.GONE);
+
+        wrappedBanner.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, WrappedActivity.class);
+        });
     }
 }
