@@ -1,12 +1,12 @@
 package com.andreafilice.lavorami.wrapped;
 
 import android.animation.ValueAnimator;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +17,9 @@ import com.andreafilice.lavorami.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WrappedActivity extends AppCompatActivity {
-    private static final int STORY_DURATION_MS = 5000;
+public class WrappedActivity extends AppCompatActivity implements StoryFragment.OnVideoReadyListener {
+
+    private static final int DEFAULT_STORY_DURATION_MS = 5000; // fallback, non più usato dato che tutte le storie sono video
     private static final int TOTAL_STORIES = 5;
 
     private ViewPager2 viewPager;
@@ -27,10 +28,17 @@ public class WrappedActivity extends AppCompatActivity {
     private ValueAnimator currentAnimator;
     private int currentIndex = 0;
 
+    // Storia per cui stiamo aspettando la durata reale del video.
+    // -1 significa "nessuna attesa in corso".
+    private int waitingForVideoDurationIndex = -1;
+
+    // Evita che onPageSelected(0) triggerato dal setup iniziale dell'adapter
+    // faccia ripartire due volte la storia 0.
+    private boolean isFirstPageSelection = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_wrapped);
 
         viewPager = findViewById(R.id.storiesViewPager);
@@ -40,20 +48,29 @@ public class WrappedActivity extends AppCompatActivity {
         setupProgressBars();
         setupTapZones();
 
-        startStoryTimer(currentIndex);
+        startStoryForPosition(currentIndex);
     }
 
     private void setupViewPager() {
         StoriesPagerAdapter adapter = new StoriesPagerAdapter(this, TOTAL_STORIES);
         viewPager.setAdapter(adapter);
-
         viewPager.setUserInputEnabled(true);
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-            super.onPageSelected(position);
-            onStoryChanged(position);
+                super.onPageSelected(position);
+
+                if (isFirstPageSelection) {
+                    // La storia 0 è già stata avviata da onCreate(); ignora
+                    // la prima notifica dell'adapter per evitare un doppio avvio.
+                    isFirstPageSelection = false;
+                    if (position == currentIndex) {
+                        return;
+                    }
+                }
+
+                onStoryChanged(position);
             }
         });
     }
@@ -73,48 +90,134 @@ public class WrappedActivity extends AppCompatActivity {
     }
 
     private void onStoryChanged(int position) {
+        boolean movingForward = position > currentIndex;
+
+        // Storie prima della corrente: piene, istantaneamente.
         for (int i = 0; i < position; i++) {
-            setFillWidth(progressFills.get(i), 1f);
+            setFillWidthInstant(progressFills.get(i), 1f);
+        }
+        // Storie dopo la corrente: vuote, istantaneamente.
+        for (int i = position + 1; i < TOTAL_STORIES; i++) {
+            setFillWidthInstant(progressFills.get(i), 0f);
         }
 
-        for (int i = position + 1; i < TOTAL_STORIES; i++) {
-            setFillWidth(progressFills.get(i), 0f);
+        // Se stavamo animando/aspettando la storia lasciata, chiudila subito
+        // senza lasciare animazioni residue in coda.
+        if (currentAnimator != null) {
+            currentAnimator.cancel();
+            currentAnimator = null;
         }
+        if (currentIndex >= 0 && currentIndex < TOTAL_STORIES && currentIndex != position) {
+            setFillWidthInstant(progressFills.get(currentIndex), movingForward ? 1f : 0f);
+        }
+        waitingForVideoDurationIndex = -1;
 
         currentIndex = position;
-        startStoryTimer(position);
+        startStoryForPosition(position);
     }
 
-    private void startStoryTimer(int position) {
-        if (currentAnimator != null) currentAnimator.cancel();
+    /**
+     * Tutte le storie sono video: aspettiamo sempre la callback con la durata
+     * reale prima di avviare il timer della progress bar.
+     */
+    private void startStoryForPosition(int position) {
+        waitingForVideoDurationIndex = position;
+        setFillWidthInstant(progressFills.get(position), 0f);
+    }
+
+    /**
+     * Callback dal StoryFragment quando conosce la durata reale del video.
+     */
+    @Override
+    public void onVideoDurationReady(int durationMs) {
+        // Ignora callback tardive di fragment non più "correnti"
+        // (es. l'utente ha già cambiato storia prima che il player fosse pronto).
+        if (waitingForVideoDurationIndex == currentIndex) {
+            waitingForVideoDurationIndex = -1;
+            startStoryTimer(currentIndex, durationMs);
+        }
+    }
+
+    private void startStoryTimer(int position, int durationMs) {
+        if (currentAnimator != null) {
+            currentAnimator.cancel();
+            currentAnimator = null;
+        }
 
         View fill = progressFills.get(position);
-        setFillWidth(fill, 0f);
+        setFillWidthInstant(fill, 0f);
 
-        currentAnimator = ValueAnimator.ofFloat(0f, 1f);
-        currentAnimator.setDuration(STORY_DURATION_MS);
-        currentAnimator.addUpdateListener(animation -> {
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+        animator.setDuration(durationMs);
+        animator.addUpdateListener(animation -> {
             float value = (float) animation.getAnimatedValue();
-            setFillWidth(fill, value);
+            setFillWidthDirect(fill, value);
         });
-        currentAnimator.addListener(new android.animation.AnimatorListenerAdapter() {
+        animator.addListener(new android.animation.AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(@NonNull android.animation.Animator animation) {
-                if (currentIndex < TOTAL_STORIES) goToStory(currentIndex);
-                else finish();
+                // L'animatore potrebbe essere stato cancellato perché l'utente
+                // ha cambiato storia manualmente: in quel caso non avanzare.
+                if (currentAnimator != animation) {
+                    return;
+                }
+                currentAnimator = null;
+
+                int nextIndex = position + 1;
+                if (nextIndex < TOTAL_STORIES) {
+                    goToStory(nextIndex);
+                } else {
+                    finish();
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(@NonNull android.animation.Animator animation) {
+                if (currentAnimator == animation) {
+                    currentAnimator = null;
+                }
             }
         });
-        currentAnimator.start();
+
+        currentAnimator = animator;
+        animator.start();
     }
 
-    private void setFillWidth(View fill, float fraction) {
+    /**
+     * Imposta la larghezza istantaneamente (nessuna animazione), aspettando
+     * che il parent abbia una larghezza misurata se non è ancora pronto.
+     */
+    private void setFillWidthInstant(View fill, float fraction) {
         View parent = (View) fill.getParent();
-        parent.post(() -> {
-            int totalWidth = parent.getWidth();
-            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) fill.getLayoutParams();
-            params.width = (int) (totalWidth * fraction);
-            fill.setLayoutParams(params);
-        });
+        if (parent.getWidth() > 0) {
+            applyFillWidth(fill, parent.getWidth(), fraction);
+        } else {
+            parent.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    parent.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    applyFillWidth(fill, parent.getWidth(), fraction);
+                }
+            });
+        }
+    }
+
+    /**
+     * Usata durante l'animazione: il parent è già misurato a questo punto,
+     * quindi possiamo scrivere la larghezza direttamente senza accodare post().
+     */
+    private void setFillWidthDirect(View fill, float fraction) {
+        View parent = (View) fill.getParent();
+        int totalWidth = parent.getWidth();
+        if (totalWidth > 0) {
+            applyFillWidth(fill, totalWidth, fraction);
+        }
+    }
+
+    private void applyFillWidth(View fill, int totalWidth, float fraction) {
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) fill.getLayoutParams();
+        params.width = (int) (totalWidth * fraction);
+        fill.setLayoutParams(params);
     }
 
     private void goToStory(int index) {
@@ -131,6 +234,7 @@ public class WrappedActivity extends AppCompatActivity {
         super.onDestroy();
         if (currentAnimator != null) {
             currentAnimator.cancel();
+            currentAnimator = null;
         }
     }
 }
