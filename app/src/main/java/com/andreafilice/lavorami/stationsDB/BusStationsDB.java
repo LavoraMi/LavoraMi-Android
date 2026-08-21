@@ -6562,6 +6562,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53709, 8.73776, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5361, 8.73529, "Main", "z641"));
         stations.add(new MetroStation("Turbigo, Nosate 6", 45.53644, 8.73481, "Main", "z641"));
+        stations.add(new MetroStation("Turbigo, Nosate fr. 6", 45.53646, 8.73479, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53674, 8.73434, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53684, 8.73411, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53718, 8.73313, "Main", "z641"));
@@ -6570,7 +6571,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54139, 8.72773, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54156, 8.72737, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5417, 8.72695, "Main", "z641"));
-        stations.add(new MetroStation("NO_DRAW", 45.54175, 8.72664, "Main", "z641"));
+        stations.add(new MetroStation("Turbigo, Nosate 65", 45.54175, 8.72664, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54182, 8.72637, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54187, 8.72608, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54266, 8.72573, "Main", "z641"));
@@ -6586,6 +6587,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5457, 8.7242, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54682, 8.72491, "Main", "z641"));
         stations.add(new MetroStation("Nosate, Ponte Castano Fr. 20", 45.54742, 8.72523, "Main", "z641"));
+        stations.add(new MetroStation("Nosate, Ponte Castano 20", 45.54743, 8.72522, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54869, 8.72583, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54928, 8.72607, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54992, 8.72627, "Main", "z641"));
