@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.widget.RemoteViews;
@@ -18,11 +17,8 @@ import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class WidgetLines extends AppWidgetProvider {
-    private static final String PREFS_NAME = "lavorami_widget_prefs";
-    private static final String PREF_SHOWN_LINES = "shown_lines_";
     public static final String EXTRA_LINE_NAME = "extra_line_name";
 
     public enum LineType {
@@ -90,13 +86,6 @@ public class WidgetLines extends AppWidgetProvider {
             R.color.S12, R.color.S13, R.color.S19, R.color.S31
     };
     private static final int[] TILO_COLORS = {R.color.S10, R.color.S20, R.color.S30, R.color.S40, R.color.S50, R.color.S90, R.color.RE80};
-    private static final LineType[][] CATEGORY_GROUPS = {
-            {LineType.METRO},
-            {LineType.SUBURBAN, LineType.MXP},
-            {LineType.REGIO_EXPRESS, LineType.REGIONAL, LineType.TILO},
-            {LineType.TRAM, LineType.FILOBUS},
-            {LineType.MOVIBUS, LineType.STAR, LineType.STAV, LineType.AUTOGUIDOVIE}
-    };
 
     private List<LineInfo> buildAllLines() {
         List<LineInfo> all = new ArrayList<>();
@@ -137,31 +126,6 @@ public class WidgetLines extends AppWidgetProvider {
         return null;
     }
 
-    private List<LineInfo> pickOneLinePerCategory() {
-        List<LineInfo> allLines = buildAllLines();
-        Random random = new Random();
-        List<LineInfo> result = new ArrayList<>();
-
-        for (LineType[] group : CATEGORY_GROUPS) {
-            List<LineInfo> candidatesInGroup = new ArrayList<>();
-            for (LineInfo info : allLines) {
-                for (LineType type : group) {
-                    if (info.type == type) {
-                        candidatesInGroup.add(info);
-                        break;
-                    }
-                }
-            }
-
-            if (!candidatesInGroup.isEmpty()) {
-                LineInfo chosen = candidatesInGroup.get(random.nextInt(candidatesInGroup.size()));
-                result.add(chosen);
-            }
-        }
-
-        return result;
-    }
-
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         DataManager.init(context);
@@ -176,59 +140,32 @@ public class WidgetLines extends AppWidgetProvider {
         if (selectedLine != null && !selectedLine.isEmpty()) showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
         else showSelectionView(context, appWidgetManager, appWidgetId);
     }
-
-    private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String shownKey = PREF_SHOWN_LINES + appWidgetId;
-        String saved = prefs.getString(shownKey, null);
-
-        List<LineInfo> candidates = new ArrayList<>();
-
-        if (saved != null && !saved.isEmpty()) {
-            for (String code : saved.split(",")) {
-                if (code.isEmpty()) continue;
-
-                LineInfo info = findLine(code);
-                if (info != null) candidates.add(info);
-            }
-        }
-
-        if (candidates.isEmpty()) {
-            candidates = pickOneLinePerCategory();
-
-            StringBuilder builder = new StringBuilder();
-            for (LineInfo info : candidates) builder.append(info.code).append(",");
-            prefs.edit().putString(shownKey, builder.toString()).apply();
-        }
-
+   private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
 
         boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
 
         int[] chipIds = {R.id.chip1, R.id.chip2, R.id.chip3, R.id.chip4, R.id.chip5};
+        String[] chipCodes = {"M1", "S5", "M3", "S2", "z620"};
+
         for (int i = 0; i < chipIds.length; i++) {
-            if (i < candidates.size()) {
-                LineInfo info = candidates.get(i);
-                views.setTextViewText(chipIds[i], info.code);
-                views.setInt(chipIds[i], "setBackgroundResource", R.drawable.chip_line_bg);
-                applyChipTint(views, chipIds[i], context, info.colorRes);
-                views.setViewVisibility(chipIds[i], android.view.View.VISIBLE);
+            String code = chipCodes[i];
+            LineInfo info = findLine(code);
+            if (info == null) continue;
 
-                Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
-                if (openAppIntent != null) {
-                    openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+            if (openAppIntent != null) {
+                openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-                    if (openInApp) {
-                        openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
-                    }
-
-                    int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
-
-                    PendingIntent pendingIntent = PendingIntent.getActivity(context, requestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-                    views.setOnClickPendingIntent(chipIds[i], pendingIntent);
+                if (openInApp) {
+                    openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
                 }
+
+                int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, requestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                views.setOnClickPendingIntent(chipIds[i], pendingIntent);
             }
-            else views.setViewVisibility(chipIds[i], android.view.View.GONE);
         }
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
