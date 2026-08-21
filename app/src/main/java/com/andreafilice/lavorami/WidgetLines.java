@@ -64,30 +64,30 @@ public class WidgetLines extends AppWidgetProvider {
     private static final String[] SUBURBAN_LINES = {"S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "S19", "S31"};
     private static final String[] REGIO_LINES = {"RE1", "RE2", "RE3", "RE4", "RE5", "RE6", "RE7", "RE8", "RE11", "RE13"};
     private static final String[] REGIONAL_LINES = {"R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R11", "R12",
-        "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25", "R27", "R31", "R32", "R33", "R34",
-        "R35", "R36", "R37", "R38", "R39", "R40", "R41"};
+            "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25", "R27", "R31", "R32", "R33", "R34",
+            "R35", "R36", "R37", "R38", "R39", "R40", "R41"};
     private static final String[] TILO_LINES = {"S10", "S20", "S30", "S40", "S50", "S90", "RE80"};
     private static final String[] MXP_LINES = {"MXP1", "MXP2"};
     private static final String[] TRAM_LINES = {"1", "2", "3", "4", "5", "7", "9", "10", "12", "14",
-        "15", "16", "19", "24", "27", "31", "33"};
+            "15", "16", "19", "24", "27", "31", "33"};
     private static final String[] FILOBUS_LINES = {"90", "91", "92", "93"};
     private static final String[] MOVIBUS_LINES = {"z601", "z602", "z603", "z6C3", "z606", "z611", "z612",
-        "z616", "z617", "z618", "z619", "z620", "z621", "z622",
-        "z625", "z627", "z636", "z641", "z642", "z643", "z644",
-        "z646", "z647", "z649"};
+            "z616", "z617", "z618", "z619", "z620", "z621", "z622",
+            "z625", "z627", "z636", "z641", "z642", "z643", "z644",
+            "z646", "z647", "z649"};
     private static final String[] STAR_LINES = {"z501", "z509", "z510", "z515", "z516"};
     private static final String[] STAV_LINES = {"z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560"};
     private static final String[] AUTOGUIDOVIE_LINES = {"z401", "z402", "z403", "z404", "z405", "z406",
-        "z407", "z409", "z410", "z411", "z412", "z413",
-        "z415", "z418", "z419", "z420", "z431", "z432",
-        "z203", "z205", "z209", "z219", "z221", "z222",
-        "z225", "z227", "z228", "z229", "z231", "z232",
-        "z233", "z234", "z250", "z251"};
+            "z407", "z409", "z410", "z411", "z412", "z413",
+            "z415", "z418", "z419", "z420", "z431", "z432",
+            "z203", "z205", "z209", "z219", "z221", "z222",
+            "z225", "z227", "z228", "z229", "z231", "z232",
+            "z233", "z234", "z250", "z251"};
     private static final int[] METRO_COLORS = {R.color.M1, R.color.M2, R.color.M3, R.color.M4, R.color.M5};
     private static final int[] SUBURBAN_COLORS = {
-        R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
-        R.color.S6, R.color.S7, R.color.S8, R.color.S9, R.color.S11,
-        R.color.S12, R.color.S13, R.color.S19, R.color.S31
+            R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
+            R.color.S6, R.color.S7, R.color.S8, R.color.S9, R.color.S11,
+            R.color.S12, R.color.S13, R.color.S19, R.color.S31
     };
     private static final int[] TILO_COLORS = {R.color.S10, R.color.S20, R.color.S30, R.color.S40, R.color.S50, R.color.S90, R.color.RE80};
     private static final LineType[][] CATEGORY_GROUPS = {
@@ -103,7 +103,6 @@ public class WidgetLines extends AppWidgetProvider {
 
         addAllWithIndividualColors(all, METRO_LINES, LineType.METRO, METRO_COLORS);
         addAllWithIndividualColors(all, SUBURBAN_LINES, LineType.SUBURBAN, SUBURBAN_COLORS);
-
         addAllWithSharedColor(all, REGIO_LINES, LineType.REGIO_EXPRESS, R.color.RE);
         addAllWithSharedColor(all, REGIONAL_LINES, LineType.REGIONAL, R.color.REGIONAL);
         addAllWithIndividualColors(all, TILO_LINES, LineType.TILO, TILO_COLORS);
@@ -204,6 +203,8 @@ public class WidgetLines extends AppWidgetProvider {
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
 
+        boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
+
         int[] chipIds = {R.id.chip1, R.id.chip2, R.id.chip3, R.id.chip4, R.id.chip5};
         for (int i = 0; i < chipIds.length; i++) {
             if (i < candidates.size()) {
@@ -215,8 +216,11 @@ public class WidgetLines extends AppWidgetProvider {
 
                 Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
                 if (openAppIntent != null) {
-                    openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
                     openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+                    if (openInApp) {
+                        openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
+                    }
 
                     int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
 
@@ -266,16 +270,29 @@ public class WidgetLines extends AppWidgetProvider {
         views.setTextViewText(R.id.detail_in_corso_count, loading ? "…" : String.valueOf(counts[0]));
         views.setTextViewText(R.id.detail_programmati_count, loading ? "…" : String.valueOf(counts[1]));
 
-        Intent detailIntent = new Intent();
-        detailIntent.setClassName(context.getPackageName(), "com.andreafilice.lavorami.LinesDetailActivity");
-        detailIntent.putExtra("NOME_LINEA", info.code);
-        detailIntent.putExtra("TIPO_DI_LINEA", info.type.label + " " + info.code);
-        detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
 
+        PendingIntent detailPendingIntent;
         int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addNextIntentWithParentStack(detailIntent);
-        PendingIntent detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        if (openInApp) {
+            Intent detailIntent = new Intent();
+            detailIntent.setClassName(context.getPackageName(), "com.andreafilice.lavorami.LinesDetailActivity");
+            detailIntent.putExtra("NOME_LINEA", info.code);
+            detailIntent.putExtra("TIPO_DI_LINEA", info.type.label + " " + info.code);
+            detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+            stackBuilder.addNextIntentWithParentStack(detailIntent);
+            detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+            if (openAppIntent != null) {
+                openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            }
+            detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        }
+
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
         views.setOnClickPendingIntent(R.id.detail_line_chip, detailPendingIntent);
 

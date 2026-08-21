@@ -540,6 +540,7 @@ public class SettingsActivity extends AppCompatActivity {
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
                 DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
                 DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, false);
+                DataManager.saveBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
                 DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
 
                 Toast.makeText(SettingsActivity.this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();

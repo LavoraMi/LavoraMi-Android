@@ -293,6 +293,66 @@
                 android:textSize="13sp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardButtonWidget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/disclosureBg"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:id="@+id/iconWidget"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_added_line_widget"
+                        app:tint="#FF453A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconWidget"
+                        android:fontFamily="@font/font_main"
+                        android:text="Apri la Linea da Widget"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp" />
+
+                    <Switch
+                        android:id="@+id/switchWidget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:checked="true"
+                        android:thumbTint="@color/White"
+                        android:trackTint="#FF453A"
+                        android:trackTintMode="add"
+                        tools:ignore="UseSwitchCompatOrMaterialXml" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/descButtonWidget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter"
+                android:text="Apri la linea selezionata nel widget nell'app quando si preme su quest'ultimo."
+                android:textColor="#8E8E93"
+                android:textSize="13sp" />
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
