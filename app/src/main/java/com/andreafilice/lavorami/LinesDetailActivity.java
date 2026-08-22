@@ -1795,7 +1795,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviations = cdnData.getRegionalLinesDeviations();
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
+        String[] linesBus = cdnData.getlineeSostituiteBus();
         //String[] linesMultipleRoutes = {"z619"};
+        int i = 0;
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
@@ -1806,11 +1808,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
         //ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
 
-        if(nomeLinea.equalsIgnoreCase("R15") || nomeLinea.equalsIgnoreCase("R24")) lineaFullBus.setVisibility(View.VISIBLE);
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
         infoLineBusesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
 
-        int i = 0;
+        for(String linea: linesBus) {if(linea.equals(nomeLinea)) lineaFullBus.setVisibility(View.VISIBLE);}
         for (String linea : lineeDeviate) {
             if (linea.equals(nomeLinea)) {
                 String lineLink = linkLinee[i];

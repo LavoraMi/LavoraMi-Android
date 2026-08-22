@@ -51,10 +51,12 @@ public class VariablesDescriptor {
     private String[] regionalLinesDeviationLinks;
     @SerializedName("lineeSospeseInteramente")
     private String[] lineeSospeseInteramente;
+    @SerializedName("lineeSostituiteBus")
+    private String[] lineeSostituiteBus;
     @SerializedName("stazioniChiuse")
     private String[] stazioniChiuse;
 
-    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse) {
+    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] lineeSostituiteBus, String[] stazioniChiuse) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeUpdateLive = strikeUpdateLive;
@@ -70,6 +72,7 @@ public class VariablesDescriptor {
         this.regionalLinesWithDeviations = regionalLinesWithDeviations;
         this.regionalLinesDeviationLinks = regionalLinesDeviationLinks;
         this.lineeSospeseInteramente = lineeSospeseInteramente;
+        this.lineeSostituiteBus = lineeSostituiteBus;
         this.stazioniChiuse = stazioniChiuse;
     }
 
@@ -90,6 +93,7 @@ public class VariablesDescriptor {
     public String[] getRegionalLinesDeviations() {return regionalLinesWithDeviations;}
     public String[] getRegionalLinesDeviationsLinks() {return regionalLinesDeviationLinks;}
     public String[] getlineeSospeseInteramente() {return lineeSospeseInteramente;}
+    public String[] getlineeSostituiteBus() {return lineeSostituiteBus;}
     public String[] getstazioniChiuse() {return stazioniChiuse;}
 
     public boolean isStrikeToday() {
