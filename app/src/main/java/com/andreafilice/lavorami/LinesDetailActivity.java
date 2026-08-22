@@ -1892,7 +1892,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M5": return "San Siro Stadio - Bignami";
 
             case "S1": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
-            case "S2": return "Seveso - Milano Rogoredo"; //* Mariano Comense - Milano Rogoredo
+            case "S2": return "Mariano Comense - Milano Rogoredo";
             case "S3": return "Saronno - Milano Cadorna";
             case "S4": return "Seveso - Milano Cadorna"; //* Camnago Lentate - Milano Cadorna
             case "S5": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Pioltello Limito" : "Varese - Treviglio";
