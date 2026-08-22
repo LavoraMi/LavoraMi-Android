@@ -157,21 +157,21 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Firebase BOM",
-                        "34.17.0",
+                        "34.18.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Cloud Messaging",
-                        "34.17.0",
+                        "34.18.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Analytics",
-                        "34.17.0",
+                        "34.18.0",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
@@ -209,7 +209,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Mapbox Maps SDK for Android",
-                        "11.28.3",
+                        "11.29.0",
                         "Mapbox Terms of Service",
                         "Copyright (c) Mapbox",
                         "Licensed under the Mapbox Terms of Service. See https://www.mapbox.com/legal/tos for details."
