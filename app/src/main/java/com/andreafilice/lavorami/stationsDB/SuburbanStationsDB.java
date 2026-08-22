@@ -255,8 +255,6 @@ public class SuburbanStationsDB {
 
     public static List<MetroStation> getStationsS2() {
         List<MetroStation> stations = new ArrayList<>();
-        /* MODIFICHE CIRCOLAZIONE: I treni circolano tra Seveso e Rogoredo
-                                   Questa modifica è fino al 12 Dicembre.
         stations.add(new MetroStation("Mariano Comense", 45.69358, 9.18141, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.67783, 9.17024, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.67703, 9.16952, "Main", "S2"));
@@ -274,7 +272,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.65177, 9.14074, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.65083, 9.14018, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.65019, 9.14008, "Main", "S2"));
-        stations.add(new MetroStation("NO_DRAW", 45.64966, 9.14011, "Main", "S2"));*/
+        stations.add(new MetroStation("NO_DRAW", 45.64966, 9.14011, "Main", "S2"));
         stations.add(new MetroStation("Seveso", 45.6483, 9.14018, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.64507, 9.14113, "Main", "S2"));
         stations.add(new MetroStation("NO_DRAW", 45.64208, 9.14166, "Main", "S2"));
