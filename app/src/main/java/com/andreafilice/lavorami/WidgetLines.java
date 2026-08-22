@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.widget.RemoteViews;
@@ -18,11 +17,8 @@ import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class WidgetLines extends AppWidgetProvider {
-    private static final String PREFS_NAME = "lavorami_widget_prefs";
-    private static final String PREF_SHOWN_LINES = "shown_lines_";
     public static final String EXTRA_LINE_NAME = "extra_line_name";
 
     public enum LineType {
@@ -64,46 +60,38 @@ public class WidgetLines extends AppWidgetProvider {
     private static final String[] SUBURBAN_LINES = {"S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "S19", "S31"};
     private static final String[] REGIO_LINES = {"RE1", "RE2", "RE3", "RE4", "RE5", "RE6", "RE7", "RE8", "RE11", "RE13"};
     private static final String[] REGIONAL_LINES = {"R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R11", "R12",
-        "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25", "R27", "R31", "R32", "R33", "R34",
-        "R35", "R36", "R37", "R38", "R39", "R40", "R41"};
+            "R13", "R14", "R15", "R16", "R17", "R18", "R21", "R22", "R23", "R24", "R25", "R27", "R31", "R32", "R33", "R34",
+            "R35", "R36", "R37", "R38", "R39", "R40", "R41"};
     private static final String[] TILO_LINES = {"S10", "S20", "S30", "S40", "S50", "S90", "RE80"};
     private static final String[] MXP_LINES = {"MXP1", "MXP2"};
     private static final String[] TRAM_LINES = {"1", "2", "3", "4", "5", "7", "9", "10", "12", "14",
-        "15", "16", "19", "24", "27", "31", "33"};
+            "15", "16", "19", "24", "27", "31", "33"};
     private static final String[] FILOBUS_LINES = {"90", "91", "92", "93"};
     private static final String[] MOVIBUS_LINES = {"z601", "z602", "z603", "z6C3", "z606", "z611", "z612",
-        "z616", "z617", "z618", "z619", "z620", "z621", "z622",
-        "z625", "z627", "z636", "z641", "z642", "z643", "z644",
-        "z646", "z647", "z649"};
+            "z616", "z617", "z618", "z619", "z620", "z621", "z622",
+            "z625", "z627", "z636", "z641", "z642", "z643", "z644",
+            "z646", "z647", "z649"};
     private static final String[] STAR_LINES = {"z501", "z509", "z510", "z515", "z516"};
     private static final String[] STAV_LINES = {"z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560"};
     private static final String[] AUTOGUIDOVIE_LINES = {"z401", "z402", "z403", "z404", "z405", "z406",
-        "z407", "z409", "z410", "z411", "z412", "z413",
-        "z415", "z418", "z419", "z420", "z431", "z432",
-        "z203", "z205", "z209", "z219", "z221", "z222",
-        "z225", "z227", "z228", "z229", "z231", "z232",
-        "z233", "z234", "z250", "z251"};
+            "z407", "z409", "z410", "z411", "z412", "z413",
+            "z415", "z418", "z419", "z420", "z431", "z432",
+            "z203", "z205", "z209", "z219", "z221", "z222",
+            "z225", "z227", "z228", "z229", "z231", "z232",
+            "z233", "z234", "z250", "z251"};
     private static final int[] METRO_COLORS = {R.color.M1, R.color.M2, R.color.M3, R.color.M4, R.color.M5};
     private static final int[] SUBURBAN_COLORS = {
-        R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
-        R.color.S6, R.color.S7, R.color.S8, R.color.S9, R.color.S11,
-        R.color.S12, R.color.S13, R.color.S19, R.color.S31
+            R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
+            R.color.S6, R.color.S7, R.color.S8, R.color.S9, R.color.S11,
+            R.color.S12, R.color.S13, R.color.S19, R.color.S31
     };
     private static final int[] TILO_COLORS = {R.color.S10, R.color.S20, R.color.S30, R.color.S40, R.color.S50, R.color.S90, R.color.RE80};
-    private static final LineType[][] CATEGORY_GROUPS = {
-            {LineType.METRO},
-            {LineType.SUBURBAN, LineType.MXP},
-            {LineType.REGIO_EXPRESS, LineType.REGIONAL, LineType.TILO},
-            {LineType.TRAM, LineType.FILOBUS},
-            {LineType.MOVIBUS, LineType.STAR, LineType.STAV, LineType.AUTOGUIDOVIE}
-    };
 
     private List<LineInfo> buildAllLines() {
         List<LineInfo> all = new ArrayList<>();
 
         addAllWithIndividualColors(all, METRO_LINES, LineType.METRO, METRO_COLORS);
         addAllWithIndividualColors(all, SUBURBAN_LINES, LineType.SUBURBAN, SUBURBAN_COLORS);
-
         addAllWithSharedColor(all, REGIO_LINES, LineType.REGIO_EXPRESS, R.color.RE);
         addAllWithSharedColor(all, REGIONAL_LINES, LineType.REGIONAL, R.color.REGIONAL);
         addAllWithIndividualColors(all, TILO_LINES, LineType.TILO, TILO_COLORS);
@@ -138,31 +126,6 @@ public class WidgetLines extends AppWidgetProvider {
         return null;
     }
 
-    private List<LineInfo> pickOneLinePerCategory() {
-        List<LineInfo> allLines = buildAllLines();
-        Random random = new Random();
-        List<LineInfo> result = new ArrayList<>();
-
-        for (LineType[] group : CATEGORY_GROUPS) {
-            List<LineInfo> candidatesInGroup = new ArrayList<>();
-            for (LineInfo info : allLines) {
-                for (LineType type : group) {
-                    if (info.type == type) {
-                        candidatesInGroup.add(info);
-                        break;
-                    }
-                }
-            }
-
-            if (!candidatesInGroup.isEmpty()) {
-                LineInfo chosen = candidatesInGroup.get(random.nextInt(candidatesInGroup.size()));
-                result.add(chosen);
-            }
-        }
-
-        return result;
-    }
-
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         DataManager.init(context);
@@ -177,54 +140,32 @@ public class WidgetLines extends AppWidgetProvider {
         if (selectedLine != null && !selectedLine.isEmpty()) showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
         else showSelectionView(context, appWidgetManager, appWidgetId);
     }
-
-    private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String shownKey = PREF_SHOWN_LINES + appWidgetId;
-        String saved = prefs.getString(shownKey, null);
-
-        List<LineInfo> candidates = new ArrayList<>();
-
-        if (saved != null && !saved.isEmpty()) {
-            for (String code : saved.split(",")) {
-                if (code.isEmpty()) continue;
-
-                LineInfo info = findLine(code);
-                if (info != null) candidates.add(info);
-            }
-        }
-
-        if (candidates.isEmpty()) {
-            candidates = pickOneLinePerCategory();
-
-            StringBuilder builder = new StringBuilder();
-            for (LineInfo info : candidates) builder.append(info.code).append(",");
-            prefs.edit().putString(shownKey, builder.toString()).apply();
-        }
-
+   private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
 
+        boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
+
         int[] chipIds = {R.id.chip1, R.id.chip2, R.id.chip3, R.id.chip4, R.id.chip5};
+        String[] chipCodes = {"M1", "S5", "M3", "S2", "z620"};
+
         for (int i = 0; i < chipIds.length; i++) {
-            if (i < candidates.size()) {
-                LineInfo info = candidates.get(i);
-                views.setTextViewText(chipIds[i], info.code);
-                views.setInt(chipIds[i], "setBackgroundResource", R.drawable.chip_line_bg);
-                applyChipTint(views, chipIds[i], context, info.colorRes);
-                views.setViewVisibility(chipIds[i], android.view.View.VISIBLE);
+            String code = chipCodes[i];
+            LineInfo info = findLine(code);
+            if (info == null) continue;
 
-                Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
-                if (openAppIntent != null) {
+            Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+            if (openAppIntent != null) {
+                openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+                if (openInApp) {
                     openAppIntent.putExtra(EXTRA_LINE_NAME, info.code);
-                    openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-                    int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
-
-                    PendingIntent pendingIntent = PendingIntent.getActivity(context, requestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-                    views.setOnClickPendingIntent(chipIds[i], pendingIntent);
                 }
+
+                int requestCode = (appWidgetId + "_open_" + info.code).hashCode();
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, requestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                views.setOnClickPendingIntent(chipIds[i], pendingIntent);
             }
-            else views.setViewVisibility(chipIds[i], android.view.View.GONE);
         }
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -266,16 +207,29 @@ public class WidgetLines extends AppWidgetProvider {
         views.setTextViewText(R.id.detail_in_corso_count, loading ? "…" : String.valueOf(counts[0]));
         views.setTextViewText(R.id.detail_programmati_count, loading ? "…" : String.valueOf(counts[1]));
 
-        Intent detailIntent = new Intent();
-        detailIntent.setClassName(context.getPackageName(), "com.andreafilice.lavorami.LinesDetailActivity");
-        detailIntent.putExtra("NOME_LINEA", info.code);
-        detailIntent.putExtra("TIPO_DI_LINEA", info.type.label + " " + info.code);
-        detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
 
+        PendingIntent detailPendingIntent;
         int detailRequestCode = (appWidgetId + "_detail_" + info.code).hashCode();
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addNextIntentWithParentStack(detailIntent);
-        PendingIntent detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        if (openInApp) {
+            Intent detailIntent = new Intent();
+            detailIntent.setClassName(context.getPackageName(), "com.andreafilice.lavorami.LinesDetailActivity");
+            detailIntent.putExtra("NOME_LINEA", info.code);
+            detailIntent.putExtra("TIPO_DI_LINEA", info.type.label + " " + info.code);
+            detailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+            stackBuilder.addNextIntentWithParentStack(detailIntent);
+            detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        } else {
+            Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+            if (openAppIntent != null) {
+                openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            }
+            detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        }
+
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
         views.setOnClickPendingIntent(R.id.detail_line_chip, detailPendingIntent);
 

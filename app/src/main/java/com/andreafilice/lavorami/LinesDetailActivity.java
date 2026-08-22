@@ -151,7 +151,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "14", "15", "16", "19", "24", "27", "31", "33"));
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636"
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643"
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -2005,11 +2005,11 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z636": return "Nosate - Legnano";
             case "Z641": return "Castano Primo - Magenta FS";
             case "Z642": return "Magenta - Legnano";
-            case "Z643": return "Vittuone - Parabiago";
+            case "Z643": return "Vittuone - Parabiago - Villa Cortese";
             case "Z644": return "Arconate - Parabiago";
             case "Z646": return "Castano Primo - Magenta FS";
             case "Z647": return "Cornaredo - Castano Primo";
-            case "Z649": return "Magenta - Arluno - Molino Dorino M1";
+            case "Z649": return "Busto Garolfo - Molino Dorino M1";
 
             case "Z501": return "Milano Famagosta - Binasco";
             case "Z509": return "Motta Visconti - Milano Famagosta";

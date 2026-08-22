@@ -4,6 +4,7 @@ import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -39,6 +40,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andreafilice.lavorami.wrapped.WrappedActivity;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     private Runnable searchRunnable;
     private ChipGroup.OnCheckedChangeListener chipCheckedChangeListener;
     private ViewPager2 viewPager;
+    public static boolean isWrappedEnabled;
 
     //*DATABASE SYNCH VARIABLES
     /// In this section of the code, we will create the variables for synch datas to DB ones.
@@ -931,6 +934,7 @@ public class MainActivity extends AppCompatActivity {
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                     strikeBanner.setVisibility(View.GONE);
+                    findViewById(R.id.wrappedBanner).setVisibility(View.GONE);
                     btnRefresh.clearAnimation();
                     swipeRefreshLayout.setRefreshing(false);
 
@@ -955,6 +959,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     strikeCDNResponse = response.body();
                     updateStrike(strikeCDNResponse);
+                    loadWrapped(strikeCDNResponse);
                 }
                 else
                     strikeBanner.setVisibility(View.GONE);
@@ -1072,6 +1077,25 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.strikeBanner).setVisibility(View.GONE);
 
         new Thread(() -> NotificationScheduler.scheduleStrikeNotification(MainActivity.this, strikeCDNResponse)).start();
+    }
+
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                DialogHelper.createDefaultDialog(this, "Riguarda il wrapped", "D'ora in poi, troverai il wrapped sotto la sezione \"Account\" nelle impostazioni");
+                DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, true);
+            }
+    );
+    private void loadWrapped(VariablesDescriptor variablesDescriptor) {
+        MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
+
+        isWrappedEnabled = variablesDescriptor.isWrappedEnabled();
+        wrappedBanner.setVisibility(isWrappedEnabled && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
+
+        wrappedBanner.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            launcher.launch(new Intent(this, WrappedActivity.class));
+        });
     }
 
     private void checkForEmptyList(List<EventDescriptor> list, String searchInfo, String searchDefault) {

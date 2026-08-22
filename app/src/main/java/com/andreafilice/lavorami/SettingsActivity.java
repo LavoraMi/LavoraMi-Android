@@ -26,6 +26,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.andreafilice.lavorami.wrapped.WrappedActivity;
+import com.google.android.material.card.MaterialCardView;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -98,6 +101,8 @@ public class SettingsActivity extends AppCompatActivity {
         //*SETTINGS BUTTONS
         RelativeLayout accountBtn = findViewById(R.id.btnAccount);
         accountBtn.setOnClickListener(v -> {changeActivity(this, AccountManagement.class);});
+
+       loadWrapped();
 
         RelativeLayout sourcesBtn = findViewById(R.id.btnFonts);
         sourcesBtn.setOnClickListener(v -> {changeActivity(this, SourcesDevelopment.class);});
@@ -534,6 +539,9 @@ public class SettingsActivity extends AppCompatActivity {
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
                 DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
+                DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, false);
+                DataManager.saveBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
+                DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
 
                 Toast.makeText(SettingsActivity.this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                 favorites.clear();
@@ -545,5 +553,16 @@ public class SettingsActivity extends AppCompatActivity {
         };
 
         DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.resetSettingsPopUp), deleteAllKeys);
+    }
+
+    public void loadWrapped(){
+        MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
+
+        wrappedBanner.setVisibility((DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) && MainActivity.isWrappedEnabled) ? View.VISIBLE : View.GONE);
+
+        wrappedBanner.setOnClickListener(v -> {
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.changeActivity(this, WrappedActivity.class);
+        });
     }
 }

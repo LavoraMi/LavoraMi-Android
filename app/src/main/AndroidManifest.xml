@@ -99,6 +99,8 @@
         <activity
             android:name=".LinesActivity"
             android:exported="false" />
+        <activity android:name=".wrapped.WrappedActivity"
+            android:exported="false" />
         <activity
             android:name=".LinesDetailActivity"
             android:exported="true"
