@@ -7244,7 +7244,7 @@ public class RegionalStationsDB {
         stations.add(new MetroStation("Gazzo Pieve S. Giacomo", 45.13702, 10.19003, "Main", "R40"));
         stations.add(new MetroStation("NO_DRAW", 45.13716, 10.20959, "Main", "R40"));
         stations.add(new MetroStation("NO_DRAW", 45.13719, 10.25864, "Main", "R40"));
-        stations.add(new MetroStation("Torre De'Picenardi", 45.13733, 10.28694, "Main", "R40"));
+        stations.add(new MetroStation("Torre De' Picenardi", 45.13733, 10.28694, "Main", "R40"));
         stations.add(new MetroStation("NO_DRAW", 45.13723, 10.30838, "Main", "R40"));
         stations.add(new MetroStation("NO_DRAW", 45.13726, 10.32301, "Main", "R40"));
         stations.add(new MetroStation("NO_DRAW", 45.13723, 10.32619, "Main", "R40"));
