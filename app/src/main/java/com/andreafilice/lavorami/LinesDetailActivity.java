@@ -1795,6 +1795,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviations = cdnData.getRegionalLinesDeviations();
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
+        String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
         //String[] linesMultipleRoutes = {"z619"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
@@ -1806,7 +1807,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
         //ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
 
-        if(nomeLinea.equalsIgnoreCase("R15") || nomeLinea.equalsIgnoreCase("R24")) lineaFullBus.setVisibility(View.VISIBLE);
+        for(String linea: lineeSostituiteBus) {if(linea.equals(nomeLinea)) lineaFullBus.setVisibility(View.VISIBLE);}
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
         infoLineBusesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
 
