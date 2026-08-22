@@ -20,13 +20,5 @@ app/google-services.json
 
 *.env
 *env
-.idea/misc.xml
-.idea/vcs.xml
-.idea/misc.xml
-.idea/vcs.xml
-.idea/gradle.xml
-.idea/planningMode.xml
+.idea
 .kotlin
-.idea/studiobot.xml
-.idea/deploymentTargetSelector.xml
-.idea/appInsightsSettings.xml
