@@ -1796,7 +1796,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
         String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
-        //String[] linesMultipleRoutes = {"z619"};
+        //String[] linesMultipleRoutes = {"z619", "z647"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
