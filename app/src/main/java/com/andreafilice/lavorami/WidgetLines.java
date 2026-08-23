@@ -222,11 +222,11 @@ public class WidgetLines extends AppWidgetProvider {
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
             stackBuilder.addNextIntentWithParentStack(detailIntent);
             detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        } else {
+        }
+        else {
             Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
-            if (openAppIntent != null) {
-                openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            }
+            if (openAppIntent != null) openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
             detailPendingIntent = PendingIntent.getActivity(context, detailRequestCode, openAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         }
 

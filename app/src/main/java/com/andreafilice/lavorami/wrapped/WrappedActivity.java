@@ -18,9 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WrappedActivity extends AppCompatActivity implements StoryFragment.OnVideoReadyListener {
-
     private static final int TOTAL_STORIES = 5;
-
     private ViewPager2 viewPager;
     private LinearLayout progressContainer;
     private final List<View> progressFills = new ArrayList<>();
@@ -52,15 +50,12 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
+            super.onPageSelected(position);
 
                 if (isFirstPageSelection) {
                     // La storia 0 è già stata avviata da onCreate(); ignora
-                    // la prima notifica dell'adapter per evitare un doppio avvio.
                     isFirstPageSelection = false;
-                    if (position == currentIndex) {
-                        return;
-                    }
+                    if (position == currentIndex) return;
                 }
 
                 onStoryChanged(position);
@@ -70,6 +65,7 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
 
     private void setupProgressBars() {
         LayoutInflater inflater = LayoutInflater.from(this);
+
         for (int i = 0; i < TOTAL_STORIES; i++) {
             View segment = inflater.inflate(R.layout.item_stories_progress_bar, progressContainer, false);
             progressContainer.addView(segment);
@@ -85,20 +81,14 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
     private void onStoryChanged(int position) {
         boolean movingForward = position > currentIndex;
 
-        for (int i = 0; i < position; i++) {
-            setFillWidthInstant(progressFills.get(i), 1f);
-        }
-        for (int i = position + 1; i < TOTAL_STORIES; i++) {
-            setFillWidthInstant(progressFills.get(i), 0f);
-        }
+        for (int i = 0; i < position; i++) {setFillWidthInstant(progressFills.get(i), 1f);}
+        for (int i = position + 1; i < TOTAL_STORIES; i++) {setFillWidthInstant(progressFills.get(i), 0f);}
 
         if (currentAnimator != null) {
             currentAnimator.cancel();
             currentAnimator = null;
         }
-        if (currentIndex >= 0 && currentIndex < TOTAL_STORIES && currentIndex != position) {
-            setFillWidthInstant(progressFills.get(currentIndex), movingForward ? 1f : 0f);
-        }
+        if (currentIndex >= 0 && currentIndex < TOTAL_STORIES && currentIndex != position) setFillWidthInstant(progressFills.get(currentIndex), movingForward ? 1f : 0f);
         waitingForVideoDurationIndex = -1;
 
         currentIndex = position;
@@ -137,27 +127,21 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
             float value = (float) animation.getAnimatedValue();
             setFillWidthDirect(fill, value);
         });
+
         animator.addListener(new android.animation.AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(@NonNull android.animation.Animator animation) {
-                if (currentAnimator != animation) {
-                    return;
-                }
+                if (currentAnimator != animation) return;
                 currentAnimator = null;
 
                 int nextIndex = position + 1;
-                if (nextIndex < TOTAL_STORIES) {
-                    goToStory(nextIndex);
-                } else {
-                    finish();
-                }
+                if (nextIndex < TOTAL_STORIES) goToStory(nextIndex);
+                else finish();
             }
 
             @Override
             public void onAnimationCancel(@NonNull android.animation.Animator animation) {
-                if (currentAnimator == animation) {
-                    currentAnimator = null;
-                }
+                if (currentAnimator == animation) currentAnimator = null;
             }
         });
 
@@ -167,9 +151,8 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
 
     private void setFillWidthInstant(View fill, float fraction) {
         View parent = (View) fill.getParent();
-        if (parent.getWidth() > 0) {
-            applyFillWidth(fill, parent.getWidth(), fraction);
-        } else {
+        if (parent.getWidth() > 0) applyFillWidth(fill, parent.getWidth(), fraction);
+        else {
             parent.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
@@ -183,9 +166,7 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
     private void setFillWidthDirect(View fill, float fraction) {
         View parent = (View) fill.getParent();
         int totalWidth = parent.getWidth();
-        if (totalWidth > 0) {
-            applyFillWidth(fill, totalWidth, fraction);
-        }
+        if (totalWidth > 0) applyFillWidth(fill, totalWidth, fraction);
     }
 
     private void applyFillWidth(View fill, int totalWidth, float fraction) {
@@ -196,10 +177,12 @@ public class WrappedActivity extends AppCompatActivity implements StoryFragment.
 
     private void goToStory(int index) {
         if (index < 0) return;
+
         if (index >= TOTAL_STORIES) {
             finish();
             return;
         }
+
         viewPager.setCurrentItem(index, true);
     }
 

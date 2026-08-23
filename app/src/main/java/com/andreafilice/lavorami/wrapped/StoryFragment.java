@@ -17,9 +17,7 @@ import androidx.media3.ui.PlayerView;
 import com.andreafilice.lavorami.R;
 
 public class StoryFragment extends Fragment {
-
     private static final String ARG_VIDEO_RES = "video_res";
-
     private ExoPlayer player;
     private PlayerView playerView;
     private boolean durationReported = false;
@@ -41,9 +39,7 @@ public class StoryFragment extends Fragment {
     @Override
     public void onAttach(@NonNull android.content.Context context) {
         super.onAttach(context);
-        if (context instanceof OnVideoReadyListener) {
-            listener = (OnVideoReadyListener) context;
-        }
+        if (context instanceof OnVideoReadyListener) listener = (OnVideoReadyListener) context;
     }
 
     @Nullable
@@ -70,10 +66,10 @@ public class StoryFragment extends Fragment {
         player.addListener(new Player.Listener() {
             @Override
             public void onPlaybackStateChanged(int state) {
-                if (state == Player.STATE_READY && !durationReported) {
-                    durationReported = true;
-                    reportDurationIfResumed();
-                }
+            if (state == Player.STATE_READY && !durationReported) {
+                durationReported = true;
+                reportDurationIfResumed();
+            }
             }
         });
     }
@@ -81,34 +77,25 @@ public class StoryFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (player == null) {
-            return;
-        }
+        if (player == null) return;
 
         player.seekTo(0);
         player.setPlayWhenReady(true);
 
-        if (durationReported) {
-            reportDurationIfResumed();
-        }
+        if (durationReported) reportDurationIfResumed();
     }
 
     private void reportDurationIfResumed() {
-        if (player == null || listener == null) {
-            return;
-        }
+        if (player == null || listener == null) return;
         long durationMs = player.getDuration();
-        if (durationMs > 0) {
-            listener.onVideoDurationReady((int) durationMs);
-        }
+
+        if (durationMs > 0) listener.onVideoDurationReady((int) durationMs);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (player != null) {
-            player.pause();
-        }
+        if (player != null) player.pause();
     }
 
     @Override
