@@ -1955,7 +1955,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             case "MXP1": return "Gallarate - Malpensa T2 - Milano Centrale";
             case "MXP2": return "Malpensa T2 - Milano Cadorna";
-            case "S10": return "Bellinzona - Como"; //* Biasca - Como
+            case "S10": return "Biasca - Como";
             case "S20": return "Bellinzona - Locarno"; //* Cadenazzo - Locarno
             case "S30": return "Cadenazzo - Gallarate";
             case "S40": return "Como - Varese";
