@@ -439,4 +439,6 @@
     <string name="supportLavoraMiDeps">Aiutaci a sostenere LavoraMi!</string>
     <string name="busPiuDirezioniTitle">BUS CON PIÙ DIREZIONI</string>
     <string name="busPiuDirezioniDesc">Questa linea è soggetta a rotte diverse in base alla fascia oraria. Consulta gli schermi informativi prima di salire sul pullman.</string>
+    <string name="widgetSettingsTitle">Apri Linea Widget</string>
+    <string name="widgetSettingsDeps">Apre la linea selezionata per il Widget quando ci clicchi sopra. Se disattivata, apre l\'app nella schermata Home.</string>
 </resources>

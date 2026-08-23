@@ -440,4 +440,6 @@
     <string name="supportLavoraMiDeps">¡Ayúdanos a apoyar a LavoraMi!</string>
     <string name="busPiuDirezioniTitle">AUTOBÚS CON MÚLTIPLES RUTAS</string>
     <string name="busPiuDirezioniDesc">Esta línea opera con rutas diferentes según la hora del día. Consulta las pantallas informativas antes de subir al autobús.</string>
+    <string name="widgetSettingsTitle">Abrir Widget Línea</string>
+    <string name="widgetSettingsDeps">Al hacer clic en el widget, se abre la línea seleccionada. Si está desactivada, se abre la aplicación en la pantalla de inicio.</string>
 </resources>

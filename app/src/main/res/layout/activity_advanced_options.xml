@@ -323,7 +323,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconWidget"
                         android:fontFamily="@font/font_main"
-                        android:text="Apri Linea Widget"
+                        android:text="@string/widgetSettingsTitle"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -348,7 +348,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter"
-                android:text="Apre la linea selezionata per il Widget quando ci clicchi sopra. Se disattivata, apre l'app nella schermata Home."
+                android:text="@string/widgetSettingsDeps"
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
