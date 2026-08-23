@@ -41,7 +41,6 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 
 public class AdvancedOptions extends AppCompatActivity {
-
     private static final String BIOMETRIC_KEY_ALIAS = "AdvancedOptionsBiometricKey";
 
     private void generateSecretKey() throws Exception {
@@ -218,9 +217,9 @@ public class AdvancedOptions extends AppCompatActivity {
                 DataManager.saveBoolData(dataToSave, currentSwitch.isChecked());
                 currentSwitch.setTrackTintMode((currentSwitch.isChecked()) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
             }
-            if(dataToSave.equals(DataKeys.KEY_OPEN_WIDGET_IN_APP)){
+
+            if(dataToSave.equals(DataKeys.KEY_OPEN_WIDGET_IN_APP))
                 WidgetLines.refreshAllWidgets(this);
-            }
         });
     }
 
