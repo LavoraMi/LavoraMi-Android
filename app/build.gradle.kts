@@ -20,7 +20,7 @@ val adMobUnitID = envProperties.getProperty("GOOGLE_ADS_UNIT_ID", "")
 
 android {
     namespace = "com.andreafilice.lavorami"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.andreafilice.lavorami"
