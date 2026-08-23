@@ -489,11 +489,11 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Lugano", new String[]{"S10", "S40", "S50", "S90", "RE80"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Giubiasco", new String[]{"S10", "S20", "S30", "S90"}, "lightrail", "Main", 11));
         interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S10", "S20", "S30", "S50", "S90"}, "lightrail", "Main", 12));
-        interchanges.add(new InterchangeInfo("Arbedo - Castione", new String[]{"S10", "S20", "S50", "S90"}, "lightrail", "Main", 13));
+        interchanges.add(new InterchangeInfo("Castione Arbedo", new String[]{"S10", "S20", "S50", "S90"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Biasca", new String[]{"S10", "S50"}, "lightrail", "Main", 14));
 
         /// TILO S20
-        interchanges.add(new InterchangeInfo("Arbedo - Castione", new String[]{"S20", "S10", "S50", "S90"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Castione Arbedo", new String[]{"S20", "S10", "S50", "S90"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S20", "S10", "S30", "S50", "S90"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Giubiasco", new String[]{"S20", "S10", "S30", "S90"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("San Antonino", new String[]{"S20", "S30", "RE80"}, "lightrail", "Main", 3));
@@ -556,7 +556,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Lugano Paradiso", new String[]{"S50", "S10", "S40", "S90", "RE80"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Lugano", new String[]{"S50", "S10", "S40", "S90", "RE80"}, "lightrail", "Main", 16));
         interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S50", "S10", "S20", "S30", "S90"}, "lightrail", "Main", 17));
-        interchanges.add(new InterchangeInfo("Arbedo - Castione", new String[]{"S50", "S10", "S20", "S90"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Castione Arbedo", new String[]{"S50", "S10", "S20", "S90"}, "lightrail", "Main", 18));
         interchanges.add(new InterchangeInfo("Biasca", new String[]{"S50", "S10"}, "lightrail", "Main", 19));
 
         /// TILO S90
