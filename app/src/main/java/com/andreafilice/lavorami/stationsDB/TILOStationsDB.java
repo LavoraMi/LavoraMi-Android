@@ -851,7 +851,6 @@ public class TILOStationsDB {
         stations.add(new MetroStation("NO_DRAW", 46.19247, 9.02614, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.19377, 9.0279, "Main", "S20"));
         stations.add(new MetroStation("Bellinzona", 46.19543, 9.02951, "Main", "S20"));
-        /* MODIFICHE CIRCOLAZIONE: La linea S20 è interrotta tra Castione e Bellinzona fino al 30 Agosto.
         stations.add(new MetroStation("NO_DRAW", 46.19862, 9.03383, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.20095, 9.0364, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.20339, 9.03842, "Main", "S20"));
@@ -869,7 +868,7 @@ public class TILOStationsDB {
         stations.add(new MetroStation("NO_DRAW", 46.2178, 9.04174, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.21835, 9.04184, "Main", "S20"));
         stations.add(new MetroStation("NO_DRAW", 46.2192, 9.04176, "Main", "S20"));
-        stations.add(new MetroStation("Castione Arbedo", 46.22363, 9.04148, "Main", "S20"));*/
+        stations.add(new MetroStation("Castione Arbedo", 46.22363, 9.04148, "Main", "S20"));
         return stations;
     }
 
