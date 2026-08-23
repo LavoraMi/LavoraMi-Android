@@ -313,7 +313,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_added_line_widget"
+                        android:src="@drawable/ic_branch"
                         app:tint="#FF453A" />
 
                     <TextView
@@ -323,7 +323,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/iconWidget"
                         android:fontFamily="@font/font_main"
-                        android:text="Apri la Linea da Widget"
+                        android:text="Apri Linea Widget"
                         android:textColor="@color/text_primary"
                         android:textSize="17sp" />
 
@@ -348,7 +348,7 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter"
-                android:text="Apri la linea selezionata nel widget nell'app quando si preme su quest'ultimo."
+                android:text="Apre la linea selezionata per il Widget quando ci clicchi sopra. Se disattivata, apre l'app nella schermata Home."
                 android:textColor="#8E8E93"
                 android:textSize="13sp" />
 
