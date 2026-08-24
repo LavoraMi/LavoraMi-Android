@@ -2736,7 +2736,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     public void showDialogTutorialBus() {
         Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_map_tutorial_bus); // sostituisci con il nome corretto del layout
+        dialog.setContentView(R.layout.dialog_map_tutorial_bus);
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
 
@@ -2756,16 +2756,14 @@ public class LinesDetailActivity extends AppCompatActivity {
         playerView.setPlayer(player);
 
         player.setMediaItem(mediaItem);
-        player.setRepeatMode(Player.REPEAT_MODE_ALL); // loop continuo, come una gif
-        player.setVolume(0f); // opzionale: comportamento tipico da "gif" muta
+        player.setRepeatMode(Player.REPEAT_MODE_ALL);
+        player.setVolume(0f);
         player.prepare();
         player.setPlayWhenReady(true);
 
         player.addListener(new Player.Listener() {
             @Override
             public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
-                // Con REPEAT_MODE_ALL, ogni volta che il video ricomincia
-                // arriva una transizione con reason = MEDIA_ITEM_TRANSITION_REASON_REPEAT
                 if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_REPEAT) {
                     unlockCloseButton(dialog, btnClose);
                 }
@@ -2780,7 +2778,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void unlockCloseButton(Dialog dialog, Button btnClose) {
-        // Ora che il video ha completato un ciclo, sblocchiamo la chiusura
         btnClose.setEnabled(true);
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
