@@ -2746,11 +2746,10 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         PlayerView playerView = dialog.findViewById(R.id.videoTutoriaBus);
         Button btnClose = dialog.findViewById(R.id.btn_close_tutorial);
-
-        // Il bottone parte disabilitato: non deve chiudere nulla finché il video non ha fatto un giro
+        
         btnClose.setEnabled(false);
 
-        String videoUri = "android.resource://" + getPackageName() + "/" + R.raw.bus_tutorial;
+        String videoUri = "android.resource://" + getPackageName() + "/" + (isDarkMode() ? R.raw.bus_tutorial : R.raw.bus_tutorial_light);
         MediaItem mediaItem = MediaItem.fromUri(Uri.parse(videoUri));
 
         ExoPlayer player = new ExoPlayer.Builder(this).build();
