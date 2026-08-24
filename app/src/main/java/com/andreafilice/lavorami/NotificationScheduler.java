@@ -315,7 +315,7 @@ public class NotificationScheduler {
         /// @PARAMETERS
         /// String value is the value passed lowercased.
 
-        return value.contains("via") || value.contains("corso") || value.contains("largo");
+        return (value.contains("via") || value.contains("corso") || value.contains("largo") || value.contains("stretto")) && value != "pavia";
     }
 
     private static long parseDateMillis(String dateStr) {
