@@ -442,4 +442,7 @@
     <string name="busPiuDirezioniDesc">Esta línea opera con rutas diferentes según la hora del día. Consulta las pantallas informativas antes de subir al autobús.</string>
     <string name="widgetSettingsTitle">Abrir Widget Línea</string>
     <string name="widgetSettingsDeps">Al hacer clic en el widget, se abre la línea seleccionada. Si está desactivada, se abre la aplicación en la pantalla de inicio.</string>
+    <string name="widget_bus_title">Seleccione su parada directamente desde el mapa</string>
+    <string name="widget_bus_desc_1">A partir de ahora, puedes seleccionar tu parada en el mapa</string>
+    <string name="widget_bus_desc_2">y consultar los horarios, sin tener que buscarlos todos.</string>
 </resources>

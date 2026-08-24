@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:fontFamily="@font/font_main"
-            android:text="Seleziona la tua fermata direttamente dalla mappa"
+            android:text="@string/widget_bus_title"
             android:textSize="20sp"
             android:layout_marginBottom="6dp"
             android:textStyle="bold" />
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
             android:gravity="center"
-            android:text="Da adesso puoi slezionare la tua fermata dalla mappa"
+            android:text="@string/widget_bus_desc_1"
             android:textColor="@color/subtitle"
             android:textSize="13sp" />
 
@@ -62,7 +62,7 @@
             android:fontFamily="@font/inter"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:text="e vedere direttamente gli orari da li, senza dovere cercare la tua feramta."
+            android:text="@string/widget_bus_desc_2"
             android:textColor="@color/subtitle"
             android:layout_marginBottom="10dp"
             android:textSize="13sp" />

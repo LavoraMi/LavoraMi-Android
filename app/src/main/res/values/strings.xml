@@ -441,4 +441,7 @@
     <string name="busPiuDirezioniDesc">Questa linea è soggetta a rotte diverse in base alla fascia oraria. Consulta gli schermi informativi prima di salire sul pullman.</string>
     <string name="widgetSettingsTitle">Apri Linea Widget</string>
     <string name="widgetSettingsDeps">Apre la linea selezionata per il Widget quando ci clicchi sopra. Se disattivata, apre l\'app nella schermata Home.</string>
+    <string name="widget_bus_title">Seleziona la tua fermata direttamente dalla mappa</string>
+    <string name="widget_bus_desc_1">Da adesso puoi selezionare la tua fermata dalla mappa</string>
+    <string name="widget_bus_desc_2">e vedere direttamente gli orari, senza doverla cercare tra tutte.</string>
 </resources>
