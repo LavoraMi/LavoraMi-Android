@@ -213,8 +213,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipInterscambi.setVisibility(View.GONE);
         }
 
-        if(busLinesWithMap.contains(nomeLinea)){
+        if(busLinesWithMap.contains(nomeLinea) && !DataManager.getBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false)){
             showDialogTutorialBus();
+            DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, true);
         }
         cachedInterTypeface = ResourcesCompat.getFont(this, R.font.inter);
         cachedFontMainTypeface = ResourcesCompat.getFont(this, R.font.font_main);
