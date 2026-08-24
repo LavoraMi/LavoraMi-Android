@@ -1367,6 +1367,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             chip.setText(branch);
             chip.setCheckable(true);
             chip.setChecked(branch.equals(selectedBranch));
+            chip.setTypeface(ResourcesCompat.getFont(this, R.font.inter), Typeface.BOLD);
             title.setTypeface(cachedFontMainTypeface, Typeface.BOLD);
 
             ColorStateList bgStates = new ColorStateList(
