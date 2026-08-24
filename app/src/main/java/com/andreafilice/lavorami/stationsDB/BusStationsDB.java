@@ -9521,13 +9521,16 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54129, 8.80931, "Main - Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54103, 8.80996, "Main - Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54081, 8.81087, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54043, 8.8129, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54032, 8.81341, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54017, 8.81384, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53939, 8.81555, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53958, 8.81574, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53975, 8.81581, "Main - Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54114, 8.81612, "Main - Ritorno", "z647"));
+        //inizio ritorno (damn)
+        stations.add(new MetroStation("NO_DRAW", 45.54058, 8.81207, "Ritorno", "z647"));
+        
+        stations.add(new MetroStation("NO_DRAW", 45.54043, 8.8129, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.54032, 8.81341, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.54017, 8.81384, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.53939, 8.81555, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.53958, 8.81574, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.53975, 8.81581, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.54114, 8.81612, "Main", "z647"));
         stations.add(new MetroStation("Buscate, Milano 26", 45.54129, 8.81477, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54154, 8.81289, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54162, 8.81239, "Main", "z647"));
