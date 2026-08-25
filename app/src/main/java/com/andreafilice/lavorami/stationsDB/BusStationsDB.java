@@ -5370,7 +5370,6 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52722, 8.80926, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.52714, 8.80945, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.52708, 8.80956, "Main", "z627"));
-        //tutti il figa di inizio dopo la rotonda che ho copiato
         stations.add(new MetroStation("NO_DRAW", 45.5444, 8.79029, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.5443, 8.79032, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.5442, 8.79038, "Ritorno", "z627"));
@@ -8989,7 +8988,6 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52722, 8.80926, "Main", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.52714, 8.80945, "Main", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.52708, 8.80956, "Main", "z646"));
-//tutti il figa di inizio dopo la rotonda che ho copiato
         stations.add(new MetroStation("NO_DRAW", 45.52802, 8.80989, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.528, 8.80981, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.52796, 8.81001, "Ritorno", "z646"));
