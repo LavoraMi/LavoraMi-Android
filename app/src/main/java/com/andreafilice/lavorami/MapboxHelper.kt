@@ -16,10 +16,10 @@ import com.mapbox.maps.extension.style.layers.generated.symbolLayer
 import com.mapbox.maps.extension.style.layers.properties.generated.TextAnchor
 import com.mapbox.maps.extension.style.expressions.dsl.generated.get
 import com.mapbox.maps.extension.style.expressions.dsl.generated.literal
+import com.mapbox.maps.extension.style.layers.addLayerBelow
 import com.mapbox.maps.plugin.animation.easeTo
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
-import com.mapbox.maps.extension.style.layers.generated.fillLayer
 import com.mapbox.maps.plugin.compass.compass
 import com.mapbox.maps.plugin.scalebar.scalebar
 
@@ -162,7 +162,8 @@ object MapboxHelper {
     }
 
     @JvmStatic
-    fun addLineLayer(mapView: MapView, sourceId: String, layerId: String, points: List<Point>, hexColor: String, dashed: Boolean) {
+    @JvmOverloads
+    fun addLineLayer(mapView: MapView, sourceId: String, layerId: String, points: List<Point>, hexColor: String, dashed: Boolean, belowLayerId: String? = "mapbox-location-indicator-layer") {
         /** In this function, we draw the effective colored line of the layer of the selected Line, this is also used for multi-branching.
          * @param mapView is the Map Fragment from the Activity Layout.
          * @param sourceId is the ID of the Line to draw in the MapBox Fragment.
@@ -170,17 +171,25 @@ object MapboxHelper {
          * @param points is the List of points to draw into the map.
          * @param hexColor is the color of the line in hexa notation.
          * @param dashed is a condition if the branch is now under construction or not.
+         * @param belowLayerId if present and existing in the style, the new line layer is inserted below it (e.g. the user location indicator), so it never covers it.
          */
         mapView.mapboxMap.getStyle { style ->
             style.addSource(geoJsonSource(sourceId) { feature(Feature.fromGeometry(LineString.fromLngLats(points))) })
-            style.addLayer(lineLayer(layerId, sourceId) {
+
+            val newLayer = lineLayer(layerId, sourceId) {
                 lineColor(literal(hexColor))
                 lineWidth(4.0)
                 lineCap(com.mapbox.maps.extension.style.layers.properties.generated.LineCap.ROUND)
                 lineJoin(com.mapbox.maps.extension.style.layers.properties.generated.LineJoin.ROUND)
 
                 if (dashed) lineDasharray(listOf(2.0, 2.0))
-            })
+            }
+
+            if (belowLayerId != null && style.styleLayerExists(belowLayerId))
+                style.addLayerBelow(newLayer, belowLayerId)
+            else
+                style.addLayer(newLayer)
+
         }
     }
 
