@@ -102,7 +102,9 @@
     <string name="noInterchanges">No changes with this line.</string>
     <string name="averageWaitingTimeTitle">"Average frequency: "</string>
     <string name="currentWorksTitle">current</string>
+    <string name="currentWorksSingularTitle">current</string>
     <string name="scheduledWorksTitle">scheduled</string>
+    <string name="scheduledWorksSingularTitle">scheduled</string>
     <string name="fallbackNoWorks">0 current,\n0 scheduled.</string>
     <string name="tilo">TILO</string>
     <string name="suburban">Suburban</string>

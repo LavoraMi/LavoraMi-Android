@@ -101,7 +101,9 @@
     <string name="noInterchanges">Nessun interscambio con questa linea.</string>
     <string name="averageWaitingTimeTitle">"Frequenza media: "</string>
     <string name="currentWorksTitle">attuali</string>
+    <string name="currentWorksSingularTitle">attuale</string>
     <string name="scheduledWorksTitle">programmati</string>
+    <string name="scheduledWorksSingularTitle">programmato</string>
     <string name="fallbackNoWorks">0 attuali,\n0 programmati.</string>
     <string name="tilo">TILO</string>
     <string name="suburban">Suburbano</string>
