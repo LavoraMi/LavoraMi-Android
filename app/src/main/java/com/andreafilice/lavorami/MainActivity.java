@@ -1105,12 +1105,25 @@ public class MainActivity extends AppCompatActivity {
         /// String searchInfo is the query that the user write into the EditText.
         /// String searchDefault is the query NOT LOWERCASED for better case-switching.
 
-        TextView noWorkFounds = findViewById(R.id.emptyView);
+        LinearLayout emptyView = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
 
-        noWorkFounds.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        noWorkFounds.setText((searchInfo.equals("null") ? getString(R.string.noWorkOnFilter) : String.format(getString(R.string.noWorksFoundInput), searchDefault)));
+        emptyView.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
+        TextView noWorkFounds = findViewById(R.id.emptyTitle);
+        if(searchInfo.equals("null")){
+            noWorkFounds.setText((getString(R.string.noWorkOnFilter)));
+        }else{
+            noWorkFounds.setText(String.format(getString(R.string.noWorksFoundInput), searchDefault));
+            findViewById(R.id.emptySubtitle).setVisibility(View.GONE);
+        }
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
+
+        Button resetFilter = findViewById(R.id.resetFilterState);
+        resetFilter.setOnClickListener(v->{
+            ActivityUtils.triggerFeedback(this);
+            ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
+            filterGroup.check(R.id.chipAll);
+        });
     }
 
     private void filtra(String testo, String testoOriginale) {
