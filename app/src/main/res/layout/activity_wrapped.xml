@@ -19,7 +19,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:paddingTop="12dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:weightSum="5"
         app:layout_constraintTop_toTopOf="parent" />
 
