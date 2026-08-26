@@ -49,6 +49,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import okhttp3.OkHttpClient;
@@ -408,10 +409,19 @@ public class LinesActivity extends AppCompatActivity {
 
     public void checkForEmptySearch(boolean value, CharSequence valueSearched) {
         TextView emptyTitle = findViewById(R.id.emptyTitle);
+        TextView emptySubtitle = findViewById(R.id.emptySubtitle);
         View emptyView = findViewById(R.id.emptyView);
 
         emptyView.setVisibility((value) ? View.VISIBLE : View.GONE);
         emptyTitle.setText(String.format(getString(R.string.noLinesFound), valueSearched));
+        emptySubtitle.setText(String.format(getString(R.string.noLinesFoundSubtitle), generateRandomLine()));
+    }
+
+    public String generateRandomLine() {
+        String[] lines = {"M1", "M4", "S5", "S6", "S8", "R16", "R22", "R40", "RE1", "RE3", "z620", "z643"};
+        int randomValue = new Random().nextInt(lines.length);
+
+        return lines[randomValue];
     }
 
     public void reloadRecentLines() {

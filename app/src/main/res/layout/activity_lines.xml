@@ -123,7 +123,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font_main"
-                    android:text="@string/noWorkOnFilter"
                     android:textColor="@color/text_primary"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -135,7 +134,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_main"
-                    android:text="Nessuna linea."
                     android:textColor="@color/subtitle"
                     android:textSize="14sp"
                     android:gravity="center" />
