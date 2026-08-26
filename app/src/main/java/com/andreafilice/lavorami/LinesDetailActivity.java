@@ -377,6 +377,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<VariablesDescriptor> call, Throwable t) {
                 strikeFetchAttempted = true;
+                aggiornaInfoSuperiori();
                 Toast.makeText(LinesDetailActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
                 checkIfReadyToLoadMap();
             }
