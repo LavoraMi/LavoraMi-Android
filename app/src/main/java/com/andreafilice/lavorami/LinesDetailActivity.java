@@ -2574,6 +2574,10 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void syncYourLinesToSupabase(Set<String> yourLinesSet) {
+        /// This method syncs the user data to main cloud of LavoraMi.
+        /// @PARAMETERS
+        /// Set<String> yourLinesSet is the data to save, fetched from localData.
+
         if (sessionManager != null && sessionManager.isLoggedIn()) {
             Set<String> favoritesSet = DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new java.util.HashSet<>());
 
