@@ -1123,6 +1123,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityUtils.triggerFeedback(this);
             ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
             filterGroup.check(R.id.chipAll);
+            findViewById(R.id.filterScroll).scrollTo(0,0);
         });
     }
 
