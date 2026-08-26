@@ -1112,15 +1112,19 @@ public class MainActivity extends AppCompatActivity {
         TextView noWorkFounds = findViewById(R.id.emptyTitle);
         if(searchInfo.equals("null")){
             noWorkFounds.setText((getString(R.string.noWorkOnFilter)));
+            findViewById(R.id.emptySubtitle).setVisibility(View.VISIBLE);
+            ImageView emptyIcon = findViewById(R.id.emptyIcon);
+            emptyIcon.setImageResource(R.drawable.ic_filter_empty);
         }else{
             noWorkFounds.setText(String.format(getString(R.string.noWorksFoundInput), searchDefault));
             findViewById(R.id.emptySubtitle).setVisibility(View.GONE);
+            ImageView emptyIcon = findViewById(R.id.emptyIcon);
+            emptyIcon.setImageResource(R.drawable.ic_research_empty);
         }
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
 
         Button resetFilter = findViewById(R.id.resetFilterState);
         resetFilter.setOnClickListener(v->{
-            ActivityUtils.triggerFeedback(this);
             ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
             filterGroup.check(R.id.chipAll);
             findViewById(R.id.filterScroll).scrollTo(0,0);
