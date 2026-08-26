@@ -2595,7 +2595,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                 public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Tue Linee aggiornate nel cloud!");}
 
                 @Override
-                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio linee nel cloud: " + error);}
+                public void onError(String error) {
+                    Toast.makeText(LinesDetailActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+                    Log.e("SUPABASE_SYNC", "Errore salvataggio linee nel cloud: " + error);
+                }
             });
         }
         else if(!DataManager.getBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, false)){

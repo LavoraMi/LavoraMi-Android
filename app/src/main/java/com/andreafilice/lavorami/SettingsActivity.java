@@ -377,7 +377,10 @@ public class SettingsActivity extends AppCompatActivity {
                 public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Preferiti aggiornati nel cloud con successo!");}
 
                 @Override
-                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore durante la sincronizzazione cloud: " + error);}
+                public void onError(String error) {
+                    Toast.makeText(SettingsActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+                    Log.e("SUPABASE_SYNC", "Errore durante la sincronizzazione cloud: " + error);
+                }
             });
         }
     }

@@ -796,7 +796,10 @@ public class LinesActivity extends AppCompatActivity {
                 public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");}
 
                 @Override
-                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
+                public void onError(String error) {
+                    Toast.makeText(LinesActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+                    Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);
+                }
             });
         }
         else if(!DataManager.getBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, false)){
@@ -828,9 +831,7 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void addAdToContainer(NativeAd nativeAd) {
-
-        NativeAdView adView = (NativeAdView) getLayoutInflater()
-                .inflate(R.layout.item_card_pubblicita_linee, containerAds, false);
+        NativeAdView adView = (NativeAdView) getLayoutInflater().inflate(R.layout.item_card_pubblicita_linee, containerAds, false);
 
         ImageView iconView = adView.findViewById(R.id.ad_app_icon);
         TextView headlineView = adView.findViewById(R.id.ad_headline);
@@ -893,10 +894,10 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
-                .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
-                .setRequestMultipleImages(false)
-                .setReturnUrlsForImageAssets(false)
-                .build();
+            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+            .setRequestMultipleImages(false)
+            .setReturnUrlsForImageAssets(false)
+            .build();
 
         loadAllAdsAtOnce(adUnitId, nativeAdOptions, 2);
     }
@@ -907,28 +908,28 @@ public class LinesActivity extends AppCompatActivity {
         pendingNativeAds.clear();
 
         AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
-                .forNativeAd(nativeAd -> {
-                    Log.d("ADMOB", "Ad caricata con successo!");
-                    pendingNativeAds.add(nativeAd);
-                    pendingAdsReceived++;
+            .forNativeAd(nativeAd -> {
+                Log.d("ADMOB", "Ad caricata con successo!");
+                pendingNativeAds.add(nativeAd);
+                pendingAdsReceived++;
 
-                    if (pendingAdsReceived >= pendingAdsExpected) {
-                        runOnUiThread(this::swapInNewAds);
-                    }
-                })
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(LoadAdError adError) {
-                        Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
-                        pendingAdsReceived++;
+                if (pendingAdsReceived >= pendingAdsExpected) {
+                    runOnUiThread(this::swapInNewAds);
+                }
+            })
+            .withAdListener(new AdListener() {
+                @Override
+                public void onAdFailedToLoad(LoadAdError adError) {
+                Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
+                pendingAdsReceived++;
 
-                        if (pendingAdsReceived >= pendingAdsExpected) {
-                            runOnUiThread(() -> swapInNewAds());
-                        }
-                    }
-                })
-                .withNativeAdOptions(options)
-                .build();
+                if (pendingAdsReceived >= pendingAdsExpected) {
+                    runOnUiThread(() -> swapInNewAds());
+                }
+                }
+            })
+            .withNativeAdOptions(options)
+            .build();
 
         adLoader.loadAds(new AdRequest.Builder().build(), totalDesired);
     }
@@ -943,11 +944,8 @@ public class LinesActivity extends AppCompatActivity {
 
         for (int i = 0; i < mNativeAds.size(); i++) {
             NativeAd oldAd = mNativeAds.get(i);
-            if (i < missing) {
-                oldAdsToKeep.add(oldAd);
-            } else {
-                oldAdsToDestroy.add(oldAd);
-            }
+            if (i < missing) oldAdsToKeep.add(oldAd);
+            else oldAdsToDestroy.add(oldAd);
         }
 
         finalAds.addAll(oldAdsToKeep);
