@@ -66,6 +66,7 @@ public class LinesActivity extends AppCompatActivity {
     LinearLayout containerAds;
     LinearLayout titleAds;
     LinearLayout parentScrollLayout;
+    Random randomElement;
     private ConsentInformation consentInformation;
     private boolean mobileAdsInitialized = false;
     private boolean hasCompletedSetup = false;
@@ -114,6 +115,7 @@ public class LinesActivity extends AppCompatActivity {
         containerStav = findViewById(R.id.groupStav);
         containerSTAR = findViewById(R.id.groupStar);
         containerAutoGuidovie = findViewById(R.id.groupAutoGuidoVie);
+        randomElement = new Random();
 
         titleRecent = findViewById(R.id.headerRecentSearch);
         titleMetro = findViewById(R.id.headerMetro);
@@ -421,7 +423,7 @@ public class LinesActivity extends AppCompatActivity {
         /// @RETURNS a String value, the name of the line.
 
         String[] lines = {"M1", "M4", "S5", "S6", "S8", "R16", "R22", "R40", "RE1", "RE3", "z620", "z643"};
-        int randomValue = new Random().nextInt(lines.length);
+        int randomValue = randomElement.nextInt(lines.length);
 
         return lines[randomValue];
     }
