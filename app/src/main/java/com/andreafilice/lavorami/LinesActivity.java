@@ -768,6 +768,10 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void syncYourLinesToSupabase(Set<String> yourLinesSet) {
+        /// This method syncs the user data to main cloud of LavoraMi.
+        /// @PARAMETERS
+        /// Set<String> yourLinesSet is the data to save, fetched from localData.
+        
         if (sessionManager != null && sessionManager.isLoggedIn()) {
             Set<String> favoritesSet = DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new java.util.HashSet<>());
 
@@ -792,6 +796,10 @@ public class LinesActivity extends AppCompatActivity {
                 @Override
                 public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
             });
+        }
+        else if(!DataManager.getBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, false)){
+            DialogHelper.createDefaultDialog(this, "Salva le tue linee", "Lo sapevi che, creando un Account LavoraMi, puoi salvare le tue linee preferite per ritrovarle su tutti i tuoi dispositivi? Che aspetti! Crea un Account!");
+            DataManager.saveBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, true);
         }
     }
 

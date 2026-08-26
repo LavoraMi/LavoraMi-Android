@@ -2597,6 +2597,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                 public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio linee nel cloud: " + error);}
             });
         }
+        else if(!DataManager.getBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, false)){
+            DialogHelper.createDefaultDialog(this, "Salva le tue linee", "Lo sapevi che, creando un Account LavoraMi, puoi salvare le tue linee preferite per ritrovarle su tutti i tuoi dispositivi? Che aspetti! Crea un Account!");
+            DataManager.saveBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, true);
+        }
     }
 
     private void checkForMetroStatus(String lineName, TextView statusText, ImageView lineaRegolareIcon, LinearLayout lineaRegolareLayout){
