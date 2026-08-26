@@ -345,13 +345,7 @@ public class LinesActivity extends AppCompatActivity {
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
-
                     checkForEmptySearch(!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto, s);
-
-                    /*if (tvNoResults != null) {
-                        tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
-                        tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
-                    }*/
 
                     searchLines.setCompoundDrawables(searchIcon, null, (s.length() > 0) ? deleteIcon : null, null);
                 };
@@ -408,6 +402,11 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     public void checkForEmptySearch(boolean value, CharSequence valueSearched) {
+        /// This method is a refactor one, semplify the logic of the new Empty View UI all in one function.
+        /// @PARAMETERS
+        /// boolean value is the value of the search, if is true, no lines are displayed.
+        /// CharSequence valueSearched is the String searched by the user.
+
         TextView emptyTitle = findViewById(R.id.emptyTitle);
         TextView emptySubtitle = findViewById(R.id.emptySubtitle);
         View emptyView = findViewById(R.id.emptyView);
@@ -418,6 +417,9 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     public String generateRandomLine() {
+        /// This method generate a random line name to suggest while user don't find his line.
+        /// @RETURNS a String value, the name of the line.
+
         String[] lines = {"M1", "M4", "S5", "S6", "S8", "R16", "R22", "R40", "RE1", "RE3", "z620", "z643"};
         int randomValue = new Random().nextInt(lines.length);
 
