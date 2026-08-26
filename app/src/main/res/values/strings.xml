@@ -204,8 +204,8 @@
     <string name="strikeBannerTitle">Sciopero proclamato per il &lt;b&gt;%s&lt;/b&gt;.</string>
     <string name="strikeBannerGuaranteed">Fasce garantite: %s</string>
     <string name="noWorksFoundInput">Nessun lavoro trovato per: \"%s\"</string>
-    <string name="italianSettings">" Italiano"</string>
-    <string name="englishLanguage">" Inglese"</string>
+    <string name="italianSettings">Italiano</string>
+    <string name="englishLanguage">Inglese</string>
     <string name="languageDeps">Lingua</string>
     <string name="themeDeps">Tema</string>
     <string name="strikeBannerAderenti">Aderenti:</string>
