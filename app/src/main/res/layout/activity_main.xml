@@ -624,6 +624,8 @@
             android:text="@string/noWorkOnFilterHint"
             android:textColor="@color/subtitle"
             android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:gravity="center" />
 
         <Button

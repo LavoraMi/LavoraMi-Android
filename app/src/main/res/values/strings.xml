@@ -109,8 +109,8 @@
     <string name="suburban">Suburbano</string>
     <string name="avvisoSciopero">AVVISO SCIOPERO</string>
     <string name="dateSciopero">Sciopero proclamato per il:</string>
-    <string name="noWorkOnFilter">Nessun lavoro trovato</string>
-    <string name="noWorkOnFilterHint">Nessun lavoro per questo filtro, selezionane un altro</string>
+    <string name="noWorkOnFilter">Nessun lavoro trovato per questo filtro</string>
+    <string name="noWorkOnFilterHint">Prova a modificare i filtri selezionati per trovare altri lavori.</string>
     <string name="resetFilters">Mostra tutti i lavori</string>
     <string name="downloadDataError">Impossibile caricare i dati dal server.</string>
     <string name="retry">Riprova</string>

@@ -110,7 +110,9 @@
     <string name="suburban">Suburbano</string>
     <string name="avvisoSciopero">AVISO DE HUELGA</string>
     <string name="dateSciopero">Huelga convocada para el:</string>
-    <string name="noWorkOnFilter">No se encontraron obras para este filtro.</string>
+    <string name="noWorkOnFilter">No se encontraron obras para este filtro</string>
+    <string name="noWorkOnFilterHint">Intenta modificar los filtros seleccionados para encontrar otros trabajos.</string>
+    <string name="resetFilters">Mostrar todos los trabajos</string>
     <string name="downloadDataError">No se pueden cargar los datos desde el servidor.</string>
     <string name="retry">Reintentar</string>
     <string name="next">Siguiente</string>

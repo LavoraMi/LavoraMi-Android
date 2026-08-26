@@ -110,7 +110,9 @@
     <string name="suburban">Suburban</string>
     <string name="avvisoSciopero">STRIKE NOTICE</string>
     <string name="dateSciopero">Strike planned for:</string>
-    <string name="noWorkOnFilter">No works found for this filter.</string>
+    <string name="noWorkOnFilter">No works found for this filter</string>
+    <string name="noWorkOnFilterHint">Try changing the selected filters to find other works.</string>
+    <string name="resetFilters">Show all works</string>
     <string name="downloadDataError">Unable to load data from server.</string>
     <string name="retry">Retry</string>
     <string name="next">Next</string>
