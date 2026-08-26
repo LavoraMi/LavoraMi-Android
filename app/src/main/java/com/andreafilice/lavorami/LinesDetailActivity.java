@@ -2596,7 +2596,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onError(String error) {
-                    Toast.makeText(LinesDetailActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LinesDetailActivity.this, getString(R.string.connectionErrorCloudToast), Toast.LENGTH_SHORT).show();
                     Log.e("SUPABASE_SYNC", "Errore salvataggio linee nel cloud: " + error);
                 }
             });

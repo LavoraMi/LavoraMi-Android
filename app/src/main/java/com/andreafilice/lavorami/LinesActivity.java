@@ -797,7 +797,7 @@ public class LinesActivity extends AppCompatActivity {
 
                 @Override
                 public void onError(String error) {
-                    Toast.makeText(LinesActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LinesActivity.this, getString(R.string.connectionErrorCloudToast), Toast.LENGTH_SHORT).show();
                     Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);
                 }
             });

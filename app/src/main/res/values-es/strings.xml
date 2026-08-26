@@ -453,4 +453,5 @@
     <string name="emptySubtitleNoResultsWorks">Intenta buscar otra cosa.</string>
     <string name="saveYourLinesTitle">Guarda tus líneas</string>
     <string name="saveYourLinesDeps">Elige qué tipo de datos quieres que se guarden en nuestras bases de datos, para poder acceder a ellos en cualquier momento desde tu Cuenta.</string>
+    <string name="connectionErrorCloudToast">Se ha producido un error de conexión al guardar los datos de la Cuenta.</string>
 </resources>
