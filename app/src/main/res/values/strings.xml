@@ -448,4 +448,5 @@
     <string name="widget_bus_title">Seleziona la tua fermata direttamente dalla mappa</string>
     <string name="widget_bus_desc_1">Da adesso puoi selezionare la tua fermata dalla mappa</string>
     <string name="widget_bus_desc_2">e vedere direttamente gli orari, senza doverla cercare tra tutte.</string>
+    <string name="emptySubtitleNoResultsWorks">Prova a cercare qualcos\'altro.</string>
 </resources>

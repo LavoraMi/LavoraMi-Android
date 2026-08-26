@@ -447,4 +447,5 @@
     <string name="widget_bus_title">Seleccione su parada directamente desde el mapa</string>
     <string name="widget_bus_desc_1">A partir de ahora, puedes seleccionar tu parada en el mapa</string>
     <string name="widget_bus_desc_2">y consultar los horarios, sin tener que buscarlos todos.</string>
+    <string name="emptySubtitleNoResultsWorks">Intenta buscar otra cosa.</string>
 </resources>

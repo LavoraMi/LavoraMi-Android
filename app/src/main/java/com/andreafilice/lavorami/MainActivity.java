@@ -1107,19 +1107,26 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout emptyView = findViewById(R.id.emptyView);
         RecyclerView view = findViewById(R.id.recyclerView);
+        ImageView emptyIcon = findViewById(R.id.emptyIcon);
+        TextView noWorkFounds = findViewById(R.id.emptyTitle);
+        TextView emptySubtitle = findViewById(R.id.emptySubtitle);
+        Button resetFilterStateBtn = findViewById(R.id.resetFilterState);
 
         emptyView.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
-        TextView noWorkFounds = findViewById(R.id.emptyTitle);
+
         if(searchInfo.equals("null")){
             noWorkFounds.setText((getString(R.string.noWorkOnFilter)));
-            findViewById(R.id.emptySubtitle).setVisibility(View.VISIBLE);
-            ImageView emptyIcon = findViewById(R.id.emptyIcon);
+            emptySubtitle.setText(getString(R.string.noWorkOnFilterHint));
             emptyIcon.setImageResource(R.drawable.ic_filter_empty);
-        }else{
+            resetFilterStateBtn.setVisibility(View.VISIBLE);
+            emptyView.setPadding(0, 0, 0, 50);
+        }
+        else {
             noWorkFounds.setText(String.format(getString(R.string.noWorksFoundInput), searchDefault));
-            findViewById(R.id.emptySubtitle).setVisibility(View.GONE);
-            ImageView emptyIcon = findViewById(R.id.emptyIcon);
+            emptySubtitle.setText(getString(R.string.emptySubtitleNoResultsWorks));
             emptyIcon.setImageResource(R.drawable.ic_research_empty);
+            resetFilterStateBtn.setVisibility(View.GONE);
+            emptyView.setPadding(0, 0, 0, 250);
         }
         view.setVisibility((list.isEmpty() && errorLayout.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE);
 
