@@ -98,17 +98,46 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/emptyView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="18sp"
-                android:textColor="@color/text_primary"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="100dp"
-                android:fontFamily="@font/font_main"
-                android:visibility="gone"/>
+                android:paddingHorizontal="32dp"
+                android:paddingTop="150dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/emptyIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_research_empty"
+                    android:layout_marginBottom="20dp"
+                    app:tint="@color/text_primary"/>
+
+                <TextView
+                    android:id="@+id/emptyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_main"
+                    android:text="@string/noWorkOnFilter"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/emptySubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/font_main"
+                    android:text="Nessuna linea."
+                    android:textColor="@color/subtitle"
+                    android:textSize="14sp"
+                    android:gravity="center" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/headerRecentSearch"

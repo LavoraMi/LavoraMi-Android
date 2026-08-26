@@ -60,7 +60,6 @@ public class LinesActivity extends AppCompatActivity {
 
     LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
     LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
-    TextView tvNoResults;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
     LinearLayout containerAds;
@@ -129,7 +128,6 @@ public class LinesActivity extends AppCompatActivity {
         titleStav = findViewById(R.id.headerSTAV);
         titleSTAR = findViewById(R.id.headerSTAR);
         titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
-        tvNoResults = findViewById(R.id.emptyView);
 
         parentScrollLayout = (LinearLayout) containerRecent.getParent();
 
@@ -347,10 +345,12 @@ public class LinesActivity extends AppCompatActivity {
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
 
-                    if (tvNoResults != null){
+                    checkForEmptySearch(!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto, s);
+
+                    /*if (tvNoResults != null) {
                         tvNoResults.setVisibility((!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto) ? View.VISIBLE : View.GONE);
                         tvNoResults.setText(String.format(getString(R.string.noLinesFound), s));
-                    }
+                    }*/
 
                     searchLines.setCompoundDrawables(searchIcon, null, (s.length() > 0) ? deleteIcon : null, null);
                 };
@@ -404,6 +404,14 @@ public class LinesActivity extends AppCompatActivity {
             titleRecent.setVisibility(View.GONE);
             containerRecent.setVisibility(View.GONE);
         }
+    }
+
+    public void checkForEmptySearch(boolean value, CharSequence valueSearched) {
+        TextView emptyTitle = findViewById(R.id.emptyTitle);
+        View emptyView = findViewById(R.id.emptyView);
+
+        emptyView.setVisibility((value) ? View.VISIBLE : View.GONE);
+        emptyTitle.setText(String.format(getString(R.string.noLinesFound), valueSearched));
     }
 
     public void reloadRecentLines() {
