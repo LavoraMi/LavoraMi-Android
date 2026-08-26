@@ -2587,10 +2587,10 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             supabaseDataManager.saveFavoritesAndLines(favoritesList, yourLinesList, new SupabaseDataManager.DataCallback<Void>() {
                 @Override
-                public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Tue Linee (Cuore) aggiornate nel cloud!");}
+                public void onSuccess(Void result) {Log.d("SUPABASE_SYNC", "Tue Linee aggiornate nel cloud!");}
 
                 @Override
-                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio Cuore nel cloud: " + error);}
+                public void onError(String error) {Log.e("SUPABASE_SYNC", "Errore salvataggio linee nel cloud: " + error);}
             });
         }
     }
