@@ -451,4 +451,6 @@
     <string name="widget_bus_desc_1">From now on you can select your stop from the map</string>
     <string name="widget_bus_desc_2">and see the timetables, without having to search through them all.</string>
     <string name="emptySubtitleNoResultsWorks">Why not try looking for something else?</string>
+    <string name="saveYourLinesTitle">Save your lines</string>
+    <string name="saveYourLinesDeps">Choose what type of data you want to be saved in our Databases, so that you can always access it from your Account.</string>
 </resources>

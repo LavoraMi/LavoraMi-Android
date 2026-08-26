@@ -2598,7 +2598,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             });
         }
         else if(!DataManager.getBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, false)){
-            DialogHelper.createDefaultDialog(this, "Salva le tue linee", "Lo sapevi che, creando un Account LavoraMi, puoi salvare le tue linee preferite per ritrovarle su tutti i tuoi dispositivi? Che aspetti! Crea un Account!");
+            DialogHelper.createDefaultDialog(this, getString(R.string.saveYourLinesTitle), getString(R.string.saveYourLinesDeps));
             DataManager.saveBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, true);
         }
     }
