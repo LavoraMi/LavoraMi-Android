@@ -13,9 +13,7 @@ import android.os.VibratorManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 public class ActivityUtils {

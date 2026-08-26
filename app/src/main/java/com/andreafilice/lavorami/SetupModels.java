@@ -1,16 +1,8 @@
 package com.andreafilice.lavorami;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +19,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SetupModels {
-
     public static class SetupPage {
         String title, description, smallDescription;
         int icon;
@@ -88,12 +79,12 @@ public class SetupModels {
                 holder.imgFirstSlide.setScaleY(0.7f);
 
                 holder.imgFirstSlide.animate()
-                        .alpha(1f)
-                        .scaleX(1f)
-                        .scaleY(1f)
-                        .setDuration(1000)
-                        .setInterpolator(new OvershootInterpolator(1.3f))
-                        .start();
+                    .alpha(1f)
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(1000)
+                    .setInterpolator(new OvershootInterpolator(1.3f))
+                    .start();
             }
 
             //*LANGUAGE DROPDOWN
@@ -140,8 +131,8 @@ public class SetupModels {
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {}
                 });
-            } else
-                holder.spinnerSetup.setVisibility(View.GONE);
+            }
+            else holder.spinnerSetup.setVisibility(View.GONE);
         }
 
         @Override

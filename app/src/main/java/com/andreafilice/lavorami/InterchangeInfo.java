@@ -33,7 +33,6 @@ public class InterchangeInfo {
     public String getKey() {return key;}
     public String[] getLines() {return lines;}
     public String[] getLinesToShow() {return linesToShow;}
-    public String getTypeOfInterchange() {return typeOfInterchange;}
     public String getBranch() {return branch;}
     public int getLineOrder() {return lineOrder;}
     public int getCardImageID() {return getTitleIconID(this.typeOfInterchange);}

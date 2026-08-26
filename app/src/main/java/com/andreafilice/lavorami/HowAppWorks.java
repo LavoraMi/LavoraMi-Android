@@ -3,7 +3,6 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,10 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -30,11 +27,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.mapbox.maps.MapView;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.shape.ShapeAppearanceModel;
-import com.mapbox.maps.plugin.gestures.GesturesUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

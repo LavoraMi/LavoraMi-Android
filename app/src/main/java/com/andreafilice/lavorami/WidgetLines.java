@@ -140,7 +140,7 @@ public class WidgetLines extends AppWidgetProvider {
         if (selectedLine != null && !selectedLine.isEmpty()) showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
         else showSelectionView(context, appWidgetManager, appWidgetId);
     }
-   private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
 
         boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);

@@ -2,15 +2,12 @@ package com.andreafilice.lavorami;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class RequirementsDescriptor {
     /// In this class, we get from the CDN the values of the requirements.json file and parse that datas into this Class.
     /// @SerializedName are the original names from the JSON file of our CDN
     /// @ATTRIBUTE
     /// @String minimumVersionAndroid -> is the minimum version to have for using the application.
+
     @SerializedName("minVersionAndroid")
     public String minimumVersionAndroid;
     @SerializedName("maintenanceMode")

@@ -4,8 +4,6 @@ import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 
@@ -39,7 +37,6 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 

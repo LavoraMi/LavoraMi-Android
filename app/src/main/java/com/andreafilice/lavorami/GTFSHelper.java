@@ -18,12 +18,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class GTFSHelper {
-
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
 
     public static class GTFSRoute {

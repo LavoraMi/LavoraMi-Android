@@ -1,7 +1,5 @@
 package com.andreafilice.lavorami;
 
-import static com.andreafilice.lavorami.EventDescriptor.formattaData;
-
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -37,7 +35,6 @@ import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

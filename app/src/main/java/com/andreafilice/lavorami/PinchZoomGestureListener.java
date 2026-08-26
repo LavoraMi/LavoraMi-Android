@@ -29,7 +29,6 @@ public class PinchZoomGestureListener implements ScaleGestureDetector.OnScaleGes
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {return true;}
-
     @Override
     public void onScaleEnd(@NonNull ScaleGestureDetector scaleGestureDetector) {}
 

@@ -11,7 +11,6 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class LavoraMiMessagingService extends FirebaseMessagingService {
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         if (!DataManager.getBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true)) return;
