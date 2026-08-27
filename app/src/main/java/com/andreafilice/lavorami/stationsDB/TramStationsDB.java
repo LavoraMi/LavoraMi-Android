@@ -1589,7 +1589,6 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51316, 9.21381, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51321, 9.21386, "Main", "7"));
         stations.add(new MetroStation("Milano Greco Pirelli", 45.51343, 9.21404, "Main", "7"));
-        stations.add(new MetroStation("NO_DRAW", 45.51343, 9.21405, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51362, 9.2142, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51367, 9.21424, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51372, 9.21426, "Main", "7"));
