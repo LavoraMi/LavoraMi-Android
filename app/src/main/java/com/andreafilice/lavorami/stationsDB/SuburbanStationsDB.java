@@ -2020,6 +2020,33 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46636, 9.23689, "Main", "S9"));
         stations.add(new MetroStation("NO_DRAW", 45.46558, 9.23684, "Main", "S9"));
         stations.add(new MetroStation("Milano Forlanini", 45.46438, 9.23691, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.46376, 9.23711, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.46313, 9.2373, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.4627, 9.2374, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.46227, 9.23742, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.46065, 9.23738, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45539, 9.23724, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45475, 9.23723, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45409, 9.2372, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45296, 9.23709, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45146, 9.23691, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45102, 9.23686, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.45037, 9.23678, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44968, 9.23654, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44921, 9.23625, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44844, 9.23573, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44778, 9.23529, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44713, 9.23496, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44667, 9.23484, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44607, 9.23474, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44562, 9.23479, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44517, 9.2348, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44411, 9.235, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44331, 9.23515, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.44185, 9.23552, "Main", "S9"));
+        stations.add(new MetroStation("NO_DRAW", 45.43886, 9.23647, "Main", "S9"));
+        stations.add(new MetroStation("Milano Rogoredo", 45.4336, 9.2383, "Main", "S9"));
+        /* MODIFICHE CIRCOLAZIONE: La linea S9 fino al 6 Settembre circola tra Rogoredo e Saronno.
         stations.add(new MetroStation("NO_DRAW", 45.46372, 9.23711, "Main", "S9"));
         stations.add(new MetroStation("NO_DRAW", 45.46331, 9.23724, "Main", "S9"));
         stations.add(new MetroStation("NO_DRAW", 45.46267, 9.23737, "Main", "S9"));
@@ -2110,7 +2137,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40675, 9.02097, "Main", "S9"));
         stations.add(new MetroStation("NO_DRAW", 45.4066, 9.01795, "Main", "S9"));
         stations.add(new MetroStation("NO_DRAW", 45.4045, 8.96032, "Main", "S9"));
-        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "S9"));
+        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "S9"));*/
         return stations;
     }
 
