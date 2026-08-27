@@ -773,14 +773,9 @@ public class TramStationsDB {
         stations.add(new MetroStation("Gratosoglio", 45.40368, 9.17393, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40355, 9.17381, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40352, 9.17377, "Main", "3"));
-        stations.add(new MetroStation("NO_DRAW", 45.40349, 9.17376, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40347, 9.17374, "Main", "3"));
-        stations.add(new MetroStation("NO_DRAW", 45.40346, 9.17374, "Main", "3"));
-        stations.add(new MetroStation("NO_DRAW", 45.40344, 9.17374, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40342, 9.17373, "Main", "3"));
-        stations.add(new MetroStation("NO_DRAW", 45.4034, 9.17373, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40337, 9.17373, "Main", "3"));
-        stations.add(new MetroStation("NO_DRAW", 45.40335, 9.17374, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40331, 9.17375, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40328, 9.17377, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40325, 9.1738, "Main", "3"));
@@ -798,7 +793,6 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4034, 9.17439, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40347, 9.17444, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40351, 9.17447, "Main", "3"));
-        stations.add(new MetroStation("NO_DRAW", 45.40352, 9.17447, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40355, 9.17449, "Main", "3"));
         stations.add(new MetroStation("Via Dei Missaglia Via Baroni", 45.40383, 9.17463, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.40384, 9.17464, "Main", "3"));
