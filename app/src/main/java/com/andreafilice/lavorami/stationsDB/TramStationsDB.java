@@ -2054,7 +2054,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48347, 9.18721, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.4835, 9.18711, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.48354, 9.18699, "Main", "10"));
-        stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.1867, "Main", "10"));
+        stations.add(new MetroStation("Garibaldi M2 M5", 45.48374, 9.1867, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.48377, 9.18644, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.4838, 9.18637, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.48386, 9.18627, "Main", "10"));
@@ -2288,7 +2288,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45207, 9.17902, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.45203, 9.17905, "Main", "10"));
         stations.add(new MetroStation("NO_DRAW", 45.452, 9.17909, "Main", "10"));
-        stations.add(new MetroStation("P.Za Ventiquattro Maggio", 45.45199, 9.17941, "Main", "10"));
+        stations.add(new MetroStation("P.Za XXIV Maggio", 45.45199, 9.17941, "Main", "10"));
         return stations;
     }
 
