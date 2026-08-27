@@ -10150,6 +10150,7 @@ public class BusStationsDB {
 
     public static List<MetroStation> getStationsZ649() {
         List<MetroStation> stations = new ArrayList<>();
+        //z647
         stations.add(new MetroStation("Casorezzo, Bertani/Parabiago", 45.52431, 8.90561, "Main - Ritorno", "z649"));
         stations.add(new MetroStation("NO_DRAW", 45.52402, 8.90556, "Main", "z649"));
         stations.add(new MetroStation("NO_DRAW", 45.52396, 8.90549, "Main", "z649"));

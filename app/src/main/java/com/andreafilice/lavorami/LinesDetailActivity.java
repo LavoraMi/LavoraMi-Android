@@ -801,7 +801,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         for (MetroStation station : stazioniFiltrate) {
             String branch = station.getBranch();
-            boolean isPartOfMain = branch != null && (branch.equals("Main") || branch.trim().equalsIgnoreCase("Main"));
+            boolean isPartOfMain = branch != null &&  branch.contains("Main");
 
             if (isPartOfMain) mainStations.add(station);
             else {
