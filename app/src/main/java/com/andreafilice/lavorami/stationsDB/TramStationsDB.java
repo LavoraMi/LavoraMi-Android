@@ -1146,7 +1146,6 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47783, 9.18069, "Main", "4"));
         stations.add(new MetroStation("NO_DRAW", 45.47787, 9.18069, "Main", "4"));
         stations.add(new MetroStation("P.Za Lega Lombarda", 45.47811, 9.18072, "Main", "4"));
-        stations.add(new MetroStation("NO_DRAW", 45.47812, 9.18073, "Main", "4"));
         stations.add(new MetroStation("NO_DRAW", 45.47821, 9.18075, "Main", "4"));
         stations.add(new MetroStation("NO_DRAW", 45.4786, 9.18082, "Main", "4"));
         stations.add(new MetroStation("V.Le Montello", 45.47988, 9.18106, "Main", "4"));
