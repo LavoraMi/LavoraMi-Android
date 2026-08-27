@@ -491,9 +491,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48608, 9.1821, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.48572, 9.18205, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.48564, 9.18204, "Main", "2"));
-        stations.add(new MetroStation("NO_DRAW", 45.4856, 9.18202, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.48557, 9.18201, "Main", "2"));
-        stations.add(new MetroStation("NO_DRAW", 45.48548, 9.18197, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.48545, 9.18197, "Main", "2"));
         stations.add(new MetroStation("Via Farini Via Ferrari", 45.48518, 9.18192, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.48488, 9.18188, "Main", "2"));
