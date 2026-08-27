@@ -3526,7 +3526,6 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4791, 9.22567, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.47902, 9.22567, "Main", "33"));
         stations.add(new MetroStation("Via Pascoli P.Za L. Da Vinci", 45.47716, 9.22562, "Main", "33"));
-        stations.add(new MetroStation("NO_DRAW", 45.47717, 9.22562, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.47707, 9.2257, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.47701, 9.22568, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.47696, 9.22566, "Main", "33"));
