@@ -1778,7 +1778,6 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4744, 9.20558, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.47434, 9.20568, "Main", "9"));
         stations.add(new MetroStation("Porta Venezia M1", 45.47418, 9.20594, "Main", "9"));
-        stations.add(new MetroStation("NO_DRAW", 45.47418, 9.20595, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.4741, 9.20621, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.47403, 9.2063, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.47396, 9.20636, "Main", "9"));
@@ -1878,7 +1877,6 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45231, 9.18062, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45235, 9.18011, "Main", "9"));
         stations.add(new MetroStation("Piazza XXIV Maggio", 45.4524, 9.17969, "Main", "9"));
-        stations.add(new MetroStation("NO_DRAW", 45.4524, 9.1797, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45239, 9.17952, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.4524, 9.17943, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45241, 9.1793, "Main", "9"));
