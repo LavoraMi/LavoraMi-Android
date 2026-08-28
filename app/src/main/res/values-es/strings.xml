@@ -337,7 +337,7 @@
     <string name="onBoardPersonal">Confía en el personal de a bordo</string>
     <string name="onBoardPersonalDeps">Si tu trayecto en tren continúa con un autobús sustitutivo, el personal de a bordo te facilitará toda la información necesaria para continuar el viaje con tranquilidad.</string>
     <string name="seeWorks">Ver las obras</string>
-    <string name="seeWorksDeps">El mapa muestra el recorrido original de la línea. ¡Consulta los desvíos en la sección \"Obras en la Línea\"!</string>
+    <string name="seeWorksDeps">El mapa muestra el recorrido original de la línea. ¡Consulta los desvíos en la sección \"Obras\"!</string>
     <string name="incorrectDetails">Reportar posibles errores</string>
     <string name="incorrectDetailsDeps">Si encuentras incoherencias en nuestra app con tu línea, reporta el problema a: report-informazioni@lavorami.it</string>
     <string name="deviationMapTxt">ESTA LÍNEA ESTÁ SUJETA A DESVÍOS.</string>

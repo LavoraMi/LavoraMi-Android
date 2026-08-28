@@ -339,7 +339,7 @@
     <string name="onBoardPersonal">Please rely on the cabin crew</string>
     <string name="onBoardPersonalDeps">If your train journey continues by replacement bus, the on-board staff will provide you with all the information you need to continue your journey with peace of mind.</string>
     <string name="seeWorks">View the works</string>
-    <string name="seeWorksDeps">The map shows the original route; see the diversions in the ‘Line Works’ section!</string>
+    <string name="seeWorksDeps">The map shows the original route; see the diversions in the \"Works\" section!</string>
     <string name="incorrectDetails">Report any errors</string>
     <string name="notShowAnymore">Don\'t show anymore</string>
     <string name="tutorialTitle">How do I add a line to my favourites?</string>
