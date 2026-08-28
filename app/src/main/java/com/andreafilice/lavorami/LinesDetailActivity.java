@@ -558,7 +558,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private boolean getLineLimitation() {
         /// This method is a refactor one that checks if the current line selected is available ONLY ON WORKING DAYS.
 
-        String[] lineeAttiveLavorativi = {"S2", "S12", "S19", "R15", "R18", "R24", "R37"};
+        String[] lineeAttiveLavorativi = {"S2", "S12", "S19"};
 
         for(String linea: lineeAttiveLavorativi) {
             if(linea.equals(nomeLinea))
