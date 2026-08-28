@@ -292,10 +292,12 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this section of the code, we setup the buttons for the Bottom bar links.
         ImageView btnInstagram = findViewById(R.id.btnInstagram);
         ImageView btnTikTok = findViewById(R.id.btnTikTok);
+        ImageView btnFacebook = findViewById(R.id.btnFacebook);
         ImageView btnWebsite = findViewById(R.id.btnWebsite);
 
         btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp/"));
         btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@lavoramiapp"));
+        btnFacebook.setOnClickListener(v-> ActivityUtils.openURL(this, "https://www.facebook.com/profile.php?id=61593590085842"));
         btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it"));
     }
 
