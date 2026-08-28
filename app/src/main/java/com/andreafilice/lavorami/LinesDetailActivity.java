@@ -159,7 +159,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "14", "15", "16", "19", "24", "27", "31", "33"));
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList()); // "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649"
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649", "z6C3")); // "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649"
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
@@ -518,7 +518,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         ImageButton buttonAddLine = findViewById(R.id.buttonAddLine);
-        Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_up_down);
+        Animation scaleUpDown = AnimationUtils.loadAnimation(this, R.anim.scale_down_up);
         boolean isSyncWithCloudEnabled = DataManager.getBoolData(DataKeys.KEY_SAVE_DB_YOUR_LINES, true);
 
         if(linesSaved.contains(nomeLinea)) {
