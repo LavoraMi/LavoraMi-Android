@@ -332,7 +332,7 @@
     <string name="regioExpressLines">Regio Express Lines</string>
     <string name="deviationInfoTitle">Maps</string>
     <string name="deviationInfoDeps">Info about maps</string>
-    <string name="incorrectDetailsDeps">If you notice any discrepancies between our app and your transit line, please report the issue to: info@lavorami.it!</string>
+    <string name="incorrectDetailsDeps">If you notice any discrepancies between our app and your transit line, please report the issue to: report-informazioni@lavorami.it!</string>
     <string name="deviationMapTxt">THIS LINE IS SUBJECT TO ROUTE CHANGES.</string>
     <string name="deviationInfoDeps2">LavoraMi may not show the current route of the lines on the maps, as there may be diversions, section closures or stations that are inaccessible. Please check the notices in the \"Works\" section!"</string>
     <string name="deviationInfoDeps3">LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below, and you can find alternative travel options in the relevant section.</string>

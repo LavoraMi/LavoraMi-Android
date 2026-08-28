@@ -339,7 +339,7 @@
     <string name="seeWorks">Ver las obras</string>
     <string name="seeWorksDeps">El mapa muestra el recorrido original de la línea. ¡Consulta los desvíos en la sección \"Obras en la Línea\"!</string>
     <string name="incorrectDetails">Reportar posibles errores</string>
-    <string name="incorrectDetailsDeps">Si encuentras incoherencias en nuestra app con tu línea, reporta el problema a: info@lavorami.it</string>
+    <string name="incorrectDetailsDeps">Si encuentras incoherencias en nuestra app con tu línea, reporta el problema a: report-informazioni@lavorami.it</string>
     <string name="deviationMapTxt">ESTA LÍNEA ESTÁ SUJETA A DESVÍOS.</string>
     <string name="notShowAnymore">No mostrar más</string>
     <string name="tutorialTitle">¿Cómo puedo añadir una línea a favoritos?</string>

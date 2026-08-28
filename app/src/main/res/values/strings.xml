@@ -338,7 +338,7 @@
     <string name="seeWorks">Guarda i lavori</string>
     <string name="seeWorksDeps">La mappa contiene il percorso originale della tratta, guarda le deviazioni di essa nella sezione: \"Lavori Linea\"!</string>
     <string name="incorrectDetails">Segnala eventuali incorrettezze</string>
-    <string name="incorrectDetailsDeps">Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: info@lavorami.it!</string>
+    <string name="incorrectDetailsDeps">Se trovi delle incoerenze nella nostra app con la tua linea, segnala questo problema a: report-informazioni@lavorami.it!</string>
     <string name="deviationMapTxt">QUESTA LINEA È SOGGETTA A DEVIAZIONI.</string>
     <string name="notShowAnymore">Non mostrare più</string>
     <string name="tutorialTitle">Come posso mettere una linea nei preferiti?</string>
