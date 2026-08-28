@@ -6498,6 +6498,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55547, 8.78222, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.55606, 8.78355, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.55385, 8.78279, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Castano Primo, Garibaldi", 45.55353, 8.78271, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5535, 8.7827, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.55315, 8.78269, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.55281, 8.78279, "Main - Ritorno", "z641"));
@@ -6524,7 +6525,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54797, 8.78831, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54791, 8.78829, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5478, 8.78825, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Castano Primo, Don Milani", 45.54765, 8.78834, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Castano Primo, Don Milani", 45.54765, 8.78834, "Main", "z641"));
+        stations.add(new MetroStation("Castano Primo, Don Milani 1, Iis Torno", 45.54765, 8.78834, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54733, 8.78855, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54726, 8.78868, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54723, 8.78885, "Main - Ritorno", "z641"));
@@ -6628,7 +6630,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54139, 8.72773, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54156, 8.72737, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5417, 8.72695, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("NO_DRAW", 45.54175, 8.72664, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Turbigo, Nosate 65", 45.54175, 8.72664, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54182, 8.72637, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54187, 8.72608, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54266, 8.72573, "Main - Ritorno", "z641"));
@@ -6643,7 +6645,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54565, 8.72427, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5457, 8.7242, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54682, 8.72491, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Nosate, Ponte Castano Fr.  20", 45.54742, 8.72523, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Nosate, Ponte Castano Fr.  20", 45.5474, 8.72525, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54869, 8.72583, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54928, 8.72607, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54992, 8.72627, "Main - Ritorno", "z641"));
@@ -6669,7 +6671,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54992, 8.72627, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54928, 8.72607, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54869, 8.72583, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Nosate, Ponte Castano Fr.  20", 45.54742, 8.72523, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Nosate, Ponte Castano 20", 45.54743, 8.72522, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54682, 8.72491, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5457, 8.7242, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.54571, 8.72412, "Main - Ritorno", "z641"));
@@ -6695,7 +6697,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53718, 8.73313, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53684, 8.73411, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53674, 8.73434, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Turbigo, Nosate 6", 45.53644, 8.73481, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Turbigo, Nosate fr. 6", 45.5364, 8.73485, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5361, 8.73529, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5358, 8.73452, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53553, 8.73404, "Main - Ritorno", "z641"));
@@ -6715,6 +6717,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52536, 8.72871, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52644, 8.73074, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("Turbigo, Roma 59", 45.52662, 8.73099, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Turbigo, Roma fr. 59", 45.52662, 8.73099, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52729, 8.73192, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52771, 8.73226, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52795, 8.73253, "Main - Ritorno", "z641"));
@@ -6726,7 +6729,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52872, 8.73646, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52896, 8.73734, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52919, 8.7379, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Turbigo, Allea Comunale 12", 45.52952, 8.73848, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Turbigo, Allea Comunale 12", 45.52958, 8.73859, "Main", "z641"));
+        stations.add(new MetroStation("Turbigo, Allea Comunale 9", 45.52952, 8.73848, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53025, 8.73984, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53054, 8.74019, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5315, 8.7423, "Main - Ritorno", "z641"));
@@ -6751,7 +6755,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53271, 8.74787, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53269, 8.74801, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53262, 8.74814, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Turbigo, Villoresi 42", 45.53074, 8.74977, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Turbigo, Villoresi 42", 45.53074, 8.74977, "Main", "z641"));
+        stations.add(new MetroStation("Turbigo, Villoresi 45", 45.53089, 8.74964, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53022, 8.75024, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53018, 8.75036, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53022, 8.7505, "Main - Ritorno", "z641"));
@@ -6791,14 +6796,17 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53348, 8.76441, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53322, 8.76454, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.53289, 8.7646, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Robecchetto C.Induno, Umberto I 14", 45.53247, 8.76513, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Robecchetto C.Induno, Umberto I 14", 45.53247, 8.76513, "Main", "z641"));
+        stations.add(new MetroStation("Robecchetto C.Induno, Umberto I 5", 45.53264, 8.76491, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52995, 8.7688, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52972, 8.76944, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52941, 8.77003, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Robecchetto C.Induno, Umberto I 129", 45.52821, 8.77183, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52737, 8.77309, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52641, 8.77437, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52623, 8.77455, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52599, 8.77469, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Robecchetto C.Induno, Magenta 5", 45.52421, 8.77518, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52365, 8.77535, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52344, 8.77548, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.52322, 8.77569, "Main", "z641"));
@@ -6835,6 +6843,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50079, 8.79384, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49948, 8.79381, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("Cuggiono, C. Stucchi  7,Castelletto", 45.49948, 8.7943, "Main", "z641"));
+        stations.add(new MetroStation("Cuggiono, C. Stucchi fr. 9,Castelletto", 45.49948, 8.79421, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49947, 8.7949, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49601, 8.79704, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49593, 8.79706, "Main", "z641"));
@@ -6888,7 +6897,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51006, 8.81287, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.51005, 8.81291, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5101, 8.81306, "Ritorno", "z641"));
-        stations.add(new MetroStation("NO_DRAW", 45.51038, 8.81337, "Ritorno", "z641"));
+        stations.add(new MetroStation("Cuggiono, Manzoni 1", 45.51038, 8.81337, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5111, 8.81404, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5119, 8.8146, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.5124, 8.81492, "Ritorno", "z641"));
@@ -6911,7 +6920,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50635, 8.81692, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.50641, 8.8169, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.50658, 8.81698, "Main", "z641"));
-        stations.add(new MetroStation("Cuggiono, Della Vittoria fr. 12", 45.50683, 8.81699, "Main", "z641"));
+        stations.add(new MetroStation("Cuggiono, Della Vittoria fr. 12", 45.50683, 8.81699, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.50819, 8.81672, "Main", "z641"));
         stations.add(new MetroStation("Cuggiono, Fermo 34", 45.50865, 8.82085, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.50876, 8.82182, "Main", "z641"));
@@ -6954,7 +6963,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.49509, 8.82612, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49435, 8.82683, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49393, 8.82769, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Bernate Ticino, Italia,Casate", 45.49346, 8.82818, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Bernate Ticino, Italia,Casate", 45.49346, 8.82818, "Main", "z641"));
+        stations.add(new MetroStation("Bernate Ticino, Milano 36,Casate", 45.49379, 8.82781, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49317, 8.82851, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49262, 8.82891, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49235, 8.82799, "Main - Ritorno", "z641"));
@@ -6962,11 +6972,13 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.49191, 8.82587, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49165, 8.82582, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.49095, 8.82572, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Bernate Ticino, IV Novembre 1d,Casate", 45.49052, 8.82547, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Bernate Ticino, IV Novembre 1d,Casate", 45.49052, 8.82547, "Main", "z641"));
+        stations.add(new MetroStation("Bernate Ticino, IV Novembre 6,Casate", 45.49044, 8.82541, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48889, 8.82441, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48691, 8.82255, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48577, 8.82104, "Main", "z641"));
-        stations.add(new MetroStation("Berante T., Roma 55", 45.48462, 8.8195, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Berante T., Roma 55", 45.48473, 8.81964, "Main", "z641"));
+        stations.add(new MetroStation("Berante T., Roma 48", 45.48462, 8.8195, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48419, 8.8189, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48407, 8.81877, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48318, 8.81848, "Main - Ritorno", "z641"));
@@ -6975,6 +6987,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4814, 8.81749, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48023, 8.81655, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48005, 8.81651, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Bernate Ticino, Roma Fr. 23", 45.47996, 8.81651, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.47951, 8.81656, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.47935, 8.81663, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("Bernate Ticino, Roma Fr. 22", 45.47921, 8.81675, "Main - Ritorno", "z641"));
@@ -6987,7 +7000,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47853, 8.81888, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.47864, 8.8191, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.47881, 8.8193, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Bernate Ticino, V. Veneto 12", 45.47904, 8.81949, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Bernate Ticino, V. Veneto 12", 45.47904, 8.81949, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.47957, 8.81981, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.48008, 8.82001, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4805, 8.82009, "Main - Ritorno", "z641"));
@@ -7072,9 +7085,11 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47064, 8.83225, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.47054, 8.83211, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46919, 8.8317, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Boffalora Sopra Ticino, S. Defendente 2", 45.46919, 8.83275, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Boffalora Sopra Ticino, S. Defendente 2", 45.46919, 8.83275, "Main", "z641"));
+        stations.add(new MetroStation("Boffalora Sopra Ticino, S. Defendente 9", 45.46919, 8.83255, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46918, 8.83417, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Boffalora Sopra Ticino, Roma 28", 45.46826, 8.83432, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Boffalora Sopra Ticino, Roma 28", 45.46826, 8.83432, "Main", "z641"));
+        stations.add(new MetroStation("Boffalora Sopra Ticino, Roma 20", 45.46859, 8.83425, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46655, 8.83465, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46641, 8.83465, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46636, 8.83459, "Main - Ritorno", "z641"));
@@ -7092,6 +7107,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46102, 8.8475, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46046, 8.84828, "Main", "z641"));
         stations.add(new MetroStation("Magenta, De Medici 36,Ponte Nuovo", 45.46086, 8.85066, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, De Medici fr. 30,Ponte Nuovo", 45.46089, 8.85043, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46181, 8.8567, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4605, 8.84821, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46065, 8.8489, "Ritorno", "z641"));
@@ -7124,6 +7140,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46144, 8.86838, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4616, 8.86868, "Main", "z641"));
         stations.add(new MetroStation("Magenta, Leopardi/Italia", 45.46163, 8.8688, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, Leopardi/Italia", 45.46163, 8.8688, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46222, 8.87064, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46218, 8.87075, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46218, 8.87084, "Main", "z641"));
@@ -7175,7 +7192,9 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46399, 8.87031, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46402, 8.87043, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("Magenta, Novara/Pellico,Carabinieri", 45.46413, 8.87119, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, Novara/Pellico,Carabinieri", 45.46426, 8.87202, "Ritorno", "z641"));
         stations.add(new MetroStation("Magenta, Novara 15", 45.46485, 8.87573, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, Novara fr. 17", 45.46476, 8.8751, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46499, 8.87665, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46501, 8.87679, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46507, 8.87684, "Main", "z641"));
@@ -7194,6 +7213,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46625, 8.87672, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46636, 8.87691, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("Magenta, Brocca 41,Stazione FS", 45.46744, 8.87986, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, Brocca fr. 49,Stazione FS", 45.46732, 8.87953, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46733, 8.87955, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46795, 8.88131, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46797, 8.88159, "Main", "z641"));
@@ -7206,7 +7226,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46814, 8.88169, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46817, 8.88202, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46832, 8.88315, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Magenta, Cavallari 28", 45.46842, 8.88499, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Magenta, Cavallari 28", 45.46842, 8.88499, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, Cavallari 39", 45.4684, 8.88459, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46842, 8.88553, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46845, 8.88564, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46841, 8.88586, "Main", "z641"));
@@ -7251,7 +7272,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46929, 8.89377, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46921, 8.89385, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46846, 8.89407, "Ritorno", "z641"));
-        stations.add(new MetroStation("Magenta, Tragella", 45.46825, 8.89412, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Magenta, Tragella", 45.46825, 8.89412, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, Tragella dir. Rossini", 45.46844, 8.89412, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46803, 8.89416, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46797, 8.89412, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46793, 8.89412, "Main", "z641"));
@@ -7266,7 +7288,8 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46776, 8.89395, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46772, 8.89371, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46742, 8.89253, "Main - Ritorno", "z641"));
-        stations.add(new MetroStation("Magenta, dello Stadio 22", 45.46653, 8.89282, "Main - Ritorno", "z641"));
+        stations.add(new MetroStation("Magenta, dello Stadio 22", 45.46653, 8.89282, "Main", "z641"));
+        stations.add(new MetroStation("Magenta, dello Stadio 17/Pastrengo", 45.46653, 8.89282, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4647, 8.89339, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46414, 8.89363, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46321, 8.89389, "Main - Ritorno", "z641"));
@@ -7286,6 +7309,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45728, 8.89443, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.45713, 8.89168, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4631, 8.89398, "Ritorno", "z641"));
+        stations.add(new MetroStation("Magenta, dello Stadio 35", 45.46242, 8.89417, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46065, 8.89468, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46041, 8.89473, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46002, 8.89477, "Ritorno", "z641"));
