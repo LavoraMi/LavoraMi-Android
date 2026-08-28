@@ -1323,7 +1323,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57735, 8.98046, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("Cerro Maggiore, Risorgimento/Perego", 45.57469, 8.98303, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.56959, 8.988, "Main - Ritorno", "z606"));
-        stations.add(new MetroStation("Nerviano, Trento/Dica di Pistoia", 45.56947, 8.98778, "Main", "z606"));
+        stations.add(new MetroStation("Nerviano, Trento/Duca di Pistoia", 45.56947, 8.98778, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.56864, 8.98643, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.56846, 8.98618, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.56814, 8.98583, "Main", "z606"));
@@ -2031,7 +2031,7 @@ public class BusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57735, 8.98046, "Main - Ritorno", "z612"));
         stations.add(new MetroStation("Cerro Maggiore, Risorgimento/Perego", 45.57469, 8.98303, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.56959, 8.988, "Main - Ritorno", "z612"));
-        stations.add(new MetroStation("Nerviano, Trento/Dica di Pistoia", 45.56947, 8.98778, "Main", "z612"));
+        stations.add(new MetroStation("Nerviano, Trento/Duca di Pistoia", 45.56947, 8.98778, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.56864, 8.98643, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.56846, 8.98618, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.56814, 8.98583, "Main", "z612"));
