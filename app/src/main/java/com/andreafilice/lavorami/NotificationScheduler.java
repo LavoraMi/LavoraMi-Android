@@ -315,7 +315,14 @@ public class NotificationScheduler {
         /// @PARAMETERS
         /// String value is the value passed lowercased.
 
-        return (value.contains("via") || value.contains("corso") || value.contains("largo") || value.contains("stretto")) && !value.contains("pavia");
+        String[] roadTypes = {"via", "viale", "corso", "largo", "stretto", "piazza", "p.za", "v.le", "c.so", "p.le", "piazzale"};
+        boolean containsValue = false;
+
+        for(String roadType: roadTypes) {
+            if(value.contains(roadType)) containsValue = true;
+        }
+
+        return containsValue  && !value.contains("pavia");
     }
 
     private static long parseDateMillis(String dateStr) {
