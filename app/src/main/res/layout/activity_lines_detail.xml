@@ -706,10 +706,11 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:scaleType="fitCenter"
+                    android:padding="5dp"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/glass_bottom_bar_bg"
                     android:elevation="4dp"
-                    android:src="@drawable/ic_transfer"
+                    android:src="@drawable/ic_change_route"
                     app:tint="@color/text_primary"
                     android:visibility="gone"/>
 
@@ -721,7 +722,6 @@
                     android:elevation="4dp"
                     android:src="@drawable/ic_position"
                     app:tint="@color/text_primary" />
-
             </LinearLayout>
         </FrameLayout>
 
