@@ -32,7 +32,7 @@
     <string name="fullNameAccount">Username</string>
     <string name="signUpWithGoogle">Sign Up with Google</string>
     <string name="signUpAccount">Sign Up</string>
-    <string name="haiAccountButton">"Do you already have an account? "</string>
+    <string name="haiAccountButton">Do you already have an account?</string>
     <string name="logginInGoogleTitle">Logging in</string>
     <string name="logginInGoogleDeps">We\'re signing in with your Google Account. Please wait.</string>
     <string name="popUpConfirmEmail">Mail Confirmation</string>
@@ -120,7 +120,7 @@
     <string name="teamSviluppo">Development Team</string>
     <string name="iosDeveloper">iOS Developer:</string>
     <string name="androidDeveloper">Android Developers:</string>
-    <string name="webDeveloper">Web Developer:</string>
+    <string name="webDeveloper">Web Developers:</string>
     <string name="support">Support us</string>
     <string name="supportText">If you like LavoraMi and want to keep it ad-free, you can support us by making a donation via Patreon or Buy Me A Coffee!</string>
     <string name="patreonSupport">Support us on Patreon</string>
@@ -265,9 +265,9 @@
     <string name="connectionErrorToast">Error connecting to the server.</string>
     <string name="passwordLengthToast">Error: Password is too short (minimum 8 characters).</string>
     <string name="loginErrorCredentialsToast">Login Error: Incorrect credentials</string>
-    <string name="networkErrorToast">"Network Error: "</string>
+    <string name="networkErrorToast">Network Error:</string>
     <string name="googleSignInSuccesfulToast">Login with Google successful!</string>
-    <string name="loginErrorToast">"Login Error: "</string>
+    <string name="loginErrorToast">Login Error:</string>
     <string name="registrationErrorToast">An error occurred during registration. Please try again.</string>
     <string name="signOutSuccesfulToast">Account disconnected!</string>
     <string name="signOutFailedToast">Error while disconnecting</string>
@@ -334,7 +334,7 @@
     <string name="deviationInfoDeps">Info about maps</string>
     <string name="incorrectDetailsDeps">If you notice any discrepancies between our app and your transit line, please report the issue to: report-informazioni@lavorami.it!</string>
     <string name="deviationMapTxt">THIS LINE IS SUBJECT TO ROUTE CHANGES.</string>
-    <string name="deviationInfoDeps2">LavoraMi may not show the current route of the lines on the maps, as there may be diversions, section closures or stations that are inaccessible. Please check the notices in the \"Works\" section!"</string>
+    <string name="deviationInfoDeps2">LavoraMi may not show the current route of the lines on the maps, as there may be diversions, section closures or stations that are inaccessible. Please check the notices in the \"Works\" section!</string>
     <string name="deviationInfoDeps3">LavoraMi obtains this information from authoritative and reliable sources; any route deviations are indicated in the journeys shown below, and you can find alternative travel options in the relevant section.</string>
     <string name="onBoardPersonal">Please rely on the cabin crew</string>
     <string name="onBoardPersonalDeps">If your train journey continues by replacement bus, the on-board staff will provide you with all the information you need to continue your journey with peace of mind.</string>
@@ -345,7 +345,7 @@
     <string name="tutorialTitle">How do I add a line to my favourites?</string>
     <string name="tutorialExplanation1">You will find all lines by clicking on:</string>
     <string name="tutorialExplanation2">And then you only need to click the heart as shown below</string>
-    <string name="howItWorks">How it works?</string>
+    <string name="howItWorks">How does it work?</string>
     <string name="understood">Understood</string>
     <string name="obsoleteTitle">You are using an outdated version.</string>
     <string name="obsoleteDeps">You are using a version of LavoraMi that is no longer supported. Please update to the latest version to access new features and resolve any issues.</string>

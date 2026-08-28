@@ -151,7 +151,7 @@
     <string name="notificationScheduled">Orario Notifiche</string>
     <string name="notificationTimeDeps">Modifica l\'orario di arrivo delle notifiche.</string>
     <string name="bugIntentSubject">Segnalazione bug LavoraMi su Android</string>
-    <string name="bugIntentBody">INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG): ID Telefono: %s, Versione Android: %s, Modello e manufacture: %s, %s, Versione Applicazione: %s</string>
+    <string name="bugIntentBody">INFORMAZIONI DISPOSITIVO (NON ELIMINARE, USATE PER SCOPI DI DEBUG): ID Telefono: %s, Versione Android: %s, Modello e produttore: %s, %s, Versione Applicazione: %s</string>
     <string name="helpTitle">Aiuto</string>
     <string name="requestDataTitle">Richiedi i tuoi Dati</string>
     <string name="requestDataDeps">Invia una richiesta al nostro Team per scaricare i tuoi dati.</string>
