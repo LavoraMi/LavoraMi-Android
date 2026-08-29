@@ -63,7 +63,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         });
 
         btnReportInfos.setOnClickListener(v -> {
-            String subject = "Segnalazione Informazioni Errate";
+            String subject = ContextCompat.getString(SourcesDevelopment.this, R.string.reportInfosTitleMail);
 
             String mailtoUri = "mailto:report-informazioni@lavorami.it?subject=" + Uri.encode(subject);
 

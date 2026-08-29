@@ -453,4 +453,6 @@
     <string name="saveYourLinesTitle">Salva le tue linee</string>
     <string name="saveYourLinesDeps">Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account.</string>
     <string name="connectionErrorCloudToast">Errore di connessione durante il salvataggio dei dati sull\'Account.</string>
+    <string name="reportInfosButton">Segnala Incorrettezze</string>
+    <string name="reportInfosTitleMail">Segnalazione Informazioni Errate</string>
 </resources>

@@ -454,4 +454,6 @@
     <string name="saveYourLinesTitle">Guarda tus líneas</string>
     <string name="saveYourLinesDeps">Elige qué tipo de datos quieres que se guarden en nuestras bases de datos, para poder acceder a ellos en cualquier momento desde tu Cuenta.</string>
     <string name="connectionErrorCloudToast">Se ha producido un error de conexión al guardar los datos de la Cuenta.</string>
+    <string name="reportInfosButton">Informar De Errores</string>
+    <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
 </resources>

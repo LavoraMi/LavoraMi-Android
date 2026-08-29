@@ -416,7 +416,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
-                android:text="Segnala Incorrettezze"
+                android:text="@string/reportInfosButton"
                 android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
