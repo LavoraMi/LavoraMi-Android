@@ -2089,16 +2089,16 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     public String getFrequenza(String lineName){
         switch(lineName) {
-            case "M1": return "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min.";
-            case "M2": return "Gessate: 12-15 min | Assago: 9-10 min.";
-            case "M3": return "4-5 min.";
-            case "M4": return "2-3 min.";
-            case "M5": return "4 min.";
-            case "S10": return String.format("1 %s - 45 min.", getString(R.string.hourPrefix));
-            case "S30": return String.format("2 %s.", getString(R.string.hoursPrefix));
+            case "M1": return "Sesto FS: 3 min | Rho/Bisceglie: 7-8 min";
+            case "M2": return "Gessate: 12-15 min | Assago: 9-10 min";
+            case "M3": return "4-5 min";
+            case "M4": return "2-3 min";
+            case "M5": return "4 min";
+            case "S10": return String.format("1 %s - 45 min", getString(R.string.hourPrefix));
+            case "S30": return String.format("2 %s", getString(R.string.hoursPrefix));
             case "RE80":
             case "S7":
-                return String.format("30 min - 1 %s.", getString(R.string.hourPrefix));
+                return String.format("30 min - 1 %s", getString(R.string.hourPrefix));
             case "S1":
             case "S2":
             case "S3":
@@ -2115,7 +2115,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S90":
             case "MXP1":
             case "MXP2":
-                return "30 min.";
+                return "30 min";
             case "S31":
             case "S40":
             case "S50":
@@ -2129,7 +2129,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R25":
             case "R33":
             case "R34":
-                return String.format("1 %s.", getString(R.string.hourPrefix));
+                return String.format("1 %s", getString(R.string.hourPrefix));
             case "RE1":
             case "RE8":
             case "R1":
@@ -2141,7 +2141,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R27":
             case "R31":
             case "R38":
-                return String.format("1 %s - 30 min.", getString(R.string.hourPrefix));
+                return String.format("1 %s - 30 min", getString(R.string.hourPrefix));
             case "RE2":
             case "RE4":
             case "RE5":
@@ -2149,7 +2149,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "RE7":
             case "RE11":
             case "RE13":
-                return String.format("1 %s.", getString(R.string.hourPrefix));
+                return String.format("1 %s", getString(R.string.hourPrefix));
             case "RE3":
             case "R3":
             case "R8":
@@ -2166,14 +2166,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R39":
             case "R40":
             case "R41":
-                return String.format("2 %s - 1 %s.", getString(R.string.hoursPrefix), getString(R.string.hourPrefix));
+                return String.format("2 %s - 1 %s", getString(R.string.hoursPrefix), getString(R.string.hourPrefix));
             case "90":
             case "91":
-                return "4-6 min.";
+                return "4-6 min";
             case "92":
-                return "7-10 min.";
+                return "7-10 min";
             case "93":
-                return "10-12 min.";
+                return "10-12 min";
             default: return getString(R.string.error);
         }
     }

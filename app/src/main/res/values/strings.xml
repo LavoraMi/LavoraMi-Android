@@ -86,11 +86,11 @@
     <string name="tramLinesTitle">Linee Tranviarie</string>
     <string name="busLinesTitle">Linee di Bus</string>
     <string name="linesDirectionsTitle">DIREZIONI:</string>
-    <string name="tramDeviationsTitle">LINEA DI TRAM SOGGETTA A DEVIAZIONI.</string>
+    <string name="tramDeviationsTitle">LINEA DI TRAM SOGGETTA A DEVIAZIONI</string>
     <string name="waitingTimeLinesDetails">TEMPO DI ATTESA:</string>
     <string name="interchangeStopLinesDetails">FERMATA DI INTERSCAMBIO:</string>
     <string name="noInterchangeStationTitle">Nessuna fermata di interscambio.</string>
-    <string name="onlyOnWorkingDaysTitle">LA LINEA È ATTIVA SOLO NEI GIORNI LAVORATIVI.</string>
+    <string name="onlyOnWorkingDaysTitle">LA LINEA È ATTIVA SOLO NEI GIORNI LAVORATIVI</string>
     <string name="worksLineDetails">LAVORI SULLA LINEA:</string>
     <string name="mapChip">Mappa</string>
     <string name="lineWorksChip">Lavori</string>
@@ -290,9 +290,9 @@
     <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che preferisci sulla mappa, per non perdersi e per sapere sempre dove vai.</string>
     <string name="lineaAttesta">"ATTUALMENTE LA LINEA ATTESTA A: "</string>
     <string name="accessibilityTitle">ACCESSIBILITÀ LINEA:</string>
-    <string name="fullyAccessible">Accessibile.</string>
-    <string name="partiallyTitle">Parzialmente accessibile.</string>
-    <string name="nonAccessible">Non accessibile.</string>
+    <string name="fullyAccessible">Accessibile</string>
+    <string name="partiallyTitle">Parzialmente accessibile</string>
+    <string name="nonAccessible">Non accessibile</string>
     <string name="accessibilityInfoTitle">Accessibilità</string>
     <string name="accessibilityInfoDeps">Informazioni sull\'Accessibilità</string>
     <string name="accessibilityInfoDeps2">LavoraMi mostra l\'accessibilità di una linea in base agli impianti nelle stazioni e alla tipologia di mezzo utilizzato.</string>
@@ -392,7 +392,7 @@
     <string name="syncErrorMessageToast">Errore durante la Sincronizzazione col Server. Riprova.</string>
     <string name="infoMapsText">Info sulle Mappe</string>
     <string name="mainDeveloperText">Sviluppatore Principale:</string>
-    <string name="trackInterruptedInfo">INTERRUZIONI SULLA LINEA PER LAVORI.</string>
+    <string name="trackInterruptedInfo">INTERRUZIONI SULLA LINEA PER LAVORI</string>
     <string name="noRoutesDeps">Per oggi non c\'è nessuna corsa programmata per questa fermata, prova a sceglierne un\'altra.</string>
     <string name="openLinkMainText">Apri link:</string>
     <string name="inAppText">In App</string>
@@ -425,7 +425,7 @@
     <string name="widget_line_added_title">Linea aggiunta al Widget</string>
     <string name="busPopUpTitle">Linea sostituita da Bus</string>
     <string name="busPopUpDeps">Questa linea è attualmente sostituita interamente da Autobus e non c\'è alcun treno a servire questa tratta. Il servizio è comunque garantito tra tutte le stazioni della linea.</string>
-    <string name="lineSubBusTitle">LINEA SOSTITUITA INTERAMENTE DA BUS.</string>
+    <string name="lineSubBusTitle">LINEA SOSTITUITA INTERAMENTE DA BUS</string>
     <string name="dialogFavouriteLineText">Scegli i tuoi operatori di trasporti più usati e, mettendoli nei preferiti, riceverai subito le notifiche con nuovi lavori.</string>
     <string name="dialogFavouriteLineTextTitle">Scegli i tuoi interessi</string>
     <string name="loadingDataInProgress">Caricamento dati in corso…</string>
@@ -437,7 +437,7 @@
     <string name="metroStatoChiusa">Chiusa</string>
     <string name="metroStatoRallentata">Rallentata</string>
     <string name="metroStatoTitle">Stato Attuale Metro</string>
-    <string name="lineSuspendedMainText">LINEA INTERAMENTE SOSPESA.</string>
+    <string name="lineSuspendedMainText">LINEA INTERAMENTE SOSPESA</string>
     <string name="lineSuspendedPopUpTitle">Linea Interamente Sospesa</string>
     <string name="lineSuspendedPopUpDeps">Questa linea è stata interrotta per tutto il suo tragitto per via di lavori sulla tratta o rimodulazioni di orario. Per saperne di più, vai nella sezione \"Lavori\" della linea.</string>
     <string name="supportLavoraMiTitle">Supporta LavoraMi</string>

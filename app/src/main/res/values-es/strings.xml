@@ -87,11 +87,11 @@
     <string name="tramLinesTitle">Líneas de Tranvía</string>
     <string name="busLinesTitle">Líneas de Autobús</string>
     <string name="linesDirectionsTitle">DIRECCIONES:</string>
-    <string name="tramDeviationsTitle">LÍNEA DE TRANVÍA CON DESVÍOS.</string>
+    <string name="tramDeviationsTitle">LÍNEA DE TRANVÍA CON DESVÍOS</string>
     <string name="waitingTimeLinesDetails">TIEMPO DE ESPERA:</string>
     <string name="interchangeStopLinesDetails">PARADA DE CORRESPONDENCIA:</string>
     <string name="noInterchangeStationTitle">Sin paradas de correspondencia.</string>
-    <string name="onlyOnWorkingDaysTitle">LA LÍNEA SOLO ESTÁ ACTIVA EN DÍAS LABORABLES.</string>
+    <string name="onlyOnWorkingDaysTitle">LA LÍNEA SOLO ESTÁ ACTIVA EN DÍAS LABORABLES</string>
     <string name="worksLineDetails">OBRAS EN LA LÍNEA:</string>
     <string name="mapChip">Mapa</string>
     <string name="lineWorksChip">Obras</string>
@@ -291,9 +291,9 @@
     <string name="viewLinesOnMapText">Visualiza los recorridos de tus líneas favoritas en el mapa para no perderte y saber siempre adónde vas.</string>
     <string name="lineaAttesta">"ACTUALMENTE LA LÍNEA LLEGA HASTA: "</string>
     <string name="accessibilityTitle">ACCESIBILIDAD DE LA LÍNEA:</string>
-    <string name="fullyAccessible">Accesible.</string>
-    <string name="partiallyTitle">Parcialmente accesible.</string>
-    <string name="nonAccessible">No accesible.</string>
+    <string name="fullyAccessible">Accesible</string>
+    <string name="partiallyTitle">Parcialmente accesible</string>
+    <string name="nonAccessible">No accesible</string>
     <string name="accessibilityInfoTitle">Accesibilidad</string>
     <string name="accessibilityInfoDeps">Información sobre Accesibilidad</string>
     <string name="accessibilityInfoDeps2">LavoraMi muestra la accesibilidad de una línea en función de las instalaciones en las estaciones y del tipo de transporte utilizado.</string>
@@ -393,7 +393,7 @@
     <string name="syncErrorMessageToast">Se ha producido un error durante la sincronización con el servidor. Inténtalo de nuevo.</string>
     <string name="infoMapsText">Información sobre los Mapas</string>
     <string name="mainDeveloperText">Desarrollador Principal:</string>
-    <string name="trackInterruptedInfo">INTERRUPCIONES EN LA LÍNEA POR OBRAS.</string>
+    <string name="trackInterruptedInfo">INTERRUPCIONES EN LA LÍNEA POR OBRAS</string>
     <string name="noRoutesDeps">Hoy no hay ningún trayecto programado para esta parada; prueba a elegir otra.</string>
     <string name="openLinkMainText">Abrir enlace:</string>
     <string name="inAppText">En App</string>
@@ -426,7 +426,7 @@
     <string name="widget_line_added_title">Línea añadida al Widget</string>
     <string name="busPopUpTitle">Línea sustituida por Autobús</string>
     <string name="busPopUpDeps">Actualmente, esta línea ha sido sustituida íntegramente por autobuses y no hay ningún tren que preste servicio en este tramo. No obstante, el servicio está garantizado entre todas las estaciones de la línea.</string>
-    <string name="lineSubBusTitle">LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS.</string>
+    <string name="lineSubBusTitle">LÍNEA SUSTITUIDA ÍNTEGRAMENTE POR AUTOBÚS</string>
     <string name="dialogFavouriteLineText">Selecciona los operadores de transporte que utilizas con mayor frecuencia y añádelos a tus favoritos para recibir notificaciones instantáneas sobre nuevas obras.</string>
     <string name="dialogFavouriteLineTextTitle">Elige tus intereses</string>
     <string name="loadingDataInProgress">Cargando datos…</string>
@@ -438,7 +438,7 @@
     <string name="metroStatoChiusa">Cerrada</string>
     <string name="metroStatoRallentata">Servicio Reducido</string>
     <string name="metroStatoTitle">Estado Actual Metro</string>
-    <string name="lineSuspendedMainText">LÍNEA TOTALMENTE SUSPENDIDA.</string>
+    <string name="lineSuspendedMainText">LÍNEA TOTALMENTE SUSPENDIDA</string>
     <string name="lineSuspendedPopUpTitle">Línea Totalmente Suspendida</string>
     <string name="lineSuspendedPopUpDeps">Esta línea ha quedado interrumpida en todo su recorrido debido a obras en el tramo o a modificaciones en los horarios. Para obtener más información, consulta la sección "Obras" de la línea.</string>
     <string name="supportLavoraMiTitle">Apoya a LavoraMi</string>
