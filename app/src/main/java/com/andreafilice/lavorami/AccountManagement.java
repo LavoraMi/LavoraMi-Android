@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -947,6 +949,7 @@ public class AccountManagement extends AppCompatActivity {
             if (!isFavoriteActivated && !isYourLinesActivated) {
                 syncText = getString(R.string.notSynched);
                 syncIcon = R.drawable.ic_cloud_disabled;
+                editLayoutMarginParams(tvProfileSync, 16);
                 synchProgressBar.setVisibility(View.GONE);
                 infoIconNotSynched.setVisibility(View.VISIBLE);
                 retryIconErrorSynched.setVisibility(View.GONE);
@@ -956,6 +959,7 @@ public class AccountManagement extends AppCompatActivity {
             else {
                 syncText = getString(R.string.dataSynched);
                 syncIcon = R.drawable.ic_cloud_success_sync;
+                editLayoutMarginParams(tvProfileSync, 16);
                 synchProgressBar.setVisibility(View.GONE);
                 infoIconNotSynched.setVisibility(View.GONE);
                 retryIconErrorSynched.setVisibility(View.GONE);
@@ -964,6 +968,7 @@ public class AccountManagement extends AppCompatActivity {
         else if (dataSyncing != 3) {
             syncText = getString(R.string.dataSyncing);
             syncIcon = R.drawable.ic_cloud_syncing;
+            editLayoutMarginParams(tvProfileSync, 6);
             synchProgressBar.setVisibility(View.VISIBLE);
             infoIconNotSynched.setVisibility(View.GONE);
             retryIconErrorSynched.setVisibility(View.GONE);
@@ -971,6 +976,7 @@ public class AccountManagement extends AppCompatActivity {
         else {
             syncText = getString(R.string.dataFailureSync);
             syncIcon = R.drawable.ic_cloud_failed_sync;
+            editLayoutMarginParams(tvProfileSync, 16);
             synchProgressBar.setVisibility(View.GONE);
             infoIconNotSynched.setVisibility(View.GONE);
             retryIconErrorSynched.setVisibility(View.VISIBLE);
@@ -979,5 +985,16 @@ public class AccountManagement extends AppCompatActivity {
 
         tvProfileSync.setText(syncText);
         iconProfileSync.setImageResource(syncIcon);
+    }
+
+    private void editLayoutMarginParams(TextView tvProfileSync, int valueMargin) {
+        int marginInPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueMargin, getResources().getDisplayMetrics());
+
+        if(tvProfileSync.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) tvProfileSync.getLayoutParams();
+
+            params.setMarginStart(marginInPx);
+            tvProfileSync.setLayoutParams(params);
+        }
     }
 }
