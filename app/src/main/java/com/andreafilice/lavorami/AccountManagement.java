@@ -988,6 +988,11 @@ public class AccountManagement extends AppCompatActivity {
     }
 
     private void editLayoutMarginParams(TextView tvProfileSync, int valueMargin) {
+        /// In this method, we modify the Margin start for some textview elements.
+        /// @PARAMETERS
+        /// TextView tvProfileSync is the View to apply the margin.
+        /// int valueMargin is the value in DP to convert into PX and apply as margin.
+
         int marginInPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueMargin, getResources().getDisplayMetrics());
 
         if(tvProfileSync.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
