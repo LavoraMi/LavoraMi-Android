@@ -36,6 +36,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         //*BUTTONS
         /// In this section of the code, we initialize the end-screen buttons for the redirects.
         MaterialButton btnReportBug = findViewById(R.id.btnReportBug);
+        MaterialButton btnReportInfos = findViewById(R.id.btnReportInfos);
         MaterialButton btnWebsite = findViewById(R.id.btnWebsite);
         MaterialButton btnPatreon = findViewById(R.id.btnPatreon);
         MaterialButton btnCofee = findViewById(R.id.btnCofee);
@@ -58,6 +59,18 @@ public class SourcesDevelopment extends AppCompatActivity {
             intent.setData(Uri.parse(mailtoUri));
 
             try {startActivity(Intent.createChooser(intent, "Invia richiesta dati"));}
+            catch (Exception e) {e.printStackTrace();}
+        });
+
+        btnReportInfos.setOnClickListener(v -> {
+            String subject = "Segnalazione Informazioni Errate";
+
+            String mailtoUri = "mailto:report-informazioni@lavorami.it?subject=" + Uri.encode(subject);
+
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse(mailtoUri));
+
+            try {startActivity(Intent.createChooser(intent, "Segnalazione Informazioni"));}
             catch (Exception e) {e.printStackTrace();}
         });
 
