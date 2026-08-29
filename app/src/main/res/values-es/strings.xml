@@ -289,7 +289,6 @@
     <string name="disclaimerAppFunctions">Todos los ejemplos mostrados son meramente ilustrativos y pueden referirse a eventos actuales o pasados.</string>
     <string name="viewLinesOnMap">Mapas</string>
     <string name="viewLinesOnMapText">Visualiza los recorridos de tus líneas favoritas en el mapa para no perderte y saber siempre adónde vas.</string>
-    <string name="lineaAttesta">"ACTUALMENTE LA LÍNEA LLEGA HASTA: "</string>
     <string name="accessibilityTitle">ACCESIBILIDAD DE LA LÍNEA:</string>
     <string name="fullyAccessible">Accesible</string>
     <string name="partiallyTitle">Parcialmente accesible</string>
