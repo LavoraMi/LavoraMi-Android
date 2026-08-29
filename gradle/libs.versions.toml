@@ -1,6 +1,7 @@
 [versions]
 agp = "9.2.1"
 dotenvJava = "3.2.0"
+facebook = "6.22.0.0"
 flexbox = "3.0.0"
 gson = "2.14.0"
 junitVersion = "1.3.0"
@@ -38,6 +39,7 @@ androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", versi
 androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3Exoplayer" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 dotenv-java = { module = "io.github.cdimascio:dotenv-java", version.ref = "dotenvJava" }
+facebook = { module = "com.google.ads.mediation:facebook", version.ref = "facebook" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit-jupiter" }
