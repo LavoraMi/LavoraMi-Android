@@ -41,6 +41,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         MaterialButton btnCofee = findViewById(R.id.btnCofee);
         MaterialButton btnInstagram = findViewById(R.id.btnInstagram);
         MaterialButton btnTikTok = findViewById(R.id.btnTikTok);
+        MaterialButton btnFacebook = findViewById(R.id.btnFacebook);
         MaterialButton btnRiconoscimenti = findViewById(R.id.btnLibraries);
         MaterialButton btnPrivacyPolicy = findViewById(R.id.btnPrivacyPolicy);
         MaterialButton btnTermsOfService = findViewById(R.id.btnTermsService);
@@ -62,6 +63,7 @@ public class SourcesDevelopment extends AppCompatActivity {
 
         btnInstagram.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.instagram.com/lavoramiapp/"));
         btnTikTok.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.tiktok.com/@lavoramiapp"));
+        btnFacebook.setOnClickListener(v -> ActivityUtils.openURL(this, "https://www.facebook.com/profile.php?id=61593590085842"));
         btnPatreon.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.patreon.com/cw/LavoraMi"));
         btnCofee.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami"));
         btnPrivacyPolicy.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it/privacypolicy"));

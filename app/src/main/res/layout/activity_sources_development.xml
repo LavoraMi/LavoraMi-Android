@@ -353,6 +353,25 @@
                 app:iconSize="30dp"
                 app:iconTint="#FF5252" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFacebook"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/font_main"
+                android:text="Facebook"
+                android:textAllCaps="false"
+                android:textColor="#FF5252"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_facebook"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconSize="30dp"
+                app:iconTint="#FF5252" />
+
             <View
                 android:layout_width="150dp"
                 android:layout_height="1dp"
