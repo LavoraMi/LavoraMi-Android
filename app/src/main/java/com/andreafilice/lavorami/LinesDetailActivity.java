@@ -1042,7 +1042,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         List<EventDescriptor> eventiTrovati = new ArrayList<>();
 
         for (EventDescriptor evento : EventData.listaEventiCompleta) {
-            if (evento.getLines() == null || evento.isEventTerminated()) continue;
+            long now = System.currentTimeMillis();
+            long limiteMassimo = now - 86400000L;
+            long terminated = evento.getEndDateMillis();
+
+            if (evento.getLines() == null || terminated < limiteMassimo) continue;
 
             for (String lineInEvent : evento.getLines()) {
                 if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag)) {
