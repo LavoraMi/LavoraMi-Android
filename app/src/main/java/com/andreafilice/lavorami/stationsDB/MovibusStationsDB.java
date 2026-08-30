@@ -5,7 +5,7 @@ import com.andreafilice.lavorami.MetroStation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BusStationsDB {
+public class MovibusStationsDB {
     public static List<MetroStation> getStationsZ601(){
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Legnano, Pietro Micca 59", 45.6029, 8.90831, "Main", "z601"));
