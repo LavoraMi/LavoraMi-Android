@@ -455,4 +455,5 @@
     <string name="connectionErrorCloudToast">Se ha producido un error de conexión al guardar los datos de la Cuenta.</string>
     <string name="reportInfosButton">Informar De Errores</string>
     <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
+    <string name="connectionErrorBasic">Error de conexión.</string>
 </resources>

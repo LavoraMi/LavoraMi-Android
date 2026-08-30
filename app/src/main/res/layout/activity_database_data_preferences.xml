@@ -263,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:layout_marginStart="6dp"
-                    android:text="Errore di connessione."
+                    android:text="@string/connectionErrorBasic"
                     android:textColor="@color/text_primary"
                     android:textSize="20sp" />
             </LinearLayout>
