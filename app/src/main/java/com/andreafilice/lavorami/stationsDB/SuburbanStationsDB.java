@@ -990,8 +990,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("Pregana Milanese", 45.51011, 9.00279, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51851, 9.02764, "Main", "S6"));
         stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S6"));
-        /* MODIFICHE CIRCOLAZIONE: La tratta S6 è limitata da Novara a Rho. NON ELIMINARE
-                                   Queste modifica è fino all'13 Settembre.
+        /* MODIFICHE CIRCOLAZIONE: La linea S6 è limitata da Novara a Rho fino al 13 Settembre.
         stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52802, 9.05644, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52859, 9.05897, "Main", "S6"));
