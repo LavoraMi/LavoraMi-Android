@@ -10,23 +10,9 @@
 
 Un'app Android intuitiva per monitorare i lavori di manutenzione del trasporto pubblico.
 
- **[Segnala un Bug](https://github.com/Andrea-Filice/LavoraMi-Android/issues)** • **[Richiedi una Feature](https://github.com/Andrea-Filice/LavoraMi-Android/issues)**
+ **[Segnala un Bug](mailto:info@lavorami.it)** • **[Richiedi una Feature](https://github.com/Andrea-Filice/LavoraMi-Android/issues)**
 
 </div>
-
----
-
-## 📋 Indice
-
-- [Panoramica](#-panoramica)
-- [Caratteristiche](#-caratteristiche)
-- [Requisiti](#-requisiti)
-- [Installazione](#-installazione)
-- [Architettura](#-architettura)
-- [Contributi](#-contributi)
-- [Licenza](#-licenza)
-
----
 
 ## 🎯 Panoramica
 
@@ -43,7 +29,7 @@ Perfetta per pendolari che desiderano rimanere sempre informati sulle interruzio
 
 ## 🐛 Segnalazione Bug
 
-Hai trovato un bug? Per favore, [apri un issue](https://github.com/Andrea-Filice/LavoraMi-Android/issues) con:
+Hai trovato un bug? Per favore, [Inviaci una mail](mailto:info@lavorami.it) con:
 - Descrizione del problema
 - Passaggi per riprodurlo
 - Comportamento atteso vs. reale
@@ -53,7 +39,7 @@ Hai trovato un bug? Per favore, [apri un issue](https://github.com/Andrea-Filice
 
 ## 💡 Richieste di Feature
 
-Hai un'idea per migliorare LavoraMi? [Suggerisci una feature](https://github.com/Andrea-Filice/LavoraMi-Android/issues) descrivendo:
+Hai un'idea per migliorare LavoraMi? [Inviaci una mail](mailto:info@lavorami.it) descrivendo:
 - L'idea e il beneficio per l'utente
 - Possibili casi d'uso
 - Eventuali alternative considerate
