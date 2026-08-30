@@ -40,7 +40,7 @@ import java.util.List;
 public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static Typeface sFontInterBold;
     private static final int sColorRed = Color.parseColor("#FD272D");
-    private static final int sColorGreen = Color.parseColor("#16660e");
+    private static final int sColorGreen = Color.parseColor("#5ab455");
     private static int sColorWhite = -1;
 
     static Context context;
