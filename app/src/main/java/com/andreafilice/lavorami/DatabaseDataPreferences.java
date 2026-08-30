@@ -103,6 +103,7 @@ public class DatabaseDataPreferences extends AppCompatActivity {
                 switchYourLines.setTrackTintMode((result.enable_your_lines) ? PorterDuff.Mode.ADD : PorterDuff.Mode.MULTIPLY);
                 switchFavorites.setEnabled(true);
                 switchYourLines.setEnabled(true);
+                findViewById(R.id.errorLayout).setVisibility(View.GONE);
 
                 setupSwitchListeners();
             }
@@ -110,7 +111,13 @@ public class DatabaseDataPreferences extends AppCompatActivity {
             @Override
             public void onError(String error) {
                 Toast.makeText(DatabaseDataPreferences.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
-                setupSwitchListeners();
+                switchFavorites.setEnabled(false);
+                switchYourLines.setEnabled(false);
+                switchFavorites.setTrackTintMode(PorterDuff.Mode.MULTIPLY);
+                switchYourLines.setTrackTintMode(PorterDuff.Mode.MULTIPLY);
+
+                findViewById(R.id.errorLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.loaderToggle).setVisibility(View.GONE);
             }
         });
     }
