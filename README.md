@@ -66,15 +66,12 @@ Unauthorized reproduction or distribution is prohibited by law.
 
 **Andrea Filice**
 - 🔗 [GitHub](https://github.com/Andrea-Filice)
-- 📧 Contattami attraverso il repository
 
 **Tommaso Ruggeri**
 - 🔗 [GitHub](https://github.com/TizioBanana08)
-- 📧 Contattami attraverso il repository
 
 **Alessandro Rebuscini**
 - 🔗 [GitHub](https://github.com/Rebuale)
-- 📧 Contattami attraverso il repositor
 ---
 
 <div align="center">
