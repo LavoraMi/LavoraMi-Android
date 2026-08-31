@@ -455,4 +455,5 @@
     <string name="reportInfosButton">Segnala Incorrettezze</string>
     <string name="reportInfosTitleMail">Segnalazione Informazioni Errate</string>
     <string name="connectionErrorBasic">Errore di connessione.</string>
+    <string name="usernameCharacterLimits">Il Nome Utente non può contenere meno di 3 caratteri.</string>
 </resources>

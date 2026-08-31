@@ -148,7 +148,7 @@ public class ChangeUsername extends AppCompatActivity {
 
         boolean isEnabled = !isEmpty && !isSameAsCurrentUsername && !isMinimumCharacters && !isElaboratingRequest;
         errorText.setVisibility((isEnabled) ? View.GONE : View.VISIBLE);
-        errorText.setText((isEmpty) ? getString(R.string.nicknameEmptyError) : ((isSameAsCurrentUsername) ? getString(R.string.nicknameEqualError) : "Il Nome Utente non può contenere meno di 3 caratteri."));
+        errorText.setText((isEmpty) ? getString(R.string.nicknameEmptyError) : ((isSameAsCurrentUsername) ? getString(R.string.nicknameEqualError) : getString(R.string.usernameCharacterLimits)));
 
         updateButtonTint(buttonContinue, isEnabled);
     }
