@@ -55,15 +55,15 @@ public class ChangeUsername extends AppCompatActivity {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient client = new OkHttpClient.Builder()
-                    .addInterceptor(logging)
-                    .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
-                    .build();
+                .addInterceptor(logging)
+                .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
+                .build();
 
             retrofitAPI = new Retrofit.Builder()
-                    .baseUrl(SupabaseURL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
-                    .build();
+                .baseUrl(SupabaseURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
 
             api = retrofitAPI.create(SupabaseAPI.class);
         }
