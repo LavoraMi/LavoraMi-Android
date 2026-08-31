@@ -108,8 +108,18 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Piola", 45.48081, 9.22509, "Main", "M2"));
         stations.add(new MetroStation("Lambrate FS", 45.48423, 9.235, "Main", "M2"));
         stations.add(new MetroStation("Udine", 45.49145, 9.23688, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49353, 9.23634, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49421, 9.23616, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49481, 9.23596, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49519, 9.23589, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49548, 9.2359, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49575, 9.23601, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49601, 9.2362, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49625, 9.23647, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49695, 9.23742, "Main", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.49913, 9.24029, "Main", "M2"));
         stations.add(new MetroStation("Cimiano", 45.50004, 9.24142, "Main", "M2"));
-        stations.add(new MetroStation("Crescenzago", 45.50521, 9.24822, "Main", "M2")); // CRESCENZAGO
+        stations.add(new MetroStation("Crescenzago", 45.50521, 9.24822, "Main", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.50918, 9.25335, "Main", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51005, 9.25461, "Main", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.51042, 9.25554, "Main", "M2"));
