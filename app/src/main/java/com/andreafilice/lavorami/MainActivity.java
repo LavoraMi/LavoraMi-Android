@@ -1089,7 +1089,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadWrapped(VariablesDescriptor variablesDescriptor) {
         MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
 
-        isWrappedEnabled = variablesDescriptor.isWrappedEnabledDebug();
+        isWrappedEnabled = variablesDescriptor.isWrappedEnabled();
         wrappedBanner.setVisibility(isWrappedEnabled && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
 
         wrappedBanner.setOnClickListener(v -> {
