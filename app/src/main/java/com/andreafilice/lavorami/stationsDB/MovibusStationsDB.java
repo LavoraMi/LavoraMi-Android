@@ -9368,11 +9368,11 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46518, 8.87673, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46513, 8.87663, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46509, 8.87661, "Ritorno", "z646"));
-        stations.add(new MetroStation("NO_DRAW", 45.46492, 8.87609, "Ritorno", "z646"));
+        stations.add(new MetroStation("NO_DRAW", 45.46489, 8.87608, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46487, 8.87582, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46414, 8.87119, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46488, 8.87582, "Ritorno", "z646"));
-        stations.add(new MetroStation("NO_DRAW", 45.46493, 8.87608, "Ritorno", "z646"));
+        stations.add(new MetroStation("NO_DRAW", 45.46489, 8.87608, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46493, 8.87639, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46501, 8.87665, "Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.46501, 8.87673, "Ritorno", "z646"));
