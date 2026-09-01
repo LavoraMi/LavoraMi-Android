@@ -8631,7 +8631,7 @@ public class MovibusStationsDB {
     public static List<MetroStation> getStationsZ644() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Arconate, Concordia 9", 45.54115, 8.8525, "Main", "z644"));
-        stations.add(new MetroStation("NO_DRAW", 45.5409, 8.85261, "Ritorno", "z644"));
+        stations.add(new MetroStation("Arconate, Concordia fr. 13", 45.5409, 8.85261, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54155, 8.85234, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54172, 8.85319, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54179, 8.85333, "Main", "z644"));
@@ -8642,7 +8642,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54196, 8.85384, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54194, 8.85402, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.542, 8.85431, "Main - Ritorno", "z644"));
-        stations.add(new MetroStation("Arconate, Legnano 28", 45.54229, 8.85571, "Main - Ritorno", "z644"));
+        stations.add(new MetroStation("Arconate, Legnano 28", 45.54229, 8.85571, "Main", "z644"));
+        stations.add(new MetroStation("Arconate, Legnano 11", 45.54235, 8.856, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54322, 8.85991, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54341, 8.86093, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54334, 8.86018, "Ritorno", "z644"));
@@ -8707,11 +8708,11 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54361, 8.88637, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54366, 8.88657, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54809, 8.87996, "Ritorno", "z644"));
-        stations.add(new MetroStation("NO_DRAW", 45.54795, 8.87972, "Ritorno", "z644"));
+        stations.add(new MetroStation("Busto Garolfo, Monteblanco fr. 17", 45.54795, 8.87972, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54715, 8.87833, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54706, 8.87824, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54592, 8.87589, "Ritorno", "z644"));
-        stations.add(new MetroStation("NO_DRAW", 45.54403, 8.87845, "Ritorno", "z644"));
+        stations.add(new MetroStation("Busto Garolfo, Vincenzo Bellini 44", 45.54403, 8.87845, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54284, 8.88009, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54335, 8.88102, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54192, 8.88307, "Ritorno", "z644"));
@@ -8725,12 +8726,14 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54377, 8.88667, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.5437, 8.88668, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54364, 8.88673, "Main - Ritorno", "z644"));
-        stations.add(new MetroStation("Busto G., Giacomo Matteotti 6", 45.54331, 8.88748, "Main - Ritorno", "z644"));
+        stations.add(new MetroStation("Busto G., Giacomo Matteotti 6", 45.54331, 8.88748, "Main", "z644"));
+        stations.add(new MetroStation("Busto G., Giacomo Matteotti 5", 45.54343, 8.88719, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54253, 8.88938, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54237, 8.88995, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54234, 8.89039, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54244, 8.8912, "Main - Ritorno", "z644"));
-        stations.add(new MetroStation("Busto Garolfo, Parabiago 32", 45.54328, 8.89555, "Main - Ritorno", "z644"));
+        stations.add(new MetroStation("Busto Garolfo, Parabiago 32", 45.54328, 8.89555, "Main", "z644"));
+        stations.add(new MetroStation("Busto Garolfo, Parabiago 61", 45.54331, 8.89579, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54343, 8.89647, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54355, 8.89667, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.5434, 8.89623, "Ritorno", "z644"));
@@ -8796,8 +8799,9 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54739, 8.94087, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54745, 8.94109, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54755, 8.94119, "Ritorno", "z644"));
-        stations.add(new MetroStation("NO_DRAW", 45.54791, 8.94138, "Main - Ritorno", "z644"));
-        stations.add(new MetroStation("Parabiago, Butti 13", 45.54833, 8.94161, "Main - Ritorno", "z644"));
+        stations.add(new MetroStation("NO_DRAW", 45.54791, 8.94138, "Main", "z644"));
+        stations.add(new MetroStation("Barabiago, Butti 22", 45.54791, 8.94138, "Ritorno", "z644"));
+        stations.add(new MetroStation("Parabiago, Butti 13", 45.54833, 8.94161, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54907, 8.94218, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54992, 8.94292, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.5507, 8.94362, "Main - Ritorno", "z644"));
@@ -8859,7 +8863,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55374, 8.94568, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.55386, 8.94577, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.55416, 8.94592, "Main - Ritorno", "z644"));
-        stations.add(new MetroStation("Parabiago, Matteotti 35", 45.55441, 8.94599, "Main - Ritorno", "z644"));
+        stations.add(new MetroStation("Parabiago, Matteotti 35", 45.55441, 8.94599, "Main", "z644"));
+        stations.add(new MetroStation("Parabiago, Matteotti fr. 35", 45.55431, 8.94596, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.55579, 8.94626, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.5575, 8.94877, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.55754, 8.94895, "Main - Ritorno", "z644"));
@@ -8875,7 +8880,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55685, 8.95183, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.55703, 8.95212, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.55711, 8.95218, "Main - Ritorno", "z644"));
-        stations.add(new MetroStation("Parabiago, Spagliardi,Maggiolini", 45.55938, 8.95142, "Main - Ritorno", "z644"));
+        stations.add(new MetroStation("Parabiago, Spagliardi,Maggiolini", 45.55938, 8.95142, "Main", "z644"));
+        stations.add(new MetroStation("Parabiago, Spagliardi,Maggiolini", 45.55914, 8.9515, "Ritorno", "z644"));
         return stations;
     }
 
