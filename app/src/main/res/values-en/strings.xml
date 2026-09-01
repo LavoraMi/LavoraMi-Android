@@ -457,4 +457,7 @@
     <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
     <string name="connectionErrorBasic">Connection error.</string>
     <string name="usernameCharacterLimits">The Username must contain at least 3 characters.</string>
+    <string name="rewatchWrappedTitle">Rewatch Wrapped</string>
+    <string name="rewatchWrappedDeps">From now on, you’ll find Wrapped under the \"Account\" section in the settings.</string>
+    <string name="wrappedBannerText">DISCOVER THIS MONTH’S WRAPPED</string>
 </resources>

@@ -456,4 +456,7 @@
     <string name="reportInfosTitleMail">Segnalazione Informazioni Errate</string>
     <string name="connectionErrorBasic">Errore di connessione.</string>
     <string name="usernameCharacterLimits">Il Nome Utente non può contenere meno di 3 caratteri.</string>
+    <string name="rewatchWrappedTitle">Riguarda il Wrapped</string>
+    <string name="rewatchWrappedDeps">D\'ora in poi, troverai il Wrapped sotto la sezione \"Account\" nelle impostazioni</string>
+    <string name="wrappedBannerText">SCOPRI IL WRAPPED DI QUESTO MESE</string>
 </resources>

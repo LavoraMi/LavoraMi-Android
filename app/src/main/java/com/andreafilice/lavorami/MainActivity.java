@@ -1080,16 +1080,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                DialogHelper.createDefaultDialog(this, "Riguarda il wrapped", "D'ora in poi, troverai il wrapped sotto la sezione \"Account\" nelle impostazioni");
-                DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, true);
-            }
+        new ActivityResultContracts.StartActivityForResult(),
+        result -> {
+            DialogHelper.createDefaultDialog(this, getString(R.string.rewatchWrappedTitle), getString(R.string.rewatchWrappedDeps));
+            DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, true);
+        }
     );
     private void loadWrapped(VariablesDescriptor variablesDescriptor) {
         MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
 
-        isWrappedEnabled = variablesDescriptor.isWrappedEnabled();
+        isWrappedEnabled = variablesDescriptor.isWrappedEnabledDebug();
         wrappedBanner.setVisibility(isWrappedEnabled && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
 
         wrappedBanner.setOnClickListener(v -> {
