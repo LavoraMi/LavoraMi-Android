@@ -30,3 +30,4 @@ app/google-services.json
 .idea/studiobot.xml
 .idea/deploymentTargetSelector.xml
 .idea/appInsightsSettings.xml
+.idea/deviceManager.xml
