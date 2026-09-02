@@ -9590,7 +9590,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54058, 8.81207, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54166, 8.81239, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54155, 8.81286, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54135, 8.81443, "Ritorno", "z647"));
+        stations.add(new MetroStation("Buscate, Milano 19/P. Micca", 45.54135, 8.81443, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54114, 8.81612, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53969, 8.8158, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53951, 8.81579, "Ritorno", "z647"));
@@ -9624,7 +9624,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53784, 8.85351, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53789, 8.85354, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54026, 8.85284, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54091, 8.85261, "Ritorno", "z647"));
+        stations.add(new MetroStation("Arconate, Concordia fr. 13", 45.54091, 8.85261, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54155, 8.85234, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54168, 8.85295, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54183, 8.85312, "Ritorno", "z647"));
@@ -9635,7 +9635,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54193, 8.85398, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54196, 8.8542, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54206, 8.8546, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54235, 8.856, "Ritorno", "z647"));
+        stations.add(new MetroStation("Arconate, Legnano 11", 45.54235, 8.856, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54322, 8.85992, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54332, 8.86017, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54357, 8.86088, "Ritorno", "z647"));
@@ -9671,11 +9671,11 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54972, 8.87821, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54811, 8.87996, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54794, 8.8797, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54793, 8.8797, "Ritorno", "z647"));
+        stations.add(new MetroStation("Busto Garolfo, Monteblanco fr. 17", 45.54793, 8.8797, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54717, 8.87836, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54707, 8.87825, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54592, 8.87589, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54402, 8.87849, "Ritorno", "z647"));
+        stations.add(new MetroStation("Busto Garolfo, Vincenzo Bellini 44", 45.54404, 8.87844, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54283, 8.88012, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54323, 8.88077, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54333, 8.88101, "Ritorno", "z647"));
@@ -9691,14 +9691,14 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54375, 8.88669, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54371, 8.88668, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54362, 8.8868, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54343, 8.88721, "Ritorno", "z647"));
+        stations.add(new MetroStation("Busto G., Giacomo Matteotti 5", 45.54343, 8.88721, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54271, 8.88894, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54241, 8.88978, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54234, 8.89013, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54234, 8.89044, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.5425, 8.89157, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54324, 8.89526, "Ritorno", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.54331, 8.89581, "Ritorno", "z647"));
+        stations.add(new MetroStation("Busto Garolfo, Parabiago 61", 45.54331, 8.89581, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54344, 8.89631, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54362, 8.89648, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54362, 8.89657, "Ritorno", "z647"));
@@ -9725,6 +9725,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53008, 8.90039, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.52841, 8.90065, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.52628, 8.90098, "Ritorno", "z647"));
+        stations.add(new MetroStation("Casorezzo, Bertani fr. 19", 45.52638, 8.90172, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54043, 8.8129, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54032, 8.81341, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54017, 8.81384, "Main", "z647"));
