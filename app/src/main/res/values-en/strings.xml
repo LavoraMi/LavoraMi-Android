@@ -460,4 +460,5 @@
     <string name="rewatchWrappedTitle">Rewatch Wrapped</string>
     <string name="rewatchWrappedDeps">From now on, you’ll find Wrapped under the \"Account\" section in the settings.</string>
     <string name="wrappedBannerText">DISCOVER THIS MONTH’S WRAPPED</string>
+    <string name="diNETChip">by NET</string>
 </resources>

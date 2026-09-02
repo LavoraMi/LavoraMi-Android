@@ -491,7 +491,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/font_main"
-                android:text="di NET"
+                android:text="@string/diNETChip"
                 android:textColor="@color/text_primary"
                 app:ensureMinTouchTargetSize="false"
                 app:chipBackgroundColor="@color/selector_chip_filter" />

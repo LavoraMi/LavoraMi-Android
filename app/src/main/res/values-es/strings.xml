@@ -460,4 +460,5 @@
     <string name="rewatchWrappedTitle">Vuelve a ver Wrapped</string>
     <string name="rewatchWrappedDeps">A partir de ahora, encontrarás el Wrapped en la sección \"Cuenta\" de los ajustes.</string>
     <string name="wrappedBannerText">DESCUBRE EL WRAPPED DE ESTE MES</string>
+    <string name="diNETChip">de NET</string>
 </resources>
