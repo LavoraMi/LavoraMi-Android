@@ -191,7 +191,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (nomeLinea == null) nomeLinea = "M1";
         if (tipoDiLinea == null) tipoDiLinea = "Metro " + nomeLinea;
-        if ((tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z")&& !(busLinesWithMap.contains(nomeLinea)))){
+        if ((tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z") && !(busLinesWithMap.contains(nomeLinea)))){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
@@ -580,6 +580,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
             detTitolo.setText("Movibus");
+        if(nomeLinea.startsWith("z3"))
+            detTitolo.setText("NET");
         if(nomeLinea.startsWith("z55") || nomeLinea.startsWith("z56"))
             detTitolo.setText("STAV");
         if(nomeLinea.startsWith("z50") || nomeLinea.startsWith("z51"))
@@ -2027,6 +2029,24 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z646": return "Castano Primo - Magenta FS";
             case "Z647": return "Cornaredo - Castano Primo";
             case "Z649": return "Busto Garolfo - Molino Dorino M1";
+
+            case "Z301": return "Milano Lampugnano M1 - Sesto FS M1 - Bergamo";
+            case "Z304": return "Cologno Nord M2 - Brugherio";
+            case "Z305": return "Cologno Nord M2 - Carugate - Villa Fiorita M2";
+            case "Z307": return "Cologno Nord M2 - Vimercate";
+            case "Z309": return "Cassano D'Adda FS - Trezzo sull'Adda";
+            case "Z310": return "Gessate M2 - Trezzo sull'Adda";
+            case "Z311": return "Gessate M2 - Vaprio d'Adda";
+            case "Z312": return "Gessate M2 - Vimercate";
+            case "Z313": return "Gessate M2 - Paderno D'Adda FS";
+            case "Z314": return "Gessate M2 - Monza FS";
+            case "Z315": return "Gorgonzola M2 - Vimercate";
+            case "Z317": return "Vimercate - Arcore FS - Correzzana";
+            case "Z318": return "Vimercate - Carnate - Usmate";
+            case "Z319": return "Arcore FS - Vimercate - Carnate FS";
+            case "Z321": return "Monza FS - Vimercate - Porto d’Adda";
+            case "Z322": return "Cologno Nord M2 - Vimercate - Porto d'Adda";
+            case "Z323": return "Cologno Nord M2 - Vimercate";
 
             case "Z501": return "Milano Famagosta - Binasco";
             case "Z509": return "Motta Visconti - Milano Famagosta";

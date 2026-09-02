@@ -59,8 +59,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie;
-    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleStav, titleSTAR, titleAutoguidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerNET, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleNET, titleStav, titleSTAR, titleAutoguidovie;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
     LinearLayout containerAds;
@@ -80,7 +80,7 @@ public class LinesActivity extends AppCompatActivity {
     private Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
     //* BOOLEAN VALUES
-    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasStav, hasSTAR, hasAuto;
+    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasNET, hasStav, hasSTAR, hasAuto;
 
     //* SUPABASE VALUES
     SessionManager sessionManager;
@@ -112,6 +112,7 @@ public class LinesActivity extends AppCompatActivity {
         containerTrans = findViewById(R.id.groupTrans);
         containerFilobus = findViewById(R.id.groupFilobus);
         containerMovibus = findViewById(R.id.groupMovibus);
+        containerNET = findViewById(R.id.groupNET);
         containerStav = findViewById(R.id.groupStav);
         containerSTAR = findViewById(R.id.groupStar);
         containerAutoGuidovie = findViewById(R.id.groupAutoGuidoVie);
@@ -128,6 +129,7 @@ public class LinesActivity extends AppCompatActivity {
         titleTram = findViewById(R.id.headerTram);
         titleFilobus = findViewById(R.id.headerFilobus);
         titleMovibus = findViewById(R.id.headerMovibus);
+        titleNET = findViewById(R.id.headerNET);
         titleStav = findViewById(R.id.headerSTAV);
         titleSTAR = findViewById(R.id.headerSTAR);
         titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
@@ -209,6 +211,7 @@ public class LinesActivity extends AppCompatActivity {
             findViewById(R.id.infoIconTram),
             findViewById(R.id.infoIconFilobus),
             findViewById(R.id.infoIconMovibus),
+            findViewById(R.id.infoIconNET),
             findViewById(R.id.infoIconStav),
             findViewById(R.id.infoIconStar),
             findViewById(R.id.infoIconAutoGuidoVie)
@@ -224,6 +227,7 @@ public class LinesActivity extends AppCompatActivity {
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
             "https://movibus.it/news/",
+            "https://www.nordesttrasporti.it/media/2508/linee-net_area-nord-est-provincia-mi_nov2025.jpg",
             "https://stavautolinee.it/reti-servite/",
             "https://starmobility.it/orari-autobus/",
             "https://autoguidovie.it/it/avvisi"
@@ -273,6 +277,7 @@ public class LinesActivity extends AppCompatActivity {
                     hasTram = filtraContainer(containerTram, query);
                     hasFilobus = filtraContainer(containerFilobus, query);
                     hasMovibus = filtraContainer(containerMovibus, query);
+                    hasNET = filtraContainer(containerNET, query);
                     hasStav = filtraContainer(containerStav, query);
                     hasSTAR = filtraContainer(containerSTAR, query);
                     hasAuto = filtraContainer(containerAutoGuidovie, query);
@@ -333,6 +338,11 @@ public class LinesActivity extends AppCompatActivity {
                     containerMovibus.setVisibility(hasMovibus ? View.VISIBLE : View.GONE);
                     setUpMargin(titleMovibus, isFirstVisibleContainer(hasMovibus, firstContainerTracker));
 
+                    //*NET LINES
+                    titleNET.setVisibility(hasNET ? View.VISIBLE : View.GONE);
+                    containerNET.setVisibility(hasNET ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleNET, isFirstVisibleContainer(hasNET, firstContainerTracker));
+
                     //*STAV LINES
                     titleStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
                     containerStav.setVisibility(hasStav ? View.VISIBLE : View.GONE);
@@ -347,7 +357,7 @@ public class LinesActivity extends AppCompatActivity {
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
-                    checkForEmptySearch(!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasStav && !hasSTAR && !hasAuto, s);
+                    checkForEmptySearch(!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasNET && !hasStav && !hasSTAR && !hasAuto, s);
 
                     searchLines.setCompoundDrawables(searchIcon, null, (s.length() > 0) ? deleteIcon : null, null);
                 };
@@ -566,6 +576,13 @@ public class LinesActivity extends AppCompatActivity {
                 "z646", "z647", "z649"};
         for (String line : movibusLines) {
             aggiungiLinea(containerMovibus, line, R.color.BUS, "Movibus");
+        }
+
+        //NET
+        String[] netLines = {"z301", "z304", "z305", "z307", "z309", "z310", "z311", "z312",
+                "z313", "z314", "z315", "z317", "z318", "z319", "z321", "z322", "z323"};
+        for (String line : netLines) {
+            aggiungiLinea(containerNET, line, R.color.BUS, "NET");
         }
 
         // STAR
