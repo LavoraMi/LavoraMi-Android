@@ -22,173 +22,252 @@ public class StationDB {
 
     public static List<InterchangeInfo> getBusInterchanges() {
         List<InterchangeInfo> interchanges = new ArrayList<>();
+
         interchanges.add(new InterchangeInfo(
-                "Molino Dorino MM",
-                new String[]{"M1", "NM1", "35", "69", "80", "424", "528", "z601", "z617", "z620", "z621", "z649"},
-                new String[] {"z601", "z617", "z620", "z621", "z649"},
-                "tram.fill.tunnel"
+            "Milano Molino Dorino M1",
+            new String[]{"M1", "NM1", "35", "69", "80", "424", "528", "z601", "z617", "z620", "z621", "z649"},
+            new String[]{"z601", "z617", "z620", "z621", "z649"},
+            "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Milano Cadorna FN",
-                new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
-                new String[]{"z602", "z603", "z6C3"},
-                "tram.fill.tunnel"
+            "Milano Cadorna FN",
+            new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
+            new String[]{"z602", "z603", "z6C3"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Parabiago",
-                new String[]{"z611", "z644", "z643"},
-                new String[]{"z644", "z643"},
-                "bus.fill"
+            "Parabiago FS",
+            new String[]{"S5", "R21", "R23", "RE5", "z644"},
+            new String[]{"z644"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Rho FS",
-                new String[]{"S5", "S6", "S11", "z616", "z618"},
-                new String[]{"z616", "z618"},
-                "train.side.front.car"
+            "Vittuone FS",
+            new String[]{"S6", "RV", "z622", "z643"},
+            new String[]{"z643"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Busto Garolfo",
-                new String[]{"z625", "z627", "z644", "z649"},
-                new String[]{"z625"},
-                "bus.fill"
+            "Rho, Corso Europa",
+            new String[]{"S5", "S6", "S11", "z601", "z606", "z618"},
+            new String[]{"z606", "z618"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Legnano",
-                new String[]{"z601", "z602", "z611", "z612", "z627", "z636", "z642"},
-                new String[]{"z611", "z612", "z642", "z627", "z636"},
-                "bus.fill"
+            "Rho FS",
+            new String[]{"S5", "S6", "S11", "z616"},
+            new String[]{"z616"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Bisceglie MM",
-                new String[]{"M1", "NM1", "47", "58", "63", "76", "78", "321", "322", "323", "327", "433", "z551", "z560"},
-                new String[]{"z551", "z560"},
-                "tram.fill.tunnel"
+            "Cuggiono, Piazza della Vittoria",
+            new String[]{"z621", "z622", "z627", "z641", "z646"},
+            new String[]{"z622"},
+            "bus.fill"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Romolo FS",
-                new String[]{"M2", "NM2", "S9", "S19", "R31", "47", "Filobus 90", "Filobus 91", "71", "324", "325", "z553"},
-                new String[] {"z553"},
-                "train.side.front.car"
+            "Busto Garolfo",
+            new String[]{"z625", "z627", "z644", "z647", "z649"},
+            new String[]{"z625"},
+            "bus.fill"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Santo Stefano Ticino - Corbetta",
-                new String[]{"S6"},
-                new String[] {"z552"},
-                "train.side.front.car"
+            "Arese, Il Centro",
+            new String[]{"561", "z612"},
+            new String[]{"z612"},
+            "bus.fill"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Magenta FS",
-                new String[]{"S6", "RV", "z559", "z641", "z646"},
-                new String[]{"z641", "z646", "z559"},
-                "train.side.front.car"
+            "Legnano FS",
+            new String[]{"S5", "R21", "RE5", "REG", "RV", "z601", "z602", "z611", "z627", "z636", "z642"},
+            new String[]{"z611", "z612", "z627", "z636", "z642"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Abbiategrasso V. Veneto",
-                new String[]{"z551", "z552", "z553", "z555", "z556", "z560"},
-                new String[] {"z555", "z556"},
-                "bus.fill"
+            "Milano Bisceglie M1",
+            new String[]{"M1", "NM1", "47", "58", "63", "76", "78", "321", "322", "323", "327", "433", "z551", "z560"},
+            new String[]{"z551", "z560"},
+            "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Melzo FS",
-                new String[]{"R4", "S5", "S6", "z401", "z404", "z411"},
-                new String[] {"z401", "z404", "z411"},
-                "train.side.front.car"
+            "Milano Romolo FS M2",
+            new String[]{"M2", "NM2", "S9", "S19", "R31", "47", "Filobus 90", "Filobus 91", "71", "324", "325", "z553"},
+            new String[]{"z553"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Pioltello Limito FS",
-                new String[]{"R4", "RE2", "RE6", "S5", "S6", "z402"},
-                new String[] {"z402"},
-                "train.side.front.car"
+            "Santo Stefano Ticino FS",
+            new String[]{"S6", "RV", "z552"},
+            new String[]{"z552"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Gorgonzola M2",
-                new String[]{"M2", "z403", "z407", "z419"},
-                new String[] {"z403", "z407", "z419"},
-                "tram.fill.tunnel"
+            "Albairate - Vermezzo FS",
+            new String[]{"S9", "S19", "R31", "z554"},
+            new String[]{"z554"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Gessate M2",
-                new String[]{"M2", "z404", "z405", "z406"},
-                new String[] {"z404", "z405", "z406"},
-                "tram.fill.tunnel"
+            "Gaggiano FS",
+            new String[]{"S9", "S19", "R31", "z557"},
+            new String[]{"z557"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Linate Aereoporto",
-                new String[]{"M4", "NM4", "183", "901", "903", "923", "973", "z409"},
-                new String[] {"z409"},
-                "airplane.departure"
+            "Magenta FS",
+            new String[]{"S6", "RV", "z559", "z620", "z641", "z642", "z646"},
+            new String[]{"z641", "z646", "z559"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "San Donato M3",
-                new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"},
-                new String[] {"z410", "z412", "z413", "z415", "z420"},
-                "tram.fill.tunnel"
+            "Abbiategrasso Vittorio Veneto",
+            new String[]{"z551", "z552", "z553", "z555", "z559"},
+            new String[]{"z555", "z556"},
+            "bus.fill"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Melegnano FS",
-                new String[]{"REG", "S1", "S12", "z431", "z432"},
-                new String[] {"z431", "z432"},
-                "train.side.front.car"
+            "Melzo FS",
+            new String[]{"R4", "S5", "S6", "z401", "z404", "z407", "z411"},
+            new String[]{"z401", "z411"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Monza FS",
-                new String[]{"R7", "R13", "R14", "RE8", "RE80", "S7", "S8", "S9", "S11", "z203", "z205", "z219", "z221", "z222", "z228"},
-                new String[] {"z203", "z205", "z219", "z221", "z222", "z228"},
-                "train.side.front.car"
+            "Pioltello Limito FS",
+            new String[]{"R4", "RE2", "RE6", "S5", "S6", "z402", "z409"},
+            new String[]{"z402"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Sesto San Giovanni FS M1",
-                new String[]{"M1", "R13", "R14", "RE8", "S7", "S8", "S9", "S11", "z221", "z222", "z225"},
-                new String[] {"z225"},
-                "train.side.front.car"
+            "Gorgonzola M2",
+            new String[]{"M2", "z310", "z315", "z403", "z407", "z419"},
+            new String[]{"z315", "z403", "z407", "z419"},
+            "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Seregno FS",
-                new String[]{"RE80", "S9", "S11", "z231", "z232", "z233", "z242"},
-                new String[] {"z231", "z232", "z233", "z242"},
-                "train.side.front.car"
+            "Gessate M2",
+            new String[]{"M2", "z310", "z311", "z312", "z313", "z314", "z404", "z405", "z406"},
+            new String[]{"z310", "z311", "z312", "z313", "z404", "z405", "z406"},
+            "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Desio FS",
-                new String[]{"RE80", "S9", "S11", "z250", "z251"},
-                new String[] {"z250", "z251"},
-                "train.side.front.car"
+            "Linate Aereoporto M4",
+            new String[]{"M4", "NM4", "183", "901", "903", "923", "973", "z409"},
+            new String[]{"z409"},
+            "airplane.departure"
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Famagosta M2",
-                new String[] {"M2", "NM2", "46", "59", "71", "74", "95", "98", "z501", "z509", "z510", "z515", "z516"},
-                new String[]{"z501", "z509", "z510", "z515", "z516"},
-                "tram.fill.tunnel"
+            "San Donato M3",
+            new String[]{"M3", "NM3", "45", "77", "121", "130", "132", "901", "902", "903", "z410", "z411", "z412", "z413", "z415", "z420"},
+            new String[]{"z410", "z412", "z413", "z415", "z420"},
+            "tram.fill.tunnel"
         ));
 
         interchanges.add(new InterchangeInfo(
-           "Rho, Corso Europa",
-           new String[] {"S5", "S6", "S11", "z601", "z606", "z618"},
-            new String[]{"z606"},
-           "train.side.front.car"
+            "Melegnano FS",
+            new String[]{"S1", "S12", "REG", "z431"},
+            new String[]{"z431", "z432"},
+            "train.side.front.car"
         ));
+
+        interchanges.add(new InterchangeInfo(
+            "San Zenone Al Lambro FS",
+            new String[]{"S1", "z415", "z418", "z420"},
+            new String[]{"z418"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Monza FS",
+            new String[]{"S7", "S8", "S9", "S11", "R7", "R13", "R14", "RE8", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"},
+            new String[]{"z203", "z205", "z219", "z221", "z222", "z228", "z321"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Cesano FN",
+            new String[]{"S2", "S4", "S9", "R16", "z209", "z250", "z251"},
+            new String[]{"z209", "z250", "z251"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Sesto San Giovanni FS M1",
+            new String[]{"M1", "NM1", "S7", "S8", "S9", "S11", "R13", "R14", "RE8", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"},
+            new String[]{"z225", "z227", "z301"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Seregno FS",
+            new String[]{"S9", "S11", "R15", "RE80", "z228", "z231", "z232", "z233", "z242"},
+            new String[]{"z231", "z232", "z233"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Milano Famagosta M2",
+            new String[]{"M2", "NM2", "46", "59", "71", "74", "95", "98", "z501", "z509", "z510", "z515", "z516"},
+            new String[]{"z501", "z509", "z510", "z515", "z516"},
+            "tram.fill.tunnel"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Lissone - Muggiò FS",
+            new String[]{"S9", "S11", "z227", "z234", "z250"},
+            new String[]{"z227", "z234"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Cologno Nord M2",
+            new String[]{"M2", "701", "702", "707", "z203", "z304", "z305", "z307", "z322", "z323"},
+            new String[]{"z304", "z305", "z307", "z322", "z323"},
+            "tram.fill.tunnel"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Cassano D'Adda FS",
+            new String[]{"S5", "S6", "R4", "z309"},
+            new String[]{"z309"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Arcore FS",
+            new String[]{"S8", "R13", "R14", "RE8", "z208", "z317", "z319"},
+            new String[]{"z317", "z319"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Carnate Usmate FS",
+            new String[]{"S8", "R13", "R14", "R15", "RE8", "z318", "z319"},
+            new String[]{"z318"},
+            "train.side.front.car"
+        ));
+
         return interchanges;
     }
 
