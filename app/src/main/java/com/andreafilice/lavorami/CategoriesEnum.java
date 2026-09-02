@@ -13,6 +13,7 @@ public enum CategoriesEnum {
     DI_TRENORD,
     DI_TILO,
     DI_MOVIBUS,
+    DI_NET,
     DI_STAV,
     DI_STAR,
     DI_AUTOGUIDOVIE

@@ -51,6 +51,7 @@ public class FilterSelection extends AppCompatActivity {
             findViewById(R.id.checkdiTrenord), //? "di Trenord"
             findViewById(R.id.checkdiTilo), //? "di TILO"
             findViewById(R.id.checkdiMovibus), //? "di Movibus"
+            findViewById(R.id.checkdiNET), //? "di NET"
             findViewById(R.id.checkdiSTAV), //? "di STAV"
             findViewById(R.id.checkdiSTAR), //? "di STAR"
             findViewById(R.id.checkdiAutoguidovie) //? "di Autoguidovie"
@@ -69,6 +70,7 @@ public class FilterSelection extends AppCompatActivity {
             findViewById(R.id.diTrenord), //? "di Trenord"
             findViewById(R.id.diTilo), //? "di TILO"
             findViewById(R.id.diMovibus), //? "di Movibus"
+            findViewById(R.id.diNET), //? "di NET"
             findViewById(R.id.diSTAV), //? "di STAV"
             findViewById(R.id.diSTAR), //? "di STAR"
             findViewById(R.id.diAutoguidovie) //? "di Autoguidovie"
@@ -87,6 +89,7 @@ public class FilterSelection extends AppCompatActivity {
             "di_Trenord",
             "di_TILO",
             "di_Movibus",
+            "di_NET",
             "di_STAV",
             "di_STAR",
             "di_Autoguidovie"

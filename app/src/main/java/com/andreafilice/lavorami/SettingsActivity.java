@@ -459,6 +459,7 @@ public class SettingsActivity extends AppCompatActivity {
             case DI_TRENORD: return getString(R.string.trenordFilter);
             case DI_TILO: return getString(R.string.diTiloLines);
             case DI_MOVIBUS: return getString(R.string.movibusFilter);
+            case DI_NET: return "di NET";
             case DI_STAV: return getString(R.string.stavFilter);
             case DI_STAR: return getString(R.string.starFilter);
             case DI_AUTOGUIDOVIE: return getString(R.string.autoguidovieFilter);

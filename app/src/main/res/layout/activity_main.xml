@@ -486,6 +486,17 @@
                 app:chipBackgroundColor="@color/selector_chip_filter" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chipNET"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_main"
+                android:text="di NET"
+                android:textColor="@color/text_primary"
+                app:ensureMinTouchTargetSize="false"
+                app:chipBackgroundColor="@color/selector_chip_filter" />
+
+            <com.google.android.material.chip.Chip
                 android:id="@+id/chipStav"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"

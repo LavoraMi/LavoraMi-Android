@@ -469,6 +469,9 @@ public class MainActivity extends AppCompatActivity {
                 case DI_MOVIBUS:
                     filterGroup.check(R.id.chipMovibus);
                     break;
+                case DI_NET:
+                    filterGroup.check(R.id.chipNET);
+                    break;
                 case DI_STAV:
                     filterGroup.check(R.id.chipStav);
                     break;
@@ -653,6 +656,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.chipTrenord),
             findViewById(R.id.chipTILO),
             findViewById(R.id.chipMovibus),
+            findViewById(R.id.chipNET),
             findViewById(R.id.chipStav),
             findViewById(R.id.chipStar),
             findViewById(R.id.chipAutoguidovie)
@@ -767,6 +771,7 @@ public class MainActivity extends AppCompatActivity {
             R.id.chipTrenord,
             R.id.chipTILO,
             R.id.chipMovibus,
+            R.id.chipNET,
             R.id.chipStav,
             R.id.chipStar,
             R.id.chipAutoguidovie
@@ -785,6 +790,7 @@ public class MainActivity extends AppCompatActivity {
             CategoriesEnum.DI_TRENORD,
             CategoriesEnum.DI_TILO,
             CategoriesEnum.DI_MOVIBUS,
+            CategoriesEnum.DI_NET,
             CategoriesEnum.DI_STAV,
             CategoriesEnum.DI_STAR,
             CategoriesEnum.DI_AUTOGUIDOVIE
@@ -1234,6 +1240,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case DI_MOVIBUS:
                         if(item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_NET:
+                        if(item.company.equalsIgnoreCase("NET") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_STAV:
                         if(item.company.equalsIgnoreCase("STAV") && terminated > limiteMassimo) filtrata.add(item);
