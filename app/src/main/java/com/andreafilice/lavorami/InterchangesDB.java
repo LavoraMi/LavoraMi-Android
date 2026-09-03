@@ -37,7 +37,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Amendola", new String[]{"M1", "NM1", "68"}, "tram.fill.tunnel", "Rho Fiera-Milano", 9));
         interchanges.add(new InterchangeInfo("Lotto M1 M5", new String[]{"M1", "NM1", "M5", "48", "49", "68", "78", "90", "91", "98"}, "tram.fill.tunnel", "Rho Fiera-Milano", 8));
         interchanges.add(new InterchangeInfo("QT8", new String[]{"M1", "NM1", "68", "560"}, "tram.fill.tunnel", "Rho Fiera-Milano", 7));
-        interchanges.add(new InterchangeInfo("Lampugnano", new String[]{"M1", "NM1", "68"}, "tram.fill.tunnel", "Rho Fiera-Milano", 6));
+        interchanges.add(new InterchangeInfo("Lampugnano", new String[]{"M1", "NM1", "68", "z301"}, "tram.fill.tunnel", "Rho Fiera-Milano", 6));
         interchanges.add(new InterchangeInfo("Uruguay", new String[]{"M1", "40", "68", "69"}, "tram.fill.tunnel", "Rho Fiera-Milano", 5));
         interchanges.add(new InterchangeInfo("Bonola", new String[]{"M1", "40", "64", "68", "69"}, "tram.fill.tunnel", "Rho Fiera-Milano", 4));
         interchanges.add(new InterchangeInfo("S. Leonardo", new String[]{"M1", "NM1"}, "tram.fill.tunnel", "Rho Fiera-Milano", 3));
