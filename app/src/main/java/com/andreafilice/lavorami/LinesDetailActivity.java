@@ -2930,13 +2930,13 @@ public class LinesDetailActivity extends AppCompatActivity {
                 nsv.smoothScrollTo(0, Math.max(targetY, 0));
             }
             else if (scrollContainer instanceof android.widget.ScrollView) {
-                android.widget.ScrollView sv = (android.widget.ScrollView) scrollContainer;
+                android.widget.ScrollView scrollViewInterchanges = (android.widget.ScrollView) scrollContainer;
                 int[] location = new int[2];
                 int[] scrollLocation = new int[2];
                 finalViewTrovata.getLocationOnScreen(location);
-                sv.getLocationOnScreen(scrollLocation);
-                int targetY = sv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (20 * getResources().getDisplayMetrics().density);
-                sv.smoothScrollTo(0, Math.max(targetY, 0));
+                scrollViewInterchanges.getLocationOnScreen(scrollLocation);
+                int targetY = scrollViewInterchanges.getScrollY() + (location[1] - scrollLocation[1]) - (int) (20 * getResources().getDisplayMetrics().density);
+                scrollViewInterchanges.smoothScrollTo(0, Math.max(targetY, 0));
             }
 
             evidenziaCardTemporaneamente(finalViewTrovata);
