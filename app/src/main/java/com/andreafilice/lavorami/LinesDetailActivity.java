@@ -4,6 +4,10 @@ import static com.andreafilice.lavorami.MainActivity.threadManager;
 import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
@@ -639,38 +643,44 @@ public class LinesDetailActivity extends AppCompatActivity {
         disegnaPolilinea(mapView, tutteLeStazioni, hexColor);
         disegnaMarkers(mapView, tutteLeStazioni, hexColor, hexColorText, fermateSospese);
 
-        if(tipoDiLinea.contains("Movibus")) {
-            GesturesUtils.getGestures(mapView).addOnMapClickListener(new com.mapbox.maps.plugin.gestures.OnMapClickListener() {
-                @Override
-                public boolean onMapClick(@NonNull com.mapbox.geojson.Point point) {
 
-                    com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
-                    float tolerance = 20f;
+        GesturesUtils.getGestures(mapView).addOnMapClickListener(new com.mapbox.maps.plugin.gestures.OnMapClickListener() {
+            @Override
+            public boolean onMapClick(@NonNull com.mapbox.geojson.Point point) {
 
-                    com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
-                        new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
-                        new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
-                    );
+                com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
+                float tolerance = 20f;
 
-                    mapView.getMapboxMap().queryRenderedFeatures(
-                        new com.mapbox.maps.RenderedQueryGeometry(screenBox),
-                        new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
-                        expected -> {
-                            if (expected.isValue() && !expected.getValue().isEmpty()) {
-                                com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
-                                com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+                com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
+                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
+                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
+                );
 
+                mapView.getMapboxMap().queryRenderedFeatures(
+                    new com.mapbox.maps.RenderedQueryGeometry(screenBox),
+                    new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
+                    expected -> {
+                        if (expected.isValue() && !expected.getValue().isEmpty()) {
+                            com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
+                            com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+                            if (tipoDiLinea.contains("Movibus")) {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaFermataDaMappa(stationName);
                                 }
+                            } else {
+                                if (clickedFeature.hasProperty("name")) {
+                                    String stationName = clickedFeature.getStringProperty("name");
+                                    selezionaInterscambioDaMappa(stationName);
+                                }
                             }
+
                         }
-                    );
-                    return true;
-                }
-            });
-        }
+                    }
+                );
+                return true;
+            }
+        });
 
         if (!tutteLeStazioni.isEmpty()) {
             double latMedia = 0, lngMedia = 0;
@@ -2822,5 +2832,155 @@ public class LinesDetailActivity extends AppCompatActivity {
         btnClose.setTextColor(ContextCompat.getColor(this, android.R.color.white));
 
         btnClose.setOnClickListener(v -> dialog.dismiss());
+    }
+
+    private void selezionaInterscambioDaMappa(String nomeStazioneMappa) {
+        if (branchViewCache.isEmpty() || nomeStazioneMappa == null) {
+            Toast.makeText(this, R.string.arrivalsNotLoaded, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //*TROVA IL BRANCH E LA VIEW CORRISPONDENTE ALLA FERMATA CLICCATA
+        /// Cerchiamo in tutte le liste cacheate (Main + branch secondari) la card la cui
+        /// InterchangeInfo ha getKey() uguale al nome della fermata cliccata sulla mappa.
+        String branchTrovato = null;
+        View viewTrovata = null;
+
+        for (Map.Entry<String, List<View>> entry : branchViewCache.entrySet()) {
+            for (View card : entry.getValue()) {
+                Object tag = card.getTag(R.id.txtTitle); // fallback nel caso non si usi il tag apposito
+                // Usiamo il testo del titolo già impostato in buildViewsForList come chiave di confronto
+                TextView titolo = card.findViewById(R.id.txtTitle);
+                if (titolo == null) continue;
+
+                String testoTitolo = titolo.getText().toString();
+                if (testoTitolo.equalsIgnoreCase(nomeStazioneMappa)
+                        || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
+                    branchTrovato = entry.getKey();
+                    viewTrovata = card;
+                    break;
+                }
+            }
+            if (viewTrovata != null) break;
+        }
+
+        if (viewTrovata == null) {
+            Toast.makeText(this, R.string.noInterchanges, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //*UI ELEMENTS - passiamo al tab Interscambi
+        ActivityUtils.triggerFeedback(this);
+        dismissActiveBranchDialog();
+
+        findViewById(R.id.mapCard).setVisibility(View.GONE);
+        findViewById(R.id.containerLavori).setVisibility(View.GONE);
+        findViewById(R.id.containerInterscambi).setVisibility(View.VISIBLE);
+
+        lavoriWrapper.setVisibility(View.GONE);
+        lavoriNested.setVisibility(View.GONE);
+        arriviWrapper.setVisibility(View.GONE);
+        arriviNested.setVisibility(View.GONE);
+        findViewById(R.id.emptyViewContainer).setVisibility(View.GONE);
+
+        Chip chipMappa = findViewById(R.id.chipMappa);
+        Chip chipInterscambi = findViewById(R.id.chipInterscambi);
+        chipInterscambi.setChecked(true);
+        chipMappa.setChecked(false);
+
+        //*CAMBIO BRANCH SE NECESSARIO
+        /// Se la fermata trovata appartiene a un branch diverso da quello attualmente
+        /// selezionato, aggiorniamo selectedBranch e ricostruiamo la vista dal branchViewCache.
+        boolean branchCambiato = branchTrovato != null && !branchTrovato.equals(selectedBranch);
+        if (branchCambiato) {
+            selectedBranch = branchTrovato;
+
+            Button btnBranch = findViewById(R.id.buttonSelectBranch);
+            if (btnBranch != null && !"Main".equals(selectedBranch)) btnBranch.setText(selectedBranch);
+
+            LinearLayout container = findViewById(R.id.containerInterscambi);
+            applyBranchFromCache(container, new ArrayList<>()); // allMatched non serve, usiamo la cache per key
+        }
+
+        mostraInterscambiCaricati(null);
+        updateChipGroupSizes(detActionGroup);
+
+        //*SCROLL + EVIDENZIAZIONE DELLA CARD TROVATA
+        /// Diamo tempo alla UI di aggiornarsi (cambio branch/visibilità) prima di calcolare
+        /// la posizione di scroll, altrimenti le coordinate potrebbero non essere corrette.
+        View finalViewTrovata = viewTrovata;
+        View scrollContainer = trovaScrollParent(finalViewTrovata);
+
+        handler.post(() -> {
+            if (scrollContainer instanceof androidx.core.widget.NestedScrollView) {
+                androidx.core.widget.NestedScrollView nsv = (androidx.core.widget.NestedScrollView) scrollContainer;
+                int[] location = new int[2];
+                int[] scrollLocation = new int[2];
+                finalViewTrovata.getLocationOnScreen(location);
+                nsv.getLocationOnScreen(scrollLocation);
+                int targetY = nsv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (24 * getResources().getDisplayMetrics().density);
+                nsv.smoothScrollTo(0, Math.max(targetY, 0));
+            }
+            else if (scrollContainer instanceof android.widget.ScrollView) {
+                android.widget.ScrollView sv = (android.widget.ScrollView) scrollContainer;
+                int[] location = new int[2];
+                int[] scrollLocation = new int[2];
+                finalViewTrovata.getLocationOnScreen(location);
+                sv.getLocationOnScreen(scrollLocation);
+                int targetY = sv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (24 * getResources().getDisplayMetrics().density);
+                sv.smoothScrollTo(0, Math.max(targetY, 0));
+            }
+
+            evidenziaCardTemporaneamente(finalViewTrovata);
+        });
+    }
+
+    private View trovaScrollParent(View view) {
+        /// Risale la gerarchia dei parent fino a trovare uno ScrollView/NestedScrollView,
+        /// così non dipendiamo dall'id esatto dello scroll container nel layout XML.
+        ViewGroup parent = (view.getParent() instanceof ViewGroup) ? (ViewGroup) view.getParent() : null;
+
+        while (parent != null) {
+            if (parent instanceof androidx.core.widget.NestedScrollView || parent instanceof android.widget.ScrollView)
+                return parent;
+
+            parent = (parent.getParent() instanceof ViewGroup) ? (ViewGroup) parent.getParent() : null;
+        }
+
+        return null;
+    }
+    private Animator highlightAnimator;
+    private void evidenziaCardTemporaneamente(View card) {
+        /// Applichiamo un flash di colore sulla card con fade in/out (no taglio netto),
+        /// poi ripristiniamo il background originale.
+        if (highlightAnimator != null) highlightAnimator.cancel();
+
+        Drawable backgroundOriginale = card.getBackground();
+        int coloreTrasparente = ColorUtils.setAlphaComponent(coloreLinea, 0);
+        int coloreEvidenza = ColorUtils.setAlphaComponent(coloreLinea, 60);
+
+        // Assicuriamoci che la card abbia un colore di partenza trasparente su cui animare
+        card.setBackgroundColor(coloreTrasparente);
+
+        ValueAnimator fadeIn = ValueAnimator.ofObject(new ArgbEvaluator(), coloreTrasparente, coloreEvidenza);
+        fadeIn.setDuration(250);
+        fadeIn.addUpdateListener(animation -> card.setBackgroundColor((int) animation.getAnimatedValue()));
+
+        ValueAnimator fadeOut = ValueAnimator.ofObject(new ArgbEvaluator(), coloreEvidenza, coloreTrasparente);
+        fadeOut.setDuration(500);
+        fadeOut.addUpdateListener(animation -> card.setBackgroundColor((int) animation.getAnimatedValue()));
+
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(fadeIn, fadeOut);
+        animatorSet.addListener(new android.animation.AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(android.animation.Animator animation) {
+                if (backgroundOriginale != null) card.setBackground(backgroundOriginale);
+                else card.setBackgroundColor(Color.TRANSPARENT);
+            }
+        });
+
+        highlightAnimator = animatorSet;
+        animatorSet.start();
     }
 }
