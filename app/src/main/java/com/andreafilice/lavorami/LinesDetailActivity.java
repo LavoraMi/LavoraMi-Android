@@ -2836,7 +2836,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     private void selezionaInterscambioDaMappa(String nomeStazioneMappa) {
         if (branchViewCache.isEmpty() || nomeStazioneMappa == null) {
-            Toast.makeText(this, R.string.arrivalsNotLoaded, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Interscambi in caricamento...", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -2854,7 +2854,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (titolo == null) continue;
 
                 String testoTitolo = titolo.getText().toString();
-                if (testoTitolo.equalsIgnoreCase(nomeStazioneMappa)
+                if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase())
                         || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
                     branchTrovato = entry.getKey();
                     viewTrovata = card;
@@ -2927,7 +2927,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 int[] scrollLocation = new int[2];
                 finalViewTrovata.getLocationOnScreen(location);
                 sv.getLocationOnScreen(scrollLocation);
-                int targetY = sv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (24 * getResources().getDisplayMetrics().density);
+                int targetY = sv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (20 * getResources().getDisplayMetrics().density);
                 sv.smoothScrollTo(0, Math.max(targetY, 0));
             }
 
