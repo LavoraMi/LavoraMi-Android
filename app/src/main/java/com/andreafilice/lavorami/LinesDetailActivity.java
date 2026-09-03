@@ -2840,10 +2840,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             return;
         }
 
-        // Cerchiamo la card SOLO nella lista del branch attualmente selezionato
-        // (o "Main" se nessun branch è ancora stato scelto), perché è quella
-        // effettivamente montata nel container visibile a schermo. Le altre voci
-        // della cache contengono istanze di View duplicate mai aggiunte alla UI.
         String chiaveAttuale = (selectedBranch != null) ? selectedBranch : "Main";
         List<View> viewsAttuali = branchViewCache.get(chiaveAttuale);
 
@@ -2865,9 +2861,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        // Se non la troviamo nel branch attuale (perché appartiene a un branch
-        // secondario diverso da quello mostrato ora), cerchiamo altrove per capire
-        // a quale branch cambiare.
         if (viewTrovata == null) {
             for (Map.Entry<String, List<View>> entry : branchViewCache.entrySet()) {
                 for (View card : entry.getValue()) {
@@ -2923,9 +2916,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         mostraInterscambiCaricati(null);
         updateChipGroupSizes(detActionGroup);
 
-        //*SCROLL + EVIDENZIAZIONE DELLA CARD TROVATA
-        /// Diamo tempo alla UI di aggiornarsi (cambio branch/visibilità) prima di calcolare
-        /// la posizione di scroll, altrimenti le coordinate potrebbero non essere corrette.
         View finalViewTrovata = viewTrovata;
         View scrollContainer = trovaScrollParent(finalViewTrovata);
 
@@ -2954,8 +2944,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private View trovaScrollParent(View view) {
-        /// Risale la gerarchia dei parent fino a trovare uno ScrollView/NestedScrollView,
-        /// così non dipendiamo dall'id esatto dello scroll container nel layout XML.
         ViewGroup parent = (view.getParent() instanceof ViewGroup) ? (ViewGroup) view.getParent() : null;
 
         while (parent != null) {
@@ -2967,17 +2955,15 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         return null;
     }
+
     private Animator highlightAnimator;
     private void evidenziaCardTemporaneamente(View card) {
-        /// Applichiamo un flash di colore sulla card con fade in/out (no taglio netto),
-        /// poi ripristiniamo il background originale.
         if (highlightAnimator != null) highlightAnimator.cancel();
 
         Drawable backgroundOriginale = card.getBackground();
         int coloreTrasparente = ColorUtils.setAlphaComponent(coloreLinea, 0);
         int coloreEvidenza = ColorUtils.setAlphaComponent(coloreLinea, 60);
 
-        // Assicuriamoci che la card abbia un colore di partenza trasparente su cui animare
         card.setBackgroundColor(coloreTrasparente);
 
         ValueAnimator fadeIn = ValueAnimator.ofObject(new ArgbEvaluator(), coloreTrasparente, coloreEvidenza);
