@@ -2840,28 +2840,50 @@ public class LinesDetailActivity extends AppCompatActivity {
             return;
         }
 
-        //*TROVA IL BRANCH E LA VIEW CORRISPONDENTE ALLA FERMATA CLICCATA
-        /// Cerchiamo in tutte le liste cacheate (Main + branch secondari) la card la cui
-        /// InterchangeInfo ha getKey() uguale al nome della fermata cliccata sulla mappa.
+        // Cerchiamo la card SOLO nella lista del branch attualmente selezionato
+        // (o "Main" se nessun branch è ancora stato scelto), perché è quella
+        // effettivamente montata nel container visibile a schermo. Le altre voci
+        // della cache contengono istanze di View duplicate mai aggiunte alla UI.
+        String chiaveAttuale = (selectedBranch != null) ? selectedBranch : "Main";
+        List<View> viewsAttuali = branchViewCache.get(chiaveAttuale);
+
         String branchTrovato = null;
         View viewTrovata = null;
 
-        for (Map.Entry<String, List<View>> entry : branchViewCache.entrySet()) {
-            for (View card : entry.getValue()) {
-                Object tag = card.getTag(R.id.txtTitle); // fallback nel caso non si usi il tag apposito
-                // Usiamo il testo del titolo già impostato in buildViewsForList come chiave di confronto
+        if (viewsAttuali != null) {
+            for (View card : viewsAttuali) {
                 TextView titolo = card.findViewById(R.id.txtTitle);
                 if (titolo == null) continue;
 
                 String testoTitolo = titolo.getText().toString();
                 if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase())
                         || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
-                    branchTrovato = entry.getKey();
+                    branchTrovato = chiaveAttuale;
                     viewTrovata = card;
                     break;
                 }
             }
-            if (viewTrovata != null) break;
+        }
+
+        // Se non la troviamo nel branch attuale (perché appartiene a un branch
+        // secondario diverso da quello mostrato ora), cerchiamo altrove per capire
+        // a quale branch cambiare.
+        if (viewTrovata == null) {
+            for (Map.Entry<String, List<View>> entry : branchViewCache.entrySet()) {
+                for (View card : entry.getValue()) {
+                    TextView titolo = card.findViewById(R.id.txtTitle);
+                    if (titolo == null) continue;
+
+                    String testoTitolo = titolo.getText().toString();
+                    if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase())
+                            || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
+                        branchTrovato = entry.getKey();
+                        viewTrovata = card;
+                        break;
+                    }
+                }
+                if (viewTrovata != null) break;
+            }
         }
 
         if (viewTrovata == null) {
@@ -2869,7 +2891,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             return;
         }
 
-        //*UI ELEMENTS - passiamo al tab Interscambi
         ActivityUtils.triggerFeedback(this);
         dismissActiveBranchDialog();
 
@@ -2888,18 +2909,15 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipInterscambi.setChecked(true);
         chipMappa.setChecked(false);
 
-        //*CAMBIO BRANCH SE NECESSARIO
-        /// Se la fermata trovata appartiene a un branch diverso da quello attualmente
-        /// selezionato, aggiorniamo selectedBranch e ricostruiamo la vista dal branchViewCache.
-        boolean branchCambiato = branchTrovato != null && !branchTrovato.equals(selectedBranch);
+        boolean branchCambiato = (branchTrovato != null && !"Main".equals(branchTrovato) && !branchTrovato.equals(selectedBranch));
         if (branchCambiato) {
             selectedBranch = branchTrovato;
 
             Button btnBranch = findViewById(R.id.buttonSelectBranch);
-            if (btnBranch != null && !"Main".equals(selectedBranch)) btnBranch.setText(selectedBranch);
+            if (btnBranch != null) btnBranch.setText(selectedBranch);
 
             LinearLayout container = findViewById(R.id.containerInterscambi);
-            applyBranchFromCache(container, new ArrayList<>()); // allMatched non serve, usiamo la cache per key
+            applyBranchFromCache(container, new ArrayList<>());
         }
 
         mostraInterscambiCaricati(null);
