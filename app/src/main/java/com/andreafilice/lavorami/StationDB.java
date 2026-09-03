@@ -32,7 +32,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Milano Cadorna FN",
-            new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
+            new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
             new String[]{"z602", "z603", "z6C3"},
             "train.side.front.car"
         ));
