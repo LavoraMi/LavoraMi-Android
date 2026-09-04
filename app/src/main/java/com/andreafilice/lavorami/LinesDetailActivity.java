@@ -7,6 +7,7 @@ import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
@@ -2981,22 +2982,44 @@ public class LinesDetailActivity extends AppCompatActivity {
         int coloreEvidenza = ColorUtils.setAlphaComponent(coloreLinea, 60);
 
         card.setBackgroundColor(coloreTrasparente);
+        card.setPivotX(card.getWidth() / 2f);
+        card.setPivotY(card.getHeight() / 2f);
 
         ValueAnimator fadeIn = ValueAnimator.ofObject(new ArgbEvaluator(), coloreTrasparente, coloreEvidenza);
         fadeIn.setDuration(250);
         fadeIn.addUpdateListener(animation -> card.setBackgroundColor((int) animation.getAnimatedValue()));
 
+        ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(card, "scaleX", 1f, 1.03f);
+        ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(card, "scaleY", 1f, 1.03f);
+        scaleUpX.setDuration(200);
+        scaleUpY.setDuration(200);
+        scaleUpX.setInterpolator(new android.view.animation.OvershootInterpolator());
+        scaleUpY.setInterpolator(new android.view.animation.OvershootInterpolator());
+
+        ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(card, "scaleX", 1.03f, 1f);
+        ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(card, "scaleY", 1.03f, 1f);
+        scaleDownX.setDuration(200);
+        scaleDownY.setDuration(200);
+
         ValueAnimator fadeOut = ValueAnimator.ofObject(new ArgbEvaluator(), coloreEvidenza, coloreTrasparente);
         fadeOut.setDuration(500);
         fadeOut.addUpdateListener(animation -> card.setBackgroundColor((int) animation.getAnimatedValue()));
 
+        AnimatorSet pulseIn = new AnimatorSet();
+        pulseIn.playTogether(fadeIn, scaleUpX, scaleUpY);
+
+        AnimatorSet pulseOut = new AnimatorSet();
+        pulseOut.playTogether(fadeOut, scaleDownX, scaleDownY);
+
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playSequentially(fadeIn, fadeOut);
+        animatorSet.playSequentially(pulseIn, pulseOut);
         animatorSet.addListener(new android.animation.AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(android.animation.Animator animation) {
                 if (backgroundOriginale != null) card.setBackground(backgroundOriginale);
                 else card.setBackgroundColor(Color.TRANSPARENT);
+                card.setScaleX(1f);
+                card.setScaleY(1f);
             }
         });
 
