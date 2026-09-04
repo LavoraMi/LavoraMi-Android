@@ -461,4 +461,5 @@
     <string name="rewatchWrappedDeps">From now on, you’ll find Wrapped under the \"Account\" section in the settings.</string>
     <string name="wrappedBannerText">DISCOVER THIS MONTH’S WRAPPED</string>
     <string name="diNETChip">by NET</string>
+    <string name="loadingIntechanges">Interchanges loading...</string>
 </resources>

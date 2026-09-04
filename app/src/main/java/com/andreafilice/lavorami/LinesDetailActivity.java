@@ -2836,7 +2836,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     private void selezionaInterscambioDaMappa(String nomeStazioneMappa) {
         if (branchViewCache.isEmpty() || nomeStazioneMappa == null) {
-            Toast.makeText(this, "Interscambi in caricamento...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.loadingIntechanges), Toast.LENGTH_SHORT).show();
             return;
         }
 

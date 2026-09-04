@@ -460,4 +460,5 @@
     <string name="rewatchWrappedDeps">D\'ora in poi, troverai il Wrapped sotto la sezione \"Account\" nelle impostazioni</string>
     <string name="wrappedBannerText">SCOPRI IL WRAPPED DI QUESTO MESE</string>
     <string name="diNETChip">di NET</string>
+    <string name="loadingIntechanges">Interscambi in caricamento...</string>
 </resources>
