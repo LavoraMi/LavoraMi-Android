@@ -2868,11 +2868,23 @@ public class LinesDetailActivity extends AppCompatActivity {
                     if (titolo == null) continue;
 
                     String testoTitolo = titolo.getText().toString();
-                    if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase())
-                            || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
+                    if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase()) || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
                         branchTrovato = entry.getKey();
                         viewTrovata = card;
                         break;
+                    }
+                    else{
+                        String[] nomeStazioneSplit = nomeStazioneMappa.split("\\s");
+                        for(String parola : nomeStazioneSplit){
+                            if (testoTitolo.toLowerCase().contains(parola.toLowerCase())) {
+                                branchTrovato = entry.getKey();
+                                viewTrovata = card;
+                                break;
+                            }
+                        }
+                        if(viewTrovata != null){
+                            break;
+                        }
                     }
                 }
                 if (viewTrovata != null) break;
@@ -2902,12 +2914,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         chipInterscambi.setChecked(true);
         chipMappa.setChecked(false);
 
-        boolean branchCambiato = (branchTrovato != null && !"Main".equals(branchTrovato) && !branchTrovato.equals(selectedBranch));
+        boolean branchCambiato = (branchTrovato != null && !branchTrovato.equals(selectedBranch));
         if (branchCambiato) {
             selectedBranch = branchTrovato;
 
             Button btnBranch = findViewById(R.id.buttonSelectBranch);
-            if (btnBranch != null) btnBranch.setText(selectedBranch);
+            if (btnBranch != null) {
+                if(!"Main".equals(selectedBranch)){
+                    btnBranch.setText(selectedBranch);
+                }
+            }
 
             LinearLayout container = findViewById(R.id.containerInterscambi);
             applyBranchFromCache(container, new ArrayList<>());
