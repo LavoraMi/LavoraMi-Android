@@ -88,7 +88,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Legnano FS",
-            new String[]{"S5", "R21", "RE5", "REG", "RV", "z601", "z602", "z611", "z627", "z636", "z642"},
+            new String[]{"S5", "R21", "R23", "RE5", "REG", "RV", "z601", "z602", "z611", "z627", "z636", "z642"},
             new String[]{"z611", "z612", "z627", "z636", "z642"},
             "train.side.front.car"
         ));
@@ -249,7 +249,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Cassano D'Adda FS",
-            new String[]{"S5", "S6", "R4", "z309"},
+            new String[]{"S5", "S6", "R4", "z309", "z405", "z407"},
             new String[]{"z309"},
             "train.side.front.car"
         ));
