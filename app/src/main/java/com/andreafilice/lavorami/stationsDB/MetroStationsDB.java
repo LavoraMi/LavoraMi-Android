@@ -8,7 +8,7 @@ import java.util.List;
 public class MetroStationsDB {
     public static List<MetroStation> getStationsM1() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Monza Bettola", 45.55612, 9.24795, "Nord - New", "M1"));
+        stations.add(new MetroStation("Cinisello Monza", 45.55612, 9.24795, "Nord - New", "M1"));
         stations.add(new MetroStation("Sesto Restellone", 45.54841, 9.24268, "Nord - New", "M1"));
         stations.add(new MetroStation("Sesto 1° Maggio FS", 45.54156, 9.23835, "Main", "M1"));
         stations.add(new MetroStation("Sesto Rondò", 45.5342, 9.23128, "Main", "M1"));
