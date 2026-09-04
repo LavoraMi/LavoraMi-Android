@@ -674,17 +674,23 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (!tutteLeStazioni.isEmpty()) {
             double latMedia = 0, lngMedia = 0;
+            int contate = 0;
 
             for (MetroStation station : tutteLeStazioni) {
+                if (station.getBranch().toLowerCase().contains("- new")) continue;
+
                 latMedia += station.getLatitude();
                 lngMedia += station.getLongitude();
+                contate++;
             }
 
-            latMedia /= tutteLeStazioni.size();
-            lngMedia /= tutteLeStazioni.size();
-            double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll))) || tipoDiLinea.contains(getString(R.string.filobusKey)) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
-
-            MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
+            if (contate > 0) {
+                latMedia /= contate;
+                lngMedia /= contate;
+                
+                double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll))) || tipoDiLinea.contains(getString(R.string.filobusKey)) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
+                MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
+            }
         }
 
         layoutMaps.setVisibility(View.VISIBLE);
