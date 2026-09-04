@@ -36,6 +36,20 @@
             app:layout_constraintWidth_percent="0.7" />
 
         <ImageButton
+            android:id="@+id/buttonSummary"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="18dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/mainTextView"
+            app:layout_constraintEnd_toStartOf="@id/buttonRefresh"
+            app:layout_constraintTop_toTopOf="@+id/mainTextView"
+            app:srcCompat="@drawable/ic_bell_fill"
+            app:tint="@color/redMetro" />
+
+        <ImageButton
             android:id="@+id/buttonRefresh"
             android:layout_width="40dp"
             android:layout_height="37dp"
