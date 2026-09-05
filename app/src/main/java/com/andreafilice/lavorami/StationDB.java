@@ -138,8 +138,15 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
             "Abbiategrasso Vittorio Veneto",
             new String[]{"z551", "z552", "z553", "z555", "z559"},
-            new String[]{"z555", "z556"},
+            new String[]{"z555"},
             "bus.fill"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+                "Abbiategrasso FS",
+                new String[]{"R31", "z551", "z552", "z553", "z555", "z559", "z560"},
+                new String[]{"z556"},
+                "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(

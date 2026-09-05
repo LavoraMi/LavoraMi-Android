@@ -2061,14 +2061,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z516": return "Milano Famagosta - Rosate - Besate";
 
             case "Z551": return "Abbiategrasso - Bisceglie M1";
-            case "Z552": return "Abbiategrasso - S. Stefano FS";
-            case "Z553": return "Abbiategrasso - Milano Romolo M2";
-            case "Z554": return "Albairate - Bubbiano";
-            case "Z555": return "Abbiategrasso - Casorate/Binasco";
+            case "Z552": return "Abbiategrasso - S. Stefano Ticino";
+            case "Z553": return "Abbiategrasso - Rosate - Milano Romolo M2";
+            case "Z554": return "Albairate - Albairate Vermezzo FS - Bubbiano";
+            case "Z555": return "Abbiategrasso - Binasco/Rosate";
             case "Z556": return "Abbiategrasso FS - Motta Visconti";
-            case "Z557": return "Gaggiano (De Gasperi) - San Vito";
-            case "Z559": return "Magenta FS - Abbiategrasso FS";
-            case "Z560": return "Abbiategrasso FS - Bisceglie M1";
+            case "Z557": return "Gaggiano (De Gasperi) - Gaggiano FS - San Vito";
+            case "Z559": return "Abbiategrasso FS - Magenta FS";
+            case "Z560": return "Abbiategrasso FS - Corsico - Bisceglie M1";
 
             case "Z401": return "Melzo FS - Vignate - Villa Fiorita M2";
             case "Z402": return "Cernusco M2 - Pioltello FS - S.Felice";
