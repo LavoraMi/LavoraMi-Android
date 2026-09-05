@@ -2079,7 +2079,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z409": return "Rodano - S.Felice - Linate Aereoporto";
             case "Z410": return "Pantigliate - Peschiera - S.Donato M3";
             case "Z411": return "Melzo FS - Settala - S.Donato M3";
-            case "Z412": return "Zelo B.P - Paullo - S.Donato M3";
+            case "Z412": return "Paullo - Peschiera - S.Donato M3";
             case "Z413": return "Tribiano - S.Donato M3";
             case "Z415": return "Melegnano - Dresano - S.Donato M3";
             case "Z418": return "S.Zenone FS - Casalmaiocco";
