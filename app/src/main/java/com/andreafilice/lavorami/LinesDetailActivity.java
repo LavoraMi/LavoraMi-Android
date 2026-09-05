@@ -2080,13 +2080,13 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z410": return "Pantigliate - Peschiera - S.Donato M3";
             case "Z411": return "Melzo FS - Settala - S.Donato M3";
             case "Z412": return "Paullo - Peschiera - S.Donato M3";
-            case "Z413": return "Tribiano - S.Donato M3";
+            case "Z413": return "Paullo - Tribiano - S.Donato M3";
             case "Z415": return "Melegnano - Dresano - S.Donato M3";
-            case "Z418": return "S.Zenone FS - Casalmaiocco";
+            case "Z418": return "S.Zenone FS - Casalmaiocco - Melegnano";
             case "Z419": return "Paullo - Melzo - Gorgonzola M2";
             case "Z420": return "Vizzolo - Melegnano - S.Donato M3";
-            case "Z431": return "Melegnano FS - Carpiano/Cerro L.";
-            case "Z432": return "Melegnano FS - Dresano - Vizzolo (Circolare)";
+            case "Z431": return "Melegnano FS - Carpiano/Cerro L. (Circolare)";
+            case "Z432": return "Melegnano FS - Vizzolo Ospedale";
             case "Z203": return "Muggiò - Monza FS - Cologno Nord M2";
             case "Z205": return "Limbiate Mombello - Varedo - Monza FS";
             case "Z209": return "Cesano FN - Desio - Lissone";
