@@ -2102,7 +2102,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z233": return "Triuggio - Albiate - Seregno FS";
             case "Z234": return "Vedano - Lissone - Muggiò";
             case "Z238": return "Lissone FS - Monza Polo Istituzionale";
-            case "Z242": return "Desio - Seregno FS - Renate";
+            case "Z242": return "Desio - Seregno FS - Monticello";
             case "Z250": return "Lissone FS - Cesano FN - Limbiate";
             case "Z251": return "Desio FS - Limbiate - Cesano FN";
             default: return getString(R.string.directionsNotAvailableFor) + linea;

@@ -222,7 +222,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
             "Seregno FS",
             new String[]{"S9", "S11", "R15", "RE80", "z228", "z231", "z232", "z233", "z242"},
-            new String[]{"z231", "z232", "z233"},
+            new String[]{"z231", "z232", "z233", "z242"},
             "train.side.front.car"
         ));
 
