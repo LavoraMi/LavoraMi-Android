@@ -14,7 +14,7 @@ public class InterchangesDB {
         /// Metro M1
         interchanges.add(new InterchangeInfo("Sesto 1° Maggio FS", new String[]{"M1", "NM1", "S7", "S8", "S9", "S11", "R13", "R14", "RE8", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"}, "tram.fill.tunnel", "Main", 19));
         interchanges.add(new InterchangeInfo("Sesto Rondò", new String[]{"M1", "NM1", "700", "701", "708", "713"}, "tram.fill.tunnel", "Main", 18));
-        interchanges.add(new InterchangeInfo("Sesto Marelli", new String[]{"M1", "NM1", "51", "81", "87"}, "tram.fill.tunnel", "Main", 17));
+        interchanges.add(new InterchangeInfo("Sesto Marelli", new String[]{"M1", "NM1", "51", "53", "81", "87", "700"}, "tram.fill.tunnel", "Main", 17));
         interchanges.add(new InterchangeInfo("Villa S. Giovanni", new String[]{"M1", "NM1", "51", "81", "87"}, "tram.fill.tunnel", "Main", 16));
         interchanges.add(new InterchangeInfo("Precotto", new String[]{"M1", "NM1", "7", "51", "86", "174"}, "tram.fill.tunnel", "Main", 15));
         interchanges.add(new InterchangeInfo("Gorla", new String[]{"M1", "NM1", "44", "174"}, "tram.fill.tunnel", "Main", 14));
