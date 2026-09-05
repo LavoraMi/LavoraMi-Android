@@ -2088,22 +2088,22 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z431": return "Melegnano FS - Carpiano/Cerro L. (Circolare)";
             case "Z432": return "Melegnano FS - Vizzolo Ospedale";
             case "Z203": return "Muggiò - Monza FS - Cologno Nord M2";
-            case "Z205": return "Limbiate Mombello - Varedo - Monza FS";
+            case "Z205": return "Limbiate - Varedo - Monza FS";
             case "Z209": return "Cesano FN - Desio - Lissone";
             case "Z219": return "Monza FS - Muggiò - Paderno Dugnano";
-            case "Z221": return "Sesto S.G. - Monza FS - Carate";
-            case "Z222": return "Sesto S.G. - S. Fruttoso - Monza FS";
+            case "Z221": return "Sesto S.G. - Monza FS - Mariano";
+            case "Z222": return "Sesto S.G. - Cinisello B. - Monza FS";
             case "Z225": return "Sesto S.G. - Cinisello B. - Nova M.se";
-            case "Z227": return "Monza H/Lissone FS - Muggiò - Cinisello";
+            case "Z227": return "Monza H/Lissone FS - Muggiò - Sesto S.G.";
             case "Z228": return "Seregno FS - Lissone - Monza FS";
             case "Z229": return "Paderno ITC - Cusano - Cinisello B.";
             case "Z231": return "Carate - Giussano - Seregno FS - Desio";
             case "Z232": return "Desio - Seregno - Besana FS";
             case "Z233": return "Triuggio - Albiate - Seregno FS";
-            case "Z234": return "Vedano Al L. - Lissone - Muggiò";
+            case "Z234": return "Vedano - Lissone - Muggiò";
             case "Z242": return "Desio - Seregno FS - Renate";
-            case "Z250": return "Lissone FS - Desio FS - Cesano FN";
-            case "Z251": return "Desio FS - Bovisio M. - Limbiate - Cesano FN";
+            case "Z250": return "Lissone FS - Cesano FN - Limbiate";
+            case "Z251": return "Desio FS - Limbiate - Cesano FN";
             default: return getString(R.string.directionsNotAvailableFor) + linea;
         }
     }
