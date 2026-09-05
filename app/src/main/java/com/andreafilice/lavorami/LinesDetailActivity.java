@@ -2012,18 +2012,18 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "93": return "V.Le Omero - Lambrate FS";
 
             case "Z601": return "Legnano - Molino Dorino M1";
-            case "Z602": return "Milano Cadorna - Legnano";
-            case "Z603": return "Milano Cadorna - Nerviano/S.Vittore";
+            case "Z602": return "Legnano - Milano Cadorna";
+            case "Z603": return "Nerviano/S.Vittore - Milano Cadorna";
             case "Z6C3": return "San Vittore Olona - Cerro Maggiore - Milano Cadorna";
             case "Z606": return "Cerro Maggiore - Rho";
             case "Z611": return "Legnano - Canegrate - Parabiago";
-            case "Z612": return "Legnano - Arese (Il CENTRO)";
+            case "Z612": return "Legnano - Lainate - Arese (Il CENTRO)";
             case "Z616": return "Pregnana Milanese - Rho FS";
-            case "Z617": return "Molino Dorino M1 - Origgio / Lainate";
-            case "Z618": return "Rho FS - Vanzago";
-            case "Z619": return "Pogliano M. - Plesso IST Maggiolini";
+            case "Z617": return "Origgio / Lainate - Molino Dorino M1";
+            case "Z618": return "Rho FS - Pogliano M. - Vanzago";
+            case "Z619": return "Lainate - Plesso IST Maggiolini";
             case "Z620": return "Magenta - Molino Dorino M1";
-            case "Z621": return "Cuggiono - Molino Dorino M1";
+            case "Z621": return "Cuggiono - Ossona - Molino Dorino M1";
             case "Z622": return "Cuggiono - Ossona - Cornaredo";
             case "Z625": return "Busto Arsizio - Busto Garolfo";
             case "Z627": return "Castano Primo - Legnano";
