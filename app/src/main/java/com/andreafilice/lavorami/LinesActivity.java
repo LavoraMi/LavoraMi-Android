@@ -227,7 +227,7 @@ public class LinesActivity extends AppCompatActivity {
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
             "https://movibus.it/news/",
-            "https://www.nordesttrasporti.it/media/2508/linee-net_area-nord-est-provincia-mi_nov2025.jpg",
+            "https://www.nordesttrasporti.it/percorsi-e-orari/",
             "https://stavautolinee.it/reti-servite/",
             "https://starmobility.it/orari-autobus/",
             "https://autoguidovie.it/it/avvisi"

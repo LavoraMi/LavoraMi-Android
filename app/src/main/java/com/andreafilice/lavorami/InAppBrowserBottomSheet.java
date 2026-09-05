@@ -72,7 +72,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         "patreon.com",
         "buymeacoffee.com",
         "comune.milano.it",
-        "company.sbb.ch"
+        "company.sbb.ch",
+        "nordesttrasporti.it"
     };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
