@@ -604,7 +604,7 @@ public class LinesActivity extends AppCompatActivity {
                 "z415", "z418", "z419", "z420", "z431", "z432",
                 "z203", "z205", "z209", "z219", "z221", "z222",
                 "z225", "z227", "z228", "z229", "z231", "z232",
-                "z233", "z234", "z250", "z251"};
+                "z233", "z234", "z238", "z242", "z250", "z251"};
         for (String line : autoguidovieLines) {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }

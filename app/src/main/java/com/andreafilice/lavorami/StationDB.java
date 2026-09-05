@@ -235,8 +235,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Lissone - Muggiò FS",
-            new String[]{"S9", "S11", "z227", "z234", "z250"},
-            new String[]{"z227", "z234"},
+            new String[]{"S9", "S11", "z227", "z234", "z238", "z250"},
+            new String[]{"z227", "z234", "z238"},
             "train.side.front.car"
         ));
 
