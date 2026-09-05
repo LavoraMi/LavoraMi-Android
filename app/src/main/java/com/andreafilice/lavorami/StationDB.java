@@ -165,8 +165,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Gessate M2",
-            new String[]{"M2", "z310", "z311", "z312", "z313", "z314", "z404", "z405", "z406"},
-            new String[]{"z310", "z311", "z312", "z313", "z314", "z404", "z405", "z406"},
+            new String[]{"M2", "z310", "z311", "z312", "z313", "z314", "z404", "z405"},
+            new String[]{"z310", "z311", "z312", "z313", "z314", "z404", "z405"},
             "tram.fill.tunnel"
         ));
 

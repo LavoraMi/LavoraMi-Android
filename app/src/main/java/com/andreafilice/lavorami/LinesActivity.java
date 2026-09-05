@@ -599,7 +599,7 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         // AUTOGUIDOVIE
-        String[] autoguidovieLines = {"z401", "z402", "z403", "z404", "z405", "z406",
+        String[] autoguidovieLines = {"z401", "z402", "z403", "z404", "z405",
                 "z407", "z409", "z410", "z411", "z412", "z413",
                 "z415", "z418", "z419", "z420", "z431", "z432",
                 "z203", "z205", "z209", "z219", "z221", "z222",

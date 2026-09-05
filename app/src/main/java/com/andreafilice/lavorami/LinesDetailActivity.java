@@ -2075,7 +2075,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z403": return "Gorgonzola M2 - Melzo (Circolare)";
             case "Z404": return "Melzo FS - Inzago - Gessate M2";
             case "Z405": return "Gessate M2 - Cassano D'Adda - Treviglio";
-            case "Z406": return "Trecella - Bellinzago - Gessate M2";
             case "Z407": return "Gorgonzola M2 - Truccazzano";
             case "Z409": return "Rodano - S.Felice - Linate Aereoporto";
             case "Z410": return "Pantigliate - Peschiera - S.Donato M3";
