@@ -1926,7 +1926,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S7": return "Lecco - Milano Porta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Porta Garibaldi";
             case "S9": return "Saronno - Albairate Vermezzo";
-            case "S11": return "Milano Porta Garibaldi - Como S. Giovanni"; //* Rho - Como S. Giovanni
+            case "S11": return "Rho - Como S. Giovanni";
             case "S12": return "Melegnano - Milano Bovisa";
             case "S13": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";

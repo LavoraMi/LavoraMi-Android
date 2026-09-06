@@ -2234,11 +2234,10 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48386, 9.18944, "Main", "S11"));
         stations.add(new MetroStation("NO_DRAW", 45.48408, 9.18822, "Main", "S11"));
         stations.add(new MetroStation("Milano Porta Garibaldi", 45.48449, 9.18737, "Main", "S11"));
-        /* MODIFICHE CIRCOLAZIONE: Questa tratta è attiva solo tra Milano Porta Garibaldi a Como fino al 13 Settembre.
         stations.add(new MetroStation("Milano Villapizzone", 45.50202, 9.15092, "Main", "S11"));
         stations.add(new MetroStation("Milano Certosa", 45.50683, 9.13593, "Main", "S11"));
         stations.add(new MetroStation("Rho Fiera Milano", 45.52113, 9.0885, "Main", "S11"));
-        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S11"));*/
+        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S11"));
         return stations;
     }
 
