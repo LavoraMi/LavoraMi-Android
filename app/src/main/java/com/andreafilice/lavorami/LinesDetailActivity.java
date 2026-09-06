@@ -1988,21 +1988,21 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S90": return "Bellinzona - Mendrisio";
             case "RE80": return "Locarno - Milano Centrale";
 
-            case "1": return "Roserio - Greco";
+            case "1": return "Roserio (Ospedale Sacco) - Greco";
             case "2": return "P.Le Negrelli - P.Za Bausan";
             case "3": return "Duomo M1 M3 - Gratosoglio";
             case "4": return "Cairoli M1 - Niguarda (Parco Nord)";
-            case "5": return "Niguarda (Ospedale) - Ortica";
+            case "5": return "Niguarda Ospedale - Ortica";
             case "7": return "P.Le Lagosta - Q.Re Adriano";
             case "9": return "Centrale FS M2 M3 - P.Ta Genova M2";
-            case "10": return "P.Za 24 Maggio - V.Le Lunigiana";
-            case "12": return "P.Za Ovidio - Roserio";
+            case "10": return "P.Za XXIV Maggio - V.Le Lunigiana";
+            case "12": return "V.Le Molise - Roserio (Ospedale Sacco)";
             case "14": return "Lorenteggio - Cimitero Maggiore";
             case "15": return "Duomo M1 M3 - Rozzano (Via G. Rossa)";
             case "16": return "Stadio San Siro M5 - Via Monte Velino";
             case "19": return "P.Za Castelli - Lambrate FS M2";
-            case "24": return "Piazza Fontana - Vigentino";
-            case "27": return "V.Le Ungheria - Piazza Fontana";
+            case "24": return "P.Za Fontana - Vigentino";
+            case "27": return "V.Le Ungheria - P.Za Fontana";
             case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
 
