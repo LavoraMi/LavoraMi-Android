@@ -158,7 +158,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
-        ArrayList<String> tramLinesWithMap = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "12", "14", "15", "16", "19", "24", "27", "31", "33"));
         ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649"));
 
         lavoriNested = findViewById(R.id.lavoriNested);
@@ -191,7 +190,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (nomeLinea == null) nomeLinea = "M1";
         if (tipoDiLinea == null) tipoDiLinea = "Metro " + nomeLinea;
-        if ((tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !(tramLinesWithMap.contains(nomeLinea))) || (tipoDiLinea.contains("z") && !(busLinesWithMap.contains(nomeLinea)))){
+        if (tipoDiLinea.contains("z") && !(busLinesWithMap.contains(nomeLinea))){
             chipMappa.setVisibility(View.GONE);
             chipInterscambi.setVisibility(View.GONE);
             cardMappa.setVisibility(View.GONE);
