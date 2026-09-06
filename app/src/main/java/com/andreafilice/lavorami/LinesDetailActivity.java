@@ -1922,7 +1922,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "S3": return "Saronno - Milano Cadorna";
             case "S4": return "Camnago Lentate - Milano Cadorna";
             case "S5": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Pioltello Limito" : "Varese - Treviglio";
-            case "S6": return "Novara - Rho"; //* Novara - Pioltello-Limito / Treviglio
+            case "S6": return "Novara - Pioltello-Limito / Treviglio";
             case "S7": return "Lecco - Milano Porta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Porta Garibaldi";
             case "S9": return "Saronno - Albairate Vermezzo";
