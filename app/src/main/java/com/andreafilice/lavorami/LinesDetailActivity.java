@@ -626,7 +626,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] fermateSospese = (cdnData != null) ? cdnData.getstazioniChiuse() : new String[0];
 
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
-        for (MetroStation s : StationDB.getAllStations(passanteWork)) {
+        for (MetroStation s : StationDB.getAllStations()) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
                 tutteLeStazioni.add(s);
         }
@@ -1917,18 +1917,18 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
 
-            case "S1": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Bovisa - Lodi" : "Saronno - Lodi";
+            case "S1": return "Saronno - Lodi";
             case "S2": return "Mariano Comense - Milano Rogoredo";
             case "S3": return "Saronno - Milano Cadorna";
             case "S4": return "Camnago Lentate - Milano Cadorna";
-            case "S5": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Varese - Milano Lambrate - Pioltello Limito" : "Varese - Treviglio";
+            case "S5": return "Varese - Treviglio";
             case "S6": return "Novara - Pioltello-Limito / Treviglio";
             case "S7": return "Lecco - Milano Porta Garibaldi";
             case "S8": return "Lecco - Carnate - Milano Porta Garibaldi";
             case "S9": return "Saronno - Albairate Vermezzo";
             case "S11": return "Rho - Como S. Giovanni";
             case "S12": return "Melegnano - Milano Bovisa";
-            case "S13": return (strikeCDNResponse != null && strikeCDNResponse.isPassanteWorkEnabled()) ? "Milano Rogoredo - Pavia" : "Garbagnate Milanese - Pavia";
+            case "S13": return "Garbagnate Milanese - Pavia";
             case "S19": return "Albairate Vermezzo - Milano Rogoredo";
             case "S31": return "Brescia - Iseo";
 

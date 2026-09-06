@@ -375,7 +375,7 @@ public class StationDB {
         );
     }
 
-    public static List<MetroStation> getAllStations(boolean isPassanteClosed) {
+    public static List<MetroStation> getAllStations() {
         if (CACHED_STATIONS == null) {
             List<MetroStation> allStations = new ArrayList<>();
             allStations.addAll(MetroStationsDB.getStationsM1());
@@ -384,26 +384,18 @@ public class StationDB {
             allStations.addAll(MetroStationsDB.getStationsM4());
             allStations.addAll(MetroStationsDB.getStationsM5());
 
-            if (isPassanteClosed) {
-                allStations.addAll(SuburbanStationsDB.getStationsS1_ClosedPassante());
-                allStations.addAll(SuburbanStationsDB.getStationsS5_ClosedPassante());
-                allStations.addAll(SuburbanStationsDB.getStationsS13_ClosedPassante());
-            }
-            else {
-                allStations.addAll(SuburbanStationsDB.getStationsS1());
-                allStations.addAll(SuburbanStationsDB.getStationsS5());
-                allStations.addAll(SuburbanStationsDB.getStationsS13());
-            }
-
+            allStations.addAll(SuburbanStationsDB.getStationsS1());
             allStations.addAll(SuburbanStationsDB.getStationsS2());
             allStations.addAll(SuburbanStationsDB.getStationsS3());
             allStations.addAll(SuburbanStationsDB.getStationsS4());
+            allStations.addAll(SuburbanStationsDB.getStationsS5());
             allStations.addAll(SuburbanStationsDB.getStationsS6());
             allStations.addAll(SuburbanStationsDB.getStationsS7());
             allStations.addAll(SuburbanStationsDB.getStationsS8());
             allStations.addAll(SuburbanStationsDB.getStationsS9());
             allStations.addAll(SuburbanStationsDB.getStationsS11());
             allStations.addAll(SuburbanStationsDB.getStationsS12());
+            allStations.addAll(SuburbanStationsDB.getStationsS13());
             allStations.addAll(SuburbanStationsDB.getStationsS19());
             allStations.addAll(SuburbanStationsDB.getStationsS31());
 
