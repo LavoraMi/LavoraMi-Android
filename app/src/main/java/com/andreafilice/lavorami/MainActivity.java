@@ -215,11 +215,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (sessionManager.isLoggedIn()) {
             supabaseDataManager = new SupabaseDataManager(
-                    this,
-                    api,
-                    SupabaseANON,
-                    sessionManager.getToken(),
-                    sessionManager.getUserEmail()
+                this,
+                api,
+                SupabaseANON,
+                sessionManager.getToken(),
+                sessionManager.getUserEmail()
             );
 
             loadUserPreferences();
@@ -235,14 +235,12 @@ public class MainActivity extends AppCompatActivity {
         /// This method is also used into the iOS version of LavoraMi.
         hasCompletedSetup = DataManager.getBoolData(DataKeys.KEY_END_SETUP, false);
 
-        if (hasCompletedSetup) {
-            requestConsentInfoUpdate();
-        }
+        if (hasCompletedSetup) requestConsentInfoUpdate();
 
         ConstraintLayout setupOverlay = findViewById(R.id.setupOverlay);
         if(hasCompletedSetup)
             setupOverlay.setVisibility(View.GONE);
-        else{
+        else {
             setupOverlay.setVisibility(View.VISIBLE);
             findViewById(R.id.floatingBottomBar).setVisibility(View.GONE);
         }
