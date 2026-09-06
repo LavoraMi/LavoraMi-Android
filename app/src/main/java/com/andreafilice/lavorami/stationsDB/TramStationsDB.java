@@ -2279,6 +2279,52 @@ public class TramStationsDB {
         return stations;
     }
 
+    public static List<MetroStation> getStationsTram12() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Roserio (Ospedale Sacco)", 45.51736, 9.11962, "Main", "12"));
+        stations.add(new MetroStation("Via Grassi", 45.51406, 9.12524, "Main", "12"));
+        stations.add(new MetroStation("L.Go Boccioni", 45.51169, 9.128, "Main", "12"));
+        stations.add(new MetroStation("Via Mambretti", 45.50953, 9.13139, "Main", "12"));
+        stations.add(new MetroStation("Via Palizzi Via Mambretti", 45.50849, 9.13466, "Main", "12"));
+        stations.add(new MetroStation("Certosa", 45.50787, 9.13718, "Main", "12"));
+        stations.add(new MetroStation("V.Le Espinasse Via Palizzi", 45.50278, 9.13873, "Main", "12"));
+        stations.add(new MetroStation("P.Le Santorre Di Santarosa", 45.50128, 9.13937, "Main", "12"));
+        stations.add(new MetroStation("Via C. Marcello Via M.Te Altissimo", 45.50201, 9.14266, "Main", "12"));
+        stations.add(new MetroStation("Via C. Marcello Villapizzone", 45.50094, 9.14596, "Main", "12"));
+        stations.add(new MetroStation("Via C. Marcello Via Ferrario", 45.50008, 9.14775, "Main", "12"));
+        stations.add(new MetroStation("P.Za Castelli", 45.49912, 9.14982, "Main", "12"));
+        stations.add(new MetroStation("Via Mac Mahon Via Bramantino", 45.49776, 9.15283, "Main", "12"));
+        stations.add(new MetroStation("Via Mac Mahon Via Artieri", 45.49636, 9.15467, "Main", "12"));
+        stations.add(new MetroStation("Via Mac Mahon V.Le Monte Ceneri", 45.49433, 9.15735, "Main", "12"));
+        stations.add(new MetroStation("Via Mac Mahon Via Caracciolo", 45.49101, 9.16174, "Main", "12"));
+        stations.add(new MetroStation("Via Mac Mahon Via P. Eugenio", 45.48955, 9.16366, "Main", "12"));
+        stations.add(new MetroStation("P.Za Diocleziano", 45.4881, 9.16557, "Main", "12"));
+        stations.add(new MetroStation("Via Cenisio Via Induno", 45.48756, 9.16828, "Main", "12"));
+        stations.add(new MetroStation("Cenisio M5", 45.48743, 9.17325, "Main", "12"));
+        stations.add(new MetroStation("P.Le Cim. Monumentale Via Bramante", 45.48367, 9.17779, "Main", "12"));
+        stations.add(new MetroStation("Via Bramante Via Sarpi", 45.48176, 9.17892, "Main", "12"));
+        stations.add(new MetroStation("P.Za Lega Lombarda", 45.47799, 9.18046, "Main", "12"));
+        stations.add(new MetroStation("Arena", 45.47546, 9.18146, "Main", "12"));
+        stations.add(new MetroStation("Lanza M2", 45.47213, 9.18197, "Main", "12"));
+        stations.add(new MetroStation("Via Cusani", 45.46944, 9.18521, "Main", "12"));
+        stations.add(new MetroStation("Cordusio M1", 45.46627, 9.18618, "Main", "12"));
+        stations.add(new MetroStation("Duomo M1 M3", 45.46289, 9.18849, "Main", "12"));
+        stations.add(new MetroStation("Missori M3", 45.4608, 9.1904, "Main", "12"));
+        stations.add(new MetroStation("Via Larga", 45.46234, 9.19364, "Main", "12"));
+        stations.add(new MetroStation("L.Go Augusto", 45.46263, 9.19777, "Main", "12"));
+        stations.add(new MetroStation("Palazzo Di Giustizia", 45.46232, 9.20059, "Main", "12"));
+        stations.add(new MetroStation("C.So P.Ta Vittoria Camera Del Lavoro", 45.46228, 9.20382, "Main", "12"));
+        stations.add(new MetroStation("P.Za 5 Giornate", 45.46224, 9.20851, "Main", "12"));
+        stations.add(new MetroStation("P.Za San Maria Del Suffragio", 45.46223, 9.21109, "Main", "12"));
+        stations.add(new MetroStation("Via Cadore C.So Ventidue Marzo", 45.46221, 9.21423, "Main", "12"));
+        stations.add(new MetroStation("P.Za Emilia", 45.4617, 9.21736, "Main", "12"));
+        stations.add(new MetroStation("Via Arconati", 45.45789, 9.21841, "Main", "12"));
+        stations.add(new MetroStation("P.Le Martini", 45.4568, 9.22233, "Main", "12"));
+        stations.add(new MetroStation("V.Le Molise", 45.45726, 9.22383, "Main", "12"));
+
+        return stations;
+    }
+
     public static List<MetroStation> getStationsTram14() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("Cimitero Maggiore", 45.50312, 9.12139, "Main", "14"));

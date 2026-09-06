@@ -388,7 +388,8 @@ public class StationDB {
                 allStations.addAll(SuburbanStationsDB.getStationsS1_ClosedPassante());
                 allStations.addAll(SuburbanStationsDB.getStationsS5_ClosedPassante());
                 allStations.addAll(SuburbanStationsDB.getStationsS13_ClosedPassante());
-            } else {
+            }
+            else {
                 allStations.addAll(SuburbanStationsDB.getStationsS1());
                 allStations.addAll(SuburbanStationsDB.getStationsS5());
                 allStations.addAll(SuburbanStationsDB.getStationsS13());
@@ -471,6 +472,7 @@ public class StationDB {
             allStations.addAll(TramStationsDB.getStationsTram7());
             allStations.addAll(TramStationsDB.getStationsTram9());
             allStations.addAll(TramStationsDB.getStationsTram10());
+            allStations.addAll(TramStationsDB.getStationsTram12());
             allStations.addAll(TramStationsDB.getStationsTram14());
             allStations.addAll(TramStationsDB.getStationsTram15());
             allStations.addAll(TramStationsDB.getStationsTram16());
