@@ -621,7 +621,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView, VariablesDescriptor cdnData) {
-        boolean passanteWork = (cdnData != null) && cdnData.isPassanteWorkEnabled();
         String[] fermateSospese = (cdnData != null) ? cdnData.getstazioniChiuse() : new String[0];
 
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
