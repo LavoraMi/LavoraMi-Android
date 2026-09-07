@@ -32,6 +32,7 @@ public class WidgetLines extends AppWidgetProvider {
         FILOBUS("Filobus", R.drawable.ic_bus),
         MOVIBUS("Movibus", R.drawable.ic_bus),
         STAR("STAR", R.drawable.ic_bus),
+        NET("NET", R.drawable.ic_bus),
         STAV("STAV", R.drawable.ic_bus),
         AUTOGUIDOVIE("Autoguidovie", R.drawable.ic_bus);
 
@@ -71,6 +72,8 @@ public class WidgetLines extends AppWidgetProvider {
             "z616", "z617", "z618", "z619", "z620", "z621", "z622",
             "z625", "z627", "z636", "z641", "z642", "z643", "z644",
             "z646", "z647", "z649"};
+    private static final String[] NET_LINES = {"z301", "z304", "z305", "z307", "z309", "z310", "z311", "z312",
+            "z313", "z314", "z315", "z317", "z318", "z319", "z321", "z322", "z323"};
     private static final String[] STAR_LINES = {"z501", "z509", "z510", "z515", "z516"};
     private static final String[] STAV_LINES = {"z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560"};
     private static final String[] AUTOGUIDOVIE_LINES = {"z401", "z402", "z403", "z404", "z405", "z406",
@@ -99,6 +102,7 @@ public class WidgetLines extends AppWidgetProvider {
         addAllWithSharedColor(all, TRAM_LINES, LineType.TRAM, R.color.TRAM);
         addAllWithSharedColor(all, FILOBUS_LINES, LineType.FILOBUS, R.color.OTHER_LINES);
         addAllWithSharedColor(all, MOVIBUS_LINES, LineType.MOVIBUS, R.color.BUS);
+        addAllWithSharedColor(all, NET_LINES, LineType.STAR, R.color.BUS);
         addAllWithSharedColor(all, STAR_LINES, LineType.STAR, R.color.BUS);
         addAllWithSharedColor(all, STAV_LINES, LineType.STAV, R.color.BUS);
         addAllWithSharedColor(all, AUTOGUIDOVIE_LINES, LineType.AUTOGUIDOVIE, R.color.BUS);
@@ -140,6 +144,7 @@ public class WidgetLines extends AppWidgetProvider {
         if (selectedLine != null && !selectedLine.isEmpty()) showDetailView(context, appWidgetManager, appWidgetId, selectedLine);
         else showSelectionView(context, appWidgetManager, appWidgetId);
     }
+
     private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
 
