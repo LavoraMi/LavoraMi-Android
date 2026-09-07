@@ -144,7 +144,7 @@ public class HowAppWorks extends AppCompatActivity {
     private void elaboraStazioni(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
 
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
-        for (MetroStation s : StationDB.getAllStations(false)) {
+        for (MetroStation s : StationDB.getAllStations()) {
             if (s.getLine().trim().equalsIgnoreCase("M1")) tutteLeStazioni.add(s);
         }
 

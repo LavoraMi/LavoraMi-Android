@@ -32,7 +32,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Milano Cadorna FN",
-            new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
+            new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
             new String[]{"z602", "z603", "z6C3"},
             "train.side.front.car"
         ));
@@ -88,7 +88,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Legnano FS",
-            new String[]{"S5", "R21", "RE5", "REG", "RV", "z601", "z602", "z611", "z627", "z636", "z642"},
+            new String[]{"S5", "R21", "R23", "RE5", "REG", "RV", "z601", "z602", "z611", "z627", "z636", "z642"},
             new String[]{"z611", "z612", "z627", "z636", "z642"},
             "train.side.front.car"
         ));
@@ -138,8 +138,15 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
             "Abbiategrasso Vittorio Veneto",
             new String[]{"z551", "z552", "z553", "z555", "z559"},
-            new String[]{"z555", "z556"},
+            new String[]{"z555"},
             "bus.fill"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+                "Abbiategrasso FS",
+                new String[]{"R31", "z551", "z552", "z553", "z555", "z559", "z560"},
+                new String[]{"z556"},
+                "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
@@ -165,8 +172,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Gessate M2",
-            new String[]{"M2", "z310", "z311", "z312", "z313", "z314", "z404", "z405", "z406"},
-            new String[]{"z310", "z311", "z312", "z313", "z314", "z404", "z405", "z406"},
+            new String[]{"M2", "z310", "z311", "z312", "z313", "z314", "z404", "z405"},
+            new String[]{"z310", "z311", "z312", "z313", "z314", "z404", "z405"},
             "tram.fill.tunnel"
         ));
 
@@ -222,7 +229,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
             "Seregno FS",
             new String[]{"S9", "S11", "R15", "RE80", "z228", "z231", "z232", "z233", "z242"},
-            new String[]{"z231", "z232", "z233"},
+            new String[]{"z231", "z232", "z233", "z242"},
             "train.side.front.car"
         ));
 
@@ -235,8 +242,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Lissone - Muggiò FS",
-            new String[]{"S9", "S11", "z227", "z234", "z250"},
-            new String[]{"z227", "z234"},
+            new String[]{"S9", "S11", "z227", "z234", "z238", "z250"},
+            new String[]{"z227", "z234", "z238"},
             "train.side.front.car"
         ));
 
@@ -249,7 +256,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Cassano D'Adda FS",
-            new String[]{"S5", "S6", "R4", "z309"},
+            new String[]{"S5", "S6", "R4", "z309", "z405", "z407"},
             new String[]{"z309"},
             "train.side.front.car"
         ));
@@ -368,7 +375,7 @@ public class StationDB {
         );
     }
 
-    public static List<MetroStation> getAllStations(boolean isPassanteClosed) {
+    public static List<MetroStation> getAllStations() {
         if (CACHED_STATIONS == null) {
             List<MetroStation> allStations = new ArrayList<>();
             allStations.addAll(MetroStationsDB.getStationsM1());
@@ -377,25 +384,18 @@ public class StationDB {
             allStations.addAll(MetroStationsDB.getStationsM4());
             allStations.addAll(MetroStationsDB.getStationsM5());
 
-            if (isPassanteClosed) {
-                allStations.addAll(SuburbanStationsDB.getStationsS1_ClosedPassante());
-                allStations.addAll(SuburbanStationsDB.getStationsS5_ClosedPassante());
-                allStations.addAll(SuburbanStationsDB.getStationsS13_ClosedPassante());
-            } else {
-                allStations.addAll(SuburbanStationsDB.getStationsS1());
-                allStations.addAll(SuburbanStationsDB.getStationsS5());
-                allStations.addAll(SuburbanStationsDB.getStationsS13());
-            }
-
+            allStations.addAll(SuburbanStationsDB.getStationsS1());
             allStations.addAll(SuburbanStationsDB.getStationsS2());
             allStations.addAll(SuburbanStationsDB.getStationsS3());
             allStations.addAll(SuburbanStationsDB.getStationsS4());
+            allStations.addAll(SuburbanStationsDB.getStationsS5());
             allStations.addAll(SuburbanStationsDB.getStationsS6());
             allStations.addAll(SuburbanStationsDB.getStationsS7());
             allStations.addAll(SuburbanStationsDB.getStationsS8());
             allStations.addAll(SuburbanStationsDB.getStationsS9());
             allStations.addAll(SuburbanStationsDB.getStationsS11());
             allStations.addAll(SuburbanStationsDB.getStationsS12());
+            allStations.addAll(SuburbanStationsDB.getStationsS13());
             allStations.addAll(SuburbanStationsDB.getStationsS19());
             allStations.addAll(SuburbanStationsDB.getStationsS31());
 
@@ -464,6 +464,7 @@ public class StationDB {
             allStations.addAll(TramStationsDB.getStationsTram7());
             allStations.addAll(TramStationsDB.getStationsTram9());
             allStations.addAll(TramStationsDB.getStationsTram10());
+            allStations.addAll(TramStationsDB.getStationsTram12());
             allStations.addAll(TramStationsDB.getStationsTram14());
             allStations.addAll(TramStationsDB.getStationsTram15());
             allStations.addAll(TramStationsDB.getStationsTram16());

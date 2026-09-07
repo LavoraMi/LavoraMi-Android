@@ -990,7 +990,6 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("Pregana Milanese", 45.51011, 9.00279, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51851, 9.02764, "Main", "S6"));
         stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S6"));
-        /* MODIFICHE CIRCOLAZIONE: La linea S6 è limitata da Novara a Rho fino al 13 Settembre.
         stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52802, 9.05644, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52859, 9.05897, "Main", "S6"));
@@ -1071,7 +1070,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51275, 9.5445, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51391, 9.57049, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51436, 9.57557, "Main", "S6"));
-        stations.add(new MetroStation("Treviglio", 45.51531, 9.58864, "Main", "S6"));*/
+        stations.add(new MetroStation("Treviglio", 45.51531, 9.58864, "Main", "S6"));
         return stations;
     }
 
@@ -2235,11 +2234,28 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48386, 9.18944, "Main", "S11"));
         stations.add(new MetroStation("NO_DRAW", 45.48408, 9.18822, "Main", "S11"));
         stations.add(new MetroStation("Milano Porta Garibaldi", 45.48449, 9.18737, "Main", "S11"));
-        /* MODIFICHE CIRCOLAZIONE: Questa tratta è attiva solo tra Milano Porta Garibaldi a Como fino al 13 Settembre.
+        stations.add(new MetroStation("NO_DRAW", 45.48836, 9.18094, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.49015, 9.17755, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.494, 9.16729, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.49549, 9.16502, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.4973, 9.16082, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.49874, 9.15762, "Main", "S11"));
         stations.add(new MetroStation("Milano Villapizzone", 45.50202, 9.15092, "Main", "S11"));
-        stations.add(new MetroStation("Milano Certosa", 45.50683, 9.13593, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.50342, 9.14777, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.50456, 9.14479, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.50517, 9.14224, "Main", "S11"));
+        stations.add(new MetroStation("Milano Certosa", 45.50643, 9.13582, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.50815, 9.12884, "Main", "S11"));
         stations.add(new MetroStation("Rho Fiera Milano", 45.52113, 9.0885, "Main", "S11"));
-        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S11"));*/
+        stations.add(new MetroStation("NO_DRAW", 45.52649, 9.07062, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.5272, 9.06826, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.52819, 9.06588, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.52869, 9.06408, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.52893, 9.06112, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.52859, 9.05897, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.52802, 9.05644, "Main", "S11"));
+        stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "S11"));
+        stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S11"));
         return stations;
     }
 

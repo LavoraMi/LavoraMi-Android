@@ -227,7 +227,7 @@ public class LinesActivity extends AppCompatActivity {
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
             "https://www.atm.it/it/AltriServizi/Trasporto/Documents/Carta%20ATM_WEB_2025.11.pdf",
             "https://movibus.it/news/",
-            "https://www.nordesttrasporti.it/media/2508/linee-net_area-nord-est-provincia-mi_nov2025.jpg",
+            "https://www.nordesttrasporti.it/percorsi-e-orari/",
             "https://stavautolinee.it/reti-servite/",
             "https://starmobility.it/orari-autobus/",
             "https://autoguidovie.it/it/avvisi"
@@ -599,12 +599,12 @@ public class LinesActivity extends AppCompatActivity {
         }
 
         // AUTOGUIDOVIE
-        String[] autoguidovieLines = {"z401", "z402", "z403", "z404", "z405", "z406",
+        String[] autoguidovieLines = {"z401", "z402", "z403", "z404", "z405",
                 "z407", "z409", "z410", "z411", "z412", "z413",
                 "z415", "z418", "z419", "z420", "z431", "z432",
                 "z203", "z205", "z209", "z219", "z221", "z222",
                 "z225", "z227", "z228", "z229", "z231", "z232",
-                "z233", "z234", "z250", "z251"};
+                "z233", "z234", "z238", "z242", "z250", "z251"};
         for (String line : autoguidovieLines) {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }
