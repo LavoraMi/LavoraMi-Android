@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="18dp"
     android:background="@drawable/glass_bottom_bar_bg"
     android:orientation="vertical">
 
@@ -17,30 +17,29 @@
             android:id="@+id/detail_line_chip"
             style="@style/WidgetLineChip"
             android:text="M1"
+            android:textSize="12sp"
             android:padding="5dp"
             android:fontFamily="@font/inter"/>
 
         <TextView
             android:id="@+id/detail_line_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
             android:text="Metro M1"
             android:textColor="@color/text_primary"
-            android:textSize="20sp"
-            android:maxLines="1"
+            android:textSize="14sp"
             android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:fontFamily="@font/font_main" />
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/detail_type_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="4dp"
             android:src="@drawable/ic_metro"
             app:tint="@color/text_primary" />
 
@@ -49,14 +48,15 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="6dp"
         android:background="#4DFFFFFF" />
 
     <LinearLayout
         android:id="@+id/lavoriCounter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -64,13 +64,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp">
+            android:layout_marginTop="3dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
 
             <ImageView
                 android:id="@+id/lavoriInCorsoIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/ic_triangle_warning"
                 app:tint="@color/text_primary" />
 
@@ -78,10 +79,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="6dp"
                 android:text="@string/widget_detail_inCorso"
                 android:textColor="@color/text_primary"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:fontFamily="@font/font_main" />
 
             <TextView
@@ -91,7 +94,7 @@
                 android:text="0"
                 android:textColor="@color/text_primary"
                 android:fontFamily="@font/inter"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -101,13 +104,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp">
+            android:layout_marginTop="6dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
 
             <ImageView
                 android:id="@+id/lavoriProgrammatiIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/ic_calendar"
                 app:tint="@color/text_primary" />
 
@@ -115,10 +119,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="6dp"
                 android:text="@string/widget_detail_programmati"
                 android:textColor="@color/text_primary"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:fontFamily="@font/font_main" />
 
             <TextView
@@ -128,7 +134,7 @@
                 android:text="0"
                 android:textColor="@color/text_primary"
                 android:fontFamily="@font/inter"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

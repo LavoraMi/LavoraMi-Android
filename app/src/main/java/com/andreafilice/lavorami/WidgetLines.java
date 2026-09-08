@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Build;
+import android.os.Bundle;
+import android.util.SizeF;
 import android.widget.RemoteViews;
 import androidx.core.content.ContextCompat;
 
@@ -16,10 +18,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WidgetLines extends AppWidgetProvider {
     public static final String EXTRA_LINE_NAME = "extra_line_name";
+
+    private static final float SMALL_WIDTH_THRESHOLD_DP = 200f;
+    private static final float SMALL_HEIGHT_THRESHOLD_DP = 100f;
 
     public enum LineType {
         METRO("Metro", R.drawable.ic_metro),
@@ -138,6 +145,14 @@ public class WidgetLines extends AppWidgetProvider {
         }
     }
 
+    @Override
+    public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
+        // Chiamato ogni volta che l'utente ridimensiona il widget: ridisegniamo
+        // subito con il layout adatto alla nuova dimensione.
+        DataManager.init(context);
+        updateAppWidget(context, appWidgetManager, appWidgetId);
+    }
+
     private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         String selectedLine = DataManager.getStringData(DataKeys.KEY_LINE_WIDGET, null);
 
@@ -195,12 +210,34 @@ public class WidgetLines extends AppWidgetProvider {
     }
 
     private void renderDetailView(Context context, AppWidgetManager appWidgetManager, int appWidgetId, LineInfo info, int[] counts, boolean loading) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_detail);
 
+        RemoteViews normal = new RemoteViews(context.getPackageName(), R.layout.widget_lines_detail);
+        populateDetailViews(normal, context, appWidgetId, info, counts, loading);
+
+        RemoteViews finalViews;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            RemoteViews small = new RemoteViews(context.getPackageName(), R.layout.widget_lines_detail_small);
+            populateDetailViews(small, context, appWidgetId, info, counts, loading);
+
+            Map<SizeF, RemoteViews> sizeMap = new HashMap<>();
+            sizeMap.put(new SizeF(150f, 110f), small);
+            sizeMap.put(new SizeF(SMALL_WIDTH_THRESHOLD_DP, SMALL_HEIGHT_THRESHOLD_DP), normal);
+            sizeMap.put(new SizeF(250f, 110f), normal);
+
+            finalViews = new RemoteViews(sizeMap);
+        } else {
+            finalViews = normal;
+        }
+
+        appWidgetManager.updateAppWidget(appWidgetId, finalViews);
+    }
+
+    private void populateDetailViews(RemoteViews views, Context context, int appWidgetId, LineInfo info, int[] counts, boolean loading) {
         views.setTextViewText(R.id.detail_line_chip, info.code);
         views.setInt(R.id.detail_line_chip, "setBackgroundResource", R.drawable.chip_line_bg);
         applyChipTint(views, R.id.detail_line_chip, context, info.colorRes);
-        views.setTextViewText(R.id.detail_line_name, info.type.label.contains("Malpensa") ? info.type.label : info.type.label+ " " + info.code);
+        views.setTextViewText(R.id.detail_line_name, info.type.label.contains("Malpensa") ? info.type.label : info.type.label + " " + info.code);
         views.setImageViewResource(R.id.detail_type_icon, info.type.iconRes);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -227,8 +264,7 @@ public class WidgetLines extends AppWidgetProvider {
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
             stackBuilder.addNextIntentWithParentStack(detailIntent);
             detailPendingIntent = stackBuilder.getPendingIntent(detailRequestCode, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        }
-        else {
+        } else {
             Intent openAppIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
             if (openAppIntent != null) openAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
@@ -237,8 +273,6 @@ public class WidgetLines extends AppWidgetProvider {
 
         views.setOnClickPendingIntent(R.id.lavoriCounter, detailPendingIntent);
         views.setOnClickPendingIntent(R.id.detail_line_chip, detailPendingIntent);
-
-        appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     private void fetchEventsAndUpdate(Context context, AppWidgetManager appWidgetManager, int appWidgetId, LineInfo info) {
@@ -255,8 +289,7 @@ public class WidgetLines extends AppWidgetProvider {
 
                     EventData.listaEventiCompleta = datiRaw;
                     EventData.networkError = false;
-                }
-                else EventData.networkError = true;
+                } else EventData.networkError = true;
 
                 int[] counts = (EventData.listaEventiCompleta != null) ? countWorksForLine(info) : new int[]{0, 0};
                 renderDetailView(context, appWidgetManager, appWidgetId, info, counts, false);
@@ -312,11 +345,10 @@ public class WidgetLines extends AppWidgetProvider {
         int color = context.getColor(colorRes);
         if (Build.VERSION.SDK_INT >= 31) {
             views.setColorStateList(
-                viewId,
-                "setBackgroundTintList",
-                ColorStateList.valueOf(color)
+                    viewId,
+                    "setBackgroundTintList",
+                    ColorStateList.valueOf(color)
             );
-        }
-        else views.setInt(viewId, "setBackgroundColor", color);
+        } else views.setInt(viewId, "setBackgroundColor", color);
     }
 }
