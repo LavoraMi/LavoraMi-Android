@@ -1391,7 +1391,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         for (String branch : branches) {
             Chip chip = new Chip(this, null, com.google.android.material.R.attr.chipStyle);
-            chip.setEnsureMinTouchTargetSize(false);
             chip.setText(branch);
             chip.setCheckable(true);
             chip.setChecked(branch.equals(selectedBranch));
