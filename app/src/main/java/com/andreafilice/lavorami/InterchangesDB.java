@@ -1369,8 +1369,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Montello", new String[]{"4", "2"}, "tram.fill", "Main", 14));
         interchanges.add(new InterchangeInfo("Piazza Lega Lombarda", new String[]{"4", "2", "12", "14", "NM2", "43", "57"}, "tram.fill", "Main", 15));
         interchanges.add(new InterchangeInfo("Arena", new String[]{"4", "2", "12", "14", "57"}, "tram.fill", "Main", 16));
-        interchanges.add(new InterchangeInfo("Lanza M2", new String[]{"4", "2", "12", "14", "M2", "NM2", "57", "97"}, "tram.fill.tunnel", "Main", 17));
-        interchanges.add(new InterchangeInfo("Cairoli M1", new String[]{"4", "1", "M1", "NM1", "NM2", "1", "4", "50", "96", "97"}, "tram.fill.tunnel", "Main", 18));
+        interchanges.add(new InterchangeInfo("Lanza M2", new String[]{"4", "M2", "NM2", "2", "12", "14", "57", "97"}, "tram.fill.tunnel", "Main", 17));
+        interchanges.add(new InterchangeInfo("Cairoli M1", new String[]{"4", "M1", "NM1", "NM2", "1", "1", "4", "50", "96", "97"}, "tram.fill.tunnel", "Main", 18));
         interchanges.add(new InterchangeInfo("Via Ricasoli", new String[]{"4", "1"}, "tram.fill", "Main", 19));
 
         /// Tram 7
