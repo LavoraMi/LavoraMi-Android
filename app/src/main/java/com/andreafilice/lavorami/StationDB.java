@@ -608,6 +608,8 @@ public class StationDB {
                     return R.color.MXP;
                 else if (nomeLinea.equalsIgnoreCase(context.getString(R.string.airportKey)))
                     return R.color.airport;
+                else if (nomeLinea.equalsIgnoreCase(context.getString(R.string.monumentKey)))
+                    return R.color.monument;
                 else
                     return R.color.OTHER_LINES;
         }

@@ -1740,7 +1740,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         int colore = ContextCompat.getColor(this, StationDB.getLineColor(this, name));
         chip.setChipBackgroundColor(ColorStateList.valueOf(colore));
-        chip.setTextColor(ContextCompat.getColor(this, R.color.White));
+        chip.setTextColor((name.equalsIgnoreCase(getString(R.string.monumentKey))) ? ContextCompat.getColor(this, R.color.Black) : ContextCompat.getColor(this, R.color.White));
         chip.setCloseIconVisible(false);
         chip.setClickable(false);
         chip.setCheckable(false);
