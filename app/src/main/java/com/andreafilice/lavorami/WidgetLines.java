@@ -147,8 +147,6 @@ public class WidgetLines extends AppWidgetProvider {
 
     @Override
     public void onAppWidgetOptionsChanged(Context context, AppWidgetManager appWidgetManager, int appWidgetId, Bundle newOptions) {
-        // Chiamato ogni volta che l'utente ridimensiona il widget: ridisegniamo
-        // subito con il layout adatto alla nuova dimensione.
         DataManager.init(context);
         updateAppWidget(context, appWidgetManager, appWidgetId);
     }
@@ -345,9 +343,9 @@ public class WidgetLines extends AppWidgetProvider {
         int color = context.getColor(colorRes);
         if (Build.VERSION.SDK_INT >= 31) {
             views.setColorStateList(
-                    viewId,
-                    "setBackgroundTintList",
-                    ColorStateList.valueOf(color)
+                viewId,
+                "setBackgroundTintList",
+                ColorStateList.valueOf(color)
             );
         } else views.setInt(viewId, "setBackgroundColor", color);
     }
