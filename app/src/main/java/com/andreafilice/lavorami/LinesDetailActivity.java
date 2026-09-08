@@ -1266,7 +1266,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             if (isLineaTram())
                 interchanges = InterchangesDB.getTramInterchanges(this);
-            if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
+            else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
                 interchanges = InterchangesDB.getFilobusInterchanges();
@@ -1480,7 +1480,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
 
-            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || tipoDiLinea.contains(getString(R.string.filobusKey)));
+            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTram() || isLineaTilo() || tipoDiLinea.contains(getString(R.string.filobusKey)));
 
             int lineColor = isValidNewInterface ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
             LayoutInflater inflater = LayoutInflater.from(this);
