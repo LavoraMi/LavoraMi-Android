@@ -1243,7 +1243,7 @@ public class InterchangesDB {
 
         //* TRAM LINES
         /// Tram 1
-        interchanges.add(new InterchangeInfo("Roserio (Ospedale Sacco)", new String[]{"1", "12", "560", "566"}, "hospital", "Main", 0));
+        interchanges.add(new InterchangeInfo("Roserio (Ospedale Sacco)", new String[]{"1", context.getString(R.string.ospedaleInterchange), "12", "560", "566"}, "hospital", "Main", 0));
         interchanges.add(new InterchangeInfo("Via Grassi", new String[]{"1", "12"}, "tram.fill", "Main", 1));
         interchanges.add(new InterchangeInfo("Largo Boccioni", new String[]{"1", "12", "40", "560"}, "tram.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Via Mambretti", new String[]{"1", "12", "40"}, "tram.fill", "Main", 3));
@@ -1357,7 +1357,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Niguarda Nord", new String[]{"4", "42", "51", "52", "83", "161", "166"}, "tram.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Niguarda Centro", new String[]{"4", "51", "166", "172"}, "tram.fill", "Main", 3));
         interchanges.add(new InterchangeInfo("Girola", new String[]{"4", "51", "83", "161", "166", "172"}, "tram.fill", "Main", 4));
-        interchanges.add(new InterchangeInfo("Niguarda (Ospedale)", new String[]{"4", "5", "51", "83", "161", "166", "172"}, "hospital", "Main", 5));
+        interchanges.add(new InterchangeInfo("Niguarda (Ospedale)", new String[]{"4", context.getString(R.string.ospedaleInterchange), "5", "51", "83", "161", "166", "172"}, "hospital", "Main", 5));
         interchanges.add(new InterchangeInfo("Nizza", new String[]{"4", "51", "166"}, "tram.fill", "Main", 6));
         interchanges.add(new InterchangeInfo("Valassina", new String[]{"4"}, "tram.fill", "Main", 7));
         interchanges.add(new InterchangeInfo("Maciachini M3", new String[]{"4", "M3", "NM3", "4", "70"}, "tram.fill.tunnel", "Main", 8));

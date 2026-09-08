@@ -461,4 +461,5 @@
     <string name="wrappedBannerText">SCOPRI IL WRAPPED DI QUESTO MESE</string>
     <string name="diNETChip">di NET</string>
     <string name="loadingIntechanges">Interscambi in caricamento...</string>
+    <string name="ospedaleInterchange">Ospedale</string>
 </resources>
