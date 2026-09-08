@@ -1335,7 +1335,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Dei Missaglia (Isola Anita)", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Via Dei Missaglia Via San Abbondio", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 6));
         interchanges.add(new InterchangeInfo("Via Dei Missaglia Via Boifava", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 7));
-        interchanges.add(new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"3", "15", "M2", "NM2", "65", "79", "230", "N15"}, "tram.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"3", "15", "M2", "NM2", "65", "79", "230", "N15"}, "tram.fill.tunnel", "Main", 8));
         interchanges.add(new InterchangeInfo("Via Montegani Via Neera", new String[]{"3", "N15"}, "tram.fill", "Main", 9));
         interchanges.add(new InterchangeInfo("Via Montegani Via Palmieri", new String[]{"3", "N15"}, "tram.fill", "Main", 10));
         interchanges.add(new InterchangeInfo("Via Montegani Viale Da Cermenate", new String[]{"3", "95", "N15"}, "tram.fill", "Main", 11));
