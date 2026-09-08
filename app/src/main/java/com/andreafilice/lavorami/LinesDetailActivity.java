@@ -1269,13 +1269,13 @@ public class LinesDetailActivity extends AppCompatActivity {
             else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
                 interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
-                interchanges = InterchangesDB.getFilobusInterchanges();
+                interchanges = InterchangesDB.getFilobusInterchanges(this);
             else if (isLineaMetro())
                 interchanges = InterchangesDB.getMetroInterchanges(this);
             else if (isLineaSuburbano())
                 interchanges = InterchangesDB.getSuburbanInterchanges();
             else if(isLineaRegionale())
-                interchanges = InterchangesDB.getRegionalInterchanges();
+                interchanges = InterchangesDB.getRegionalInterchanges(this);
             else if(isLineaRegioExpress())
                 interchanges = InterchangesDB.getRegioExpressInterchanges();
             else if (isMalpensaExpress())

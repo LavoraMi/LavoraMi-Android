@@ -601,7 +601,7 @@ public class InterchangesDB {
         return interchanges;
     }
 
-    public static List<InterchangeInfo> getRegionalInterchanges() {
+    public static List<InterchangeInfo> getRegionalInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* TRAM LINES
@@ -787,7 +787,7 @@ public class InterchangesDB {
 
         /// Regionale R14
         interchanges.add(new InterchangeInfo("Bergamo", new String[]{"R14", "R1", "R2", "R5", "R7", "RE2", "RV"}, "lightrail", "Main", 0));
-        interchanges.add(new InterchangeInfo("Bergamo Ospedale", new String[]{"R14"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Bergamo Ospedale", new String[]{"R14", context.getString(R.string.ospedaleInterchange)}, "hospital", "Main", 1));
         interchanges.add(new InterchangeInfo("Ponte San Pietro", new String[]{"R14", "R7"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Terno D'Isola", new String[]{"R14"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Calusco", new String[]{"R14"}, "lightrail", "Main", 4));
@@ -1399,7 +1399,7 @@ public class InterchangesDB {
         return interchanges;
     }
 
-    public static List<InterchangeInfo> getFilobusInterchanges() {
+    public static List<InterchangeInfo> getFilobusInterchanges(Context context) {
         List<InterchangeInfo> interchanges = new ArrayList<>();
 
         //* FILOBUS LINES
@@ -1407,7 +1407,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Lotto M1 M5", new String[]{"90", "M1", "NM1", "M5", "48", "49", "68", "78", "91", "98"}, "tram.fill.tunnel", "Main", 0));
         interchanges.add(new InterchangeInfo("Piazzale Zavattari", new String[]{"90", "49", "91"}, "bus.fill", "Main", 1));
         interchanges.add(new InterchangeInfo("Viale Murillo Via Ricciarelli", new String[]{"90", "91"}, "bus.fill", "Main", 2));
-        interchanges.add(new InterchangeInfo("Piazzale Brescia (Ospedale San Luca)", new String[]{"90", "16", "91"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Piazzale Brescia (Ospedale San Luca)", new String[]{"90", context.getString(R.string.ospedaleInterchange), "16", "91"}, "hospital", "Main", 3));
         interchanges.add(new InterchangeInfo("Piazzale Brescia", new String[]{"90", "16", "91"}, "tram.fill", "Main", 4));
         interchanges.add(new InterchangeInfo("Piazza Ghirlandaio", new String[]{"90", "63", "80", "91"}, "bus.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Viale Bezzi Via Marostica", new String[]{"90", "91"}, "bus.fill", "Main", 6));
