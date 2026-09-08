@@ -1335,7 +1335,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Dei Missaglia (Isola Anita)", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Via Dei Missaglia Via San Abbondio", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 6));
         interchanges.add(new InterchangeInfo("Via Dei Missaglia Via Boifava", new String[]{"3", "15", "N15"}, "tram.fill", "Main", 7));
-        interchanges.add(new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"3", "15", "M2", "NM2", "65", "79", "230", "N15"}, "tram.fill.tunnel", "Main", 8));
+        interchanges.add(new InterchangeInfo("Piazza Abbiategrasso M2", new String[]{"3", "M2", "NM2", "15", "65", "79", "230", "N15"}, "tram.fill.tunnel", "Main", 8));
         interchanges.add(new InterchangeInfo("Via Montegani Via Neera", new String[]{"3", "N15"}, "tram.fill", "Main", 9));
         interchanges.add(new InterchangeInfo("Via Montegani Via Palmieri", new String[]{"3", "N15"}, "tram.fill", "Main", 10));
         interchanges.add(new InterchangeInfo("Via Montegani Viale Da Cermenate", new String[]{"3", "95", "N15"}, "tram.fill", "Main", 11));
@@ -1349,7 +1349,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Carrobbio", new String[]{"3", "2", "14"}, "tram.fill", "Main", 19));
         interchanges.add(new InterchangeInfo("Via Torino Via San Maria Valle", new String[]{"3", "2", "14"}, "tram.fill", "Main", 20));
         interchanges.add(new InterchangeInfo("Via Torino Via Palla", new String[]{"3", "2", "14"}, "tram.fill", "Main", 21));
-        interchanges.add(new InterchangeInfo("Duomo M1 M3", new String[]{"3", "2", "12", "15", "16", "19", "M1", "NM1", "M3", "NM3", "60", "61", "N15", "N24", "N27"}, "building.columns.fill", "Main", 22));
+        interchanges.add(new InterchangeInfo("Duomo M1 M3", new String[]{"3", "M1", "NM1", "M3", "NM3", "2", "12", "15", "16", "19", "60", "61", "N15", "N24", "N27"}, "building.columns.fill", "Main", 22));
 
         /// Tram 4
         interchanges.add(new InterchangeInfo("Niguarda (Parco Nord)", new String[]{"4", "40", "52", "83", "161", "166", "708"}, "bus.fill", "Main", 0));
