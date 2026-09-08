@@ -54,6 +54,8 @@ public class InterchangeInfo {
                 return R.drawable.ic_tram;
             case "stadium.fill":
                 return R.drawable.ic_stadium;
+            case "hospital":
+                return R.drawable.ic_hospital;
             case "building.columns.fill":
                 return R.drawable.ic_culture_point;
             default:

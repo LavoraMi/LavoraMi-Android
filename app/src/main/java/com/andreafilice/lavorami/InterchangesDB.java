@@ -1243,7 +1243,7 @@ public class InterchangesDB {
 
         //* TRAM LINES
         /// Tram 1
-        interchanges.add(new InterchangeInfo("Roserio (Ospedale Sacco)", new String[]{"1", "12", "560", "566"}, "tram.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Roserio (Ospedale Sacco)", new String[]{"1", "12", "560", "566"}, "hospital", "Main", 0));
         interchanges.add(new InterchangeInfo("Via Grassi", new String[]{"1", "12"}, "tram.fill", "Main", 1));
         interchanges.add(new InterchangeInfo("Largo Boccioni", new String[]{"1", "12", "40", "560"}, "tram.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Via Mambretti", new String[]{"1", "12", "40"}, "tram.fill", "Main", 3));
