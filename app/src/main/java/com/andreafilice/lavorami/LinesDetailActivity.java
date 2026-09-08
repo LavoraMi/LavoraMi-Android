@@ -1953,7 +1953,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R12": return "Sondrio - Tirano";
             case "R13": return "Lecco - Colico - Sondrio";
             case "R14": return "Bergamo - Carnate - Milano";
-            case "R15": return "Seregno - Carnate";
+            case "R15": return "Seregno - Carnate Usmate";
             case "R16": return "Asso - Milano";
             case "R17": return "Como - Saronno - Milano";
             case "R18": return "Como - Molteno - Lecco";
@@ -2174,6 +2174,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R31":
             case "R38":
                 return String.format("1 %s - 30 min", getString(R.string.hourPrefix));
+            case "R15":
             case "RE2":
             case "RE4":
             case "RE5":
@@ -2188,7 +2189,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "R9":
             case "R11":
             case "R12":
-            case "R15":
             case "R18":
             case "R24":
             case "R32":
