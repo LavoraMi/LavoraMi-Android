@@ -1467,7 +1467,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazzale Aquileia", new String[]{"10", "58", "68", "N25", "N26"}, "tram.fill", "Main", 7));
         interchanges.add(new InterchangeInfo("Viale San Michele Del Carso Piazza De Meis", new String[]{"10", "50", "68"}, "tram.fill", "Main", 8));
         interchanges.add(new InterchangeInfo("Piazzale Baracca", new String[]{"10", "16", "67", "68", "N25"}, "tram.fill", "Main", 9));
-        interchanges.add(new InterchangeInfo("Conciliazione M1", new String[]{"10", "M1", "NM1", "67", "68", "N26"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Conciliazione M1", new String[]{"10", "M1", "NM1", "67", "68", "N26"}, "tram.fill.tunnel", "Main", 10));
         interchanges.add(new InterchangeInfo("Via Ariosto", new String[]{"10", "68"}, "tram.fill", "Main", 11));
         interchanges.add(new InterchangeInfo("Largo Quinto Alpini", new String[]{"10", "1", "19", "85"}, "tram.fill", "Main", 12));
         interchanges.add(new InterchangeInfo("Via Pagano Via Canova", new String[]{"10", "1", "85"}, "tram.fill", "Main", 13));
