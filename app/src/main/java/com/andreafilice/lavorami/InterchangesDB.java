@@ -1482,7 +1482,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Farini Via Ferrari", new String[]{"10", "2", "4", "33", "NM2", "70", "N25", "N26"}, "tram.fill", "Main", 22));
         interchanges.add(new InterchangeInfo("Garibaldi FS M2 M5", new String[]{"10", "M2", "NM2", "M5", "33", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "N25", "N26"}, "tram.fill.tunnel", "Main", 23));
         interchanges.add(new InterchangeInfo("Viale Monte Grappa Via Gioia", new String[]{"10", "33"}, "tram.fill", "Main", 24));
-        interchanges.add(new InterchangeInfo("Piazzale Principessa Clotilde (Ospedale Fatebenefratelli)", new String[]{"10", "33", "43"}, "tram.fill", "Main", 25));
+        interchanges.add(new InterchangeInfo("Piazzale Principessa Clotilde (Ospedale Fatebenefratelli)", new String[]{"10", "Ospedale", "33", "43"}, "hospital", "Main", 25));
         interchanges.add(new InterchangeInfo("Viale Monte Santo", new String[]{"10", "9", "33"}, "tram.fill", "Main", 26));
         interchanges.add(new InterchangeInfo("Piazza San Gioachimo", new String[]{"10", "9", "N25"}, "tram.fill", "Main", 27));
         interchanges.add(new InterchangeInfo("Via Filzi Via Adda", new String[]{"10", "9"}, "tram.fill", "Main", 28));
