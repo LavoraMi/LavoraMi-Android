@@ -1376,7 +1376,7 @@ public class InterchangesDB {
         /// Tram 5
         interchanges.add(new InterchangeInfo("Niguarda Ospedale", new String[]{"5", context.getString(R.string.ospedaleInterchange), "4", "51", "83", "161", "166", "172"}, "hospital", "Main", 0));
         interchanges.add(new InterchangeInfo("Viale Ca' Granda Via Cherasco", new String[]{"5", "161"}, "tram.fill", "Main", 1));
-        interchanges.add(new InterchangeInfo("Viale Ca' Granda Via Val Furva", new String[]{"5", "161"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Viale Ca' Granda Via Val Furva", new String[]{"5"}, "tram.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Viale Ca' Granda Viale Suzzani", new String[]{"5", "42"}, "tram.fill", "Main", 3));
         interchanges.add(new InterchangeInfo("Ca' Granda M5", new String[]{"5", "M5", "7", "31", "86", "172"}, "tram.fill.tunnel", "Main", 4));
         interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via Dolcebuono", new String[]{"5", "7", "31", "42"}, "tram.fill", "Main", 5));
