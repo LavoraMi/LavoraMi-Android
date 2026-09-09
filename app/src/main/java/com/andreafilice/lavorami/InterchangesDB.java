@@ -1534,6 +1534,52 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazzale Martini", new String[]{"12", "66"}, "tram.fill", "Main", 38));
         interchanges.add(new InterchangeInfo("Viale Molise", new String[]{"12", "66", "90", "91", "93"}, "bus.fill", "Main", 39));
 
+        /// Tram 14
+        interchanges.add(new InterchangeInfo("Cimitero Maggiore", new String[]{"14", "40", "171", "528"}, "building.columns.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Giorgini", new String[]{"14"}, "tram.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Cormons", new String[]{"14"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Gradisca", new String[]{"14"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Tibullo", new String[]{"14"}, "tram.fill", "Main", 4));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Giannini", new String[]{"14"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Casella", new String[]{"14"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Piazzale Accursio", new String[]{"14", "1", "z602", "z603", "z6C3"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Viale Certosa Via Grosotto", new String[]{"14", "1", "48", "69"}, "tram.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Viale Certosa Viale Serra", new String[]{"14", "1", "69", "90", "z602", "z603", "z6C3"}, "bus.fill", "Main", 9));
+        interchanges.add(new InterchangeInfo("Piazza Firenze", new String[]{"14", "1", "19", "43", "48", "57", "69"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Piazza Caneva", new String[]{"14", "78"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Piazza Diocleziano", new String[]{"14", "12"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Via Cenisio Via Induno", new String[]{"14", "12"}, "tram.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Cenisio M5", new String[]{"14", "M5", "12"}, "tram.fill.tunnel", "Main", 14));
+        interchanges.add(new InterchangeInfo("Piazzale Cimitero Monumentale Via Bramante", new String[]{"14", "10", "12"}, "tram.fill", "Main", 15));
+        interchanges.add(new InterchangeInfo("Via Bramante Via Sarpi", new String[]{"14", "12"}, "tram.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Piazza Lega Lombarda", new String[]{"14", "2", "4", "12", "NM2", "43", "57"}, "tram.fill", "Main", 17));
+        interchanges.add(new InterchangeInfo("Arena", new String[]{"14", "2", "4", "12", "57"}, "tram.fill", "Main", 18));
+        interchanges.add(new InterchangeInfo("Lanza M2", new String[]{"14", "M2", "NM2", "2", "4", "12", "57", "97"}, "tram.fill.tunnel", "Main", 19));
+        interchanges.add(new InterchangeInfo("Via Cusani", new String[]{"14", "1", "2", "12", "96"}, "tram.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Cordusio M1", new String[]{"14", "M1", "NM1", "1", "2", "12", "16", "19"}, "tram.fill.tunnel", "Main", 21));
+        interchanges.add(new InterchangeInfo("Duomo M1 M3", new String[]{"14", "M1", "NM1", "M3", "NM3", "2", "3", "12", "15", "16", "19", "60", "61", "N15", "N24", "N27"}, "building.columns.fill", "Main", 22));
+        interchanges.add(new InterchangeInfo("Via Torino Via Palla", new String[]{"14", "3", "12"}, "tram.fill", "Main", 23));
+        interchanges.add(new InterchangeInfo("Via Torino Via San Maria Valle", new String[]{"14", "3", "12"}, "tram.fill", "Main", 24));
+        interchanges.add(new InterchangeInfo("Carrobbio", new String[]{"14", "3", "12"}, "tram.fill", "Main", 25));
+        interchanges.add(new InterchangeInfo("De Amicis M4", new String[]{"14", "M4", "NM4", "12", "NM2", "96", "97"}, "tram.fill.tunnel", "Main", 26));
+        interchanges.add(new InterchangeInfo("Piazzale Cantore", new String[]{"14", "9", "10", "12", "NM2", "NM4", "74", "164", "N25", "N26"}, "tram.fill", "Main", 27));
+        interchanges.add(new InterchangeInfo("Viale Cogni Zugna Via Solari", new String[]{"14", "10", "N25", "N26"}, "tram.fill", "Main", 28));
+        interchanges.add(new InterchangeInfo("Via Montevideo", new String[]{"14"}, "tram.fill", "Main", 29));
+        interchanges.add(new InterchangeInfo("Piazza Del Rosario", new String[]{"14", "68"}, "tram.fill", "Main", 30));
+        interchanges.add(new InterchangeInfo("Via Solari Via Stendhal", new String[]{"14"}, "tram.fill", "Main", 31));
+        interchanges.add(new InterchangeInfo("Piazza Napoli", new String[]{"14", "90", "91"}, "bus.fill", "Main", 32));
+        interchanges.add(new InterchangeInfo("Via Giambellino Via Tolstoj", new String[]{"14"}, "tram.fill", "Main", 33));
+        interchanges.add(new InterchangeInfo("Via Giambellino Via Vignoli", new String[]{"14"}, "tram.fill", "Main", 34));
+        interchanges.add(new InterchangeInfo("Via Brunelleschi", new String[]{"14", "98"}, "tram.fill", "Main", 35));
+        interchanges.add(new InterchangeInfo("Via Giambellino Via Curio Dentato", new String[]{"14"}, "tram.fill", "Main", 36));
+        interchanges.add(new InterchangeInfo("Largo Gelsomini Largo Giambellino", new String[]{"14"}, "tram.fill", "Main", 37));
+        interchanges.add(new InterchangeInfo("Via Giambellino Via Odazio", new String[]{"14"}, "tram.fill", "Main", 38));
+        interchanges.add(new InterchangeInfo("Via Giambellino Via Sanniti", new String[]{"14"}, "tram.fill", "Main", 39));
+        interchanges.add(new InterchangeInfo("San Cristoforo FS M4", new String[]{"14", "M4", "NM4", "S9", "S19", "R31", "47", "49", "95", "324", "325", "326", "351", "z553"}, "tram.fill.tunnel", "Main", 40));
+        interchanges.add(new InterchangeInfo("Via Gonin Via Giordani", new String[]{"14", "NM4", "47"}, "tram.fill", "Main", 41));
+        interchanges.add(new InterchangeInfo("Via Gonin Via M Di Lorenteggio", new String[]{"14"}, "tram.fill", "Main", 42));
+        interchanges.add(new InterchangeInfo("Lorenteggio", new String[]{"14", "NM4", "50", "64", "326", "327"}, "bus.fill", "Main", 43));
+
         return interchanges;
     }
 
