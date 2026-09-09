@@ -3595,7 +3595,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48227, 9.1631, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.4822, 9.16308, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48215, 9.16304, "Main", "19"));
-        stations.add(new MetroStation("Domodossola M5", 45.48135, 9.16174, "Main", "19"));
+        stations.add(new MetroStation("Domodossola FN M5", 45.48135, 9.16174, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.4804, 9.16034, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48022, 9.16025, "Main", "19"));
         stations.add(new MetroStation("V.Le Boezio", 45.47971, 9.16017, "Main", "19"));
