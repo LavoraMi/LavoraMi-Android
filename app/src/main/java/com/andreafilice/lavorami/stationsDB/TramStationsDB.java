@@ -207,7 +207,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47223, 9.16745, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47216, 9.16753, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47212, 9.16759, "Main", "1"));
-        stations.add(new MetroStation("Via XX Settembre", 45.4703, 9.16988, "Main", "1"));
+        stations.add(new MetroStation("Via Venti Settembre", 45.4703, 9.16988, "Main", "1"));
         stations.add(new MetroStation("Piazza Virgilio", 45.4685, 9.17234, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.46792, 9.17313, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.46787, 9.17322, "Main", "1"));
