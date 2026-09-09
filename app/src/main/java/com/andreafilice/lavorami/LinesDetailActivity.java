@@ -235,10 +235,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipInterscambi.setVisibility(View.GONE);
         }
 
-        /*if(busLinesWithMap.contains(nomeLinea)) && !DataManager.getBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false)){
+        if(busLinesWithMap.contains(nomeLinea) && !DataManager.getBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false)){
             showDialogTutorialBus();
             DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, true);
-        }*/
+        }
         cachedInterTypeface = ResourcesCompat.getFont(this, R.font.inter);
         cachedFontMainTypeface = ResourcesCompat.getFont(this, R.font.font_main);
         Typeface typeface = cachedInterTypeface;
@@ -1847,16 +1847,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
         String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
-        //String[] linesMultipleRoutes = {"z619", "z647"};
+        String[] linesMultipleRoutes = {"z619", "z647"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
         LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
-        //LinearLayout busMultipleRoutes = findViewById(R.id.busMultipleRoutes);
+        LinearLayout busMultipleRoutes = findViewById(R.id.busMultipleRoutes);
         ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
         ImageView lineSuspendedInfoBtn = findViewById(R.id.infoLineClosed);
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
-        //ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
+        ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
 
         for(String linea: lineeSostituiteBus) {if(linea.equals(nomeLinea)) lineaFullBus.setVisibility(View.VISIBLE);}
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
@@ -1909,7 +1909,6 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        /*
         ///LINE BUS CON PIU DIREZIONI
         for (String line : linesMultipleRoutes){
             if(line.equals(nomeLinea)){
@@ -1918,7 +1917,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 busMultipleRoutes.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitle), getString(R.string.busPiuDirezioniDesc)));
             }
         }
-        */
+
         if (Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
             findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
             updateChipGroupSizes(detActionGroup);
