@@ -3,6 +3,7 @@ package com.andreafilice.lavorami;
 import android.content.Context;
 
 import com.andreafilice.lavorami.stationsDB.MetroStationsDB;
+import com.andreafilice.lavorami.stationsDB.STAVStationsDB;
 import com.andreafilice.lavorami.stationsDB.SuburbanStationsDB;
 import com.andreafilice.lavorami.stationsDB.RegionalStationsDB;
 import com.andreafilice.lavorami.stationsDB.RegioExpStationsDB;
@@ -498,6 +499,8 @@ public class StationDB {
             allStations.addAll(MovibusStationsDB.getStationsZ647());
             allStations.addAll(MovibusStationsDB.getStationsZ649());
             allStations.addAll(MovibusStationsDB.getStationsZ6C3());
+
+            allStations.addAll(STAVStationsDB.getStationsZ551());
 
             allStations.addAll(FilobusStationsDB.getStationsFilobus90());
             allStations.addAll(FilobusStationsDB.getStationsFilobus91());
