@@ -1507,7 +1507,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Castelli", new String[]{"12", "19"}, "tram.fill", "Main", 11));
         interchanges.add(new InterchangeInfo("Via Mac Mahon Via Bramantino", new String[]{"12", "19"}, "tram.fill", "Main", 12));
         interchanges.add(new InterchangeInfo("Via Mac Mahon Via Artieri", new String[]{"12", "19"}, "tram.fill", "Main", 13));
-        interchanges.add(new InterchangeInfo("Via Mac Mahon Viale Monte Ceneri", new String[]{"12", "90", "91"}, "tram.fill", "Main", 14));
+        interchanges.add(new InterchangeInfo("Via Mac Mahon Viale Monte Ceneri", new String[]{"12", "90", "91"}, "bus.fill", "Main", 14));
         interchanges.add(new InterchangeInfo("Via Mac Mahon Via Caracciolo", new String[]{"12"}, "tram.fill", "Main", 15));
         interchanges.add(new InterchangeInfo("Via Mac Mahon Via Principe Eugenio", new String[]{"12", "78"}, "tram.fill", "Main", 16));
         interchanges.add(new InterchangeInfo("Piazza Diocleziano", new String[]{"12", "14"}, "tram.fill", "Main", 17));
@@ -1532,7 +1532,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Emilia", new String[]{"12", "27", "66", "92", "169", "973", "N27"}, "tram.fill", "Main", 36));
         interchanges.add(new InterchangeInfo("Via Arconati", new String[]{"12", "66", "92", "169"}, "tram.fill", "Main", 37));
         interchanges.add(new InterchangeInfo("Piazzale Martini", new String[]{"12", "66"}, "tram.fill", "Main", 38));
-        interchanges.add(new InterchangeInfo("Viale Molise", new String[]{"12", "66", "90", "91", "93"}, "tram.fill", "Main", 39));
+        interchanges.add(new InterchangeInfo("Viale Molise", new String[]{"12", "66", "90", "91", "93"}, "bus.fill", "Main", 39));
 
         return interchanges;
     }
