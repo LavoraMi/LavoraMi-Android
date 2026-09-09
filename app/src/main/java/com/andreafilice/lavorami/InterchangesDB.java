@@ -1463,7 +1463,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Porta Genova M2", new String[]{"10", "M2", "NM2", "2", "9", "NM4", "74", "164", "N25", "N26"}, "tram.fill.tunnel", "Main", 3));
         interchanges.add(new InterchangeInfo("Piazzale Cantore", new String[]{"10", "2", "9", "14", "NM2", "NM4", "74", "164", "N25", "N26"}, "tram.fill", "Main", 4));
         interchanges.add(new InterchangeInfo("Viale Cogni Zugna Via Solari", new String[]{"10", "14", "N25", "N26"}, "tram.fill", "Main", 5));
-        interchanges.add(new InterchangeInfo("Cogni Zugna M4", new String[]{"10", "M4", "NM4", "58"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Cogni Zugna M4", new String[]{"10", "M4", "NM4", "58"}, "tram.fill.tunnel", "Main", 6));
         interchanges.add(new InterchangeInfo("Piazzale Aquileia", new String[]{"10", "58", "68", "N25", "N26"}, "tram.fill", "Main", 7));
         interchanges.add(new InterchangeInfo("Viale San Michele Del Carso Piazza De Meis", new String[]{"10", "50", "68"}, "tram.fill", "Main", 8));
         interchanges.add(new InterchangeInfo("Piazzale Baracca", new String[]{"10", "16", "67", "68", "N25"}, "tram.fill", "Main", 9));
