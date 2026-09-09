@@ -662,7 +662,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                         if (expected.isValue() && !expected.getValue().isEmpty()) {
                             com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
                             com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
-                            if (tipoDiLinea.contains("Movibus")) {
+                            if (nomeLinea.contains("z")) {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaFermataDaMappa(stationName);
