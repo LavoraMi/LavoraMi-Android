@@ -1428,6 +1428,34 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Adriano Via Lussu", new String[]{"7", "53", "56", "86"}, "tram.fill", "Main", 19));
         interchanges.add(new InterchangeInfo("Via Adriano Via Vipiteno", new String[]{"7", "86"}, "tram.fill", "Main", 20));
 
+        /// Tram 9
+        interchanges.add(new InterchangeInfo("Stazione Centrale M2 M3", new String[]{"9", "M2", "NM2", "M3", "NM3", "5", "10", "42", "81", "728", "N25"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Via Filzi Via Pirelli", new String[]{"9", "10"}, "tram.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Via Filzi Via Adda", new String[]{"9", "10"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Piazza San Gioachimo", new String[]{"9", "10", "N25"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Viale Monte Santo", new String[]{"9", "10", "33"}, "tram.fill", "Main", 4));
+        interchanges.add(new InterchangeInfo("Repubblica M3", new String[]{"9", "M3", "NM3", "1", "33", "S1", "S2", "S5", "S6", "S12", "S13", "43"}, "tram.fill.tunnel", "Main", 5));
+        interchanges.add(new InterchangeInfo("Viale Vittorio Veneto", new String[]{"9", "1", "33"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Porta Venezia M1", new String[]{"9", "M1", "NM1", "S1", "S2", "S5", "S6", "S12", "S13"}, "tram.fill.tunnel", "Main", 7));
+        interchanges.add(new InterchangeInfo("Viale Piave", new String[]{"9", "19"}, "tram.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Tricolore M4", new String[]{"9", "M4", "NM4", "19", "61"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Viale Premuda", new String[]{"9", "19"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Piazza 5 Giornate", new String[]{"9", "12", "16", "19", "27", "60", "973", "N25", "N26", "N27"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Viale Monte Nero Via Spartaco", new String[]{"9", "84"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Viale Monte Nero Via Bergamo", new String[]{"9", "16", "NM4", "65", "96", "N25", "N26"}, "tram.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Viale Monte Nero Via Pier Lombardo", new String[]{"9"}, "tram.fill", "Main", 14));
+        interchanges.add(new InterchangeInfo("Porta Romana M3", new String[]{"9", "M3", "NM3", "NM4", "62", "65", "N26"}, "tram.fill.tunnel", "Main", 15));
+        interchanges.add(new InterchangeInfo("Viale Sabotino", new String[]{"9"}, "tram.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Viale Sabotino", new String[]{"9", "24", "NM4", "N24", "N26"}, "tram.fill", "Main", 17));
+        interchanges.add(new InterchangeInfo("Viale Bligny", new String[]{"9"}, "tram.fill", "Main", 18));
+        interchanges.add(new InterchangeInfo("Via Bocconi", new String[]{"9", "NM4", "N25", "N26"}, "tram.fill", "Main", 19));
+        interchanges.add(new InterchangeInfo("Porta Lodovica", new String[]{"9", "15", "NM4", "59", "71", "79", "N25", "N26"}, "tram.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Viale Col Di Lana", new String[]{"9", "71", "NM4", "N15", "N25", "N26"}, "tram.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Piazza XXIV Maggio", new String[]{"9", "3", "10", "NM4", "71", "N15", "N25", "N26"}, "tram.fill", "Main", 21));
+        interchanges.add(new InterchangeInfo("Via Vigevano Viale Gorizia", new String[]{"9", "10", "NM4", "N25", "N26"}, "tram.fill", "Main", 22));
+        interchanges.add(new InterchangeInfo("Piazzale Cantore", new String[]{"9", "2", "10", "14", "NM2", "NM4", "74", "164", "N25", "N26"}, "tram.fill", "Main", 23));
+        interchanges.add(new InterchangeInfo("Porta Genova M2", new String[]{"9", "M2", "NM2", "2", "10", "NM4", "74", "164", "N25", "N26"}, "tram.fill.tunnel", "Main", 24));
+
         return interchanges;
     }
 
