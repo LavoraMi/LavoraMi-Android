@@ -212,7 +212,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             chipArrivi.setChecked(false);
         }
 
-        if(tipoDiLinea.contains("Movibus")){
+        if(tipoDiLinea.contains("Movibus") || tipoDiLinea.contains("STAV")){
             caricaFermateInterscambio();
             chipInterscambi.setVisibility(View.GONE);
         }
