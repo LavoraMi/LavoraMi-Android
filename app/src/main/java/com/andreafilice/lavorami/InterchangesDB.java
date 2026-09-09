@@ -1343,7 +1343,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Tibaldi Via Meda", new String[]{"3", "59", "71", "90", "91", "N15"}, "tram.fill", "Main", 13));
         interchanges.add(new InterchangeInfo("Largo Mahler", new String[]{"3", "59", "71", "N15"}, "tram.fill", "Main", 14));
         interchanges.add(new InterchangeInfo("Corso San Gottardo Via Lagrange", new String[]{"3", "71", "N15"}, "tram.fill", "Main", 15));
-        interchanges.add(new InterchangeInfo("Piazza XXIV Maggio", new String[]{"3", "9", "10", "NM4", "71", "N15", "N25"}, "tram.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Piazza XXIV Maggio", new String[]{"3", "9", "10", "NM4", "71", "N15", "N25", "N26"}, "tram.fill", "Main", 16));
         interchanges.add(new InterchangeInfo("Piazza San Eustorgio", new String[]{"3"}, "tram.fill", "Main", 17));
         interchanges.add(new InterchangeInfo("Colonne Di San Lorenzo", new String[]{"3", context.getString(R.string.monumentKey)}, "building.columns.fill", "Main", 18));
         interchanges.add(new InterchangeInfo("Carrobbio", new String[]{"3", "2", "14"}, "tram.fill", "Main", 19));
