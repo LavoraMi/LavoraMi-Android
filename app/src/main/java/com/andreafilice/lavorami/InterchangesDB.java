@@ -1259,7 +1259,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Firenze", new String[]{"1", "14", "19", "43", "48", "57", "69"}, "bus.fill", "Main", 13));
         interchanges.add(new InterchangeInfo("Corso Sempione Via E. Filiberto", new String[]{"1", "19", "43", "48", "57", "78", "z602", "z603", "z6C3"}, "bus.fill", "Main", 14));
         interchanges.add(new InterchangeInfo("Corso Sempione Via Arona", new String[]{"1", "19", "43", "57"}, "tram.fill", "Main", 15));
-        interchanges.add(new InterchangeInfo("Domodossola FN M5", new String[]{"1", "M5", "19", "43", "57"}, "tram.fill.tunnel", "Main", 16));
+        interchanges.add(new InterchangeInfo("Domodossola M5", new String[]{"1", "M5", "19", "43", "57"}, "tram.fill.tunnel", "Main", 16));
         interchanges.add(new InterchangeInfo("Corso Sempione Via Procaccini", new String[]{"1", "10", "43", "57", "z602", "z603", "z6C3"}, "bus.fill", "Main", 17));
         interchanges.add(new InterchangeInfo("Corso Sempione Via Villasanta", new String[]{"1", "10", "43", "57", "z602", "z603", "z6C3"}, "bus.fill", "Main", 18));
         interchanges.add(new InterchangeInfo("Corso Sempione Via Canova", new String[]{"1", "10", "N25", "N26"}, "tram.fill", "Main", 19));
