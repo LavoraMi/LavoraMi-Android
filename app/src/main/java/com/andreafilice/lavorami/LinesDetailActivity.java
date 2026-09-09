@@ -86,6 +86,8 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -130,6 +132,19 @@ public class LinesDetailActivity extends AppCompatActivity {
     private boolean hintWidgetClosed;
     private TextView txtDirezioneMappa;
     private List<MetroStation> ultimeStazioniDisegnate;
+    private Map<String, String> dizionarioAbbreviazioni = Map.of(
+            "p.le", "piazzale",
+            "p.za", "piazza",
+            "p.ta", "porta",
+            "v.le", "viale",
+            "c.so", "corso",
+            "l.go", "largo",
+            "m.te", "monte",
+            "s.",   "san",
+            "c.",   "console",
+            "p.",   "principe"
+            );
+
     SessionManager sessionManager;
     SupabaseAPI api;
     Retrofit retrofitAPI;
@@ -2841,11 +2856,29 @@ public class LinesDetailActivity extends AppCompatActivity {
         btnClose.setOnClickListener(v -> dialog.dismiss());
     }
 
+    private String espandiAbbreviazioni(String testo) {
+        if (testo == null) return null;
+
+        String risultato = testo;
+        for (Map.Entry<String, String> entry : dizionarioAbbreviazioni.entrySet()) {
+            String abbreviazione = entry.getKey();
+            String espansa = entry.getValue();
+
+            String abbreviazioneEscaped = Pattern.quote(abbreviazione);
+
+            String regex = "(?i)(?<=^|\\s)" + abbreviazioneEscaped + "(?=\\s|$)";
+            risultato = risultato.replaceAll(regex, Matcher.quoteReplacement(espansa));
+        }
+        return risultato;
+    }
+
     private void selezionaInterscambioDaMappa(String nomeStazioneMappa) {
         if (branchViewCache.isEmpty() || nomeStazioneMappa == null) {
             Toast.makeText(this, getString(R.string.loadingIntechanges), Toast.LENGTH_SHORT).show();
             return;
         }
+
+        nomeStazioneMappa = espandiAbbreviazioni(nomeStazioneMappa);
 
         String chiaveAttuale = (selectedBranch != null) ? selectedBranch : "Main";
         List<View> viewsAttuali = branchViewCache.get(chiaveAttuale);

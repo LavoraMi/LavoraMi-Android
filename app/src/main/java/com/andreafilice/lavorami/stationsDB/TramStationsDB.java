@@ -2423,7 +2423,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50183, 9.14412, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.50172, 9.14435, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.50152, 9.14478, "Main", "12"));
-        stations.add(new MetroStation("Via C. Marcello Villapizzone", 45.50094, 9.14596, "Main", "12"));
+        stations.add(new MetroStation("Via C. Marcello (Villapizzone)", 45.50094, 9.14596, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.50064, 9.14661, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.50039, 9.14712, "Main", "12"));
         stations.add(new MetroStation("Via C. Marcello Via Ferrario", 45.50008, 9.14775, "Main", "12"));
