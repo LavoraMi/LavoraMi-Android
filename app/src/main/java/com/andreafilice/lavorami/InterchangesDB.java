@@ -1739,6 +1739,23 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Ungheria, 20", new String[]{"27", "45", "175", "N27"}, "tram.fill", "Main", 21));
         interchanges.add(new InterchangeInfo("Viale Ungheria", new String[]{"27", "45", "66", "88", "175", "N27"}, "bus.fill", "Main", 22));
 
+        /// Tram 31
+        interchanges.add(new InterchangeInfo("Bicocca M5", new String[]{"31", "M5", "7", "52", "172", "783"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via La Farina", new String[]{"31", "172", "783"}, "tram.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via San Glicerio", new String[]{"31", "783"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Ponale M5", new String[]{"31", "M5", "51", "172"}, "tram.fill.tunnel", "Main", 3));
+        interchanges.add(new InterchangeInfo("Bignami M5", new String[]{"31", "M5", "713", "728"}, "tram.fill.tunnel", "Main", 4));
+        interchanges.add(new InterchangeInfo("Parco Nord (Torretta)", new String[]{"31"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Parco Nord Clerici (Sesto San Giovanni)", new String[]{"31", "708"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Parco Nord Istituto Tecnico (Cinisello Balsamo)", new String[]{"31", "708", "728"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Parco Nord Ospedale Bassini (Cinisello Balsamo)", new String[]{"31", context.getString(R.string.ospedaleInterchange), "702", "727"}, "hospital", "Main", 8));
+        interchanges.add(new InterchangeInfo("Gorky Monfalcone (Cinisello Balsamo)", new String[]{"31", "729"}, "tram.fill", "Main", 9));
+        interchanges.add(new InterchangeInfo("Libertà (Cinisello Balsamo)", new String[]{"31", "729"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Gramsci (Cinisello Balsamo)", new String[]{"31"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Villa Ghirlanda (Cinisello Balsamo)", new String[]{"31", "707", "727", "728", "z225", "z227"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Monte Ortigara (Cinisello Balsamo)", new String[]{"31", "702", "712", "727"}, "tram.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Cinisello (Primo Maggio)", new String[]{"31", "702"}, "tram.fill", "Main", 14));
+
         return interchanges;
     }
 
