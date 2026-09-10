@@ -501,6 +501,7 @@ public class StationDB {
             allStations.addAll(MovibusStationsDB.getStationsZ6C3());
 
             allStations.addAll(STAVStationsDB.getStationsZ551());
+            allStations.addAll(STAVStationsDB.getStationsZ552());
 
             allStations.addAll(FilobusStationsDB.getStationsFilobus90());
             allStations.addAll(FilobusStationsDB.getStationsFilobus91());
