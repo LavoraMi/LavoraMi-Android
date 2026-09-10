@@ -1695,6 +1695,25 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Valvassori Peroni", new String[]{"19", "33", "45", "93", "175"}, "tram.fill", "Main", 41));
         interchanges.add(new InterchangeInfo("Lambrate FS M2", new String[]{"19", "M2", "NM2", "S9", "R4", "R6", "R7", "R34", "R38", "RE2", "RE6", "RE8", "RE11", "RE13", "39", "45", "54", "81", "93", "175", "924"}, "lightrail", "Main", 42));
 
+        /// Tram 24
+        interchanges.add(new InterchangeInfo("Piazza Fontana", new String[]{"24", "27"}, "tram.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Piazza Missori", new String[]{"24", "M3", "NM3", "12", "15", "16", "19", "N15", "N24"}, "tram.fill.tunnel", "Main", 1));
+        interchanges.add(new InterchangeInfo("Missori M3", new String[]{"24", "M3", "NM3", "12", "15", "16", "19", "N15", "N24"}, "tram.fill.tunnel", "Main", 2));
+        interchanges.add(new InterchangeInfo("Sforza Policlinico M4", new String[]{"24", "M4", "NM4", "16", "NM3", "65", "96", "N24"}, "tram.fill.tunnel", "Main", 3));
+        interchanges.add(new InterchangeInfo("Crocetta M3", new String[]{"24", "M3", "NM3", "16", "NM4", "65", "96", "N24"}, "tram.fill.tunnel", "Main", 4));
+        interchanges.add(new InterchangeInfo("Corso Porta Vigentina", new String[]{"24", "N24"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Viale Sabotino", new String[]{"24", "9", "NM4", "N24", "N26"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Bellezza", new String[]{"24", "N24"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Viale Isonzo Via Ripamonti", new String[]{"24", "90", "91", "N24"}, "bus.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Lorenzini", new String[]{"24", "65", "N24"}, "tram.fill", "Main", 9));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Rutilia", new String[]{"24", "N24"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Quaranta", new String[]{"24", "34", "N24"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Dell'Assunta", new String[]{"24", "34", "N24"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Noto", new String[]{"24", "34", "N24"}, "tram.fill", "Main", 13));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Val Di Sole", new String[]{"24", "34", "N24"}, "tram.fill", "Main", 14));
+        interchanges.add(new InterchangeInfo("Via Ripamonti Via Chopin", new String[]{"24", "34", "N24"}, "tram.fill", "Main", 15));
+        interchanges.add(new InterchangeInfo("Vigentino", new String[]{"24", "99", "222", "N24"}, "tram.fill", "Main", 16));
+
         return interchanges;
     }
 

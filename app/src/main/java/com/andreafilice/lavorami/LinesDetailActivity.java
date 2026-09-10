@@ -1249,7 +1249,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private boolean isLineaTram() {
-        ArrayList<String> tramLines = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "12", "14", "15", "16", "19"));
+        ArrayList<String> tramLines = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "12", "14", "15", "16", "19", "24"));
         boolean isValid = false;
 
         for(int i = 0; i < tramLines.size(); i++){
