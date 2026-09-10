@@ -1714,6 +1714,31 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Ripamonti Via Chopin", new String[]{"24", "34", "N24"}, "tram.fill", "Main", 15));
         interchanges.add(new InterchangeInfo("Vigentino", new String[]{"24", "99", "222", "N24"}, "tram.fill", "Main", 16));
 
+        /// Tram 27
+        interchanges.add(new InterchangeInfo("Piazza Fontana", new String[]{"27", "24"}, "tram.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Largo Augusto", new String[]{"27", "12", "19", "NM4", "60", "61", "84", "96", "N27"}, "tram.fill", "Main", 1));
+        interchanges.add(new InterchangeInfo("Palazzo Di Giustizia", new String[]{"27", "12", "19", "60", "65", "84", "96", "N27"}, "tram.fill", "Main", 2));
+        interchanges.add(new InterchangeInfo("Corso Porta Vittoria (Camera Del Lavoro)", new String[]{"27", "12", "19", "60", "N27"}, "tram.fill", "Main", 3));
+        interchanges.add(new InterchangeInfo("Piazza 5 Giornate", new String[]{"27", "9", "12", "19", "60", "973", "N25", "N26", "N27"}, "tram.fill", "Main", 4));
+        interchanges.add(new InterchangeInfo("Piazza San Maria Del Suffragio", new String[]{"27", "12", "60", "973", "N25", "N26", "N27"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Via Cadore Corso Ventidue Marzo", new String[]{"27", "12", "60", "62", "66", "169", "973", "N25", "N26", "N27"}, "tram.fill", "Main", 6));
+        interchanges.add(new InterchangeInfo("Piazza Emilia", new String[]{"27", "12", "66", "92", "169", "973", "N27"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Piazza Grandi", new String[]{"27", "973", "N27"}, "tram.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Viale Campania Viale Corsica", new String[]{"27", "90", "91", "93", "973", "N27"}, "tram.fill", "Main", 9));
+        interchanges.add(new InterchangeInfo("Viale Corsica Via Battistotti Sassi", new String[]{"27", "973", "N27"}, "tram.fill", "Main", 10));
+        interchanges.add(new InterchangeInfo("Viale Corsica Via Lomellina", new String[]{"27", "973", "N27"}, "tram.fill", "Main", 11));
+        interchanges.add(new InterchangeInfo("Stazione Forlanini M4", new String[]{"27", "NM4", "45", "175", "973", "N27"}, "tram.fill", "Main", 12));
+        interchanges.add(new InterchangeInfo("Repetti M4", new String[]{"27", "M4", "NM4", "175", "973", "N27"}, "tram.fill.tunnel", "Main", 13));
+        interchanges.add(new InterchangeInfo("Piazza Ovidio", new String[]{"27", "45", "175", "N27"}, "tram.fill", "Main", 14));
+        interchanges.add(new InterchangeInfo("Via Mecenate Via Maderna", new String[]{"27", "N27"}, "tram.fill", "Main", 15));
+        interchanges.add(new InterchangeInfo("Via Mecenate Via Zante", new String[]{"27", "N27"}, "tram.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Via Mecenate Via Fantoli", new String[]{"27", "88", "N27"}, "tram.fill", "Main", 17));
+        interchanges.add(new InterchangeInfo("Via Mecenate Via Quintiliano", new String[]{"27", "88", "N27"}, "tram.fill", "Main", 18));
+        interchanges.add(new InterchangeInfo("Viale Ungheria Via Mecenate", new String[]{"27", "45", "66", "88", "175", "N27"}, "tram.fill", "Main", 19));
+        interchanges.add(new InterchangeInfo("Viale Ungheria Largo Gonzaga", new String[]{"27", "45", "66", "88", "175", "N27"}, "tram.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Viale Ungheria, 20", new String[]{"27", "45", "175", "N27"}, "tram.fill", "Main", 21));
+        interchanges.add(new InterchangeInfo("Viale Ungheria", new String[]{"27", "45", "66", "88", "175", "N27"}, "bus.fill", "Main", 22));
+
         return interchanges;
     }
 
