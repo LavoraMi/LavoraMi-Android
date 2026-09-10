@@ -1279,7 +1279,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Manzoni Via Pisoni", new String[]{"1"}, "tram.fill", "Main", 33));
         interchanges.add(new InterchangeInfo("Piazza Cavour", new String[]{"1", "NM3", "84", "96", "97"}, "tram.fill", "Main", 34));
         interchanges.add(new InterchangeInfo("Turati M3", new String[]{"1", "M3", "NM3", "43", "84"}, "tram.fill.tunnel", "Main", 35));
-        interchanges.add(new InterchangeInfo("Repubblica M3", new String[]{"1", "M3", "NM3", "9", "33", "S13", "S1", "S2", "S5", "S6", "S12", "43"}, "tram.fill.tunnel", "Main", 36));
+        interchanges.add(new InterchangeInfo("Repubblica M3", new String[]{"1", "M3", "NM3", "9", "33", "S1", "S2", "S5", "S6", "S12", "S13", "43"}, "tram.fill.tunnel", "Main", 36));
         interchanges.add(new InterchangeInfo("Viale Vittorio Veneto", new String[]{"1", "9", "33"}, "tram.fill", "Main", 37));
         interchanges.add(new InterchangeInfo("Viale Tunisia", new String[]{"1", "5", "33"}, "tram.fill", "Main", 38));
         interchanges.add(new InterchangeInfo("Piazza Cincinnato", new String[]{"1", "5"}, "tram.fill", "Main", 39));
@@ -1765,7 +1765,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Monte Grappa Via Gioia", new String[]{"33", "10"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Piazzale Principessa Clotilde (Ospedale Fatebenefratelli)", new String[]{"33", "Ospedale", "10", "43"}, "hospital", "Main", 6));
         interchanges.add(new InterchangeInfo("Viale Monte Santo", new String[]{"33", "9", "10"}, "tram.fill", "Main", 7));
-        interchanges.add(new InterchangeInfo("Repubblica M3", new String[]{"33", "M3", "NM3", "1", "9", "S13", "S1", "S2", "S5", "S6", "S12", "43"}, "tram.fill.tunnel", "Main", 8));
+        interchanges.add(new InterchangeInfo("Repubblica M3", new String[]{"33", "M3", "NM3", "1", "9", "S1", "S2", "S5", "S6", "S12", "S13", "43"}, "tram.fill.tunnel", "Main", 8));
         interchanges.add(new InterchangeInfo("Viale Vittorio Veneto", new String[]{"33", "1", "9"}, "tram.fill", "Main", 9));
         interchanges.add(new InterchangeInfo("Viale Tunisia", new String[]{"33", "1", "5"}, "tram.fill", "Main", 10));
         interchanges.add(new InterchangeInfo("Porta Venezia Viale Tunisia", new String[]{"33", "M1", "NM1", "5", "S1", "S2", "S5", "S6", "S12", "S13"}, "tram.fill.tunnel", "Main", 11));
