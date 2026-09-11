@@ -219,7 +219,7 @@
     <string name="progressBar">Barra di progresso</string>
     <string name="progressBarText">Vedi visivamente a che punto sono i lavori e quando è prevista la fine del disagio (basato su data di inizio e fine lavori PREVISTI).</string>
     <string name="updateYourself">Aggiornato, Sempre.</string>
-    <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita e anche quando sarà un Venerdì no.</string>
+    <string name="updateYourselfText">Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita e anche quando sarà un venerdì no.</string>
     <string name="choseLine">Scegli la tua linea</string>
     <string name="exampleDate1">15 Dic 2026</string>
     <string name="setupTitleTranslate">Traduci i lavori, nella lingua che vuoi tu.</string>
