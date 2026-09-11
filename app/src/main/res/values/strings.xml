@@ -467,4 +467,5 @@
     <string name="dialog_bus_desc_2">Seleziona una feramta e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze</string>
     <string name="dialog_bus_title_3">Cambia Direzione</string>
     <string name="dialog_bus_desc_3">Cambia la Direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!</string>
+    <string name="busSubtitlePopUp">Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata.</string>
 </resources>

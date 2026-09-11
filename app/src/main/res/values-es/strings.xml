@@ -467,4 +467,5 @@
     <string name="dialog_bus_title_2">Seleccione una parada</string>
     <string name="dialog_bus_title_3">Cambiar Dirección</string>
     <string name="dialog_bus_desc_3">Cambia la dirección del autobús seleccionando el botón con este icono. ¡Podrás ver las paradas en sentido contrario!</string>
+    <string name="busSubtitlePopUp">Puedes volver a consultar esta página pulsando en la pestaña \"Mapa\" cuando esté seleccionada.</string>
 </resources>

@@ -169,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textAlignment="center"
-            android:text="Puoi rivedere questa pagina premendo sulla tab 'Mappa' quando è selezionata."
+            android:text="@string/busSubtitlePopUp"
             android:layout_marginBottom="6dp"
             android:fontFamily="@font/inter"
             android:textColor="@color/subtitle"/>
