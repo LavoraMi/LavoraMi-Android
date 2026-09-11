@@ -279,8 +279,7 @@ public class NotificationScheduler {
         if (notifTimeStrike > now) {
             schedule(context, alarmManager, idStrike, notifTimeStrike,
                     context.getString(R.string.strikeNotificationTitle),
-                    String.format(context.getString(R.string.strikeNotificationDeps),
-                            strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
+                    String.format(context.getString(R.string.strikeNotificationDeps), strike.getStrikeCompanies()));
         }
 
         Calendar calPreStrike = Calendar.getInstance();
@@ -294,8 +293,7 @@ public class NotificationScheduler {
         if (notifTimePreStrike > now) {
             schedule(context, alarmManager, idPreStrike, notifTimePreStrike,
                     context.getString(R.string.strikeTomorrowNotificationTitle),
-                    String.format(context.getString(R.string.strikeTomorrowNotificationDeps),
-                            strike.getStrikeCompanies(), strike.getStrikeGuaranteed()));
+                    String.format(context.getString(R.string.strikeTomorrowNotificationDeps), strike.getStrikeCompanies()));
         }
     }
 

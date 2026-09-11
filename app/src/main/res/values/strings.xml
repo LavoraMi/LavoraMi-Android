@@ -253,9 +253,9 @@
     <string name="startWorkTomorrowVar3">Domani iniziano i lavori a %s per la linea %s. Consulta il sito di %s per maggiori info.</string>
     <string name="startWorkTomorrowVar4">Domani iniziano i lavori a %s per le linee %s. Consulta il sito di %s per maggiori info.</string>
     <string name="strikeNotificationTitle">\uD83D\uDEAB Oggi Sciopero!</string>
-    <string name="strikeNotificationDeps">Oggi è previsto uno sciopero di %s, le fasce garantite %s</string>
+    <string name="strikeNotificationDeps">Oggi è previsto uno sciopero per le linee di %s. Consulta le fasce garantite in app.</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F Sciopero domani!</string>
-    <string name="strikeTomorrowNotificationDeps">Domani c\'è sciopero per %s, le fasce garantite %s</string>
+    <string name="strikeTomorrowNotificationDeps">Domani c\'è sciopero per le linee di %s. Controlla ripercussioni e fasce garantite in app.</string>
     <string name="cacheMemoryToast">Cache pulite correttamente!</string>
     <string name="googleSignInFailedToast">Sign-in con Google fallito.</string>
     <string name="unknownErrorToast">Si è verificato un errore imprevisto, riprova.</string>

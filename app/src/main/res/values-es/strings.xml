@@ -254,9 +254,9 @@
     <string name="startWorkTomorrowVar3">Mañana comienzan las obras a %s de la línea %s. Visita el sitio de %s para más información.</string>
     <string name="startWorkTomorrowVar4">Mañana comienzan las obras a %s de las líneas %s. Visita el sitio de %s para más información.</string>
     <string name="strikeNotificationTitle">\uD83D\uDEAB ¡Huelga hoy!</string>
-    <string name="strikeNotificationDeps">Hoy está prevista una huelga de %s, los servicios garantizados %s</string>
+    <string name="strikeNotificationDeps">Hoy está prevista una huelga en las líneas de %s. Consulta los horarios garantizados en la aplicación.</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F ¡Huelga mañana!</string>
-    <string name="strikeTomorrowNotificationDeps">Mañana hay huelga de %s, los servicios garantizados son %s</string>
+    <string name="strikeTomorrowNotificationDeps">Mañana hay huelga en las líneas de %s. Consulta en la aplicación las repercusiones y los horarios garantizados.</string>
     <string name="cacheMemoryToast">¡Caché limpiada correctamente!</string>
     <string name="googleSignInFailedToast">Error al iniciar sesión con Google.</string>
     <string name="unknownErrorToast">Se ha producido un error inesperado, vuelve a intentarlo.</string>

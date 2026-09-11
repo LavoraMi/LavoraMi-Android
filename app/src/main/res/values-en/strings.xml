@@ -254,9 +254,9 @@
     <string name="startWorkTomorrowVar3">Work on the %s line will begin tomorrow at %s. Visit the %s website for more information.</string>
     <string name="startWorkTomorrowVar4">Work on the %s lines will begin tomorrow at %s. Visit the %s website for more information.</string>
     <string name="strikeNotificationTitle">\uD83D\uDEAB Strike today!</string>
-    <string name="strikeNotificationDeps">A strike is scheduled for today of %s, services will be maintained %s</string>
+    <string name="strikeNotificationDeps">A strike is planned today on the %s lines. Check the guaranteed services in the app.</string>
     <string name="strikeTomorrowNotificationTitle">⚠\uFE0F Strike tomorrow!</string>
-    <string name="strikeTomorrowNotificationDeps">There will be a strike tomorrow for %s, the guaranteed service hours are %s</string>
+    <string name="strikeTomorrowNotificationDeps">There\'s a strike tomorrow on the %s lines. Check the disruption and guaranteed services in the app.</string>
     <string name="cacheMemoryToast">Cache cleaned successfully!</string>
     <string name="googleSignInFailedToast">Sign-in with Google failed.</string>
     <string name="unknownErrorToast">An unexpected error has occurred. Please try again.</string>
