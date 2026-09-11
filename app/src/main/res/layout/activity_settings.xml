@@ -1280,7 +1280,7 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/ic_reset"
+                            android:src="@drawable/ic_reload"
                             app:tint="@color/redMetro"/>
 
                         <TextView
