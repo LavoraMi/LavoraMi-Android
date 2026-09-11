@@ -58,4 +58,5 @@
     <color name="SFM6">#8b231d</color>
     <color name="monument">#EADFC9</color>
     <color name="ospedale">#e0584f</color>
+    <color name="closeBtnBus">#040F11</color>
 </resources>

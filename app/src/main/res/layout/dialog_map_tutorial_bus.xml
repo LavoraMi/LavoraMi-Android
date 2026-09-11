@@ -170,7 +170,7 @@
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:text="Puoi rivedere le funzioni premendo sulla chip della mappa mentre la stai visualizzando."
-           android:layout_marginBottom="6dp"
+            android:layout_marginBottom="6dp"
             android:textColor="@color/subtitle"/>
 
         <com.google.android.material.chip.ChipGroup
@@ -205,6 +205,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
+        android:textSize="17sp"
         android:backgroundTint="@color/dismiss_icon_grey_500"
         android:fontFamily="@font/font_main"
         android:text="@string/closePopUp"

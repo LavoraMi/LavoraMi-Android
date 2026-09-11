@@ -2769,34 +2769,19 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().setLayout(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-            );
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
 
         Button btnClose = dialog.findViewById(R.id.btn_close_tutorial);
-
-        btnClose.setEnabled(false);
-
-        Runnable unlockRunnable = () -> unlockCloseButton(dialog, btnClose);
-        handler.postDelayed(unlockRunnable, 3000);
-
-        dialog.setOnDismissListener(dialogInterface -> handler.removeCallbacks(unlockRunnable));
-
-        dialog.show();
-    }
-
-    private void unlockCloseButton(Dialog dialog, Button btnClose) {
         btnClose.setEnabled(true);
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
 
-        btnClose.setBackgroundTintList(ColorStateList.valueOf(
-                ContextCompat.getColor(this, R.color.redMetro)));
+        btnClose.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.closeBtnBus)));
         btnClose.setTextColor(ContextCompat.getColor(this, android.R.color.white));
 
         btnClose.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 
     private String espandiAbbreviazioni(String testo) {
