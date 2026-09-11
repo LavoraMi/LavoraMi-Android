@@ -1246,16 +1246,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         return nomeLinea != null && isValid;
     }
 
-    private boolean isLineaTram() {
-        ArrayList<String> tramLines = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "7", "9", "10", "12", "14", "15", "16", "19", "24", "27", "31", "33"));
-        boolean isValid = false;
-
-        for(int i = 0; i < tramLines.size(); i++){
-            if (tramLines.get(i).equalsIgnoreCase(nomeLinea)) isValid = true;
-        }
-
-        return nomeLinea != null && isValid && tipoDiLinea.contains(getString(R.string.tramLinesScroll));
-    }
+    private boolean isLineaTram() {return nomeLinea != null && tipoDiLinea.contains(getString(R.string.tramLinesScroll));}
 
     private void applyMetroLineColor(View card, int lineColor) {
         View lineTop = card.findViewById(R.id.lineTop);
@@ -1282,8 +1273,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             if (isLineaTram())
                 interchanges = InterchangesDB.getTramInterchanges(this);
-            else if (tipoDiLinea.contains(getString(R.string.tramLinesScroll)) && !isLineaTram())
-                interchanges = StationDB.getInterchangesTrams();
             else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
                 interchanges = InterchangesDB.getFilobusInterchanges(this);
             else if (isLineaMetro())
@@ -1299,7 +1288,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             else if(isLineaTilo())
                 interchanges = InterchangesDB.getTILOInterchanges(this);
             else
-                interchanges = StationDB.getInterchanges(this);
+                interchanges = new ArrayList<>();
 
             Set<String> seenKeys = new LinkedHashSet<>();
             List<InterchangeInfo> matched = new ArrayList<>();
@@ -1495,15 +1484,13 @@ public class LinesDetailActivity extends AppCompatActivity {
             Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
-
-            boolean isValidNewInterface = (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTram() || isLineaTilo() || tipoDiLinea.contains(getString(R.string.filobusKey)));
-
-            int lineColor = isValidNewInterface ? ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea)) : 0;
+            
+            int lineColor = ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea));
             LayoutInflater inflater = LayoutInflater.from(this);
 
             Map<String, List<View>> cache = new LinkedHashMap<>();
 
-            List<View> mainViews = buildViewsForList(mainItems, inflater, container, isValidNewInterface, lineColor);
+            List<View> mainViews = buildViewsForList(mainItems, inflater, container, lineColor);
             cache.put("Main", mainViews);
 
             for (Map.Entry<String, List<InterchangeInfo>> entry : branchMap.entrySet()) {
@@ -1519,7 +1506,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     combined.addAll(mainItems);
                 }
 
-                List<View> views = buildViewsForList(combined, inflater, container, isValidNewInterface, lineColor);
+                List<View> views = buildViewsForList(combined, inflater, container, lineColor);
                 cache.put(entry.getKey(), views);
             }
 
@@ -1530,67 +1517,43 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
     }
 
-    private List<View> buildViewsForList(List<InterchangeInfo> items, LayoutInflater inflater, LinearLayout container, boolean isMetro, int lineColor) {
+    private List<View> buildViewsForList(List<InterchangeInfo> items, LayoutInflater inflater, LinearLayout container, int lineColor) {
         List<View> views = new ArrayList<>();
 
         for (InterchangeInfo evento : items) {
             View card = inflater.inflate(
-                isMetro ? R.layout.item_interchange : R.layout.interchange_info_old,
+                R.layout.item_interchange,
                 container,
                 false
             );
 
-            if (isMetro) {
-                ImageView icona = card.findViewById(R.id.iconTransport);
-                if (icona != null) icona.setImageResource(evento.getCardImageID());
+            ImageView icona = card.findViewById(R.id.iconTransport);
+            if (icona != null) icona.setImageResource(evento.getCardImageID());
 
-                TextView titolo = card.findViewById(R.id.txtTitle);
-                if (titolo != null) titolo.setText(evento.getKey().toUpperCase());
+            TextView titolo = card.findViewById(R.id.txtTitle);
+            if (titolo != null) titolo.setText(evento.getKey().toUpperCase());
 
-                ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-                if (chipGroup != null && evento.getLines() != null) {
-                    chipGroup.removeAllViews();
-                    for (String lineName : evento.getLines()) {
-                        if (!lineName.equalsIgnoreCase(nomeLinea))
-                            chipGroup.addView(createChip(lineName));
-                    }
-                }
-
-                TextView emptyInterchanges = card.findViewById(R.id.noInterchangesTxt);
-                ImageView iconTransport = card.findViewById(R.id.iconTransport);
-                if (chipGroup != null && chipGroup.getChildCount() == 0 && emptyInterchanges != null) {
-                    emptyInterchanges.setVisibility(View.VISIBLE);
-                    iconTransport.setImageResource(R.drawable.ic_no_interchanges);
-                }
-
-                applyMetroLineColor(card, lineColor);
-            }
-            else {
-                ImageView icona = card.findViewById(R.id.iconTransport);
-                if (icona != null) {
-                    icona.setImageResource(evento.getCardImageID());
-                    icona.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.text_primary)));
-                }
-
-                TextView titolo = card.findViewById(R.id.txtTitle);
-                TextView desc = card.findViewById(R.id.txtLineCode);
-                TextView txtStationSub = card.findViewById(R.id.txtStationSubtitle);
-
-                if (txtStationSub != null) txtStationSub.setText(evento.getKey());
-                if (titolo != null) titolo.setText(evento.getKey().equals("Lodi TIBB") ? "Milano Scalo Romana" : evento.getKey());
-                if (desc != null) desc.setText(nomeLinea);
-
-                ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
-                if (chipGroup != null && evento.getLines() != null) {
-                    chipGroup.removeAllViews();
-                    for (String lineName : evento.getLines()) chipGroup.addView(createChip(lineName));
+            ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+            if (chipGroup != null && evento.getLines() != null) {
+                chipGroup.removeAllViews();
+                for (String lineName : evento.getLines()) {
+                    if (!lineName.equalsIgnoreCase(nomeLinea))
+                        chipGroup.addView(createChip(lineName));
                 }
             }
 
+            TextView emptyInterchanges = card.findViewById(R.id.noInterchangesTxt);
+            ImageView iconTransport = card.findViewById(R.id.iconTransport);
+            if (chipGroup != null && chipGroup.getChildCount() == 0 && emptyInterchanges != null) {
+                emptyInterchanges.setVisibility(View.VISIBLE);
+                iconTransport.setImageResource(R.drawable.ic_no_interchanges);
+            }
+
+            applyMetroLineColor(card, lineColor);
             views.add(card);
         }
 
-        if (isMetro && !views.isEmpty()) {
+        if (!views.isEmpty()) {
             View lineTop = views.get(0).findViewById(R.id.lineTop);
             View lineBottom = views.get(views.size() - 1).findViewById(R.id.lineBottom);
 
