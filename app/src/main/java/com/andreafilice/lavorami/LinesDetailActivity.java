@@ -233,6 +233,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             showDialogTutorialBus();
             DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, true);
         }
+
         cachedInterTypeface = ResourcesCompat.getFont(this, R.font.inter);
         cachedFontMainTypeface = ResourcesCompat.getFont(this, R.font.font_main);
         Typeface typeface = cachedInterTypeface;
@@ -279,6 +280,9 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
+            if (!chipMappa.isChecked()) {
+                showDialogTutorialBus();
+            }
             chipMappa.setChecked(true);
             dismissActiveBranchDialog();
 
@@ -2813,7 +2817,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         btnClose.setEnabled(false);
 
         Runnable unlockRunnable = () -> unlockCloseButton(dialog, btnClose);
-        handler.postDelayed(unlockRunnable, 4000);
+        handler.postDelayed(unlockRunnable, 3000);
 
         dialog.setOnDismissListener(dialogInterface -> handler.removeCallbacks(unlockRunnable));
 
