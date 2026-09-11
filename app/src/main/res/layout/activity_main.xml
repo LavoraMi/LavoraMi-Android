@@ -141,7 +141,8 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_down"
-                    android:padding="8dp"
+                    android:padding="6dp"
+                    android:layout_marginEnd="-5dp"
                     app:tint="@android:color/white" />
             </LinearLayout>
 
