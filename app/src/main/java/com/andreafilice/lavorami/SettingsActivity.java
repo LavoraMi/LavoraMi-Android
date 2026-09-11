@@ -526,27 +526,26 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void run() {
                 DataManager.saveStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI");
+                DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
                 DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_SWITCH, true);
                 DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STARTWORKS, true);
                 DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_ENDWORKS, true);
                 DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_STRIKES, true);
                 DataManager.saveBoolData(DataKeys.KEY_NOTIFICATION_PUSH, true);
-                DataManager.saveBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true);
                 DataManager.saveIntData(DataKeys.KEY_HOURS_NOTIFICATIONS, 10);
                 DataManager.saveIntData(DataKeys.KEY_MINUTES_NOTIFICATIONS, 00);
                 DataManager.saveArrayStringsData(DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
-                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
-                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new HashSet<>());
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_ERROR_MESSAGES, false);
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_BANNERS, true);
                 DataManager.saveBoolData(DataKeys.KEY_REQUIRE_BIOMETRICS, true);
+                DataManager.saveBoolData(DataKeys.KEY_HAPTIC_FEEDBACKS, true);
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_TRANSLATE_BUTTON, false);
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
-                DataManager.saveStringData(DataKeys.KEY_DEFAULT_THEME, "Sistema");
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new HashSet<>());
+                DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
+                DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
                 DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, false);
                 DataManager.saveBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
-                DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
-                DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false);
 
                 Toast.makeText(SettingsActivity.this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                 favorites.clear();
