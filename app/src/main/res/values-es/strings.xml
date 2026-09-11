@@ -447,7 +447,7 @@
     <string name="widgetSettingsTitle">Abrir Widget Línea</string>
     <string name="widgetSettingsDeps">Al hacer clic en el widget, se abre la línea seleccionada. Si está desactivada, se abre la aplicación en la pantalla de inicio.</string>
     <string name="dialog_bus_title">Mapas de autobuses</string>
-    <string name="dialog_bus_desc_1">¡Consulta los mapas de los autobuses que usas a diario! ¡Detallados y creados especialmente para ti! [Función disponible para las líneas de Movibus]</string>
+    <string name="dialog_bus_desc_1">¡Echa un vistazo a los mapas de las líneas de autobús que utilizas a diario! ¡Son detallados y están diseñados especialmente para ti! [Función disponible para las líneas de MOVIBUS].</string>
     <string name="dialog_bus_desc_2">¡Selecciona una parada para ver el horario del autobús! Simplemente haz clic en ella para ver las próximas salidas.</string>
     <string name="emptySubtitleNoResultsWorks">Intenta buscar otra cosa.</string>
     <string name="saveYourLinesTitle">Guarda tus líneas</string>

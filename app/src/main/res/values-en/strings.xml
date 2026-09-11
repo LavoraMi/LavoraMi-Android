@@ -447,7 +447,7 @@
     <string name="widgetSettingsTitle">Open Line Widget</string>
     <string name="widgetSettingsDeps">Clicking on the selected line opens it in the Widget. If this option is disabled, it opens the app on the Home screen.</string>
     <string name="dialog_bus_title">Bus Maps</string>
-    <string name="dialog_bus_desc_1">From now on you can select your stop from the map</string>
+    <string name="dialog_bus_desc_1">Take a look at the bus maps for the routes you use every day! They’re detailed and designed especially for you! [Feature available for MOVIBUS routes].</string>
     <string name="dialog_bus_desc_2">Select a stop to view the bus schedule! Simply click on it to see the upcoming departures.</string>
     <string name="emptySubtitleNoResultsWorks">Why not try looking for something else?</string>
     <string name="saveYourLinesTitle">Save your lines</string>

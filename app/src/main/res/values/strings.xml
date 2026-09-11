@@ -446,8 +446,7 @@
     <string name="widgetSettingsTitle">Apri Linea Widget</string>
     <string name="widgetSettingsDeps">Apre la linea selezionata per il Widget quando ci clicchi sopra. Se disattivata, apre l\'app nella schermata Home.</string>
     <string name="dialog_bus_title">Mappe per i Bus</string>
-    <string name="dialog_bus_desc_1">Guarda le Mappe dei bus che usi ogni giorno! Dettaglaite e create appositamente per te! [Funzione disponibile per le linee Movibus]</string>
-
+    <string name="dialog_bus_desc_1">Guarda le Mappe dei bus che usi ogni giorno! Dettagliate e create appositamente per te! [Funzione disponibile per linee MOVIBUS].</string>
     <string name="emptySubtitleNoResultsWorks">Prova a cercare qualcos\'altro.</string>
     <string name="saveYourLinesTitle">Salva le tue linee</string>
     <string name="saveYourLinesDeps">Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account.</string>
@@ -464,8 +463,8 @@
     <string name="ospedaleInterchange">Ospedale</string>
     <string name="dialog_bus_title_1">Visualizza le Mappe</string>
     <string name="dialog_bus_title_2">Selezione una fermata</string>
-    <string name="dialog_bus_desc_2">Seleziona una feramta e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze</string>
+    <string name="dialog_bus_desc_2">Seleziona una fermata e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze.</string>
     <string name="dialog_bus_title_3">Cambia Direzione</string>
-    <string name="dialog_bus_desc_3">Cambia la Direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!</string>
+    <string name="dialog_bus_desc_3">Cambia la direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!</string>
     <string name="busSubtitlePopUp">Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata.</string>
 </resources>
