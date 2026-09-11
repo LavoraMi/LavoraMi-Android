@@ -283,8 +283,8 @@
     <string name="viewInterchangesText">Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio.</string>
     <string name="worksiteStop">Fermata Cantiere</string>
     <string name="worksiteStopText">Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)</string>
-    <string name="fermataExample">Lavori di potenziamento infrastrutture nella tratta Palazzolo, Camnago Lenate, Seveso con modifiche alla circolazione dei treni</string>
-    <string name="rallentamento">Rallentamento</string>
+    <string name="fermataExample">Nei giorni feriali (escluso il sabato), per lavori di potenziamento infrastrutturale nella tratta Palazzolo – Camnago/L. – Seveso, i seguenti treni circoleranno tra Milano Cadorna e Palazzolo M. a eccezione del treno “R” 11689 che sarà soppresso per l’intero percorso. Si segnala che le corse autobus d’orario 1689A, 691A e 693A saranno sostituite rispettivamente dalle corse 3689A, 2691A e 2693A.</string>
+    <string name="rallentamento">Rallentamenti</string>
     <string name="disclaimerAppFunctions">Tutti gli esempi riportati sono a scopo esemplificativo, possono essere eventi attualmente in corso o passati.</string>
     <string name="viewLinesOnMap">Mappe</string>
     <string name="viewLinesOnMapText">Visualizza i percorsi delle linee che preferisci sulla mappa, per non perdersi e per sapere sempre dove vai.</string>

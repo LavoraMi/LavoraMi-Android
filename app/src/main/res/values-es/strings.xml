@@ -284,7 +284,7 @@
     <string name="viewInterchangesText">Visualiza las líneas que hacen intercambios con TU línea o, en el caso de los autobuses, dónde tienen parada final con correspondencia.</string>
     <string name="worksiteStop">Parada en Obras</string>
     <string name="worksiteStopText">No solo \"obras en curso\": te explicamos qué tipo de trabajo se está realizando y las consecuencias que puede tener ese tramo en obras (desvíos, paradas suspendidas...).</string>
-    <string name="fermataExample">Obras de mejora de infraestructuras en el tramo Palazzolo, Camnago Lenate, Seveso con modificaciones en la circulación de trenes</string>
+    <string name="fermataExample">Los días laborables (excepto los sábados), debido a obras de mejora de las infraestructuras en el tramo Palazzolo – Camnago/L. – Seveso, los siguientes trenes circularán entre Milán Cadorna y Palazzolo M., a excepción del tren «R» 11689, que quedará suprimido en todo su recorrido. Cabe señalar que los servicios de autobús de las líneas 1689A, 691A y 693A serán sustituidos, respectivamente, por los servicios 3689A, 2691A y 2693A.</string>
     <string name="rallentamento">Ralentización</string>
     <string name="disclaimerAppFunctions">Todos los ejemplos mostrados son meramente ilustrativos y pueden referirse a eventos actuales o pasados.</string>
     <string name="viewLinesOnMap">Mapas</string>

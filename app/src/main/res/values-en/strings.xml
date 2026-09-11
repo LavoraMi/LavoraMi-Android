@@ -284,7 +284,7 @@
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
     <string name="worksiteStop">Worksite Stop</string>
     <string name="worksiteStopText">Not just \"work in progress\", we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc.).</string>
-    <string name="fermataExample">Infrastructure upgrade works on the Palazzolo, Camnago Lenate, and Seveso sections, with changes to train traffic</string>
+    <string name="fermataExample">On weekdays (excluding Saturdays), due to infrastructure upgrade works on the Palazzolo – Camnago/L. – Seveso section, the following trains will run between Milano Cadorna and Palazzolo M., with the exception of the “R” train 11689, which will be cancelled for the entire journey. Please note that scheduled bus services 1689A, 691A and 693A will be replaced by services 3689A, 2691A and 2693A respectively.</string>
     <string name="rallentamento">Slowdown</string>
     <string name="disclaimerAppFunctions">All examples given are for illustrative purposes only and may be current or past events.</string>
     <string name="viewLinesOnMap">Maps</string>
