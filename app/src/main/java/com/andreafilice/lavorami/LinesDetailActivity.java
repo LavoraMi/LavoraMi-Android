@@ -18,7 +18,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -45,16 +44,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
-import androidx.media3.common.MediaItem;
-import androidx.media3.common.Player;
-import androidx.media3.exoplayer.ExoPlayer;
-import androidx.media3.ui.PlayerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -2808,37 +2802,20 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
         }
 
-        PlayerView playerView = dialog.findViewById(R.id.videoTutoriaBus);
         Button btnClose = dialog.findViewById(R.id.btn_close_tutorial);
-        
+
         btnClose.setEnabled(false);
 
-        String videoUri = "android.resource://" + getPackageName() + "/" + (isDarkMode() ? R.raw.bus_tutorial : R.raw.bus_tutorial_light);
-        MediaItem mediaItem = MediaItem.fromUri(Uri.parse(videoUri));
+        Runnable unlockRunnable = () -> unlockCloseButton(dialog, btnClose);
+        handler.postDelayed(unlockRunnable, 4000);
 
-        ExoPlayer player = new ExoPlayer.Builder(this).build();
-        playerView.setPlayer(player);
-
-        player.setMediaItem(mediaItem);
-        player.setRepeatMode(Player.REPEAT_MODE_ALL);
-        player.setVolume(0f);
-        player.prepare();
-        player.setPlayWhenReady(true);
-
-        player.addListener(new Player.Listener() {
-            @Override
-            public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
-                if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_REPEAT) {
-                    unlockCloseButton(dialog, btnClose);
-                }
-            }
-        });
-
-        dialog.setOnDismissListener(dialogInterface -> {
-            player.release();
-        });
+        dialog.setOnDismissListener(dialogInterface -> handler.removeCallbacks(unlockRunnable));
 
         dialog.show();
     }
