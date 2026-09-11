@@ -543,6 +543,7 @@ public class SettingsActivity extends AppCompatActivity {
                 DataManager.saveBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true);
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new HashSet<>());
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
+                DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, "");
                 DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
                 DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, false);
                 DataManager.saveBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
