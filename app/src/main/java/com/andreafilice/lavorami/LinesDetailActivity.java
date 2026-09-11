@@ -1484,7 +1484,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             Collections.sort(mainItems, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
             for (List<InterchangeInfo> list : branchMap.values())
                 Collections.sort(list, (a, b) -> Integer.compare(a.getLineOrder(), b.getLineOrder()));
-            
+
             int lineColor = ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea));
             LayoutInflater inflater = LayoutInflater.from(this);
 
