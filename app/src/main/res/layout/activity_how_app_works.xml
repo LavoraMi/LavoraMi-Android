@@ -323,7 +323,7 @@
                     android:id="@+id/shimmerTextAnim"
                     android:layout_width="200dp"
                     android:layout_height="25dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="12dp"
                     android:fontFamily="@font/inter"
                     android:gravity="left"
                     android:text="Metro M1"
