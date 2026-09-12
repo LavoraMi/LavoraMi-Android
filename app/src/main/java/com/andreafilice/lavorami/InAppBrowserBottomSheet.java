@@ -363,10 +363,11 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
         loadTimeoutRunnable = () -> {
             if (progressBar != null && progressBar.getVisibility() == View.VISIBLE) {
-                Log.w("WebViewTimeout", "Timeout caricamento pagina - forzatura completamento");
+                Log.w("WebViewTimeout", "Timeout Caricamento Pagina.");
                 cancelLoadTimeout();
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "Caricamento lento - riprova se necessario", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getContext(), getString(R.string.errorBrowserSlowToast), Toast.LENGTH_SHORT).show();
             }
         };
 

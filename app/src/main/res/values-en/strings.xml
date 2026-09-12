@@ -468,4 +468,5 @@
     <string name="dialog_bus_title_3">Change Direction</string>
     <string name="dialog_bus_desc_3">Change your bus direction by selecting the button with this icon. You will be able to see the stops in the opposite direction!</string>
     <string name="busSubtitlePopUp">You can view this page again by clicking on the \"Map\" tab when it is selected.</string>
+    <string name="errorBrowserSlowToast">The page is taking longer to load.</string>
 </resources>
