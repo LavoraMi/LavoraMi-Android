@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         applicationId = "com.andreafilice.lavorami"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 62
         versionName = "2.0.0"
