@@ -455,7 +455,7 @@
     <string name="connectionErrorCloudToast">Se ha producido un error de conexión al guardar los datos de la Cuenta.</string>
     <string name="reportInfosButton">Informar De Errores</string>
     <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
-    <string name="connectionErrorBasic">Error de conexión.</string>
+    <string name="connectionErrorBasic">Error de conexión. Inténtalo de nuevo.</string>
     <string name="usernameCharacterLimits">El Nombre De Usuario no puede tener menos de 3 caracteres.</string>
     <string name="rewatchWrappedTitle">Vuelve a ver Wrapped</string>
     <string name="rewatchWrappedDeps">A partir de ahora, encontrarás el Wrapped en la sección \"Cuenta\" de los ajustes.</string>

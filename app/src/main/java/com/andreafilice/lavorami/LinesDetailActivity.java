@@ -1188,7 +1188,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.emptyView)).setText(!manager.isConnected() ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
         ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(!manager.isConnected() ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
-        Toast.makeText(LinesDetailActivity.this, "Errore di connessione, riprova", Toast.LENGTH_SHORT).show();
+        Toast.makeText(LinesDetailActivity.this, getString(R.string.connectionErrorBasic), Toast.LENGTH_SHORT).show();
     }
 
     private void mostraBottomSheetTraduzione(EventDescriptor evento, String cleanDet, String langCode) {

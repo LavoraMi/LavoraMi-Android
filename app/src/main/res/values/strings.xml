@@ -453,7 +453,7 @@
     <string name="connectionErrorCloudToast">Errore di connessione durante il salvataggio dei dati sull\'Account.</string>
     <string name="reportInfosButton">Segnala Incorrettezze</string>
     <string name="reportInfosTitleMail">Segnalazione Informazioni Errate</string>
-    <string name="connectionErrorBasic">Errore di connessione.</string>
+    <string name="connectionErrorBasic">Errore di connessione. Riprova.</string>
     <string name="usernameCharacterLimits">Il Nome Utente non può contenere meno di 3 caratteri.</string>
     <string name="rewatchWrappedTitle">Riguarda il Wrapped</string>
     <string name="rewatchWrappedDeps">D\'ora in poi, troverai il Wrapped sotto la sezione \"Account\" nelle impostazioni</string>
