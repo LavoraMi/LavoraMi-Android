@@ -890,6 +890,7 @@ public class MainActivity extends AppCompatActivity {
                                 runOnUiThread(() -> {
                                     events = datiRaw;
                                     EventData.listaEventiCompleta = events;
+
                                     if(!alreadyRefreshedLines) {
                                         new Thread(() -> NotificationScheduler.scheduleWorkNotifications(MainActivity.this, EventData.listaEventiCompleta)).start();
                                         alreadyRefreshedLines = true;
@@ -933,7 +934,6 @@ public class MainActivity extends AppCompatActivity {
 
                     errorDeps.setText(t.getMessage());
                     errorDeps.setVisibility((showErrorMessage) ? View.VISIBLE : View.GONE);
-                    EventData.networkError = true;
 
                     loadingLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);

@@ -286,8 +286,7 @@ public class WidgetLines extends AppWidgetProvider {
                     }
 
                     EventData.listaEventiCompleta = datiRaw;
-                    EventData.networkError = false;
-                } else EventData.networkError = true;
+                }
 
                 int[] counts = (EventData.listaEventiCompleta != null) ? countWorksForLine(info) : new int[]{0, 0};
                 renderDetailView(context, appWidgetManager, appWidgetId, info, counts, false);
@@ -295,7 +294,6 @@ public class WidgetLines extends AppWidgetProvider {
 
             @Override
             public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
-                EventData.networkError = true;
                 renderDetailView(context, appWidgetManager, appWidgetId, info, new int[]{0, 0}, false);
             }
         });

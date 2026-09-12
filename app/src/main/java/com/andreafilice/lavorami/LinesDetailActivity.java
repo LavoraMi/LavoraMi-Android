@@ -1049,7 +1049,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<ArrayList<EventDescriptor>> call, Throwable t) {
-                    EventData.networkError = true;
                     mostraErroreCaricamento();
                 }
             });
@@ -1169,24 +1168,26 @@ public class LinesDetailActivity extends AppCompatActivity {
             container.addView(card);
         }
 
+        NetworkManager manager = new NetworkManager(this);
         foundAtLeastOne = found;
         wrapper.setVisibility(found ? View.VISIBLE : View.GONE);
         lavoriNested.setVisibility(found ? View.VISIBLE : View.GONE);
         emptyView.setVisibility(found ? View.GONE : View.VISIBLE);
 
-        ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
-        ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+        ((TextView) findViewById(R.id.emptyView)).setText(!manager.isConnected() ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
+        ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(!manager.isConnected() ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
     }
 
     private void mostraErroreCaricamento() {
         LinearLayout container = findViewById(R.id.containerLavori);
+        NetworkManager manager = new NetworkManager(this);
         View wrapper = findViewById(R.id.lavoriSezioneWrapper);
         View emptyView = findViewById(R.id.emptyViewContainer);
         if (wrapper != null) wrapper.setVisibility(View.GONE);
         if (emptyView != null) emptyView.setVisibility(View.VISIBLE);
 
-        ((TextView) findViewById(R.id.emptyView)).setText(EventData.networkError ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
-        ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(EventData.networkError ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+        ((TextView) findViewById(R.id.emptyView)).setText(!manager.isConnected() ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
+        ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(!manager.isConnected() ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
         Toast.makeText(LinesDetailActivity.this, "Errore di connessione, riprova", Toast.LENGTH_SHORT).show();
     }
 
