@@ -280,7 +280,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
-            if (!chipMappa.isChecked() && tipoDiLinea.contains("Movibus")) showDialogTutorialBus();
+            if (!chipMappa.isChecked() && busLinesWithMap.contains(nomeLinea)) showDialogTutorialBus();
             
             chipMappa.setChecked(true);
             dismissActiveBranchDialog();
