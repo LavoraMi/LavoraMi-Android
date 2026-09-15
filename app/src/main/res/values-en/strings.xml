@@ -162,7 +162,7 @@
     <string name="requestDataIntentSubject">Request for my information</string>
     <string name="requestDataIntentPart1">"Good morning, I would like to request that my data be sent in  "</string>
     <string name="requestDataIntentPart2">" of the account via email: "</string>
-    <string name="requestDataIntentPart3">"Message sent via the LavoraMi app. "</string>
+    <string name="requestDataIntentPart3">Message sent via the LavoraMi app.</string>
     <string name="manageAccountDeps">Manage your Account</string>
     <string name="favoritesDeps">Favourites</string>
     <string name="trenordLines">Trenord Lines</string>

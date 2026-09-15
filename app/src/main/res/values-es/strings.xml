@@ -50,7 +50,7 @@
     <string name="signInPopUpTitle">Inicia sesión en tu cuenta</string>
     <string name="biometricAuthPopUpDeps">Usa tu huella o cara para acceder.</string>
     <string name="advancedOptionsTitle">Opciones Avanzadas</string>
-    <string name="errorMessagesOptions">Mostrar Mensajes Error</string>
+    <string name="errorMessagesOptions">Mostrar Mensajes de Error</string>
     <string name="showErrorsDeps">Muestra mensajes de error cuando falla la descarga de datos desde el servidor.</string>
     <string name="bannerStrikesOptions">Mostrar Banner de Huelgas</string>
     <string name="bannerStrikesDeps">Muestra el banner de huelgas en la pantalla de inicio cuando estén activas.</string>
@@ -453,10 +453,10 @@
     <string name="saveYourLinesTitle">Guarda tus líneas</string>
     <string name="saveYourLinesDeps">Elige qué tipo de datos quieres que se guarden en nuestras bases de datos, para poder acceder a ellos en cualquier momento desde tu Cuenta.</string>
     <string name="connectionErrorCloudToast">Se ha producido un error de conexión al guardar los datos de la Cuenta.</string>
-    <string name="reportInfosButton">Informar De Errores</string>
+    <string name="reportInfosButton">Informar de Errores</string>
     <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
     <string name="connectionErrorBasic">Error de conexión. Inténtalo de nuevo.</string>
-    <string name="usernameCharacterLimits">El Nombre De Usuario no puede tener menos de 3 caracteres.</string>
+    <string name="usernameCharacterLimits">El Nombre de Usuario no puede tener menos de 3 caracteres.</string>
     <string name="rewatchWrappedTitle">Vuelve a ver Wrapped</string>
     <string name="rewatchWrappedDeps">A partir de ahora, encontrarás el Wrapped en la sección \"Cuenta\" de los ajustes.</string>
     <string name="wrappedBannerText">DESCUBRE EL WRAPPED DE ESTE MES</string>
