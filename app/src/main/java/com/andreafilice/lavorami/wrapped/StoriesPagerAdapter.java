@@ -9,8 +9,7 @@ import com.andreafilice.lavorami.R;
 
 public class StoriesPagerAdapter extends FragmentStateAdapter {
     private final int totalStories;
-
-    private final int[] id_storie = {R.raw.august_story1, R.raw.august_story2, R.raw.august_story3, R.raw.august_story4, R.raw.august_story5};
+    private final int[] id_storie = {}; // R.raw.august_story1, R.raw.august_story2, R.raw.august_story3, R.raw.august_story4, R.raw.august_story5
 
     public StoriesPagerAdapter(@NonNull FragmentActivity activity, int totalStories) {
         super(activity);
