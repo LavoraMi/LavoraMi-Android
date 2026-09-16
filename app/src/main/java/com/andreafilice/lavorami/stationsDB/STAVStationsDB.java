@@ -1687,7 +1687,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40936, 9.03111, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.4094, 9.03129, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40947, 9.03167, "Ritorno", "z557"));
-        stations.add(new MetroStation("GAGGIANO Stazione FS", 45.4095, 9.03181, "Ritorno", "z557"));
+        stations.add(new MetroStation("Gaggiano Stazione FS", 45.4095, 9.03181, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40957, 9.03212, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40961, 9.0323, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40964, 9.03246, "Ritorno", "z557"));
@@ -1758,7 +1758,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40965, 9.03245, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40963, 9.03236, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40959, 9.03219, "Main", "z557"));
-        stations.add(new MetroStation("GAGGIANO Stazione FS", 45.4095, 9.03181, "Main", "z557"));
+        stations.add(new MetroStation("Gaggiano Stazione FS", 45.4095, 9.03181, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40939, 9.03131, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40936, 9.03119, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40935, 9.03114, "Main", "z557"));
@@ -1966,7 +1966,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40572, 9.03357, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40563, 9.03358, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40553, 9.0336, "Main", "z557"));
-        stations.add(new MetroStation("GAGGIANO Via Gramsci", 45.40522, 9.03367, "Main", "z557"));
+        stations.add(new MetroStation("Gaggiano Via Gramsci", 45.40522, 9.03367, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40484, 9.03376, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40458, 9.03382, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40431, 9.03387, "Main", "z557"));
@@ -2008,7 +2008,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40424, 9.03844, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40434, 9.03846, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40454, 9.03849, "Main", "z557"));
-        stations.add(new MetroStation("GAGGIANO Via Cornicione/Roma", 45.40469, 9.03852, "Main", "z557"));
+        stations.add(new MetroStation("Gaggiano Via Cornicione/Roma", 45.40469, 9.03852, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40497, 9.03858, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40508, 9.03858, "Main", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40517, 9.03859, "Main", "z557"));
@@ -2056,7 +2056,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40627, 9.03352, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40631, 9.03368, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.4064, 9.03403, "Ritorno", "z557"));
-        stations.add(new MetroStation("GAGGIANO Via Roma", 45.40642, 9.03412, "Ritorno", "z557"));
+        stations.add(new MetroStation("Gaggiano Via Roma", 45.40642, 9.03412, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40649, 9.03436, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40655, 9.0345, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40663, 9.03464, "Ritorno", "z557"));
@@ -2080,9 +2080,9 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40818, 9.03913, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40822, 9.03923, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40834, 9.0396, "Ritorno", "z557"));
-        stations.add(new MetroStation("GAGGIANO Via M. Polo/Cornicione", 45.4085, 9.04014, "Ritorno", "z557"));
+        stations.add(new MetroStation("Gaggiano Via M. Polo/Cornicione", 45.4085, 9.04014, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40921, 9.04247, "Ritorno", "z557"));
-        stations.add(new MetroStation("GAGGIANO Via M. Polo/L. Da Vinci", 45.40963, 9.0438, "Ritorno", "z557"));
+        stations.add(new MetroStation("Gaggiano Via M. Polo/L. Da Vinci", 45.40963, 9.0438, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40975, 9.04421, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40978, 9.04432, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40979, 9.04441, "Ritorno", "z557"));
@@ -2111,7 +2111,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40791, 9.04465, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40787, 9.04454, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40782, 9.04438, "Ritorno", "z557"));
-        stations.add(new MetroStation("GAGGIANO Via De Gasperi", 45.4078, 9.04428, "Main - Ritorno", "z557"));
+        stations.add(new MetroStation("Gaggiano Via De Gasperi", 45.4078, 9.04428, "Main - Ritorno", "z557"));
 
         return stations;
     }
