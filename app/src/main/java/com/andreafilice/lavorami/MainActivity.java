@@ -243,7 +243,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             setupOverlay.setVisibility(View.VISIBLE);
             findViewById(R.id.floatingBottomBar).setVisibility(View.GONE);
-            findViewById(R.id.wrappedBanner).setVisibility(View.GONE);
         }
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
@@ -1095,7 +1094,7 @@ public class MainActivity extends AppCompatActivity {
         MaterialCardView wrappedBanner = findViewById(R.id.wrappedBanner);
 
         isWrappedEnabled = variablesDescriptor.isWrappedEnabled();
-        wrappedBanner.setVisibility(isWrappedEnabled && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? View.VISIBLE : View.GONE);
+        wrappedBanner.setVisibility(isWrappedEnabled && !DataManager.getBoolData(DataKeys.KEY_WRAPPED_OPENED, false) ? (hasCompletedSetup ? View.VISIBLE : View.GONE) : View.GONE);
 
         wrappedBanner.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
