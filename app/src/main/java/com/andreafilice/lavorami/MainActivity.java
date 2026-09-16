@@ -243,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             setupOverlay.setVisibility(View.VISIBLE);
             findViewById(R.id.floatingBottomBar).setVisibility(View.GONE);
+            findViewById(R.id.wrappedBanner).setVisibility(View.GONE);
         }
 
         List<SetupModels.SetupPage> pages = new ArrayList<>();
