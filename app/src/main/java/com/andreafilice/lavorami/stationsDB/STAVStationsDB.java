@@ -1547,4 +1547,21 @@ public class STAVStationsDB {
         stations.add(new MetroStation("Milano Romolo M2/FS", 45.4441, 9.16742, "Main", "z553"));
         return stations;
     }
+
+    public static List<MetroStation> getStationsZ557() {
+        List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("San Vito", 45.41972, 9.01496, "Main", "z557"));
+        stations.add(new MetroStation("GAGGIANO Stazione FS", 45.4095, 9.03181, "Main", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via Gramsci", 45.40522, 9.03367, "Main", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via Cornicione/Roma", 45.40469, 9.03852, "Main", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via De Gasperi", 45.4078, 9.04428, "Main", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via De Gasperi", 45.4078, 9.04428, "Ritorno", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via M. Polo/L. Da Vinci", 45.40963, 9.0438, "Ritorno", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via M. Polo/Cornicione", 45.4085, 9.04014, "Ritorno", "z557"));
+        stations.add(new MetroStation("GAGGIANO Via Roma", 45.40642, 9.03412, "Ritorno", "z557"));
+        stations.add(new MetroStation("GAGGIANO Stazione FS", 45.4095, 9.03181, "Ritorno", "z557"));
+        stations.add(new MetroStation("San Vito", 45.41975, 9.01491, "Ritorno", "z557"));
+
+        return stations;
+    }
 }
