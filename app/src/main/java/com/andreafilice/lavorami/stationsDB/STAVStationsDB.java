@@ -1188,9 +1188,9 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39914, 8.92618, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39922, 8.92711, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39925, 8.92718, "Ritorno", "z553"));
-        stations.add(new MetroStation("NO_DRAW", 45.39925, 8.92725, "Ritorno", "z553"));
-        stations.add(new MetroStation("NO_DRAW", 45.39923, 8.92732, "Ritorno", "z553"));
-        stations.add(new MetroStation("NO_DRAW", 45.39924, 8.92745, "Ritorno", "z553"));
+        stations.add(new MetroStation("NO_DRAW", 45.39924, 8.92725, "Ritorno", "z553"));
+        stations.add(new MetroStation("NO_DRAW", 45.39922, 8.92732, "Ritorno", "z553"));
+        stations.add(new MetroStation("NO_DRAW", 45.39924, 8.92743, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39928, 8.92801, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39938, 8.92945, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39943, 8.93032, "Ritorno", "z553"));
