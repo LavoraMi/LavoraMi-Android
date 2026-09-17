@@ -407,6 +407,7 @@ public class StationDB {
             allStations.addAll(STAVStationsDB.getStationsZ552());
             allStations.addAll(STAVStationsDB.getStationsZ553());
             allStations.addAll(STAVStationsDB.getStationsZ554());
+            allStations.addAll(STAVStationsDB.getStationsZ555());
             allStations.addAll(STAVStationsDB.getStationsZ557());
             allStations.addAll(STAVStationsDB.getStationsZ559());
             allStations.addAll(STAVStationsDB.getStationsZ560());

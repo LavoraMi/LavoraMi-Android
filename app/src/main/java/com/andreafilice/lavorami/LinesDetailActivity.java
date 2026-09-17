@@ -174,7 +174,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
         ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649", "z6C3"));
 
-        ArrayList<String> stavLinesWithMap = new ArrayList<>(Arrays.asList("z551", "z552", "z553", "z554", "z557", "z559", "z560"));
+        ArrayList<String> stavLinesWithMap = new ArrayList<>(Arrays.asList("z551", "z552", "z553", "z554", "z555", "z557", "z559", "z560"));
         busLinesWithMap.addAll(stavLinesWithMap);
 
         lavoriNested = findViewById(R.id.lavoriNested);
@@ -1808,7 +1808,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
         String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
-        String[] linesMultipleRoutes = {"z619", "z647"};
+        String[] linesMultipleRoutes = {"z555", "z619", "z647"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
