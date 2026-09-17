@@ -127,17 +127,17 @@ public class LinesDetailActivity extends AppCompatActivity {
     private TextView txtDirezioneMappa;
     private List<MetroStation> ultimeStazioniDisegnate;
     private Map<String, String> dizionarioAbbreviazioni = Map.of(
-            "p.le", "piazzale",
-            "p.za", "piazza",
-            "p.ta", "porta",
-            "v.le", "viale",
-            "c.so", "corso",
-            "l.go", "largo",
-            "m.te", "monte",
-            "s.",   "san",
-            "c.",   "console",
-            "p.",   "principe"
-            );
+        "p.le", "piazzale",
+        "p.za", "piazza",
+        "p.ta", "porta",
+        "v.le", "viale",
+        "c.so", "corso",
+        "l.go", "largo",
+        "m.te", "monte",
+        "s.",   "san",
+        "c.",   "console",
+        "p.",   "principe"
+    );
 
     SessionManager sessionManager;
     SupabaseAPI api;
