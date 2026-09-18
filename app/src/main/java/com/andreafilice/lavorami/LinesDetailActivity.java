@@ -172,10 +172,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649", "z6C3"));
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560", "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649", "z6C3")); //STAV + Movibus
 
-        ArrayList<String> stavLinesWithMap = new ArrayList<>(Arrays.asList("z551", "z552", "z553", "z554", "z555", "z557", "z559", "z560"));
-        busLinesWithMap.addAll(stavLinesWithMap);
+        ArrayList<String> busWithMapsNotInRelease = new ArrayList<>(Arrays.asList("z301")); //NET
+        busLinesWithMap.addAll(busWithMapsNotInRelease);
 
         lavoriNested = findViewById(R.id.lavoriNested);
         interscambiNested = findViewById(R.id.interscambiNested);
