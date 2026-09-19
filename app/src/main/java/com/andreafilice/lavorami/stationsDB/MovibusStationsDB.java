@@ -4025,7 +4025,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48977, 9.03321, "Ritorno", "z620"));
         stations.add(new MetroStation("NO_DRAW", 45.48975, 9.03342, "Ritorno", "z620"));
         stations.add(new MetroStation("Cornaredo, Milano/Cascina Torretta", 45.48998, 9.0368, "Main", "z620"));
-        stations.add(new MetroStation("Cornaredo, Milano/Cas.na Torretta", 45.4899, 9.03524, "Ritorno", "z620"));
+        stations.add(new MetroStation("Cornaredo, Milano,Cas.na Torretta", 45.4899, 9.03524, "Ritorno", "z620"));
         stations.add(new MetroStation("NO_DRAW", 45.49006, 9.0375, "Main", "z620"));
         stations.add(new MetroStation("NO_DRAW", 45.49007, 9.03784, "Main", "z620"));
         stations.add(new MetroStation("NO_DRAW", 45.49008, 9.03828, "Main", "z620"));
