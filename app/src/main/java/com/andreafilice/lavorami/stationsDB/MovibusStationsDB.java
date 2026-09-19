@@ -712,7 +712,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.58288, 8.9477, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.58264, 8.94808, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.58238, 8.94832, "Main - Ritorno", "z603"));
-        stations.add(new MetroStation("S.V. Olona, Ss33 del Sempione", 45.58153, 8.94893, "Main", "z603"));
+        stations.add(new MetroStation("S.V. Olona, SS33 del Sempione", 45.58153, 8.94893, "Main", "z603"));
         stations.add(new MetroStation("S.V. Olona, Sempione/Pisacane", 45.58131, 8.94913, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.57936, 8.95077, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.57867, 8.95098, "Main", "z603"));
@@ -741,7 +741,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57062, 8.95814, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("Parabiago, Sempione", 45.56906, 8.95989, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.56822, 8.96085, "Main - Ritorno", "z603"));
-        stations.add(new MetroStation("Parabiago, Ss33,S.Lorenzo di Parabiago", 45.56777, 8.96157, "Main", "z603"));
+        stations.add(new MetroStation("Parabiago, SS33,S.Lorenzo di Parabiago", 45.56777, 8.96157, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.56525, 8.96568, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.56215, 8.9688, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.56055, 8.97112, "Main", "z603"));
@@ -752,7 +752,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5604, 8.97151, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55983, 8.9723, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55932, 8.97314, "Main - Ritorno", "z603"));
-        stations.add(new MetroStation("Nerviano, Ss33,la Colorina", 45.55891, 8.97449, "Main", "z603"));
+        stations.add(new MetroStation("Nerviano, SS33,la Colorina", 45.55891, 8.97449, "Main", "z603"));
         stations.add(new MetroStation("Nerviano, Sempione/Matteotti", 45.55900, 8.97416, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55858, 8.97571, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55841, 8.9762, "Main - Ritorno", "z603"));
@@ -795,14 +795,14 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54948, 8.98002, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55338, 8.9755, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55612, 8.98013, "Ritorno", "z603"));
-        stations.add(new MetroStation("Nerviano, Ss33,la Torre", 45.55599, 8.98036, "Main", "z603"));
+        stations.add(new MetroStation("Nerviano, SS33,la Torre", 45.55599, 8.98036, "Main", "z603"));
         stations.add(new MetroStation("Nerviano, Milano,la Torre", 45.55616, 8.98005, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55548, 8.98132, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55333, 8.98398, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55294, 8.98456, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55203, 8.98584, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55161, 8.98663, "Main", "z603"));
-        stations.add(new MetroStation("Nerviano, Ss33,la Guardia", 45.54903, 8.99171, "Main", "z603"));
+        stations.add(new MetroStation("Nerviano, SS33,la Guardia", 45.54903, 8.99171, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.54883, 8.99205, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.54813, 8.99172, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.54795, 8.99155, "Main", "z603"));
@@ -848,7 +848,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55291, 8.98472, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55288, 8.98491, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.5529, 8.98514, "Ritorno", "z603"));
-        stations.add(new MetroStation("Nerviano, Sp109,Supermercato", 45.55347, 8.98632, "Main", "z603"));
+        stations.add(new MetroStation("Nerviano, SP109,Supermercato", 45.55347, 8.98632, "Main", "z603"));
         stations.add(new MetroStation("Nerviano, De Gasperi/Vivaldi", 45.55389, 8.98662, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.5538, 8.98691, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55387, 8.9871, "Main", "z603"));
