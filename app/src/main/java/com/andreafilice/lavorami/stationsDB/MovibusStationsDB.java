@@ -2368,7 +2368,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52592, 9.04662, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52496, 9.04281, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52457, 9.04308, "Main", "z616"));
-        stations.add(new MetroStation("Rho, Ss33,la Lira,Stazione FS", 45.52434, 9.0432, "Main", "z616"));
+        stations.add(new MetroStation("Rho, SS33,la Lira,Stazione FS", 45.52434, 9.0432, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52427, 9.04324, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52425, 9.04332, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52426, 9.04344, "Main", "z616"));
