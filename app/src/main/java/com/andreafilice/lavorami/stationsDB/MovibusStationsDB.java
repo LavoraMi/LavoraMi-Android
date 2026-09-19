@@ -4217,7 +4217,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50912, 8.81663, "Ritorno", "z621"));
         stations.add(new MetroStation("NO_DRAW", 45.50877, 8.81662, "Ritorno", "z621"));
         stations.add(new MetroStation("NO_DRAW", 45.50775, 8.81678, "Ritorno", "z621"));
-        stations.add(new MetroStation("Cuggiono, Della Vittoria fr. 12", 45.50682, 8.81696, "Ritorno", "z621"));
+        stations.add(new MetroStation("Cuggiono, Della Vittoria fr.  12", 45.50682, 8.81696, "Ritorno", "z621"));
         stations.add(new MetroStation("NO_DRAW", 45.50661, 8.81696, "Ritorno", "z621"));
         stations.add(new MetroStation("NO_DRAW", 45.50643, 8.81683, "Ritorno", "z621"));
         stations.add(new MetroStation("NO_DRAW", 45.50637, 8.8169, "Ritorno", "z621"));
