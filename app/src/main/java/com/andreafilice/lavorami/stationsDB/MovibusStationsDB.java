@@ -5484,7 +5484,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50912, 8.81663, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.50877, 8.81662, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.50775, 8.81678, "Ritorno", "z627"));
-        stations.add(new MetroStation("Cuggiono, Della Vittoria fr. 12", 45.50682, 8.81696, "Ritorno", "z627"));
+        stations.add(new MetroStation("Cuggiono, Della Vittoria fr.  12", 45.50682, 8.81696, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.50661, 8.81696, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.50643, 8.81683, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.50637, 8.8169, "Ritorno", "z627"));
@@ -5709,7 +5709,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5644, 8.8579, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56461, 8.85806, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("Dairago, Della Circonvallazione/Zara", 45.5668, 8.85991, "Main", "z627"));
-        stations.add(new MetroStation("Dairago, Della Circonvallazione 48", 45.56576, 8.85904, "Ritorno", "z627"));
+        stations.add(new MetroStation("Dairago, Circonvallazione 48", 45.56576, 8.85904, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56838, 8.86127, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56858, 8.8615, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56879, 8.86187, "Main - Ritorno", "z627"));
@@ -5720,7 +5720,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.56991, 8.86417, "Main - Ritorno", "z627"));
         //dairago->Villa Cortese z625
         stations.add(new MetroStation("Dairago, Damiano Chiesa 11", 45.56922, 8.86455, "Main", "z627"));
-        stations.add(new MetroStation("Dairago, Damiano, Municipio", 45.56843, 8.86502, "Ritorno", "z627"));
+        stations.add(new MetroStation("Dairago, Damiano,Municipio", 45.56843, 8.86502, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56812, 8.86522, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56743, 8.86559, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56692, 8.86576, "Main - Ritorno", "z627"));
@@ -5786,8 +5786,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Villa Cortese, A.Da Giussano 50", 45.56766, 8.89497, "Main", "z627"));
         stations.add(new MetroStation("Villa Cortese, Canova/Perugino", 45.56552, 8.89178, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56612, 8.8934, "Ritorno", "z627"));
-        stations.add(new MetroStation("Villa Cortese, Canpv/Buonarroti", 45.56656, 8.89581, "Ritorno", "z627"));
-       //my mpas
+        stations.add(new MetroStation("Villa Cortese, Canov/Buonarroti", 45.56656, 8.89581, "Ritorno", "z627"));
+        //my maps
         stations.add(new MetroStation("NO_DRAW", 45.56662, 8.89612, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56668, 8.89647, "Main - Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.56667, 8.89669, "Main - Ritorno", "z627"));
@@ -5809,7 +5809,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57749, 8.90705, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.57771, 8.90751, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.57778, 8.90766, "Main", "z627"));
-        stations.add(new MetroStation("S. Giorgio Su Legnano, Restelli 5", 45.57814, 8.90883, "Main", "z627"));
+        stations.add(new MetroStation("S. Giorgio Su Legnano, Restelli  5", 45.57814, 8.90883, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.57849, 8.91001, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.58079, 8.90798, "Main", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.58106, 8.90784, "Main", "z627"));
@@ -5843,7 +5843,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("S. Giorgio Su Legnano, Roma Fr. Vinci", 45.57767, 8.91411, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.57822, 8.9156, "Ritorno", "z627"));
         stations.add(new MetroStation("Legnano, XX Settembre", 45.57863, 8.91529, "Ritorno", "z627"));
-        stations.add(new MetroStation(",Legnano, XX Settembre,S. Giorgio S.L", 45.58189, 8.91291, "Ritorno", "z627"));
+        stations.add(new MetroStation("Legnano, XX Settembre,S. Giorgio S.L", 45.58189, 8.91291, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.58232, 8.91261, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.58255, 8.91228, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.58265, 8.91203, "Ritorno", "z627"));
@@ -5918,7 +5918,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59653, 8.92330, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z627"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Ritorno", "z627"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z627"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z627"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z627"));
         return stations;
     }
