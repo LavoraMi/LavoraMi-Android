@@ -700,8 +700,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59089, 8.93728, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.5908, 8.9372, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59069, 8.93724, "Ritorno", "z603"));
-        stations.add(new MetroStation("S.V. Olona, Ss333 del Sempione/Piave", 45.59045, 8.93736, "Main", "z603"));
-        stations.add(new MetroStation("S.V. Olona, Ss33 del Sempione/Parini", 45.59049, 8.93743, "Ritorno", "z603"));
+        stations.add(new MetroStation("S.V. Olona, SS33 del Sempione/Piave", 45.59045, 8.93736, "Main", "z603"));
+        stations.add(new MetroStation("S.V. Olona, SS33 del Sempione/Parini", 45.59049, 8.93743, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.59007, 8.93792, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.58825, 8.93939, "Main - Ritorno", "z603"));
         stations.add(new MetroStation("S.V. Olona, Italia", 45.58583, 8.9435, "Main", "z603"));
@@ -791,7 +791,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54782, 8.97711, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.54788, 8.97726, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.54798, 8.97772, "Ritorno", "z603"));
-        stations.add(new MetroStation("Nerviano, Giovanni XXIII,Ex Mattaiolo", 45.54936, 8.97982, "Ritorno", "z603"));
+        stations.add(new MetroStation("Nerviano, Giovanni XXIII,Ex Mattatoio", 45.54936, 8.97982, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.54948, 8.98002, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55338, 8.9755, "Ritorno", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.55612, 8.98013, "Ritorno", "z603"));
