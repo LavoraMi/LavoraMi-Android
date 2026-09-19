@@ -2,7 +2,6 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lavoro"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -52,61 +51,70 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="16dp"
             android:clickable="false">
 
             <ImageView
                 android:id="@+id/iconEvent"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="@id/txtTitle"
+                app:layout_constraintBottom_toBottomOf="@id/txtTitle" />
 
             <TextView
                 android:id="@+id/txtTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
+                android:minHeight="24dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/font_main"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/iconEvent"
-                app:layout_constraintTop_toTopOf="@id/iconEvent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iconLuogo"
-                android:layout_width="16dp"
+                android:layout_width="24dp"
                 android:layout_height="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginStart="5dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/ic_work_location"
-                app:tint="@color/text_primary"
                 android:visibility="gone"
+                app:tint="@color/text_primary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iconEvent"/>
+                app:layout_constraintTop_toTopOf="@id/txtRoute"
+                app:layout_constraintBottom_toBottomOf="@id/txtRoute" />
 
             <TextView
                 android:id="@+id/txtRoute"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
+                android:minHeight="20dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:fontFamily="@font/inter"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtTitle"
-                app:layout_constraintTop_toBottomOf="@id/txtTitle"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollChips"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:scrollbars="none"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtRoute">
 
                 <com.google.android.material.chip.ChipGroup
@@ -132,8 +140,8 @@
                 android:id="@+id/txtEndDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_primary"
                 android:fontFamily="@font/inter"
+                android:textColor="@color/text_primary"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/txtStartDate" />
@@ -148,34 +156,46 @@
                 android:progressDrawable="@drawable/rounded_progress_bar"
                 android:minHeight="0dp"
                 android:maxHeight="6dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtStartDate" />
 
             <TextView
                 android:id="@+id/txtOperator"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:minHeight="24dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
                 android:textAlignment="center"
                 android:textColor="@color/text_primary"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/font_main"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/progressBarDate" />
 
             <ImageView
                 android:id="@+id/open_close_descriprion"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="12dp"
                 android:src="@drawable/ic_down"
                 android:rotation="-90"
                 app:tint="@color/text_primary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/progressBarDate"/>
+                app:layout_constraintTop_toTopOf="@id/txtOperator"
+                app:layout_constraintBottom_toBottomOf="@id/txtOperator" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierFooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="txtOperator,open_close_descriprion" />
 
             <TextView
                 android:id="@+id/txtDescription"
@@ -186,27 +206,26 @@
                 android:textColor="@color/desc"
                 android:textSize="13sp"
                 android:fontFamily="@font/inter"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/open_close_descriprion" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierFooter" />
 
             <Button
-                android:visibility="gone"
                 android:id="@+id/btnTranslate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
                 android:backgroundTint="@color/redMetro"
                 android:text="@string/translateBtnText"
                 android:textColor="@color/White"
-                app:icon="@drawable/ic_translate_button"
                 android:fontFamily="@font/font_main"
+                app:icon="@drawable/ic_translate_button"
                 app:iconPadding="10dp"
                 app:iconTint="@color/White"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDescription"
-                tools:layout_editor_absoluteX="-4dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDescription"
+                app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
