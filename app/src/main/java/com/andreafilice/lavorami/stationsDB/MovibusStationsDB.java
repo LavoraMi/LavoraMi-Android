@@ -5186,7 +5186,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57106, 8.86387, "Main - Ritorno", "z625"));
         stations.add(new MetroStation("NO_DRAW", 45.56989, 8.86417, "Main - Ritorno", "z625"));
         stations.add(new MetroStation("Dairago, Damiano Chiesa 11", 45.56922, 8.86455, "Main", "z625"));
-        stations.add(new MetroStation("Dairago, Damiano, Municipio", 45.56843, 8.86502, "Ritorno", "z625"));
+        stations.add(new MetroStation("Dairago, Damiano,Municipio", 45.56843, 8.86502, "Ritorno", "z625"));
         stations.add(new MetroStation("NO_DRAW", 45.56812, 8.86522, "Main - Ritorno", "z625"));
         stations.add(new MetroStation("NO_DRAW", 45.56743, 8.86559, "Main - Ritorno", "z625"));
         stations.add(new MetroStation("NO_DRAW", 45.56692, 8.86576, "Main - Ritorno", "z625"));
@@ -5252,7 +5252,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Villa Cortese, A.Da Giussano 50", 45.56766, 8.89497, "Main", "z625"));
         stations.add(new MetroStation("Villa Cortese, Canova/Perugino", 45.56552, 8.89178, "Ritorno", "z625"));
         stations.add(new MetroStation("NO_DRAW", 45.56612, 8.8934, "Ritorno", "z625"));
-        stations.add(new MetroStation("Villa Cortese, Canpv/Buonarroti", 45.56656, 8.89581, "Ritorno", "z625"));
+        stations.add(new MetroStation("Villa Cortese, Canov/Buonarroti", 45.56656, 8.89581, "Ritorno", "z625"));
         return stations;
     }
 
