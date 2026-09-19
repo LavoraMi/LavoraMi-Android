@@ -2333,7 +2333,7 @@ public class MovibusStationsDB {
 
     public static List<MetroStation> getStationsZ616() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Rho, Ratti 85/Treviso,Liceo Majorna", 45.54047, 9.04258, "Main", "z616"));
+        stations.add(new MetroStation("Rho, Ratti 85/Treviso,Liceo Majorana", 45.54047, 9.04258, "Main", "z616"));
         stations.add(new MetroStation("Rho, Ratti 88,Liceo Majorana", 45.54016, 9.04458, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.53981, 9.04456, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.53983, 9.04266, "Ritorno", "z616"));
@@ -2359,7 +2359,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53298, 9.04115, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.53137, 9.04355, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("Rho, Europa Fr.194,Pome'", 45.53101, 9.04407, "Main", "z616"));
-        stations.add(new MetroStation("Rho, Europa 194/Bersaglio'", 45.53093, 9.04421, "Ritorno", "z616"));
+        stations.add(new MetroStation("Rho, Europa 194/Bersaglio", 45.53093, 9.04421, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.53024, 9.04535, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52971, 9.04606, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.52955, 9.04618, "Main - Ritorno", "z616"));
@@ -2542,7 +2542,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51256, 9.00339, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51221, 9.00293, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.5114, 9.00227, "Ritorno", "z616"));
-        stations.add(new MetroStation("Pregnana M., Marconi fr.67,Stazione FS", 45.5114, 9.00227, "Main", "z616"));
+        stations.add(new MetroStation("Pregnana M., Marconi fr. 67,Stazione FS", 45.5114, 9.00227, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51118, 9.00209, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51117, 9.00198, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51111, 9.00195, "Main", "z616"));
