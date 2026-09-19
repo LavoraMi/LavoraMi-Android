@@ -2730,7 +2730,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57295, 9.02224, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.57274, 9.02225, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.57265, 9.02267, "Main", "z617"));
-        stations.add(new MetroStation("Lainate,F Filzi/Palladio", 45.57214, 9.02252, "Main", "z617"));
+        stations.add(new MetroStation("Lainate, F Filzi/Palladio", 45.57214, 9.02252, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.57047, 9.02203, "Main", "z617"));
         stations.add(new MetroStation("NO_DRAW", 45.57033, 9.02187, "Main", "z617"));
         stations.add(new MetroStation("Lainate, Bramante fr. 2,Scuole", 45.57494, 9.02143, "Ritorno", "z617"));
