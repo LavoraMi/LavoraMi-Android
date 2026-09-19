@@ -1539,7 +1539,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59233, 8.92654, "Main", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59479, 8.92876, "Main", "z611"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Ritorno", "z611"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Main", "z611"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Main", "z611"));
         stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Main - Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Main", "z611"));
@@ -1627,7 +1627,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.58281, 8.91252, "Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.58267, 8.91252, "Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.58215, 8.91271, "Main - Ritorno", "z611"));
-        stations.add(new MetroStation("Legnano, XX Settembre,S. Giorgio S.L.", 45.58188, 8.9129, "Main", "z611"));
+        stations.add(new MetroStation("Legnano, XX Settembre,S. Giorgio S.L", 45.58188, 8.9129, "Main", "z611"));
         stations.add(new MetroStation("Legnano, XX Settembre/S.M. del Carso", 45.58151, 8.91316, "Ritorno", "z611"));
         stations.add(new MetroStation("Legnano, XX Settembre", 45.57867, 8.91525, "Main - Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.57833, 8.91552, "Main - Ritorno", "z611"));
@@ -1641,7 +1641,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("S. Giorgio Su Legnano, Milano 46", 45.57354, 8.92025, "Main", "z611"));
         stations.add(new MetroStation("Canegrate, Milano 37", 45.57354, 8.92026, "Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.57129, 8.92303, "Main", "z611"));
-        stations.add(new MetroStation("Canegrate, XXVI Maggio/Trieste", 45.57047, 8.92396, "Main", "z611"));
+        stations.add(new MetroStation("Canegrate, XXIV Maggio/Trieste", 45.57047, 8.92396, "Main", "z611"));
         stations.add(new MetroStation("Canegrate, XXIV Maggio/Donatori", 45.57047, 8.92396, "Ritorno", "z611"));
         stations.add(new MetroStation("Canegrate, IV Novembre/Garibaldi", 45.56916, 8.92555, "Main - Ritorno", "z611"));
         stations.add(new MetroStation("NO_DRAW", 45.56778, 8.92713, "Main - Ritorno", "z611"));
