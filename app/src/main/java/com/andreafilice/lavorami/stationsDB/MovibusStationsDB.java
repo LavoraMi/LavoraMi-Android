@@ -7977,7 +7977,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57749, 8.90705, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.57771, 8.90751, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.57778, 8.90766, "Main", "z642"));
-        stations.add(new MetroStation("S. Giorgio Su Legnano, Restelli 5", 45.57814, 8.90883, "Main", "z642"));
+        stations.add(new MetroStation("S. Giorgio Su Legnano, Restelli  5", 45.57814, 8.90883, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.57849, 8.91001, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58079, 8.90798, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58106, 8.90784, "Main", "z642"));
