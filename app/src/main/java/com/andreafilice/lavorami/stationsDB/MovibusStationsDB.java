@@ -6407,7 +6407,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59082, 8.90025, "Ritorno", "z636"));
         stations.add(new MetroStation("NO_DRAW", 45.59082, 8.90039, "Ritorno", "z636"));
         stations.add(new MetroStation("NO_DRAW", 45.5909, 8.90069, "Main - Ritorno", "z636"));
-        stations.add(new MetroStation("Legnano, Venegoni 85/Bologna", 45.59152, 8.9025, "Main", "z636"));
+        stations.add(new MetroStation("Legnano, Venegoni 83/Bologna", 45.59152, 8.9025, "Main", "z636"));
         stations.add(new MetroStation("Legnano, Venegoni 116-118/Montecassino", 45.59152, 8.9025, "Ritorno", "z636"));
         stations.add(new MetroStation("Legnano, Del Popolo 9,Stazione FS", 45.59347, 8.90833, "Main", "z636"));
         stations.add(new MetroStation("Legnano, Del Popolo", 45.59347, 8.90833, "Ritorno", "z636"));
@@ -6477,7 +6477,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z636"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Main - Ritorno", "z636"));
         stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Main", "z636"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z636"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z636"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z636"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z636"));
         return stations;
