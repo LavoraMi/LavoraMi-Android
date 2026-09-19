@@ -450,12 +450,12 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59997, 8.91039, "Main", "z602"));
         stations.add(new MetroStation("Legnano, Pietro Micca 29", 45.5996, 8.91063, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.5992, 8.91089, "Main", "z602"));
-        stations.add(new MetroStation("Legnano, P.Micca 3/Carioli", 45.59615, 8.91315, "Main", "z602"));
+        stations.add(new MetroStation("Legnano, P. Micca 3/Cairoli", 45.59615, 8.91315, "Main", "z602"));
         stations.add(new MetroStation("Legnano, XXIX Maggio 180,S. Martino", 45.60361, 8.90691, "Ritorno", "z602"));
         stations.add(new MetroStation("Legnano, XXIX Maggio 102/Mazzini", 45.59932, 8.90938, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59497, 8.9119, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59501, 8.91207, "Ritorno", "z602"));
-        stations.add(new MetroStation("Legnano, Monumento, Stazione FS", 45.59501, 8.91224, "Ritorno", "z602"));
+        stations.add(new MetroStation("Legnano, Monumento,Stazione FS", 45.59501, 8.91224, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59498, 8.91242, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59499, 8.91256, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.5953, 8.91338, "Ritorno", "z602"));
@@ -527,7 +527,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59812, 8.94248, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59809, 8.94264, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59817, 8.94283, "Main", "z602"));
-        stations.add(new MetroStation("Cerro Maggiore, Tessa,Ingr.Autostrada", 45.59941, 8.9443, "Main", "z602"));
+        stations.add(new MetroStation("Cerro Maggiore, Tessa,Ingr. Autostrada", 45.59941, 8.9443, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59964, 8.94458, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59978, 8.94492, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59978, 8.94513, "Main", "z602"));
