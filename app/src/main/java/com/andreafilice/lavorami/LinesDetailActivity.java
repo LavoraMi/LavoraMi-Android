@@ -1627,10 +1627,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         View emptyViewContainer = findViewById(R.id.emptyViewContainer);
         TextView emptyView = findViewById(R.id.emptyView);
 
-        if (emptyViewContainer != null)
-            emptyViewContainer.setVisibility(hasChildren ? View.GONE : View.VISIBLE);
-        if (emptyView != null)
-            emptyView.setText(getString(R.string.noInterchanges));
+        if (emptyViewContainer != null) emptyViewContainer.setVisibility(hasChildren ? View.GONE : View.VISIBLE);
+        if (emptyView != null) emptyView.setText(getString(R.string.noInterchanges));
     }
 
     private void caricaFermateInterscambio() {
@@ -1676,7 +1674,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (detInterscambio.getText().toString().isEmpty()) {
             detInterscambio.setTypeface(detInterscambio.getTypeface(), Typeface.NORMAL);
             layoutDetInterscambio.setVisibility(View.GONE);
-            findViewById(R.id.detInterscambioEmpty).setVisibility(View.VISIBLE);
+            findViewById(R.id.layoutNoInterchanges).setVisibility(View.VISIBLE);
             findViewById(R.id.viewChipGroup).setVisibility(View.GONE);
         }
     }

@@ -359,15 +359,31 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/detInterscambioEmpty"
+        <LinearLayout
+            android:id="@+id/layoutNoInterchanges"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
-            android:textSize="17sp"
-            android:text="@string/noInterchangeStationTitle"
-            android:fontFamily="@font/inter"
-            android:visibility="gone"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iconEmpty"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/ic_no_interchanges"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/detInterscambioEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp"
+                android:text="@string/noInterchangeStationTitle"
+                android:fontFamily="@font/inter"/>
+        </LinearLayout>
 
         <HorizontalScrollView
             android:id="@+id/viewChipGroup"
