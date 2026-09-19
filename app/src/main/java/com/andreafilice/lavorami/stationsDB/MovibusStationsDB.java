@@ -1370,15 +1370,15 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55772, 8.97912, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55706, 8.97865, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55692, 8.97858, "Main - Ritorno", "z606"));
-        stations.add(new MetroStation("Nerviano, Ss33,la Torre", 45.55599, 8.98036, "Main", "z606"));
+        stations.add(new MetroStation("Nerviano, SS33,la Torre", 45.55599, 8.98036, "Main", "z606"));
         stations.add(new MetroStation("Nerviano, Milano,la Torre", 45.55616, 8.98005, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55548, 8.98132, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55333, 8.98398, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55294, 8.98456, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55203, 8.98584, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.55161, 8.98663, "Main - Ritorno", "z606"));
-        stations.add(new MetroStation("Nerviano, Ss33,la Guardia", 45.5486, 8.99252, "Main", "z606"));
-        stations.add(new MetroStation("Nerviano, Ss33,la Guardia", 45.54903, 8.99171, "Ritorno", "z606"));
+        stations.add(new MetroStation("Nerviano, SS33,la Guardia", 45.5486, 8.99252, "Main", "z606"));
+        stations.add(new MetroStation("Nerviano, SS33,la Guardia", 45.54903, 8.99171, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54629, 8.99717, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54585, 8.99818, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54491, 9.00159, "Main - Ritorno", "z606"));
@@ -1394,7 +1394,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54462, 9.0027, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("Pogliano Milanese, Sempione,Bettolino", 45.54427, 9.0041, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54403, 9.00519, "Main - Ritorno", "z606"));
-        stations.add(new MetroStation("Pogliano Milanese, Ss33,Bettolino", 45.54394, 9.00592, "Main", "z606"));
+        stations.add(new MetroStation("Pogliano Milanese, SS33,Bettolino", 45.54394, 9.00592, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54379, 9.00758, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54368, 9.00816, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54302, 9.0105, "Ritorno", "z606"));
@@ -1404,7 +1404,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54272, 9.01116, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54266, 9.01124, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54262, 9.01154, "Ritorno", "z606"));
-        stations.add(new MetroStation("Pogliano Milanese, Ss33,Barbaiana", 45.54301, 9.01035, "Main", "z606"));
+        stations.add(new MetroStation("Pogliano Milanese, SS33,Barbaiana", 45.54301, 9.01035, "Main", "z606"));
         stations.add(new MetroStation("Lainate, Sempione 12,Barbaiana", 45.54247, 9.012, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54285, 9.01069, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54268, 9.01071, "Main", "z606"));
