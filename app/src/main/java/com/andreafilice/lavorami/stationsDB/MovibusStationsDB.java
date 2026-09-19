@@ -2346,7 +2346,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53975, 9.03425, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.5397, 9.03489, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.53962, 9.03469, "Ritorno", "z616"));
-        stations.add(new MetroStation("NO_DRAW", 45.5395, 9.03459, "Ritorno", "z616"));        stations.add(new MetroStation("NO_DRAW", 45.53935, 9.0346, "Main - Ritorno", "z616"));
+        stations.add(new MetroStation("NO_DRAW", 45.5395, 9.03459, "Ritorno", "z616"));
+        stations.add(new MetroStation("NO_DRAW", 45.53935, 9.0346, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("Rho, Lainate 68/Cavour,Itc Mattei", 45.53714, 9.03639, "Main", "z616"));
         stations.add(new MetroStation("Rho, Lainate 66/Cavour,Itc Mattei", 45.53731, 9.03624, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.53582, 9.03743, "Main - Ritorno", "z616"));
