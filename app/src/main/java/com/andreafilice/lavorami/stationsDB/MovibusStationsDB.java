@@ -2485,7 +2485,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51025, 9.0293, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51023, 9.02917, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51027, 9.02904, "Ritorno", "z616"));
-        stations.add(new MetroStation("NO_DRAW", 45.51029, 9.02889, "Ritorno", "z616"));        stations.add(new MetroStation("NO_DRAW", 45.5102, 9.02862, "Main - Ritorno", "z616"));
+        stations.add(new MetroStation("NO_DRAW", 45.51029, 9.02889, "Ritorno", "z616"));
+        stations.add(new MetroStation("NO_DRAW", 45.5102, 9.02862, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.50969, 9.02756, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.5096, 9.02731, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.50956, 9.02708, "Main - Ritorno", "z616"));
@@ -2519,7 +2520,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51017, 9.0154, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.5102, 9.01525, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51028, 9.01513, "Ritorno", "z616"));
-        stations.add(new MetroStation("NO_DRAW", 45.51043, 9.01508, "Ritorno", "z616"));        stations.add(new MetroStation("NO_DRAW", 45.5107, 9.01465, "Main - Ritorno", "z616"));
+        stations.add(new MetroStation("NO_DRAW", 45.51043, 9.01508, "Ritorno", "z616"));
+        stations.add(new MetroStation("NO_DRAW", 45.5107, 9.01465, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51086, 9.01425, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51093, 9.0141, "Main - Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51103, 9.01398, "Main - Ritorno", "z616"));
@@ -2598,12 +2600,13 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51037, 9.0024, "Main", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51028, 9.00244, "Main", "z616"));
         stations.add(new MetroStation("Pregnana M., Costituzione 1,Staz. FS", 45.51035, 9.00266, "Main", "z616"));
-        stations.add(new MetroStation("NO_DRAW", 45.51112, 9.00214, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51056, 9.00266, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51052, 9.00277, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51034, 9.00292, "Ritorno", "z616"));
         stations.add(new MetroStation("NO_DRAW", 45.51026, 9.0029, "Ritorno", "z616"));
-        stations.add(new MetroStation("Pregnana Milanese, Costituzione,Staz. Fs", 45.51021, 9.00277, "Ritorno", "z616"));        return stations;
+        stations.add(new MetroStation("Pregnana Milanese, Costituzione,Staz. Fs", 45.51021, 9.00277, "Ritorno", "z616"));
+
+        return stations;
     }
 
     public static List<MetroStation> getStationsZ617() {
