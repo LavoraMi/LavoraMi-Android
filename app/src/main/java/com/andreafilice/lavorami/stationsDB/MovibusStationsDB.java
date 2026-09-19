@@ -7116,11 +7116,10 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46102, 8.8475, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46046, 8.84828, "Main", "z641"));
         stations.add(new MetroStation("Magenta, De Medici 36,Ponte Nuovo", 45.46086, 8.85066, "Main", "z641"));
-        stations.add(new MetroStation("Magenta, De Medici fr. 30,Ponte Nuovo", 45.46089, 8.85043, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46181, 8.8567, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4605, 8.84821, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46065, 8.8489, "Ritorno", "z641"));
-        stations.add(new MetroStation("NO_DRAW", 45.46089, 8.85044, "Ritorno", "z641"));
+        stations.add(new MetroStation("Magenta, De Medici fr. 30,Ponte Nuovo", 45.46089, 8.85043, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46187, 8.85661, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46193, 8.85727, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46226, 8.85918, "Main - Ritorno", "z641"));
@@ -7149,7 +7148,6 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46144, 8.86838, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4616, 8.86868, "Main", "z641"));
         stations.add(new MetroStation("Magenta, Leopardi/Italia", 45.46163, 8.8688, "Main", "z641"));
-        stations.add(new MetroStation("Magenta, Leopardi/Italia", 45.46163, 8.8688, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46222, 8.87064, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46218, 8.87075, "Main", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46218, 8.87084, "Main", "z641"));
@@ -7195,6 +7193,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46144, 8.8681, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46148, 8.86826, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46167, 8.86865, "Ritorno", "z641"));
+        stations.add(new MetroStation("Magenta, Leopardi/Italia", 45.46163, 8.8688, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46228, 8.87058, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.46235, 8.87061, "Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4624, 8.87067, "Ritorno", "z641"));
