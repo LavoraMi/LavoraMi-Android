@@ -3054,7 +3054,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Arluno, Pozzo Bonelli fr. Chiesa", 45.50521, 8.94194, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50538, 8.94392, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50539, 8.94482, "Main", "z618"));
-        stations.add(new MetroStation("Arluno, A. De Gasperi", 45.50565, 8.94726, "Main", "z618"));
+        stations.add(new MetroStation("Arluno, Piazza De Gasperi", 45.50565, 8.94726, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50575, 8.94794, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50574, 8.94998, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50565, 8.95067, "Main", "z618"));
@@ -3069,7 +3069,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50554, 8.95619, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50557, 8.95715, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50547, 8.95825, "Main", "z618"));
-        stations.add(new MetroStation("Arluno, Turati 58", 45.50533, 8.95903, "Main", "z618"));
+        stations.add(new MetroStation("Arluno, Via Turati civico 58", 45.50533, 8.95903, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50519, 8.96012, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.505, 8.96103, "Main", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50497, 8.96132, "Main", "z618"));
@@ -3097,8 +3097,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50668, 8.97499, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50694, 8.97497, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50832, 8.97387, "Main - Ritorno", "z618"));
-        stations.add(new MetroStation("Vanzago, Rome 63", 45.50925, 8.97318, "Main", "z618"));
-        stations.add(new MetroStation("Vanzago, Rome fr. 63", 45.50925, 8.97318, "Ritorno", "z618"));
+        stations.add(new MetroStation("Vanzago, Roma 63", 45.50925, 8.97318, "Main", "z618"));
+        stations.add(new MetroStation("Vanzago, Roma fr. 63", 45.50925, 8.97318, "Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.50981, 8.97279, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.51022, 8.97286, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.51046, 8.97283, "Main - Ritorno", "z618"));
@@ -3317,7 +3317,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53306, 9.04090, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.53300, 9.04111, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.53220, 9.04233, "Main - Ritorno", "z618"));
-        stations.add(new MetroStation("Rho, Europa, fr.194, Pome'", 45.531, 9.0441, "Main - Ritorno", "z618"));
+        stations.add(new MetroStation("Rho, Europa Fr.194,Pome'", 45.531, 9.0441, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.53029, 9.04527, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.53016, 9.04547, "Main - Ritorno", "z618"));
         stations.add(new MetroStation("NO_DRAW", 45.52971, 9.04607, "Main - Ritorno", "z618"));
