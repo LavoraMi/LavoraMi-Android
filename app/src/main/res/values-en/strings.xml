@@ -443,6 +443,7 @@
     <string name="supportLavoraMiTitle">Support LavoraMi</string>
     <string name="supportLavoraMiDeps">Help us support LavoraMi!</string>
     <string name="busPiuDirezioniTitle">BUS WITH MULTIPLE ROUTES</string>
+    <string name="busPiuDirezioniTitleDialog">Bus with multiple routes</string>
     <string name="busPiuDirezioniDesc">This line operates different routes depending on the time of day. Check the information screens before boarding the bus.</string>
     <string name="widgetSettingsTitle">Open Line Widget</string>
     <string name="widgetSettingsDeps">Clicking on the selected line opens it in the Widget. If this option is disabled, it opens the app on the Home screen.</string>

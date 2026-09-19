@@ -1872,8 +1872,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         for (String line : linesMultipleRoutes){
             if(line.equals(nomeLinea)){
                 busMultipleRoutes.setVisibility(View.VISIBLE);
-                busMultipleRoutesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitle), getString(R.string.busPiuDirezioniDesc)));
-                busMultipleRoutes.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitle), getString(R.string.busPiuDirezioniDesc)));
+                busMultipleRoutesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitleDialog), getString(R.string.busPiuDirezioniDesc)));
+                busMultipleRoutes.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPiuDirezioniTitleDialog), getString(R.string.busPiuDirezioniDesc)));
             }
         }
 
