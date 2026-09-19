@@ -1179,7 +1179,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59099, 8.93682, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59086, 8.93687, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59079, 8.93704, "Main", "z606"));
-        stations.add(new MetroStation("S.V. Olona, Ss333 del Sempione/Piave", 45.59045, 8.93736, "Main", "z606"));
+        stations.add(new MetroStation("S.V. Olona, SS33 del Sempione/Piave", 45.59045, 8.93736, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59007, 8.93792, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.58825, 8.93939, "Main", "z606"));
         stations.add(new MetroStation("S.V. Olona, Italia", 45.58583, 8.9435, "Main", "z606"));
@@ -1195,7 +1195,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59653, 8.92330, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Ritorno", "z606"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z606"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z606"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59354, 8.933, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59351, 8.9333, "Ritorno", "z606"));
@@ -1219,7 +1219,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.58896, 8.94771, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.58988, 8.94893, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59003, 8.94921, "Main", "z606"));
-        stations.add(new MetroStation("Cerro Maggiore, Berrocchi/Condordia", 45.59029, 8.94894, "Main", "z606"));
+        stations.add(new MetroStation("Cerro Maggiore, Bernocchi/Condordia", 45.59029, 8.94894, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59114, 8.94807, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59204, 8.94681, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("Cerro Maggiore, Cappuccini 53", 45.59236, 8.94712, "Main", "z606"));
@@ -1246,7 +1246,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Cerro Maggiore, IV Novembre/Torino", 45.59139, 8.95725, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59477, 8.95184, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59526, 8.95289, "Ritorno", "z606"));
-        stations.add(new MetroStation("Cerro Maggiore, XX Settembre, Chiesetta", 45.59502, 8.95313, "Ritorno", "z606"));
+        stations.add(new MetroStation("Cerro Maggiore, XX Settembre,Chiesetta", 45.59502, 8.95313, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59428, 8.95399, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59316, 8.955, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.59126, 8.9569, "Ritorno", "z606"));
@@ -1309,7 +1309,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57935, 8.97929, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.57927, 8.97918, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.57919, 8.97919, "Ritorno", "z606"));
-        stations.add(new MetroStation("Cerro Maggiore, S. Bartolomeo.Cantalupo", 45.5788, 8.97942, "Ritorno", "z606"));
+        stations.add(new MetroStation("Cerro Maggiore, S. Bartolomeo,Cantalupo", 45.5788, 8.97942, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.5814, 8.97719, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.58137, 8.97732, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.58076, 8.97804, "Main", "z606"));
@@ -1404,8 +1404,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54272, 9.01116, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54266, 9.01124, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54262, 9.01154, "Ritorno", "z606"));
-        stations.add(new MetroStation("Pogliano Milanese, Ss33,Barbiana", 45.54301, 9.01035, "Main", "z606"));
-        stations.add(new MetroStation("Lainate, Sempione 12,Barbiana", 45.54247, 9.012, "Ritorno", "z606"));
+        stations.add(new MetroStation("Pogliano Milanese, Ss33,Barbaiana", 45.54301, 9.01035, "Main", "z606"));
+        stations.add(new MetroStation("Lainate, Sempione 12,Barbaiana", 45.54247, 9.012, "Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54285, 9.01069, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54268, 9.01071, "Main", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.54259, 9.01075, "Main", "z606"));
@@ -1489,7 +1489,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53306, 9.04090, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.53300, 9.04111, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.53220, 9.04233, "Main - Ritorno", "z606"));
-        stations.add(new MetroStation("Rho, Europa, fr.194, Pome'", 45.531, 9.0441, "Main - Ritorno", "z606"));
+        stations.add(new MetroStation("NO_DRAW", 45.531, 9.0441, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.53029, 9.04527, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.53016, 9.04547, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.52971, 9.04607, "Main - Ritorno", "z606"));
