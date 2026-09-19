@@ -1884,7 +1884,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Main - Ritorno", "z612"));
         stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Main", "z612"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z612"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z612"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59478, 8.92877, "Ritorno", "z612"));
         stations.add(new MetroStation("Legnano, Grigna,Ospedale", 45.59303, 8.92716, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59232, 8.92653, "Ritorno", "z612"));
@@ -1954,7 +1954,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Cerro Maggiore, IV Novembre/Torino", 45.59139, 8.95725, "Main", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59477, 8.95184, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59526, 8.95289, "Ritorno", "z612"));
-        stations.add(new MetroStation("Cerro Maggiore, XX Settembre, Chiesetta", 45.59502, 8.95313, "Ritorno", "z612"));
+        stations.add(new MetroStation("Cerro Maggiore, XX Settembre,Chiesetta", 45.59502, 8.95313, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59428, 8.95399, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59316, 8.955, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.59126, 8.9569, "Ritorno", "z612"));
