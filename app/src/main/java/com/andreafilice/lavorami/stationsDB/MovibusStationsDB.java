@@ -11057,7 +11057,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59092, 8.93727, "Ritorno", "z6C3"));
         stations.add(new MetroStation("NO_DRAW", 45.59085, 8.93723, "Ritorno", "z6C3"));
         stations.add(new MetroStation("NO_DRAW", 45.59072, 8.93728, "Ritorno", "z6C3"));
-        stations.add(new MetroStation("Via Sempione ang. Parini", 45.59052, 8.93747, "Ritorno", "z6C3"));
+        stations.add(new MetroStation("S.V Olona, SS33 del Sempione/Parini", 45.59052, 8.93747, "Ritorno", "z6C3"));
         stations.add(new MetroStation("NO_DRAW", 45.59028, 8.9377, "Ritorno", "z6C3"));
         stations.add(new MetroStation("NO_DRAW", 45.59003, 8.938, "Ritorno", "z6C3"));
         stations.add(new MetroStation("NO_DRAW", 45.58878, 8.93896, "Ritorno", "z6C3"));
