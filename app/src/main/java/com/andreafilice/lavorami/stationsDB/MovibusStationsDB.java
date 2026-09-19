@@ -70,7 +70,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Main", "z601"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z601"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z601"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z601"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.59344, 8.93307, "Main", "z601"));
