@@ -13,7 +13,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59997, 8.91039, "Main", "z601"));
         stations.add(new MetroStation("Legnano, Pietro Micca 29", 45.5996, 8.91063, "Main", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.5992, 8.91089, "Main", "z601"));
-        stations.add(new MetroStation("Legnano, P.Micca 3/Carioli", 45.59615, 8.91315, "Main", "z601"));
+        stations.add(new MetroStation("Legnano, P. Micca 3/Cairoli", 45.59615, 8.91315, "Main", "z601"));
         stations.add(new MetroStation("Legnano, XXIX Maggio 180,S. Martino", 45.60361, 8.90691, "Ritorno", "z601"));
         stations.add(new MetroStation("Legnano, XXIX Maggio 102/Mazzini", 45.59932, 8.90938, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.59497, 8.9119, "Ritorno", "z601"));
@@ -188,8 +188,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54272, 9.01116, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.54266, 9.01124, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.54262, 9.01154, "Ritorno", "z601"));
-        stations.add(new MetroStation("Pogliano Milanese, Ss33,Barbiana", 45.54301, 9.01035, "Main", "z601"));
-        stations.add(new MetroStation("Lainate, Sempione 12,Barbiana", 45.54247, 9.012, "Ritorno", "z601"));
+        stations.add(new MetroStation("Pogliano Milanese, SS33,Barbaiana", 45.54301, 9.01035, "Main", "z601"));
+        stations.add(new MetroStation("Lainate, Sempione 12,Barbaiana", 45.54247, 9.012, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.54285, 9.01069, "Main", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.54268, 9.01071, "Main", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.54259, 9.01075, "Main", "z601"));
@@ -273,7 +273,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53306, 9.04090, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.53300, 9.04111, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.53220, 9.04233, "Main - Ritorno", "z601"));
-        stations.add(new MetroStation("Rho, Europa, fr.194, Pome'", 45.531, 9.0441, "Main - Ritorno", "z601"));
+        stations.add(new MetroStation("Rho, Europa fr.194,Pome'", 45.531, 9.0441, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.53029, 9.04527, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.53016, 9.04547, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.52971, 9.04607, "Main - Ritorno", "z601"));
@@ -397,8 +397,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50917, 9.0892, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.50894, 9.08966, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.50871, 9.0903, "Main - Ritorno", "z601"));
-        stations.add(new MetroStation("Pero, Ss del Sempione/Piscane", 45.5083, 9.09161, "Main", "z601"));
-        stations.add(new MetroStation("Pero, Ss del Sempione/Piscane", 45.50818, 9.09198, "Ritorno", "z601"));
+        stations.add(new MetroStation("Pero, SS del Sempione/Pisacane", 45.5083, 9.09161, "Main", "z601"));
+        stations.add(new MetroStation("Pero, SS del Sempione/Pisacane", 45.50818, 9.09198, "Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.50806, 9.09236, "Main - Ritorno", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.50793, 9.0924, "Main", "z601"));
         stations.add(new MetroStation("NO_DRAW", 45.50788, 9.09252, "Main", "z601"));
@@ -507,7 +507,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Main - Ritorno", "z602"));
         stations.add(new MetroStation("Legnano, Sempione 111,Madonnina,Istituti", 45.59607, 8.92447, "Main", "z602"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z602"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z602"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z602"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.59341, 8.9331, "Main", "z602"));
