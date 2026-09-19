@@ -99,6 +99,8 @@ public class EventDescriptor {
                 return R.drawable.ic_event;
             case "arrow.up.right":
                 return R.drawable.ic_arrow_work;
+            case "move.3d":
+                return R.drawable.ic_move;
             default:
                 return R.drawable.empty_image;
         }
