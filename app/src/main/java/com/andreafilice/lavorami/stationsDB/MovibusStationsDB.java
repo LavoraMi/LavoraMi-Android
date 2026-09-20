@@ -8716,7 +8716,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54361, 8.88637, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54366, 8.88657, "Main", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54809, 8.87996, "Ritorno", "z644"));
-        stations.add(new MetroStation("Busto Garolfo, Monteblanco fr. 17", 45.54795, 8.87972, "Ritorno", "z644"));
+        stations.add(new MetroStation("Busto Garolfo, Montebianco fr. 17", 45.54795, 8.87972, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54715, 8.87833, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54706, 8.87824, "Ritorno", "z644"));
         stations.add(new MetroStation("NO_DRAW", 45.54592, 8.87589, "Ritorno", "z644"));
