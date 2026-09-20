@@ -26,6 +26,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.RotateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -331,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
             loadingLayout.startShimmer();
             loadingLayout.setVisibility(View.VISIBLE);
             btnRefresh.setVisibility(View.VISIBLE);
-            btnRefresh.startAnimation(animSpin);
+            startSpin();
             findViewById(R.id.recyclerView).setVisibility(View.GONE);
         }
 
@@ -811,7 +813,7 @@ public class MainActivity extends AppCompatActivity {
         if (EventData.listaEventiCompleta != null && !EventData.listaEventiCompleta.isEmpty() && !reloadingDatas) {
             if (loadingLayout != null) {
                 loadingLayout.setVisibility(View.GONE);
-                btnRefresh.clearAnimation();
+                stopSpin();
                 swipeRefreshLayout.setRefreshing(false);
                 errorLayout.setVisibility(View.GONE);
                 findViewById(R.id.recyclerView).setVisibility(View.VISIBLE);
@@ -838,7 +840,7 @@ public class MainActivity extends AppCompatActivity {
             loadingLayout.setVisibility(View.VISIBLE);
             errorLayout.setVisibility(View.GONE);
             loadingLayout.startShimmer();
-            btnRefresh.startAnimation(animSpin);
+            startSpin();
             recyclerView.setVisibility(View.GONE);
             strikeBanner.setVisibility(View.GONE);
         }
@@ -912,7 +914,7 @@ public class MainActivity extends AppCompatActivity {
                                     if (loadingLayout != null) {
                                         loadingLayout.stopShimmer();
                                         loadingLayout.setVisibility(View.GONE);
-                                        btnRefresh.clearAnimation();
+                                        stopSpin();
                                         swipeRefreshLayout.setRefreshing(false);
                                     }
 
@@ -939,7 +941,7 @@ public class MainActivity extends AppCompatActivity {
                     errorLayout.setVisibility(View.VISIBLE);
                     strikeBanner.setVisibility(View.GONE);
                     findViewById(R.id.wrappedBanner).setVisibility(View.GONE);
-                    btnRefresh.clearAnimation();
+                    stopSpin();
                     swipeRefreshLayout.setRefreshing(false);
 
                     /// In this section of the code, we check the android version and adapt the style to that version.
@@ -1426,6 +1428,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(String error) {Toast.makeText(MainActivity.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();}
         });
+    }
+
+    private long spinStartTime;
+
+    private void startSpin() {
+        spinStartTime = System.currentTimeMillis();
+        btnRefresh.startAnimation(animSpin);
+    }
+
+    private void stopSpin() {
+        long elapsed = System.currentTimeMillis() - spinStartTime;
+        float currentAngle = (elapsed % 1000) / 1000f * 360f; // duration=1000 dal tuo xml
+
+        btnRefresh.clearAnimation();
+
+        RotateAnimation settle = new RotateAnimation(
+                currentAngle, 360f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f
+        );
+        settle.setDuration(200);
+        settle.setInterpolator(new DecelerateInterpolator());
+        btnRefresh.startAnimation(settle);
     }
 
     @Override
