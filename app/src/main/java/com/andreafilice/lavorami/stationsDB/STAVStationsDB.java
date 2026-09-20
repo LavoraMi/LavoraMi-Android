@@ -1655,7 +1655,8 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.43739, 9.12072, "Main - Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.43794, 9.12277, "Main - Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.4384, 9.12433, "Main - Ritorno", "z553"));
-        stations.add(new MetroStation("Milano Via L.il Moro/S.Colombiano", 45.43874, 9.12531, "Main - Ritorno", "z553"));
+        stations.add(new MetroStation("Milano Via L.il Moro/S.Colombano", 45.43874, 9.12531, "Main", "z553"));
+        stations.add(new MetroStation("Milano Via L. il Moro/S. Colombano", 45.43874, 9.12531, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.43899, 9.12587, "Main - Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.43939, 9.12646, "Main - Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.44046, 9.12784, "Main - Ritorno", "z553"));
@@ -1696,7 +1697,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.44572, 9.16068, "Main", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.44543, 9.16136, "Main", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.44527, 9.16174, "Main", "z553"));
-        stations.add(new MetroStation("Milano V.le Cassala", 45.44505, 9.16236, "Main", "z553"));
+        stations.add(new MetroStation("NO_DRAW", 45.44505, 9.16236, "Main", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.44473, 9.16337, "Main", "z553"));
         stations.add(new MetroStation("Milano V.le Cassala", 45.44466, 9.16365, "Main - Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.44444, 9.1646, "Main - Ritorno", "z553"));
