@@ -110,7 +110,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Santo Stefano Ticino FS",
-            new String[]{"S6", "RV", "z552"},
+            new String[]{"S6", "RV", "z552", "z642"},
             new String[]{"z552"},
             "train.side.front.car"
         ));
