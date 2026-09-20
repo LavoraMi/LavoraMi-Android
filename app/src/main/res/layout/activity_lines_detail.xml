@@ -577,6 +577,7 @@
                 app:chipIconVisible="true"
                 android:visibility="gone"/>
         </com.google.android.material.chip.ChipGroup>
+
         <LinearLayout
             android:id="@+id/emptyViewContainer"
             android:layout_width="wrap_content"
@@ -606,7 +607,6 @@
                 android:fontFamily="@font/inter" />
 
         </LinearLayout>
-
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -923,8 +923,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="#1A000000" />
 
         <androidx.core.widget.NestedScrollView
