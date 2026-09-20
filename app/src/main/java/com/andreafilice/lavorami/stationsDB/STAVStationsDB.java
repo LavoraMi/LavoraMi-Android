@@ -645,6 +645,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45482, 9.11222, "Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.45489, 9.11244, "Ritorno", "z551"));
         stations.add(new MetroStation("Milano Bisceglie M1", 45.45499, 9.11298, "Ritorno", "z551"));
+
         return stations;
     }
 
@@ -1087,6 +1088,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48684, 8.92333, "Ritorno", "z552"));
         stations.add(new MetroStation("NO_DRAW", 45.48687, 8.92295, "Ritorno", "z552"));
         stations.add(new MetroStation("S. Stefano T. V.le Repubblica/Pace", 45.48613, 8.92281, "Main - Ritorno", "z552"));
+
         return stations;
     }
 
@@ -1707,6 +1709,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("Milano Romolo M2/FS", 45.4437, 9.16722, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.44415, 9.16662, "Main", "z553"));
         stations.add(new MetroStation("Milano Romolo M2/FS", 45.4441, 9.16742, "Main", "z553"));
+
         return stations;
     }
 
@@ -2072,6 +2075,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.32708, 9.01757, "Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.32711, 9.01689, "Ritorno", "z554"));
         stations.add(new MetroStation("Bubbiano Via Europa", 45.3284, 9.01674, "Main - Ritorno", "z554"));
+
         return stations;
     }
 
@@ -2793,6 +2797,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.33112, 9.10188, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.3311, 9.10166, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("Binasco P.le Autolinee", 45.33108, 9.10154, "Main - Ritorno", "z555"));
+
         return stations;
     }
 
@@ -3308,9 +3313,9 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.28764, 8.99437, "Main - Ritorno", "z556"));
         stations.add(new MetroStation("NO_DRAW", 45.28749, 8.99374, "Main - Ritorno", "z556"));
         stations.add(new MetroStation("Motta Visconti Via Soriani", 45.28738, 8.99312, "Main - Ritorno", "z556"));
+
         return stations;
     }
-
 
     public static List<MetroStation> getStationsZ557() {
         List<MetroStation> stations = new ArrayList<>();
@@ -3876,6 +3881,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40787, 9.04454, "Ritorno", "z557"));
         stations.add(new MetroStation("NO_DRAW", 45.40782, 9.04438, "Ritorno", "z557"));
         stations.add(new MetroStation("Gaggiano Via De Gasperi", 45.4078, 9.04428, "Main - Ritorno", "z557"));
+
         return stations;
     }
 
@@ -6354,6 +6360,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45482, 9.11219, "Ritorno", "z560"));
         stations.add(new MetroStation("NO_DRAW", 45.45486, 9.11229, "Ritorno", "z560"));
         stations.add(new MetroStation("Milano Bisceglie M1", 45.45489, 9.11241, "Ritorno", "z560"));
+
         return stations;
     }
 }
