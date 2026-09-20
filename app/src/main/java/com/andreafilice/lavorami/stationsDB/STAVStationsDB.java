@@ -1713,13 +1713,13 @@ public class STAVStationsDB {
     public static List<MetroStation> getStationsZ554() {
         List<MetroStation> stations = new ArrayList<>();
         //myMaps
-        stations.add(new MetroStation("Albairate Via Indipendenza/Marconi ", 45.41961, 8.93627, "Main - Ritorno", "z554"));
+        stations.add(new MetroStation("Albairate Via Indipendenza/Marconi", 45.41961, 8.93627, "Main - Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.4196, 8.93682, "Main - Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.41961, 8.93709, "Main - Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.41964, 8.93742, "Main - Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.41982, 8.93899, "Main - Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.41857, 8.93935, "Main", "z554"));
-        stations.add(new MetroStation("Albairate Via bellini", 45.41872, 8.9407, "Main", "z554"));
+        stations.add(new MetroStation("Albairate Via Bellini", 45.41872, 8.9407, "Main", "z554"));
         stations.add(new MetroStation("Albairate Via Indipendenza/Monti", 45.4199, 8.93963, "Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.41999, 8.94048, "Ritorno", "z554"));
         stations.add(new MetroStation("NO_DRAW", 45.41975, 8.94049, "Ritorno", "z554"));
