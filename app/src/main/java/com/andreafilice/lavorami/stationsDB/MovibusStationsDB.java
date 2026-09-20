@@ -8526,8 +8526,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50558, 8.94655, "Main", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.50561, 8.93618, "Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.50574, 8.93617, "Ritorno", "z643"));
-        stations.add(new MetroStation("Arluno, Marconi 118", 45.50645, 8.93661, "Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.50656, 8.9359, "Ritorno", "z643"));
+        stations.add(new MetroStation("Arluno, Marconi 118", 45.50645, 8.93661, "Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.50626, 8.93811, "Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.50605, 8.93897, "Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.50594, 8.93935, "Ritorno", "z643"));
