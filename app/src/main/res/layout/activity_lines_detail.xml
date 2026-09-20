@@ -379,10 +379,10 @@
                 android:id="@+id/detInterscambioEmpty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/subtitle"
                 android:textSize="17sp"
                 android:text="@string/noInterchangeStationTitle"
-                android:fontFamily="@font/inter"/>
+                android:fontFamily="@font/inter" />
         </LinearLayout>
 
         <HorizontalScrollView
