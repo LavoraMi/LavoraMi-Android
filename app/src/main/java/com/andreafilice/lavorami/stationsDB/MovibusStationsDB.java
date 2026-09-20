@@ -440,6 +440,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5049, 9.09262, "Ritorno", "z601"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50467, 9.09361, "Ritorno", "z601"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50536, 9.09336, "Main", "z601"));
+
         return stations;
     }
 
@@ -680,6 +681,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Milano, Jacini,Cadorna", 45.46931, 9.17605, "Main", "z602"));
         stations.add(new MetroStation("NO_DRAW", 45.46978, 9.17542, "Ritorno", "z602"));
         stations.add(new MetroStation("Milano, Gadio,Parco Sempione", 45.47017, 9.176, "Ritorno", "z602"));
+
         return stations;
     }
 
@@ -1165,6 +1167,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Milano, Jacini,Cadorna", 45.46931, 9.17605, "Main", "z603"));
         stations.add(new MetroStation("NO_DRAW", 45.46978, 9.17542, "Ritorno", "z603"));
         stations.add(new MetroStation("Milano, Gadio,Parco Sempione", 45.47017, 9.176, "Ritorno", "z603"));
+
         return stations;
     }
 
@@ -1507,6 +1510,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52449, 9.04851, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("NO_DRAW", 45.52453, 9.04873, "Main - Ritorno", "z606"));
         stations.add(new MetroStation("Rho, Europa/Canova", 45.52493, 9.05009, "Main - Ritorno", "z606"));
+
         return stations;
     }
 
@@ -1842,6 +1846,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53127, 8.94294, "Main - Ritorno", "z611"));
         stations.add(new MetroStation("Parabiago, Casorezzo 15", 45.53056, 8.94035, "Main", "z611"));
         stations.add(new MetroStation("Parabiago, Casorezzo 20", 45.53053, 8.94023, "Ritorno", "z611"));
+
         return stations;
     }
 
@@ -2328,6 +2333,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.56153, 9.05226, "Ritorno", "z612"));
         stations.add(new MetroStation("NO_DRAW", 45.56148, 9.05239, "Ritorno", "z612"));
         stations.add(new MetroStation("Arese, Luraghi/Alfa Romeo,il Centro", 45.56152, 9.05303, "Main - Ritorno", "z612"));
+
         return stations;
     }
 
@@ -3038,6 +3044,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5049, 9.09262, "Ritorno", "z617"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50467, 9.09361, "Ritorno", "z617"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50536, 9.09336, "Main", "z617"));
+
         return stations;
     }
 
@@ -3684,6 +3691,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.56032, 8.95134, "Ritorno", "z619"));
         stations.add(new MetroStation("NO_DRAW", 45.5599, 8.95127, "Ritorno", "z619"));
         stations.add(new MetroStation("Parabiago, Spagliardi,Maggiolini", 45.55938, 8.95143, "Ritorno", "z619"));
+
         return stations;
     }
 
@@ -4180,6 +4188,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5049, 9.09262, "Ritorno", "z620"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50467, 9.09361, "Ritorno", "z620"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50543, 9.09336, "Main", "z620"));
+
         return stations;
     }
 
@@ -4556,6 +4565,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5049, 9.09262, "Ritorno", "z621"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50467, 9.09361, "Ritorno", "z621"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50543, 9.09336, "Main", "z621"));
+
         return stations;
     }
 
@@ -4993,6 +5003,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50220, 9.02878, "Ritorno", "z622"));
         stations.add(new MetroStation("Cornaredo, S.Carlo/Ponti", 45.50261, 9.02856, "Main", "z622"));
         stations.add(new MetroStation("Cornaredo, S.Carlo/Ponti", 45.50243, 9.02866, "Ritorno", "z622"));
+
         return stations;
     }
 
@@ -5252,6 +5263,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Villa Cortese, Canova/Perugino", 45.56552, 8.89178, "Ritorno", "z625"));
         stations.add(new MetroStation("NO_DRAW", 45.56612, 8.8934, "Ritorno", "z625"));
         stations.add(new MetroStation("Villa Cortese, Canov/Buonarroti", 45.56656, 8.89581, "Ritorno", "z625"));
+
         return stations;
     }
 
@@ -5920,6 +5932,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Ritorno", "z627"));
         stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z627"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z627"));
+
         return stations;
     }
 
@@ -6480,6 +6493,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z636"));
         stations.add(new MetroStation("Legnano, Sempione,Ospedale", 45.5941, 8.93108, "Main", "z636"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z636"));
+
         return stations;
     }
 
@@ -7344,6 +7358,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45607, 8.89244, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("NO_DRAW", 45.4559, 8.89147, "Main - Ritorno", "z641"));
         stations.add(new MetroStation("Magenta, Tobagi", 45.45573, 8.89144, "Main - Ritorno", "z641"));
+
         return stations;
     }
 
@@ -8087,6 +8102,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Ritorno", "z642"));
         stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z642"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z642"));
+
         return stations;
     }
 
@@ -8633,6 +8649,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Vittuone, Milano 7", 45.48533, 8.96103, "Ritorno", "z643"));
         stations.add(new MetroStation("Vittuone, Milano fr. 22", 45.48348, 8.95365, "Main", "z643"));
         stations.add(new MetroStation("Vittuone, Milano 22", 45.48348, 8.95365, "Main", "z643"));
+
         return stations;
     }
 
@@ -8890,6 +8907,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55711, 8.95218, "Main - Ritorno", "z644"));
         stations.add(new MetroStation("Parabiago, Spagliardi,Maggiolini", 45.55938, 8.95142, "Main", "z644"));
         stations.add(new MetroStation("Parabiago, Spagliardi,Maggiolini", 45.55914, 8.9515, "Ritorno", "z644"));
+
         return stations;
     }
 
@@ -9528,6 +9546,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45607, 8.89244, "Main - Ritorno", "z646"));
         stations.add(new MetroStation("NO_DRAW", 45.4559, 8.89147, "Main - Ritorno", "z646"));
         stations.add(new MetroStation("Magenta, Tobagi", 45.45573, 8.89144, "Main - Ritorno", "z646"));
+
         return stations;
     }
 
@@ -10274,6 +10293,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50203, 9.02905, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50123, 9.02985, "Ritorno", "z647"));
         stations.add(new MetroStation("Cornaredo, Mazzini/Ricciotti", 45.50033, 9.03065, "Ritorno", "z647"));
+
         return stations;
     }
 
@@ -11025,6 +11045,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5049, 9.09262, "Ritorno", "z649"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50467, 9.09361, "Ritorno", "z649"));
         stations.add(new MetroStation("Milano, Molino Dorino M1", 45.50543, 9.09336, "Main", "z649"));
+
         return stations;
     }
 
@@ -11522,6 +11543,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Milano, Jacini,Cadorna", 45.46931, 9.17605, "Main", "z6C3"));
         stations.add(new MetroStation("NO_DRAW", 45.46978, 9.17542, "Ritorno", "z6C3"));
         stations.add(new MetroStation("Milano, Gadio,Parco Sempione", 45.47017, 9.176, "Ritorno", "z6C3"));
+
         return stations;
     }
 }
