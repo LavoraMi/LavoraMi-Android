@@ -7829,7 +7829,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52025, 8.90365, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.52185, 8.90342, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.5221, 8.90588, "Ritorno", "z642"));
-        stations.add(new MetroStation("Casorezzo, Arluno/Delle Chiuse", 45.5228, 8.9058, "Main - Ritorno", "z642"));
+        stations.add(new MetroStation("Casorezzo, Arluno/Delle Chiuse", 45.5228, 8.9058, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.52364, 8.90575, "Main - Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.5239, 8.90577, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.52398, 8.90574, "Main", "z642"));
@@ -7904,7 +7904,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54649, 8.87997, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.54712, 8.87831, "Main - Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.54721, 8.87841, "Main - Ritorno", "z642"));
-        stations.add(new MetroStation("Busto Garolfo, Montebianco Fr. 17", 45.54794, 8.8797, "Main - Ritorno", "z642"));
+        stations.add(new MetroStation("Busto Garolfo, Montebianco Fr. 17", 45.54794, 8.8797, "Main", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.5481, 8.87998, "Main - Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.54827, 8.87979, "Main - Ritorno", "z642"));
         //busto garolfo z627
@@ -8011,7 +8011,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("S. Giorgio Su Legnano, Roma Fr. Vinci", 45.57767, 8.91411, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.57822, 8.9156, "Ritorno", "z642"));
         stations.add(new MetroStation("Legnano, XX Settembre", 45.57863, 8.91529, "Ritorno", "z642"));
-        stations.add(new MetroStation("Legnano, XX Settembre,S. Giorgio S.L", 45.58189, 8.91291, "Ritorno", "z642"));
+        stations.add(new MetroStation("NO_DRAW", 45.58189, 8.91291, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58232, 8.91261, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58255, 8.91228, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58265, 8.91203, "Ritorno", "z642"));
