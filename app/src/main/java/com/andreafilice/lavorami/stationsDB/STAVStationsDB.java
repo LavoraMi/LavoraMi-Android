@@ -1195,7 +1195,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39938, 8.92945, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39943, 8.93032, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.3996, 8.93217, "Ritorno", "z553"));
-        stations.add(new MetroStation("Abbiategrasso Castello", 45.39967, 8.93344, "Ritorno", "z553"));
+        stations.add(new MetroStation("Abbiategrasso Castelletto", 45.39967, 8.93344, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39971, 8.93384, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.3997, 8.93411, "Ritorno", "z553"));
         stations.add(new MetroStation("NO_DRAW", 45.39866, 8.92069, "Main", "z553"));
@@ -2179,7 +2179,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39938, 8.92945, "Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.39943, 8.93032, "Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.3996, 8.93217, "Ritorno", "z555"));
-        stations.add(new MetroStation("Abbiategrasso Castello", 45.39967, 8.93344, "Ritorno", "z555"));
+        stations.add(new MetroStation("Abbiategrasso Castelletto", 45.39967, 8.93344, "Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.39971, 8.93384, "Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.3997, 8.93411, "Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.39866, 8.92069, "Main", "z555"));
@@ -2692,7 +2692,7 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.34168, 9.08988, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("Santa Corinna Via Don Minzoni", 45.3413, 9.089, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.33935, 9.08431, "Main - Ritorno", "z555"));
-        stations.add(new MetroStation("Santa Corinna Via Tobiagi", 45.33899, 9.08461, "Main - Ritorno", "z555"));
+        stations.add(new MetroStation("Santa Corinna Via Tobagi", 45.33899, 9.08461, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.33875, 9.08481, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("Santa Corinna Via Giovanni XXIII", 45.33964, 9.08711, "Main - Ritorno", "z555"));
         stations.add(new MetroStation("NO_DRAW", 45.34115, 9.09095, "Main - Ritorno", "z555"));
