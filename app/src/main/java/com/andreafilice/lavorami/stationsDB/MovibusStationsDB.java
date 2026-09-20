@@ -7955,7 +7955,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Villa Cortese, A.Da Giussano 50", 45.56766, 8.89497, "Main", "z642"));
         stations.add(new MetroStation("Villa Cortese, Canova/Perugino", 45.56552, 8.89178, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.56612, 8.8934, "Ritorno", "z642"));
-        stations.add(new MetroStation("Villa Cortese, Canpv/Buonarroti", 45.56656, 8.89581, "Ritorno", "z642"));
+        stations.add(new MetroStation("Villa Cortese, Canov/Buonarroti", 45.56656, 8.89581, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.56662, 8.89612, "Main - Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.56668, 8.89647, "Main - Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.56667, 8.89669, "Main - Ritorno", "z642"));
@@ -8011,7 +8011,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("S. Giorgio Su Legnano, Roma Fr. Vinci", 45.57767, 8.91411, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.57822, 8.9156, "Ritorno", "z642"));
         stations.add(new MetroStation("Legnano, XX Settembre", 45.57863, 8.91529, "Ritorno", "z642"));
-        stations.add(new MetroStation(",Legnano, XX Settembre,S. Giorgio S.L", 45.58189, 8.91291, "Ritorno", "z642"));
+        stations.add(new MetroStation("Legnano, XX Settembre,S. Giorgio S.L", 45.58189, 8.91291, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58232, 8.91261, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58255, 8.91228, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.58265, 8.91203, "Ritorno", "z642"));
@@ -8085,7 +8085,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.59653, 8.92330, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.59645, 8.92332, "Ritorno", "z642"));
         stations.add(new MetroStation("NO_DRAW", 45.59640, 8.92339, "Ritorno", "z642"));
-        stations.add(new MetroStation("Legnano, Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z642"));
+        stations.add(new MetroStation("Legnano, Sempione 72,Madonnina", 45.59610, 8.92446, "Ritorno", "z642"));
         stations.add(new MetroStation("Legnano, Sempione Fr. 37,Ospedale", 45.59419, 8.93081, "Ritorno", "z642"));
         return stations;
     }
