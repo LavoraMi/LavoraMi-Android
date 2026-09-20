@@ -72,7 +72,7 @@ public class RequestUserDatas extends AppCompatActivity {
             String body = getString(R.string.requestDataIntentPart1) + selectedFileFormat + "\n" + getString(R.string.requestDataIntentPart2) + sessionManager.getUserEmail() + "\n" + getString(R.string.requestDataIntentPart3);
 
             String encodedBody = Uri.encode(body);
-            String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
+            String mailtoUri = "mailto:support@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
             Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse(mailtoUri));

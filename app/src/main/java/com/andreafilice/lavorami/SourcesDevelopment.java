@@ -53,7 +53,7 @@ public class SourcesDevelopment extends AppCompatActivity {
             String body = String.format(ContextCompat.getString(SourcesDevelopment.this, R.string.bugIntentBody), Build.DEVICE, Build.VERSION.RELEASE, Build.MODEL, Build.MANUFACTURER, getString(R.string.app_version));
 
             String encodedBody = Uri.encode(body);
-            String mailtoUri = "mailto:info@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
+            String mailtoUri = "mailto:support@lavorami.it?subject=" + Uri.encode(subject) + "&body=" + encodedBody;
 
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse(mailtoUri));

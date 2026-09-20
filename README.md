@@ -10,7 +10,7 @@
 
 Un'app Android intuitiva per monitorare i lavori di manutenzione del trasporto pubblico.
 
- **[Segnala un Bug](mailto:info@lavorami.it)** • **[Richiedi una Feature](https://github.com/Andrea-Filice/LavoraMi-Android/issues)**
+ **[Segnala un Bug](mailto:support@lavorami.it)** • **[Richiedi una Feature](https://github.com/Andrea-Filice/LavoraMi-Android/issues)**
 
 </div>
 
@@ -29,7 +29,7 @@ Perfetta per pendolari che desiderano rimanere sempre informati sulle interruzio
 
 ## 🐛 Segnalazione Bug
 
-Hai trovato un bug? Per favore, [Inviaci una mail](mailto:info@lavorami.it) con:
+Hai trovato un bug? Per favore, [Inviaci una mail](mailto:support@lavorami.it) con:
 - Descrizione del problema
 - Passaggi per riprodurlo
 - Comportamento atteso vs. reale
@@ -39,7 +39,7 @@ Hai trovato un bug? Per favore, [Inviaci una mail](mailto:info@lavorami.it) con:
 
 ## 💡 Richieste di Feature
 
-Hai un'idea per migliorare LavoraMi? [Inviaci una mail](mailto:info@lavorami.it) descrivendo:
+Hai un'idea per migliorare LavoraMi? [Inviaci una mail](mailto:support@lavorami.it) descrivendo:
 - L'idea e il beneficio per l'utente
 - Possibili casi d'uso
 - Eventuali alternative considerate
