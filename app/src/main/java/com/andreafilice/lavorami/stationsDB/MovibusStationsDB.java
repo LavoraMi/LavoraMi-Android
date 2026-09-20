@@ -9679,7 +9679,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54972, 8.87821, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54811, 8.87996, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54794, 8.8797, "Ritorno", "z647"));
-        stations.add(new MetroStation("Busto Garolfo, Monteblanco fr. 17", 45.54793, 8.8797, "Ritorno", "z647"));
+        stations.add(new MetroStation("Busto Garolfo, Montebianco fr. 17", 45.54793, 8.8797, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54717, 8.87836, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54707, 8.87825, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54592, 8.87589, "Ritorno", "z647"));
@@ -10020,7 +10020,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("Arluno, Pozzo Bonelli fr. Chiesa", 45.50521, 8.94194, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50538, 8.94392, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50539, 8.94482, "Main", "z647"));
-        stations.add(new MetroStation("Arluno, A. De Gasperi", 45.50565, 8.94726, "Main", "z647"));
+        stations.add(new MetroStation("Arluno, Piazza De Gasperi", 45.50565, 8.94726, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50575, 8.94794, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50574, 8.94998, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50565, 8.95067, "Main", "z647"));
@@ -10035,7 +10035,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50554, 8.95619, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50557, 8.95715, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50547, 8.95825, "Main", "z647"));
-        stations.add(new MetroStation("Arluno, Turati 58", 45.50533, 8.95903, "Main", "z647"));
+        stations.add(new MetroStation("Arluno, Via Turati civico 58", 45.50533, 8.95903, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50519, 8.96012, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.505, 8.96103, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50497, 8.96132, "Main", "z647"));
@@ -10273,7 +10273,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50222, 9.02891, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50203, 9.02905, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.50123, 9.02985, "Ritorno", "z647"));
-        stations.add(new MetroStation("Cornaredo, Mazzini/Ricotti", 45.50033, 9.03065, "Ritorno", "z647"));
+        stations.add(new MetroStation("Cornaredo, Mazzini/Ricciotti", 45.50033, 9.03065, "Ritorno", "z647"));
         return stations;
     }
 
