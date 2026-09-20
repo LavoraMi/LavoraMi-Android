@@ -8571,8 +8571,8 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.49088, 8.94457, "Main - Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.49095, 8.94465, "Main - Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.49176, 8.94478, "Main - Ritorno", "z643"));
-        stations.add(new MetroStation("Vittuone, Ghandi 1,Stazione", 45.49158, 8.94676, "Ritorno", "z643"));
-        stations.add(new MetroStation("Vittuone, Ghandi fr. 3,Stazione", 45.49155, 8.94718, "Main", "z643"));
+        stations.add(new MetroStation("Vittuone, Gandhi 1,Stazione", 45.49158, 8.94676, "Ritorno", "z643"));
+        stations.add(new MetroStation("Vittuone, Gandhi fr. 3,Stazione", 45.49155, 8.94718, "Main", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.49155, 8.94759, "Main - Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.4916, 8.94791, "Main - Ritorno", "z643"));
         stations.add(new MetroStation("NO_DRAW", 45.49179, 8.94846, "Main - Ritorno", "z643"));
@@ -8631,7 +8631,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48596, 8.9635, "Main - Ritorno", "z643"));
         stations.add(new MetroStation("Vittuone, Milano/V. Veneto", 45.48501, 8.95971, "Main", "z643"));
         stations.add(new MetroStation("Vittuone, Milano 7", 45.48533, 8.96103, "Ritorno", "z643"));
-        stations.add(new MetroStation("Vittuone, Milano Fr. 22", 45.48348, 8.95365, "Main", "z643"));
+        stations.add(new MetroStation("Vittuone, Milano fr. 22", 45.48348, 8.95365, "Main", "z643"));
         stations.add(new MetroStation("Vittuone, Milano 22", 45.48348, 8.95365, "Main", "z643"));
         return stations;
     }
