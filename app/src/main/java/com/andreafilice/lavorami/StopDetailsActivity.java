@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.MapView;
 
@@ -24,11 +25,11 @@ public class StopDetailsActivity extends AppCompatActivity{
 
     private String nomeFermata;
     private String nomeLinea;
-
     private MapView pendingMapView;
     private boolean mapAlreadyLoaded = false;
     private MapView mapViewRef;
     private int coloreLinea;
+    private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2001;
 
@@ -40,6 +41,10 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         //*LOCK THE ORIENTATION
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        LinearLayout bottomSheetStop = findViewById(R.id.bottomSheetStop);
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetStop);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
         //*INTENT EXTRAS
         /// In questa sezione leggiamo il nome della fermata e il nome della linea passati dalla LinesDetailActivity.
@@ -95,15 +100,12 @@ public class StopDetailsActivity extends AppCompatActivity{
     private void onMapReady(MapView mapView) {
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
-
+        MapboxHelper.removeScale(mapView);
         elaboraFermata(layoutMaps, layoutLoadingMap, mapView);
     }
 
     private void elaboraFermata(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
         //*RECUPERO STAZIONI DELLA LINEA
-        /// In questa sezione prendiamo tutte le stazioni della linea corrente, nello stesso ordine
-        /// usato da LinesDetailActivity per disegnare la mappa (StationDB.getAllStations()).
-
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
         for (MetroStation s : StationDB.getAllStations()) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
@@ -115,30 +117,67 @@ public class StopDetailsActivity extends AppCompatActivity{
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
         String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
 
-        //*TROVA INDICE DELLA FERMATA CORRENTE
+        //*TROVA IL BRANCH DELLA FERMATA CORRENTE
+        String branchCorrente = null;
+        for (MetroStation s : tutteLeStazioni) {
+            if (!s.getName().equalsIgnoreCase("NO_DRAW") && s.getName().equalsIgnoreCase(nomeFermata)) {
+                branchCorrente = s.getBranch();
+                break;
+            }
+        }
+
+        //*COSTRUISCI LA SEQUENZA DEL SOLO BRANCH CORRENTE (NO_DRAW inclusi, servono per la continuità)
+        List<MetroStation> stazioniBranch = new ArrayList<>();
+        if (branchCorrente != null) {
+            for (MetroStation s : tutteLeStazioni) {
+                if (s.getBranch() != null && s.getBranch().equals(branchCorrente))
+                    stazioniBranch.add(s);
+            }
+        }
+        else {
+            stazioniBranch = tutteLeStazioni;
+        }
+
+        //*TROVA INDICE DELLA FERMATA CORRENTE NEL BRANCH
         int indiceCorrente = -1;
-        for (int i = 0; i < tutteLeStazioni.size(); i++) {
-            if (tutteLeStazioni.get(i).getName().equalsIgnoreCase(nomeFermata)) {
+        for (int i = 0; i < stazioniBranch.size(); i++) {
+            if (stazioniBranch.get(i).getName().equalsIgnoreCase(nomeFermata)) {
                 indiceCorrente = i;
                 break;
             }
         }
 
-        //*COSTRUISCI LISTA RIDOTTA: precedente, corrente, successiva
+        //*COSTRUISCI LISTA RIDOTTA PER I MARKER: precedente reale, corrente, successiva reale (senza NO_DRAW)
+        //*COSTRUISCI LISTA RIDOTTA PER LA POLILINEA: include gli eventuali NO_DRAW intermedi, per dare continuità al tracciato
         List<MetroStation> stazioniDaMostrare = new ArrayList<>();
+        List<MetroStation> stazioniPerPolilinea = new ArrayList<>();
+
         if (indiceCorrente != -1) {
-            if (indiceCorrente - 1 >= 0) stazioniDaMostrare.add(tutteLeStazioni.get(indiceCorrente - 1));
-            stazioniDaMostrare.add(tutteLeStazioni.get(indiceCorrente));
-            if (indiceCorrente + 1 < tutteLeStazioni.size()) stazioniDaMostrare.add(tutteLeStazioni.get(indiceCorrente + 1));
+            int indicePrecedente = trovaIndiceVicinaReale(stazioniBranch, indiceCorrente, -1);
+            int indiceSuccessiva = trovaIndiceVicinaReale(stazioniBranch, indiceCorrente, +1);
+
+            int inizio = (indicePrecedente != -1) ? indicePrecedente : indiceCorrente;
+            int fine = (indiceSuccessiva != -1) ? indiceSuccessiva : indiceCorrente;
+
+            //*Tratto continuo del branch tra la precedente reale e la successiva reale (NO_DRAW compresi)
+            for (int i = inizio; i <= fine; i++)
+                stazioniPerPolilinea.add(stazioniBranch.get(i));
+
+            if (indicePrecedente != -1) stazioniDaMostrare.add(stazioniBranch.get(indicePrecedente));
+            stazioniDaMostrare.add(stazioniBranch.get(indiceCorrente));
+            if (indiceSuccessiva != -1) stazioniDaMostrare.add(stazioniBranch.get(indiceSuccessiva));
         }
         else {
-            //*FALLBACK: se non troviamo la fermata (nome non combacia), mostriamo tutta la linea
-            stazioniDaMostrare = tutteLeStazioni;
+            //*FALLBACK: se non troviamo la fermata, mostriamo tutta la linea
+            stazioniPerPolilinea = tutteLeStazioni;
+            for (MetroStation s : tutteLeStazioni)
+                if (!s.getName().equalsIgnoreCase("NO_DRAW")) stazioniDaMostrare.add(s);
         }
 
+        disegnaPolilinea(mapView, stazioniPerPolilinea, hexColor);
         disegnaMarkers(mapView, stazioniDaMostrare, hexColor, hexColorText);
 
-        //*ZOOM SULLA FERMATA + PRECEDENTE + SUCCESSIVA
+        //*ZOOM SULLA FERMATA + PRECEDENTE + SUCCESSIVA (solo sui punti veri, non sui NO_DRAW)
         if (!stazioniDaMostrare.isEmpty()) {
             List<Point> puntiDaInquadrare = new ArrayList<>();
             for (MetroStation s : stazioniDaMostrare)
@@ -158,12 +197,31 @@ public class StopDetailsActivity extends AppCompatActivity{
         positionButton.setImageTintList(android.content.res.ColorStateList.valueOf(coloreLinea));
         positionButton.setOnClickListener(v -> positionButtonClick());
 
-        //*IL PULSANTE CAMBIA DIREZIONE NON SERVE IN QUESTA ACTIVITY
-        ImageButton changeRouteButton = findViewById(R.id.changeRouteButton);
-        changeRouteButton.setVisibility(android.view.View.GONE);
-
         if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
             MapboxHelper.enableUserLocation(mapViewRef, false);
+    }
+
+    /**
+     * Cerca l'INDICE della prima stazione "vera" (non NO_DRAW) a partire da indice+direzione,
+     * saltando oltre eventuali marker NO_DRAW intermedi. Ritorna -1 se non trovata.
+     */
+    private int trovaIndiceVicinaReale(List<MetroStation> stazioni, int indice, int direzione) {
+        int i = indice + direzione;
+        while (i >= 0 && i < stazioni.size()) {
+            if (!stazioni.get(i).getName().equalsIgnoreCase("NO_DRAW")) return i;
+            i += direzione;
+        }
+        return -1;
+    }
+
+    private void disegnaPolilinea(MapView mapView, List<MetroStation> stazioni, String hexColor) {
+        if (stazioni.size() < 2) return;
+
+        List<Point> points = new ArrayList<>();
+        for (MetroStation s : stazioni)
+            points.add(Point.fromLngLat(s.getLongitude(), s.getLatitude()));
+
+        MapboxHelper.addLineLayer(mapView, "line-source-main", "line-layer-main", points, hexColor, false);
     }
 
     private void disegnaMarkers(MapView mapView, List<MetroStation> stazioni, String hexColor, String hexColorText) {

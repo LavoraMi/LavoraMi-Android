@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,26 +8,22 @@
     android:layout_height="match_parent"
     android:background="@color/background_app">
 
-    <!-- ==================== MAPPA (metà superiore) ==================== -->
+    <!-- ==================== MAPPA (occupa tutto lo schermo, il bottom sheet ci scorre sopra) ==================== -->
     <androidx.cardview.widget.CardView
         android:id="@+id/mapCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/background_app"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomSheetStop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:cardBackgroundColor="@color/background_app">
 
         <ImageButton
             android:id="@+id/buttonBack"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_gravity="top|start"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="38dp"
             android:background="@drawable/glass_bottom_bar_bg"
             android:elevation="4dp"
             android:padding="12dp"
@@ -46,36 +42,6 @@
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/changeRouteButton"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:scaleType="fitCenter"
-                    android:padding="5dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/glass_bottom_bar_bg"
-                    android:elevation="4dp"
-                    android:src="@drawable/ic_change_route"
-                    app:tint="@color/text_primary"
-                    android:visibility="gone"/>
-
-                <ImageButton
-                    android:id="@+id/positionButton"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:background="@drawable/glass_bottom_bar_bg"
-                    android:elevation="4dp"
-                    android:src="@drawable/ic_position"
-                    app:tint="@color/text_primary" />
-            </LinearLayout>
         </FrameLayout>
 
         <LinearLayout
@@ -115,23 +81,48 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- ==================== BOTTOM SHEET ==================== -->
+
+    <ImageButton
+        android:id="@+id/positionButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/glass_bottom_bar_bg"
+        android:elevation="10dp"
+        android:src="@drawable/ic_position"
+        app:tint="@color/text_primary"
+        app:layout_anchor="@id/bottomSheetStop"
+        app:layout_anchorGravity="top|end" />
+    <!-- ==================== BOTTOM SHEET (drag per espandere/chiudere) ==================== -->
     <LinearLayout
         android:id="@+id/bottomSheetStop"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/glass_bottom_bar_bg"
+        android:background="@drawable/bg_top_bar_rounded"
         android:backgroundTint="@color/background_app"
         android:paddingHorizontal="20dp"
-        android:paddingTop="12dp"
+        android:paddingTop="8dp"
         android:paddingBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:elevation="8dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="88dp"
+        app:behavior_fitToContents="true">
+
+        <!-- Maniglia di trascinamento -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_badge_line"
+            android:backgroundTint="@color/subtitle"
+            android:alpha="0.5" />
 
         <!-- Header: icona fermata + titolo + preferiti -->
         <LinearLayout
+            android:id="@+id/headerFermata"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -175,113 +166,121 @@
                     android:textSize="15sp" />
             </LinearLayout>
 
-
         </LinearLayout>
 
-        <!-- Prossimo arrivo + refresh icon -->
+        <!-- Il resto del contenuto (arrivo, tab, ecc.) resta visibile solo quando espanso, -->
+        <!-- ma non serve nasconderlo manualmente: quando collassato la peekHeight lo taglia già -->
         <LinearLayout
+            android:id="@+id/contenutoEspandibile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="24dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="0dp"
+            <!-- Prossimo arrivo + refresh icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Prossimo arrivo:"
-                android:textColor="@color/text_primary"
-                android:fontFamily="@font/font_main"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="24dp">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Prossimo arrivo:"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="@font/font_main"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/loaderArrivi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:shimmer_auto_start="true"
+                android:visibility="gone">
+
+                <include layout="@layout/loader_interchanges" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <LinearLayout
+                android:id="@+id/rigaArrivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:id="@+id/detBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="50dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_badge_line"
+                    android:backgroundTint="@color/TRAM"
+                    android:text="2"
+                    android:textColor="@color/White"
+                    android:fontFamily="@font/font_main"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/detDirezioni"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="direzione: DIREZIONE"
+                    android:fontFamily="@font/font_main"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/nextArrivals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12:45"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/font_main"/>
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabOrarioAccessibilita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@android:color/transparent"
+                app:tabIndicatorColor="@color/TRAM"
+                app:tabIndicatorHeight="3dp"
+                app:tabSelectedTextColor="@color/TRAM"
+                app:tabTextColor="@color/subtitle"
+                android:clickable="false"
+                android:focusable="false"
+                app:tabMode="fixed"
+                app:tabGravity="fill">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tabOrario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scheduledFilter" />
+
+            </com.google.android.material.tabs.TabLayout>
 
         </LinearLayout>
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/loaderArrivi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:shimmer_auto_start="true"
-            android:visibility="gone">
-
-            <include layout="@layout/loader_interchanges" />
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <LinearLayout
-            android:id="@+id/rigaArrivo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="4dp">
-
-            <TextView
-                android:id="@+id/detBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="50dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:gravity="center"
-                android:background="@drawable/bg_badge_line"
-                android:backgroundTint="@color/TRAM"
-                android:text="2"
-                android:textColor="@color/White"
-                android:fontFamily="@font/font_main"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detDirezioni"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:text="direzione: DIREZIONE"
-                android:fontFamily="@font/font_main"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:maxLines="1"
-                android:ellipsize="end" />
-
-            <TextView
-                android:id="@+id/nextArrivals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12:45"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/font_main"/>
-        </LinearLayout>
-
-
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabOrarioAccessibilita"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:background="@android:color/transparent"
-            app:tabIndicatorColor="@color/TRAM"
-            app:tabIndicatorHeight="3dp"
-            app:tabSelectedTextColor="@color/TRAM"
-            app:tabTextColor="@color/subtitle"
-            app:tabMode="fixed"
-            app:tabGravity="fill">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabOrario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/scheduledFilter" />
-
-        </com.google.android.material.tabs.TabLayout>
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
