@@ -4,6 +4,7 @@ import com.andreafilice.lavorami.MetroStation;
 import java.util.ArrayList;
 import java.util.List;
 public class NETStationsDB {
+    //TODO fix bus stops dio cane
     public static List<MetroStation> getStationsZ301() {
         List<MetroStation> stations = new ArrayList<>();
         stations.add(new MetroStation("NO_DRAW", 45.69195, 9.67609, "Main", "z301"));
