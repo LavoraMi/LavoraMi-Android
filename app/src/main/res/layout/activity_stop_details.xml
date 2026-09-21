@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainStopDetailLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app">
+
+    <!-- ==================== MAPPA (metà superiore) ==================== -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mapCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/background_app"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomSheetStop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/glass_bottom_bar_bg"
+            android:elevation="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="@color/text_primary" />
+
+        <FrameLayout
+            android:id="@+id/googleMapsFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <com.mapbox.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/changeRouteButton"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:scaleType="fitCenter"
+                    android:padding="5dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/glass_bottom_bar_bg"
+                    android:elevation="4dp"
+                    android:src="@drawable/ic_change_route"
+                    app:tint="@color/text_primary"
+                    android:visibility="gone"/>
+
+                <ImageButton
+                    android:id="@+id/positionButton"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/glass_bottom_bar_bg"
+                    android:elevation="4dp"
+                    android:src="@drawable/ic_position"
+                    app:tint="@color/text_primary" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/loadingMapsFragmentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/loadingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:shimmer_auto_start="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <include layout="@layout/loader_map_item" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_main"
+                android:text="@string/loadingMapDetails"
+                android:layout_marginTop="-60dp"
+                android:textAlignment="center"
+                android:textColor="@color/text_primary"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ==================== BOTTOM SHEET ==================== -->
+    <LinearLayout
+        android:id="@+id/bottomSheetStop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/glass_bottom_bar_bg"
+        android:backgroundTint="@color/background_app"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Header: icona fermata + titolo + preferiti -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/stopTypeIcon"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_icon_rounded"
+                android:padding="12dp"
+                android:src="@drawable/ic_tram"
+                app:tint="@color/TRAM" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/detTitolo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome Fermata"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="@font/font_main"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/detSottotitolo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="fermata bus/tram"
+                    android:textColor="@color/subtitle"
+                    android:fontFamily="@font/font_main"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!-- Prossimo arrivo + refresh icon -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Prossimo arrivo:"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/font_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loaderArrivi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:shimmer_auto_start="true"
+            android:visibility="gone">
+
+            <include layout="@layout/loader_interchanges" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <LinearLayout
+            android:id="@+id/rigaArrivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/detBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="50dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:gravity="center"
+                android:background="@drawable/bg_badge_line"
+                android:backgroundTint="@color/TRAM"
+                android:text="2"
+                android:textColor="@color/White"
+                android:fontFamily="@font/font_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detDirezioni"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:text="direzione: DIREZIONE"
+                android:fontFamily="@font/font_main"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/nextArrivals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:45"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/font_main"/>
+        </LinearLayout>
+
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabOrarioAccessibilita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            app:tabIndicatorColor="@color/TRAM"
+            app:tabIndicatorHeight="3dp"
+            app:tabSelectedTextColor="@color/TRAM"
+            app:tabTextColor="@color/subtitle"
+            app:tabMode="fixed"
+            app:tabGravity="fill">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabOrario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scheduledFilter" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

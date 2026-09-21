@@ -278,6 +278,47 @@ object MapboxHelper {
             if (style.styleSourceExists("marker-source")) style.removeStyleSource("marker-source")
         }
     }
+
+    @JvmStatic
+    fun setCameraToBounds(mapView: MapView, points: List<Point>, paddingPx: Double = 120.0) {
+        /** Centra e zooma la camera in modo che tutti i punti passati siano visibili.
+         * Usato per la StopDetailsActivity: fermata precedente + corrente + successiva.
+         * @param mapView è il Map Fragment dell'Activity.
+         * @param points è la lista di punti (coordinate) che devono rientrare nella vista.
+         * @param paddingPx è il padding in pixel attorno al bounding box.
+         */
+        if (points.isEmpty()) return
+
+        if (points.size == 1) {
+            mapView.mapboxMap.setCamera(
+                CameraOptions.Builder()
+                    .center(points[0])
+                    .zoom(16.0)
+                    .build()
+            )
+            return
+        }
+
+        val coordinateBounds = com.mapbox.maps.CoordinateBounds(
+            com.mapbox.geojson.Point.fromLngLat(
+                points.minOf { it.longitude() },
+                points.minOf { it.latitude() }
+            ),
+            com.mapbox.geojson.Point.fromLngLat(
+                points.maxOf { it.longitude() },
+                points.maxOf { it.latitude() }
+            )
+        )
+
+        val cameraOptions = mapView.mapboxMap.cameraForCoordinateBounds(
+            coordinateBounds,
+            com.mapbox.maps.EdgeInsets(paddingPx, paddingPx, paddingPx, paddingPx),
+            null,
+            null
+        )
+
+        mapView.mapboxMap.setCamera(cameraOptions)
+    }
     interface MapReadyCallback {
         //*INTERFACE CLASS
         ///This is the interface to implement into LinesDetailActivity.

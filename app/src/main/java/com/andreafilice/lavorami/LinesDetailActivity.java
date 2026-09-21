@@ -682,7 +682,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaFermataDaMappa(stationName);
                                 }
-                            } else {
+                            } else if (isLineaTram() || isLineaRegionale()) {
+                                if (clickedFeature.hasProperty("name")) {
+                                    String stationName = clickedFeature.getStringProperty("name");
+                                    apriDettaglioFermata(stationName);
+                                }
+                            }else {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaInterscambioDaMappa(stationName);
@@ -2990,5 +2995,14 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         highlightAnimator = animatorSet;
         animatorSet.start();
+    }
+
+    private void apriDettaglioFermata(String nomeStazioneMappa) {
+        ActivityUtils.triggerFeedback(this);
+
+        android.content.Intent intent = new android.content.Intent(this, StopDetailsActivity.class);
+        intent.putExtra("NOME_FERMATA", nomeStazioneMappa);
+        intent.putExtra("NOME_LINEA", nomeLinea);
+        startActivity(intent);
     }
 }

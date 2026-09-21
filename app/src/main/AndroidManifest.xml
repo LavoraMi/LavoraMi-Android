@@ -102,6 +102,9 @@
         <activity android:name=".wrapped.WrappedActivity"
             android:exported="false" />
         <activity
+            android:name=".StopDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LinesDetailActivity"
             android:exported="true"
             android:launchMode="singleTop"
