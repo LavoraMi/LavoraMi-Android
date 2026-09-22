@@ -256,28 +256,34 @@
                     android:fontFamily="@font/font_main"/>
             </LinearLayout>
 
-            <com.google.android.material.tabs.TabLayout
+            <LinearLayout
                 android:id="@+id/tabOrarioAccessibilita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@android:color/transparent"
-                app:tabIndicatorColor="@color/TRAM"
-                app:tabIndicatorHeight="3dp"
-                app:tabSelectedTextColor="@color/TRAM"
-                app:tabTextColor="@color/subtitle"
-                android:clickable="false"
-                android:focusable="false"
-                app:tabMode="fixed"
-                app:tabGravity="fill">
+                android:orientation="vertical"
+                android:background="@android:color/transparent">
 
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tabOrario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/scheduledFilter" />
+                <TextView
+                    android:id="@+id/tabOrarioLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center|bottom"
+                    android:text="@string/scheduledFilter"
+                    android:textColor="@color/TRAM"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true" />
 
-            </com.google.android.material.tabs.TabLayout>
+                <View
+                    android:layout_width="160dp"
+                    android:layout_gravity="center"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/TRAM" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
