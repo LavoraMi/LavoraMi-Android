@@ -297,14 +297,12 @@ public class STAVStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.44333, 8.98416, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("Cisliano Via Diaz", 45.44311, 8.98355, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.44293, 8.9831, "Main - Ritorno", "z551"));
-        stations.add(new MetroStation("NO_DRAW", 45.44292, 8.98302, "Main", "z551"));
-        stations.add(new MetroStation("NO_DRAW", 45.44293, 8.98295, "Main", "z551"));
-        stations.add(new MetroStation("NO_DRAW", 45.44284, 8.98307, "Ritorno", "z551"));
-        stations.add(new MetroStation("NO_DRAW", 45.44278, 8.98307, "Ritorno", "z551"));
+        stations.add(new MetroStation("NO_DRAW", 45.44292, 8.98302, "Main - Ritorno", "z551"));
+        stations.add(new MetroStation("NO_DRAW", 45.44293, 8.98295, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.4429, 8.98289, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.44286, 8.98288, "Main - Ritorno", "z551"));
-        stations.add(new MetroStation("NO_DRAW", 45.4428, 8.9829, "Main", "z551"));
-        stations.add(new MetroStation("NO_DRAW", 45.44277, 8.98298, "Main", "z551"));
+        stations.add(new MetroStation("NO_DRAW", 45.4428, 8.9829, "Main - Ritorno", "z551"));
+        stations.add(new MetroStation("NO_DRAW", 45.44277, 8.98298, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.44269, 8.98309, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.44168, 8.98374, "Main - Ritorno", "z551"));
         stations.add(new MetroStation("NO_DRAW", 45.44099, 8.98419, "Main - Ritorno", "z551"));
