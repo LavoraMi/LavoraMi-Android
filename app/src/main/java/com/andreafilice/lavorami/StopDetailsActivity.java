@@ -3,9 +3,14 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.mapbox.geojson.Point;
 import com.mapbox.maps.MapView;
 
@@ -84,6 +91,8 @@ public class StopDetailsActivity extends AppCompatActivity{
         TextView nextArrivals = findViewById(R.id.nextArrivals);
         detDirezioni.setText("direzione: DIREZIONE");
         nextArrivals.setText("12:45");
+
+        caricaInterscambioFermata();
     }
 
     private void checkIfReadyToLoadMap() {
@@ -285,6 +294,117 @@ public class StopDetailsActivity extends AppCompatActivity{
         MapboxHelper.clearMarkers(mapView);
 
         elaboraFermata(layoutMaps, layoutLoadingMap, mapView);
+    }
+
+    private void caricaInterscambioFermata() {
+        LinearLayout container = findViewById(R.id.containerInterscambioFermata);
+        if (container == null) return;
+
+        container.removeAllViews();
+        container.setVisibility(View.GONE);
+
+        List<InterchangeInfo> interscambi = InterchangesDB.getTramInterchanges(this);
+        InterchangeInfo trovato = null;
+
+        for (InterchangeInfo info : interscambi) {
+            if (info.getKey().equalsIgnoreCase(nomeFermata)) {
+                trovato = info;
+                break;
+            }
+        }
+
+        if (trovato == null || trovato.getLines() == null) return;
+
+        View card = LayoutInflater.from(this).inflate(R.layout.item_interchange, container, false);
+
+        card.setPadding(0, card.getPaddingTop(), 0, card.getPaddingBottom());
+
+        ImageView icona = card.findViewById(R.id.iconTransport);
+        if (icona != null) icona.setImageResource(trovato.getCardImageID());
+
+        TextView titolo = card.findViewById(R.id.txtTitle);
+        if (titolo != null) titolo.setText(trovato.getKey().toUpperCase());
+
+        ChipGroup chipGroup = card.findViewById(R.id.chipGroupLinee);
+        if (chipGroup != null) {
+            chipGroup.removeAllViews();
+            for (String lineName : trovato.getLines()) {
+                if (!lineName.equalsIgnoreCase(nomeLinea))
+                    chipGroup.addView(createChipInterscambio(lineName));
+            }
+        }
+
+        TextView emptyInterchanges = card.findViewById(R.id.noInterchangesTxt);
+        if (chipGroup != null && chipGroup.getChildCount() == 0 && emptyInterchanges != null) {
+            emptyInterchanges.setVisibility(View.VISIBLE);
+            if (icona != null) icona.setImageResource(R.drawable.ic_no_interchanges);
+        }
+
+        View dot = card.findViewById(R.id.dotInterchange);
+        if (dot != null) {
+            Drawable background = dot.getBackground();
+            if (background instanceof GradientDrawable) {
+                GradientDrawable gd = (GradientDrawable) background.mutate();
+                float density = getResources().getDisplayMetrics().density;
+                gd.setStroke((int) (3 * density), coloreLinea);
+            }
+        }
+
+        View lineTop = card.findViewById(R.id.lineTop);
+        View lineBottom = card.findViewById(R.id.lineBottom);
+        if (lineTop != null) {
+            lineTop.setVisibility(View.VISIBLE);
+            lineTop.setBackgroundColor(coloreLinea);
+        }
+        if (lineBottom != null) {
+            lineBottom.setVisibility(View.VISIBLE);
+            lineBottom.setBackgroundColor(coloreLinea);
+        }
+
+        container.addView(card);
+        container.setVisibility(View.VISIBLE);
+    }
+
+    private Chip createChipInterscambio(String name) {
+        Chip chip = new Chip(this, null, com.google.android.material.R.attr.chipStyle);
+        chip.setEnsureMinTouchTargetSize(false);
+        chip.setText(name);
+
+        chip.setShapeAppearanceModel(chip.getShapeAppearanceModel().toBuilder().setAllCornerSizes(10f).build());
+
+        float density = getResources().getDisplayMetrics().density;
+        int heightPx = (int) (26 * density);
+
+        if (name.contains(getString(R.string.filobusKey)) || name.matches("9[0-3]")) {
+            chip.setChipIcon(ContextCompat.getDrawable(this, R.drawable.ic_bolt));
+            chip.setChipIconTint(android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE));
+            chip.setIconStartPadding(10);
+        }
+        else if (name.contains("N")) {
+            chip.setChipIcon(ContextCompat.getDrawable(this, R.drawable.ic_dark));
+            chip.setChipIconTint(android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE));
+            chip.setIconStartPadding(10);
+        }
+
+        chip.setChipMinHeight(heightPx);
+        chip.setMinHeight(heightPx);
+        chip.setChipStartPadding(0f);
+        chip.setChipEndPadding(0f);
+        chip.setTextStartPadding(15f);
+        chip.setTextEndPadding(15f);
+        chip.setChipStrokeWidth(0f);
+        chip.setTextSize(13f);
+        chip.setTypeface(androidx.core.content.res.ResourcesCompat.getFont(this, R.font.inter), android.graphics.Typeface.BOLD);
+
+        int colore = ContextCompat.getColor(this, StationDB.getLineColor(this, name));
+        chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(colore));
+        chip.setTextColor((name.equalsIgnoreCase(getString(R.string.monumentKey))) ? ContextCompat.getColor(this, R.color.Black) : ContextCompat.getColor(this, R.color.White));
+        chip.setCloseIconVisible(false);
+        chip.setClickable(false);
+        chip.setCheckable(false);
+        chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        chip.setGravity(android.view.Gravity.CENTER);
+        return chip;
     }
 
     private boolean isDarkMode() {
