@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,7 +46,6 @@ public class StopDetailsActivity extends AppCompatActivity{
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
         //*INTENT EXTRAS
-        /// In questa sezione leggiamo il nome della fermata e il nome della linea passati dalla LinesDetailActivity.
         nomeFermata = getIntent().getStringExtra("NOME_FERMATA");
         nomeLinea = getIntent().getStringExtra("NOME_LINEA");
 
@@ -67,8 +65,7 @@ public class StopDetailsActivity extends AppCompatActivity{
     }
 
     private void aggiornaTestView() {
-        /// In questa sezione aggiorniamo i TextView con i dati reali della fermata e della linea.
-        /// L'orario e la direzione restano hardcoded, in attesa dei dati elaborati.
+        //ORARIO HARDCODED IN ATTESA DI GTFS
 
         TextView detTitolo = findViewById(R.id.detTitolo);
         TextView detSottotitolo = findViewById(R.id.detSottotitolo);
@@ -83,7 +80,6 @@ public class StopDetailsActivity extends AppCompatActivity{
         detBadge.getBackground().setTint(coloreLinea);
         detBadge.getBackground().setTintMode(android.graphics.PorterDuff.Mode.SRC_IN);
 
-        //*HARDCODED - in attesa dei dati reali di orario/direzione
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
         detDirezioni.setText("direzione: DIREZIONE");
@@ -105,7 +101,6 @@ public class StopDetailsActivity extends AppCompatActivity{
     }
 
     private void elaboraFermata(FrameLayout layoutMaps, LinearLayout layoutLoadingMap, MapView mapView) {
-        //*RECUPERO STAZIONI DELLA LINEA
         List<MetroStation> tutteLeStazioni = new ArrayList<>();
         for (MetroStation s : StationDB.getAllStations()) {
             if (s.getLine().trim().equalsIgnoreCase(nomeLinea.trim()))
@@ -117,7 +112,6 @@ public class StopDetailsActivity extends AppCompatActivity{
         String hexColor = String.format("#%06X", (0xFFFFFF & coloreLinea));
         String hexColorText = String.format("#%06X", (0xFFFFFF & coloreDefaultText));
 
-        //*TROVA IL BRANCH DELLA FERMATA CORRENTE
         String branchCorrente = null;
         for (MetroStation s : tutteLeStazioni) {
             if (!s.getName().equalsIgnoreCase("NO_DRAW") && s.getName().equalsIgnoreCase(nomeFermata)) {
@@ -126,7 +120,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             }
         }
 
-        //*COSTRUISCI LA SEQUENZA DEL SOLO BRANCH CORRENTE (NO_DRAW inclusi, servono per la continuità)
         List<MetroStation> stazioniBranch = new ArrayList<>();
         if (branchCorrente != null) {
             for (MetroStation s : tutteLeStazioni) {
@@ -138,7 +131,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             stazioniBranch = tutteLeStazioni;
         }
 
-        //*TROVA INDICE DELLA FERMATA CORRENTE NEL BRANCH
         int indiceCorrente = -1;
         for (int i = 0; i < stazioniBranch.size(); i++) {
             if (stazioniBranch.get(i).getName().equalsIgnoreCase(nomeFermata)) {
@@ -147,8 +139,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             }
         }
 
-        //*COSTRUISCI LISTA RIDOTTA PER I MARKER: precedente reale, corrente, successiva reale (senza NO_DRAW)
-        //*COSTRUISCI LISTA RIDOTTA PER LA POLILINEA: include gli eventuali NO_DRAW intermedi, per dare continuità al tracciato
         List<MetroStation> stazioniDaMostrare = new ArrayList<>();
         List<MetroStation> stazioniPerPolilinea = new ArrayList<>();
 
@@ -159,7 +149,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             int inizio = (indicePrecedente != -1) ? indicePrecedente : indiceCorrente;
             int fine = (indiceSuccessiva != -1) ? indiceSuccessiva : indiceCorrente;
 
-            //*Tratto continuo del branch tra la precedente reale e la successiva reale (NO_DRAW compresi)
             for (int i = inizio; i <= fine; i++)
                 stazioniPerPolilinea.add(stazioniBranch.get(i));
 
@@ -168,7 +157,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             if (indiceSuccessiva != -1) stazioniDaMostrare.add(stazioniBranch.get(indiceSuccessiva));
         }
         else {
-            //*FALLBACK: se non troviamo la fermata, mostriamo tutta la linea
             stazioniPerPolilinea = tutteLeStazioni;
             for (MetroStation s : tutteLeStazioni)
                 if (!s.getName().equalsIgnoreCase("NO_DRAW")) stazioniDaMostrare.add(s);
@@ -177,7 +165,6 @@ public class StopDetailsActivity extends AppCompatActivity{
         disegnaPolilinea(mapView, stazioniPerPolilinea, hexColor);
         disegnaMarkers(mapView, stazioniDaMostrare, hexColor, hexColorText);
 
-//*CLICK SUI MARKER PER CAMBIARE FERMATA
         com.mapbox.maps.plugin.gestures.GesturesUtils.getGestures(mapView).addOnMapClickListener(point -> {
             com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
             float tolerance = 20f;
@@ -205,7 +192,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             return true;
         });
 
-        //*ZOOM SULLA FERMATA + PRECEDENTE + SUCCESSIVA (solo sui punti veri, non sui NO_DRAW)
         if (!stazioniDaMostrare.isEmpty()) {
             List<Point> puntiDaInquadrare = new ArrayList<>();
             for (MetroStation s : stazioniDaMostrare)
@@ -229,10 +215,6 @@ public class StopDetailsActivity extends AppCompatActivity{
             MapboxHelper.enableUserLocation(mapViewRef, false);
     }
 
-    /**
-     * Cerca l'INDICE della prima stazione "vera" (non NO_DRAW) a partire da indice+direzione,
-     * saltando oltre eventuali marker NO_DRAW intermedi. Ritorna -1 se non trovata.
-     */
     private int trovaIndiceVicinaReale(List<MetroStation> stazioni, int indice, int direzione) {
         int i = indice + direzione;
         while (i >= 0 && i < stazioni.size()) {
