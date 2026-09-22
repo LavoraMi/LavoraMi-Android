@@ -49,10 +49,20 @@ object MapboxHelper {
     }
 
     @JvmStatic
-    fun removeScale(mapView: MapView){
+    fun removeScaleAndMoveCompass(mapView: MapView){
         mapView.compass.position = android.view.Gravity.TOP or android.view.Gravity.START
         mapView.scalebar.enabled = false
     }
+    @JvmStatic
+    fun removeScale(mapview: MapView) {
+        mapview.scalebar.enabled = false
+
+        val marginInDp = 38
+        val marginInPx = (marginInDp * mapview.context.resources.displayMetrics.density + 0.5f)
+
+        mapview.compass.marginTop = marginInPx
+    }
+
 
     @JvmStatic
     fun setCamera(mapView: MapView, latitude: Double, longitude: Double, zoom: Double) {
@@ -280,13 +290,7 @@ object MapboxHelper {
     }
 
     @JvmStatic
-    fun setCameraToBounds(mapView: MapView, points: List<Point>, paddingPx: Double = 120.0) {
-        /** Centra e zooma la camera in modo che tutti i punti passati siano visibili.
-         * Usato per la StopDetailsActivity: fermata precedente + corrente + successiva.
-         * @param mapView è il Map Fragment dell'Activity.
-         * @param points è la lista di punti (coordinate) che devono rientrare nella vista.
-         * @param paddingPx è il padding in pixel attorno al bounding box.
-         */
+    fun setCameraToBounds(mapView: MapView, points: List<Point>, paddingPx: Double = 120.0, minZoom: Double = 14.5) {
         if (points.isEmpty()) return
 
         if (points.size == 1) {
@@ -317,7 +321,17 @@ object MapboxHelper {
             null
         )
 
-        mapView.mapboxMap.setCamera(cameraOptions)
+        val zoomCalcolato = cameraOptions.zoom ?: minZoom
+        val zoomFinale = maxOf(zoomCalcolato, minZoom)
+
+        mapView.mapboxMap.setCamera(
+            CameraOptions.Builder()
+                .center(cameraOptions.center)
+                .zoom(zoomFinale)
+                .bearing(cameraOptions.bearing)
+                .pitch(cameraOptions.pitch)
+                .build()
+        )
     }
     interface MapReadyCallback {
         //*INTERFACE CLASS

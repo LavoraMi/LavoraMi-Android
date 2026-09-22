@@ -267,7 +267,7 @@
                 <TextView
                     android:id="@+id/tabOrarioLabel"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center|bottom"
                     android:text="@string/scheduledFilter"
                     android:textColor="@color/TRAM"

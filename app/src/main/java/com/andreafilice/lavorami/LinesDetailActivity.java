@@ -635,7 +635,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         elaboraStazioni(layoutMaps, layoutLoadingMap, mapView, cdnData);
 
         if(tipoDiLinea.contains("Metro")){
-            MapboxHelper.removeScale(mapView);
+            MapboxHelper.removeScaleAndMoveCompass(mapView);
             findViewById(R.id.lineaRegolareLayout).setVisibility(View.VISIBLE);
         }
     }
