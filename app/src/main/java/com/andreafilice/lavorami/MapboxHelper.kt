@@ -290,28 +290,22 @@ object MapboxHelper {
     }
 
     @JvmStatic
-    fun setCameraToBounds(mapView: MapView, points: List<Point>, paddingPx: Double = 120.0, minZoom: Double = 14.5) {
+    fun setCameraToBounds(mapView: MapView, points: List<Point>, paddingPx: Double = 120.0, minZoom: Double = 14.5, maxZoom: Double = 16.0) {
         if (points.isEmpty()) return
 
         if (points.size == 1) {
             mapView.mapboxMap.setCamera(
                 CameraOptions.Builder()
                     .center(points[0])
-                    .zoom(16.0)
+                    .zoom(minZoom)
                     .build()
             )
             return
         }
 
         val coordinateBounds = com.mapbox.maps.CoordinateBounds(
-            com.mapbox.geojson.Point.fromLngLat(
-                points.minOf { it.longitude() },
-                points.minOf { it.latitude() }
-            ),
-            com.mapbox.geojson.Point.fromLngLat(
-                points.maxOf { it.longitude() },
-                points.maxOf { it.latitude() }
-            )
+            com.mapbox.geojson.Point.fromLngLat(points.minOf { it.longitude() }, points.minOf { it.latitude() }),
+            com.mapbox.geojson.Point.fromLngLat(points.maxOf { it.longitude() }, points.maxOf { it.latitude() })
         )
 
         val cameraOptions = mapView.mapboxMap.cameraForCoordinateBounds(
@@ -322,7 +316,7 @@ object MapboxHelper {
         )
 
         val zoomCalcolato = cameraOptions.zoom ?: minZoom
-        val zoomFinale = maxOf(zoomCalcolato, minZoom)
+        val zoomFinale = zoomCalcolato.coerceIn(minZoom, maxZoom)
 
         mapView.mapboxMap.setCamera(
             CameraOptions.Builder()

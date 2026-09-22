@@ -177,13 +177,41 @@ public class StopDetailsActivity extends AppCompatActivity{
         disegnaPolilinea(mapView, stazioniPerPolilinea, hexColor);
         disegnaMarkers(mapView, stazioniDaMostrare, hexColor, hexColorText);
 
+//*CLICK SUI MARKER PER CAMBIARE FERMATA
+        com.mapbox.maps.plugin.gestures.GesturesUtils.getGestures(mapView).addOnMapClickListener(point -> {
+            com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
+            float tolerance = 20f;
+
+            com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
+                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
+                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
+            );
+
+            mapView.getMapboxMap().queryRenderedFeatures(
+                    new com.mapbox.maps.RenderedQueryGeometry(screenBox),
+                    new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
+                    expected -> {
+                        if (expected.isValue() && !expected.getValue().isEmpty()) {
+                            com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
+                            com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+
+                            if (clickedFeature.hasProperty("name")) {
+                                String stationName = clickedFeature.getStringProperty("name");
+                                selezionaNuovaFermata(mapView, stationName);
+                            }
+                        }
+                    }
+            );
+            return true;
+        });
+
         //*ZOOM SULLA FERMATA + PRECEDENTE + SUCCESSIVA (solo sui punti veri, non sui NO_DRAW)
         if (!stazioniDaMostrare.isEmpty()) {
             List<Point> puntiDaInquadrare = new ArrayList<>();
             for (MetroStation s : stazioniDaMostrare)
                 puntiDaInquadrare.add(Point.fromLngLat(s.getLongitude(), s.getLatitude()));
 
-            MapboxHelper.setCameraToBounds(mapView, puntiDaInquadrare, 150.0, 14);
+            MapboxHelper.setCameraToBounds(mapView, puntiDaInquadrare, 150.0, 14.5, 15.0);
         }
 
         layoutMaps.setVisibility(android.view.View.VISIBLE);
@@ -258,6 +286,23 @@ public class StopDetailsActivity extends AppCompatActivity{
                 }
             }
         }
+    }
+
+    private void selezionaNuovaFermata(MapView mapView, String nuovaFermata) {
+        if (nuovaFermata == null || nuovaFermata.equalsIgnoreCase(nomeFermata)) return;
+
+        ActivityUtils.triggerFeedback(this);
+        nomeFermata = nuovaFermata;
+
+        aggiornaTestView();
+
+        FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
+        LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
+
+        MapboxHelper.clearAllLineLayers(mapView);
+        MapboxHelper.clearMarkers(mapView);
+
+        elaboraFermata(layoutMaps, layoutLoadingMap, mapView);
     }
 
     private boolean isDarkMode() {
