@@ -928,4 +928,42 @@ public class NETStationsDB {
         stations.add(new MetroStation("Cologno M2", 45.53433, 9.29077, "Main", "z304"));
         return stations;
     }
+    public static List<MetroStation> getStationsZ305(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }
+    public static List<MetroStation> getStationsZ307(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }public static List<MetroStation> getStationsZ309(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }public static List<MetroStation> getStationsZ310(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }public static List<MetroStation> getStationsZ311(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }public static List<MetroStation> getStationsZ312(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }public static List<MetroStation> getStationsZ313(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }public static List<MetroStation> getStationsZ314(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }
+    public static List<MetroStation> getStationsZ315(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }
+    public static List<MetroStation> getStationsZ317(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }
+    public static List<MetroStation> getStationsZ318(){
+        List<MetroStation> stations = new ArrayList<>();
+        return stations;
+    }
 }
