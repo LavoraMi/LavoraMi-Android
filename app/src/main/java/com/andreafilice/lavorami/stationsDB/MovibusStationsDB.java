@@ -9910,6 +9910,12 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52381, 8.89896, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.52605, 8.89856, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.52626, 8.90017, "Main", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.52665, 8.90346, "Main - Ritorno", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.52674, 8.90412, "Main - Ritorno", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.52677, 8.90449, "Main - Ritorno", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.52676, 8.90484, "Main - Ritorno", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.52667, 8.90517, "Main - Ritorno", "z647"));
+        stations.add(new MetroStation("NO_DRAW", 45.52654, 8.90536, "Main - Ritorno", "z647"));
         stations.add(new MetroStation("Casorezzo, Bertani/Parabiago", 45.52431, 8.90561, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.52402, 8.90556, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.52396, 8.90549, "Main", "z647"));
