@@ -26,6 +26,7 @@ import com.mapbox.maps.MapView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class StopDetailsActivity extends AppCompatActivity{
 
@@ -295,6 +296,66 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         elaboraFermata(layoutMaps, layoutLoadingMap, mapView);
     }
+    private Map<String, String> dizionarioAbbreviazioni = Map.of(
+            "p.le", "piazzale",
+            "p.za", "piazza",
+            "p.ta", "porta",
+            "v.le", "viale",
+            "c.so", "corso",
+            "l.go", "largo",
+            "m.te", "monte",
+            "s.",   "san",
+            "c.",   "console",
+            "p.",   "principe"
+    );
+
+    private String espandiAbbreviazioni(String testo) {
+        if (testo == null) return null;
+
+        String risultato = testo;
+        for (Map.Entry<String, String> entry : dizionarioAbbreviazioni.entrySet()) {
+            String abbreviazione = entry.getKey();
+            String espansa = entry.getValue();
+
+            String abbreviazioneEscaped = java.util.regex.Pattern.quote(abbreviazione);
+            String regex = "(?i)(?<=^|\\s)" + abbreviazioneEscaped + "(?=\\s|$)";
+            risultato = risultato.replaceAll(regex, java.util.regex.Matcher.quoteReplacement(espansa));
+        }
+        return risultato;
+    }
+
+    private InterchangeInfo trovaInterscambioPerFermata(List<InterchangeInfo> interscambi, String nomeFermataOriginale) {
+        if (nomeFermataOriginale == null) return null;
+
+        String nomeFermataEspansa = espandiAbbreviazioni(nomeFermataOriginale);
+
+        for (InterchangeInfo info : interscambi) {
+            if (info.getKey().equalsIgnoreCase(nomeFermataOriginale)
+                    || info.getKey().equalsIgnoreCase(nomeFermataEspansa)) {
+                return info;
+            }
+        }
+
+        for (InterchangeInfo info : interscambi) {
+            String chiave = info.getKey();
+            if (chiave.toLowerCase().contains(nomeFermataEspansa.toLowerCase())
+                    || nomeFermataEspansa.equalsIgnoreCase("Lodi TIBB") && chiave.equalsIgnoreCase("Milano Scalo Romana")) {
+                return info;
+            }
+        }
+
+        String[] paroleNomeFermata = nomeFermataEspansa.split("\\s");
+        for (InterchangeInfo info : interscambi) {
+            String chiave = info.getKey();
+            for (String parola : paroleNomeFermata) {
+                if (parola.length() > 2 && chiave.toLowerCase().contains(parola.toLowerCase())) {
+                    return info;
+                }
+            }
+        }
+
+        return null;
+    }
 
     private void caricaInterscambioFermata() {
         LinearLayout container = findViewById(R.id.containerInterscambioFermata);
@@ -304,14 +365,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         container.setVisibility(View.GONE);
 
         List<InterchangeInfo> interscambi = InterchangesDB.getTramInterchanges(this);
-        InterchangeInfo trovato = null;
-
-        for (InterchangeInfo info : interscambi) {
-            if (info.getKey().equalsIgnoreCase(nomeFermata)) {
-                trovato = info;
-                break;
-            }
-        }
+        InterchangeInfo trovato = trovaInterscambioPerFermata(interscambi, nomeFermata);
 
         if (trovato == null || trovato.getLines() == null) return;
 
