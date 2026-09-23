@@ -317,10 +317,20 @@ object MapboxHelper {
 
         val zoomCalcolato = cameraOptions.zoom ?: minZoom
         val zoomFinale = zoomCalcolato.coerceIn(minZoom, maxZoom)
+        val center = cameraOptions.center
+
+        val shiftFactor = 0.33 // un terzo
+        val latSpan = points.maxOf { it.latitude() } - points.minOf { it.latitude() }
+        val adjustedLat = (center?.latitude() ?: 0.0) - (latSpan * shiftFactor)
+
+        val adjustedCenter = com.mapbox.geojson.Point.fromLngLat(
+            center?.longitude() ?: 0.0,
+            adjustedLat
+        )
 
         mapView.mapboxMap.setCamera(
             CameraOptions.Builder()
-                .center(cameraOptions.center)
+                .center(adjustedCenter)
                 .zoom(zoomFinale)
                 .bearing(cameraOptions.bearing)
                 .pitch(cameraOptions.pitch)

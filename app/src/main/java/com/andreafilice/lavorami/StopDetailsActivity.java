@@ -207,7 +207,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             for (MetroStation s : stazioniDaMostrare)
                 puntiDaInquadrare.add(Point.fromLngLat(s.getLongitude(), s.getLatitude()));
 
-            MapboxHelper.setCameraToBounds(mapView, puntiDaInquadrare, 150.0, 14.5, 15.0);
+            MapboxHelper.setCameraToBounds(mapView, puntiDaInquadrare, 150.0, 15.0, 15.0);
         }
 
         layoutMaps.setVisibility(android.view.View.VISIBLE);
