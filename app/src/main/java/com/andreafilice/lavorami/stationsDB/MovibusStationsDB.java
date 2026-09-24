@@ -9612,7 +9612,7 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54129, 8.80931, "Main - Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54103, 8.80996, "Main - Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54081, 8.81087, "Main - Ritorno", "z647"));
-        //inizio ritorno (damn)
+        //inizio ritorno
         stations.add(new MetroStation("NO_DRAW", 45.54058, 8.81207, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54058, 8.81207, "Ritorno", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.54166, 8.81239, "Ritorno", "z647"));
@@ -9773,11 +9773,6 @@ public class MovibusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53609, 8.8102, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53599, 8.81024, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53591, 8.81036, "Main", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53626, 8.81063, "Main", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53617, 8.81073, "Main", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53605, 8.81074, "Main", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.53593, 8.81064, "Main", "z647"));
-        stations.add(new MetroStation("NO_DRAW", 45.5359, 8.81046, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.5358, 8.81037, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53306, 8.80947, "Main", "z647"));
         stations.add(new MetroStation("NO_DRAW", 45.53275, 8.8094, "Main", "z647"));
