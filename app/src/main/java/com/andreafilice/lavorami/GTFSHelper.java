@@ -114,7 +114,9 @@ public class GTFSHelper {
 
         List<String> activeServices = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : route.services.entrySet()) {
-            if (entry.getValue().contains(today)) activeServices.add(entry.getKey());
+            if (entry.getValue().isEmpty() || entry.getValue().contains(today)) {
+                activeServices.add(entry.getKey());
+            }
         }
 
         for (Map.Entry<String, JSONArray> entry : stop.departuresByDir.entrySet()) {
