@@ -108,7 +108,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "AndroidX Fragment",
-                        "1.9.0",
+                        "1.9.1",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         APACHE_LICENSE_TEXT
