@@ -108,7 +108,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         if (nomeLinea == null || nomeLinea.isEmpty()) return;
         String url = "https://cdn.lavorami.it/gtfs/" + nomeLinea.toLowerCase() + ".json";
 
-        GTFSHelper.load(url, new GTFSHelper.GTFSCallback() {
+        GTFSHelper.loadCached(nomeLinea, url, new GTFSHelper.GTFSCallback() {
             @Override
             public void onSuccess(GTFSHelper.GTFSRoute route) {
                 new Handler(Looper.getMainLooper()).post(() -> {

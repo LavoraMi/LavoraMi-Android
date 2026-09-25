@@ -23,6 +23,8 @@ import java.util.concurrent.Executors;
 
 public class GTFSHelper {
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
+    private static final Map<String, GTFSRoute> routeCache = new HashMap<>();
+    private static final Map<String, List<GTFSCallback>> pendingCallbacks = new HashMap<>();
 
     public static class ServiceInfo {
         public List<String> dates = new ArrayList<>();
@@ -119,6 +121,58 @@ public class GTFSHelper {
             catch (Exception e) {callback.onError();}
             finally {if(conn != null) conn.disconnect();}
         });
+    }
+
+    public static synchronized void loadCached(String lineKey, String urlString, GTFSCallback callback) {
+        GTFSRoute cached = routeCache.get(lineKey);
+        if (cached != null) {
+            callback.onSuccess(cached);
+            return;
+        }
+
+        List<GTFSCallback> waiters = pendingCallbacks.get(lineKey);
+        if (waiters != null) {
+            waiters.add(callback);
+            return;
+        }
+
+        List<GTFSCallback> newWaiters = new ArrayList<>();
+        newWaiters.add(callback);
+        pendingCallbacks.put(lineKey, newWaiters);
+
+        load(urlString, new GTFSCallback() {
+            @Override
+            public void onSuccess(GTFSRoute route) {
+                List<GTFSCallback> toNotify;
+                synchronized (GTFSHelper.class) {
+                    routeCache.put(lineKey, route);
+                    toNotify = pendingCallbacks.remove(lineKey);
+                }
+                if (toNotify != null) {
+                    for (GTFSCallback cb : toNotify) cb.onSuccess(route);
+                }
+            }
+
+            @Override
+            public void onError() {
+                List<GTFSCallback> toNotify;
+                synchronized (GTFSHelper.class) {
+                    toNotify = pendingCallbacks.remove(lineKey);
+                }
+                if (toNotify != null) {
+                    for (GTFSCallback cb : toNotify) cb.onError();
+                }
+            }
+        });
+    }
+
+    /** Da chiamare solo se pubblichi un nuovo GTFS e vuoi forzare il refresh senza riavviare l'app. */
+    public static synchronized void invalidateCache(String lineKey) {
+        routeCache.remove(lineKey);
+    }
+
+    public static synchronized void invalidateAllCache() {
+        routeCache.clear();
     }
 
     public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit) {
