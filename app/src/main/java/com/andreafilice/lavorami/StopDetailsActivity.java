@@ -6,6 +6,8 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -38,6 +40,12 @@ public class StopDetailsActivity extends AppCompatActivity{
     private int coloreLinea;
     private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
 
+    //*GTFS
+    private GTFSHelper.GTFSRoute routeData;
+    private String selectedStopId;
+    private final Handler arriviHandler = new Handler(Looper.getMainLooper());
+    private Runnable arriviRunnable;
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2001;
 
     @Override
@@ -64,6 +72,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         btnBack.setOnClickListener(v -> finish());
 
         aggiornaTestView();
+        caricaDatiGTFS();
 
         MapView mapView = findViewById(R.id.mapView);
         MapboxHelper.loadMap(mapView, isDarkMode(), mapViewReady -> {
@@ -73,8 +82,6 @@ public class StopDetailsActivity extends AppCompatActivity{
     }
 
     private void aggiornaTestView() {
-        //ORARIO HARDCODED IN ATTESA DI GTFS
-
         TextView detTitolo = findViewById(R.id.detTitolo);
         TextView detSottotitolo = findViewById(R.id.detSottotitolo);
         TextView detBadge = findViewById(R.id.detBadge);
@@ -90,10 +97,106 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
-        detDirezioni.setText("direzione: DIREZIONE");
-        nextArrivals.setText("12:45");
+        detDirezioni.setText(getString(R.string.loadingDataInProgress));
+        nextArrivals.setText("--");
 
         caricaInterscambioFermata();
+    }
+
+    //*GTFS ARRIVI
+    private void caricaDatiGTFS() {
+        if (nomeLinea == null || nomeLinea.isEmpty()) return;
+        String url = "https://cdn.lavorami.it/gtfs/" + nomeLinea.toLowerCase() + ".json";
+
+        GTFSHelper.load(url, new GTFSHelper.GTFSCallback() {
+            @Override
+            public void onSuccess(GTFSHelper.GTFSRoute route) {
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    routeData = route;
+                    selezionaFermataCorrente();
+                });
+            }
+
+            @Override
+            public void onError() {
+                new Handler(Looper.getMainLooper()).post(() -> {
+                    TextView detDirezioni = findViewById(R.id.detDirezioni);
+                    TextView nextArrivals = findViewById(R.id.nextArrivals);
+                    if (detDirezioni != null) detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
+                    if (nextArrivals != null) nextArrivals.setText("--");
+                });
+            }
+        });
+    }
+
+    private void selezionaFermataCorrente() {
+        if (routeData == null || routeData.stops == null || nomeFermata == null) return;
+
+        String stopIdTrovato = null;
+
+        for (Map.Entry<String, GTFSHelper.GTFSStop> entry : routeData.stops.entrySet()) {
+            String nomeGTFS = entry.getValue().name;
+
+            if (nomeGTFS.equalsIgnoreCase(nomeFermata)) {
+                stopIdTrovato = entry.getKey();
+                break;
+            }
+        }
+
+        if (stopIdTrovato != null) {
+            selectedStopId = stopIdTrovato;
+            updateArriviView();
+        }
+        else {
+            TextView detDirezioni = findViewById(R.id.detDirezioni);
+            TextView nextArrivals = findViewById(R.id.nextArrivals);
+            detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
+            nextArrivals.setText("--");
+        }
+    }
+
+    private void updateArriviView() {
+        if (routeData == null || selectedStopId == null) return;
+
+        TextView detDirezioni = findViewById(R.id.detDirezioni);
+        TextView nextArrivals = findViewById(R.id.nextArrivals);
+
+        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 1);
+
+        if (departuresByDir == null || departuresByDir.isEmpty()) {
+            detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
+            nextArrivals.setText("--");
+            scheduleArriviRefresh();
+            return;
+        }
+
+        // Il layout di questa schermata mostra una sola riga: prendiamo la prima direzione disponibile.
+        Map.Entry<String, List<GTFSHelper.Departure>> primaDirezione = departuresByDir.entrySet().iterator().next();
+        List<GTFSHelper.Departure> deps = primaDirezione.getValue();
+
+        if (deps != null && !deps.isEmpty()) {
+            GTFSHelper.Departure prossimo = deps.get(0);
+
+            detDirezioni.setText(getString(R.string.directionTitleArrivals) + prossimo.headsign.toUpperCase());
+
+            if (prossimo.minutesFromNow == 0)
+                nextArrivals.setText(getString(R.string.leavingTitle));
+            else if (prossimo.minutesFromNow >= 60) {
+                int hours = prossimo.minutesFromNow / 60;
+                int mins = prossimo.minutesFromNow % 60;
+                nextArrivals.setText(mins == 0 ? hours + " h" : hours + " h " + mins + " min");
+            }
+            else
+                nextArrivals.setText(prossimo.minutesFromNow + " min");
+        }
+
+        scheduleArriviRefresh();
+    }
+
+    private void scheduleArriviRefresh() {
+        arriviHandler.removeCallbacks(arriviRunnable);
+        arriviRunnable = this::updateArriviView;
+        arriviHandler.postDelayed(arriviRunnable, 10000);
     }
 
     private void checkIfReadyToLoadMap() {
@@ -287,6 +390,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         nomeFermata = nuovaFermata;
 
         aggiornaTestView();
+        selezionaFermataCorrente();
 
         FrameLayout layoutMaps = findViewById(R.id.googleMapsFrameLayout);
         LinearLayout layoutLoadingMap = findViewById(R.id.loadingMapsFragmentLayout);
@@ -464,5 +568,11 @@ public class StopDetailsActivity extends AppCompatActivity{
     private boolean isDarkMode() {
         int nightModeFlags = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
         return nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        arriviHandler.removeCallbacksAndMessages(null);
     }
 }

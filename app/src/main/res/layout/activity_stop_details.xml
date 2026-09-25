@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
-                    android:text="direzione: DIREZIONE"
+                    android:text="@string/directionTitleArrivals"
                     android:fontFamily="@font/font_main"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"

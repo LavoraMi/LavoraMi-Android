@@ -1882,7 +1882,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        if (Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals)) {
+        if (Arrays.stream(gtfsSupportedLines).anyMatch(nomeLinea::equals) && !isLineaTram()) {
             findViewById(R.id.chipArrivi).setVisibility(View.VISIBLE);
             updateChipGroupSizes(detActionGroup);
             loadGTFSData();
