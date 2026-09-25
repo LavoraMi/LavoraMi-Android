@@ -24,10 +24,15 @@ import java.util.concurrent.Executors;
 public class GTFSHelper {
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
 
+    public static class ServiceInfo {
+        public List<String> dates = new ArrayList<>();
+        public String daytype = null;
+    }
+
     public static class GTFSRoute {
         public String route;
         public List<String> headsigns = new ArrayList<>();
-        public Map<String, List<String>> services = new HashMap<>();
+        public Map<String, ServiceInfo> services = new HashMap<>();
         public Map<String, GTFSStop> stops = new HashMap<>();
     }
 
@@ -76,10 +81,22 @@ public class GTFSHelper {
                 Iterator<String> svKeys = svs.keys();
                 while (svKeys.hasNext()) {
                     String key = svKeys.next();
-                    JSONArray dates = svs.getJSONObject(key).getJSONArray("dates");
-                    List<String> dateList = new ArrayList<>();
-                    for (int i = 0; i < dates.length(); i++) dateList.add(dates.getString(i));
-                    route.services.put(key, dateList);
+                    JSONObject svObj = svs.getJSONObject(key);
+
+                    ServiceInfo info = new ServiceInfo();
+
+                    JSONArray dates = svObj.optJSONArray("dates");
+                    if (dates != null) {
+                        for (int i = 0; i < dates.length(); i++) info.dates.add(dates.getString(i));
+                    }
+
+                    // "daytype" è opzionale: presente solo se il JSON è stato generato con
+                    // --ignore-dates dallo script gtfs_maker.py aggiornato
+                    if (svObj.has("daytype") && !svObj.isNull("daytype")) {
+                        info.daytype = svObj.getString("daytype");
+                    }
+
+                    route.services.put(key, info);
                 }
 
                 JSONObject stps = json.getJSONObject("stops");
@@ -110,13 +127,25 @@ public class GTFSHelper {
 
         Map<String, List<Departure>> result = new HashMap<>();
         String today = todayString();
+        String todayType = todayDaytype();
         int nowMins = nowMinutes();
 
         List<String> activeServices = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : route.services.entrySet()) {
-            if (entry.getValue().isEmpty() || entry.getValue().contains(today)) {
-                activeServices.add(entry.getKey());
+        for (Map.Entry<String, ServiceInfo> entry : route.services.entrySet()) {
+            ServiceInfo info = entry.getValue();
+
+            boolean active;
+            if (info.daytype != null) {
+                // Nuovo formato: il service è attivo solo nei giorni del suo tipo
+                // (feriale / sabato / festivo), calcolato sul giorno reale odierno.
+                active = info.daytype.equals(todayType);
+            } else {
+                // Vecchio formato / calendario a date esplicite: 'dates' vuoto
+                // significa "sempre attivo", altrimenti serve la data di oggi.
+                active = info.dates.isEmpty() || info.dates.contains(today);
             }
+
+            if (active) activeServices.add(entry.getKey());
         }
 
         for (Map.Entry<String, JSONArray> entry : stop.departuresByDir.entrySet()) {
@@ -159,5 +188,20 @@ public class GTFSHelper {
     private static int nowMinutes() {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
         return cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
+    }
+
+    /**
+     * Ritorna "feriale", "sabato" o "festivo" in base al giorno della settimana odierno
+     * (fuso Europe/Rome). Nota: non tiene conto delle festività nazionali (es. Natale,
+     * Pasqua, ecc.), che nel calendario GTFS reale sarebbero "festivo" pur cadendo in
+     * un giorno feriale. Se in futuro serve gestirle, va aggiunta qui una lista di date.
+     */
+    private static String todayDaytype() {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+        int dow = cal.get(Calendar.DAY_OF_WEEK); // Calendar.SUNDAY=1 ... Calendar.SATURDAY=7
+
+        if (dow == Calendar.SUNDAY) return "festivo";
+        if (dow == Calendar.SATURDAY) return "sabato";
+        return "feriale";
     }
 }
