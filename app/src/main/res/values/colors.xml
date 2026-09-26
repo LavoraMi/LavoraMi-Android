@@ -24,12 +24,12 @@
     <color name="S12">#233435</color>
     <color name="S13">#a76d11</color>
     <color name="S19">#660d37</color>
-    <color name="S20">#193969</color>
-    <color name="S30">#00a650</color>
+    <color name="S20">#009ee0</color>
+    <color name="S30">#019036</color>
     <color name="S31">#b4cd4b</color>
-    <color name="S40">#75bc76</color>
-    <color name="S50">#834c16</color>
-    <color name="S90">#E7C53D</color>
+    <color name="S40">#78bb72</color>
+    <color name="S50">#804f10</color>
+    <color name="S90">#fece00</color>
     <color name="MXP">#8c0077</color>
     <color name="BUS">#1c1cff</color>
     <color name="RE">#FF0000</color>
@@ -40,7 +40,7 @@
     <color name="OTHER">#828080</color>
     <color name="OTHER_LINES">#5ab455</color>
     <color name="AUTOGUIDOVIE">#443700</color>
-    <color name="RE80">#068dfd</color>
+    <color name="RE80">#01509e</color>
     <color name="Black">#000000</color>
     <color name="White">#FFF</color>
     <color name="disclosureBg">#F6EFEF</color>
