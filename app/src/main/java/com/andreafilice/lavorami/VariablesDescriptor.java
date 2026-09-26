@@ -28,7 +28,7 @@ public class VariablesDescriptor {
     /// @String[] stazioniChiuse -> Returns an array of stations (formatted as: "Name Station: Line") which select station now closed.
     /// @String isWrappedEnabled -> Return a String but the values are: true or false.
     /// @String isWrappedEnabledDebug -> Return a String but the values are: true or false, this is a DEBUG variable of isWrappedEnabled.
-    /// @String enablePassanteWork -> Returns a String but the values are: true or false, indicates if there are some works into the Passante track.
+    /// @String enablePassanteWork [NOT CURRENTLY IN USE] -> Returns a String but the values are: true or false, indicates if there are some works into the Passante track.
 
     @SerializedName("enableStrike")
     private String isStrikeEnabled;
@@ -66,14 +66,17 @@ public class VariablesDescriptor {
     private String isWrappedEnabled;
     @SerializedName("enableWrappedDebug")
     private String isWrappedEnabledDebug;
-    @SerializedName("enablePassanteWork")
-    private String enablePassanteWork;
+    /*@SerializedName("enablePassanteWork")
+    private String enablePassanteWork;*/
 
-    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse, String[] lineeSostituiteBus) {
+    /*?
+        To comply with Passante works, add this parameter to the costructor: "String enablePassanteWork".
+     */
+    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse, String[] lineeSostituiteBus) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeUpdateLive = strikeUpdateLive;
-        this.enablePassanteWork = enablePassanteWork;
+        //this.enablePassanteWork = enablePassanteWork;
         this.strikeDate = strikeDate;
         this.strikeCompanies = strikeCompanies;
         this.strikeGuaranteed = strikeGuaranteed;
@@ -97,7 +100,7 @@ public class VariablesDescriptor {
     public boolean isStrikeEnabledDebug() {return enableStrikeDebug.equals("true");}
     public boolean isWrappedEnabled() {return isWrappedEnabled.equals("true");}
     public boolean isWrappedEnabledDebug() {return isWrappedEnabledDebug.equals("true");}
-    public boolean isPassanteWorkEnabled() {return enablePassanteWork.equalsIgnoreCase("true");}
+    //public boolean isPassanteWorkEnabled() {return enablePassanteWork.equalsIgnoreCase("true");}
     public String getStrikeDate() {return strikeDate;}
     public String getStrikeCompanies() {return strikeCompanies;}
     public String getStrikeGuaranteed() {return strikeGuaranteed;}
@@ -120,7 +123,8 @@ public class VariablesDescriptor {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
             String todayString = sdf.format(new Date());
             return todayString.equals(this.strikeDate);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             return false;
         }
