@@ -1284,14 +1284,14 @@ public class LinesDetailActivity extends AppCompatActivity {
                 interchanges = InterchangesDB.getMetroInterchanges(this);
             else if (isLineaSuburbano())
                 interchanges = InterchangesDB.getSuburbanInterchanges();
+            else if(isLineaTilo())
+                interchanges = InterchangesDB.getTILOInterchanges(this);
             else if(isLineaRegionale())
                 interchanges = InterchangesDB.getRegionalInterchanges(this);
             else if(isLineaRegioExpress())
                 interchanges = InterchangesDB.getRegioExpressInterchanges();
             else if (isMalpensaExpress())
                 interchanges = InterchangesDB.getMalpensaExpressInterchanges(this);
-            else if(isLineaTilo())
-                interchanges = InterchangesDB.getTILOInterchanges(this);
             else
                 interchanges = new ArrayList<>();
 
