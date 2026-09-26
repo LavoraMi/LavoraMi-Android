@@ -761,7 +761,7 @@ public class LinesActivity extends AppCompatActivity {
         /// String nameLine is the name of the line, also called "title".
         /// String description is the Company of the line, can be for example: "STAV".
 
-        description=description.contains("Suburban") ? "Suburbano" : description.contains("Tra") ? "Tram" : description;
+        description = description.contains("Suburban") ? "Suburbano" : description.contains("Tra") ? "Tram" : description.contains("Regional") ? "Regionale" : description;
         String combinedEntry = nameLine + "|" + description;
         recentLinesSet.remove(combinedEntry);
 
