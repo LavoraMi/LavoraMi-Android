@@ -8,19 +8,27 @@ import java.util.Locale;
 public class VariablesDescriptor {
     /// In this class, we get from the CDN the values of the strike and parse that datas into this Class.
     /// @SerializedName are the original names from the JSON file of our CDN
+    ///
     /// @ATTRIBUTES
     /// @String isStrikeEnabled -> Returns a String but the values are: true or false.
+    /// @String enableStrikeDebug -> Returns a String but the values are: true or false, this is a DEBUG variable of isStrikeEnabled.
     /// @String strikeDate -> Is the date of the Strike, catched from the JSON File.
     /// @String strikeCompanies -> Are the companies that make this Strike and their services can suffer problems.
     /// @String strikeGuaranteed -> Returns a String that tells exactly which hours the service is guaranteed.
     /// @String strikeUpdateLive -> Returns a String that contains the live status of the strike, such as: which lines are deviated.
-    /// @String enablePassanteWork -> Returns a String but the values are: true or false.
-    /// @String isWrappedEnabled -> Return a String but the values are: true or false.
     /// @String[] linesDeviation -> Returns an array of Strings of Tram lines that have works on the track.
     /// @String[] linesDeviationLinks -> Returns an array of Strings containing the works for Tram with works on the track.
     /// @String[] supportedGTFSLines -> Returns an array of Strings for control the Bus Lines available for GTFS feature.
     /// @String[] suburbanWithInterruptions -> Returns an array of Strings containing the suburban lines with works on the track.
     /// @String[] suburbanInterruptionLinks -> Returns an array of Strings containing the works for suburban lines with works on the track.
+    /// @String[] regionalLinesWithDeviations -> Returns an array of Strings containing the regional and Regio Express lines with works on the track.
+    /// @String[] regionalLinesDeviationLinks -> Returns an array of Strings containing the works for regional and Regio Express lines with works on the track.
+    /// @String[] lineeSospeseInteramente -> Returns an array with a list of lines suspended completely.
+    /// @String[] lineeSostituiteBus -> Returns an array with a list of lines that are sub with buses.
+    /// @String[] stazioniChiuse -> Returns an array of stations (formatted as: "Name Station: Line") which select station now closed.
+    /// @String isWrappedEnabled -> Return a String but the values are: true or false.
+    /// @String isWrappedEnabledDebug -> Return a String but the values are: true or false, this is a DEBUG variable of isWrappedEnabled.
+    /// @String enablePassanteWork -> Returns a String but the values are: true or false, indicates if there are some works into the Passante track.
 
     @SerializedName("enableStrike")
     private String isStrikeEnabled;
@@ -44,8 +52,6 @@ public class VariablesDescriptor {
     private String[] suburbanWithInterruptions;
     @SerializedName("suburbanInterruptionLinks")
     private String[] suburbanInterruptionLinks;
-    @SerializedName("enablePassanteWork")
-    private String enablePassanteWork;
     @SerializedName("regionalLinesWithDeviations")
     private String[] regionalLinesWithDeviations;
     @SerializedName("regionalLinesDeviationLinks")
@@ -60,6 +66,8 @@ public class VariablesDescriptor {
     private String isWrappedEnabled;
     @SerializedName("enableWrappedDebug")
     private String isWrappedEnabledDebug;
+    @SerializedName("enablePassanteWork")
+    private String enablePassanteWork;
 
     public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String enablePassanteWork, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse, String[] lineeSostituiteBus) {
         this.isStrikeEnabled = isStrikeEnabled;
