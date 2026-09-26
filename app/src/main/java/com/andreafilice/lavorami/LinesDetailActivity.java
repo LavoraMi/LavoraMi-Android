@@ -1125,7 +1125,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (iconaLuogo != null) iconaLuogo.setVisibility(View.VISIBLE);
 
             TextView titolo = card.findViewById(R.id.txtTitle);
-            TextView desc   = card.findViewById(R.id.txtDescription);
+            TextView desc = card.findViewById(R.id.txtDescription);
             ImageView openCloseIcon = card.findViewById(R.id.open_close_descriprion);
 
             if (titolo != null) titolo.setText(evento.getTitle());
@@ -1181,6 +1181,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.emptyView)).setText(!manager.isConnected() ? getString(R.string.noInternetConnectionError) : getString(R.string.noWorksOnThisLine));
         ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(!manager.isConnected() ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
+
+        aggiornaInfoSuperiori();
     }
 
     private void mostraErroreCaricamento() {
