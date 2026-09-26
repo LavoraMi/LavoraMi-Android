@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.PixelCopy;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -323,32 +324,32 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         webView.setWebChromeClient(new android.webkit.WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-            if (newProgress < 100) {
-                if (progressBar.getVisibility() == View.GONE) {
-                    progressBar.setAlpha(1f);
-                    progressBar.setVisibility(View.VISIBLE);
-                }
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                    progressBar.setProgress(newProgress, true);
-                else
-                    progressBar.setProgress(newProgress);
-            }
-            else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                    progressBar.setProgress(100, true);
-                else
-                    progressBar.setProgress(100);
-
-                progressBar.animate()
-                    .alpha(0f)
-                    .setDuration(400)
-                    .withEndAction(() -> {
-                        progressBar.setVisibility(View.GONE);
+                if (newProgress < 100) {
+                    if (progressBar.getVisibility() == View.GONE) {
                         progressBar.setAlpha(1f);
-                    })
-                    .start();
-            }
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                        progressBar.setProgress(newProgress, true);
+                    else
+                        progressBar.setProgress(newProgress);
+                }
+                else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                        progressBar.setProgress(100, true);
+                    else
+                        progressBar.setProgress(100);
+
+                    progressBar.animate()
+                        .alpha(0f)
+                        .setDuration(400)
+                        .withEndAction(() -> {
+                            progressBar.setVisibility(View.GONE);
+                            progressBar.setAlpha(1f);
+                        })
+                        .start();
+                }
             }
         });
 
@@ -469,13 +470,20 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
 
     private void updateAdaptiveTint() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return;
-        if (getDialog() == null || getDialog().getWindow() == null) return;
-        if (actionsPill == null || actionsPill.getWidth() == 0) return;
+        if (!isAdded() || getDialog() == null || !getDialog().isShowing()) return;
 
-        sampleAndApply(actionsPill);
+        Window window = getDialog().getWindow();
+        if (window == null) return;
+
+        View decorView = window.getDecorView();
+        if (!decorView.isAttachedToWindow()) return;
+
+        if (actionsPill == null || actionsPill.getWidth() == 0 || !actionsPill.isAttachedToWindow()) return;
+
+        sampleAndApply(actionsPill, window);
     }
 
-    private void sampleAndApply(View target) {
+    private void sampleAndApply(View target, Window window) {
         int[] location = new int[2];
         target.getLocationInWindow(location);
 
@@ -486,16 +494,24 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         Rect rect = new Rect(location[0], location[1], location[0] + width, location[1] + height);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
-        PixelCopy.request(getDialog().getWindow(), rect, bitmap, copyResult -> {
-            if (copyResult == PixelCopy.SUCCESS) {
-                double luminance = computeAverageLuminance(bitmap);
-                boolean isLight = luminance > 0.55;
+        try {
+            PixelCopy.request(window, rect, bitmap, copyResult -> {
+                if (copyResult == PixelCopy.SUCCESS) {
+                    double luminance = computeAverageLuminance(bitmap);
+                    boolean isLight = luminance > 0.55;
 
-                if (getActivity() != null)
-                    getActivity().runOnUiThread(() -> applyAdaptiveStyle(isLight));
-            }
+                    if (getActivity() != null && isAdded())
+                        getActivity().runOnUiThread(() -> {
+                            if (isAdded() && actionsPill != null) applyAdaptiveStyle(isLight);
+                        });
+                }
+                bitmap.recycle();
+            }, tintHandler);
+        }
+        catch (IllegalArgumentException e) {
+            Log.w("InAppBrowserBottomSheet", "Skipped adaptive tint: window not ready", e);
             bitmap.recycle();
-        }, tintHandler);
+        }
     }
 
     private double computeAverageLuminance(Bitmap bitmap) {
