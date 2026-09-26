@@ -470,4 +470,7 @@
     <string name="dialog_bus_desc_3">Cambia la dirección del autobús seleccionando el botón con este icono. ¡Podrás ver las paradas en sentido contrario!</string>
     <string name="busSubtitlePopUp">Puedes volver a consultar esta página pulsando en la pestaña \"Mapa\" cuando esté seleccionada.</string>
     <string name="errorBrowserSlowToast">La página está tardando más en cargarse.</string>
+    <string name="slowdownBannerTitle">LÍNEA CON REDUCCIONES DE VELOCIDAD</string>
+    <string name="lineSlowdownPopUpTitle">Línea Ralentizada</string>
+    <string name="lineSlowdownPopUpDeps">En esta línea hay obras en curso que podrían provocar adelantos o retrasos en la llegada a destino. Consulta la sección \"Obras\".</string>
 </resources>

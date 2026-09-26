@@ -469,4 +469,7 @@
     <string name="dialog_bus_desc_3">Cambia la direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!</string>
     <string name="busSubtitlePopUp">Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata.</string>
     <string name="errorBrowserSlowToast">La pagina sta impiegando più tempo a caricarsi.</string>
+    <string name="slowdownBannerTitle">LINEA CON RALLENTAMENTI</string>
+    <string name="lineSlowdownPopUpTitle">Linea Rallentata</string>
+    <string name="lineSlowdownPopUpDeps">Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell\'arrivo a destinazione. Controlla la sezione \"Lavori\".</string>
 </resources>

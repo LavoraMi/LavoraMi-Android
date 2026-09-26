@@ -1858,8 +1858,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         for(int c = 0; c < lineeConRallentamenti.length; c++) {
             if(lineeConRallentamenti[c].equalsIgnoreCase(nomeLinea)) {
                 lineaRallentata.setVisibility(View.VISIBLE);
-                infoSlowdownsBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea Rallentata", "Questa linea ha dei lavori attualmente in esecuzione che portano all'anticipo o ritardo di arrivo a destinazione. Controlla la seizone 'Lavori'."));
-                lineaRallentata.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea Rallentata", "Questa linea ha dei lavori attualmente in esecuzione che portano all'anticipo o ritardo di arrivo a destinazione. Controlla la seizone 'Lavori'."));
+                infoSlowdownsBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSlowdownPopUpTitle), getString(R.string.lineSlowdownPopUpDeps)));
+                lineaRallentata.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSlowdownPopUpTitle), getString(R.string.lineSlowdownPopUpDeps)));
             }
         }
 

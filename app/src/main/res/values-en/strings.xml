@@ -470,4 +470,7 @@
     <string name="dialog_bus_desc_3">Change your bus direction by selecting the button with this icon. You will be able to see the stops in the opposite direction!</string>
     <string name="busSubtitlePopUp">You can view this page again by clicking on the \"Map\" tab when it is selected.</string>
     <string name="errorBrowserSlowToast">The page is taking longer to load.</string>
+    <string name="slowdownBannerTitle">LINE WITH SLOWDOWNS</string>
+    <string name="lineSlowdownPopUpTitle">Line with Delays</string>
+    <string name="lineSlowdownPopUpDeps">Work is currently underway on this line, which may result in early or delayed arrivals at your destination. Please check the \"Works\" section.</string>
 </resources>
