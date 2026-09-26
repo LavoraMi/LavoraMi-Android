@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,7 @@ public class ThemeSettings extends AppCompatActivity {
 
             /// Back to Settings screen
             if (!isAlreadyEnabled) finish();
+            else Toast.makeText(this, getString(R.string.optionSelectedToast), Toast.LENGTH_SHORT).show();
         });
 
         languageLayouts[1].setOnClickListener(v -> {
@@ -73,6 +75,7 @@ public class ThemeSettings extends AppCompatActivity {
 
             /// Back to Settings screen
             if (!isAlreadyEnabled) finish();
+            else Toast.makeText(this, getString(R.string.optionSelectedToast), Toast.LENGTH_SHORT).show();
         });
 
         languageLayouts[2].setOnClickListener(v -> {
@@ -86,6 +89,7 @@ public class ThemeSettings extends AppCompatActivity {
 
             /// Back to Settings screen
             if (!isAlreadyEnabled) finish();
+            else Toast.makeText(this, getString(R.string.optionSelectedToast), Toast.LENGTH_SHORT).show();
         });
 
         systemSelected = findViewById(R.id.system);

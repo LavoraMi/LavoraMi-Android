@@ -473,4 +473,5 @@
     <string name="slowdownBannerTitle">LINE WITH SLOWDOWNS</string>
     <string name="lineSlowdownPopUpTitle">Line with Delays</string>
     <string name="lineSlowdownPopUpDeps">Work is currently underway on this line, which may result in early or delayed arrivals at your destination. Please check the \"Works\" section.</string>
+    <string name="optionSelectedToast">This option is already selected.</string>
 </resources>

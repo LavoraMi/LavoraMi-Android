@@ -472,4 +472,5 @@
     <string name="slowdownBannerTitle">LINEA CON RALLENTAMENTI</string>
     <string name="lineSlowdownPopUpTitle">Linea Rallentata</string>
     <string name="lineSlowdownPopUpDeps">Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell\'arrivo a destinazione. Controlla la sezione \"Lavori\".</string>
+    <string name="optionSelectedToast">Questa opzione è già selezionata.</string>
 </resources>
