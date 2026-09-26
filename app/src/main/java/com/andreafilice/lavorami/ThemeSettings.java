@@ -50,6 +50,8 @@ public class ThemeSettings extends AppCompatActivity {
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(savedLang.contains("English") ? "en" : savedLang.contains("Spanish") ? "es" : "it"));
 
         languageLayouts[0].setOnClickListener(v -> {
+            boolean isAlreadyEnabled = languageTicks[0].getVisibility() == View.VISIBLE;
+
             DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
             languageTicks[0].setVisibility(View.VISIBLE);
             languageTicks[1].setVisibility(View.GONE);
@@ -57,10 +59,12 @@ public class ThemeSettings extends AppCompatActivity {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("it"));
 
             /// Back to Settings screen
-            finish();
+            if (!isAlreadyEnabled) finish();
         });
 
         languageLayouts[1].setOnClickListener(v -> {
+            boolean isAlreadyEnabled = languageTicks[1].getVisibility() == View.VISIBLE;
+
             DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "English");
             languageTicks[0].setVisibility(View.GONE);
             languageTicks[1].setVisibility(View.VISIBLE);
@@ -68,10 +72,12 @@ public class ThemeSettings extends AppCompatActivity {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"));
 
             /// Back to Settings screen
-            finish();
+            if (!isAlreadyEnabled) finish();
         });
 
         languageLayouts[2].setOnClickListener(v -> {
+            boolean isAlreadyEnabled = languageTicks[2].getVisibility() == View.VISIBLE;
+
             DataManager.saveStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Spanish");
             languageTicks[0].setVisibility(View.GONE);
             languageTicks[1].setVisibility(View.GONE);
@@ -79,7 +85,7 @@ public class ThemeSettings extends AppCompatActivity {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("es"));
 
             /// Back to Settings screen
-            finish();
+            if (!isAlreadyEnabled) finish();
         });
 
         systemSelected = findViewById(R.id.system);
@@ -131,9 +137,6 @@ public class ThemeSettings extends AppCompatActivity {
         int modeSelected;
 
         switch (typeLoaded){
-            case Sistema:
-                modeSelected = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-                break;
             case Scuro:
                 modeSelected = AppCompatDelegate.MODE_NIGHT_YES;
                 break;
