@@ -149,6 +149,46 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lineaRallentata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_status_banner_warning"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="14dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_clock_exclamation"
+                app:tint="@color/amber_on_banner" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/amber_on_banner"
+                android:fontFamily="@font/font_main"
+                android:textSize="13sp"
+                android:text="LINEA CON RALLENTAMENTI"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/infoSlowdowns"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/ic_info"
+                app:tint="@color/amber_on_banner" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/deviazioneLinea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

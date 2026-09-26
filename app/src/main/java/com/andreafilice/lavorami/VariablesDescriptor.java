@@ -66,13 +66,15 @@ public class VariablesDescriptor {
     private String isWrappedEnabled;
     @SerializedName("enableWrappedDebug")
     private String isWrappedEnabledDebug;
+    @SerializedName("linesWithSlowdowns")
+    private String[] linesWithSlowdowns;
     /*@SerializedName("enablePassanteWork")
     private String enablePassanteWork;*/
 
     /*?
         To comply with Passante works, add this parameter to the costructor: "String enablePassanteWork".
      */
-    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse, String[] lineeSostituiteBus) {
+    public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse, String[] lineeSostituiteBus, String[] linesWithSlowdowns) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
         this.strikeUpdateLive = strikeUpdateLive;
@@ -92,6 +94,7 @@ public class VariablesDescriptor {
         this.lineeSostituiteBus = lineeSostituiteBus;
         this.isWrappedEnabled = isWrappedEnabled;
         this.isWrappedEnabledDebug = isWrappedEnabledDebug;
+        this.linesWithSlowdowns = linesWithSlowdowns;
     }
 
     //*GETTERS
@@ -115,6 +118,7 @@ public class VariablesDescriptor {
     public String[] getlineeSospeseInteramente() {return lineeSospeseInteramente;}
     public String[] getstazioniChiuse() {return stazioniChiuse;}
     public String[] getlineeSostituiteBus() {return lineeSostituiteBus;}
+    public String[] getlinesWithSlowdowns() {return linesWithSlowdowns;}
 
     public boolean isStrikeToday() {
         if (strikeDate == null || strikeDate.trim().isEmpty()) return false;

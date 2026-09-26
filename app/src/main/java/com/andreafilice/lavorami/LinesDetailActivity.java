@@ -1811,9 +1811,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] regionalDeviationsLinks = cdnData.getRegionalLinesDeviationsLinks();
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
         String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
+        String[] lineeConRallentamenti = cdnData.getlinesWithSlowdowns();
         String[] linesMultipleRoutes = {"z301", "z555", "z619", "z647"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
+        LinearLayout lineaRallentata = findViewById(R.id.lineaRallentata);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
         LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
         LinearLayout busMultipleRoutes = findViewById(R.id.busMultipleRoutes);
@@ -1821,11 +1823,16 @@ public class LinesDetailActivity extends AppCompatActivity {
         ImageView lineSuspendedInfoBtn = findViewById(R.id.infoLineClosed);
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
         ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
+        ImageView infoSlowdownsBtn = findViewById(R.id.infoSlowdowns);
 
         for(String linea: lineeSostituiteBus) {if(linea.equals(nomeLinea)) lineaFullBus.setVisibility(View.VISIBLE);}
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
         infoLineBusesBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
 
+        //*ELABORATE DATAS
+        /// In this section of the code, we elaborate the CDN response data to apply it on the Activity.
+
+        //? LINE DEVIATIONS
         int i = 0;
         for (String linea : lineeDeviate) {
             if (linea.equals(nomeLinea)) {
@@ -1838,11 +1845,21 @@ public class LinesDetailActivity extends AppCompatActivity {
             i++;
         }
 
+        //? LINE SUSPENDED
         for (int b = 0; b < linesSuspended.length; b++) {
             if (linesSuspended[b].equalsIgnoreCase(nomeLinea)) {
                 lineaSospesa.setVisibility(View.VISIBLE);
                 lineSuspendedInfoBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSuspendedPopUpTitle), getString(R.string.lineSuspendedPopUpDeps)));
                 lineaSospesa.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSuspendedPopUpTitle), getString(R.string.lineSuspendedPopUpDeps)));
+            }
+        }
+
+        //? LINE SLOWDOWNS
+        for(int c = 0; c < lineeConRallentamenti.length; c++) {
+            if(lineeConRallentamenti[c].equalsIgnoreCase(nomeLinea)) {
+                lineaRallentata.setVisibility(View.VISIBLE);
+                infoSlowdownsBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea Rallentata", "Questa linea ha dei lavori attualmente in esecuzione che portano all'anticipo o ritardo di arrivo a destinazione. Controlla la seizone 'Lavori'."));
+                lineaRallentata.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Linea Rallentata", "Questa linea ha dei lavori attualmente in esecuzione che portano all'anticipo o ritardo di arrivo a destinazione. Controlla la seizone 'Lavori'."));
             }
         }
 
@@ -1873,7 +1890,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        ///LINE BUS CON PIU DIREZIONI
+        /// Linee Bus con più direzioni
         for (String line : linesMultipleRoutes){
             if(line.equals(nomeLinea)){
                 busMultipleRoutes.setVisibility(View.VISIBLE);
