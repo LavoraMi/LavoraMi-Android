@@ -1997,7 +1997,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "MXP2": return "Malpensa T2 - Milano Cadorna";
             case "S10": return "Biasca - Como";
             case "S20": return "Castione Arbedo - Locarno";
-            case "S30": return "Cadenazzo - Gallarate";
+            case "S30": return "Bellinzona / Cadenazzo - Gallarate";
             case "S40": return "Como - Varese";
             case "S50": return "Biasca - Malpensa Aeroporto T1-T2";
             case "S90": return "Bellinzona - Mendrisio";

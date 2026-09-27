@@ -874,6 +874,38 @@ public class TILOStationsDB {
 
     public static List<MetroStation> getStationsS30() {
         List<MetroStation> stations = new ArrayList<>();
+        stations.add(new MetroStation("Bellinzona", 46.19543, 9.02951, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.19377, 9.0279, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.19247, 9.02614, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.19012, 9.02413, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.18836, 9.02296, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.18769, 9.02257, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.18742, 9.02236, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.18673, 9.02145, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.18401, 9.01823, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.18075, 9.01419, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.17996, 9.01327, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.17968, 9.01284, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.1793, 9.01225, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.17678, 9.00815, "Main", "S30"));
+        stations.add(new MetroStation("Giubiasco", 46.17381, 9.00359, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.17321, 9.00223, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.16982, 8.99695, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.16667, 8.99091, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.16616, 8.98988, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.1657, 8.98869, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.16491, 8.98628, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.16099, 8.97535, "Main", "S30"));
+        stations.add(new MetroStation("San Antonino", 46.16041, 8.97392, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.16002, 8.97248, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15747, 8.96496, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15363, 8.95364, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15307, 8.95198, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15278, 8.95084, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15258, 8.94956, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15251, 8.94876, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15251, 8.94804, "Main", "S30"));
+        stations.add(new MetroStation("NO_DRAW", 46.15258, 8.94488, "Main", "S30"));
         stations.add(new MetroStation("Cadenazzo", 46.15262, 8.94168, "Main", "S30"));
         stations.add(new MetroStation("NO_DRAW", 46.1536, 8.92987, "Main", "S30"));
         stations.add(new MetroStation("NO_DRAW", 46.15445, 8.92031, "Main", "S30"));
