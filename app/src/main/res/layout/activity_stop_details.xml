@@ -187,12 +187,44 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="Prossimo arrivo:"
                     android:textColor="@color/text_primary"
                     android:fontFamily="@font/font_main"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/rigaCambiaDirezione"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/glass_bottom_bar_bg">
+
+                    <ImageView
+                        android:id="@+id/iconChangeRoute"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="6dp"
+                        android:src="@drawable/ic_change_route"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:id="@+id/txtCambiaDirezione"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="6dp"
+                        android:text="Direzione"
+                        android:fontFamily="@font/font_main"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -244,60 +276,14 @@
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:maxLines="1"
-                    android:ellipsize="end" />
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
 
                 <TextView
                     android:id="@+id/nextArrivals"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12:45"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/font_main"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rigaArrivo2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="4dp"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/detBadge2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="50dp"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:gravity="center"
-                    android:background="@drawable/bg_badge_line"
-                    android:backgroundTint="@color/TRAM"
-                    android:text="2"
-                    android:textColor="@color/White"
-                    android:fontFamily="@font/font_main"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/detDirezioni2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/directionTitleArrivals"
-                    android:fontFamily="@font/font_main"
-                    android:textColor="@color/text_primary"
-                    android:textSize="16sp"
-                    android:maxLines="1"
-                    android:ellipsize="end" />
-
-                <TextView
-                    android:id="@+id/nextArrivals2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12:45"

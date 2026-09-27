@@ -47,6 +47,10 @@ public class StopDetailsActivity extends AppCompatActivity{
     private final Handler arriviHandler = new Handler(Looper.getMainLooper());
     private Runnable arriviRunnable;
 
+    //*CAMBIO DIREZIONE
+    private int indiceDirezioneCorrente = 0;
+    private List<Map.Entry<String, List<GTFSHelper.Departure>>> direzioniDisponibili = new ArrayList<>();
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2001;
 
     @Override
@@ -72,6 +76,9 @@ public class StopDetailsActivity extends AppCompatActivity{
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
 
+        LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
+        rigaCambiaDirezione.setOnClickListener(v -> cambiaDirezione());
+
         aggiornaTestView();
         caricaDatiGTFS();
 
@@ -86,26 +93,27 @@ public class StopDetailsActivity extends AppCompatActivity{
         TextView detTitolo = findViewById(R.id.detTitolo);
         TextView detSottotitolo = findViewById(R.id.detSottotitolo);
         TextView detBadge = findViewById(R.id.detBadge);
-        TextView detBadge2 = findViewById(R.id.detBadge2);
 
         detTitolo.setText(nomeFermata);
         detSottotitolo.setText(getString(R.string.tramLinesScroll) + " " + nomeLinea);
 
         detBadge.setText(nomeLinea);
-        detBadge2.setText(nomeLinea);
 
         coloreLinea = ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea));
 
         detBadge.getBackground().setTint(coloreLinea);
         detBadge.getBackground().setTintMode(android.graphics.PorterDuff.Mode.SRC_IN);
 
-        detBadge2.getBackground().setTint(coloreLinea);
-        detBadge2.getBackground().setTintMode(android.graphics.PorterDuff.Mode.SRC_IN);
-
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
         detDirezioni.setText(getString(R.string.loadingDataInProgress));
+
+        detDirezioni.setSelected(true); //start ellipsize
         nextArrivals.setText("--");
+
+        //*Reset stato direzione quando cambia fermata
+        indiceDirezioneCorrente = 0;
+        direzioniDisponibili = new ArrayList<>();
 
         caricaInterscambioFermata();
     }
@@ -128,10 +136,10 @@ public class StopDetailsActivity extends AppCompatActivity{
                 new Handler(Looper.getMainLooper()).post(() -> {
                     TextView detDirezioni = findViewById(R.id.detDirezioni);
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
-                    LinearLayout rigaArrivo2 = findViewById(R.id.rigaArrivo2);
+                    LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
                     if (detDirezioni != null) detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
                     if (nextArrivals != null) nextArrivals.setText("--");
-                    if (rigaArrivo2 != null) rigaArrivo2.setVisibility(View.GONE);
+                    if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
                 });
             }
         });
@@ -157,10 +165,10 @@ public class StopDetailsActivity extends AppCompatActivity{
         else {
             TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
-            LinearLayout rigaArrivo2 = findViewById(R.id.rigaArrivo2);
+            LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
             detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
             nextArrivals.setText("--");
-            if (rigaArrivo2 != null) rigaArrivo2.setVisibility(View.GONE);
+            if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
         }
     }
 
@@ -169,34 +177,42 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
-        LinearLayout rigaArrivo2 = findViewById(R.id.rigaArrivo2);
-        TextView detDirezioni2 = findViewById(R.id.detDirezioni2);
-        TextView nextArrivals2 = findViewById(R.id.nextArrivals2);
+        LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
 
         Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 1);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
             nextArrivals.setText("--");
-            rigaArrivo2.setVisibility(View.GONE);
+            rigaCambiaDirezione.setVisibility(View.GONE);
             scheduleArriviRefresh();
             return;
         }
 
-        Iterator<Map.Entry<String, List<GTFSHelper.Departure>>> it = departuresByDir.entrySet().iterator();
+        direzioniDisponibili = new ArrayList<>(departuresByDir.entrySet());
 
-        Map.Entry<String, List<GTFSHelper.Departure>> primaDirezione = it.next();
-        popolaRigaArrivo(detDirezioni, nextArrivals, primaDirezione.getValue());
-
-        if (it.hasNext()) {
-            Map.Entry<String, List<GTFSHelper.Departure>> secondaDirezione = it.next();
-            popolaRigaArrivo(detDirezioni2, nextArrivals2, secondaDirezione.getValue());
-            rigaArrivo2.setVisibility(View.VISIBLE);
-        } else {
-            rigaArrivo2.setVisibility(View.GONE);
+        //*Se l'indice salvato non è più valido (es. dati ricaricati), riparte da 0
+        if (indiceDirezioneCorrente >= direzioniDisponibili.size()) {
+            indiceDirezioneCorrente = 0;
         }
 
+        popolaRigaArrivo(detDirezioni, nextArrivals, direzioniDisponibili.get(indiceDirezioneCorrente).getValue());
+
+        rigaCambiaDirezione.setVisibility(direzioniDisponibili.size() > 1 ? View.VISIBLE : View.GONE);
+
         scheduleArriviRefresh();
+    }
+
+    private void cambiaDirezione() {
+        if (direzioniDisponibili.size() <= 1) return;
+
+        indiceDirezioneCorrente = (indiceDirezioneCorrente + 1) % direzioniDisponibili.size();
+
+        TextView detDirezioni = findViewById(R.id.detDirezioni);
+        TextView nextArrivals = findViewById(R.id.nextArrivals);
+        popolaRigaArrivo(detDirezioni, nextArrivals, direzioniDisponibili.get(indiceDirezioneCorrente).getValue());
+
+        ActivityUtils.triggerFeedback(this);
     }
 
     private void popolaRigaArrivo(TextView detDirezioniView, TextView nextArrivalsView, List<GTFSHelper.Departure> deps) {
