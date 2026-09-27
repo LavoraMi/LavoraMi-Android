@@ -687,13 +687,13 @@ public class LinesDetailActivity extends AppCompatActivity {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     apriDettaglioFermata(stationName);
                                 }*/
-                            }else {
+                            }
+                            else {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaInterscambioDaMappa(stationName);
                                 }
                             }
-
                         }
                     }
                 );
@@ -1274,89 +1274,96 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void preloadInterscambi() {
-        executor.execute(() -> {
-            String searchTag = nomeLinea.trim().toUpperCase();
-            List<InterchangeInfo> interchanges;
+        if (isFinishing() || isDestroyed() || executor.isShutdown()) return;
 
-            if (isLineaTram())
-                interchanges = InterchangesDB.getTramInterchanges(this);
-            else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
-                interchanges = InterchangesDB.getFilobusInterchanges(this);
-            else if (isLineaMetro())
-                interchanges = InterchangesDB.getMetroInterchanges(this);
-            else if (isLineaSuburbano())
-                interchanges = InterchangesDB.getSuburbanInterchanges();
-            else if(isLineaTilo())
-                interchanges = InterchangesDB.getTILOInterchanges(this);
-            else if(isLineaRegionale())
-                interchanges = InterchangesDB.getRegionalInterchanges(this);
-            else if(isLineaRegioExpress())
-                interchanges = InterchangesDB.getRegioExpressInterchanges();
-            else if (isMalpensaExpress())
-                interchanges = InterchangesDB.getMalpensaExpressInterchanges(this);
-            else
-                interchanges = new ArrayList<>();
+        try {
+            executor.execute(() -> {
+                String searchTag = nomeLinea.trim().toUpperCase();
+                List<InterchangeInfo> interchanges;
 
-            Set<String> seenKeys = new LinkedHashSet<>();
-            List<InterchangeInfo> matched = new ArrayList<>();
+                if (isLineaTram())
+                    interchanges = InterchangesDB.getTramInterchanges(this);
+                else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
+                    interchanges = InterchangesDB.getFilobusInterchanges(this);
+                else if (isLineaMetro())
+                    interchanges = InterchangesDB.getMetroInterchanges(this);
+                else if (isLineaSuburbano())
+                    interchanges = InterchangesDB.getSuburbanInterchanges();
+                else if(isLineaTilo())
+                    interchanges = InterchangesDB.getTILOInterchanges(this);
+                else if(isLineaRegionale())
+                    interchanges = InterchangesDB.getRegionalInterchanges(this);
+                else if(isLineaRegioExpress())
+                    interchanges = InterchangesDB.getRegioExpressInterchanges();
+                else if (isMalpensaExpress())
+                    interchanges = InterchangesDB.getMalpensaExpressInterchanges(this);
+                else
+                    interchanges = new ArrayList<>();
 
-            for (InterchangeInfo info : interchanges) {
-                if (info.getLines() == null || info.getLines().length == 0) continue;
+                Set<String> seenKeys = new LinkedHashSet<>();
+                List<InterchangeInfo> matched = new ArrayList<>();
 
-                boolean match = false;
-                if (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || isLineaTram() || tipoDiLinea.contains(getString(R.string.filobusKey))) {
-                    String primaryLine = info.getLines()[0].trim().toUpperCase();
-                    match = primaryLine.equals(searchTag);
-                }
-                else {
-                    for (String line : info.getLines()) {
-                        if (line.trim().toUpperCase().equals(searchTag)) {
-                            match = true;
-                            break;
+                for (InterchangeInfo info : interchanges) {
+                    if (info.getLines() == null || info.getLines().length == 0) continue;
+
+                    boolean match = false;
+                    if (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || isLineaTram() || tipoDiLinea.contains(getString(R.string.filobusKey))) {
+                        String primaryLine = info.getLines()[0].trim().toUpperCase();
+                        match = primaryLine.equals(searchTag);
+                    }
+                    else {
+                        for (String line : info.getLines()) {
+                            if (line.trim().toUpperCase().equals(searchTag)) {
+                                match = true;
+                                break;
+                            }
                         }
                     }
-                }
-                if (!match) continue;
+                    if (!match) continue;
 
-                String compositeKey = info.getKey() + "|" + searchTag;
-                if (!seenKeys.contains(compositeKey)) {
-                    seenKeys.add(compositeKey);
-                    matched.add(info);
-                }
-            }
-
-            Set<String> branchSet = new LinkedHashSet<>();
-            for (InterchangeInfo info : matched) {
-                String branch = info.getBranch();
-                if (branch != null && !branch.isEmpty() && !branch.equals("Main"))
-                    branchSet.add(branch);
-            }
-
-            List<String> availableBranches = new ArrayList<>(branchSet);
-            boolean hasMultipleBranches = !availableBranches.isEmpty();
-
-            LinearLayout container = findViewById(R.id.containerInterscambi);
-            prebuildAllBranchViews(matched, container, () -> {
-                if (selectedBranch == null && hasMultipleBranches)
-                    selectedBranch = availableBranches.get(0);
-
-                Button btnBranch = findViewById(R.id.buttonSelectBranch);
-                if (btnBranch != null) {
-                    btnBranch.setVisibility(hasMultipleBranches ? View.VISIBLE : View.GONE);
-                    if (hasMultipleBranches) btnBranch.setText(selectedBranch);
-                    btnBranch.setOnClickListener(v -> {
-                        ActivityUtils.triggerFeedback(this);
-                        showBranchDialog(availableBranches, matched);
-                    });
+                    String compositeKey = info.getKey() + "|" + searchTag;
+                    if (!seenKeys.contains(compositeKey)) {
+                        seenKeys.add(compositeKey);
+                        matched.add(info);
+                    }
                 }
 
-                interscambiPreloaded = true;
+                Set<String> branchSet = new LinkedHashSet<>();
+                for (InterchangeInfo info : matched) {
+                    String branch = info.getBranch();
+                    if (branch != null && !branch.isEmpty() && !branch.equals("Main"))
+                        branchSet.add(branch);
+                }
 
-                Chip chipInterscambi = findViewById(R.id.chipInterscambi);
-                if (chipInterscambi != null && chipInterscambi.isChecked())
-                    mostraInterscambiCaricati(matched);
+                List<String> availableBranches = new ArrayList<>(branchSet);
+                boolean hasMultipleBranches = !availableBranches.isEmpty();
+
+                LinearLayout container = findViewById(R.id.containerInterscambi);
+                prebuildAllBranchViews(matched, container, () -> {
+                    if (selectedBranch == null && hasMultipleBranches)
+                        selectedBranch = availableBranches.get(0);
+
+                    Button btnBranch = findViewById(R.id.buttonSelectBranch);
+                    if (btnBranch != null) {
+                        btnBranch.setVisibility(hasMultipleBranches ? View.VISIBLE : View.GONE);
+                        if (hasMultipleBranches) btnBranch.setText(selectedBranch);
+                        btnBranch.setOnClickListener(v -> {
+                            ActivityUtils.triggerFeedback(this);
+                            showBranchDialog(availableBranches, matched);
+                        });
+                    }
+
+                    interscambiPreloaded = true;
+
+                    Chip chipInterscambi = findViewById(R.id.chipInterscambi);
+                    if (chipInterscambi != null && chipInterscambi.isChecked())
+                        mostraInterscambiCaricati(matched);
+                });
             });
-        });
+        }
+        catch (java.util.concurrent.RejectedExecutionException e) {
+            Log.w("LinesDetailActivity", "Skipped preloadInterscambi: executor already shut down", e);
+        }
     }
 
     private BottomSheetDialog activeBranchDialog;
