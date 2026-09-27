@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -1375,8 +1376,15 @@ public class MainActivity extends AppCompatActivity {
             .setCancelable(true)
             .create();
 
-        if (dialog.getWindow() != null)
+        if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            int screenWidth = getResources().getDisplayMetrics().widthPixels;
+            dialog.getWindow().setLayout(
+                    (int) (screenWidth * 0.9),
+                    WindowManager.LayoutParams.WRAP_CONTENT
+            );
+        }
 
         //* SETUP ANIMATION
         ImageButton heartIcon = dialogView.findViewById(R.id.buttonAddLine);
@@ -1439,7 +1447,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void stopSpin() {
         long elapsed = System.currentTimeMillis() - spinStartTime;
-        float currentAngle = (elapsed % 1000) / 1000f * 360f; // duration=1000 dal tuo xml
+        float currentAngle = (elapsed % 1000) / 1000f * 360f;
 
         btnRefresh.clearAnimation();
 
