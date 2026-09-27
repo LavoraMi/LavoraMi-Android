@@ -128,8 +128,10 @@ public class StopDetailsActivity extends AppCompatActivity{
                 new Handler(Looper.getMainLooper()).post(() -> {
                     TextView detDirezioni = findViewById(R.id.detDirezioni);
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
+                    LinearLayout rigaArrivo2 = findViewById(R.id.rigaArrivo2);
                     if (detDirezioni != null) detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
                     if (nextArrivals != null) nextArrivals.setText("--");
+                    if (rigaArrivo2 != null) rigaArrivo2.setVisibility(View.GONE);
                 });
             }
         });
@@ -142,7 +144,6 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         for (Map.Entry<String, GTFSHelper.GTFSStop> entry : routeData.stops.entrySet()) {
             String nomeGTFS = entry.getValue().name;
-
             if (nomeGTFS.equalsIgnoreCase(nomeFermata)) {
                 stopIdTrovato = entry.getKey();
                 break;
@@ -156,8 +157,10 @@ public class StopDetailsActivity extends AppCompatActivity{
         else {
             TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
+            LinearLayout rigaArrivo2 = findViewById(R.id.rigaArrivo2);
             detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
             nextArrivals.setText("--");
+            if (rigaArrivo2 != null) rigaArrivo2.setVisibility(View.GONE);
         }
     }
 
