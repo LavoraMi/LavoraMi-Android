@@ -257,6 +257,56 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/rigaArrivo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/detBadge2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="50dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_badge_line"
+                    android:backgroundTint="@color/TRAM"
+                    android:text="2"
+                    android:textColor="@color/White"
+                    android:fontFamily="@font/font_main"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/detDirezioni2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/directionTitleArrivals"
+                    android:fontFamily="@font/font_main"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/nextArrivals2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12:45"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/font_main"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/containerInterscambioFermata"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -27,6 +27,7 @@ import com.mapbox.geojson.Point;
 import com.mapbox.maps.MapView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -85,15 +86,21 @@ public class StopDetailsActivity extends AppCompatActivity{
         TextView detTitolo = findViewById(R.id.detTitolo);
         TextView detSottotitolo = findViewById(R.id.detSottotitolo);
         TextView detBadge = findViewById(R.id.detBadge);
+        TextView detBadge2 = findViewById(R.id.detBadge2);
 
         detTitolo.setText(nomeFermata);
         detSottotitolo.setText(getString(R.string.tramLinesScroll) + " " + nomeLinea);
 
         detBadge.setText(nomeLinea);
+        detBadge2.setText(nomeLinea);
 
         coloreLinea = ContextCompat.getColor(this, StationDB.getLineColor(this, nomeLinea));
+
         detBadge.getBackground().setTint(coloreLinea);
         detBadge.getBackground().setTintMode(android.graphics.PorterDuff.Mode.SRC_IN);
+
+        detBadge2.getBackground().setTint(coloreLinea);
+        detBadge2.getBackground().setTintMode(android.graphics.PorterDuff.Mode.SRC_IN);
 
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
@@ -102,7 +109,6 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         caricaInterscambioFermata();
     }
-
     //*GTFS ARRIVI
     private void caricaDatiGTFS() {
         if (nomeLinea == null || nomeLinea.isEmpty()) return;
@@ -160,37 +166,52 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
+        LinearLayout rigaArrivo2 = findViewById(R.id.rigaArrivo2);
+        TextView detDirezioni2 = findViewById(R.id.detDirezioni2);
+        TextView nextArrivals2 = findViewById(R.id.nextArrivals2);
 
         Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 1);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
             nextArrivals.setText("--");
+            rigaArrivo2.setVisibility(View.GONE);
             scheduleArriviRefresh();
             return;
         }
 
-        // Il layout di questa schermata mostra una sola riga: prendiamo la prima direzione disponibile.
-        Map.Entry<String, List<GTFSHelper.Departure>> primaDirezione = departuresByDir.entrySet().iterator().next();
-        List<GTFSHelper.Departure> deps = primaDirezione.getValue();
+        Iterator<Map.Entry<String, List<GTFSHelper.Departure>>> it = departuresByDir.entrySet().iterator();
 
-        if (deps != null && !deps.isEmpty()) {
-            GTFSHelper.Departure prossimo = deps.get(0);
+        Map.Entry<String, List<GTFSHelper.Departure>> primaDirezione = it.next();
+        popolaRigaArrivo(detDirezioni, nextArrivals, primaDirezione.getValue());
 
-            detDirezioni.setText(getString(R.string.directionTitleArrivals) + prossimo.headsign.toUpperCase());
-
-            if (prossimo.minutesFromNow == 0)
-                nextArrivals.setText(getString(R.string.leavingTitle));
-            else if (prossimo.minutesFromNow >= 60) {
-                int hours = prossimo.minutesFromNow / 60;
-                int mins = prossimo.minutesFromNow % 60;
-                nextArrivals.setText(mins == 0 ? hours + " h" : hours + " h " + mins + " min");
-            }
-            else
-                nextArrivals.setText(prossimo.minutesFromNow + " min");
+        if (it.hasNext()) {
+            Map.Entry<String, List<GTFSHelper.Departure>> secondaDirezione = it.next();
+            popolaRigaArrivo(detDirezioni2, nextArrivals2, secondaDirezione.getValue());
+            rigaArrivo2.setVisibility(View.VISIBLE);
+        } else {
+            rigaArrivo2.setVisibility(View.GONE);
         }
 
         scheduleArriviRefresh();
+    }
+
+    private void popolaRigaArrivo(TextView detDirezioniView, TextView nextArrivalsView, List<GTFSHelper.Departure> deps) {
+        if (deps == null || deps.isEmpty()) return;
+
+        GTFSHelper.Departure prossimo = deps.get(0);
+
+        detDirezioniView.setText(getString(R.string.directionTitleArrivals) + prossimo.headsign.toUpperCase());
+
+        if (prossimo.minutesFromNow == 0)
+            nextArrivalsView.setText(getString(R.string.leavingTitle));
+        else if (prossimo.minutesFromNow >= 60) {
+            int hours = prossimo.minutesFromNow / 60;
+            int mins = prossimo.minutesFromNow % 60;
+            nextArrivalsView.setText(mins == 0 ? hours + " h" : hours + " h " + mins + " min");
+        }
+        else
+            nextArrivalsView.setText(prossimo.minutesFromNow + " min");
     }
 
     private void scheduleArriviRefresh() {
