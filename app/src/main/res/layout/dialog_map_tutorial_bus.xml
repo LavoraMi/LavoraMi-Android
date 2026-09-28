@@ -207,10 +207,10 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:textSize="17sp"
-        android:backgroundTint="@color/dismiss_icon_grey_500"
+        android:backgroundTint="@color/subtitle"
         android:fontFamily="@font/font_main"
         android:text="@string/closePopUp"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/White"
         android:textStyle="bold" />
 
     </LinearLayout>

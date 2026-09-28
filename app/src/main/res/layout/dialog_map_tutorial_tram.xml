@@ -24,7 +24,7 @@
             android:gravity="start"
             android:fontFamily="@font/font_main"
             android:textColor="@color/text_primary"
-            android:text="@string/dialog_bus_title"
+            android:text="@string/dialog_tram_title"
             android:textSize="24sp"
             android:layout_marginBottom="20dp"
             android:textStyle="bold" />
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_main"
-                    android:text="@string/dialog_bus_desc_1"
+                    android:text="@string/dialog_tram_desc_1"
                     android:textSize="14sp"
                     android:textColor="@color/subtitle" />
 
@@ -75,8 +75,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="24dp">
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/icon_feature_two"
@@ -108,56 +107,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_main"
-                    android:text="@string/dialog_bus_desc_2"
+                    android:text="@string/dialog_tram_desc_2"
                     android:textSize="14sp"
                     android:textColor="@color/subtitle" />
 
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
-
-            <ImageView
-                android:id="@+id/icon_feature_three"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_change_route"
-                app:tint="@color/TRAM" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_title_three"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/font_main"
-                    android:text="@string/dialog_bus_title_3"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:id="@+id/text_desc_three"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/font_main"
-                    android:text="@string/dialog_bus_desc_3"
-                    android:textSize="14sp"
-                    android:textColor="@color/subtitle" />
-
-            </LinearLayout>
-        </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -207,10 +162,10 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:textSize="17sp"
-        android:backgroundTint="@color/dismiss_icon_grey_500"
+        android:backgroundTint="@color/subtitle"
         android:fontFamily="@font/font_main"
         android:text="@string/closePopUp"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/White"
         android:textStyle="bold" />
 
     </LinearLayout>

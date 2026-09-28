@@ -467,6 +467,9 @@
     <string name="dialog_bus_desc_2">Seleziona una fermata e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze.</string>
     <string name="dialog_bus_title_3">Cambia Direzione</string>
     <string name="dialog_bus_desc_3">Cambia la direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!</string>
+    <string name="dialog_tram_title">Mappe per i Tram</string>
+    <string name="dialog_tram_desc_1">Guarda le mappe dei Tram che usi ogni giorno! Dettagliate e create appositamente per te e i tuoi spostamenti quotidiani.</string>
+    <string name="dialog_tram_desc_2">Seleziona una fermata dalla mappa premendoci sopra per vedere gli arrivi, interscambi, e altri dettagli della fermata.</string>
     <string name="busSubtitlePopUp">Puoi rivedere questa pagina premendo sulla tab \"Mappa\" quando è selezionata.</string>
     <string name="errorBrowserSlowToast">La pagina sta impiegando più tempo a caricarsi.</string>
     <string name="slowdownBannerTitle">LINEA CON RALLENTAMENTI</string>

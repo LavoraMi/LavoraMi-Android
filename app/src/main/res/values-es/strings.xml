@@ -468,6 +468,9 @@
     <string name="dialog_bus_title_2">Seleccione una parada</string>
     <string name="dialog_bus_title_3">Cambiar Dirección</string>
     <string name="dialog_bus_desc_3">Cambia la dirección del autobús seleccionando el botón con este icono. ¡Podrás ver las paradas en sentido contrario!</string>
+    <string name="dialog_tram_title">Mapas de Tranvía</string>
+    <string name="dialog_tram_desc_1">¡Echa un vistazo a los mapas de tranvía que utilizas a diario! Detallados y creados especialmente para ti y tus desplazamientos diarios.</string>
+    <string name="dialog_tram_desc_2">Selecciona una parada en el mapa pulsando sobre ella para ver las llegadas, correspondencias y otros detalles de la parada.</string>
     <string name="busSubtitlePopUp">Puedes volver a consultar esta página pulsando en la pestaña \"Mapa\" cuando esté seleccionada.</string>
     <string name="errorBrowserSlowToast">La página está tardando más en cargarse.</string>
     <string name="slowdownBannerTitle">LÍNEA CON REDUCCIONES DE VELOCIDAD</string>

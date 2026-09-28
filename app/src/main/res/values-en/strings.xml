@@ -468,6 +468,9 @@
     <string name="dialog_bus_title_2">Select a stop</string>
     <string name="dialog_bus_title_3">Change Direction</string>
     <string name="dialog_bus_desc_3">Change your bus direction by selecting the button with this icon. You will be able to see the stops in the opposite direction!</string>
+    <string name="dialog_tram_title">Tram Maps</string>
+    <string name="dialog_tram_desc_1">Check out the Tram maps you use every day! Detailed and created especially for you and your daily journeys.</string>
+    <string name="dialog_tram_desc_2">Select a stop from the map by tapping on it to see arrivals, interchanges, and other stop details.</string>
     <string name="busSubtitlePopUp">You can view this page again by clicking on the \"Map\" tab when it is selected.</string>
     <string name="errorBrowserSlowToast">The page is taking longer to load.</string>
     <string name="slowdownBannerTitle">LINE WITH SLOWDOWNS</string>
