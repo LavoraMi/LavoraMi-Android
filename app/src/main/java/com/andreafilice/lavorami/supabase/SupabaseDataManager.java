@@ -154,7 +154,6 @@ public class SupabaseDataManager {
             public void onResponse(Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call, Response<ArrayList<SupabaseModels.LinesFavoriteDatas>> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().size() > 0) {
                     ArrayList<String> favorites = response.body().get(0).lines;
-                    Log.d("DataManager", "Favorites recuperati: " + favorites.size() + " linee");
                     if (callback != null)
                         callback.onSuccess(favorites != null ? favorites : new ArrayList<>());
                 }
@@ -185,7 +184,6 @@ public class SupabaseDataManager {
             public void onResponse(Call<ArrayList<SupabaseModels.LinesFavoriteDatas>> call, Response<ArrayList<SupabaseModels.LinesFavoriteDatas>> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().size() > 0) {
                     ArrayList<String> yourLines = response.body().get(0).your_lines;
-                    Log.d("DataManager", "Custom lines recuperate: " + yourLines.size() + " linee");
                     if (callback != null)
                         callback.onSuccess(yourLines != null ? yourLines : new ArrayList<>());
                 }
