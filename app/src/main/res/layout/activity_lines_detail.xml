@@ -216,6 +216,7 @@
                 android:textColor="@color/amber_on_banner"
                 android:fontFamily="@font/font_main"
                 android:textSize="12sp"
+                android:layout_weight="1"
                 android:text="@string/tramDeviationsTitle"
                 android:textStyle="bold" />
 
