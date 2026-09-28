@@ -522,6 +522,18 @@ public class StationDB {
                 }
                 else if (nomeLinea.startsWith("P"))
                     return R.color.AUTOGUIDOVIE;
+                else if (nomeLinea.equalsIgnoreCase("BM1"))
+                    return R.color.M1;
+                else if (nomeLinea.equalsIgnoreCase("BM2"))
+                    return R.color.M2;
+                else if (nomeLinea.equalsIgnoreCase("BM3"))
+                    return R.color.M3;
+                else if (nomeLinea.equalsIgnoreCase("BM4"))
+                    return R.color.M4;
+                else if (nomeLinea.equalsIgnoreCase("BM5"))
+                    return R.color.M5;
+                else if (nomeLinea.startsWith("B"))
+                    return R.color.TRAM;
                 else if (nomeLinea.startsWith("MXP"))
                     return R.color.MXP;
                 else if (nomeLinea.equalsIgnoreCase(context.getString(R.string.airportKey)))
