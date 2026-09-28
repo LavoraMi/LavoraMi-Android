@@ -1,4 +1,4 @@
-package com.andreafilice.lavorami;
+package com.andreafilice.lavorami.supabase;
 
 import com.google.gson.annotations.SerializedName;
 

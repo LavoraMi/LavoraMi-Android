@@ -1,7 +1,10 @@
-package com.andreafilice.lavorami;
+package com.andreafilice.lavorami.supabase;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.andreafilice.lavorami.SessionManager;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

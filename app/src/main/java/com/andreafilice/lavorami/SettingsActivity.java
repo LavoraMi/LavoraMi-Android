@@ -26,6 +26,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
 import com.andreafilice.lavorami.wrapped.WrappedActivity;
 import com.google.android.material.card.MaterialCardView;
 

@@ -1,4 +1,4 @@
-package com.andreafilice.lavorami;
+package com.andreafilice.lavorami.supabase;
 
 import retrofit2.http.GET;
 import retrofit2.http.Header;

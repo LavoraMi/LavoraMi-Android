@@ -43,6 +43,10 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
+import com.andreafilice.lavorami.supabase.SupabaseModels;
 import com.andreafilice.lavorami.wrapped.WrappedActivity;
 import com.facebook.shimmer.ShimmerFrameLayout;
 

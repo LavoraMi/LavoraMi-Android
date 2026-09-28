@@ -15,6 +15,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
+import com.andreafilice.lavorami.supabase.SupabaseModels;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 

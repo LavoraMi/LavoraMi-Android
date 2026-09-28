@@ -14,6 +14,11 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
+import com.andreafilice.lavorami.supabase.SupabaseModels;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

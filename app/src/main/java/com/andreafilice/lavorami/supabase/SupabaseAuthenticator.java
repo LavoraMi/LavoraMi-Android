@@ -1,7 +1,10 @@
-package com.andreafilice.lavorami;
+package com.andreafilice.lavorami.supabase;
 
 import android.content.Context;
 import androidx.annotation.Nullable;
+
+import com.andreafilice.lavorami.SessionManager;
+
 import java.io.IOException;
 import okhttp3.Authenticator;
 import okhttp3.OkHttpClient;

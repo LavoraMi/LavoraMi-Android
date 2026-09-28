@@ -32,6 +32,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;

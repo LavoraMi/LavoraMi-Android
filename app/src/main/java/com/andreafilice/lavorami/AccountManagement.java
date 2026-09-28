@@ -42,6 +42,10 @@ import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
+import com.andreafilice.lavorami.supabase.SupabaseModels;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

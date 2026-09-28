@@ -52,6 +52,9 @@ import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.andreafilice.lavorami.supabase.SupabaseAPI;
+import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
+import com.andreafilice.lavorami.supabase.SupabaseDataManager;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.flexbox.FlexboxLayout;
 import com.mapbox.maps.MapView;
