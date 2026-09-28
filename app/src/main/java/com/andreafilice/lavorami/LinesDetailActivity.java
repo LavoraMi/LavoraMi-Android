@@ -4,20 +4,26 @@ import static com.andreafilice.lavorami.MainActivity.threadManager;
 import static com.andreafilice.lavorami.WorkAdapter.translateStrings;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
+import android.Manifest;
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,12 +32,14 @@ import android.transition.Transition;
 import android.transition.TransitionListenerAdapter;
 import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -40,15 +48,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,7 +75,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
+import com.mapbox.maps.QueriedRenderedFeature;
+import com.mapbox.maps.RenderedQueryGeometry;
+import com.mapbox.maps.RenderedQueryOptions;
+import com.mapbox.maps.ScreenBox;
+import com.mapbox.maps.ScreenCoordinate;
 import com.mapbox.maps.plugin.gestures.GesturesUtils;
+import com.mapbox.maps.plugin.gestures.OnMapClickListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -82,6 +99,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -150,7 +168,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private Typeface cachedFontMainTypeface;
 
     @Override
-    protected void onNewIntent(android.content.Intent intent) {
+    protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
         recreate();
@@ -201,7 +219,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         tipoDiLinea = getIntent().getStringExtra("TIPO_DI_LINEA");
 
         if (nomeLinea == null) {
-            android.net.Uri deepLinkData = getIntent().getData();
+            Uri deepLinkData = getIntent().getData();
             if (deepLinkData != null) {
                 nomeLinea = deepLinkData.getQueryParameter("nome");
                 tipoDiLinea = deepLinkData.getQueryParameter("tipo");
@@ -235,6 +253,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(busLinesWithMap.contains(nomeLinea) && !DataManager.getBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false)){
             showDialogTutorialBus();
             DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, true);
+        } else if(isLineaTram() && !DataManager.getBoolData(DataKeys.KEY_TRAM_TUTORIAL_SHOWN, false)){
+            showDialogTutorialTram();
+            DataManager.saveBoolData(DataKeys.KEY_TRAM_TUTORIAL_SHOWN, true);
         }
 
         cachedInterTypeface = ResourcesCompat.getFont(this, R.font.inter);
@@ -283,7 +304,10 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         chipMappa.setOnClickListener(v -> {
             ActivityUtils.triggerFeedback(this);
-            if (!chipMappa.isChecked() && busLinesWithMap.contains(nomeLinea)) showDialogTutorialBus();
+            if (!chipMappa.isChecked()) {
+                if (busLinesWithMap.contains(nomeLinea)) showDialogTutorialBus();
+                else if (isLineaTram()) showDialogTutorialTram();
+            }
             
             chipMappa.setChecked(true);
             dismissActiveBranchDialog();
@@ -661,25 +685,25 @@ public class LinesDetailActivity extends AppCompatActivity {
         disegnaMarkers(mapView, tutteLeStazioni, hexColor, hexColorText, fermateSospese);
 
 
-        GesturesUtils.getGestures(mapView).addOnMapClickListener(new com.mapbox.maps.plugin.gestures.OnMapClickListener() {
+        GesturesUtils.getGestures(mapView).addOnMapClickListener(new OnMapClickListener() {
             @Override
-            public boolean onMapClick(@NonNull com.mapbox.geojson.Point point) {
+            public boolean onMapClick(@NonNull Point point) {
 
-                com.mapbox.maps.ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
+                ScreenCoordinate pixel = mapView.getMapboxMap().pixelForCoordinate(point);
                 float tolerance = 20f;
 
-                com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
-                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
-                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
+                ScreenBox screenBox = new ScreenBox(
+                    new ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
+                    new ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
                 );
 
                 mapView.getMapboxMap().queryRenderedFeatures(
-                    new com.mapbox.maps.RenderedQueryGeometry(screenBox),
-                    new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
+                    new RenderedQueryGeometry(screenBox),
+                    new RenderedQueryOptions(List.of("marker-layer"), null),
                     expected -> {
                         if (expected.isValue() && !expected.getValue().isEmpty()) {
-                            com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
-                            com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+                            QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
+                            Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
                             if (nomeLinea.contains("z")) {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
@@ -775,7 +799,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (txtDirezioneMappa != null) txtDirezioneMappa.setVisibility(View.GONE);
         }
 
-        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
             MapboxHelper.enableUserLocation(mapViewRef, false);
     }
 
@@ -970,12 +994,12 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void positionButtonClick() {
-        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
             MapboxHelper.zoomToUserLocation(mapViewRef);
         else {
-            androidx.core.app.ActivityCompat.requestPermissions(
+            ActivityCompat.requestPermissions(
                 this,
-                new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
+                new String[]{ Manifest.permission.ACCESS_FINE_LOCATION },
                 LOCATION_PERMISSION_REQUEST_CODE
             );
         }
@@ -986,7 +1010,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (mapViewRef != null) {
                     MapboxHelper.enableUserLocation(mapViewRef, false);
                     MapboxHelper.zoomToUserLocation(mapViewRef);
@@ -1364,7 +1388,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 });
             });
         }
-        catch (java.util.concurrent.RejectedExecutionException e) {
+        catch (RejectedExecutionException e) {
             Log.w("LinesDetailActivity", "Skipped preloadInterscambi: executor already shut down", e);
         }
     }
@@ -1739,7 +1763,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setClickable(false);
         chip.setCheckable(false);
         chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        chip.setGravity(android.view.Gravity.CENTER);
+        chip.setGravity(Gravity.CENTER);
         chip.setEnsureMinTouchTargetSize(false);
         return chip;
     }
@@ -1921,8 +1945,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private boolean isDarkMode() {
-        int nightModeFlags = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
-        return nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
     }
 
     private String getCapolinea(String linea) {
@@ -2622,7 +2646,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         /// Set<String> yourLinesSet is the data to save, fetched from localData.
 
         if (sessionManager != null && sessionManager.isLoggedIn()) {
-            Set<String> favoritesSet = DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new java.util.HashSet<>());
+            Set<String> favoritesSet = DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new HashSet<>());
 
             ArrayList<String> favoritesList = new ArrayList<>(favoritesSet);
             ArrayList<String> yourLinesList = new ArrayList<>(yourLinesSet);
@@ -2816,6 +2840,29 @@ public class LinesDetailActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public void showDialogTutorialTram() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_map_tutorial_tram);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+
+        Button btnClose = dialog.findViewById(R.id.btn_close_tutorial);
+        btnClose.setEnabled(true);
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+
+        btnClose.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.closeBtnBus)));
+        btnClose.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+
+        btnClose.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
+    }
+
     private String espandiAbbreviazioni(String testo) {
         if (testo == null) return null;
 
@@ -2936,8 +2983,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         View scrollContainer = trovaScrollParent(finalViewTrovata);
 
         handler.post(() -> {
-            if (scrollContainer instanceof androidx.core.widget.NestedScrollView) {
-                androidx.core.widget.NestedScrollView nsv = (androidx.core.widget.NestedScrollView) scrollContainer;
+            if (scrollContainer instanceof NestedScrollView) {
+                NestedScrollView nsv = (NestedScrollView) scrollContainer;
                 int[] location = new int[2];
                 int[] scrollLocation = new int[2];
                 finalViewTrovata.getLocationOnScreen(location);
@@ -2945,8 +2992,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 int targetY = nsv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (24 * getResources().getDisplayMetrics().density);
                 nsv.smoothScrollTo(0, Math.max(targetY, 0));
             }
-            else if (scrollContainer instanceof android.widget.ScrollView) {
-                android.widget.ScrollView scrollViewInterchanges = (android.widget.ScrollView) scrollContainer;
+            else if (scrollContainer instanceof ScrollView) {
+                ScrollView scrollViewInterchanges = (ScrollView) scrollContainer;
                 int[] location = new int[2];
                 int[] scrollLocation = new int[2];
                 finalViewTrovata.getLocationOnScreen(location);
@@ -2963,7 +3010,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         ViewGroup parent = (view.getParent() instanceof ViewGroup) ? (ViewGroup) view.getParent() : null;
 
         while (parent != null) {
-            if (parent instanceof androidx.core.widget.NestedScrollView || parent instanceof android.widget.ScrollView)
+            if (parent instanceof NestedScrollView || parent instanceof ScrollView)
                 return parent;
 
             parent = (parent.getParent() instanceof ViewGroup) ? (ViewGroup) parent.getParent() : null;
@@ -2992,8 +3039,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(card, "scaleY", 1f, 1.03f);
         scaleUpX.setDuration(200);
         scaleUpY.setDuration(200);
-        scaleUpX.setInterpolator(new android.view.animation.OvershootInterpolator());
-        scaleUpY.setInterpolator(new android.view.animation.OvershootInterpolator());
+        scaleUpX.setInterpolator(new OvershootInterpolator());
+        scaleUpY.setInterpolator(new OvershootInterpolator());
 
         ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(card, "scaleX", 1.03f, 1f);
         ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(card, "scaleY", 1.03f, 1f);
@@ -3012,9 +3059,9 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playSequentially(pulseIn, pulseOut);
-        animatorSet.addListener(new android.animation.AnimatorListenerAdapter() {
+        animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationEnd(android.animation.Animator animation) {
+            public void onAnimationEnd(Animator animation) {
                 if (backgroundOriginale != null) card.setBackground(backgroundOriginale);
                 else card.setBackgroundColor(Color.TRANSPARENT);
                 card.setScaleX(1f);
@@ -3029,7 +3076,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void apriDettaglioFermata(String nomeStazioneMappa) {
         ActivityUtils.triggerFeedback(this);
 
-        android.content.Intent intent = new android.content.Intent(this, StopDetailsActivity.class);
+        Intent intent = new Intent(this, StopDetailsActivity.class);
         intent.putExtra("NOME_FERMATA", nomeStazioneMappa);
         intent.putExtra("NOME_LINEA", nomeLinea);
         startActivity(intent);
