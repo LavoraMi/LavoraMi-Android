@@ -598,7 +598,7 @@ public class MainActivity extends AppCompatActivity {
             chipCheckedChangeListener = (group, checkedId) -> {
                 int densita = (int)getResources().getDisplayMetrics().density;
                 if (checkedId == R.id.chipYourLines) {
-                    if (!definitelyClosedSavedLinesHint) {
+                    if (!definitelyClosedSavedLinesHint && DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()).isEmpty()) {
                         View infoSavedLines = findViewById(R.id.infoSavedLine);
                         infoSavedLines.setVisibility(View.VISIBLE);
 
