@@ -396,6 +396,13 @@ public class StopDetailsActivity extends AppCompatActivity{
         }
 
         MapboxHelper.addCircleLayer(mapView, markerFeatures, hexColor, hexColorText);
+
+        for (MetroStation station : stazioni) {
+            if (station.getName().equalsIgnoreCase(nomeFermata)) {
+                MapboxHelper.addPulsingLayer(mapView, station.getLatitude(), station.getLongitude(), hexColor);
+                break;
+            }
+        }
     }
 
     private void positionButtonClick() {
@@ -613,6 +620,7 @@ public class StopDetailsActivity extends AppCompatActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        MapboxHelper.stopPulsing();
         arriviHandler.removeCallbacksAndMessages(null);
     }
 }

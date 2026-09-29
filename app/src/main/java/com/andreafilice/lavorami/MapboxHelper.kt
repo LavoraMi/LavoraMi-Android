@@ -1,5 +1,7 @@
 package com.andreafilice.lavorami
 
+import android.animation.ValueAnimator
+import android.view.animation.DecelerateInterpolator
 import com.mapbox.maps.extension.style.expressions.generated.Expression
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
@@ -17,11 +19,14 @@ import com.mapbox.maps.extension.style.layers.properties.generated.TextAnchor
 import com.mapbox.maps.extension.style.expressions.dsl.generated.get
 import com.mapbox.maps.extension.style.expressions.dsl.generated.literal
 import com.mapbox.maps.extension.style.layers.addLayerBelow
+import com.mapbox.maps.extension.style.layers.generated.CircleLayer
 import com.mapbox.maps.plugin.animation.easeTo
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener
 import com.mapbox.maps.plugin.compass.compass
 import com.mapbox.maps.plugin.scalebar.scalebar
+import com.mapbox.maps.extension.style.layers.getLayer
+import com.mapbox.maps.extension.style.types.transitionOptions
 
 object MapboxHelper {
     //*INITIALIZE MAP
@@ -281,7 +286,10 @@ object MapboxHelper {
 
     @JvmStatic
     fun clearMarkers(mapView: MapView) {
+        stopPulsing()
         mapView.mapboxMap.getStyle { style ->
+            if (style.styleLayerExists(PULSE_LAYER_ID)) style.removeStyleLayer(PULSE_LAYER_ID)
+            if (style.styleSourceExists(PULSE_SOURCE_ID)) style.removeStyleSource(PULSE_SOURCE_ID)
             if (style.styleLayerExists("marker-label-layer")) style.removeStyleLayer("marker-label-layer")
             if (style.styleLayerExists("marker-closed-x-layer")) style.removeStyleLayer("marker-closed-x-layer")
             if (style.styleLayerExists("marker-layer")) style.removeStyleLayer("marker-layer")
@@ -336,6 +344,65 @@ object MapboxHelper {
                 .pitch(cameraOptions.pitch)
                 .build()
         )
+    }
+
+    private const val PULSE_SOURCE_ID = "marker-pulse-source"
+    private const val PULSE_LAYER_ID = "marker-pulse-layer"
+    private var pulseAnimator: ValueAnimator? = null
+
+    @JvmStatic
+    fun addPulsingLayer(mapView: MapView, latitude: Double, longitude: Double, hexColor: String) {
+        /** Draws a pulsing halo (like the user location puck) under the marker of the selected stop.
+         * @param mapView is the Map Fragment from the Activity Layout.
+         * @param latitude is the latitude of the selected stop.
+         * @param longitude is the longitude of the selected stop.
+         * @param hexColor is the color of the line in hexa notation.
+         */
+        stopPulsing()
+
+        mapView.mapboxMap.getStyle { style ->
+            if (style.styleLayerExists(PULSE_LAYER_ID)) style.removeStyleLayer(PULSE_LAYER_ID)
+            if (style.styleSourceExists(PULSE_SOURCE_ID)) style.removeStyleSource(PULSE_SOURCE_ID)
+
+            style.addSource(geoJsonSource(PULSE_SOURCE_ID) {
+                feature(Feature.fromGeometry(Point.fromLngLat(longitude, latitude)))
+            })
+
+            val pulseLayer = circleLayer(PULSE_LAYER_ID, PULSE_SOURCE_ID) {
+                circleColor(hexColor)
+                circleRadius(6.0)
+                circleOpacity(0.8)
+                circleRadiusTransition(transitionOptions { duration(0); delay(0) })
+                circleOpacityTransition(transitionOptions { duration(0); delay(0) })
+            }
+
+            //Sotto il marker, così il pallino resta sopra l'alone
+            if (style.styleLayerExists("marker-layer"))
+                style.addLayerBelow(pulseLayer, "marker-layer")
+            else
+                style.addLayer(pulseLayer)
+
+            pulseAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
+                duration = 1800L
+                repeatCount = ValueAnimator.INFINITE
+                repeatMode = ValueAnimator.RESTART
+                interpolator = android.view.animation.LinearInterpolator()
+                addUpdateListener { anim ->
+                    val fraction = anim.animatedValue as Float
+                    (style.getLayer(PULSE_LAYER_ID) as? CircleLayer)?.apply {
+                        circleRadius(6.0 + 22.0 * fraction)
+                        circleOpacity(0.6 * (1.0 - fraction) * (1.0 - fraction))
+                    }
+                }
+                start()
+            }
+        }
+    }
+
+    @JvmStatic
+    fun stopPulsing() {
+        pulseAnimator?.cancel()
+        pulseAnimator = null
     }
     interface MapReadyCallback {
         //*INTERFACE CLASS
