@@ -246,7 +246,7 @@
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:src="@drawable/ic_triangle_warning"
+                android:src="@drawable/ic_bus"
                 app:tint="@color/amber_on_banner" />
 
             <TextView
