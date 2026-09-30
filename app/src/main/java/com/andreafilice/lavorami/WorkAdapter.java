@@ -202,7 +202,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 itemHolder.iconBannerImportante.setImageResource(R.drawable.ic_triangle_warning);
             }
             else if(isEvent) {
-                itemHolder.textBannerImportante.setText("EVENTO");
+                itemHolder.textBannerImportante.setText(context.getString(R.string.eventBannerText));
                 itemHolder.iconBannerImportante.setImageResource(R.drawable.ic_event);
             }
 

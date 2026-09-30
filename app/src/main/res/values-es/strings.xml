@@ -477,4 +477,5 @@
     <string name="lineSlowdownPopUpTitle">Línea Ralentizada</string>
     <string name="lineSlowdownPopUpDeps">En esta línea hay obras en curso que podrían provocar adelantos o retrasos en la llegada a destino. Consulta la sección \"Obras\".</string>
     <string name="optionSelectedToast">Esta opción ya está seleccionada.</string>
+    <string name="eventBannerText">EVENTO</string>
 </resources>
