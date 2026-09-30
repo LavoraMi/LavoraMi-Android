@@ -119,18 +119,21 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         MaterialCardView cardView;
         LinearLayout bannerImportante;
-        ImageView cardImage;
-        ImageView openCloseIcon;
-        ImageView locationIcon;
-        TextView titleText, trattaText, startDateText, endDateText, companyText, descriptionText;
+        ImageView cardImage, openCloseIcon, locationIcon, iconBannerImportante;
+        TextView titleText, trattaText, startDateText, endDateText, companyText, descriptionText, textBannerImportante;
         ChipGroup chipGroupLinee;
         ProgressBar progressBar;
         Button translateBtn;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             cardView = (MaterialCardView) itemView;
+
             bannerImportante = itemView.findViewById(R.id.bannerImportante);
+            textBannerImportante = itemView.findViewById(R.id.textBannerImportante);
+            iconBannerImportante = itemView.findViewById(R.id.iconBannerImportante);
+
             cardImage = itemView.findViewById(R.id.iconEvent);
             openCloseIcon = itemView.findViewById(R.id.open_close_descriprion);
             locationIcon = itemView.findViewById(R.id.iconLuogo);
@@ -179,9 +182,10 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             String details = event.getDetails();
             boolean isImportant = details != null && details.contains("[LAVORO IMPORTANTE]");
-            itemHolder.descriptionText.setText(isImportant ? details.replace("[LAVORO IMPORTANTE]", "").trim() : details);
+            boolean isEvent = details != null && details.contains("[EVENTO]");
+            itemHolder.descriptionText.setText(isImportant ? details.replace("[LAVORO IMPORTANTE]", "").trim() : isEvent ? details.replace("[EVENTO]", "").trim() : details);
 
-            if (isImportant) {
+            if (isImportant || isEvent) {
                 itemHolder.bannerImportante.setVisibility(View.VISIBLE);
                 itemHolder.cardView.setStrokeWidth(dpToPx(ctx, 2));
                 itemHolder.cardView.setStrokeColor(sColorRed);
@@ -191,6 +195,15 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 itemHolder.bannerImportante.setVisibility(View.GONE);
                 itemHolder.cardView.setStrokeWidth(0);
                 itemHolder.cardView.setCardElevation(dpToPx(ctx, 4));
+            }
+
+            if(isImportant) {
+                itemHolder.textBannerImportante.setText(context.getString(R.string.importantWork));
+                itemHolder.iconBannerImportante.setImageResource(R.drawable.ic_triangle_warning);
+            }
+            else if(isEvent) {
+                itemHolder.textBannerImportante.setText("EVENTO");
+                itemHolder.iconBannerImportante.setImageResource(R.drawable.ic_event);
             }
 
             itemHolder.descriptionText.setVisibility(View.GONE);

@@ -31,12 +31,14 @@
             android:visibility="gone">
 
             <ImageView
+                android:id="@+id/iconBannerImportante"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:src="@drawable/warning_triangle_filled"
                 app:tint="@color/White" />
 
             <TextView
+                android:id="@+id/textBannerImportante"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
