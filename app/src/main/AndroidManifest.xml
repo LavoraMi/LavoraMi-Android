@@ -164,6 +164,10 @@
             android:name="AdUnitID"
             android:value="${GOOGLE_ADS_UNIT_ID}"/>
 
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="1112577687962954"/>
+
         <receiver
             android:name=".NotificationReceiver"
             android:enabled="true"

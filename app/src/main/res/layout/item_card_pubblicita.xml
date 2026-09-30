@@ -59,17 +59,30 @@
                 android:layout_toEndOf="@id/ad_app_icon"
                 android:layout_marginTop="4dp"
                 android:textSize="14sp"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textColor="@color/subtitle"
                 android:fontFamily="@font/inter"/>
+
+            <com.google.android.gms.ads.nativead.MediaView
+                android:id="@+id/ad_media"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/ad_body"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ad_call_to_action"
+                android:layout_marginTop="10dp"/>
+            <!--android:background="@drawable/glass_bottom_bar_bg"
+                android:padding="8dp"-->
 
             <Button
                 android:id="@+id/ad_call_to_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ad_body"
-                android:backgroundTint="@color/redMetro"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"
+                android:layout_alignBottom="@id/ad_media"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="@color/redMetro"
                 android:textSize="12sp"
                 android:textColor="@color/White"/>
         </RelativeLayout>

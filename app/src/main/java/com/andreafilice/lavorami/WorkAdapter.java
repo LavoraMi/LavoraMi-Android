@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.gms.ads.nativead.MediaView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -452,6 +453,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private final TextView txtBody;
         private final Button btnCallToAction;
         private final ImageView imgIcon;
+        private final MediaView mediaView; // <-- aggiungi
         private NativeAd boundAd;
 
         public AdViewHolder(View itemView) {
@@ -461,9 +463,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             txtBody = itemView.findViewById(R.id.ad_body);
             btnCallToAction = itemView.findViewById(R.id.ad_call_to_action);
             imgIcon = itemView.findViewById(R.id.ad_app_icon);
+            mediaView = itemView.findViewById(R.id.ad_media); // <-- aggiungi
         }
-
-        public NativeAd getBoundAd() { return boundAd; }
 
         public void bindAd(NativeAd nativeAd) {
             if (boundAd == nativeAd) return;
@@ -485,6 +486,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             nativeAdView.setBodyView(txtBody);
             nativeAdView.setCallToActionView(btnCallToAction);
             nativeAdView.setIconView(imgIcon);
+            nativeAdView.setMediaView(mediaView); // <-- aggiungi PRIMA di setNativeAd
             nativeAdView.setNativeAd(nativeAd);
         }
     }

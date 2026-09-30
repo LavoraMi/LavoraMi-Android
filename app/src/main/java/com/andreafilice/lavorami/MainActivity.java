@@ -237,6 +237,12 @@ public class MainActivity extends AppCompatActivity {
             maybeLoadAds();
         });
 
+        MobileAds.openAdInspector(this, error -> {
+            if (error != null) {
+                Log.e("ADMOB", "Errore apertura Ad Inspector: " + error.getMessage());
+            }
+        });
+
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
         /// This method is also used into the iOS version of LavoraMi.
