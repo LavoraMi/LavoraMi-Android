@@ -493,6 +493,11 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Bellinzona", new String[]{"S10", "S20", "S30", "S50", "S90"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Castione Arbedo", new String[]{"S10", "S20", "S50", "S90"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Biasca", new String[]{"S10", "S50"}, "lightrail", "Main", 14));
+        interchanges.add(new InterchangeInfo("Bodio", new String[]{"S10", "S50"}, "lightrail", "Main", 15));
+        interchanges.add(new InterchangeInfo("Lavorgo", new String[]{"S10", "S50"}, "lightrail", "Main", 16));
+        interchanges.add(new InterchangeInfo("Faido", new String[]{"S10", "S50"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("Ambrì - Piotta", new String[]{"S10", "S50"}, "lightrail", "Main", 18));
+        interchanges.add(new InterchangeInfo("Airolo", new String[]{"S10", "S50"}, "lightrail", "Main", 19));
 
         /// TILO S20
         interchanges.add(new InterchangeInfo("Castione Arbedo", new String[]{"S20", "S10", "S50", "S90"}, "lightrail", "Main", 0));
