@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
     private ConsentInformation consentInformation;
     private boolean mobileAdsInitialized = false;
     private boolean adsRequested = false;
+    private static final int TOTAL_ADS = 2;
 
     //*HINT VARIABLES
     /// In this section of the code, we will create the variables for our HintAnimations
@@ -321,14 +322,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-            super.onPageSelected(position);
+                super.onPageSelected(position);
 
-            btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
-            btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
-            if(position == 3)
-                askForNotificationPermission();
-            if(position == 5)
-                askForPositionPermission();
+                btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
+                btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
+                if(position == 3)
+                    askForNotificationPermission();
+                if(position == 5)
+                    askForPositionPermission();
             }
         });
 
@@ -609,7 +610,7 @@ public class MainActivity extends AppCompatActivity {
                         infoSavedLines.setVisibility(View.VISIBLE);
 
                         showTutorialDialog();
-                        
+
                         definitelyClosedSavedLinesHint = true;
                         DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, true);
                         infoSavedLines.setOnClickListener(v ->{
@@ -1335,31 +1336,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
         NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
-            .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
-            .setRequestMultipleImages(false)
-            .setReturnUrlsForImageAssets(false)
-            .build();
+                .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+                .setRequestMultipleImages(false)
+                .setReturnUrlsForImageAssets(false)
+                .build();
 
-        loadAdsOneByOne(adUnitId, nativeAdOptions, 5);
+        for (int i = 0; i < TOTAL_ADS; i++)
+            loadSingleAd(adUnitId, nativeAdOptions);
     }
 
-    private void loadAdsOneByOne(String adUnitId, NativeAdOptions options, int totalDesired) {
-        if (mNativeAds.size() >= totalDesired) return;
-
+    private void loadSingleAd(String adUnitId, NativeAdOptions options) {
         AdLoader adLoader = new AdLoader.Builder(this, adUnitId)
-            .forNativeAd(nativeAd -> {
-                Log.d("ADMOB", "Ad caricata con successo!");
-                mNativeAds.add(nativeAd);
-                runOnUiThread(() -> {if (adapter != null) adapter.addAdsBatch(Collections.singletonList(nativeAd));});
+                .forNativeAd(nativeAd -> {
+                    if (isDestroyed()) {
+                        nativeAd.destroy();
+                        return;
+                    }
 
-                if (mNativeAds.size() < totalDesired) new Handler(Looper.getMainLooper()).postDelayed(() -> loadAdsOneByOne(adUnitId, options, totalDesired), 1500);
-            })
-            .withAdListener(new com.google.android.gms.ads.AdListener() {
-                @Override
-                public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");}
-            })
-            .withNativeAdOptions(options)
-            .build();
+                    Log.d("ADMOB", "Ad caricata con successo!");
+                    mNativeAds.add(nativeAd);
+                    if (adapter != null) adapter.addAdsBatch(Collections.singletonList(nativeAd));
+                })
+                .withAdListener(new com.google.android.gms.ads.AdListener() {
+                    @Override
+                    public void onAdFailedToLoad(com.google.android.gms.ads.LoadAdError adError) {
+                        Log.e("ADMOB", "Errore caricamento ad: " + adError.getMessage() + " (Code: " + adError.getCode() + ")");
+                    }
+                })
+                .withNativeAdOptions(options)
+                .build();
 
         adLoader.loadAd(new AdRequest.Builder().build());
     }

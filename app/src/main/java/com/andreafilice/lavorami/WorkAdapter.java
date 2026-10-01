@@ -54,6 +54,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int TYPE_LAVORO = 0;
     public static final int TYPE_AD = 1;
     private final Object listLock = new Object();
+    private static final int[] AD_POSITIONS = {1, 4};
 
     public WorkAdapter(Context context, List<EventDescriptor> eventList) {
         String savedLang = DataManager.getStringData(DataKeys.KEY_DEFAULT_LANGUAGE, "Italiano");
@@ -80,7 +81,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             int adIndex = 0;
             for (int i = 0; i < eventList.size(); i++) {
-                if (adIndex < adsList.size() && combinedList.size() > 0 && combinedList.size() % 7 == 5) {
+                if (adIndex < adsList.size() && adIndex < AD_POSITIONS.length && combinedList.size() == AD_POSITIONS[adIndex]) {
                     combinedList.add(adsList.get(adIndex));
                     adIndex++;
                 }
@@ -453,7 +454,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private final TextView txtBody;
         private final Button btnCallToAction;
         private final ImageView imgIcon;
-        private final MediaView mediaView; // <-- aggiungi
+        private final MediaView mediaView;
         private NativeAd boundAd;
 
         public AdViewHolder(View itemView) {
@@ -463,7 +464,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             txtBody = itemView.findViewById(R.id.ad_body);
             btnCallToAction = itemView.findViewById(R.id.ad_call_to_action);
             imgIcon = itemView.findViewById(R.id.ad_app_icon);
-            mediaView = itemView.findViewById(R.id.ad_media); // <-- aggiungi
+            mediaView = itemView.findViewById(R.id.ad_media);
         }
 
         public void bindAd(NativeAd nativeAd) {
@@ -486,7 +487,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             nativeAdView.setBodyView(txtBody);
             nativeAdView.setCallToActionView(btnCallToAction);
             nativeAdView.setIconView(imgIcon);
-            nativeAdView.setMediaView(mediaView); // <-- aggiungi PRIMA di setNativeAd
+            nativeAdView.setMediaView(mediaView);
             nativeAdView.setNativeAd(nativeAd);
         }
     }
