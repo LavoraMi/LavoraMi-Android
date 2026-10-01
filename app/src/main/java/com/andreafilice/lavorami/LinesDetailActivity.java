@@ -253,7 +253,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(busLinesWithMap.contains(nomeLinea) && !DataManager.getBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false)){
             showDialogTutorialBus();
             DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, true);
-        } else if(isLineaTram() && !DataManager.getBoolData(DataKeys.KEY_TRAM_TUTORIAL_SHOWN, false)){
+        }
+        else if(isLineaTram() && !DataManager.getBoolData(DataKeys.KEY_TRAM_TUTORIAL_SHOWN, false)){
             showDialogTutorialTram();
             DataManager.saveBoolData(DataKeys.KEY_TRAM_TUTORIAL_SHOWN, true);
         }
