@@ -1084,6 +1084,14 @@ public class MainActivity extends AppCompatActivity {
             strikeGuaranteed.setText(String.format(getString(R.string.strikeBannerGuaranteed), variablesDescriptor.getStrikeGuaranteed()));
             strikeCompanies.setText(String.format("%s", variablesDescriptor.getStrikeCompanies()));
 
+            //*SYNC UI WITH STATE
+            /// In this section of the code, we align the banner UI with the strikeBannerClosed flag,
+            /// because after a reload the flag is reset but the views could still be in the old state.
+            View strikeDescription = findViewById(R.id.strikeDescription);
+            strikeDescription.setVisibility(strikeBannerClosed ? View.GONE : View.VISIBLE);
+            closeBtn.animate().cancel();
+            closeBtn.setRotation(strikeBannerClosed ? -90f : 0f);
+
             strikeOpenClose.setOnClickListener(v -> {
                 ActivityUtils.triggerFeedback(this);
                 findViewById(R.id.strikeDescription).setVisibility((strikeBannerClosed) ? View.VISIBLE : View.GONE);
