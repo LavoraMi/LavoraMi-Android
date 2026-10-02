@@ -371,7 +371,7 @@ object MapboxHelper {
             val pulseLayer = circleLayer(PULSE_LAYER_ID, PULSE_SOURCE_ID) {
                 circleColor(hexColor)
                 circleRadius(6.0)
-                circleOpacity(0.8)
+                circleOpacity(0.85)
                 circleRadiusTransition(transitionOptions { duration(0); delay(0) })
                 circleOpacityTransition(transitionOptions { duration(0); delay(0) })
             }
