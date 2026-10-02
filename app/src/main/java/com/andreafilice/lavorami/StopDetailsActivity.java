@@ -2,12 +2,18 @@ package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
+import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.AttributeSet;
+import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,6 +22,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -115,6 +122,13 @@ public class StopDetailsActivity extends AppCompatActivity{
         indiceDirezioneCorrente = 0;
         direzioniDisponibili = new ArrayList<>();
 
+        //*Stato di caricamento orari
+        ClockLoaderView clockLoader = findViewById(R.id.clockLoader);
+        if (clockLoader != null) clockLoader.setAccentColor(coloreLinea);
+        LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
+        if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
+        mostraCaricamentoOrari(true);
+
         caricaInterscambioFermata();
     }
     //*GTFS ARRIVI
@@ -134,6 +148,8 @@ public class StopDetailsActivity extends AppCompatActivity{
             @Override
             public void onError() {
                 new Handler(Looper.getMainLooper()).post(() -> {
+                    mostraCaricamentoOrari(false);
+
                     TextView detDirezioni = findViewById(R.id.detDirezioni);
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
                     LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
@@ -163,6 +179,8 @@ public class StopDetailsActivity extends AppCompatActivity{
             updateArriviView();
         }
         else {
+            mostraCaricamentoOrari(false);
+
             TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
             LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
@@ -174,6 +192,8 @@ public class StopDetailsActivity extends AppCompatActivity{
 
     private void updateArriviView() {
         if (routeData == null || selectedStopId == null) return;
+
+        mostraCaricamentoOrari(false);
 
         TextView detDirezioni = findViewById(R.id.detDirezioni);
         TextView nextArrivals = findViewById(R.id.nextArrivals);
@@ -628,10 +648,113 @@ public class StopDetailsActivity extends AppCompatActivity{
         return nightModeFlags == android.content.res.Configuration.UI_MODE_NIGHT_YES;
     }
 
+    private void mostraCaricamentoOrari(boolean loading) {
+        LinearLayout rigaCaricamento = findViewById(R.id.rigaCaricamentoOrari);
+        LinearLayout rigaArrivo = findViewById(R.id.rigaArrivo);
+        if (rigaCaricamento != null) rigaCaricamento.setVisibility(loading ? View.VISIBLE : View.GONE);
+        if (rigaArrivo != null) rigaArrivo.setVisibility(loading ? View.GONE : View.VISIBLE);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         MapboxHelper.stopPulsing();
         arriviHandler.removeCallbacksAndMessages(null);
+    }
+    public static class ClockLoaderView extends View {
+
+        private final Paint circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint hourPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint minutePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private ValueAnimator animator;
+        private float progress = 0f;
+
+        public ClockLoaderView(Context context) {
+            this(context, null);
+        }
+
+        public ClockLoaderView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+
+            circlePaint.setStyle(Paint.Style.STROKE);
+            circlePaint.setColor(ContextCompat.getColor(context, R.color.subtitle));
+            circlePaint.setAlpha(102);
+
+            hourPaint.setStyle(Paint.Style.STROKE);
+            hourPaint.setColor(ContextCompat.getColor(context, R.color.text_primary));
+
+            minutePaint.setStyle(Paint.Style.STROKE);
+            minutePaint.setColor(ContextCompat.getColor(context, R.color.TRAM));
+        }
+
+        public void setAccentColor(@ColorInt int color) {
+            minutePaint.setColor(color);
+            invalidate();
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
+            super.onDraw(canvas);
+
+            float scale = Math.min(getWidth(), getHeight()) / 14f;
+            float cx = getWidth() / 2f;
+            float cy = getHeight() / 2f;
+
+            float circleStroke = 1.5f * scale;
+            circlePaint.setStrokeWidth(circleStroke);
+            hourPaint.setStrokeWidth(1.5f * scale);
+            minutePaint.setStrokeWidth(1f * scale);
+
+            canvas.drawCircle(cx, cy, (Math.min(getWidth(), getHeight()) - circleStroke) / 2f, circlePaint);
+
+            canvas.save();
+            canvas.rotate(360f * progress, cx, cy);
+            canvas.drawLine(cx, cy, cx, cy - 4f * scale, hourPaint);
+            canvas.restore();
+
+            canvas.save();
+            canvas.rotate(360f * 4f * progress, cx, cy);
+            canvas.drawLine(cx, cy, cx, cy - 5.5f * scale, minutePaint);
+            canvas.restore();
+        }
+
+        private void startAnimation() {
+            if (animator != null && animator.isRunning()) return;
+            animator = ValueAnimator.ofFloat(0f, 1f);
+            animator.setDuration(2000);
+            animator.setInterpolator(new LinearInterpolator());
+            animator.setRepeatCount(ValueAnimator.INFINITE);
+            animator.addUpdateListener(a -> {
+                progress = (float) a.getAnimatedValue();
+                invalidate();
+            });
+            animator.start();
+        }
+
+        private void stopAnimation() {
+            if (animator != null) {
+                animator.cancel();
+                animator = null;
+            }
+        }
+
+        @Override
+        protected void onAttachedToWindow() {
+            super.onAttachedToWindow();
+            if (getVisibility() == VISIBLE) startAnimation();
+        }
+
+        @Override
+        protected void onDetachedFromWindow() {
+            stopAnimation();
+            super.onDetachedFromWindow();
+        }
+
+        @Override
+        protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+            super.onVisibilityChanged(changedView, visibility);
+            if (visibility == VISIBLE && isAttachedToWindow()) startAnimation();
+            else stopAnimation();
+        }
     }
 }
