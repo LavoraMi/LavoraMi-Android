@@ -2831,11 +2831,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Button btnClose = dialog.findViewById(R.id.btn_close_tutorial);
         btnClose.setEnabled(true);
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(true);
-
-        btnClose.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.closeBtnBus)));
-        btnClose.setTextColor(ContextCompat.getColor(this, android.R.color.white));
 
         btnClose.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
@@ -2854,11 +2849,6 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Button btnClose = dialog.findViewById(R.id.btn_close_tutorial);
         btnClose.setEnabled(true);
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(true);
-
-        btnClose.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.closeBtnBus)));
-        btnClose.setTextColor(ContextCompat.getColor(this, android.R.color.white));
 
         btnClose.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
