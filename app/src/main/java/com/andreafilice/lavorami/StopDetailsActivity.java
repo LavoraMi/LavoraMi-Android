@@ -345,7 +345,18 @@ public class StopDetailsActivity extends AppCompatActivity{
             return true;
         });
 
-        if (!stazioniDaMostrare.isEmpty()) {
+        MetroStation fermataSelezionata = null;
+        for (MetroStation s : stazioniDaMostrare) {
+            if (s.getName().equalsIgnoreCase(nomeFermata)) {
+                fermataSelezionata = s;
+                break;
+            }
+        }
+
+        if (fermataSelezionata != null) {
+            MapboxHelper.setCameraOnStop(mapView, fermataSelezionata.getLatitude(), fermataSelezionata.getLongitude(), 15.8, 0.0012);
+        }
+        else if (!stazioniDaMostrare.isEmpty()) {
             List<Point> puntiDaInquadrare = new ArrayList<>();
             for (MetroStation s : stazioniDaMostrare)
                 puntiDaInquadrare.add(Point.fromLngLat(s.getLongitude(), s.getLatitude()));

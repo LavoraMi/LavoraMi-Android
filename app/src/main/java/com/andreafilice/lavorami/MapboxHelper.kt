@@ -327,7 +327,7 @@ object MapboxHelper {
         val zoomFinale = zoomCalcolato.coerceIn(minZoom, maxZoom)
         val center = cameraOptions.center
 
-        val shiftFactor = 0.33 // un terzo
+        val shiftFactor = 0.33
         val latSpan = points.maxOf { it.latitude() } - points.minOf { it.latitude() }
         val adjustedLat = (center?.latitude() ?: 0.0) - (latSpan * shiftFactor)
 
@@ -342,6 +342,23 @@ object MapboxHelper {
                 .zoom(zoomFinale)
                 .bearing(cameraOptions.bearing)
                 .pitch(cameraOptions.pitch)
+                .build()
+        )
+    }
+
+    @JvmStatic
+    fun setCameraOnStop(mapView: MapView, latitude: Double, longitude: Double, zoom: Double = 15.8, shiftFactor: Double = 0.0012) {
+        /** Centra la camera solo sulla fermata selezionata.
+         * @param mapView is the Map Fragment from the Activity Layout.
+         * @param latitude is the latitude of the selected stop.
+         * @param longitude is the longitude of the selected stop.
+         * @param zoom is the zoom level applied on the stop.
+         * @param shiftFactor sposta leggermente il centro verso il basso (in gradi di latitudine), così la fermata non finisce coperta dal bottom sheet. Metti 0.0 per centrarla esattamente.
+         */
+        mapView.mapboxMap.setCamera(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat(longitude, latitude - shiftFactor))
+                .zoom(zoom)
                 .build()
         )
     }
