@@ -546,9 +546,13 @@ public class SettingsActivity extends AppCompatActivity {
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_RECENT_LINES, new HashSet<>());
                 DataManager.saveArrayStringsData(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>());
                 DataManager.saveStringData(DataKeys.KEY_LINE_WIDGET, "");
+                DataManager.saveBoolData(DataKeys.KEY_HINT_SAVED_LINES_CLOSED, false);
                 DataManager.saveStringData(DataKeys.KEY_OPEN_LINK_TYPE, BrowserSelectedType.IN_APP.toString());
                 DataManager.saveBoolData(DataKeys.KEY_WRAPPED_OPENED, false);
                 DataManager.saveBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
+                DataManager.saveBoolData(DataKeys.KEY_BUS_TUTORIAL_SHOWN, false);
+                DataManager.saveBoolData(DataKeys.KEY_TRAM_TUTORIAL_SHOWN, false);
+                DataManager.saveBoolData(DataKeys.KEY_SUGGESTION_ACCOUNT_SHOWN, false);
 
                 Toast.makeText(SettingsActivity.this, getString(R.string.settingResettedPopUp), Toast.LENGTH_SHORT).show();
                 favorites.clear();

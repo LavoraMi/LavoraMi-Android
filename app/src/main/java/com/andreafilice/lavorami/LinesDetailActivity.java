@@ -144,7 +144,6 @@ public class LinesDetailActivity extends AppCompatActivity {
     private boolean mapAlreadyLoaded = false;
     private boolean strikeFetchAttempted = false;
     private boolean modalitaRitorno = false;
-    private boolean hintWidgetClosed;
     private TextView txtDirezioneMappa;
     private List<MetroStation> ultimeStazioniDisegnate;
     private Map<String, String> dizionarioAbbreviazioni = Map.of(
@@ -516,7 +515,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         //*WIDGET SELECTION
         /// In this section of the code, we handle the Widget Selection for different lines
         ImageButton addToWidget = findViewById(R.id.buttonAddInWidget);
-        hintWidgetClosed = DataManager.getBoolData(DataKeys.KEY_HINT_WIDGET_CLOSED, false);
 
         boolean isCurrentlyInWidget = nomeLinea.equals(DataManager.getStringData(DataKeys.KEY_LINE_WIDGET, ""));
         if (isCurrentlyInWidget) {
@@ -543,7 +541,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 return;
             }
 
-            if (!hintWidgetClosed) DialogHelper.createDefaultDialog(this, getString(R.string.widget_line_added_title), getString(R.string.widget_line_added_description, nomeLinea));
+            DialogHelper.createDefaultDialog(this, getString(R.string.widget_line_added_title), getString(R.string.widget_line_added_description, nomeLinea));
 
             addToWidget.setImageResource(R.drawable.ic_added_line_widget);
             addToWidget.setImageTintList(ColorStateList.valueOf(getColor(R.color.S6)));
