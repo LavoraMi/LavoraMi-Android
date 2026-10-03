@@ -23,11 +23,11 @@ import java.util.concurrent.Executors;
 
 public class GTFSHelper {
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
+    private static final Map<String, GTFSRoute> routeCache = new HashMap<>();
+    private static final Map<String, List<GTFSCallback>> pendingCallbacks = new HashMap<>();
 
     public static class ServiceInfo {
         public List<String> dates = new ArrayList<>();
-        // "feriale", "sabato", "festivo", oppure null se non presente nel JSON
-        // (retrocompatibilità con file generati senza --ignore-dates)
         public String daytype = null;
     }
 
@@ -88,21 +88,17 @@ public class GTFSHelper {
                     ServiceInfo info = new ServiceInfo();
 
                     JSONArray dates = svObj.optJSONArray("dates");
-                    if (dates != null) {
-                        for (int i = 0; i < dates.length(); i++) info.dates.add(dates.getString(i));
-                    }
+                    if (dates != null) for (int i = 0; i < dates.length(); i++) info.dates.add(dates.getString(i));
 
-                    // "daytype" è opzionale: presente solo se il JSON è stato generato con
-                    // --ignore-dates dallo script gtfs_maker.py aggiornato
-                    if (svObj.has("daytype") && !svObj.isNull("daytype")) {
+                    if (svObj.has("daytype") && !svObj.isNull("daytype"))
                         info.daytype = svObj.getString("daytype");
-                    }
 
                     route.services.put(key, info);
                 }
 
                 JSONObject stps = json.getJSONObject("stops");
                 Iterator<String> stKeys = stps.keys();
+
                 while (stKeys.hasNext()) {
                     String key = stKeys.next();
                     JSONObject sObj = stps.getJSONObject(key);
@@ -114,6 +110,7 @@ public class GTFSHelper {
                         String dKey = dKeys.next();
                         stop.departuresByDir.put(dKey, dObj.getJSONArray(dKey));
                     }
+
                     route.stops.put(key, stop);
                 }
                 callback.onSuccess(route);
@@ -122,6 +119,49 @@ public class GTFSHelper {
             finally {if(conn != null) conn.disconnect();}
         });
     }
+
+    public static synchronized void loadCached(String lineKey, String urlString, GTFSCallback callback) {
+        GTFSRoute cached = routeCache.get(lineKey);
+        if (cached != null) {
+            callback.onSuccess(cached);
+            return;
+        }
+
+        List<GTFSCallback> waiters = pendingCallbacks.get(lineKey);
+        if (waiters != null) {
+            waiters.add(callback);
+            return;
+        }
+
+        List<GTFSCallback> newWaiters = new ArrayList<>();
+        newWaiters.add(callback);
+        pendingCallbacks.put(lineKey, newWaiters);
+
+        load(urlString, new GTFSCallback() {
+            @Override
+            public void onSuccess(GTFSRoute route) {
+                List<GTFSCallback> toNotify;
+                synchronized (GTFSHelper.class) {
+                    routeCache.put(lineKey, route);
+                    toNotify = pendingCallbacks.remove(lineKey);
+                }
+                if (toNotify != null) {
+                    for (GTFSCallback cb : toNotify) cb.onSuccess(route);
+                }
+            }
+
+            @Override
+            public void onError() {
+                List<GTFSCallback> toNotify;
+                synchronized (GTFSHelper.class) {toNotify = pendingCallbacks.remove(lineKey);}
+                if (toNotify != null)
+                    for (GTFSCallback cb : toNotify) cb.onError();
+            }
+        });
+    }
+
+    public static synchronized void invalidateCache(String lineKey) {routeCache.remove(lineKey);}
+    public static synchronized void invalidateAllCache() {routeCache.clear();}
 
     public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit) {
         GTFSStop stop = route.stops.get(stopId);
@@ -137,21 +177,10 @@ public class GTFSHelper {
             ServiceInfo info = entry.getValue();
 
             boolean active;
-            if (info.daytype != null) {
-                if (info.daytype.equals("sconosciuto")) {
-                    // Service non classificabile con certezza: meglio non mostrarlo mai
-                    // piuttosto che rischiare di mischiarlo con un giorno sbagliato.
-                    active = false;
-                } else {
-                    // Nuovo formato: il service è attivo solo nei giorni del suo tipo
-                    // (feriale / sabato / festivo), calcolato sul giorno reale odierno.
-                    active = info.daytype.equals(todayType);
-                }
-            } else {
-                // Vecchio formato / calendario a date esplicite: 'dates' vuoto
-                // significa "sempre attivo", altrimenti serve la data di oggi.
+            if (info.daytype != null)
+                active = info.daytype.equals(todayType);
+            else
                 active = info.dates.isEmpty() || info.dates.contains(today);
-            }
 
             if (active) activeServices.add(entry.getKey());
         }
@@ -198,15 +227,9 @@ public class GTFSHelper {
         return cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
     }
 
-    /**
-     * Ritorna "feriale", "sabato" o "festivo" in base al giorno della settimana odierno
-     * (fuso Europe/Rome). Nota: non tiene conto delle festività nazionali (es. Natale,
-     * Pasqua, ecc.), che nel calendario GTFS reale sarebbero "festivo" pur cadendo in
-     * un giorno feriale. Se in futuro serve gestirle, va aggiunta qui una lista di date.
-     */
     private static String todayDaytype() {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
-        int dow = cal.get(Calendar.DAY_OF_WEEK); // Calendar.SUNDAY=1 ... Calendar.SATURDAY=7
+        int dow = cal.get(Calendar.DAY_OF_WEEK);
 
         if (dow == Calendar.SUNDAY) return "festivo";
         if (dow == Calendar.SATURDAY) return "sabato";
