@@ -177,10 +177,15 @@ public class GTFSHelper {
             ServiceInfo info = entry.getValue();
 
             boolean active;
-            if (info.daytype != null)
-                active = info.daytype.equals(todayType);
-            else
+            if (info.daytype != null) {
+                if (info.daytype.equals("sconosciuto")) {
+                    active = false;
+                } else {
+                    active = info.daytype.equals(todayType);
+                }
+            } else {
                 active = info.dates.isEmpty() || info.dates.contains(today);
+            }
 
             if (active) activeServices.add(entry.getKey());
         }
