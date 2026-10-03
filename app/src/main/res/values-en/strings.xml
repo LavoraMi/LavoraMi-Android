@@ -479,4 +479,5 @@
     <string name="optionSelectedToast">This option is already selected.</string>
     <string name="eventBannerText">EVENT</string>
     <string name="prossimoArrivoTram">Arrival:</string>
+    <string name="loadingOrariShort">Loading timetable...</string>
 </resources>
