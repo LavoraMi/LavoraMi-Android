@@ -39,7 +39,6 @@ import java.util.List;
 import java.util.Map;
 
 public class StopDetailsActivity extends AppCompatActivity{
-
     private String nomeFermata;
     private String nomeLinea;
     private MapView pendingMapView;
@@ -57,6 +56,19 @@ public class StopDetailsActivity extends AppCompatActivity{
     //*CAMBIO DIREZIONE
     private int indiceDirezioneCorrente = 0;
     private List<Map.Entry<String, List<GTFSHelper.Departure>>> direzioniDisponibili = new ArrayList<>();
+
+    private Map<String, String> dizionarioAbbreviazioni = Map.of(
+        "p.le", "piazzale",
+        "p.za", "piazza",
+        "p.ta", "porta",
+        "v.le", "viale",
+        "c.so", "corso",
+        "l.go", "largo",
+        "m.te", "monte",
+        "s.",   "san",
+        "c.",   "console",
+        "p.",   "principe"
+    );
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2001;
 
@@ -115,7 +127,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         TextView nextArrivals = findViewById(R.id.nextArrivals);
         detDirezioni.setText(getString(R.string.loadingDataInProgress));
 
-        detDirezioni.setSelected(true); //start ellipsize
+        detDirezioni.setSelected(true);
         nextArrivals.setText("--");
 
         //*Reset stato direzione quando cambia fermata
@@ -125,12 +137,14 @@ public class StopDetailsActivity extends AppCompatActivity{
         //*Stato di caricamento orari
         ClockLoaderView clockLoader = findViewById(R.id.clockLoader);
         if (clockLoader != null) clockLoader.setAccentColor(coloreLinea);
+
         LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
         if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
         mostraCaricamentoOrari(true);
 
         caricaInterscambioFermata();
     }
+
     //*GTFS ARRIVI
     private void caricaDatiGTFS() {
         if (nomeLinea == null || nomeLinea.isEmpty()) return;
@@ -212,14 +226,10 @@ public class StopDetailsActivity extends AppCompatActivity{
         direzioniDisponibili = new ArrayList<>(departuresByDir.entrySet());
 
         //*Se l'indice salvato non è più valido (es. dati ricaricati), riparte da 0
-        if (indiceDirezioneCorrente >= direzioniDisponibili.size()) {
-            indiceDirezioneCorrente = 0;
-        }
+        if (indiceDirezioneCorrente >= direzioniDisponibili.size()) indiceDirezioneCorrente = 0;
 
         popolaRigaArrivo(detDirezioni, nextArrivals, direzioniDisponibili.get(indiceDirezioneCorrente).getValue());
-
         rigaCambiaDirezione.setVisibility(direzioniDisponibili.size() > 1 ? View.VISIBLE : View.GONE);
-
         scheduleArriviRefresh();
     }
 
@@ -300,9 +310,7 @@ public class StopDetailsActivity extends AppCompatActivity{
                     stazioniBranch.add(s);
             }
         }
-        else {
-            stazioniBranch = tutteLeStazioni;
-        }
+        else stazioniBranch = tutteLeStazioni;
 
         int indiceCorrente = -1;
         for (int i = 0; i < stazioniBranch.size(); i++) {
@@ -327,6 +335,7 @@ public class StopDetailsActivity extends AppCompatActivity{
 
             if (indicePrecedente != -1) stazioniDaMostrare.add(stazioniBranch.get(indicePrecedente));
             stazioniDaMostrare.add(stazioniBranch.get(indiceCorrente));
+
             if (indiceSuccessiva != -1) stazioniDaMostrare.add(stazioniBranch.get(indiceSuccessiva));
         }
         else {
@@ -343,24 +352,24 @@ public class StopDetailsActivity extends AppCompatActivity{
             float tolerance = 20f;
 
             com.mapbox.maps.ScreenBox screenBox = new com.mapbox.maps.ScreenBox(
-                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
-                    new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
+                new com.mapbox.maps.ScreenCoordinate(pixel.getX() - tolerance, pixel.getY() - tolerance),
+                new com.mapbox.maps.ScreenCoordinate(pixel.getX() + tolerance, pixel.getY() + tolerance)
             );
 
             mapView.getMapboxMap().queryRenderedFeatures(
-                    new com.mapbox.maps.RenderedQueryGeometry(screenBox),
-                    new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
-                    expected -> {
-                        if (expected.isValue() && !expected.getValue().isEmpty()) {
-                            com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
-                            com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
+                new com.mapbox.maps.RenderedQueryGeometry(screenBox),
+                new com.mapbox.maps.RenderedQueryOptions(List.of("marker-layer"), null),
+                expected -> {
+                    if (expected.isValue() && !expected.getValue().isEmpty()) {
+                        com.mapbox.maps.QueriedRenderedFeature queriedFeature = expected.getValue().get(0);
+                        com.mapbox.geojson.Feature clickedFeature = queriedFeature.getQueriedFeature().getFeature();
 
-                            if (clickedFeature.hasProperty("name")) {
-                                String stationName = clickedFeature.getStringProperty("name");
-                                selezionaNuovaFermata(mapView, stationName);
-                            }
+                        if (clickedFeature.hasProperty("name")) {
+                            String stationName = clickedFeature.getStringProperty("name");
+                            selezionaNuovaFermata(mapView, stationName);
                         }
                     }
+                }
             );
             return true;
         });
@@ -373,9 +382,8 @@ public class StopDetailsActivity extends AppCompatActivity{
             }
         }
 
-        if (fermataSelezionata != null) {
+        if (fermataSelezionata != null)
             MapboxHelper.setCameraOnStop(mapView, fermataSelezionata.getLatitude(), fermataSelezionata.getLongitude(), 15.8, 0.0012);
-        }
         else if (!stazioniDaMostrare.isEmpty()) {
             List<Point> puntiDaInquadrare = new ArrayList<>();
             for (MetroStation s : stazioniDaMostrare)
@@ -401,6 +409,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             if (!stazioni.get(i).getName().equalsIgnoreCase("NO_DRAW")) return i;
             i += direzione;
         }
+
         return -1;
     }
 
@@ -462,18 +471,6 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         elaboraFermata(layoutMaps, layoutLoadingMap, mapView);
     }
-    private Map<String, String> dizionarioAbbreviazioni = Map.of(
-            "p.le", "piazzale",
-            "p.za", "piazza",
-            "p.ta", "porta",
-            "v.le", "viale",
-            "c.so", "corso",
-            "l.go", "largo",
-            "m.te", "monte",
-            "s.",   "san",
-            "c.",   "console",
-            "p.",   "principe"
-    );
 
     private String espandiAbbreviazioni(String testo) {
         if (testo == null) return null;
@@ -645,8 +642,8 @@ public class StopDetailsActivity extends AppCompatActivity{
         MapboxHelper.stopPulsing();
         arriviHandler.removeCallbacksAndMessages(null);
     }
-    public static class ClockLoaderView extends View {
 
+    public static class ClockLoaderView extends View {
         private final Paint circlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint hourPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint minutePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
