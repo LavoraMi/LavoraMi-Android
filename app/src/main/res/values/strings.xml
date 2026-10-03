@@ -479,4 +479,5 @@
     <string name="eventBannerText">EVENTO</string>
     <string name="prossimoArrivoTram">Prossimo Arrivo:</string>
     <string name="loadingOrariShort">Caricamento orari...</string>
+    <string name="directionSmallButton">Direzione</string>
 </resources>

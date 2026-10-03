@@ -197,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="6dp"
-                        android:text="Direzione"
+                        android:text="@string/directionSmallButton"
                         android:fontFamily="@font/font_main"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp"

@@ -480,4 +480,5 @@
     <string name="eventBannerText">EVENT</string>
     <string name="prossimoArrivoTram">Arrival:</string>
     <string name="loadingOrariShort">Loading timetable...</string>
+    <string name="directionSmallButton">Direction</string>
 </resources>

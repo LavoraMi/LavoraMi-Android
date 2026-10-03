@@ -446,7 +446,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                if (mapViewRef != null) 
+                if (mapViewRef != null)
                     MapboxHelper.enableUserLocation(mapViewRef, false);
             }
         }
