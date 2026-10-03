@@ -26,8 +26,6 @@ public class GTFSHelper {
 
     public static class ServiceInfo {
         public List<String> dates = new ArrayList<>();
-        // "feriale", "sabato", "festivo", oppure null se non presente nel JSON
-        // (retrocompatibilità con file generati senza --ignore-dates)
         public String daytype = null;
     }
 
@@ -92,8 +90,6 @@ public class GTFSHelper {
                         for (int i = 0; i < dates.length(); i++) info.dates.add(dates.getString(i));
                     }
 
-                    // "daytype" è opzionale: presente solo se il JSON è stato generato con
-                    // --ignore-dates dallo script gtfs_maker.py aggiornato
                     if (svObj.has("daytype") && !svObj.isNull("daytype")) {
                         info.daytype = svObj.getString("daytype");
                     }
@@ -139,17 +135,11 @@ public class GTFSHelper {
             boolean active;
             if (info.daytype != null) {
                 if (info.daytype.equals("sconosciuto")) {
-                    // Service non classificabile con certezza: meglio non mostrarlo mai
-                    // piuttosto che rischiare di mischiarlo con un giorno sbagliato.
                     active = false;
                 } else {
-                    // Nuovo formato: il service è attivo solo nei giorni del suo tipo
-                    // (feriale / sabato / festivo), calcolato sul giorno reale odierno.
                     active = info.daytype.equals(todayType);
                 }
             } else {
-                // Vecchio formato / calendario a date esplicite: 'dates' vuoto
-                // significa "sempre attivo", altrimenti serve la data di oggi.
                 active = info.dates.isEmpty() || info.dates.contains(today);
             }
 
@@ -197,13 +187,7 @@ public class GTFSHelper {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
         return cal.get(Calendar.HOUR_OF_DAY) * 60 + cal.get(Calendar.MINUTE);
     }
-
-    /**
-     * Ritorna "feriale", "sabato" o "festivo" in base al giorno della settimana odierno
-     * (fuso Europe/Rome). Nota: non tiene conto delle festività nazionali (es. Natale,
-     * Pasqua, ecc.), che nel calendario GTFS reale sarebbero "festivo" pur cadendo in
-     * un giorno feriale. Se in futuro serve gestirle, va aggiunta qui una lista di date.
-     */
+    
     private static String todayDaytype() {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
         int dow = cal.get(Calendar.DAY_OF_WEEK); // Calendar.SUNDAY=1 ... Calendar.SATURDAY=7
