@@ -485,4 +485,5 @@
     <string name="dialog_tram_title2">Change with other lines</string>
     <string name="dialog_tram_title3">Map and details</string>
     <string name="dialog_tram_desc3">Don’t get lost amongst all the stops, the map clearly highlights which stop you’ve selected and the next ones!</string>
+    <string name="errorLoadGTFS">Error loading timetables.</string>
 </resources>

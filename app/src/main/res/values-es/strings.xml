@@ -485,4 +485,5 @@
     <string name="dialog_tram_title2">Conecta con otras líneas</string>
     <string name="dialog_tram_title3">Mapas y detalles</string>
     <string name="dialog_tram_desc3">¡No te pierdas entre todas las paradas! El mapa te muestra claramente cuál es la parada que has seleccionado y las siguientes.</string>
+    <string name="errorLoadGTFS">Error al cargar los horarios.</string>
 </resources>

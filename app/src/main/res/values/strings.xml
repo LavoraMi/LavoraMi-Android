@@ -484,4 +484,5 @@
     <string name="dialog_tram_title2">Interscambia con altre linee</string>
     <string name="dialog_tram_title3">Mappe e dettagli</string>
     <string name="dialog_tram_desc3">Non perderti tra tutte le fermate, la mappa evidenzia chiaramente quale fermata hai selezionato e le prossime!</string>
+    <string name="errorLoadGTFS">Errore nel caricamento degli orari.</string>
 </resources>

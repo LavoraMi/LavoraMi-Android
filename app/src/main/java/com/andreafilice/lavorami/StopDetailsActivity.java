@@ -167,7 +167,7 @@ public class StopDetailsActivity extends AppCompatActivity{
                     TextView detDirezioni = findViewById(R.id.detDirezioni);
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
                     LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
-                    if (detDirezioni != null) detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
+                    if (detDirezioni != null) detDirezioni.setText(getString(R.string.errorLoadGTFS));
                     if (nextArrivals != null) nextArrivals.setText("--");
                     if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
                 });
@@ -198,7 +198,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
             LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
-            detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
+            detDirezioni.setText(getString(R.string.errorLoadGTFS));
             nextArrivals.setText("--");
             if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
         }
@@ -216,7 +216,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 1);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
-            detDirezioni.setText(getString(R.string.arrivalsNotLoaded));
+            detDirezioni.setText(getString(R.string.errorLoadGTFS));
             nextArrivals.setText("--");
             rigaCambiaDirezione.setVisibility(View.GONE);
             scheduleArriviRefresh();
