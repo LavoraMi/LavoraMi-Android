@@ -1423,10 +1423,10 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Marche M5", new String[]{"7", "M5", "5", "31"}, "tram.fill.tunnel", "Main", 2));
         interchanges.add(new InterchangeInfo("Viale Zara Viale Laurana", new String[]{"7", "5", "31"}, "tram.fill", "Main", 3));
         interchanges.add(new InterchangeInfo("Istria M5", new String[]{"7", "M5", "5", "31", "42"}, "tram.fill.tunnel", "Main", 4));
-        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via Dolcebuono", new String[]{"7", "5", "31", "42"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Viale Testi Via Dolcebuono", new String[]{"7", "5", "31", "42"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Ca' Granda M5", new String[]{"7", "M5", "5", "31", "86", "172"}, "tram.fill.tunnel", "Main", 6));
-        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via Pianell", new String[]{"7", "31"}, "tram.fill", "Main", 7));
-        interchanges.add(new InterchangeInfo("Viale Fulvio Testi Via S. Marcellina", new String[]{"7", "31"}, "tram.fill", "Main", 8));
+        interchanges.add(new InterchangeInfo("Viale Testi Via Pianell", new String[]{"7", "31"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Viale Testi Via S. Marcellina", new String[]{"7", "31"}, "tram.fill", "Main", 8));
         interchanges.add(new InterchangeInfo("Via Pulci (Bicocca M5)", new String[]{"7", "M5", "31", "52", "172", "783"}, "tram.fill.tunnel", "Main", 9));
         interchanges.add(new InterchangeInfo("Università Bicocca Scienza", new String[]{"7", "52", "87"}, "building.columns.fill", "Main", 10));
         interchanges.add(new InterchangeInfo("Greco Pirelli FS", new String[]{"7", "S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE13", "RE80", "52", "81", "86", "174"}, "lightrail", "Main", 11));
