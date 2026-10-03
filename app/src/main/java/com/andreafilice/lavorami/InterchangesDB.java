@@ -1306,7 +1306,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Greco Rovereto", new String[]{"1", "87", "174"}, "tram.fill", "Main", 47));
 
         /// Tram 2
-        interchanges.add(new InterchangeInfo("Piazza Bausan", new String[]{"2", "82", "92"}, "tram.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Bausan", new String[]{"2", "82", "92"}, "tram.fill", "Main", 0));
         interchanges.add(new InterchangeInfo("Via Imbriani Via Scalvini", new String[]{"2", "92"}, "tram.fill", "Main", 1));
         interchanges.add(new InterchangeInfo("Piazzale Nigra", new String[]{"2", "91", "92"}, "tram.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Lancetti FS", new String[]{"2", "S1", "S2", "S5", "S6", "S12", "S13", "92"}, "tram.fill.tunnel", "Main", 3));
