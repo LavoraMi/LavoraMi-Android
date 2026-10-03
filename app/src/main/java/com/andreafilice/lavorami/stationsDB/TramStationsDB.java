@@ -428,7 +428,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50205, 9.16555, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.50203, 9.16562, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.50201, 9.16567, "Main", "2"));
-        stations.add(new MetroStation("P.Za Bausan", 45.50181, 9.16592, "Main", "2"));
+        stations.add(new MetroStation("Bausan", 45.50181, 9.16592, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.49949, 9.16884, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.49941, 9.16894, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.49933, 9.16905, "Main", "2"));
@@ -735,7 +735,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("Via L. Il Moro, 25", 45.44638, 9.14976, "Main", "2"));
         stations.add(new MetroStation("Via L. Il Moro Cavalcavia Don Milani", 45.44554, 9.14586, "Main", "2"));
         stations.add(new MetroStation("Via L. Il Moro Via Guintellino", 45.44489, 9.14277, "Main", "2"));
-        stations.add(new MetroStation("Via L. Il Moro P.Le Negrelli", 45.44442, 9.14049, "Main", "2"));
+        stations.add(new MetroStation("P.Le Negrelli", 45.44442, 9.14049, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.44429, 9.13989, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.4442, 9.13945, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.44417, 9.13935, "Main", "2"));
@@ -759,6 +759,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.44393, 9.13974, "Main", "2"));
         stations.add(new MetroStation("NO_DRAW", 45.44396, 9.13975, "Main", "2"));
         stations.add(new MetroStation("P.Le Negrelli", 45.444, 9.13976, "Main", "2"));
+
         return stations;
     }
 
