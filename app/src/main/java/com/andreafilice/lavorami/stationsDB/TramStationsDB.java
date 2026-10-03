@@ -1779,7 +1779,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47448, 9.20545, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.4744, 9.20558, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.47434, 9.20568, "Main", "9"));
-        stations.add(new MetroStation("Porta Venezia M1", 45.47418, 9.20594, "Main", "9"));
+        stations.add(new MetroStation("P.Ta Venezia M1", 45.47418, 9.20594, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.4741, 9.20621, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.47403, 9.2063, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.47396, 9.20636, "Main", "9"));
@@ -1824,7 +1824,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4521, 9.20263, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45195, 9.2026, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45176, 9.20256, "Main", "9"));
-        stations.add(new MetroStation("Porta Romana M3", 45.45139, 9.20241, "Main", "9"));
+        stations.add(new MetroStation("P.Ta Romana M3", 45.45139, 9.20241, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45124, 9.20243, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45117, 9.20235, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45112, 9.20228, "Main", "9"));
@@ -1927,7 +1927,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45362, 9.16994, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45359, 9.16991, "Main", "9"));
         stations.add(new MetroStation("NO_DRAW", 45.45357, 9.1699, "Main", "9"));
-        stations.add(new MetroStation("Porta Genova M2", 45.45352, 9.16988, "Main", "9"));
+        stations.add(new MetroStation("P.Ta Genova M2", 45.45352, 9.16988, "Main", "9"));
         return stations;
     }
 
