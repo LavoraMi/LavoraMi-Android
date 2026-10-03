@@ -491,10 +491,8 @@ public class StopDetailsActivity extends AppCompatActivity{
         String nomeFermataEspansa = espandiAbbreviazioni(nomeFermataOriginale);
 
         for (InterchangeInfo info : interscambi) {
-            if (info.getKey().equalsIgnoreCase(nomeFermataOriginale)
-                    || info.getKey().equalsIgnoreCase(nomeFermataEspansa)) {
+            if (info.getKey().equalsIgnoreCase(nomeFermataOriginale) || info.getKey().equalsIgnoreCase(nomeFermataEspansa))
                 return info;
-            }
         }
 
         for (InterchangeInfo info : interscambi) {
@@ -509,9 +507,8 @@ public class StopDetailsActivity extends AppCompatActivity{
         for (InterchangeInfo info : interscambi) {
             String chiave = info.getKey();
             for (String parola : paroleNomeFermata) {
-                if (parola.length() > 2 && chiave.toLowerCase().contains(parola.toLowerCase())) {
+                if (parola.length() > 2 && chiave.toLowerCase().contains(parola.toLowerCase()))
                     return info;
-                }
             }
         }
 
@@ -526,7 +523,19 @@ public class StopDetailsActivity extends AppCompatActivity{
         container.setVisibility(View.GONE);
 
         List<InterchangeInfo> interscambi = InterchangesDB.getTramInterchanges(this);
-        InterchangeInfo trovato = trovaInterscambioPerFermata(interscambi, nomeFermata);
+        List<InterchangeInfo> matched = new ArrayList<>();
+        String searchTag = nomeLinea.trim().toUpperCase();
+
+        for(InterchangeInfo info : interscambi) {
+            boolean match = false;
+
+            String primaryLine = info.getLines()[0].trim().toUpperCase();
+            match = primaryLine.equals(searchTag);
+
+            if(match) matched.add(info);
+        }
+
+        InterchangeInfo trovato = trovaInterscambioPerFermata(matched, nomeFermata);
 
         if (trovato == null || trovato.getLines() == null) return;
 
