@@ -1590,7 +1590,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51312, 9.21376, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51316, 9.21381, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51321, 9.21386, "Main", "7"));
-        stations.add(new MetroStation("Milano Greco Pirelli", 45.51343, 9.21404, "Main", "7"));
+        stations.add(new MetroStation("Stazione Greco Pirelli", 45.51343, 9.21404, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51362, 9.2142, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51367, 9.21424, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51372, 9.21426, "Main", "7"));
@@ -1694,7 +1694,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.51725, 9.24358, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51724, 9.24363, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51721, 9.24372, "Main", "7"));
-        stations.add(new MetroStation("Via Adriano Via Lassu", 45.51698, 9.24389, "Main", "7"));
+        stations.add(new MetroStation("Via Adriano Via Lussu", 45.51698, 9.24389, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51663, 9.24409, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51429, 9.24529, "Main", "7"));
         stations.add(new MetroStation("NO_DRAW", 45.51421, 9.24533, "Main", "7"));
