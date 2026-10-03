@@ -468,9 +468,9 @@
     <string name="dialog_bus_title_2">Select a stop</string>
     <string name="dialog_bus_title_3">Change Direction</string>
     <string name="dialog_bus_desc_3">Change your bus direction by selecting the button with this icon. You will be able to see the stops in the opposite direction!</string>
-    <string name="dialog_tram_title">Tram Maps</string>
-    <string name="dialog_tram_desc_1">Check out the Tram maps you use every day! Detailed and created especially for you and your daily journeys.</string>
-    <string name="dialog_tram_desc_2">Select a stop from the map by tapping on it to see arrivals, interchanges, and other stop details.</string>
+    <string name="dialog_tram_title">Tram Timetables</string>
+    <string name="dialog_tram_desc_1">Click on a stop on the map to see the next arrivals! No more pointless waiting at bus stops.</string>
+    <string name="dialog_tram_desc_2">Take a look at the connections for that stop, just below the timetables. You’ll now know which line to change to.</string>
     <string name="busSubtitlePopUp">You can view this page again by clicking on the \"Map\" tab when it is selected.</string>
     <string name="errorBrowserSlowToast">The page is taking longer to load.</string>
     <string name="slowdownBannerTitle">LINE WITH SLOWDOWNS</string>
@@ -481,4 +481,8 @@
     <string name="prossimoArrivoTram">Arrival:</string>
     <string name="loadingOrariShort">Loading timetable...</string>
     <string name="directionSmallButton">Direction</string>
+    <string name="dialog_tram_title1">See Timetables</string>
+    <string name="dialog_tram_title2">Change with other lines</string>
+    <string name="dialog_tram_title3">Map and details</string>
+    <string name="dialog_tram_desc3">Don’t get lost amongst all the stops, the map clearly highlights which stop you’ve selected and the next ones!</string>
 </resources>

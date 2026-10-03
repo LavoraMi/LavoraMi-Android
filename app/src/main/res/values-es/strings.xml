@@ -468,9 +468,9 @@
     <string name="dialog_bus_title_2">Seleccione una parada</string>
     <string name="dialog_bus_title_3">Cambiar Dirección</string>
     <string name="dialog_bus_desc_3">Cambia la dirección del autobús seleccionando el botón con este icono. ¡Podrás ver las paradas en sentido contrario!</string>
-    <string name="dialog_tram_title">Mapas de Tranvía</string>
-    <string name="dialog_tram_desc_1">¡Echa un vistazo a los mapas de tranvía que utilizas a diario! Detallados y creados especialmente para ti y tus desplazamientos diarios.</string>
-    <string name="dialog_tram_desc_2">Selecciona una parada en el mapa pulsando sobre ella para ver las llegadas, correspondencias y otros detalles de la parada.</string>
+    <string name="dialog_tram_title">Horarios de los Tranvías</string>
+    <string name="dialog_tram_desc_1">¡Haz clic en una parada del mapa y consulta las próximas llegadas! Se acabaron las esperas innecesarias en las paradas.</string>
+    <string name="dialog_tram_desc_2">Echa un vistazo a las conexiones de esa parada, justo debajo de los horarios. A partir de ahora sabrás con qué línea puedes hacer transbordo.</string>
     <string name="busSubtitlePopUp">Puedes volver a consultar esta página pulsando en la pestaña \"Mapa\" cuando esté seleccionada.</string>
     <string name="errorBrowserSlowToast">La página está tardando más en cargarse.</string>
     <string name="slowdownBannerTitle">LÍNEA CON REDUCCIONES DE VELOCIDAD</string>
@@ -481,4 +481,8 @@
     <string name="prossimoArrivoTram">Próxima llegada:</string>
     <string name="loadingOrariShort">Carga de horarios...</string>
     <string name="directionSmallButton">Dirección</string>
+    <string name="dialog_tram_title1">Consulta los Horarios</string>
+    <string name="dialog_tram_title2">Conecta con otras líneas</string>
+    <string name="dialog_tram_title3">Mapas y detalles</string>
+    <string name="dialog_tram_desc3">¡No te pierdas entre todas las paradas! El mapa te muestra claramente cuál es la parada que has seleccionado y las siguientes.</string>
 </resources>
