@@ -1381,7 +1381,7 @@ public class TramStationsDB {
 
     public static List<MetroStation> getStationsTram5() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Niguarda Ospedale", 45.50855, 9.18961, "Main", "5"));
+        stations.add(new MetroStation("Niguarda (Ospedale)", 45.50855, 9.18961, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.50873, 9.18967, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.50879, 9.1897, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.50883, 9.18978, "Main", "5"));
@@ -1532,7 +1532,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("Via B. Angelico Via Aselli", 45.47092, 9.23003, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.47092, 9.23004, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.47093, 9.231, "Main", "5"));
-        stations.add(new MetroStation("Via B. Angelico Via Paladini", 45.47086, 9.23322, "Main", "5"));
+        stations.add(new MetroStation("Via Amadeo Via Paladini", 45.47086, 9.23322, "Main", "5"));
         stations.add(new MetroStation("Via Amadeo Via S. Benigno", 45.47091, 9.23624, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.47098, 9.23718, "Main", "5"));
         stations.add(new MetroStation("NO_DRAW", 45.47098, 9.23746, "Main", "5"));

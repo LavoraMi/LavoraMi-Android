@@ -1401,7 +1401,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Lunigiana", new String[]{"5", "10", "42", "87"}, "tram.fill", "Main", 11));
         interchanges.add(new InterchangeInfo("Stazione Centrale Via Tonale", new String[]{"5", "10", "NM2", "NM3", "42", "87", "90", "91", "92", "728"}, "tram.fill", "Main", 12));
         interchanges.add(new InterchangeInfo("Stazione Centrale M2 M3", new String[]{"5", "M2", "NM2", "M3", "NM3", "9", "10", "42", "81", "728", "N25"}, "tram.fill.tunnel", "Main", 13));
-        interchanges.add(new InterchangeInfo("Stazione Centrale M2 M3 Piazza Duca D'Aosta", new String[]{"5", "M2", "NM2", "M3", "NM3", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "MXP1", "REG", "RV", "60", "81", "N25", "N26"}, "lightrail", "Main", 14));
+        interchanges.add(new InterchangeInfo("Stazione Centrale Piazza Duca D'Aosta M2 M3", new String[]{"5", "M2", "NM2", "M3", "NM3", "AV", "R4", "RE2", "RE4", "RE6", "RE8", "RE11", "RE13", "RE80", "MXP1", "REG", "RV", "60", "81", "N25", "N26"}, "lightrail", "Main", 14));
         interchanges.add(new InterchangeInfo("Via Vitruvio", new String[]{"5", "1", "60", "81", "N25", "N26"}, "tram.fill", "Main", 15));
         interchanges.add(new InterchangeInfo("Piazza Cincinnato", new String[]{"5", "1"}, "tram.fill", "Main", 16));
         interchanges.add(new InterchangeInfo("Viale Tunisia", new String[]{"5", "1", "33"}, "tram.fill", "Main", 17));
@@ -1411,12 +1411,11 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Ascoli", new String[]{"5", "19", "33", "60", "61", "92"}, "tram.fill", "Main", 21));
         interchanges.add(new InterchangeInfo("Piazza Aspari", new String[]{"5", "62"}, "tram.fill", "Main", 22));
         interchanges.add(new InterchangeInfo("Piazza Ferravilla", new String[]{"5", "90", "91"}, "tram.fill", "Main", 23));
-        interchanges.add(new InterchangeInfo("Via Beato Angelico Via Colombo", new String[]{"5"}, "tram.fill", "Main", 24));
-        interchanges.add(new InterchangeInfo("Via Beato Angelico Via Aselli", new String[]{"5", "93"}, "tram.fill", "Main", 25));
-        interchanges.add(new InterchangeInfo("Via Beato Angelico Via Paladini", new String[]{"5"}, "tram.fill", "Main", 26));
-        interchanges.add(new InterchangeInfo("Via Beato Angelico Via San Benigno", new String[]{"5"}, "tram.fill", "Main", 27));
-        interchanges.add(new InterchangeInfo("Via Beato Angelico Via San Benigno", new String[]{"5"}, "tram.fill", "Main", 28));
-        interchanges.add(new InterchangeInfo("Ortica", new String[]{"5"}, "tram.fill", "Main", 29));
+        interchanges.add(new InterchangeInfo("Via B. Angelico Via Colombo", new String[]{"5"}, "tram.fill", "Main", 24));
+        interchanges.add(new InterchangeInfo("Via B. Angelico Via Aselli", new String[]{"5", "93"}, "tram.fill", "Main", 25));
+        interchanges.add(new InterchangeInfo("Via Amadeo Via Paladini", new String[]{"5"}, "tram.fill", "Main", 26));
+        interchanges.add(new InterchangeInfo("Via Amadeo Via San Benigno", new String[]{"5"}, "tram.fill", "Main", 27));
+        interchanges.add(new InterchangeInfo("Ortica", new String[]{"5"}, "tram.fill", "Main", 28));
 
         /// Tram 7
         interchanges.add(new InterchangeInfo("Piazzale Lagosta", new String[]{"7", "31", "33", "60"}, "tram.fill", "Main", 0));
