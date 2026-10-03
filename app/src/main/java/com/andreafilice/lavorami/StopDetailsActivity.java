@@ -391,10 +391,6 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         mapViewRef = mapView;
 
-        ImageButton positionButton = findViewById(R.id.positionButton);
-        positionButton.setImageTintList(android.content.res.ColorStateList.valueOf(coloreLinea));
-        positionButton.setOnClickListener(v -> positionButtonClick());
-
         if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
             MapboxHelper.enableUserLocation(mapViewRef, false);
     }
@@ -433,18 +429,6 @@ public class StopDetailsActivity extends AppCompatActivity{
                 MapboxHelper.addPulsingLayer(mapView, station.getLatitude(), station.getLongitude(), hexColor);
                 break;
             }
-        }
-    }
-
-    private void positionButtonClick() {
-        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == android.content.pm.PackageManager.PERMISSION_GRANTED)
-            MapboxHelper.zoomToUserLocation(mapViewRef);
-        else {
-            androidx.core.app.ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION },
-                    LOCATION_PERMISSION_REQUEST_CODE
-            );
         }
     }
 

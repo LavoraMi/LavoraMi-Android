@@ -80,18 +80,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/positionButton"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/glass_bottom_bar_bg"
-        android:elevation="10dp"
-        android:src="@drawable/ic_position"
-        app:tint="@color/text_primary"
-        app:layout_anchor="@id/bottomSheetStop"
-        app:layout_anchorGravity="top|end" />
-
     <LinearLayout
         android:id="@+id/bottomSheetStop"
         android:layout_width="match_parent"
