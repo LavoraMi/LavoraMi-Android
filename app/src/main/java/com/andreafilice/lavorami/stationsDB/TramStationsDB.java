@@ -865,7 +865,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("Via Dei Missaglia Via Boifava", 45.42655, 9.17724, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.42726, 9.17732, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.4287, 9.17748, "Main", "3"));
-        stations.add(new MetroStation("Piazza Abbiategrasso M2", 45.42936, 9.17759, "Main", "3"));
+        stations.add(new MetroStation("P.Za Abbiategrasso M2", 45.42936, 9.17759, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.42936, 9.17759, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.42986, 9.17763, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.43002, 9.17763, "Main", "3"));
