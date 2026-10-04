@@ -969,7 +969,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45661, 9.18084, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.45675, 9.18086, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.45694, 9.18091, "Main", "3"));
-        stations.add(new MetroStation("Colonne Di S. Lorenzo", 45.4572, 9.18096, "Main", "3"));
+        stations.add(new MetroStation("Colonne Di S.Lorenzo", 45.4572, 9.18096, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.45735, 9.18095, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.45744, 9.18095, "Main", "3"));
         stations.add(new MetroStation("NO_DRAW", 45.45749, 9.18095, "Main", "3"));
