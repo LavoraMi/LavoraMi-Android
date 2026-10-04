@@ -70,7 +70,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         "m.te", "monte",
         "s.",   "san",
         "c.",   "console",
-        "p.",   "principe"
+        "cim.",   "cimitero"
     );
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2001;
