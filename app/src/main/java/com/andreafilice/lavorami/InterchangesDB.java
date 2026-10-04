@@ -1672,8 +1672,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Firenze", new String[]{"19", "1", "14", "43", "48", "57", "69"}, "bus.fill", "Main", 6));
         interchanges.add(new InterchangeInfo("Corso Sempione Via E. Filiberto", new String[]{"19", "1", "43", "48", "57", "78", "z602", "z603", "z6C3"}, "bus.fill", "Main", 7));
         interchanges.add(new InterchangeInfo("Corso Sempione Via Arona", new String[]{"19", "1", "43", "57"}, "tram.fill", "Main", 8));
-        interchanges.add(new InterchangeInfo("Domodossola FN M5", new String[]{"19", "M5", "1", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "REE7", "MXP2", "43", "57"}, "tram.fill.tunnel", "Main", 9));
-        interchanges.add(new InterchangeInfo("Domodossola FN M5", new String[]{"19", "M5", "1", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "REE7", "MXP2", "43", "57"}, "tram.fill.tunnel", "Main", 10));
+        interchanges.add(new InterchangeInfo("Domodossola FN M5", new String[]{"19", "M5", "1", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "43", "57"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Domodossola FN M5", new String[]{"19", "M5", "1", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "43", "57"}, "tram.fill.tunnel", "Main", 10));
         interchanges.add(new InterchangeInfo("Viale Boezio", new String[]{"19"}, "tram.fill", "Main", 11));
         interchanges.add(new InterchangeInfo("Piazza Sei Febbraio", new String[]{"19"}, "tram.fill", "Main", 12));
         interchanges.add(new InterchangeInfo("Via Monti Via Savoia Cavalleria", new String[]{"19"}, "tram.fill", "Main", 13));
