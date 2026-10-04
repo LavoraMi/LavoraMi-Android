@@ -2449,7 +2449,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("Via Mac Mahon Via Bramantino", 45.49776, 9.15283, "Main", "12"));
         stations.add(new MetroStation("Via Mac Mahon Via Artieri", 45.49636, 9.15467, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.49587, 9.15534, "Main", "12"));
-        stations.add(new MetroStation("Via Mac Mahon V.Le Monte Ceneri", 45.49433, 9.15735, "Main", "12"));
+        stations.add(new MetroStation("Via Mac Mahon V.Le M.Te Ceneri", 45.49433, 9.15735, "Main", "12"));
         stations.add(new MetroStation("Via Mac Mahon Via Caracciolo", 45.49101, 9.16174, "Main", "12"));
         stations.add(new MetroStation("Via Mac Mahon Via P. Eugenio", 45.48955, 9.16366, "Main", "12"));
         stations.add(new MetroStation("P.Za Diocleziano", 45.4881, 9.16557, "Main", "12"));
@@ -2680,7 +2680,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46229, 9.20252, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46229, 9.2031, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46229, 9.20345, "Main", "12"));
-        stations.add(new MetroStation("C.So P.Ta Vittoria Camera Del Lavoro", 45.46228, 9.20382, "Main", "12"));
+        stations.add(new MetroStation("C.So P.Ta Vittoria (Camera Del Lavoro)", 45.46228, 9.20382, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46227, 9.20578, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46227, 9.20631, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46226, 9.20645, "Main", "12"));
@@ -2703,7 +2703,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46224, 9.20805, "Main", "12"));
         stations.add(new MetroStation("P.Za 5 Giornate", 45.46224, 9.20851, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46224, 9.20943, "Main", "12"));
-        stations.add(new MetroStation("P.Za San Maria Del Suffragio", 45.46223, 9.21109, "Main", "12"));
+        stations.add(new MetroStation("P.Za S. Maria Del Suffragio", 45.46223, 9.21109, "Main", "12"));
         stations.add(new MetroStation("Via Cadore C.So Ventidue Marzo", 45.46221, 9.21423, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46219, 9.21711, "Main", "12"));
         stations.add(new MetroStation("NO_DRAW", 45.46219, 9.21715, "Main", "12"));

@@ -1526,7 +1526,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Diocleziano", new String[]{"12", "14"}, "tram.fill", "Main", 17));
         interchanges.add(new InterchangeInfo("Via Cenisio Via Induno", new String[]{"12", "14"}, "tram.fill", "Main", 18));
         interchanges.add(new InterchangeInfo("Cenisio M5", new String[]{"12", "M5", "14"}, "tram.fill.tunnel", "Main", 19));
-        interchanges.add(new InterchangeInfo("Piazzale Cimitero Monumentale Via Bramante", new String[]{"12", "10", "14"}, "tram.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Piazzale Cim. Monumentale Via Bramante", new String[]{"12", "10", "14"}, "tram.fill", "Main", 20));
         interchanges.add(new InterchangeInfo("Via Bramante Via Sarpi", new String[]{"12", "14"}, "tram.fill", "Main", 21));
         interchanges.add(new InterchangeInfo("Piazza Lega Lombarda", new String[]{"12", "2", "4", "14", "NM2", "43", "57"}, "tram.fill", "Main", 22));
         interchanges.add(new InterchangeInfo("Arena", new String[]{"12", "2", "4", "14", "57"}, "tram.fill", "Main", 23));
