@@ -1574,7 +1574,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Torino Via Palla", new String[]{"14", "3", "12"}, "tram.fill", "Main", 23));
         interchanges.add(new InterchangeInfo("Via Torino Via San Maria Valle", new String[]{"14", "3", "12"}, "tram.fill", "Main", 24));
         interchanges.add(new InterchangeInfo("Carrobbio", new String[]{"14", "3", "12"}, "tram.fill", "Main", 25));
-        interchanges.add(new InterchangeInfo("De Amicis M4", new String[]{"14", "M4", "NM4", "12", "NM2", "96", "97"}, "tram.fill.tunnel", "Main", 26));
+        interchanges.add(new InterchangeInfo("De Amicis M4", new String[]{"14", "M4", "NM4", "2", "NM2", "96", "97"}, "tram.fill.tunnel", "Main", 26));
         interchanges.add(new InterchangeInfo("Piazzale Cantore", new String[]{"14", "9", "10", "12", "NM2", "NM4", "74", "164", "N25", "N26"}, "tram.fill", "Main", 27));
         interchanges.add(new InterchangeInfo("Viale Coni Zugna Via Solari", new String[]{"14", "10", "N25", "N26"}, "tram.fill", "Main", 28));
         interchanges.add(new InterchangeInfo("Via Montevideo", new String[]{"14"}, "tram.fill", "Main", 29));
