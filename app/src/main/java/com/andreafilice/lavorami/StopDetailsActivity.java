@@ -178,7 +178,7 @@ public class StopDetailsActivity extends AppCompatActivity{
                     if (nextArrivals != null) nextArrivals.setText("--");
                     if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
 
-                    if(stationClosed) detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
+                    if(stationClosed && detDirezioni != null) detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
                 });
             }
         });
