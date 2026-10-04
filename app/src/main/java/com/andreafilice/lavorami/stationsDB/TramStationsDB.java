@@ -342,7 +342,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47237, 9.19519, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47242, 9.19522, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47247, 9.19523, "Main", "1"));
-        stations.add(new MetroStation("Piazza Cavour", 45.47269, 9.19512, "Main", "1"));
+        stations.add(new MetroStation("P.Za Cavour", 45.47269, 9.19512, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47282, 9.19513, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47288, 9.19508, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.47296, 9.19503, "Main", "1"));
