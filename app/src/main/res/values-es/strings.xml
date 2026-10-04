@@ -486,4 +486,7 @@
     <string name="dialog_tram_title3">Mapas y detalles</string>
     <string name="dialog_tram_desc3">¡No te pierdas entre todas las paradas! El mapa te muestra claramente cuál es la parada que has seleccionado y las siguientes.</string>
     <string name="errorLoadGTFS">Error al cargar los horarios.</string>
+    <string name="timetablePopUpTitle">Horarios imprecisos o que faltan</string>
+    <string name="timetablePopUpDeps">En el recorrido de esta línea se han finalizado recientemente unas obras que limitaban los trayectos o interrumpían el servicio. Dentro de unos días podríamos recibir los horarios actualizados y eliminar esta información.</string>
+    <string name="uppercasedTimeTableTitle">HORARIOS IMPRECISOS O QUE FALTAN</string>
 </resources>

@@ -1906,8 +1906,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         for (int b = 0; b < lineeConOrariImprecisi.length; b++) {
             if (lineeConOrariImprecisi[b].equalsIgnoreCase(nomeLinea)) {
                 orariImprecisi.setVisibility(View.VISIBLE);
-                orariImprecisi.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Orari Imprecisi o Mancanti", "Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione."));
-                infoArrivalBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Orari Imprecisi o Mancanti", "Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione."));
+                orariImprecisi.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.timetablePopUpTitle), getString(R.string.timetablePopUpDeps)));
+                infoArrivalBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.timetablePopUpTitle), getString(R.string.timetablePopUpDeps)));
             }
         }
 

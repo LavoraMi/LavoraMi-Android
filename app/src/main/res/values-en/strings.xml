@@ -486,4 +486,7 @@
     <string name="dialog_tram_title3">Map and details</string>
     <string name="dialog_tram_desc3">Don’t get lost amongst all the stops, the map clearly highlights which stop you’ve selected and the next ones!</string>
     <string name="errorLoadGTFS">Error loading timetables.</string>
+    <string name="timetablePopUpTitle">Inaccurate or Missing Timetables</string>
+    <string name="timetablePopUpDeps">Work has recently been completed along this line which had been restricting services or causing service disruptions. We may receive the updated timetables in a few days’ time and will then remove this information.</string>
+    <string name="uppercasedTimeTableTitle">INACCURATE OR MISSING TIMETABLES</string>
 </resources>

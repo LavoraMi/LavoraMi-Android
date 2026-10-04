@@ -485,4 +485,7 @@
     <string name="dialog_tram_title3">Mappe e dettagli</string>
     <string name="dialog_tram_desc3">Non perderti tra tutte le fermate, la mappa evidenzia chiaramente quale fermata hai selezionato e le prossime!</string>
     <string name="errorLoadGTFS">Errore nel caricamento degli orari.</string>
+    <string name="timetablePopUpTitle">Orari Imprecisi o Mancanti</string>
+    <string name="timetablePopUpDeps">Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione.</string>
+    <string name="uppercasedTimeTableTitle">ORARI NON PRECISI O MANCANTI</string>
 </resources>
