@@ -401,7 +401,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             }
         }
 
-        float zoom = 15.8;
+        float zoom = 15.8f;
         if (fermataSelezionata != null)
             MapboxHelper.setCameraOnStop(mapView, fermataSelezionata.getLatitude(), fermataSelezionata.getLongitude(), zoom, 0.0012);
         else if (!stazioniDaMostrare.isEmpty()) {
