@@ -393,7 +393,6 @@ object MapboxHelper {
                 circleOpacityTransition(transitionOptions { duration(0); delay(0) })
             }
 
-            //Sotto il marker, così il pallino resta sopra l'alone
             if (style.styleLayerExists("marker-layer"))
                 style.addLayerBelow(pulseLayer, "marker-layer")
             else
@@ -421,6 +420,7 @@ object MapboxHelper {
         pulseAnimator?.cancel()
         pulseAnimator = null
     }
+
     interface MapReadyCallback {
         //*INTERFACE CLASS
         ///This is the interface to implement into LinesDetailActivity.
