@@ -401,14 +401,15 @@ public class StopDetailsActivity extends AppCompatActivity{
             }
         }
 
+        float zoom = 15.8;
         if (fermataSelezionata != null)
-            MapboxHelper.setCameraOnStop(mapView, fermataSelezionata.getLatitude(), fermataSelezionata.getLongitude(), 15.8, 0.0012);
+            MapboxHelper.setCameraOnStop(mapView, fermataSelezionata.getLatitude(), fermataSelezionata.getLongitude(), zoom, 0.0012);
         else if (!stazioniDaMostrare.isEmpty()) {
             List<Point> puntiDaInquadrare = new ArrayList<>();
             for (MetroStation s : stazioniDaMostrare)
                 puntiDaInquadrare.add(Point.fromLngLat(s.getLongitude(), s.getLatitude()));
 
-            MapboxHelper.setCameraToBounds(mapView, puntiDaInquadrare, 150.0, 15.8, 15.8);
+            MapboxHelper.setCameraToBounds(mapView, puntiDaInquadrare, 150.0, zoom, zoom);
         }
 
         layoutMaps.setVisibility(android.view.View.VISIBLE);
