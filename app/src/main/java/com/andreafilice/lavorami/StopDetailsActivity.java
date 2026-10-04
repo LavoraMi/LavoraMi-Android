@@ -178,7 +178,7 @@ public class StopDetailsActivity extends AppCompatActivity{
                     if (nextArrivals != null) nextArrivals.setText("--");
                     if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
 
-                    if(stationClosed) detDirezioni.setText("Fermata Sospesa");
+                    if(stationClosed) detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
                 });
             }
         });
@@ -210,7 +210,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             nextArrivals.setText("--");
 
             if(!stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
-            else detDirezioni.setText("Fermata Sospesa");
+            else detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
 
             if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
         }
@@ -231,7 +231,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             nextArrivals.setText("--");
 
             if(!stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
-            else detDirezioni.setText("Fermata Sospesa");
+            else detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
 
             rigaCambiaDirezione.setVisibility(View.GONE);
             scheduleArriviRefresh();
