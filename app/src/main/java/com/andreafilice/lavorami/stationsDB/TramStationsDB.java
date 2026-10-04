@@ -3480,7 +3480,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45612, 9.1959, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.45616, 9.19575, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.45626, 9.19557, "Main", "16"));
-        stations.add(new MetroStation("Sforza Policlinico M4", 45.4582, 9.19246, "Main", "16"));
+        stations.add(new MetroStation("Sforza - Policlinico M4", 45.4582, 9.19246, "Main", "16"));
         stations.add(new MetroStation("Missori M3", 45.4604, 9.18866, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46045, 9.18853, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46059, 9.18839, "Main", "16"));
@@ -3518,7 +3518,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46571, 9.17141, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46573, 9.17108, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46576, 9.1707, "Main", "16"));
-        stations.add(new MetroStation("Santa Maria Delle Grazie Cenacolo Vinciano", 45.46576, 9.16991, "Main", "16"));
+        stations.add(new MetroStation("S. Maria Delle Grazie (Cenacolo Vinciano)", 45.46576, 9.16991, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46568, 9.16885, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46575, 9.16815, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.46588, 9.16725, "Main", "16"));
@@ -3541,8 +3541,8 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46696, 9.15002, "Main", "16"));
         stations.add(new MetroStation("NO_DRAW", 45.467, 9.14984, "Main", "16"));
         stations.add(new MetroStation("De Angeli M1", 45.4671, 9.14972, "Main", "16"));
-        stations.add(new MetroStation("Via Faruffini Via Coreggio", 45.46819, 9.14831, "Main", "16"));
-        stations.add(new MetroStation("P.Le Brescia Osp. San Luca", 45.47008, 9.14593, "Main", "16"));
+        stations.add(new MetroStation("Via Faruffini Via Correggio", 45.46819, 9.14831, "Main", "16"));
+        stations.add(new MetroStation("P.Le Brescia (Osp. San Luca)", 45.47008, 9.14593, "Main", "16"));
         stations.add(new MetroStation("Via Dolci Via Ricciarelli", 45.47225, 9.14296, "Main", "16"));
         stations.add(new MetroStation("P.Za M.Te Falterona", 45.47367, 9.14108, "Main", "16"));
         stations.add(new MetroStation("Segesta M5", 45.47556, 9.13871, "Main", "16"));
