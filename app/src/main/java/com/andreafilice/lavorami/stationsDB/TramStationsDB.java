@@ -3919,12 +3919,12 @@ public class TramStationsDB {
         stations.add(new MetroStation("Parco Nord Clerici (Sesto S.G.)", 45.53379, 9.21564, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.53473, 9.21624, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.53606, 9.21699, "Main", "31"));
-        stations.add(new MetroStation("Parco Nord Ist. Tecnico (Cinisello B.)", 45.53763, 9.2178, "Main", "31"));
+        stations.add(new MetroStation("Parco Nord (Ist. Tecnico)(Cinisello B.)", 45.53763, 9.2178, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.53848, 9.21831, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.5388, 9.2184, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.53918, 9.2184, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.54509, 9.21819, "Main", "31"));
-        stations.add(new MetroStation("Parco Nord Osp. Bassini (Cinisello B.)", 45.54571, 9.21812, "Main", "31"));
+        stations.add(new MetroStation("Parco Nord (Osp. Bassini)(Cinisello B.)", 45.54571, 9.21812, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.54771, 9.2178, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.54825, 9.2178, "Main", "31"));
         stations.add(new MetroStation("NO_DRAW", 45.54898, 9.21767, "Main", "31"));
