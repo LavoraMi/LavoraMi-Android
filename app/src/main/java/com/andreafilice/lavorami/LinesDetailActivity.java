@@ -708,7 +708,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaFermataDaMappa(stationName);
                                 }
-                            } else if (isLineaTram() || isLineaRegionale()) {
+                            } else if (isLineaTram()) {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     apriDettaglioFermata(stationName);
