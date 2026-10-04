@@ -1711,7 +1711,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Piazza Fontana", new String[]{"24", "27"}, "tram.fill", "Main", 0));
         interchanges.add(new InterchangeInfo("Piazza Missori", new String[]{"24", "M3", "NM3", "12", "15", "16", "19", "N15", "N24"}, "tram.fill.tunnel", "Main", 1));
         interchanges.add(new InterchangeInfo("Missori M3", new String[]{"24", "M3", "NM3", "12", "15", "16", "19", "N15", "N24"}, "tram.fill.tunnel", "Main", 2));
-        interchanges.add(new InterchangeInfo("Sforza Policlinico M4", new String[]{"24", "M4", "NM4", "16", "NM3", "65", "96", "N24"}, "tram.fill.tunnel", "Main", 3));
+        interchanges.add(new InterchangeInfo("Sforza - Policlinico M4", new String[]{"24", "M4", "NM4", "16", "NM3", "65", "96", "N24"}, "tram.fill.tunnel", "Main", 3));
         interchanges.add(new InterchangeInfo("Crocetta M3", new String[]{"24", "M3", "NM3", "16", "NM4", "65", "96", "N24"}, "tram.fill.tunnel", "Main", 4));
         interchanges.add(new InterchangeInfo("Corso Porta Vigentina", new String[]{"24", "N24"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Via Ripamonti Viale Sabotino", new String[]{"24", "9", "NM4", "N24", "N26"}, "tram.fill", "Main", 6));

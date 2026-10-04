@@ -3701,7 +3701,7 @@ public class TramStationsDB {
 
     public static List<MetroStation> getStationsTram24() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Piazza Fontana", 45.46337, 9.19405, "Main", "24"));
+        stations.add(new MetroStation("P.Za Fontana", 45.46337, 9.19405, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46332, 9.1938, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.4633, 9.19373, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46327, 9.19368, "Main", "24"));
@@ -3723,7 +3723,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.46075, 9.19088, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46076, 9.19074, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46079, 9.19059, "Main", "24"));
-        stations.add(new MetroStation("Piazza Missori", 45.46092, 9.18993, "Main", "24"));
+        stations.add(new MetroStation("Missori M3", 45.46092, 9.18993, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46097, 9.18965, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46101, 9.18949, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.46104, 9.18938, "Main", "24"));
@@ -3753,7 +3753,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4562, 9.19546, "Main", "24"));
         stations.add(new MetroStation("NO_DRAW", 45.45615, 9.19547, "Main", "24"));
         stations.add(new MetroStation("Crocetta M3", 45.45537, 9.19561, "Main", "24"));
-        stations.add(new MetroStation("C.So Porta Vigentina", 45.45364, 9.19607, "Main", "24"));
+        stations.add(new MetroStation("C.So P.Ta Vigentina", 45.45364, 9.19607, "Main", "24"));
         stations.add(new MetroStation("Via Ripamonti V.Le Sabotino", 45.45116, 9.19675, "Main", "24"));
         stations.add(new MetroStation("Via Ripamonti Via Bellezza", 45.44888, 9.19735, "Main", "24"));
         stations.add(new MetroStation("V.Le Isonzo Via Ripamonti", 45.44676, 9.19794, "Main", "24"));
