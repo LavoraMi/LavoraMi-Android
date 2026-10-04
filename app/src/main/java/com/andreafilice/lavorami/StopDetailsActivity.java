@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -41,8 +42,10 @@ import java.util.Map;
 public class StopDetailsActivity extends AppCompatActivity{
     private String nomeFermata;
     private String nomeLinea;
+    private String[] stazioniChiuse;
     private MapView pendingMapView;
     private boolean mapAlreadyLoaded = false;
+    private boolean stationClosed = false;
     private MapView mapViewRef;
     private int coloreLinea;
     private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
@@ -88,9 +91,15 @@ public class StopDetailsActivity extends AppCompatActivity{
         //*INTENT EXTRAS
         nomeFermata = getIntent().getStringExtra("NOME_FERMATA");
         nomeLinea = getIntent().getStringExtra("NOME_LINEA");
+        stazioniChiuse = getIntent().getStringArrayExtra("FERMATE_CHIUSE");
 
         if (nomeFermata == null) nomeFermata = "";
         if (nomeLinea == null) nomeLinea = "";
+
+        for(String stazione: stazioniChiuse) {
+            if(stazione.equalsIgnoreCase(String.format("%s: %s", nomeFermata, nomeLinea)))
+                stationClosed = true;
+        }
 
         ImageButton btnBack = findViewById(R.id.buttonBack);
         btnBack.setOnClickListener(v -> finish());
@@ -130,11 +139,9 @@ public class StopDetailsActivity extends AppCompatActivity{
         detDirezioni.setSelected(true);
         nextArrivals.setText("--");
 
-        //*Reset stato direzione quando cambia fermata
         indiceDirezioneCorrente = 0;
         direzioniDisponibili = new ArrayList<>();
 
-        //*Stato di caricamento orari
         ClockLoaderView clockLoader = findViewById(R.id.clockLoader);
         if (clockLoader != null) clockLoader.setAccentColor(coloreLinea);
 
@@ -167,9 +174,15 @@ public class StopDetailsActivity extends AppCompatActivity{
                     TextView detDirezioni = findViewById(R.id.detDirezioni);
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
                     LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
-                    if (detDirezioni != null) detDirezioni.setText(getString(R.string.errorLoadGTFS));
-                    if (nextArrivals != null) nextArrivals.setText("--");
-                    if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
+                    if (detDirezioni != null && !stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
+                    if (nextArrivals != null && !stationClosed) nextArrivals.setText("--");
+                    if (rigaCambiaDirezione != null && !stationClosed) rigaCambiaDirezione.setVisibility(View.GONE);
+
+                    if(stationClosed){
+                        detDirezioni.setText("Fermata Sospesa");
+                        nextArrivals.setText("--");
+                        rigaCambiaDirezione.setVisibility(View.GONE);
+                    }
                 });
             }
         });
@@ -198,8 +211,15 @@ public class StopDetailsActivity extends AppCompatActivity{
             TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
             LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
-            detDirezioni.setText(getString(R.string.errorLoadGTFS));
-            nextArrivals.setText("--");
+            if(!stationClosed) {
+                detDirezioni.setText(getString(R.string.errorLoadGTFS));
+                nextArrivals.setText("--");
+            }
+            else{
+                detDirezioni.setText("Fermata Sospesa");
+                nextArrivals.setText("--");
+            }
+
             if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
         }
     }
@@ -216,8 +236,14 @@ public class StopDetailsActivity extends AppCompatActivity{
         Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 1);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
-            detDirezioni.setText(getString(R.string.errorLoadGTFS));
-            nextArrivals.setText("--");
+            if(!stationClosed) {
+                detDirezioni.setText(getString(R.string.errorLoadGTFS));
+                nextArrivals.setText("--");
+            }
+            else {
+                detDirezioni.setText("Fermata Sospesa");
+                nextArrivals.setText("--");
+            }
             rigaCambiaDirezione.setVisibility(View.GONE);
             scheduleArriviRefresh();
             return;

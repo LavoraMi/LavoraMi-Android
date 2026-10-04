@@ -3068,6 +3068,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StopDetailsActivity.class);
         intent.putExtra("NOME_FERMATA", nomeStazioneMappa);
         intent.putExtra("NOME_LINEA", nomeLinea);
+        intent.putExtra("FERMATE_CHIUSE", strikeCDNResponse.getstazioniChiuse());
         startActivity(intent);
     }
 }
