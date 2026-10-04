@@ -137,7 +137,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         detDirezioni.setText(getString(R.string.loadingDataInProgress));
 
         detDirezioni.setSelected(true);
-        nextArrivals.setText("--");
+        nextArrivals.setText("");
 
         indiceDirezioneCorrente = 0;
         direzioniDisponibili = new ArrayList<>();
@@ -175,7 +175,7 @@ public class StopDetailsActivity extends AppCompatActivity{
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
                     LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
                     if (detDirezioni != null && !stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
-                    if (nextArrivals != null) nextArrivals.setText("--");
+                    if (nextArrivals != null) nextArrivals.setText("");
                     if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
 
                     if(stationClosed && detDirezioni != null) detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
@@ -207,7 +207,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
             LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
-            nextArrivals.setText("--");
+            nextArrivals.setText("");
 
             if(!stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
             else detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
@@ -228,7 +228,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 1);
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
-            nextArrivals.setText("--");
+            nextArrivals.setText("");
 
             if(!stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
             else detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
