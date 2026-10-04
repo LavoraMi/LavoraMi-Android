@@ -174,6 +174,8 @@ public class StopDetailsActivity extends AppCompatActivity{
                     TextView detDirezioni = findViewById(R.id.detDirezioni);
                     TextView nextArrivals = findViewById(R.id.nextArrivals);
                     LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
+
+                    detDirezioni.setTextColor(getColor(R.color.subtitle));
                     if (detDirezioni != null && !stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
                     if (nextArrivals != null) nextArrivals.setText("");
                     if (rigaCambiaDirezione != null) rigaCambiaDirezione.setVisibility(View.GONE);
@@ -208,6 +210,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             TextView nextArrivals = findViewById(R.id.nextArrivals);
             LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
             nextArrivals.setText("");
+            detDirezioni.setTextColor(getColor(R.color.subtitle));
 
             if(!stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
             else detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
@@ -229,6 +232,7 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             nextArrivals.setText("");
+            detDirezioni.setTextColor(getColor(R.color.subtitle));
 
             if(!stationClosed) detDirezioni.setText(getString(R.string.errorLoadGTFS));
             else detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
