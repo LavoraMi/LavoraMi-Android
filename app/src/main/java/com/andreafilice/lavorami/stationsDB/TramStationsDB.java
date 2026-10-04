@@ -4116,7 +4116,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48348, 9.1872, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.48348, 9.18715, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.48352, 9.18705, "Main", "33"));
-        stations.add(new MetroStation("Garibaldi FS M2 M5", 45.48374, 9.1867, "Main", "33"));
+        stations.add(new MetroStation("Stazione Garibaldi M2 M5", 45.48374, 9.1867, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.48378, 9.1864, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.48385, 9.18629, "Main", "33"));
         stations.add(new MetroStation("NO_DRAW", 45.48396, 9.18612, "Main", "33"));
