@@ -2766,7 +2766,7 @@ public class TramStationsDB {
 
     public static List<MetroStation> getStationsTram14() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Cimitero Maggiore", 45.50312, 9.12139, "Main", "14"));
+        stations.add(new MetroStation("P.Le Cimitero Maggiore", 45.50312, 9.12139, "Main", "14"));
         stations.add(new MetroStation("NO_DRAW", 45.50323, 9.12147, "Main", "14"));
         stations.add(new MetroStation("NO_DRAW", 45.5033, 9.12157, "Main", "14"));
         stations.add(new MetroStation("NO_DRAW", 45.50334, 9.12167, "Main", "14"));
@@ -3091,8 +3091,8 @@ public class TramStationsDB {
         stations.add(new MetroStation("Via Giambellino Via Curio Dentato", 45.4487, 9.14253, "Main", "14"));
         stations.add(new MetroStation("L.Go Gelsomini L.Go Giambellino", 45.44763, 9.13923, "Main", "14"));
         stations.add(new MetroStation("Via Giambellino Via Odazio", 45.44634, 9.13523, "Main", "14"));
-        stations.add(new MetroStation("Via Giambellino Via Sanniti", 45.44537, 9.13224, "Main", "14"));
-        stations.add(new MetroStation("San Cristoforo", 45.44472, 9.13023, "Main", "14"));
+        stations.add(new MetroStation("NO_DRAW", 45.44537, 9.13224, "Main", "14"));
+        stations.add(new MetroStation("S. Cristoforo M4", 45.44472, 9.13023, "Main", "14"));
         stations.add(new MetroStation("NO_DRAW", 45.44425, 9.12875, "Main", "14"));
         stations.add(new MetroStation("NO_DRAW", 45.44402, 9.12804, "Main", "14"));
         stations.add(new MetroStation("NO_DRAW", 45.44383, 9.12746, "Main", "14"));
