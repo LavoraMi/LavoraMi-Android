@@ -1333,10 +1333,10 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Ripa di Porta Ticinese Via Lombardini", new String[]{"2", "74", "164"}, "tram.fill", "Main", 23));
         interchanges.add(new InterchangeInfo("Ripa di Porta Ticinese Via D'Adda", new String[]{"2", "74", "164"}, "tram.fill", "Main", 24));
         interchanges.add(new InterchangeInfo("Ponte Guido Crepax", new String[]{"2", "90", "91", "164", "324", "325"}, "tram.fill", "Main", 25));
-        interchanges.add(new InterchangeInfo("Via Ludovico Il Moro Via Pestalozzi", new String[]{"2", "164", "324", "325", "z553"}, "bus.fill", "Main", 26));
-        interchanges.add(new InterchangeInfo("Via Ludovico Il Moro, 25", new String[]{"2", "164", "324", "325"}, "tram.fill", "Main", 27));
-        interchanges.add(new InterchangeInfo("Via Ludovico Il Moro Cavalcavia Don Milani", new String[]{"2", "98", "164", "324", "325", "z553"}, "bus.fill", "Main", 28));
-        interchanges.add(new InterchangeInfo("Via Ludovico Il Moro Via Guintellino", new String[]{"2", "164"}, "tram.fill", "Main", 29));
+        interchanges.add(new InterchangeInfo("Via L. Il Moro Via Pestalozzi", new String[]{"2", "164", "324", "325", "z553"}, "bus.fill", "Main", 26));
+        interchanges.add(new InterchangeInfo("Via L. Il Moro, 25", new String[]{"2", "164", "324", "325"}, "tram.fill", "Main", 27));
+        interchanges.add(new InterchangeInfo("Via L. Il Moro Cavalcavia Don Milani", new String[]{"2", "98", "164", "324", "325", "z553"}, "bus.fill", "Main", 28));
+        interchanges.add(new InterchangeInfo("Via L. Il Moro Via Guintellino", new String[]{"2", "164"}, "tram.fill", "Main", 29));
         interchanges.add(new InterchangeInfo("Piazzale Negrelli", new String[]{"2", "47", "164", "324", "325", "351", "z553"}, "bus.fill", "Main", 30));
 
         /// Tram 3
