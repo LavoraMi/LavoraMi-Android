@@ -1747,7 +1747,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Via Mecenate Via Fantoli", new String[]{"27", "88", "N27"}, "tram.fill", "Main", 17));
         interchanges.add(new InterchangeInfo("Via Mecenate Via Quintiliano", new String[]{"27", "88", "N27"}, "tram.fill", "Main", 18));
         interchanges.add(new InterchangeInfo("Viale Ungheria Via Mecenate", new String[]{"27", "45", "66", "88", "175", "N27"}, "tram.fill", "Main", 19));
-        interchanges.add(new InterchangeInfo("Viale Ungheria Largo Gonzaga", new String[]{"27", "45", "66", "88", "175", "N27"}, "tram.fill", "Main", 20));
+        interchanges.add(new InterchangeInfo("Viale Ungheria Largo Gonzaga Ice Hockey Arena", new String[]{"27", "45", "66", "88", "175", "N27"}, "stadium.fill", "Main", 20));
         interchanges.add(new InterchangeInfo("Viale Ungheria, 20", new String[]{"27", "45", "175", "N27"}, "tram.fill", "Main", 21));
         interchanges.add(new InterchangeInfo("Viale Ungheria", new String[]{"27", "45", "66", "88", "175", "N27"}, "bus.fill", "Main", 22));
 

@@ -3803,7 +3803,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.44575, 9.24553, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.44578, 9.24563, "Main", "27"));
         stations.add(new MetroStation("V.Le Ungheria, 20", 45.4458, 9.24628, "Main", "27"));
-        stations.add(new MetroStation("V.Le Ungheria L.Go Gonzaga", 45.44594, 9.2518, "Main", "27"));
+        stations.add(new MetroStation("V.Le Ungheria L.Go Gonzaga Ice Hockey Arena", 45.44594, 9.2518, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.44611, 9.25363, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.44615, 9.25378, "Main", "27"));
         stations.add(new MetroStation("NO_DRAW", 45.44623, 9.25396, "Main", "27"));
