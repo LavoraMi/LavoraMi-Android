@@ -1847,18 +1847,22 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] linesSuspended = cdnData.getlineeSospeseInteramente();
         String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
         String[] lineeConRallentamenti = cdnData.getlinesWithSlowdowns();
+        String[] lineeConOrariImprecisi = cdnData.getorariTramImprecisi();
         String[] linesMultipleRoutes = {"z301", "z555", "z619", "z647"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaRallentata = findViewById(R.id.lineaRallentata);
         LinearLayout lineaSospesa = findViewById(R.id.lineaInterrotta);
+        LinearLayout orariImprecisi = findViewById(R.id.orariImprecisi);
         LinearLayout lineaFullBus = findViewById(R.id.lineaFullBus);
         LinearLayout busMultipleRoutes = findViewById(R.id.busMultipleRoutes);
+
         ImageView mapDeviationBtn = findViewById(R.id.mapDeviationBtn);
         ImageView lineSuspendedInfoBtn = findViewById(R.id.infoLineClosed);
         ImageView infoLineBusesBtn = findViewById(R.id.infoLineBusesBtn);
         ImageView busMultipleRoutesBtn = findViewById(R.id.busMultipleRoutesBtn);
         ImageView infoSlowdownsBtn = findViewById(R.id.infoSlowdowns);
+        ImageView infoArrivalBtn = findViewById(R.id.infoArrivalBtn);
 
         for(String linea: lineeSostituiteBus) {if(linea.equals(nomeLinea)) lineaFullBus.setVisibility(View.VISIBLE);}
         lineaFullBus.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.busPopUpTitle), getString(R.string.busPopUpDeps)));
@@ -1895,6 +1899,15 @@ public class LinesDetailActivity extends AppCompatActivity {
                 lineaRallentata.setVisibility(View.VISIBLE);
                 infoSlowdownsBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSlowdownPopUpTitle), getString(R.string.lineSlowdownPopUpDeps)));
                 lineaRallentata.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.lineSlowdownPopUpTitle), getString(R.string.lineSlowdownPopUpDeps)));
+            }
+        }
+
+        //? LINE TIMETABLES
+        for (int b = 0; b < lineeConOrariImprecisi.length; b++) {
+            if (lineeConOrariImprecisi[b].equalsIgnoreCase(nomeLinea)) {
+                orariImprecisi.setVisibility(View.VISIBLE);
+                orariImprecisi.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Orari Imprecisi o Mancanti", "Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione."));
+                infoArrivalBtn.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, "Orari Imprecisi o Mancanti", "Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione."));
             }
         }
 
