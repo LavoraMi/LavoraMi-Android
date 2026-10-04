@@ -3591,7 +3591,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48581, 9.15867, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48567, 9.15875, "Main", "19"));
         stations.add(new MetroStation("C.So Sempione Via Arona", 45.48418, 9.16065, "Main", "19"));
-        stations.add(new MetroStation("Domodossola M5", 45.48244, 9.16299, "Main", "19"));
+        stations.add(new MetroStation("Domodossola FN M5", 45.48244, 9.16299, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48241, 9.16304, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48234, 9.16308, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48227, 9.1631, "Main", "19"));
@@ -3688,14 +3688,14 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.48423, 9.2371, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48438, 9.23691, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48458, 9.23671, "Main", "19"));
-        stations.add(new MetroStation("Lambrate FS M2", 45.48485, 9.23659, "Main", "19"));
+        stations.add(new MetroStation("Stazione Lambrate M2", 45.48485, 9.23659, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48507, 9.23631, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.4851, 9.2362, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48509, 9.23609, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48501, 9.23591, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48489, 9.23583, "Main", "19"));
         stations.add(new MetroStation("NO_DRAW", 45.48475, 9.23584, "Main", "19"));
-        stations.add(new MetroStation("Lambrate M2", 45.48459, 9.23596, "Main", "19"));
+        stations.add(new MetroStation("Stazione Lambrate M2", 45.48459, 9.23596, "Main", "19"));
         return stations;
     }
 
