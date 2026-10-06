@@ -288,6 +288,7 @@ public class StationDB {
             allStations.addAll(MetroStationsDB.getStationsM3());
             allStations.addAll(MetroStationsDB.getStationsM4());
             allStations.addAll(MetroStationsDB.getStationsM5());
+            allStations.addAll(MetroStationsDB.getStationsMeLa());
 
             allStations.addAll(SuburbanStationsDB.getStationsS1());
             allStations.addAll(SuburbanStationsDB.getStationsS2());

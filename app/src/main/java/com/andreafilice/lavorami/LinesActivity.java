@@ -62,7 +62,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerNET, containerStav, containerSTAR, containerAutoGuidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerMela, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerNET, containerStav, containerSTAR, containerAutoGuidovie;
     LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleNET, titleStav, titleSTAR, titleAutoguidovie;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
@@ -106,6 +106,7 @@ public class LinesActivity extends AppCompatActivity {
         containerRecent = findViewById(R.id.groupRecent);
         headerMetro = findViewById(R.id.headerMetro);
         containerMetro = findViewById(R.id.groupMetro);
+        containerMela = findViewById(R.id.groupMela);
         containerAds = findViewById(R.id.groupAds);
         containerSub = findViewById(R.id.groupSub);
         containerRegioExpress = findViewById(R.id.groupRE);
@@ -518,6 +519,11 @@ public class LinesActivity extends AppCompatActivity {
             aggiungiLinea(containerMetro, metroLines[finalI], metroColors[finalI], "Metro");
         }
 
+        //MELA
+        String melaLine = "H";
+        int lineColor = R.color.REGIONAL;
+        aggiungiLinea(containerMela, melaLine, lineColor, "Minimetro S. Raffaele");
+
         // SUBURBANE
         String[] suburbanLines = {"S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9",
                 "S11", "S12", "S13", "S19", "S31"};
@@ -632,7 +638,7 @@ public class LinesActivity extends AppCompatActivity {
 
         if (badge != null && name != null) {
             badge.setText(label);
-            name.setText((description + " " +  label));
+            name.setText((description.contains("Minimetro")) ? description : (description + " " +  label));
             shimmerAnim.setVisibility(View.GONE);
             shimmerBadgeAnim.setVisibility(View.GONE);
             lineBadge.setVisibility(View.VISIBLE);

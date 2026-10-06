@@ -288,6 +288,17 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/groupMela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_line_group"
+                android:orientation="vertical"
+                android:divider="@drawable/line_divider"
+                android:layout_marginTop="25dp"
+                android:showDividers="middle">
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/headerAds"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
