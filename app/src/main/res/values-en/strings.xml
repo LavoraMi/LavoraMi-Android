@@ -489,4 +489,5 @@
     <string name="timetablePopUpTitle">Inaccurate or Missing Timetables</string>
     <string name="timetablePopUpDeps">Work has recently been completed along this line which had been restricting services or causing service disruptions. We may receive the updated timetables in a few days’ time and will then remove this information.</string>
     <string name="uppercasedTimeTableTitle">INACCURATE OR MISSING TIMETABLES</string>
+    <string name="infoMetro">Info</string>
 </resources>

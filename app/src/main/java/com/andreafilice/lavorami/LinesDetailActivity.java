@@ -2804,6 +2804,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                 statusText.setText(getString(R.string.metroStatoInterrotta));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
+            case "Info":
+                baseColor = ContextCompat.getColor(this, R.color.RE80);
+                lineaRegolareIcon.setImageResource(R.drawable.ic_question);
+                statusText.setText(getString(R.string.infoMetro));
+                infoIconStatus.setVisibility(View.VISIBLE);
+                break;
             case "Chiusa":
                 baseColor = ContextCompat.getColor(this, R.color.S12);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);

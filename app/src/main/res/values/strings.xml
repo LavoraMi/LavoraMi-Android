@@ -488,4 +488,5 @@
     <string name="timetablePopUpTitle">Orari Imprecisi o Mancanti</string>
     <string name="timetablePopUpDeps">Sul tragitto di questa linea ultimamente si sono conclusi lavori che limitavano corse o interrompevano il servizio. Tra pochi giorni potremmo ricevere gli orari aggiornati e rimuovere questa informazione.</string>
     <string name="uppercasedTimeTableTitle">ORARI NON PRECISI O MANCANTI</string>
+    <string name="infoMetro">Info</string>
 </resources>
