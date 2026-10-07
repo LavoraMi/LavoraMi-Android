@@ -69,7 +69,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Cologno Centro", new String[]{"M2", "702", "707"}, "tram.fill.tunnel", "Cologno Nord", 1));
         interchanges.add(new InterchangeInfo("Cologno Sud", new String[]{"M2", "701", "707", "709"}, "tram.fill.tunnel", "Cologno Nord", 2));
 
-        interchanges.add(new InterchangeInfo("Cascina Gobba", new String[]{"M2", "NM2", "44", "54", "86", "925"}, "bus.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Cascina Gobba", new String[]{"M2", "NM2", "H", "44", "54", "86", "925"}, "bus.fill", "Main", 0));
         interchanges.add(new InterchangeInfo("Crescenzago", new String[]{"M2", "NM2", "44", "54", "56", "86",}, "tram.fill.tunnel", "Main", 1));
         interchanges.add(new InterchangeInfo("Cimiano", new String[]{"M2", "NM2", "53", "54"}, "tram.fill.tunnel", "Main", 2));
         interchanges.add(new InterchangeInfo("Udine", new String[]{"M2", "NM2", "53", "54", "55", "175", "925"}, "tram.fill.tunnel", "Main", 3));
@@ -158,6 +158,10 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Portello", new String[]{"M5", "48", "78"}, "tram.fill.tunnel", "Main", 14));
         interchanges.add(new InterchangeInfo("San Siro Ippodromo", new String[]{"M5", "16"}, "tram.fill.tunnel", "Main", 15));
         interchanges.add(new InterchangeInfo("San Siro Stadio", new String[]{"M5", context.getString(R.string.stadiumKey), "16", "49"}, "stadium.fill", "Main", 16));
+
+        /// Minimetro San Raffaele
+        interchanges.add(new InterchangeInfo("Cascina Gobba M2", new String[]{"H", "M2", "NM2", "44", "54", "86", "925"}, "bus.fill", "Main", 0));
+        interchanges.add(new InterchangeInfo("Ospedale San Raffaele", new String[]{"H", context.getString(R.string.ospedaleInterchange), "923", "925", "928"}, "hospital", "Main", 1));
 
         return interchanges;
     }

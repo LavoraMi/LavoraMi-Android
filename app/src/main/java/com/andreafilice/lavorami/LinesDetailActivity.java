@@ -1313,7 +1313,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     interchanges = InterchangesDB.getTramInterchanges(this);
                 else if (tipoDiLinea.contains(getString(R.string.filobusKey)))
                     interchanges = InterchangesDB.getFilobusInterchanges(this);
-                else if (isLineaMetro())
+                else if (isLineaMetro() || nomeLinea.equals("H"))
                     interchanges = InterchangesDB.getMetroInterchanges(this);
                 else if (isLineaSuburbano())
                     interchanges = InterchangesDB.getSuburbanInterchanges();
@@ -1335,7 +1335,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     if (info.getLines() == null || info.getLines().length == 0) continue;
 
                     boolean match = false;
-                    if (isLineaMetro() || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || isLineaTram() || tipoDiLinea.contains(getString(R.string.filobusKey))) {
+                    if (isLineaMetro() || nomeLinea.equals("H") || isLineaSuburbano() || isLineaRegionale() || isLineaRegioExpress() || isMalpensaExpress() || isLineaTilo() || isLineaTram() || tipoDiLinea.contains(getString(R.string.filobusKey))) {
                         String primaryLine = info.getLines()[0].trim().toUpperCase();
                         match = primaryLine.equals(searchTag);
                     }
