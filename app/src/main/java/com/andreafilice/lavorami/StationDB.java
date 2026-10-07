@@ -497,7 +497,7 @@ public class StationDB {
             case "M5":
                 return R.color.M5;
             case "H":
-                return R.color.REGIONAL;
+                return R.color.REG;
 
             /// SFM LINES
             case "SFM 6":

@@ -531,7 +531,7 @@ public class LinesActivity extends AppCompatActivity {
 
         //MELA
         String melaLine = "H";
-        int lineColor = R.color.REGIONAL;
+        int lineColor = R.color.REG;
         aggiungiLinea(containerMela, melaLine, lineColor, "Minimetro San Raffaele");
 
         // SUBURBANE
