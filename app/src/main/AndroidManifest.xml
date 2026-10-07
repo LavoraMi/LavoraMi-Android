@@ -166,7 +166,7 @@
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="1112577687962954"/>
+            android:value="1610403663909209"/>
 
         <receiver
             android:name=".NotificationReceiver"
