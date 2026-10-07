@@ -1010,7 +1010,7 @@ public class LinesActivity extends AppCompatActivity {
     private void repositionAdsIfNeeded() {
         if (titleAds == null || containerAds == null || parentScrollLayout == null) return;
 
-        boolean shouldBeAfterRecent = recentLinesSet.size() >= 3;
+        boolean shouldBeAfterRecent = recentLinesSet.size() >= 2;
 
         parentScrollLayout.removeView(titleAds);
         parentScrollLayout.removeView(containerAds);
