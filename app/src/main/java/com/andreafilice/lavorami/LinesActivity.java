@@ -273,6 +273,7 @@ public class LinesActivity extends AppCompatActivity {
 
                     hasRecent = (query.isEmpty() && DataManager.getBoolData(DataKeys.KEY_SHOW_RECENT_LINES, true));
                     hasMetro = filtraContainer(containerMetro, query);
+                    hasMinimetro = filtraContainer(containerMela, query);
                     hasSub = filtraContainer(containerSub, query);
                     hasRegioExpress = filtraContainer(containerRegioExpress, query);
                     hasRegional = filtraContainer(containerRegional, query);
@@ -301,6 +302,15 @@ public class LinesActivity extends AppCompatActivity {
                     titleMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
                     containerMetro.setVisibility(hasMetro ? View.VISIBLE : View.GONE);
                     setUpMargin(headerMetro, isFirstVisibleContainer(hasMetro, firstContainerTracker));
+
+                    //*MINIMETRO LINE
+                    titleMetro.setVisibility(hasMinimetro ? View.VISIBLE : View.GONE);
+                    containerMela.setVisibility(hasMinimetro ? View.VISIBLE : View.GONE);
+
+                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) containerMela.getLayoutParams();
+                    layoutParams.topMargin = hasMinimetro ? 0 : (int)(13 * getResources().getDisplayMetrics().density);
+
+                    setUpMargin(headerMetro, isFirstVisibleContainer(hasMinimetro, firstContainerTracker));
 
                     //*SUBURBAN LINES
                     titleSub.setVisibility(hasSub ? View.VISIBLE : View.GONE);
@@ -361,7 +371,7 @@ public class LinesActivity extends AppCompatActivity {
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
-                    checkForEmptySearch(!hasMetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasNET && !hasStav && !hasSTAR && !hasAuto, s);
+                    checkForEmptySearch(!hasMetro && !hasMinimetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasNET && !hasStav && !hasSTAR && !hasAuto, s);
 
                     searchLines.setCompoundDrawables(searchIcon, null, (s.length() > 0) ? deleteIcon : null, null);
                 };
