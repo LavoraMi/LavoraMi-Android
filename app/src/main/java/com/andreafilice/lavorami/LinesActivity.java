@@ -83,7 +83,7 @@ public class LinesActivity extends AppCompatActivity {
     private Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
     //* BOOLEAN VALUES
-    boolean hasRecent, hasMetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasNET, hasStav, hasSTAR, hasAuto;
+    boolean hasRecent, hasMetro, hasMinimetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasNET, hasStav, hasSTAR, hasAuto;
 
     //* SUPABASE VALUES
     SessionManager sessionManager;
@@ -711,7 +711,7 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     public void reloadSavedLines(){
-        LinearLayout [] containers = {containerRecent, containerMetro, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
+        LinearLayout [] containers = {containerRecent, containerMetro, containerMela, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
         for (LinearLayout container : containers) {
             int numeroLinee = container.getChildCount();
 
@@ -1013,7 +1013,7 @@ public class LinesActivity extends AppCompatActivity {
             parentScrollLayout.addView(containerAds, insertIndex + 1);
         }
         else {
-            int indexMetro = parentScrollLayout.indexOfChild(containerMetro);
+            int indexMetro = parentScrollLayout.indexOfChild(containerMela);
             int insertIndex = indexMetro + 1;
 
             parentScrollLayout.addView(titleAds, insertIndex);
