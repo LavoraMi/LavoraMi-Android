@@ -1973,7 +1973,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
 
-            case "H": return "Cascina Gobba - Osp. S. Raffaele";
+            case "H": return "Cascina Gobba - Ospedale S. Raffaele";
 
             case "S1": return "Saronno - Lodi";
             case "S2": return "Mariano Comense - Milano Rogoredo";
