@@ -15,7 +15,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Sesto 1° Maggio FS", new String[]{"M1", "NM1", "S7", "S8", "S9", "S11", "R13", "R14", "RE8", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"}, "tram.fill.tunnel", "Main", 19));
         interchanges.add(new InterchangeInfo("Sesto Rondò", new String[]{"M1", "NM1", "700", "701", "708", "713"}, "tram.fill.tunnel", "Main", 18));
         interchanges.add(new InterchangeInfo("Sesto Marelli", new String[]{"M1", "NM1", "51", "53", "81", "87", "700"}, "tram.fill.tunnel", "Main", 17));
-        interchanges.add(new InterchangeInfo("Villa S. Giovanni", new String[]{"M1", "NM1", "51", "81", "87"}, "tram.fill.tunnel", "Main", 16));
+        interchanges.add(new InterchangeInfo("Villa San Giovanni", new String[]{"M1", "NM1", "51", "81", "87"}, "tram.fill.tunnel", "Main", 16));
         interchanges.add(new InterchangeInfo("Precotto", new String[]{"M1", "NM1", "7", "51", "86", "174"}, "tram.fill.tunnel", "Main", 15));
         interchanges.add(new InterchangeInfo("Gorla", new String[]{"M1", "NM1", "44", "174"}, "tram.fill.tunnel", "Main", 14));
         interchanges.add(new InterchangeInfo("Turro", new String[]{"M1", "NM1", "44", "174"}, "tram.fill.tunnel", "Main", 13));
@@ -40,7 +40,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Lampugnano", new String[]{"M1", "NM1", "68", "z301"}, "tram.fill.tunnel", "Rho Fiera-Milano", 6));
         interchanges.add(new InterchangeInfo("Uruguay", new String[]{"M1", "40", "68", "69"}, "tram.fill.tunnel", "Rho Fiera-Milano", 5));
         interchanges.add(new InterchangeInfo("Bonola", new String[]{"M1", "40", "64", "68", "69"}, "tram.fill.tunnel", "Rho Fiera-Milano", 4));
-        interchanges.add(new InterchangeInfo("S. Leonardo", new String[]{"M1", "NM1"}, "tram.fill.tunnel", "Rho Fiera-Milano", 3));
+        interchanges.add(new InterchangeInfo("San Leonardo", new String[]{"M1", "NM1"}, "tram.fill.tunnel", "Rho Fiera-Milano", 3));
         interchanges.add(new InterchangeInfo("Molino Dorino", new String[]{"M1", "NM1", "35", "69", "80", "424", "528", "z601", "z617", "z620", "z621", "z649"}, "bus.fill", "Rho Fiera-Milano", 2));
         interchanges.add(new InterchangeInfo("Pero", new String[]{"M1", "528", "z601"}, "tram.fill.tunnel", "Rho Fiera-Milano", 1));
         interchanges.add(new InterchangeInfo("Rho Fiera-Milano", new String[]{"M1", "S5", "S6", "S11", "R21", "R23", "RE4", "RE5", "RE80", "542", "561"}, "lightrail", "Rho Fiera-Milano", 0));
