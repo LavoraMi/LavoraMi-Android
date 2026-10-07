@@ -639,6 +639,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             detTitolo.setText("Regio Express " + nomeLinea);
         if(nomeLinea.matches("9[0-3]"))
             detTitolo.setText(getString(R.string.filobusKey) + " " + nomeLinea);
+        if(nomeLinea.equals("H"))
+            detTitolo.setText("Minimetro");
 
         detBadge.setText((nomeLinea.startsWith("MXP")) ? "MXP" : nomeLinea);
         int colorResId = StationDB.getLineColor(this, nomeLinea);
@@ -743,7 +745,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 latMedia /= contate;
                 lngMedia /= contate;
                 
-                double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll))) || tipoDiLinea.contains(getString(R.string.filobusKey)) ? 12.5 : (isLineaMetro() ? 11.5 : 10);
+                double zoom = (tipoDiLinea.contains(getString(R.string.tramLinesScroll))) || tipoDiLinea.contains(getString(R.string.filobusKey)) ? 12.5 : (isLineaMetro() ? 11.5 : (nomeLinea.equals("H")) ? 14.7 : 10);
                 MapboxHelper.setCamera(mapView, latMedia, lngMedia, zoom);
             }
         }
@@ -1776,7 +1778,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         Log.d("LINEA", nomeLinea);
 
-        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R") || (nomeLinea.startsWith("9") && !tipoDiLinea.contains(getString(R.string.tramLinesScroll))))
+        if (nomeLinea.startsWith("M") || nomeLinea.startsWith("S") || nomeLinea.equalsIgnoreCase("H") || nomeLinea.equalsIgnoreCase("RE80") || nomeLinea.startsWith("RE") || nomeLinea.startsWith("R") || (nomeLinea.startsWith("9") && !tipoDiLinea.contains(getString(R.string.tramLinesScroll))))
             tvAttesa.setText(getFrequenza(nomeLinea));
         else if(tipoDiLinea.contains(getString(R.string.tramLinesScroll)))
             tvAttesa.setText("5-20 min.");
@@ -1970,6 +1972,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M3": return "San Donato - Comasina";
             case "M4": return "San Cristoforo - Linate Aeroporto";
             case "M5": return "San Siro Stadio - Bignami";
+
+            case "H": return "Cascina Gobba - Osp. S. Raffaele";
 
             case "S1": return "Saronno - Lodi";
             case "S2": return "Mariano Comense - Milano Rogoredo";
@@ -2172,6 +2176,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "M3": return "4-5 min";
             case "M4": return "2-3 min";
             case "M5": return "4 min";
+            case "H": return "10 min";
             case "S10": return String.format("1 %s - 45 min", getString(R.string.hourPrefix));
             case "S30": return String.format("2 %s", getString(R.string.hoursPrefix));
             case "RE80":

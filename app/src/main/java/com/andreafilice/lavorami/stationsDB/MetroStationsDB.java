@@ -382,40 +382,40 @@ public class MetroStationsDB {
         return stations;
     }
 
-    public static List<MetroStation> getStationsMeLa() {
+    public static List<MetroStation> getStationsH() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Cascina Gobba M2", 45.51084, 9.26242, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.51049, 9.26251, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50977, 9.26272, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50901, 9.26294, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50881, 9.263, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50872, 9.26303, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50863, 9.26304, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50851, 9.26307, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50837, 9.26309, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50826, 9.26309, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.5081, 9.2631, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50793, 9.26308, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50774, 9.26306, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50755, 9.26301, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50739, 9.26296, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50718, 9.26289, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50708, 9.26286, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50697, 9.26285, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50689, 9.26284, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50679, 9.26285, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50667, 9.26289, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50648, 9.26297, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50632, 9.26306, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50615, 9.26322, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50595, 9.26342, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50581, 9.26362, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50574, 9.26378, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50568, 9.26401, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50564, 9.26424, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50566, 9.2649, "Main", "MeLa"));
-        stations.add(new MetroStation("NO_DRAW", 45.50584, 9.26599, "Main", "MeLa"));
-        stations.add(new MetroStation("Ospedale San Raffaele", 45.50598, 9.2668, "Main", "MeLa"));
+        stations.add(new MetroStation("Cascina Gobba M2", 45.51084, 9.26242, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.51049, 9.26251, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50977, 9.26272, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50901, 9.26294, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50881, 9.263, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50872, 9.26303, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50863, 9.26304, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50851, 9.26307, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50837, 9.26309, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50826, 9.26309, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.5081, 9.2631, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50793, 9.26308, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50774, 9.26306, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50755, 9.26301, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50739, 9.26296, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50718, 9.26289, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50708, 9.26286, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50697, 9.26285, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50689, 9.26284, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50679, 9.26285, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50667, 9.26289, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50648, 9.26297, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50632, 9.26306, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50615, 9.26322, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50595, 9.26342, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50581, 9.26362, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50574, 9.26378, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50568, 9.26401, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50564, 9.26424, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50566, 9.2649, "Main", "H"));
+        stations.add(new MetroStation("NO_DRAW", 45.50584, 9.26599, "Main", "H"));
+        stations.add(new MetroStation("Ospedale San Raffaele", 45.50598, 9.2668, "Main", "H"));
 
         return stations;
     }

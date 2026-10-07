@@ -288,7 +288,7 @@ public class StationDB {
             allStations.addAll(MetroStationsDB.getStationsM3());
             allStations.addAll(MetroStationsDB.getStationsM4());
             allStations.addAll(MetroStationsDB.getStationsM5());
-            allStations.addAll(MetroStationsDB.getStationsMeLa());
+            allStations.addAll(MetroStationsDB.getStationsH());
 
             allStations.addAll(SuburbanStationsDB.getStationsS1());
             allStations.addAll(SuburbanStationsDB.getStationsS2());
@@ -496,6 +496,8 @@ public class StationDB {
                 return R.color.M4;
             case "M5":
                 return R.color.M5;
+            case "H":
+                return R.color.REGIONAL;
 
             /// SFM LINES
             case "SFM 6":
