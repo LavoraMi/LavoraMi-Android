@@ -722,7 +722,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                                     String stationName = clickedFeature.getStringProperty("name");
 
                                     if (isStazioneInCostruzione(stationName)) {
-                                        Toast.makeText(LinesDetailActivity.this, "Stazione in costruzione.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LinesDetailActivity.this, getString(R.string.stationConstruction), Toast.LENGTH_SHORT).show();
                                         return;
                                     }
 

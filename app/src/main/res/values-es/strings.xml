@@ -490,4 +490,5 @@
     <string name="timetablePopUpDeps">En el recorrido de esta línea se han finalizado recientemente unas obras que limitaban los trayectos o interrumpían el servicio. Dentro de unos días podríamos recibir los horarios actualizados y eliminar esta información.</string>
     <string name="uppercasedTimeTableTitle">HORARIOS IMPRECISOS O QUE FALTAN</string>
     <string name="infoMetro">Aviso</string>
+    <string name="stationConstruction">Estación en construcción.</string>
 </resources>
