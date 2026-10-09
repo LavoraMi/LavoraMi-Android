@@ -723,6 +723,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
                                     if (isStazioneInCostruzione(stationName)) {
                                         Toast.makeText(LinesDetailActivity.this, getString(R.string.stationConstruction), Toast.LENGTH_SHORT).show();
+                                        ActivityUtils.triggerFeedback(LinesDetailActivity.this);
                                         return;
                                     }
 
