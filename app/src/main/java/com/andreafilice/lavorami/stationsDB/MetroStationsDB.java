@@ -27,9 +27,10 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Duomo", 45.46443, 9.18927, "Main", "M1"));
         stations.add(new MetroStation("Cordusio", 45.46539, 9.18635, "Main", "M1"));
         stations.add(new MetroStation("Cairoli", 45.4682, 9.18225, "Main", "M1"));
-        stations.add(new MetroStation("Cadorna FN Triennale", 45.4682, 9.17588, "Main", "M1"));
+        stations.add(new MetroStation("Cadorna FN", 45.4682, 9.17588, "Main", "M1"));
         stations.add(new MetroStation("Conciliazione", 45.46749, 9.1663, "Main", "M1"));
         stations.add(new MetroStation("Pagano", 45.46828, 9.16077, "Main", "M1"));
+
         stations.add(new MetroStation("Buonarroti", 45.47054, 9.1552, "Rho", "M1"));
         stations.add(new MetroStation("Amendola", 45.47356, 9.15132, "Rho", "M1"));
         stations.add(new MetroStation("Lotto", 45.47909, 9.14454, "Rho", "M1"));
@@ -41,6 +42,7 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Molino Dorino", 45.50516, 9.09323, "Rho", "M1"));
         stations.add(new MetroStation("Pero", 45.50869, 9.08581, "Rho", "M1"));
         stations.add(new MetroStation("Rho Fiera-Milano", 45.51797, 9.08564, "Rho", "M1"));
+
         stations.add(new MetroStation("Wagner", 45.46784, 9.15529, "Bisceglie", "M1"));
         stations.add(new MetroStation("De Angeli", 45.46656, 9.14987, "Bisceglie", "M1"));
         stations.add(new MetroStation("Gambara", 45.46499, 9.14295, "Bisceglie", "M1"));
@@ -51,6 +53,7 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Parri", 45.45188, 9.09925, "Bisceglie - New", "M1"));
         stations.add(new MetroStation("Baggio", 45.4553, 9.08892, "Bisceglie - New", "M1"));
         stations.add(new MetroStation("Olmi", 45.45642, 9.08226, "Bisceglie - New", "M1"));
+
         return stations;
     }
 
@@ -86,18 +89,20 @@ public class MetroStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.43052, 9.16572, "Assago", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43131, 9.16685, "Assago", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.4317, 9.1672, "Assago", "M2"));
+
         stations.add(new MetroStation("Piazza Abbiategrasso", 45.42984, 9.17838, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.42979, 9.17633, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43016, 9.17427, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43151, 9.17171, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43287, 9.16946, "Abbiategrasso", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.43458, 9.16778, "Abbiategrasso", "M2"));
+
         stations.add(new MetroStation("Famagosta", 45.43719, 9.16795, "Main", "M2"));
         stations.add(new MetroStation("Romolo", 45.44373, 9.16767, "Main", "M2"));
         stations.add(new MetroStation("Porta Genova FS", 45.45273, 9.16972, "Main", "M2"));
         stations.add(new MetroStation("S. Agostino", 45.45834, 9.16977, "Main", "M2"));
         stations.add(new MetroStation("S. Ambrogio", 45.46185, 9.17325, "Main", "M2"));
-        stations.add(new MetroStation("Cadorna FN Triennale", 45.4682, 9.17588, "Main", "M2"));
+        stations.add(new MetroStation("Cadorna FN", 45.4682, 9.17588, "Main", "M2"));
         stations.add(new MetroStation("Lanza", 45.47196, 9.18273, "Main", "M2"));
         stations.add(new MetroStation("Moscova", 45.4775, 9.18471, "Main", "M2"));
         stations.add(new MetroStation("Garibaldi FS", 45.48351, 9.18671, "Main", "M2"));
@@ -261,7 +266,7 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Dateo", 45.46799, 9.21845, "Main", "M4"));
         stations.add(new MetroStation("Tricolore", 45.46793, 9.20868, "Main", "M4"));
         stations.add(new MetroStation("San Babila", 45.46642, 9.19757, "Main", "M4"));
-        stations.add(new MetroStation("Sforza-Policlinico", 45.45874, 9.19433, "Main", "M4"));
+        stations.add(new MetroStation("Sforza - Policlinico", 45.45874, 9.19433, "Main", "M4"));
         stations.add(new MetroStation("Santa Sofia", 45.45633, 9.18863, "Main", "M4"));
         stations.add(new MetroStation("Vetra", 45.4571, 9.18262, "Main", "M4"));
         stations.add(new MetroStation("De Amicis", 45.45909, 9.17721, "Main", "M4"));
