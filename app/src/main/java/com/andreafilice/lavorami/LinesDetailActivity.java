@@ -710,7 +710,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     selezionaFermataDaMappa(stationName);
                                 }
-                            } else if (isLineaTram()) {
+                            }
+                            else if (isLineaTram()) {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
                                     apriDettaglioFermata(stationName);
@@ -719,6 +720,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                             else {
                                 if (clickedFeature.hasProperty("name")) {
                                     String stationName = clickedFeature.getStringProperty("name");
+
+                                    if (isStazioneInCostruzione(stationName)) {
+                                        Toast.makeText(LinesDetailActivity.this, "Stazione in costruzione.", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
                                     selezionaInterscambioDaMappa(stationName);
                                 }
                             }
@@ -2889,6 +2896,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             String regex = "(?i)(?<=^|\\s)" + abbreviazioneEscaped + "(?=\\s|$)";
             risultato = risultato.replaceAll(regex, Matcher.quoteReplacement(espansa));
         }
+
         return risultato;
     }
 
@@ -2912,8 +2920,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (titolo == null) continue;
 
                 String testoTitolo = titolo.getText().toString();
-                if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase())
-                        || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
+                if (testoTitolo.toLowerCase().contains(nomeStazioneMappa.toLowerCase()) || (nomeStazioneMappa.equalsIgnoreCase("Lodi TIBB") && testoTitolo.equalsIgnoreCase("Milano Scalo Romana"))) {
                     branchTrovato = chiaveAttuale;
                     viewTrovata = card;
                     break;
@@ -2933,7 +2940,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                         viewTrovata = card;
                         break;
                     }
-                    else{
+                    else {
                         String[] nomeStazioneSplit = nomeStazioneMappa.split("\\s");
                         for(String parola : nomeStazioneSplit){
                             if (testoTitolo.toLowerCase().contains(parola.toLowerCase())) {
@@ -2942,9 +2949,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                                 break;
                             }
                         }
-                        if(viewTrovata != null){
-                            break;
-                        }
+                        if(viewTrovata != null) break;
                     }
                 }
                 if (viewTrovata != null) break;
@@ -2980,9 +2985,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             Button btnBranch = findViewById(R.id.buttonSelectBranch);
             if (btnBranch != null) {
-                if(!"Main".equals(selectedBranch)){
+                if(!"Main".equals(selectedBranch))
                     btnBranch.setText(selectedBranch);
-                }
             }
 
             LinearLayout container = findViewById(R.id.containerInterscambi);
@@ -3000,8 +3004,10 @@ public class LinesDetailActivity extends AppCompatActivity {
                 NestedScrollView nsv = (NestedScrollView) scrollContainer;
                 int[] location = new int[2];
                 int[] scrollLocation = new int[2];
+
                 finalViewTrovata.getLocationOnScreen(location);
                 nsv.getLocationOnScreen(scrollLocation);
+
                 int targetY = nsv.getScrollY() + (location[1] - scrollLocation[1]) - (int) (24 * getResources().getDisplayMetrics().density);
                 nsv.smoothScrollTo(0, Math.max(targetY, 0));
             }
@@ -3009,14 +3015,30 @@ public class LinesDetailActivity extends AppCompatActivity {
                 ScrollView scrollViewInterchanges = (ScrollView) scrollContainer;
                 int[] location = new int[2];
                 int[] scrollLocation = new int[2];
+
                 finalViewTrovata.getLocationOnScreen(location);
                 scrollViewInterchanges.getLocationOnScreen(scrollLocation);
+
                 int targetY = scrollViewInterchanges.getScrollY() + (location[1] - scrollLocation[1]) - (int) (20 * getResources().getDisplayMetrics().density);
                 scrollViewInterchanges.smoothScrollTo(0, Math.max(targetY, 0));
             }
 
             evidenziaCardTemporaneamente(finalViewTrovata);
         });
+    }
+
+    private boolean isStazioneInCostruzione(String stationName) {
+        if (stationName == null) return false;
+
+        for (MetroStation s : StationDB.getAllStations()) {
+            if (!s.getLine().trim().equalsIgnoreCase(nomeLinea.trim())) continue;
+            if (!s.getName().equalsIgnoreCase(stationName.trim())) continue;
+
+            String branch = s.getBranch();
+            if (branch != null && branch.toLowerCase().contains("new"))
+                return true;
+        }
+        return false;
     }
 
     private View trovaScrollParent(View view) {
