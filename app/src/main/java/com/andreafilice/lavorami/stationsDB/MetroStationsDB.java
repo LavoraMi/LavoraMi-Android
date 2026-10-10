@@ -59,7 +59,7 @@ public class MetroStationsDB {
 
     public static List<MetroStation> getStationsM2() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Assago Forum", 45.40183, 9.14562, "Assago", "M2"));
+        stations.add(new MetroStation("Assago Milanofiori Forum", 45.40183, 9.14562, "Assago", "M2"));
         stations.add(new MetroStation("Assago Milanofiori Nord", 45.40945, 9.15004, "Assago", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.41521, 9.15352, "Assago", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.41559, 9.15391, "Assago", "M2"));
