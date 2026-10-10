@@ -23,7 +23,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Pasteur", new String[]{"M1", "NM1"}, "tram.fill.tunnel", "Main", 11));
         interchanges.add(new InterchangeInfo("Loreto", new String[]{"M1", "NM1", "M2", "NM2", "39", "55", "56", "90", "91"}, "tram.fill.tunnel", "Main", 10));
         interchanges.add(new InterchangeInfo("Lima", new String[]{"M1", "NM1", "60", "81", "N25", "N26"}, "tram.fill.tunnel", "Main", 9));
-        interchanges.add(new InterchangeInfo("Porta Venezia FS", new String[]{"M1", "NM1", "S1", "S2", "S5", "S6", "S12", "S13", "5", "9", "33"}, "tram.fill.tunnel", "Main", 8));
+        interchanges.add(new InterchangeInfo("Porta Venezia", new String[]{"M1", "NM1", "S1", "S2", "S5", "S6", "S12", "S13", "5", "9", "33"}, "tram.fill.tunnel", "Main", 8));
         interchanges.add(new InterchangeInfo("Palestro", new String[]{"M1", "NM1"}, "tram.fill.tunnel", "Main", 7));
         interchanges.add(new InterchangeInfo("San Babila", new String[]{"M1", "NM1", "M4", "NM4", "NM3", "61", "84"}, "tram.fill.tunnel", "Main", 6));
         interchanges.add(new InterchangeInfo("Duomo", new String[]{"M1", "NM1", "M3", "NM3", "2", "3", "12", "14", "15", "16", "19", "60", "61", "N15", "N24", "N27"}, "building.columns.fill", "Main", 5));
@@ -130,7 +130,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Santa Sofia", new String[]{"M4", "NM4", "15", "96", "97", "N15"}, "tram.fill.tunnel", "Main", 9));
         interchanges.add(new InterchangeInfo("Vetra", new String[]{"M4", "NM4", "3", "96", "97"}, "tram.fill.tunnel", "Main", 10));
         interchanges.add(new InterchangeInfo("De Amicis", new String[]{"M4", "NM4", "NM2", "2", "14", "96", "97"}, "tram.fill.tunnel", "Main", 11));
-        interchanges.add(new InterchangeInfo("S. Ambrogio", new String[]{"M4", "NM4", "M2", "NM2", "50", "96", "97"}, "tram.fill.tunnel", "Main", 12));
+        interchanges.add(new InterchangeInfo("San Ambrogio", new String[]{"M4", "NM4", "M2", "NM2", "50", "96", "97"}, "tram.fill.tunnel", "Main", 12));
         interchanges.add(new InterchangeInfo("Coni Zugna", new String[]{"M4", "NM4", "2", "10", "58"}, "tram.fill.tunnel", "Main", 13));
         interchanges.add(new InterchangeInfo("California", new String[]{"M4", "NM4", "58", "68"}, "tram.fill.tunnel", "Main", 14));
         interchanges.add(new InterchangeInfo("Bolivar", new String[]{"M4", "NM4", "58", "85", "90", "91"}, "tram.fill.tunnel", "Main", 15));
