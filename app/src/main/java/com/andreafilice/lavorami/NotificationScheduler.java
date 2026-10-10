@@ -86,6 +86,11 @@ public class NotificationScheduler {
                                 if (line.toLowerCase().startsWith("z6")) { isMatch = true; break; }
                             }
                             break;
+                        case "z3":
+                            for (String line : event.lines) {
+                                if (line.toLowerCase().startsWith("z3")) { isMatch = true; break; }
+                            }
+                            break;
                         case "Autoguidovie":
                             if (event.company != null && event.company.toLowerCase().contains("autoguidovie")) {
                                 isMatch = true;
@@ -96,7 +101,8 @@ public class NotificationScheduler {
                                 boolean isTram  = line.matches("^([1-9]|[1-2][0-9]|3[0-3])$");
                                 boolean isMetro = line.matches("(?i)M[1-5].*");
                                 boolean isTreno = line.matches("(?i)^(S|R|RE|RV).*");
-                                if (!isTram && !isMetro && !isTreno) { isMatch = true; break; }
+
+                                if (!isTram && !isMetro && !isTreno && (line.matches("^\\d+$") && Integer.parseInt(line) > 33)) { isMatch = true; break; }
                             }
                             break;
                     }

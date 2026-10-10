@@ -157,10 +157,11 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.sLinesFavorites), //? "Linee S"
             findViewById(R.id.rLinesFavorites), //? "Linee R"
             findViewById(R.id.reLinesFavorites), //? "Linee RE"
-            findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
-            findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
             findViewById(R.id.busLinesFavorites), //? "Linee Bus"
+            findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
+            findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
             findViewById(R.id.movibusLinesFavorites), //? "Linee Movibus"
+            findViewById(R.id.netLinesFavorites), //? "Linee NET"
             findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
             findViewById(R.id.starLinesFavorites), //? "Linee STAR"
             findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
@@ -174,6 +175,7 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.tramLinesATMLayout),
             findViewById(R.id.metroLinesATMLayout),
             findViewById(R.id.disclosureHeaderMovibus),
+            findViewById(R.id.disclosureHeaderNet),
             findViewById(R.id.disclosureHeaderStav),
             findViewById(R.id.disclosureHeaderStar),
             findViewById(R.id.disclosureHeaderAutoguidovie)
@@ -183,10 +185,11 @@ public class SettingsActivity extends AppCompatActivity {
             "S",
             "R",
             "RE",
-            "Metro",
-            "Tram",
             "Bus",
+            "Tram",
+            "Metro",
             "z6",
+            "z3",
             "z55",
             "z50",
             "Autoguidovie"
@@ -313,11 +316,12 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.sLinesFavorites), //? "Linee S"
             findViewById(R.id.rLinesFavorites), //? "Linee R"
             findViewById(R.id.reLinesFavorites), //? "Linee RE"
-            findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
-            findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
             findViewById(R.id.busLinesFavorites), //? "Linee Bus"
+            findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
+            findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
             findViewById(R.id.tiloLinesFavorites), //? "Linee TILO"
             findViewById(R.id.movibusLinesFavorites), //? "Linee Movibus"
+            findViewById(R.id.netLinesFavorites), //? "Linee NET"
             findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
             findViewById(R.id.starLinesFavorites), //? "Linee STAR"
             findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
@@ -332,6 +336,7 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.metroLinesATMLayout),
             findViewById(R.id.disclosureHeaderTILO),
             findViewById(R.id.disclosureHeaderMovibus),
+            findViewById(R.id.disclosureHeaderNet),
             findViewById(R.id.disclosureHeaderStav),
             findViewById(R.id.disclosureHeaderStar),
             findViewById(R.id.disclosureHeaderAutoguidovie)
@@ -346,6 +351,7 @@ public class SettingsActivity extends AppCompatActivity {
             "Metro",
             "Tilo",
             "z6",
+            "z3",
             "z55",
             "z50",
             "Autoguidovie"

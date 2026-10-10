@@ -396,7 +396,7 @@
                         <View android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginStart="56dp" android:background="#38383A" />
 
                         <RelativeLayout
-                            android:id="@+id/busLinesATMLayout"
+                            android:id="@+id/metroLinesATMLayout"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:paddingHorizontal="16dp">
@@ -420,8 +420,8 @@
                                 android:textSize="15sp" />
 
                             <ImageView
-                                android:focusable="true"
                                 android:id="@+id/metroLinesFavorites"
+                                android:focusable="true"
                                 android:clickable="true"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
@@ -456,8 +456,8 @@
                                 android:textSize="15sp" />
 
                             <ImageView
-                                android:focusable="true"
                                 android:id="@+id/tramLinesFavorites"
+                                android:focusable="true"
                                 android:clickable="true"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
@@ -467,7 +467,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:id="@+id/metroLinesATMLayout"
+                            android:id="@+id/busLinesATMLayout"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:paddingHorizontal="16dp">
@@ -491,8 +491,8 @@
                                 android:textSize="15sp" />
 
                             <ImageView
-                                android:focusable="true"
                                 android:id="@+id/busLinesFavorites"
+                                android:focusable="true"
                                 android:clickable="true"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
@@ -588,6 +588,53 @@
 
                     <ImageView
                         android:id="@+id/movibusLinesFavorites"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_star_empty"
+                        app:tint="#FF9F0A" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/disclosureBg"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:id="@+id/disclosureHeaderNet"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingHorizontal="16dp">
+
+                    <ImageView
+                        android:id="@+id/iconMainNet"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_bus"
+                        app:tint="@color/redMetro" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toEndOf="@+id/iconMainNet"
+                        android:fontFamily="@font/font_main"
+                        android:text="Linee NET"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:id="@+id/netLinesFavorites"
                         android:clickable="true"
                         android:focusable="true"
                         android:layout_width="20dp"
