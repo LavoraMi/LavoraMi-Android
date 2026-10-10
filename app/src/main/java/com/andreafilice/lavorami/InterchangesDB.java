@@ -91,8 +91,8 @@ public class InterchangesDB {
 
         interchanges.add(new InterchangeInfo("P.Za Abbiategrasso", new String[]{"M2", "NM2", "3", "15", "65", "79", "230", "N15"}, "tram.fill.tunnel", "P.Za Abbiategrasso", 0));
 
-        interchanges.add(new InterchangeInfo("Assago Milanofiori Forum", new String[]{"M2", "321", "328", "352", "z501", "z510", "z515"}, "tram.fill.tunnel", "Assago Milanofiori Forum", 0));
-        interchanges.add(new InterchangeInfo("Assago Milanofiori Nord", new String[]{"M2"}, "tram.fill.tunnel", "Assago Milanofiori Forum", 1));
+        interchanges.add(new InterchangeInfo("Assago Milanofiori Nord", new String[]{"M2"}, "tram.fill.tunnel", "Assago Milanofiori Forum", 0));
+        interchanges.add(new InterchangeInfo("Assago Milanofiori Forum", new String[]{"M2", "321", "328", "352", "z501", "z510", "z515"}, "tram.fill.tunnel", "Assago Milanofiori Forum", 1));
 
         /// Metro M3
         interchanges.add(new InterchangeInfo("Comasina", new String[]{"M3", "NM3", "35", "41", "52", "83", "89", "165", "705", "729"}, "bus.fill", "Main", 0));
