@@ -99,7 +99,7 @@ public class MetroStationsDB {
 
         stations.add(new MetroStation("Famagosta", 45.43719, 9.16795, "Main", "M2"));
         stations.add(new MetroStation("Romolo", 45.44373, 9.16767, "Main", "M2"));
-        stations.add(new MetroStation("Porta Genova FS", 45.45273, 9.16972, "Main", "M2"));
+        stations.add(new MetroStation("Porta Genova", 45.45273, 9.16972, "Main", "M2"));
         stations.add(new MetroStation("S. Agostino", 45.45834, 9.16977, "Main", "M2"));
         stations.add(new MetroStation("S. Ambrogio", 45.46185, 9.17325, "Main", "M2"));
         stations.add(new MetroStation("Cadorna FN", 45.4682, 9.17588, "Main", "M2"));
