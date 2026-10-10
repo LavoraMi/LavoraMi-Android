@@ -163,8 +163,8 @@ public class LinesDetailActivity extends AppCompatActivity {
     SupabaseAPI api;
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
-    private Typeface cachedInterTypeface;
-    private Typeface cachedFontMainTypeface;
+    private volatile Typeface cachedInterTypeface;
+    private volatile Typeface cachedFontMainTypeface;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -260,7 +260,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         cachedInterTypeface = ResourcesCompat.getFont(this, R.font.inter);
         cachedFontMainTypeface = ResourcesCompat.getFont(this, R.font.font_main);
-        Typeface typeface = cachedInterTypeface;
+
+        Typeface typeface = getInterTypeface();
         chipMappa.setTypeface(typeface, Typeface.BOLD);
         chipLavori.setTypeface(typeface, Typeface.BOLD);
         chipInterscambi.setTypeface(typeface, Typeface.BOLD);
@@ -1423,7 +1424,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         TextView title = new TextView(this);
         title.setText(getString(R.string.selectBranch));
         title.setTextSize(18);
-        title.setTypeface(ResourcesCompat.getFont(this, R.font.font_main), Typeface.BOLD);
+        title.setTypeface(getFontMainTypeface(), Typeface.BOLD);
         title.setTextColor(ContextCompat.getColor(this, R.color.text_primary));
 
         LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -1449,8 +1450,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             chip.setText(branch);
             chip.setCheckable(true);
             chip.setChecked(branch.equals(selectedBranch));
-            chip.setTypeface(ResourcesCompat.getFont(this, R.font.inter), Typeface.BOLD);
-            title.setTypeface(cachedFontMainTypeface, Typeface.BOLD);
+            chip.setTypeface(getInterTypeface(), Typeface.BOLD);
+            title.setTypeface(getFontMainTypeface(), Typeface.BOLD);
 
             ColorStateList bgStates = new ColorStateList(
                 new int[][]{
@@ -1763,7 +1764,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setTextEndPadding(15f);
         chip.setChipStrokeWidth(0f);
         chip.setTextSize(13f);
-        chip.setTypeface(ResourcesCompat.getFont(this, R.font.inter), Typeface.BOLD);
+        chip.setTypeface(getInterTypeface(), Typeface.BOLD);
 
         int colore = ContextCompat.getColor(this, StationDB.getLineColor(this, name));
         chip.setChipBackgroundColor(ColorStateList.valueOf(colore));
@@ -1775,6 +1776,28 @@ public class LinesDetailActivity extends AppCompatActivity {
         chip.setGravity(Gravity.CENTER);
         chip.setEnsureMinTouchTargetSize(false);
         return chip;
+    }
+
+    private Typeface getInterTypeface() {
+        Typeface typeface = cachedInterTypeface;
+
+        if(typeface == null){
+            typeface = ResourcesCompat.getFont(this, R.font.inter);
+            cachedInterTypeface = typeface;
+        }
+
+        return typeface;
+    }
+
+    private Typeface getFontMainTypeface() {
+        Typeface typeface = cachedFontMainTypeface;
+
+        if(typeface == null){
+            typeface = ResourcesCompat.getFont(this, R.font.font_main);
+            cachedFontMainTypeface = typeface;
+        }
+
+        return typeface;
     }
 
     private void aggiornaInfoSuperiori() {
