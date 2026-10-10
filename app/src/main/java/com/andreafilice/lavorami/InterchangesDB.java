@@ -147,17 +147,19 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Ca' Granda", new String[]{"M5", "4", "5", "7", "31", "86", "172"}, "tram.fill.tunnel", "Main", 3));
         interchanges.add(new InterchangeInfo("Istria", new String[]{"M5", "5", "7", "31", "42"}, "tram.fill.tunnel", "Main", 4));
         interchanges.add(new InterchangeInfo("Marche", new String[]{"M5", "5", "7", "31"}, "tram.fill.tunnel", "Main", 5));
-        interchanges.add(new InterchangeInfo("Isola", new String[]{"M5"}, "tram.fill.tunnel", "Main", 6));
-        interchanges.add(new InterchangeInfo("Garibaldi FS", new String[]{"M5", "M2", "NM2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "10", "33", "N25", "N26"}, "lightrail", "Main", 7));
-        interchanges.add(new InterchangeInfo("Monumentale", new String[]{"M5", "10", "12", "14", "70"}, "tram.fill.tunnel", "Main", 8));
-        interchanges.add(new InterchangeInfo("Cenisio", new String[]{"M5", "12", "14"}, "tram.fill.tunnel", "Main", 9));
-        interchanges.add(new InterchangeInfo("Gerusalemme", new String[]{"M5"}, "tram.fill.tunnel", "Main", 10));
-        interchanges.add(new InterchangeInfo("Domodossola FN", new String[]{"M5", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "19"}, "tram.fill.tunnel", "Main", 11));
-        interchanges.add(new InterchangeInfo("Tre Torri", new String[]{"M5"}, "tram.fill.tunnel", "Main", 12));
-        interchanges.add(new InterchangeInfo("Lotto", new String[]{"M5", "M1", "NM1", "48", "49", "68", "78", "90", "91", "98"}, "tram.fill.tunnel", "Main", 13));
+        interchanges.add(new InterchangeInfo("Zara", new String[]{"M5", "M3", "NM3", "7", "31", "51", "60", "82", "90", "91", "92", "166"}, "tram.fill.tunnel", "Main", 6));
+        interchanges.add(new InterchangeInfo("Isola", new String[]{"M5"}, "tram.fill.tunnel", "Main", 7));
+        interchanges.add(new InterchangeInfo("Garibaldi FS", new String[]{"M5", "M2", "NM2", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "10", "33", "N25", "N26"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Monumentale", new String[]{"M5", "10", "12", "14", "70"}, "tram.fill.tunnel", "Main", 9));
+        interchanges.add(new InterchangeInfo("Cenisio", new String[]{"M5", "12", "14"}, "tram.fill.tunnel", "Main", 10));
+        interchanges.add(new InterchangeInfo("Gerusalemme", new String[]{"M5"}, "tram.fill.tunnel", "Main", 11));
+        interchanges.add(new InterchangeInfo("Domodossola FN", new String[]{"M5", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "19"}, "tram.fill.tunnel", "Main", 12));
+        interchanges.add(new InterchangeInfo("Tre Torri", new String[]{"M5"}, "tram.fill.tunnel", "Main", 13));
         interchanges.add(new InterchangeInfo("Portello", new String[]{"M5", "48", "78"}, "tram.fill.tunnel", "Main", 14));
-        interchanges.add(new InterchangeInfo("San Siro Ippodromo", new String[]{"M5", "16"}, "tram.fill.tunnel", "Main", 15));
-        interchanges.add(new InterchangeInfo("San Siro Stadio", new String[]{"M5", context.getString(R.string.stadiumKey), "16", "49"}, "stadium.fill", "Main", 16));
+        interchanges.add(new InterchangeInfo("Lotto", new String[]{"M5", "M1", "NM1", "48", "49", "68", "78", "90", "91", "98"}, "tram.fill.tunnel", "Main", 15));
+        interchanges.add(new InterchangeInfo("Segesta", new String[]{"M5", "16", "98"}, "tram.fill.tunnel", "Main", 16));
+        interchanges.add(new InterchangeInfo("San Siro Ippodromo", new String[]{"M5", "16"}, "tram.fill.tunnel", "Main", 17));
+        interchanges.add(new InterchangeInfo("San Siro Stadio", new String[]{"M5", context.getString(R.string.stadiumKey), "16", "49"}, "stadium.fill", "Main", 18));
 
         /// Minimetro San Raffaele
         interchanges.add(new InterchangeInfo("Cascina Gobba M2", new String[]{"H", "M2", "NM2", "44", "54", "86", "925"}, "bus.fill", "Main", 0));
