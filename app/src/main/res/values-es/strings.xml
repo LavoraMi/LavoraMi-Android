@@ -171,6 +171,7 @@
     <string name="tramLines">Líneas de Tranvía</string>
     <string name="busLines">Líneas de Autobús</string>
     <string name="movibusLines">Líneas Movibus</string>
+    <string name="netLines">Líneas NET</string>
     <string name="stavLines">Líneas STAV</string>
     <string name="autoguidovieLines">Líneas Autoguidovie</string>
     <string name="sourcesDevelopment">Fuentes &amp; Desarrollo</string>

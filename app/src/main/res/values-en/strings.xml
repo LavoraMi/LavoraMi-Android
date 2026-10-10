@@ -171,6 +171,7 @@
     <string name="tramLines">Tram Lines</string>
     <string name="busLines">Bus Lines</string>
     <string name="movibusLines">Movibus Lines</string>
+    <string name="netLines">NET Lines</string>
     <string name="stavLines">STAV Lines</string>
     <string name="autoguidovieLines">Autoguidovie Lines</string>
     <string name="sourcesDevelopment">Sources &amp; Development</string>
