@@ -141,10 +141,10 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("San Cristoforo", new String[]{"M4", "NM4", "S9", "S19", "R31", "14", "47", "49", "95", "324", "325", "326", "351", "z553"}, "lightrail", "Main", 20));
 
         /// Metro M5
-        interchanges.add(new InterchangeInfo("Bignami", new String[]{"M5", "4", "31", "713", "728"}, "tram.fill.tunnel", "Main", 0));
-        interchanges.add(new InterchangeInfo("Ponale", new String[]{"M5", "4", "31", "51", "172"}, "tram.fill.tunnel", "Main", 1));
-        interchanges.add(new InterchangeInfo("Bicocca", new String[]{"M5", "4", "7", "31", "52", "172", "783"}, "tram.fill.tunnel", "Main", 2));
-        interchanges.add(new InterchangeInfo("Ca' Granda", new String[]{"M5", "4", "5", "7", "31", "86", "172"}, "tram.fill.tunnel", "Main", 3));
+        interchanges.add(new InterchangeInfo("Bignami", new String[]{"M5", "31", "713", "728"}, "tram.fill.tunnel", "Main", 0));
+        interchanges.add(new InterchangeInfo("Ponale", new String[]{"M5", "31", "51", "172"}, "tram.fill.tunnel", "Main", 1));
+        interchanges.add(new InterchangeInfo("Bicocca", new String[]{"M5", "7", "31", "52", "172", "783"}, "tram.fill.tunnel", "Main", 2));
+        interchanges.add(new InterchangeInfo("Ca' Granda", new String[]{"M5", "5", "7", "31", "86", "172"}, "tram.fill.tunnel", "Main", 3));
         interchanges.add(new InterchangeInfo("Istria", new String[]{"M5", "5", "7", "31", "42"}, "tram.fill.tunnel", "Main", 4));
         interchanges.add(new InterchangeInfo("Marche", new String[]{"M5", "5", "7", "31"}, "tram.fill.tunnel", "Main", 5));
         interchanges.add(new InterchangeInfo("Zara", new String[]{"M5", "M3", "NM3", "7", "31", "51", "60", "82", "90", "91", "92", "166"}, "tram.fill.tunnel", "Main", 6));
