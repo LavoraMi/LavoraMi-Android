@@ -1108,9 +1108,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Castel San Giovanni", new String[]{"R41", "R34", "REG", "RV"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Sarmato", new String[]{"R41", "R34"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Rottofreno", new String[]{"R41", "R34"}, "lightrail", "Main", 8));
-        interchanges.add(new InterchangeInfo("San Nicolo'", new String[]{"R41", "R34", "REG", "RV"}, "lightrail", "Main", 9));
-        interchanges.add(new InterchangeInfo("San Nicolo'", new String[]{"R41", "R34"}, "lightrail", "Main", 10));
-        interchanges.add(new InterchangeInfo("Piacenza", new String[]{"R41", "R38", "R34", "REG", "RV"}, "lightrail", "Main", 11));
+        interchanges.add(new InterchangeInfo("San Nicolò", new String[]{"R41", "R34"}, "lightrail", "Main", 9));
+        interchanges.add(new InterchangeInfo("Piacenza", new String[]{"R41", "R38", "R34", "REG", "RV"}, "lightrail", "Main", 10));
 
         return interchanges;
     }
