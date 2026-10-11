@@ -2415,7 +2415,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40675, 9.02097, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.4066, 9.01795, "Main", "S19"));
         stations.add(new MetroStation("NO_DRAW", 45.4045, 8.96032, "Main", "S19"));
-        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "S19"));
+        stations.add(new MetroStation("Albairate Vermezzo", 45.40435, 8.95822, "Main", "S19"));
         return stations;
     }
 
