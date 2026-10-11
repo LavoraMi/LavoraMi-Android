@@ -1837,12 +1837,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         }
 
-        tvLavori.setText((numeroLavori > 0) ? String.format("%s %s,\n%s %s.", numeroLavoriAttuali, (numeroLavoriAttuali == 1 ?
-                ContextCompat.getString(this, R.string.currentWorksSingularTitle)
-                : ContextCompat.getString(this, R.string.currentWorksTitle)), numeroLavoriProgrammati,
-                (numeroLavoriProgrammati == 1 ? ContextCompat.getString(this, R.string.scheduledWorksSingularTitle)
-                        : ContextCompat.getString(this, R.string.scheduledWorksTitle)))
-                : ContextCompat.getString(this, R.string.fallbackNoWorks));
+        tvLavori.setText((numeroLavori > 0) ? String.format("%s %s,\n%s %s.", numeroLavoriAttuali, (numeroLavoriAttuali == 1 ?  ContextCompat.getString(this, R.string.currentWorksSingularTitle)  : ContextCompat.getString(this, R.string.currentWorksTitle)), numeroLavoriProgrammati, (numeroLavoriProgrammati == 1 ? ContextCompat.getString(this, R.string.scheduledWorksSingularTitle) : ContextCompat.getString(this, R.string.scheduledWorksTitle))) : ContextCompat.getString(this, R.string.fallbackNoWorks));
         
         View.OnClickListener gestoreLavoriListener = v -> {
             Chip chipLavori = findViewById(R.id.chipLavoriInCorso);
