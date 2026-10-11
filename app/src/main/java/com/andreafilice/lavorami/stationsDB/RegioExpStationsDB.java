@@ -4672,7 +4672,7 @@ public class RegioExpStationsDB {
         stations.add(new MetroStation("NO_DRAW", 44.69747, 8.87606, "Novi Ligure", "RE13"));
         stations.add(new MetroStation("NO_DRAW", 44.69415, 8.88194, "Novi Ligure", "RE13"));
         stations.add(new MetroStation("NO_DRAW", 44.69276, 8.88438, "Novi Ligure", "RE13"));
-        stations.add(new MetroStation("Arquata", 44.69223, 8.885, "Novi Ligure", "RE13"));
+        stations.add(new MetroStation("Arquata Scrivia", 44.69223, 8.885, "Novi Ligure", "RE13"));
         return stations;
     }
 }
