@@ -287,8 +287,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Novara", new String[]{"S6", "R25", "RV"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("Trecate", new String[]{"S6", "RV"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Magenta", new String[]{"S6", "RV", "z559", "z620", "z641", "z642", "z646"}, "bus.fill", "Main", 2));
-        interchanges.add(new InterchangeInfo("Corbetta - S. Stefano Ticino", new String[]{"S6", "RV", "z552", "z642"}, "lightrail", "Main", 3));
-        interchanges.add(new InterchangeInfo("Vittuone - Arluno", new String[]{"S6", "RV", "z622", "z643"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Corbetta Santo Stefano", new String[]{"S6", "RV", "z552", "z642"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Vittuone Arluno", new String[]{"S6", "RV", "z622", "z643"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Pregnana Milanese", new String[]{"S6", "z616", "z649"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Rho", new String[]{"S6", "S5", "S11", "RV", "431", "433", "z616"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Rho Fiera Milano", new String[]{"S6", "S5", "S11", "R21", "R23", "RE4", "RE5", "AV", "M1", "542", "561"}, "lightrail", "Main", 7));

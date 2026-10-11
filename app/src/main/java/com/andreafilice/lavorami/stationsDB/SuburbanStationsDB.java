@@ -758,8 +758,8 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45763, 8.84983, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.45843, 8.85211, "Main", "S6"));
         stations.add(new MetroStation("Magenta", 45.4681, 8.88073, "Main", "S6"));
-        stations.add(new MetroStation("Corbetta - Santo Stefano", 45.48107, 8.91821, "Main", "S6"));
-        stations.add(new MetroStation("Vittuone - Arluno", 45.49093, 8.94733, "Main", "S6"));
+        stations.add(new MetroStation("Corbetta Santo Stefano", 45.48107, 8.91821, "Main", "S6"));
+        stations.add(new MetroStation("Vittuone Arluno", 45.49093, 8.94733, "Main", "S6"));
         stations.add(new MetroStation("Pregana Milanese", 45.51011, 9.00279, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51851, 9.02764, "Main", "S6"));
         stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S6"));
@@ -826,7 +826,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47221, 9.2511, "Main", "S6"));
         stations.add(new MetroStation("Segrate", 45.48075, 9.29859, "Main", "S6"));
         stations.add(new MetroStation("Pioltello Limito", 45.48611, 9.32949, "Main", "S6"));
-        stations.add(new MetroStation("Vigate", 45.49441, 9.37649, "Main", "S6"));
+        stations.add(new MetroStation("Vignate", 45.49441, 9.37649, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.49995, 9.40689, "Main", "S6"));
         stations.add(new MetroStation("Melzo", 45.50208, 9.4192, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.50741, 9.45002, "Main", "S6"));
