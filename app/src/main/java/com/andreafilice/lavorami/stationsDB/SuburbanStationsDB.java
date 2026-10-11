@@ -1451,7 +1451,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.68698, 9.38986, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.68751, 9.39035, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.68862, 9.39127, "Main", "S8"));
-        stations.add(new MetroStation("Cernusco-Merate", 45.69503, 9.39692, "Main", "S8"));
+        stations.add(new MetroStation("Cernusco - Merate", 45.69503, 9.39692, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.69737, 9.39865, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.69805, 9.39903, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.69883, 9.3994, "Main", "S8"));
@@ -1480,7 +1480,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.71966, 9.40232, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.72055, 9.40248, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.72159, 9.40264, "Main", "S8"));
-        stations.add(new MetroStation("Olgiate-Calco-Brivio", 45.72919, 9.40366, "Main", "S8"));
+        stations.add(new MetroStation("Olgiate - Calco - Brivio", 45.72919, 9.40366, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.73287, 9.40442, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.73531, 9.40481, "Main", "S8"));
         stations.add(new MetroStation("NO_DRAW", 45.73676, 9.40513, "Main", "S8"));
