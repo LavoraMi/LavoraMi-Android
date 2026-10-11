@@ -422,7 +422,7 @@
     <string name="widget_selection_text">Select the line in the app to display in the widget.</string>
     <string name="widget_detail_inCorso">IN PROGRESS</string>
     <string name="widget_detail_programmati">SCHEDULED</string>
-    <string name="widget_line_added_description">The %1$s line has been added to the widget</string>
+    <string name="widget_line_added_description">The %1$s line has been added to the widget.</string>
     <string name="widget_line_added_title">Line added to the Widget</string>
     <string name="busPopUpTitle">Route replaced by Bus</string>
     <string name="busPopUpDeps">This line is currently served entirely by buses, and there are no trains running on this route. However, the service is guaranteed between all stations on the line.</string>
