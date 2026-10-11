@@ -1015,7 +1015,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Bressana Bottarone", new String[]{"R34", "R33"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Bressana Argine", new String[]{"R34"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Pinarolo Po", new String[]{"R34"}, "lightrail", "Main", 7));
-        interchanges.add(new InterchangeInfo("Barbaniello", new String[]{"R34"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Barbianello", new String[]{"R34"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Broni", new String[]{"R34", "R41"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Stradella", new String[]{"R34", "R41", "REG", "RV"}, "lightrail", "Main", 10));
 

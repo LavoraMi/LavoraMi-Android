@@ -6579,7 +6579,7 @@ public class RegionalStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.07426, 9.19812, "Main", "R34"));
         stations.add(new MetroStation("NO_DRAW", 45.07393, 9.20012, "Main", "R34"));
         stations.add(new MetroStation("NO_DRAW", 45.07324, 9.20207, "Main", "R34"));
-        stations.add(new MetroStation("Barbinello", 45.0723, 9.20552, "Main", "R34"));
+        stations.add(new MetroStation("Barbianello", 45.0723, 9.20552, "Main", "R34"));
         stations.add(new MetroStation("NO_DRAW", 45.07067, 9.21065, "Main", "R34"));
         stations.add(new MetroStation("NO_DRAW", 45.06738, 9.22095, "Main", "R34"));
         stations.add(new MetroStation("NO_DRAW", 45.0632, 9.23479, "Main", "R34"));
