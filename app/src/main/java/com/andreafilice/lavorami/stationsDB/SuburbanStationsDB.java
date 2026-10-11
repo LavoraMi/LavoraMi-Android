@@ -547,7 +547,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.73523, 8.80605, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.73435, 8.80606, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.72505, 8.80622, "Main", "S5"));
-        stations.add(new MetroStation("Albizzate - Solbiate Arno", 45.7233, 8.80628, "Main", "S5"));
+        stations.add(new MetroStation("Albizzate Solbiate Arno", 45.7233, 8.80628, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.72199, 8.80634, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.72069, 8.80624, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.7195, 8.80587, "Main", "S5"));
@@ -627,7 +627,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("Parabiago", 45.55261, 8.94651, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.53926, 8.97035, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.53192, 8.98357, "Main", "S5"));
-        stations.add(new MetroStation("Vanzago - Pogliano", 45.52536, 8.99573, "Main", "S5"));
+        stations.add(new MetroStation("Vanzago Pogliano", 45.52536, 8.99573, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.52372, 8.99836, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.52177, 9.00186, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.52035, 9.00476, "Main", "S5"));
@@ -711,7 +711,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47221, 9.2511, "Main", "S5"));
         stations.add(new MetroStation("Segrate", 45.48075, 9.29859, "Main", "S5"));
         stations.add(new MetroStation("Pioltello Limito", 45.48611, 9.32949, "Main", "S5"));
-        stations.add(new MetroStation("Vigate", 45.49441, 9.37649, "Main", "S5"));
+        stations.add(new MetroStation("Vignate", 45.49441, 9.37649, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.49995, 9.40689, "Main", "S5"));
         stations.add(new MetroStation("Melzo", 45.50208, 9.4192, "Main", "S5"));
         stations.add(new MetroStation("NO_DRAW", 45.50741, 9.45002, "Main", "S5"));
