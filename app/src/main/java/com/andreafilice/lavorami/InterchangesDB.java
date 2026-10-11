@@ -1054,8 +1054,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Motta San Damiano", new String[]{"R37"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Albuzzano", new String[]{"R37"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Belgioioso", new String[]{"R37"}, "lightrail", "Main", 4));
-        interchanges.add(new InterchangeInfo("Corteleona", new String[]{"R37"}, "lightrail", "Main", 5));
-        interchanges.add(new InterchangeInfo("San Cristina E Bissone", new String[]{"R37"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Corteolona", new String[]{"R37"}, "lightrail", "Main", 5));
+        interchanges.add(new InterchangeInfo("Santa Cristina E Bissone", new String[]{"R37"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Miradolo Terme", new String[]{"R37"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Chignolo Po", new String[]{"R37"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Lambrinia", new String[]{"R37"}, "lightrail", "Main", 9));
