@@ -1149,7 +1149,7 @@ public class InterchangesDB {
 
         /// RegioExpress RE3
         interchanges.add(new InterchangeInfo("Brescia", new String[]{"RE3", "S31", "R1", "R3", "R4", "R5", "R7", "R8", "RE6", "AV"}, "lightrail", "Main", 0));
-        interchanges.add(new InterchangeInfo("Bornato Calino", new String[]{"RE3", "S31", "R3", "R9"}, "lightrail", "Main", 1));
+        interchanges.add(new InterchangeInfo("Bornato - Calino", new String[]{"RE3", "S31", "R3", "R9"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Iseo", new String[]{"RE3", "S31", "R3", "R9"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Sulzano", new String[]{"RE3", "R3", "R9"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Sale Marasino", new String[]{"RE3", "R3"}, "lightrail", "Main", 4));
