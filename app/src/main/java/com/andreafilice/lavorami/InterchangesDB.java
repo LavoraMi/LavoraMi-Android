@@ -1041,7 +1041,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Gropello Cairoli", new String[]{"R36"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Garlasco", new String[]{"R36"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Tromello", new String[]{"R36"}, "lightrail", "Main", 5));
-        interchanges.add(new InterchangeInfo("Gambolo' Remondo'", new String[]{"R36"}, "lightrail", "Main", 6));
+        interchanges.add(new InterchangeInfo("Gambolò Remondò", new String[]{"R36"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Mortara", new String[]{"R36", "R25", "R31", "R32", "REG", "RV"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Nicorvo", new String[]{"R36"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Robbio", new String[]{"R36"}, "lightrail", "Main", 9));
