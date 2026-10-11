@@ -866,12 +866,12 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Como San Giovanni", new String[]{"R18", "S10", "S11", "S40", "RE80"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("Como Camerlata", new String[]{"R18", "S10", "S11", "S40", "R17", "RE7", "RE80"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Albate - Trecallo", new String[]{"R18"}, "lightrail", "Main", 2));
-        interchanges.add(new InterchangeInfo("Cantu'", new String[]{"R18"}, "lightrail", "Main", 3));
-        interchanges.add(new InterchangeInfo("Brenna Alzate", new String[]{"R18"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Cantù", new String[]{"R18"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Brenna - Alzate", new String[]{"R18"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Anzano del Parco", new String[]{"R18"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Merone", new String[]{"R18", "R16"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Moiana", new String[]{"R18"}, "lightrail", "Main", 7));
-        interchanges.add(new InterchangeInfo("Casletto Rogeno", new String[]{"R18"}, "lightrail", "Main", 8));
+        interchanges.add(new InterchangeInfo("Casletto - Rogeno", new String[]{"R18"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Molteno", new String[]{"R18", "S7"}, "lightrail", "Main", 9));
         interchanges.add(new InterchangeInfo("Oggiono", new String[]{"R18", "S7"}, "lightrail", "Main", 10));
         interchanges.add(new InterchangeInfo("Sala Al Barro - Galbiate", new String[]{"R18", "S7"}, "lightrail", "Main", 11));
