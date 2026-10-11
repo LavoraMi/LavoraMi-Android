@@ -803,6 +803,18 @@ public class LinesDetailActivity extends AppCompatActivity {
                 disegnaMarkers(mapView, ultimeStazioniDisegnate, hexColor, hexColorText, fermateSospese);
                 aggiornaTestoDirezione(ultimeStazioniDisegnate);
             });
+
+            txtDirezioneMappa.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
+                modalitaRitorno = !modalitaRitorno;
+
+                MapboxHelper.clearAllLineLayers(mapView);
+                MapboxHelper.clearMarkers(mapView);
+
+                disegnaPolilinea(mapView, ultimeStazioniDisegnate, hexColor);
+                disegnaMarkers(mapView, ultimeStazioniDisegnate, hexColor, hexColorText, fermateSospese);
+                aggiornaTestoDirezione(ultimeStazioniDisegnate);
+            });
         }
         else {
             changeRouteButton.setVisibility(View.GONE);
