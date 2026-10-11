@@ -756,8 +756,8 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Rovato FN", new String[]{"R9"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("Rovato Città", new String[]{"R9"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Cazzago San Martino", new String[]{"R9"}, "lightrail", "Main", 2));
-        interchanges.add(new InterchangeInfo("Bornato Calino", new String[]{"R9", "S31", "R3", "RE3"}, "lightrail", "Main", 3));
-        interchanges.add(new InterchangeInfo("Borgonato Adro", new String[]{"R9", "S31", "R3"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Bornato - Calino", new String[]{"R9", "S31", "R3", "RE3"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Borgonato - Adro", new String[]{"R9", "S31", "R3"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Provaglio Timoline", new String[]{"R9", "S31", "R3"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Iseo", new String[]{"R9", "S31", "R3", "RE3"}, "lightrail", "Main", 6));
 
