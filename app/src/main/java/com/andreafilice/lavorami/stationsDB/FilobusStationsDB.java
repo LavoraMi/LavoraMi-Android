@@ -316,7 +316,7 @@ public class FilobusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.47926, 9.23161, "Main", "93"));
         stations.add(new MetroStation("NO_DRAW", 45.47936, 9.23197, "Main", "93"));
         stations.add(new MetroStation("Via Bassini Via Golgi", 45.48, 9.23368, "Main", "93"));
-        stations.add(new MetroStation("Via Valvassori Via Peroni", 45.48096, 9.23604, "Main", "93"));
+        stations.add(new MetroStation("Via Valvassori Peroni", 45.48096, 9.23604, "Main", "93"));
         stations.add(new MetroStation("NO_DRAW", 45.48129, 9.2366, "Main", "93"));
         stations.add(new MetroStation("NO_DRAW", 45.48408, 9.23655, "Main", "93"));
         stations.add(new MetroStation("NO_DRAW", 45.48432, 9.2366, "Main", "93"));
