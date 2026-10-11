@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
     private ChipGroup.OnCheckedChangeListener chipCheckedChangeListener;
     private ViewPager2 viewPager;
     public static boolean isWrappedEnabled;
+    private boolean pendingLocationAfterNotification = false;
 
     //*DATABASE SYNCH VARIABLES
     /// In this section of the code, we will create the variables for synch datas to DB ones.
@@ -161,6 +162,12 @@ public class MainActivity extends AppCompatActivity {
                 if (btnSetupNext != null){
                     btnSetupNext.setEnabled(true);
                     btnSetupNext.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(MainActivity.this, R.color.redMetro)));
+                }
+
+                //*CHAINED REQUEST
+                if (pendingLocationAfterNotification) {
+                    pendingLocationAfterNotification = false;
+                    askForPositionPermission();
                 }
             });
     private final ActivityResultLauncher<String> requestLocationPermissionLauncher =
@@ -310,12 +317,22 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.floatingBottomBar).setVisibility(View.VISIBLE);
                     hasCompletedSetup = true;
                     requestConsentInfoUpdate();
-                    askForNotificationPermission();
-                    askForPositionPermission();
+                    downloadJSONData(defaultCategory, false);
+
+                    //*ASK PERMISSIONS IN SEQUENCE
+                    boolean needsNotification = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                            && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED;
+
+                    if (needsNotification) {
+                        pendingLocationAfterNotification = true;
+                        askForNotificationPermission();
+                    }
+                    else
+                        askForPositionPermission();
                 }
             };
 
-            DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.skipConfigDeps), onConfirm);
+            DialogHelper.createDefaultAnswerDialog(MainActivity.this, getString(R.string.areYouSurePopUp), getString(R.string.skipConfigDeps), onConfirm);
         });
 
         /// In this section we also set the "NEXT" button to "END" when it's the last Page.
