@@ -535,7 +535,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Ranzo - San Abbondio", new String[]{"S30"}, "lightrail", "Main", 14));
         interchanges.add(new InterchangeInfo("Gerra", new String[]{"S30"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("San Nazzaro", new String[]{"S30"}, "lightrail", "Main", 16));
-        interchanges.add(new InterchangeInfo("Magradino - Vira", new String[]{"S30"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("Magadino - Vira", new String[]{"S30"}, "lightrail", "Main", 17));
         interchanges.add(new InterchangeInfo("Quartino", new String[]{"S30"}, "lightrail", "Main", 18));
         interchanges.add(new InterchangeInfo("Cadenazzo", new String[]{"S30", "S20", "RE80"}, "lightrail", "Main", 19));
         interchanges.add(new InterchangeInfo("San Antonino", new String[]{"S30", "S20", "RE80"}, "lightrail", "Main", 20));
