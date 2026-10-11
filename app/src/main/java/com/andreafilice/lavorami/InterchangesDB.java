@@ -895,7 +895,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Legnano", new String[]{"R21", "S5", "R23", "RV", "RE5", "z601", "z602", "z611", "z627", "z636", "z642"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Canegrate", new String[]{"R21", "S5", "z611"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Parabiago", new String[]{"R21", "S5", "R23", "RE5", "z644"}, "lightrail", "Main", 14));
-        interchanges.add(new InterchangeInfo("Rho Fiera Milano", new String[]{"R21", "S5", "S6", "S11", "R23", "RE4", "RE5", "AV", "M1", "542", "561"}, "lightrail", "Main", 17));
+        interchanges.add(new InterchangeInfo("Rho Fiera Milano", new String[]{"R21", "S5", "S6", "S11", "R23", "RE4", "RE5", "AV", "M1", "542", "561"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"R21", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S11", "S12", "S13", "AV", "R6", "R13", "R14", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "tram.fill.tunnel", "Main", 16));
 
         /// Regionale R22
