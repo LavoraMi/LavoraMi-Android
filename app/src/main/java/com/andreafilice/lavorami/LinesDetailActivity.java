@@ -617,11 +617,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.startsWith("M"))
             detTitolo.setText("Metro " + nomeLinea);
         if(nomeLinea.startsWith("S"))
-            detTitolo.setText(String.format("%s %s", getString(R.string.suburban), nomeLinea));
+            detTitolo.setText(getString(R.string.suburban));
         if(nomeLinea.matches("^[1-9][0-9]?$"))
             detTitolo.setText(String.format("%s %s", getString(R.string.tramLinesScroll), nomeLinea));
         if(isLineaTilo())
-            detTitolo.setText("TILO " + nomeLinea);
+            detTitolo.setText("TILO");
         if(nomeLinea.startsWith("MXP"))
             detTitolo.setText("Malpensa Express");
         if(nomeLinea.startsWith("z6"))
@@ -635,9 +635,9 @@ public class LinesDetailActivity extends AppCompatActivity {
         if(nomeLinea.startsWith("z4") || nomeLinea.startsWith("z2"))
             detTitolo.setText("Autoguidovie");
         if(nomeLinea.startsWith("R") && !nomeLinea.equalsIgnoreCase("RE80"))
-            detTitolo.setText(String.format("%s %s", getString(R.string.regionalLinesScroll), nomeLinea));
+            detTitolo.setText(getString(R.string.regionalLinesScroll));
         if(nomeLinea.startsWith("RE") && !nomeLinea.equalsIgnoreCase("RE80"))
-            detTitolo.setText("Regio Express " + nomeLinea);
+            detTitolo.setText("Regio Express");
         if(nomeLinea.matches("9[0-3]"))
             detTitolo.setText(getString(R.string.filobusKey) + " " + nomeLinea);
         if(nomeLinea.equals("H"))
