@@ -1312,7 +1312,7 @@ public class RegionalStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50741, 9.45002, "Main", "R4"));
         stations.add(new MetroStation("Melzo", 45.50208, 9.4192, "Main", "R4"));
         stations.add(new MetroStation("NO_DRAW", 45.49995, 9.40689, "Main", "R4"));
-        stations.add(new MetroStation("Vigate", 45.49441, 9.37649, "Main", "R4"));
+        stations.add(new MetroStation("Vignate", 45.49441, 9.37649, "Main", "R4"));
         stations.add(new MetroStation("Pioltello Limito", 45.48611, 9.32949, "Main", "R4"));
         stations.add(new MetroStation("NO_DRAW", 45.48075, 9.29859, "Main", "R4"));
         stations.add(new MetroStation("NO_DRAW", 45.47352, 9.25856, "Main", "R4"));

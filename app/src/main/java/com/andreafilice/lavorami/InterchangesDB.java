@@ -684,7 +684,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Ospitaletto Travagliato", new String[]{"R4", "R1", "R5"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Rovato", new String[]{"R4", "R1", "R5", "R7", "R9", "RE6"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Chiari", new String[]{"R4", "RE6"}, "lightrail", "Main", 3));
-        interchanges.add(new InterchangeInfo("Calcio", new String[]{"R4"}, "lightrail", "Main", 4));
+        interchanges.add(new InterchangeInfo("Cividate - Calcio", new String[]{"R4"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Romano", new String[]{"R4", "RE6"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Morengo Bariano", new String[]{"R4"}, "lightrail", "Main", 6));
         interchanges.add(new InterchangeInfo("Vidalengo", new String[]{"R4"}, "lightrail", "Main", 7));
