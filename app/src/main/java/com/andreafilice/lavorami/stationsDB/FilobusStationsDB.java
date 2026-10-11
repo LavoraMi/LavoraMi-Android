@@ -192,7 +192,7 @@ public class FilobusStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.45874, 9.21761, "Main", "92"));
         stations.add(new MetroStation("P.Za Emilia", 45.46172, 9.21747, "Main", "92"));
         stations.add(new MetroStation("V.Le Piceno", 45.46597, 9.21741, "Main", "92"));
-        stations.add(new MetroStation("Dateo FS M4", 45.46858, 9.21733, "Main", "92"));
+        stations.add(new MetroStation("Dateo M4", 45.46858, 9.21733, "Main", "92"));
         stations.add(new MetroStation("V.Le Dei Mille P.Za Novelli", 45.47066, 9.2173, "Main", "92"));
         stations.add(new MetroStation("P.Za Ascoli", 45.47398, 9.21725, "Main", "92"));
         stations.add(new MetroStation("V.Le Abruzzi Via Plinio", 45.47733, 9.2172, "Main", "92"));
