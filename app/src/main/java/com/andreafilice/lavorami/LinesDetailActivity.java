@@ -155,7 +155,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         "l.go", "largo",
         "m.te", "monte",
         "s.",   "san",
-        "c.",   "console",
+        "osp.",   "ospedale",
         "p.",   "principe"
     );
 
