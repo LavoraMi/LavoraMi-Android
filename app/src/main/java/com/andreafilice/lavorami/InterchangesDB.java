@@ -380,7 +380,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Milano Villapizzone", new String[]{"S11", "S5", "S6", "R6", "RE2"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Milano Porta Garibaldi", new String[]{"S11", "S1", "S2", "S5", "S6", "S7", "S8", "S9", "S12", "S13", "AV", "R6", "R13", "R14", "R21", "R23", "R34", "RE2", "RE5", "RE6", "RE13", "MXP1", "M2", "NM2", "M5", "10", "33", "N25", "N26"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Milano Greco Pirelli", new String[]{"S11", "S7", "S8", "S9", "R4", "R13", "R14", "R38", "RE13", "RE80", "7", "52", "81", "86", "174"}, "lightrail", "Main", 5));
-        interchanges.add(new InterchangeInfo("Sesto S. Giovanni", new String[]{"S11", "S7", "S8", "S9", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"}, "tram.fill.tunnel", "Main", 6));
+        interchanges.add(new InterchangeInfo("Sesto San Giovanni", new String[]{"S11", "S7", "S8", "S9", "R13", "R14", "RE8", "RE80", "M1", "NM1", "700", "702", "712", "727", "729", "z221", "z222", "z225", "z227", "z301"}, "tram.fill.tunnel", "Main", 6));
         interchanges.add(new InterchangeInfo("Monza", new String[]{"S11", "S7", "S8", "S9", "R7", "R13", "R14", "RE8", "RE13", "RE80", "z203", "z205", "z219", "z221", "z222", "z228", "z314", "z321"}, "lightrail", "Main", 7));
         interchanges.add(new InterchangeInfo("Lissone - Muggiò", new String[]{"S11", "S9", "z227", "z234", "z250"}, "lightrail", "Main", 8));
         interchanges.add(new InterchangeInfo("Desio", new String[]{"S11", "S9", "RE80", "z250", "z251"}, "lightrail", "Main", 9));
