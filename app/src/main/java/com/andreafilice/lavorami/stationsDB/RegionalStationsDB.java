@@ -6121,7 +6121,7 @@ public class RegionalStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40675, 9.02097, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.4066, 9.01795, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.4045, 8.96032, "Main", "R31"));
-        stations.add(new MetroStation("Albairate - Vermezzo", 45.40435, 8.95822, "Main", "R31"));
+        stations.add(new MetroStation("Albairate Vermezzo", 45.40435, 8.95822, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.40343, 8.93185, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.40322, 8.92668, "Main", "R31"));
         stations.add(new MetroStation("NO_DRAW", 45.40298, 8.92525, "Main", "R31"));
