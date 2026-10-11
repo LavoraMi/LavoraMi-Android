@@ -955,7 +955,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Sesto Calende", new String[]{"R24", "R23", "RE4"}, "lightrail", "Main", 4));
 
         /// Regionale R25
-        interchanges.add(new InterchangeInfo("Novara", new String[]{"S6", "R25", "RV"}, "lightrail", "Main", 0));
+        interchanges.add(new InterchangeInfo("Novara", new String[]{"R25", "S6", "RV"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("Garbagna", new String[]{"R25", "REG"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Vespolate", new String[]{"R25", "REG"}, "lightrail", "Main", 2));
         interchanges.add(new InterchangeInfo("Borgo Lavezzaro", new String[]{"R25", "REG"}, "lightrail", "Main", 3));
