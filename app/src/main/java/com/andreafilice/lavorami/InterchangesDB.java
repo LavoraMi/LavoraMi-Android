@@ -914,7 +914,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Venegono Inferiore", new String[]{"R22"}, "lightrail", "Main", 12));
         interchanges.add(new InterchangeInfo("Tradate", new String[]{"R22", "RE1"}, "lightrail", "Main", 13));
         interchanges.add(new InterchangeInfo("Abbiate Guazzone", new String[]{"R22"}, "lightrail", "Main", 14));
-        interchanges.add(new InterchangeInfo("Locate Varesino Carbonate", new String[]{"R22"}, "lightrail", "Main", 15));
+        interchanges.add(new InterchangeInfo("Locate Varesino - Carbonate", new String[]{"R22"}, "lightrail", "Main", 15));
         interchanges.add(new InterchangeInfo("Mozzate", new String[]{"R22"}, "lightrail", "Main", 16));
         interchanges.add(new InterchangeInfo("Cislago", new String[]{"R22"}, "lightrail", "Main", 17));
         interchanges.add(new InterchangeInfo("Gerenzano Turate", new String[]{"R22"}, "lightrail", "Main", 18));
