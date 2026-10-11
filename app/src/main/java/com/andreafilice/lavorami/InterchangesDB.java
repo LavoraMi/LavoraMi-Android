@@ -1838,7 +1838,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Umbria Via Muratori", new String[]{"91", "90", "92"}, "bus.fill", "Main", 2));
         interchanges.add(new InterchangeInfo("Via Tertulliano Via Lattanzio", new String[]{"91", "90"}, "bus.fill", "Main", 3));
         interchanges.add(new InterchangeInfo("Via Tertulliano Via Decembrio", new String[]{"91", "90"}, "bus.fill", "Main", 4));
-        interchanges.add(new InterchangeInfo("Piazzale Salgari", new String[]{"91", "16", "90"}, "tram.fill", "Main", 5));
+        interchanges.add(new InterchangeInfo("Piazza Salgari", new String[]{"91", "16", "90"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Piazzale Cuoco", new String[]{"91", "16", "84", "90", "93"}, "tram.fill", "Main", 6));
         interchanges.add(new InterchangeInfo("Viale Molise Via Cadibona", new String[]{"91", "90", "93"}, "bus.fill", "Main", 7));
         interchanges.add(new InterchangeInfo("Viale Molise", new String[]{"91", "66", "90", "93"}, "bus.fill", "Main", 8));
