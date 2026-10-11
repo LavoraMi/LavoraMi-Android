@@ -849,7 +849,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Como Lago", new String[]{"R17", "RE7"}, "lightrail", "Main", 0));
         interchanges.add(new InterchangeInfo("Como Borghi", new String[]{"R17", "RE7"}, "lightrail", "Main", 1));
         interchanges.add(new InterchangeInfo("Como Camerlata", new String[]{"R17", "S10", "S11", "S40", "R18", "RE7", "RE13", "RE80"}, "lightrail", "Main", 2));
-        interchanges.add(new InterchangeInfo("Grandate Breccia", new String[]{"R17", "RE7"}, "lightrail", "Main", 3));
+        interchanges.add(new InterchangeInfo("Grandate - Breccia", new String[]{"R17", "RE7"}, "lightrail", "Main", 3));
         interchanges.add(new InterchangeInfo("Portichetto - Luisago", new String[]{"R17"}, "lightrail", "Main", 4));
         interchanges.add(new InterchangeInfo("Fino Mornasco", new String[]{"R17"}, "lightrail", "Main", 5));
         interchanges.add(new InterchangeInfo("Cadorago", new String[]{"R17"}, "lightrail", "Main", 6));
