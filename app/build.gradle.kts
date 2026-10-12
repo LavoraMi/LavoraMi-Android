@@ -46,6 +46,12 @@ android {
         localeFilters += listOf("it", "en", "es")
     }
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
