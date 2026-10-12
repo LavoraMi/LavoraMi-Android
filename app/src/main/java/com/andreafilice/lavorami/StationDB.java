@@ -407,6 +407,7 @@ public class StationDB {
             allStations.addAll(MovibusStationsDB.getStationsZ6C3());
 
             allStations.addAll(StarMobiltyStationsDB.getStationsZ501());
+            allStations.addAll(StarMobiltyStationsDB.getStationsZ509());
 
             allStations.addAll(STAVStationsDB.getStationsZ551());
             allStations.addAll(STAVStationsDB.getStationsZ552());
