@@ -27,8 +27,8 @@ android {
         minSdk = 26
         targetSdk = 36
         versionCode = 68
-        versionName = "2.4.2"
-        var buildNumber = "1210202601"
+        versionName = "2.4.3"
+        var buildNumber = "1210202602"
 
         resValue("string", "app_version", versionName ?: "1.0.0")
         resValue("string", "appVersionFull", ("$versionName ($buildNumber)"))
