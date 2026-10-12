@@ -76,3 +76,16 @@
 -keep class com.andreafilice.lavorami.SettingsActivity { *; }
 -keep class com.andreafilice.lavorami.RetrofitManager { *; }
 
+# Preserve fields and classes in Protobuf GeneratedMessageLite subclasses (used by ML Kit, Firebase, etc.)
+-keep class * extends **.GeneratedMessageLite { *; }
+-keepclassmembers class * extends **.GeneratedMessageLite {
+    <fields>;
+}
+-dontwarn com.google.protobuf.**
+-dontwarn **.protobuf.**
+
+# Keep ML Kit classes and prevent issues during translation / model loading
+-keep class com.google.mlkit.** { *; }
+-dontwarn com.google.mlkit.**
+
+
