@@ -71,7 +71,10 @@ import com.google.android.flexbox.FlexboxLayout;
 import com.mapbox.maps.MapView;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
+import androidx.core.graphics.drawable.DrawableCompat;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.shape.ShapeAppearanceModel;
@@ -2670,6 +2673,13 @@ public class LinesDetailActivity extends AppCompatActivity {
                     holder.dividerArrivi.setVisibility(View.GONE);
                     holder.containerOtherDepartures.setVisibility(View.GONE);
                 }
+
+                if (holder.btnViewAllArrivals != null) {
+                    holder.btnViewAllArrivals.setOnClickListener(v -> {
+                        String headsignStr = (first.headsign != null) ? first.headsign : "";
+                        showAllArrivalsBottomSheet(dirId, headsignStr);
+                    });
+                }
             }
         }
 
@@ -2681,6 +2691,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             ImageView iconFirstClock;
             View dividerArrivi;
             FlexboxLayout containerOtherDepartures;
+            MaterialButton btnViewAllArrivals;
 
             ArrivalsView(View view) {
                 super(view);
@@ -2691,6 +2702,144 @@ public class LinesDetailActivity extends AppCompatActivity {
                 dividerArrivi = view.findViewById(R.id.dividerArrivi);
                 containerOtherDepartures = view.findViewById(R.id.containerOtherDepartures);
                 nextArrivals = view.findViewById(R.id.nextArrivals);
+                btnViewAllArrivals = view.findViewById(R.id.btnViewAllArrivals);
+            }
+        }
+    }
+
+    private void showAllArrivalsBottomSheet(String dirId, String headsign) {
+        if (routeData == null || selectedStopId == null) return;
+
+        Map<String, List<GTFSHelper.Departure>> allDeparturesByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, Integer.MAX_VALUE);
+        List<GTFSHelper.Departure> departures = (allDeparturesByDir != null) ? allDeparturesByDir.get(dirId) : null;
+
+        if (departures == null || departures.isEmpty()) return;
+
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        View sheetView = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_all_arrivals, null);
+
+        View closeBtn = sheetView.findViewById(R.id.close_btn);
+        TextView sheetTitle = sheetView.findViewById(R.id.sheetTitle);
+        TextView sheetSubtitle = sheetView.findViewById(R.id.sheetSubtitle);
+        RecyclerView rvAllArrivi = sheetView.findViewById(R.id.rvAllArrivi);
+
+        if (sheetTitle != null) {
+            sheetTitle.setText(getString(R.string.allArrivalsTitle));
+        }
+        if (sheetSubtitle != null && headsign != null) {
+            sheetSubtitle.setText(getString(R.string.directionTitleArrivals) + headsign.toUpperCase());
+        }
+
+        if (closeBtn != null) {
+            closeBtn.setOnClickListener(v -> bottomSheetDialog.dismiss());
+        }
+
+        if (rvAllArrivi != null) {
+            rvAllArrivi.setLayoutManager(new LinearLayoutManager(this));
+            rvAllArrivi.setAdapter(new AllArrivalsAdapter(departures));
+        }
+
+        bottomSheetDialog.setContentView(sheetView);
+
+        bottomSheetDialog.setOnShowListener(dialogInterface -> {
+            BottomSheetDialog d = (BottomSheetDialog) dialogInterface;
+            FrameLayout bottomSheet = d.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+            if (bottomSheet != null) {
+                bottomSheet.setBackgroundColor(Color.TRANSPARENT);
+                BottomSheetBehavior<FrameLayout> behavior = BottomSheetBehavior.from(bottomSheet);
+                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                behavior.setSkipCollapsed(true);
+            }
+        });
+
+        bottomSheetDialog.show();
+    }
+
+    private class AllArrivalsAdapter extends RecyclerView.Adapter<AllArrivalsAdapter.ViewHolder> {
+        private final List<GTFSHelper.Departure> departures;
+
+        AllArrivalsAdapter(List<GTFSHelper.Departure> departures) {
+            this.departures = departures;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_orario_arrivo, parent, false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            GTFSHelper.Departure dep = departures.get(position);
+
+            holder.txtTime.setText(dep.time);
+
+            if (dep.minutesFromNow == 0) {
+                holder.txtMins.setText(getString(R.string.leavingTitle));
+            } else if (dep.minutesFromNow >= 60) {
+                int hours = dep.minutesFromNow / 60;
+                int mins = dep.minutesFromNow % 60;
+                if (mins == 0) holder.txtMins.setText("in " + hours + " h");
+                else holder.txtMins.setText("in " + hours + " h " + mins + " min");
+            } else {
+                holder.txtMins.setText("in " + dep.minutesFromNow + " min");
+            }
+
+            if (dep.headsign != null) {
+                holder.txtHeadsign.setText(getString(R.string.directionTitleArrivals) + dep.headsign.toUpperCase());
+                holder.txtHeadsign.setVisibility(View.VISIBLE);
+            } else {
+                holder.txtHeadsign.setVisibility(View.GONE);
+            }
+
+            if (position == 0) {
+                holder.lineTop.setVisibility(View.INVISIBLE);
+            } else {
+                holder.lineTop.setVisibility(View.VISIBLE);
+            }
+
+            if (position == departures.size() - 1) {
+                holder.lineBottom.setVisibility(View.INVISIBLE);
+            } else {
+                holder.lineBottom.setVisibility(View.VISIBLE);
+            }
+
+            if (coloreLinea != 0) {
+                holder.lineTop.setBackgroundColor(coloreLinea);
+                holder.lineBottom.setBackgroundColor(coloreLinea);
+                if (holder.dotOrario != null) {
+                    Drawable dotDrawable = holder.dotOrario.getBackground();
+                    if (dotDrawable != null) {
+                        dotDrawable = dotDrawable.mutate();
+                        if (dotDrawable instanceof GradientDrawable) {
+                            ((GradientDrawable) dotDrawable).setStroke((int) (3 * getResources().getDisplayMetrics().density), coloreLinea);
+                        } else {
+                            DrawableCompat.setTint(dotDrawable, coloreLinea);
+                        }
+                        holder.dotOrario.setBackground(dotDrawable);
+                    }
+                }
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return departures != null ? departures.size() : 0;
+        }
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+            View lineTop, lineBottom, dotOrario;
+            TextView txtTime, txtMins, txtHeadsign;
+
+            ViewHolder(View view) {
+                super(view);
+                lineTop = view.findViewById(R.id.lineTop);
+                lineBottom = view.findViewById(R.id.lineBottom);
+                dotOrario = view.findViewById(R.id.dotOrario);
+                txtTime = view.findViewById(R.id.txtTime);
+                txtMins = view.findViewById(R.id.txtMins);
+                txtHeadsign = view.findViewById(R.id.txtHeadsign);
             }
         }
     }

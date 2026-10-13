@@ -491,4 +491,6 @@
     <string name="uppercasedTimeTableTitle">ORARI NON PRECISI O MANCANTI</string>
     <string name="infoMetro">Info</string>
     <string name="stationConstruction">Stazione in costruzione.</string>
+    <string name="viewAllArrivals">Visualizza tutti gli arrivi</string>
+    <string name="allArrivalsTitle">Tutti gli arrivi</string>
 </resources>

@@ -114,6 +114,23 @@
                 app:alignItems="center"
                 app:justifyContent="flex_start" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewAllArrivals"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/inter"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:cornerRadius="20dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/subtitle"
+                app:backgroundTint="@android:color/transparent"
+                android:textColor="@color/text_primary"
+                android:text="@string/viewAllArrivals" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
