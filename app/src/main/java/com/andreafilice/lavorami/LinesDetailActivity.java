@@ -2584,6 +2584,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         interchangeHandler.removeCallbacksAndMessages(null);
         interchangeHandler.removeCallbacksAndMessages(null);
         dismissActiveBranchDialog();
+        dismissActiveAllArrivalsDialog();
     }
 
     private class ArriviAdapter extends RecyclerView.Adapter<ArriviAdapter.ArrivalsView> {
@@ -2707,8 +2708,23 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
     }
 
+    private BottomSheetDialog activeAllArrivalsDialog;
+    private final Handler allArrivalsHandler = new Handler(Looper.getMainLooper());
+
+    private void dismissActiveAllArrivalsDialog() {
+        allArrivalsHandler.removeCallbacksAndMessages(null);
+        if (activeAllArrivalsDialog != null && activeAllArrivalsDialog.isShowing()) {
+            try {
+                activeAllArrivalsDialog.dismiss();
+            } catch (Exception ignored) {}
+        }
+        activeAllArrivalsDialog = null;
+    }
+
     private void showAllArrivalsBottomSheet(String dirId, String headsign) {
         if (routeData == null || selectedStopId == null) return;
+
+        dismissActiveAllArrivalsDialog();
 
         Map<String, List<GTFSHelper.Departure>> allDeparturesByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, Integer.MAX_VALUE);
         List<GTFSHelper.Departure> departures = (allDeparturesByDir != null) ? allDeparturesByDir.get(dirId) : null;
@@ -2716,6 +2732,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (departures == null || departures.isEmpty()) return;
 
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        activeAllArrivalsDialog = bottomSheetDialog;
+
         View sheetView = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_all_arrivals, null);
 
         View closeBtn = sheetView.findViewById(R.id.close_btn);
@@ -2734,9 +2752,10 @@ public class LinesDetailActivity extends AppCompatActivity {
             closeBtn.setOnClickListener(v -> bottomSheetDialog.dismiss());
         }
 
+        AllArrivalsAdapter adapter = new AllArrivalsAdapter(departures);
         if (rvAllArrivi != null) {
             rvAllArrivi.setLayoutManager(new LinearLayoutManager(this));
-            rvAllArrivi.setAdapter(new AllArrivalsAdapter(departures));
+            rvAllArrivi.setAdapter(adapter);
         }
 
         bottomSheetDialog.setContentView(sheetView);
@@ -2752,14 +2771,44 @@ public class LinesDetailActivity extends AppCompatActivity {
             }
         });
 
+        bottomSheetDialog.setOnDismissListener(d -> {
+            allArrivalsHandler.removeCallbacksAndMessages(null);
+            if (activeAllArrivalsDialog == bottomSheetDialog) {
+                activeAllArrivalsDialog = null;
+            }
+        });
+
+        Runnable refreshRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (routeData != null && selectedStopId != null) {
+                    Map<String, List<GTFSHelper.Departure>> updatedMap = GTFSHelper.getDepartures(LinesDetailActivity.this, selectedStopId, routeData, Integer.MAX_VALUE);
+                    List<GTFSHelper.Departure> updatedList = (updatedMap != null) ? updatedMap.get(dirId) : null;
+                    adapter.updateData(updatedList);
+                }
+                allArrivalsHandler.postDelayed(this, 10000);
+            }
+        };
+        allArrivalsHandler.postDelayed(refreshRunnable, 10000);
+
         bottomSheetDialog.show();
     }
 
     private class AllArrivalsAdapter extends RecyclerView.Adapter<AllArrivalsAdapter.ViewHolder> {
-        private final List<GTFSHelper.Departure> departures;
+        private final List<GTFSHelper.Departure> departures = new ArrayList<>();
 
         AllArrivalsAdapter(List<GTFSHelper.Departure> departures) {
-            this.departures = departures;
+            if (departures != null) {
+                this.departures.addAll(departures);
+            }
+        }
+
+        public void updateData(List<GTFSHelper.Departure> newDepartures) {
+            this.departures.clear();
+            if (newDepartures != null) {
+                this.departures.addAll(newDepartures);
+            }
+            notifyDataSetChanged();
         }
 
         @NonNull
@@ -2825,7 +2874,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return departures != null ? departures.size() : 0;
+            return departures.size();
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
