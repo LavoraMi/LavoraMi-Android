@@ -159,8 +159,29 @@ public class WidgetLines extends AppWidgetProvider {
     }
 
     private void showSelectionView(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
+        RemoteViews normal = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection);
+        populateSelectionViews(normal, context, appWidgetId);
 
+        RemoteViews finalViews;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            RemoteViews small = new RemoteViews(context.getPackageName(), R.layout.widget_lines_selection_small);
+            populateSelectionViews(small, context, appWidgetId);
+
+            Map<SizeF, RemoteViews> sizeMap = new HashMap<>();
+            sizeMap.put(new SizeF(250f, 110f), small);
+            sizeMap.put(new SizeF(SMALL_WIDTH_THRESHOLD_DP, SMALL_HEIGHT_THRESHOLD_DP), normal);
+            sizeMap.put(new SizeF(320f, 110f), normal);
+
+            finalViews = new RemoteViews(sizeMap);
+        } else {
+            finalViews = normal;
+        }
+
+        appWidgetManager.updateAppWidget(appWidgetId, finalViews);
+    }
+
+    private void populateSelectionViews(RemoteViews views, Context context, int appWidgetId) {
         boolean openInApp = DataManager.getBoolData(DataKeys.KEY_OPEN_WIDGET_IN_APP, true);
 
         int[] chipIds = {R.id.chip1, R.id.chip2, R.id.chip3, R.id.chip4, R.id.chip5};
@@ -185,8 +206,6 @@ public class WidgetLines extends AppWidgetProvider {
                 views.setOnClickPendingIntent(chipIds[i], pendingIntent);
             }
         }
-
-        appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     private void showDetailView(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String lineCode) {

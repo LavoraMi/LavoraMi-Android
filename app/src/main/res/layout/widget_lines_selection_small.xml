@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    android:background="@drawable/glass_bottom_bar_bg"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/chips_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/chip1"
+            style="@style/WidgetLineChip"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:padding="5dp"
+            android:text="M1"
+            android:textSize="12sp"
+            android:backgroundTint="@color/redMetro" />
+
+        <TextView
+            android:id="@+id/chip2"
+            style="@style/WidgetLineChip"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:padding="5dp"
+            android:text="S5"
+            android:textSize="12sp"
+            android:backgroundTint="@color/S5" />
+
+        <TextView
+            android:id="@+id/chip3"
+            style="@style/WidgetLineChip"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:padding="5dp"
+            android:text="M3"
+            android:textSize="12sp"
+            android:backgroundTint="@color/M3" />
+
+        <TextView
+            android:id="@+id/chip4"
+            style="@style/WidgetLineChip"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:padding="5dp"
+            android:text="S2"
+            android:textSize="12sp"
+            android:backgroundTint="@color/S2" />
+
+        <TextView
+            android:id="@+id/chip5"
+            style="@style/WidgetLineChip"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:padding="5dp"
+            android:text="z620"
+            android:textSize="12sp"
+            android:backgroundTint="@color/BUS" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/instructions_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/widget_selection_text"
+        android:textColor="@color/subtitle"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:fontFamily="@font/font_main" />
+
+</LinearLayout>
