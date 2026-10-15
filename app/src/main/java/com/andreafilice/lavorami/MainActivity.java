@@ -1267,28 +1267,28 @@ public class MainActivity extends AppCompatActivity {
                         if (start > 0 && now < start) filtrata.add(item);
                         break;
                     case DI_ATM:
-                        if(item.company.equalsIgnoreCase("ATM") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("ATM") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_TRENORD:
-                        if(item.company.equalsIgnoreCase("Trenord") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("Trenord") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_TILO:
-                        if(item.company.equalsIgnoreCase("TILO") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("TILO") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_MOVIBUS:
-                        if(item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("Movibus") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_NET:
-                        if(item.company.equalsIgnoreCase("NET") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("NET") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_STAV:
-                        if(item.company.equalsIgnoreCase("STAV") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("STAV") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_STAR:
-                        if(item.company.equalsIgnoreCase("STAR") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("STAR") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                     case DI_AUTOGUIDOVIE:
-                        if(item.company.equalsIgnoreCase("Autoguidovie") && terminated > limiteMassimo) filtrata.add(item);
+                        if(item.company != null && item.company.equalsIgnoreCase("Autoguidovie") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                 }
             }
@@ -1303,25 +1303,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isTram(EventDescriptor item) {return (item.typeOfTransport.contains("tram") && !item.typeOfTransport.equalsIgnoreCase("tram.fill.tunnel"));}
+    private boolean isTram(EventDescriptor item) {return (item.typeOfTransport != null && item.typeOfTransport.contains("tram") && !item.typeOfTransport.equalsIgnoreCase("tram.fill.tunnel"));}
 
     private boolean isTreno(EventDescriptor item) {
+        if (item.getLines() == null) return false;
         for (String l : item.getLines()) {
-            if (l.matches("(?i)^(S|R|RE|RV).*")) return true;
+            if (l != null && l.matches("(?i)^(S|R|RE|RV).*")) return true;
         }
         return false;
     }
 
     private boolean isMetro(EventDescriptor item) {
+        if (item.getLines() == null) return false;
         for (String l : item.getLines()) {
-            if (l.matches("(?i)^M[1-5].*")) return true;
+            if (l != null && l.matches("(?i)^M[1-5].*")) return true;
         }
         return false;
     }
 
     private boolean isBus(EventDescriptor item) {
+        if (item.getLines() == null) return false;
         for (String l : item.getLines()) {
-            if ((l.matches("^[0-9]+$") && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus")) return true;
+            if (l != null && ((l.matches("^[0-9]+$") && item.getTypeOfTransport() != null && item.getTypeOfTransport().contains("bus")) || l.startsWith("Z") || l.startsWith("z") || l.startsWith("Filobus"))) return true;
         }
         return false;
     }

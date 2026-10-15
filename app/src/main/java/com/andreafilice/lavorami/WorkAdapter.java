@@ -37,6 +37,7 @@ import com.google.android.gms.ads.nativead.NativeAdView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static Typeface sFontInterBold;
@@ -441,11 +442,31 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             EventDescriptor o = oldList.get(oldPos);
             EventDescriptor n = newList.get(newPos);
 
-            return o.getTitle() != null && o.getTitle().equals(n.getTitle()) && o.getStartDate() != null && o.getStartDate().equals(n.getStartDate());
+            if (o == n) return true;
+            if (o == null || n == null) return false;
+
+            return Objects.equals(o.getTitle(), n.getTitle()) &&
+                   Objects.equals(o.getRoads(), n.getRoads()) &&
+                   Objects.equals(o.getCompany(), n.getCompany()) &&
+                   Objects.equals(o.getStartDate(), n.getStartDate());
         }
 
         @Override
-        public boolean areContentsTheSame(int oldPos, int newPos) {return areItemsTheSame(oldPos, newPos);}
+        public boolean areContentsTheSame(int oldPos, int newPos) {
+            EventDescriptor o = oldList.get(oldPos);
+            EventDescriptor n = newList.get(newPos);
+
+            if (o == n) return true;
+            if (o == null || n == null) return false;
+
+            return Objects.equals(o.getTitle(), n.getTitle()) &&
+                   Objects.equals(o.getRoads(), n.getRoads()) &&
+                   Objects.equals(o.getCompany(), n.getCompany()) &&
+                   Objects.equals(o.getDetails(), n.getDetails()) &&
+                   Objects.equals(o.getStartDate(), n.getStartDate()) &&
+                   Objects.equals(o.getEndDate(), n.getEndDate()) &&
+                   Objects.equals(o.getCachedLinesString(), n.getCachedLinesString());
+        }
     }
 
     public static class AdViewHolder extends RecyclerView.ViewHolder {
@@ -497,8 +518,8 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private final List<Object> newList;
 
         CombinedListDiffCallback(List<Object> oldList, List<Object> newList) {
-            this.oldList = oldList;
-            this.newList = newList;
+            this.oldList = (oldList != null) ? oldList : new ArrayList<>();
+            this.newList = (newList != null) ? newList : new ArrayList<>();
         }
 
         @Override
@@ -511,17 +532,45 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Object old = oldList.get(oldPos);
             Object newItem = newList.get(newPos);
 
-            if (old instanceof EventDescriptor && newItem instanceof EventDescriptor) {
-                EventDescriptor oldDesc = (EventDescriptor) old;
-                EventDescriptor newDesc = (EventDescriptor) newItem;
+            if (old == newItem) return true;
+            if (old == null || newItem == null) return false;
 
-                return oldDesc.getTitle().equals(newDesc.getTitle()) && oldDesc.getStartDate().equals(newDesc.getStartDate());
+            if (old instanceof EventDescriptor && newItem instanceof EventDescriptor) {
+                EventDescriptor o = (EventDescriptor) old;
+                EventDescriptor n = (EventDescriptor) newItem;
+
+                return Objects.equals(o.getTitle(), n.getTitle()) &&
+                       Objects.equals(o.getRoads(), n.getRoads()) &&
+                       Objects.equals(o.getCompany(), n.getCompany()) &&
+                       Objects.equals(o.getStartDate(), n.getStartDate());
             }
-            return old == newItem;
+
+            return false;
         }
 
         @Override
-        public boolean areContentsTheSame(int oldPos, int newPos) {return areItemsTheSame(oldPos, newPos);}
+        public boolean areContentsTheSame(int oldPos, int newPos) {
+            Object old = oldList.get(oldPos);
+            Object newItem = newList.get(newPos);
+
+            if (old == newItem) return true;
+            if (old == null || newItem == null) return false;
+
+            if (old instanceof EventDescriptor && newItem instanceof EventDescriptor) {
+                EventDescriptor o = (EventDescriptor) old;
+                EventDescriptor n = (EventDescriptor) newItem;
+
+                return Objects.equals(o.getTitle(), n.getTitle()) &&
+                       Objects.equals(o.getRoads(), n.getRoads()) &&
+                       Objects.equals(o.getCompany(), n.getCompany()) &&
+                       Objects.equals(o.getDetails(), n.getDetails()) &&
+                       Objects.equals(o.getStartDate(), n.getStartDate()) &&
+                       Objects.equals(o.getEndDate(), n.getEndDate()) &&
+                       Objects.equals(o.getCachedLinesString(), n.getCachedLinesString());
+            }
+
+            return false;
+        }
     }
 
 }
