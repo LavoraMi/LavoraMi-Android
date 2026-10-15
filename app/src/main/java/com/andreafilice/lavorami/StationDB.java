@@ -5,7 +5,7 @@ import android.content.Context;
 import com.andreafilice.lavorami.stationsDB.MetroStationsDB;
 import com.andreafilice.lavorami.stationsDB.NETStationsDB;
 import com.andreafilice.lavorami.stationsDB.STAVStationsDB;
-import com.andreafilice.lavorami.stationsDB.StarMobiltyStationsDB;
+import com.andreafilice.lavorami.stationsDB.STARMobiltyStationsDB;
 import com.andreafilice.lavorami.stationsDB.SuburbanStationsDB;
 import com.andreafilice.lavorami.stationsDB.RegionalStationsDB;
 import com.andreafilice.lavorami.stationsDB.RegioExpStationsDB;
@@ -16,7 +16,6 @@ import com.andreafilice.lavorami.stationsDB.MovibusStationsDB;
 import com.andreafilice.lavorami.stationsDB.FilobusStationsDB;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -406,8 +405,8 @@ public class StationDB {
             allStations.addAll(MovibusStationsDB.getStationsZ649());
             allStations.addAll(MovibusStationsDB.getStationsZ6C3());
 
-            allStations.addAll(StarMobiltyStationsDB.getStationsZ501());
-            allStations.addAll(StarMobiltyStationsDB.getStationsZ509());
+            allStations.addAll(STARMobiltyStationsDB.getStationsZ501());
+            allStations.addAll(STARMobiltyStationsDB.getStationsZ509());
 
             allStations.addAll(STAVStationsDB.getStationsZ551());
             allStations.addAll(STAVStationsDB.getStationsZ552());
