@@ -163,6 +163,18 @@ public class StopDetailsActivity extends AppCompatActivity{
                 new Handler(Looper.getMainLooper()).post(() -> {
                     routeData = route;
                     selezionaFermataCorrente();
+
+                    TextView detDirezioni = findViewById(R.id.detDirezioni);
+                    TextView nextArrivals = findViewById(R.id.nextArrivals);
+                    LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
+
+                    if(stationClosed && detDirezioni != null) {
+                        detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
+                        if (nextArrivals != null) nextArrivals.setText("");
+                        detDirezioni.setTextColor(getColor(R.color.subtitle));
+                        if (rigaCambiaDirezione != null)
+                            rigaCambiaDirezione.setVisibility(View.GONE);
+                    }
                 });
             }
 
