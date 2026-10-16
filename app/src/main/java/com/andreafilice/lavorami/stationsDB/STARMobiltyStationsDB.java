@@ -157,7 +157,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.38906, 9.14816, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.38894, 9.14815, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.38879, 9.14806, "Main", "z501"));
-        stations.add(new MetroStation("Famagosta M2", 45.43653, 9.16855, "Ritorno", "z501"));
+        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43688, 9.16862, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43704, 9.16877, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43708, 9.16894, "Ritorno", "z501"));
@@ -749,7 +749,7 @@ public class STARMobiltyStationsDB {
     public static List<MetroStation> getStationsZ509() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("Famagosta M2", 45.43635, 9.16878, "Main - Ritorno", "z509"));
+        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main - Ritorno", "z509"));
         stations.add(new MetroStation("NO_DRAW", 45.43598, 9.16875, "Main", "z509"));
         stations.add(new MetroStation("NO_DRAW", 45.4359, 9.16868, "Main", "z509"));
         stations.add(new MetroStation("NO_DRAW", 45.43586, 9.1686, "Main", "z509"));
@@ -1667,7 +1667,7 @@ public class STARMobiltyStationsDB {
 
     public static List<MetroStation> getStationsZ510() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Famagosta M2", 45.43635, 9.16878, "Main", "z510"));
+        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43608, 9.16878, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43594, 9.16874, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43589, 9.16865, "Main", "z510"));
@@ -1825,7 +1825,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.38645, 9.14662, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.38631, 9.14659, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.38604, 9.14647, "Main", "z510"));
-        stations.add(new MetroStation("Famagosta M2", 45.43653, 9.16855, "Ritorno", "z510"));
+        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.4368, 9.16855, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43705, 9.16863, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43713, 9.1688, "Ritorno", "z510"));
