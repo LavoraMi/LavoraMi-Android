@@ -103,17 +103,7 @@
                 android:src="@drawable/ic_character_browser"
                 android:alpha="1.0"
                 app:tint="@android:color/white" />
-
-            <ImageView
-                android:id="@+id/icon_zoom_hint"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_zoom"
-                android:alpha="0.0"
-                app:tint="@android:color/white" />
         </FrameLayout>
-
     </RelativeLayout>
 
     <RelativeLayout
