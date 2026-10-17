@@ -2611,7 +2611,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             if (deps != null && !deps.isEmpty()) {
                 GTFSHelper.Departure first = deps.get(0);
-                holder.txtDirectionHeadsign.setText(getString(R.string.directionTitleArrivals) + first.headsign.toUpperCase());
+                holder.txtDirectionHeadsign.setText(buildHeadsignText(first.headsign));
 
                 int colorFirst;
                 if (first.minutesFromNow < 10) {
@@ -2682,6 +2682,23 @@ public class LinesDetailActivity extends AppCompatActivity {
                     });
                 }
             }
+        }
+
+        private String buildHeadsignText(String headsign) {
+            if (headsign == null) return "";
+
+            String selectedStopName = null;
+            if (routeData != null && routeData.stops != null && selectedStopId != null) {
+                GTFSHelper.GTFSStop stop = routeData.stops.get(selectedStopId);
+                if (stop != null) selectedStopName = stop.name;
+            }
+
+            boolean isSameAsStop = selectedStopName != null
+                    && headsign.trim().equalsIgnoreCase(selectedStopName.trim());
+
+            String prefix = isSameAsStop ? getString(R.string.nextArrivalsTitle) : getString(R.string.directionTitleArrivals);
+
+            return prefix + headsign.toUpperCase();
         }
 
         @Override
