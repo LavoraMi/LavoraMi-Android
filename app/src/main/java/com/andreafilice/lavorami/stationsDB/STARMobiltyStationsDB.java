@@ -3959,7 +3959,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.34426, 9.08443, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34425, 9.08411, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34423, 9.08331, "Main - Ritorno", "z516"));
-        stations.add(new MetroStation("NOVGLIO sp 203 (Cimitero)", 45.34411, 9.07891, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("NOVIGLIO SP203 (Cimitero)", 45.34411, 9.07891, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34408, 9.07768, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34408, 9.07737, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.3441, 9.0771, "Main - Ritorno", "z516"));
@@ -3981,7 +3981,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.35549, 9.06928, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35586, 9.06891, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35585, 9.06891, "Ritorno", "z516"));
-        stations.add(new MetroStation("MAIRANO sp 203", 45.35609, 9.0687, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("NOVIGLIO-Mairano S.P. 203", 45.35609, 9.0687, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35639, 9.06824, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35657, 9.06795, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35667, 9.06771, "Main - Ritorno", "z516"));
@@ -4003,7 +4003,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.35683, 9.05449, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35682, 9.05396, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35677, 9.05269, "Main - Ritorno", "z516"));
-        stations.add(new MetroStation("Noviglio-s.p. 203", 45.35672, 9.05119, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("Noviglio-S.P. 203", 45.35672, 9.05119, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35666, 9.0491, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35665, 9.04866, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35666, 9.04837, "Main", "z516"));
@@ -4149,13 +4149,13 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.35325, 9.01797, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35315, 9.01775, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35301, 9.01746, "Main", "z516"));
-        stations.add(new MetroStation("ROSATE Via Circonvallazione/I Maggio", 45.35241, 9.016, "Main", "z516"));
+        stations.add(new MetroStation("ROSATE-V.Circonvallazione fr. V.I Maggio", 45.35241, 9.016, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35205, 9.01517, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35329, 9.01817, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.3532, 9.01799, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35311, 9.01777, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35299, 9.01748, "Ritorno", "z516"));
-        stations.add(new MetroStation("ROSATE Via Circonvallazione/I Maggio", 45.35265, 9.01667, "Ritorno", "z516"));
+        stations.add(new MetroStation("ROSATE-V.Circonvallazione fr. V.I Maggio", 45.35265, 9.01667, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35204, 9.01518, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.352, 9.01496, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35196, 9.01474, "Main - Ritorno", "z516"));
@@ -4173,7 +4173,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.34925, 9.01363, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34922, 9.01357, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34916, 9.01355, "Main", "z516"));
-        stations.add(new MetroStation("ROSATE Via Dante", 45.34899, 9.01355, "Main", "z516"));
+        stations.add(new MetroStation("ROSATE-V.Circonvallazione (ATM)", 45.34899, 9.01355, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34886, 9.01357, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34877, 9.01359, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34874, 9.01365, "Main", "z516"));
@@ -4182,7 +4182,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.34866, 9.01387, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34931, 9.01383, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34918, 9.01385, "Ritorno", "z516"));
-        stations.add(new MetroStation("ROSATE Via Dante", 45.34897, 9.01391, "Ritorno", "z516"));
+        stations.add(new MetroStation("ROSATE-V.Circonvallazione (ATM)", 45.34897, 9.01391, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34889, 9.0139, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34879, 9.01387, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.3487, 9.01387, "Ritorno", "z516"));
@@ -4231,8 +4231,8 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.34162, 9.017, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34148, 9.01708, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.34131, 9.01715, "Main - Ritorno", "z516"));
-        stations.add(new MetroStation("ROSATE Via Industria", 45.34059, 9.01744, "Main", "z516"));
-        stations.add(new MetroStation("ROSATE Via Industria", 45.34059, 9.01744, "Ritorno", "z516"));
+        stations.add(new MetroStation("ROSATE-V.dell'Industria 16a (zona ind.)", 45.34059, 9.01744, "Main", "z516"));
+        stations.add(new MetroStation("ROSATE-V.dell'Industria / L. da Vinci", 45.34059, 9.01744, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33983, 9.01777, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33951, 9.0179, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33923, 9.01799, "Main - Ritorno", "z516"));
@@ -4262,9 +4262,9 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.33261, 9.02019, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.3322, 9.02005, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33261, 9.02023, "Ritorno", "z516"));
-        stations.add(new MetroStation("CALVIGNASCO Bettola", 45.33235, 9.02018, "Ritorno", "z516"));
+        stations.add(new MetroStation("CALVIGNASCO-Bettola V.Vittorio Veneto", 45.33235, 9.02018, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33172, 9.01981, "Main - Ritorno", "z516"));
-        stations.add(new MetroStation("CALVIGNASCO Bettola", 45.33152, 9.01966, "Main", "z516"));
+        stations.add(new MetroStation("CALVIGNASCO-Bettola V.Vittorio Veneto", 45.33152, 9.01966, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33111, 9.01956, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33098, 9.01952, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.33091, 9.01951, "Main - Ritorno", "z516"));
@@ -4517,7 +4517,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.30828, 9.0163, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.30858, 9.01564, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.30886, 9.01497, "Ritorno", "z516"));
-        stations.add(new MetroStation("CASORATE PRIMO Tosi/Avis (Ospedale)", 45.30901, 9.01462, "Ritorno", "z516"));
+        stations.add(new MetroStation("CASORATE PRIMO-Ospedale", 45.30901, 9.01462, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.30943, 9.0136, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.30945, 9.01338, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.30944, 9.01317, "Ritorno", "z516"));
@@ -4584,7 +4584,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.29459, 9.00262, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.29426, 9.00236, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.29425, 9.00236, "Ritorno", "z516"));
-        stations.add(new MetroStation("Motta Visconti-V.Cavour", 45.29016, 8.99901, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("Motta Visconti-V.Cavour (Bell'Italia)", 45.29016, 8.99901, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28998, 8.99885, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28982, 8.99871, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28973, 8.99861, "Main - Ritorno", "z516"));
@@ -4594,7 +4594,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.2884, 8.99676, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.2883, 8.99679, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28814, 8.99688, "Main", "z516"));
-        stations.add(new MetroStation("MOTTA VISCONTI Enzo Ferrari/del Cavo", 45.28667, 8.99767, "Main", "z516"));
+        stations.add(new MetroStation("MOTTA VISCONTI-Via del Cavo", 45.28667, 8.99767, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28414, 8.99897, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28406, 8.99901, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28401, 8.99903, "Main", "z516"));
@@ -4635,7 +4635,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.2862, 8.99603, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28616, 8.99601, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28611, 8.99593, "Ritorno", "z516"));
-        stations.add(new MetroStation("MOTTA VISCONTI-Cagi (edicola)", 45.28597, 8.99544, "Ritorno", "z516"));
+        stations.add(new MetroStation("MOTTA VISCONTI-Grattacielo (dir. Milano)", 45.28597, 8.99544, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.2859, 8.9952, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28586, 8.99511, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28581, 8.99507, "Ritorno", "z516"));
@@ -4665,7 +4665,8 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.28536, 8.99008, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28533, 8.9899, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28534, 8.9899, "Ritorno", "z516"));
-        stations.add(new MetroStation("MOTTA VISCONTI Via Matteotti", 45.28525, 8.98805, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("MOTTA VISCONTI-V.Matteotti (Parcogiochi)", 45.28525, 8.98805, "Main", "z516"));
+        stations.add(new MetroStation("MOTTA VISCONTI-V.Matteotti fr. 47", 45.28525, 8.98805, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28524, 8.98789, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28525, 8.98789, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28525, 8.98773, "Main - Ritorno", "z516"));
@@ -4798,10 +4799,10 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.31097, 8.96957, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.3112, 8.96942, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.31152, 8.96915, "Main", "z516"));
-        stations.add(new MetroStation("P.za del Popolo", 45.31165, 8.96907, "Main", "z516"));
+        stations.add(new MetroStation("BESATE-P.za del Popolo", 45.31165, 8.96907, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.31119, 8.96942, "Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.31152, 8.96913, "Ritorno", "z516"));
-        stations.add(new MetroStation("P.za del Popolo", 45.31173, 8.96896, "Ritorno", "z516"));
+        stations.add(new MetroStation("BESATE-P.za del Popolo", 45.31173, 8.96896, "Ritorno", "z516"));
 
         return stations;
     }
