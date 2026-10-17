@@ -9,7 +9,7 @@ public class STARMobiltyStationsDB {
     public static List<MetroStation> getStationsZ501() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z501"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43608, 9.16878, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43594, 9.16874, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43589, 9.16865, "Main", "z501"));
@@ -111,7 +111,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39985, 9.14595, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39976, 9.14591, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39947, 9.14574, "Main", "z501"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.39896, 9.14544, "Main", "z501"));
+        stations.add(new MetroStation("ASSAGO Milanofiori M2", 45.39896, 9.14544, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39851, 9.1452, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39842, 9.14514, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39828, 9.14508, "Main", "z501"));
@@ -157,7 +157,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.38906, 9.14816, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.38894, 9.14815, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.38879, 9.14806, "Main", "z501"));
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Ritorno", "z501"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43688, 9.16862, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43704, 9.16877, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.43708, 9.16894, "Ritorno", "z501"));
@@ -230,7 +230,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40117, 9.14695, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.40031, 9.14642, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.40023, 9.14634, "Ritorno", "z501"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.40014, 9.14632, "Ritorno", "z501"));
+        stations.add(new MetroStation("ASSAGO Milanofiori M2", 45.40014, 9.14632, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.40005, 9.1463, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39999, 9.14626, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.39993, 9.14617, "Ritorno", "z501"));
@@ -560,7 +560,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.33211, 9.11759, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33201, 9.11782, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33195, 9.11799, "Main", "z501"));
-        stations.add(new MetroStation("Lacchiarella SP40", 45.33191, 9.11813, "Main", "z501"));
+        stations.add(new MetroStation("LACCHIARELLA SP40", 45.33191, 9.11813, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33004, 9.12403, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.32996, 9.12426, "Main", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.32985, 9.12448, "Main", "z501"));
@@ -655,7 +655,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.3282, 9.1311, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.32823, 9.13122, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.32819, 9.13139, "Ritorno", "z501"));
-        stations.add(new MetroStation("Lacchiarella-SP 40", 45.32811, 9.13162, "Ritorno", "z501"));
+        stations.add(new MetroStation("LACCHIARELLA-SP 40", 45.32811, 9.13162, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.32796, 9.13201, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.32786, 9.13213, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.3277, 9.13231, "Ritorno", "z501"));
@@ -749,7 +749,7 @@ public class STARMobiltyStationsDB {
     public static List<MetroStation> getStationsZ509() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main - Ritorno", "z509"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main - Ritorno", "z509"));
         stations.add(new MetroStation("NO_DRAW", 45.43598, 9.16875, "Main", "z509"));
         stations.add(new MetroStation("NO_DRAW", 45.4359, 9.16868, "Main", "z509"));
         stations.add(new MetroStation("NO_DRAW", 45.43586, 9.1686, "Main", "z509"));
@@ -1666,7 +1666,7 @@ public class STARMobiltyStationsDB {
 
     public static List<MetroStation> getStationsZ510() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z510"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43608, 9.16878, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43594, 9.16874, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43589, 9.16865, "Main", "z510"));
@@ -1768,7 +1768,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39985, 9.14595, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39976, 9.14591, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39947, 9.14574, "Main", "z510"));
-        stations.add(new MetroStation("Assago-Milanofiori M2", 45.39896, 9.14544, "Main", "z510"));
+        stations.add(new MetroStation("ASSAGO-Milanofiori M2", 45.39896, 9.14544, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39851, 9.1452, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39842, 9.14514, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39828, 9.14508, "Main", "z510"));
@@ -1824,7 +1824,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.38645, 9.14662, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.38631, 9.14659, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.38604, 9.14647, "Main", "z510"));
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Ritorno", "z510"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.4368, 9.16855, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43705, 9.16863, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.43713, 9.1688, "Ritorno", "z510"));
@@ -1913,7 +1913,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40031, 9.14642, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.40025, 9.14637, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.4002, 9.14633, "Ritorno", "z510"));
-        stations.add(new MetroStation("Assago-Milanofiori M2", 45.40014, 9.14632, "Ritorno", "z510"));
+        stations.add(new MetroStation("ASSAGO-Milanofiori M2", 45.40014, 9.14632, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.40007, 9.1463, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.40002, 9.14629, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39998, 9.14626, "Ritorno", "z510"));
@@ -2871,7 +2871,7 @@ public class STARMobiltyStationsDB {
 
     public static List<MetroStation> getStationsZ515(){
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z515"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43608, 9.16878, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43594, 9.16874, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43589, 9.16865, "Main", "z515"));
@@ -2973,7 +2973,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39985, 9.14595, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39976, 9.14591, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39947, 9.14574, "Main", "z515"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.39896, 9.14544, "Main", "z515"));
+        stations.add(new MetroStation("ASSAGO Milanofiori M2", 45.39896, 9.14544, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39851, 9.1452, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39842, 9.14514, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39828, 9.14508, "Main", "z515"));
@@ -3583,7 +3583,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39993, 9.14617, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39999, 9.14626, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40005, 9.1463, "Main", "z515"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.40014, 9.14632, "Main", "z515"));
+        stations.add(new MetroStation("ASSAGO Milanofiori M2", 45.40014, 9.14632, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40023, 9.14634, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40031, 9.14642, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40117, 9.14695, "Main", "z515"));
@@ -3656,7 +3656,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.43708, 9.16894, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43704, 9.16877, "Main", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43688, 9.16862, "Main", "z515"));
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Main", "z515"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Main", "z515"));
 
         return stations;
     }
@@ -4003,7 +4003,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.35683, 9.05449, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35682, 9.05396, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35677, 9.05269, "Main - Ritorno", "z516"));
-        stations.add(new MetroStation("Noviglio-S.P. 203", 45.35672, 9.05119, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("NOVIGLIO-S.P. 203", 45.35672, 9.05119, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35666, 9.0491, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35665, 9.04866, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.35666, 9.04837, "Main", "z516"));
@@ -4584,7 +4584,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.29459, 9.00262, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.29426, 9.00236, "Main", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.29425, 9.00236, "Ritorno", "z516"));
-        stations.add(new MetroStation("Motta Visconti-V.Cavour (Bell'Italia)", 45.29016, 8.99901, "Main - Ritorno", "z516"));
+        stations.add(new MetroStation("MOTTA VISCONTI-V.Cavour (Bell'Italia)", 45.29016, 8.99901, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28998, 8.99885, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28982, 8.99871, "Main - Ritorno", "z516"));
         stations.add(new MetroStation("NO_DRAW", 45.28973, 8.99861, "Main - Ritorno", "z516"));
