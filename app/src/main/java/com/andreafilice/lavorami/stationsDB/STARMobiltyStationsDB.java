@@ -2871,7 +2871,7 @@ public class STARMobiltyStationsDB {
 
     public static List<MetroStation> getStationsZ515(){
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main - Ritorno", "z515"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43635, 9.16878, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43608, 9.16878, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43594, 9.16874, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43589, 9.16865, "Main - Ritorno", "z515"));
@@ -2973,7 +2973,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39985, 9.14595, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39976, 9.14591, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39947, 9.14574, "Main - Ritorno", "z515"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.39896, 9.14544, "Main - Ritorno", "z515"));
+        stations.add(new MetroStation("ASSAGO-Milanofiori M2", 45.39896, 9.14544, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39851, 9.1452, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39842, 9.14514, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39828, 9.14508, "Main - Ritorno", "z515"));
@@ -3701,7 +3701,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39993, 9.14617, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.39999, 9.14626, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40005, 9.1463, "Main - Ritorno", "z515"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.40014, 9.14632, "Main - Ritorno", "z515"));
+        stations.add(new MetroStation("ASSAGO-Milanofiori M2", 45.40014, 9.14632, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40023, 9.14634, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40031, 9.14642, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.40117, 9.14695, "Main - Ritorno", "z515"));
