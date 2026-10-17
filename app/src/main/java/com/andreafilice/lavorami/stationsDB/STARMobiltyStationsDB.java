@@ -3774,7 +3774,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.43708, 9.16894, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43704, 9.16877, "Main - Ritorno", "z515"));
         stations.add(new MetroStation("NO_DRAW", 45.43688, 9.16862, "Main - Ritorno", "z515"));
-        stations.add(new MetroStation("Milano Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Main - Ritorno", "z515"));
+        stations.add(new MetroStation("MILANO Famagosta (M2 Area Interscambio)", 45.43653, 9.16855, "Main - Ritorno", "z515"));
         return stations;
     }
 
