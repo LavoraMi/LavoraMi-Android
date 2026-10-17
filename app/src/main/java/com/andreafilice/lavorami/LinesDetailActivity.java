@@ -951,18 +951,18 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (txtDirezioneMappa == null || stazioni == null || stazioni.isEmpty()) return;
 
         List<MetroStation> filtrate = new ArrayList<>();
-        for (MetroStation s : stazioni) {
-            if (s.getName().equalsIgnoreCase("NO_DRAW")) continue;
+        for (MetroStation station : stazioni) {
+            if (station.getName().equalsIgnoreCase("NO_DRAW")) continue;
 
-            String branch = s.getBranch();
+            String branch = station.getBranch();
             boolean branchHasRitorno = branch != null && branch.contains("Ritorno");
             boolean branchIsOnlyRitorno = branch != null && branch.trim().equalsIgnoreCase("Ritorno");
 
             if (modalitaRitorno) {
-                if (branchHasRitorno) filtrate.add(s);
+                if (branchHasRitorno) filtrate.add(station);
             }
             else {
-                if (!branchIsOnlyRitorno) filtrate.add(s);
+                if (!branchIsOnlyRitorno) filtrate.add(station);
             }
         }
 
