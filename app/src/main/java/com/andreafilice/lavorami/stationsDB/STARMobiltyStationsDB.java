@@ -1768,7 +1768,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.39985, 9.14595, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39976, 9.14591, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39947, 9.14574, "Main", "z510"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.39896, 9.14544, "Main", "z510"));
+        stations.add(new MetroStation("Assago-Milanofiori M2", 45.39896, 9.14544, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39851, 9.1452, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39842, 9.14514, "Main", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39828, 9.14508, "Main", "z510"));
@@ -1913,7 +1913,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.40031, 9.14642, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.40025, 9.14637, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.4002, 9.14633, "Ritorno", "z510"));
-        stations.add(new MetroStation("Assago Milanofiori M2", 45.40014, 9.14632, "Ritorno", "z510"));
+        stations.add(new MetroStation("Assago-Milanofiori M2", 45.40014, 9.14632, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.40007, 9.1463, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.40002, 9.14629, "Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.39998, 9.14626, "Ritorno", "z510"));
@@ -2464,7 +2464,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.31353, 9.15319, "Main - Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.31351, 9.15331, "Main - Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.31348, 9.15339, "Main - Ritorno", "z510"));
-        stations.add(new MetroStation("LACCHIARELLA Mettone - Mazzini", 45.31344, 9.15347, "Main - Ritorno", "z510"));
+        stations.add(new MetroStation("LACCHIARELLA -Mettone", 45.31344, 9.15347, "Main - Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.31321, 9.15379, "Main - Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.31303, 9.15392, "Main - Ritorno", "z510"));
         stations.add(new MetroStation("NO_DRAW", 45.31289, 9.15394, "Main - Ritorno", "z510"));
