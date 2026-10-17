@@ -465,7 +465,7 @@ public class STARMobiltyStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.33112, 9.10264, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33112, 9.10232, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33108, 9.10212, "Ritorno", "z501"));
-        stations.add(new MetroStation("BINASCO Autostazione", 45.331, 9.10183, "Ritorno", "z501"));
+        stations.add(new MetroStation("BINASCO-Autostazione", 45.331, 9.10183, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33096, 9.10171, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33096, 9.10163, "Ritorno", "z501"));
         stations.add(new MetroStation("NO_DRAW", 45.33096, 9.10158, "Ritorno", "z501"));
