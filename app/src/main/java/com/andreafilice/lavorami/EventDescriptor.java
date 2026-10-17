@@ -101,6 +101,8 @@ public class EventDescriptor {
                 return R.drawable.ic_arrow_work;
             case "move.3d":
                 return R.drawable.ic_move;
+            case "figure.soccer":
+                return R.drawable.ic_football_event;
             default:
                 return R.drawable.empty_image;
         }
