@@ -129,7 +129,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "AndroidX Test JUnit",
-                        "2.0.1",
+                        "2.0.2",
                         "Apache License 2.0",
                         "Copyright The Android Open Source Project",
                         APACHE_LICENSE_TEXT
@@ -150,21 +150,21 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Firebase BOM",
-                        "35.0.0",
+                        "35.0.2",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Cloud Messaging",
-                        "35.0.0",
+                        "35.0.2",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
                 ),
                 new LibraryModel(
                         "Firebase Analytics",
-                        "35.0.0",
+                        "35.0.2",
                         "Apache License 2.0",
                         "Copyright Google LLC",
                         APACHE_LICENSE_TEXT
