@@ -494,4 +494,5 @@
     <string name="stationConstruction">Estación en construcción.</string>
     <string name="viewAllArrivals">Ver todas las llegadas</string>
     <string name="allArrivalsTitle">Todas las llegadas</string>
+    <string name="nextArrivalsTitle">"PRÓXIMAS LLEGADAS: "</string>
 </resources>
