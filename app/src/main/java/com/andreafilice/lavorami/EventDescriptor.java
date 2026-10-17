@@ -31,6 +31,7 @@ public class EventDescriptor {
     });
 
     private static final ThreadLocal<SimpleDateFormat> DISPLAY_FORMAT = ThreadLocal.withInitial(() -> {return new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());});
+    private static final ThreadLocal<SimpleDateFormat> DISPLAY_FORMAT_TIME = ThreadLocal.withInitial(() -> {return new SimpleDateFormat("dd MMM, HH:mm", Locale.getDefault());});
 
     public EventDescriptor(String title, String titleIcon, String typeOfTransport, String roads, String[] lines, String startDate, String endDate, String details, String company) {
         this.title = title;
@@ -45,8 +46,8 @@ public class EventDescriptor {
     }
 
     public void precalculate(android.content.Context context) {
-        this.startDateMillis = DateUtils.toMillis(startDate);
-        this.endDateMillis = DateUtils.toMillis(endDate);
+        this.startDateMillis = getDateMillis(startDate);
+        this.endDateMillis = getDateMillis(endDate);
         this.formattedStartDate = formattaData(startDate);
         this.formattedEndDate = formattaData(endDate);
         this.cardImageResId = getTitleIconID(titleIcon);
@@ -123,12 +124,17 @@ public class EventDescriptor {
     public long getEndDateMillis() { return endDateMillis; }
     public void setEndDateMillis(long endDateMillis) { this.endDateMillis = endDateMillis; }
 
+    public static boolean hasTime(String iso) {
+        return iso != null && iso.length() >= 16 && iso.charAt(10) == 'T' && !iso.regionMatches(11, "00:00", 0, 5);
+    }
+
     public static String formattaData(String initialDate) {
         if (initialDate == null) return null;
 
         try {
             Date finalDate = SERVER_FORMAT.get().parse(initialDate);
-            return DISPLAY_FORMAT.get().format(finalDate);
+            SimpleDateFormat out = hasTime(initialDate) ? DISPLAY_FORMAT_TIME.get() : DISPLAY_FORMAT.get();
+            return out.format(finalDate);
         }
         catch (Exception e) {
             e.printStackTrace();
