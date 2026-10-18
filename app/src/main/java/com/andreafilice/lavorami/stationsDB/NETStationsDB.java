@@ -6,6 +6,7 @@ import java.util.List;
 public class NETStationsDB {
     public static List<MetroStation> getStationsZ301() {
         List<MetroStation> stations = new ArrayList<>();
+
         stations.add(new MetroStation("Bergamo (Autostazione)", 45.69195, 9.67609, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.69186, 9.67583, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.69177, 9.67559, "Main", "z301"));
@@ -620,10 +621,12 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54309, 9.24027, "Ritorno", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.54305, 9.24024, "Ritorno", "z301"));
         stations.add(new MetroStation("Sesto (1° Maggio) M1", 45.54186, 9.23912, "Main - Ritorno", "z301"));
+
         return stations;
     }
     public static List<MetroStation> getStationsZ304(){
         List<MetroStation> stations = new ArrayList<>();
+
         stations.add(new MetroStation("NO_DRAW", 45.53434, 9.29077, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53458, 9.29104, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53462, 9.2911, "Main", "z304"));
@@ -926,44 +929,14 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53424, 9.29057, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53427, 9.29068, "Main", "z304"));
         stations.add(new MetroStation("Cologno M2", 45.53433, 9.29077, "Main", "z304"));
+
         return stations;
     }
     public static List<MetroStation> getStationsZ305(){
         List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }
-    public static List<MetroStation> getStationsZ307(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }public static List<MetroStation> getStationsZ309(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }public static List<MetroStation> getStationsZ310(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }public static List<MetroStation> getStationsZ311(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }public static List<MetroStation> getStationsZ312(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }public static List<MetroStation> getStationsZ313(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }public static List<MetroStation> getStationsZ314(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }
-    public static List<MetroStation> getStationsZ315(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }
-    public static List<MetroStation> getStationsZ317(){
-        List<MetroStation> stations = new ArrayList<>();
-        return stations;
-    }
-    public static List<MetroStation> getStationsZ318(){
-        List<MetroStation> stations = new ArrayList<>();
+
+        
+
         return stations;
     }
 }
