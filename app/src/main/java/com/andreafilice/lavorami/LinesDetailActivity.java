@@ -972,7 +972,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         String destinazione;
-        if ("z515".equalsIgnoreCase(nomeLinea)) {
+        if (nomeLinea.equalsIgnoreCase("z515")) {
             String currentBranch = (selectedBranch != null) ? selectedBranch : (filtrate.get(0).getBranch() != null ? filtrate.get(0).getBranch() : "Main");
             if (currentBranch.equalsIgnoreCase("main") || currentBranch.toLowerCase().contains("main")) {
                 destinazione = getString(R.string.routeCircular);
