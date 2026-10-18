@@ -494,4 +494,6 @@
     <string name="viewAllArrivals">Visualizza tutti gli arrivi</string>
     <string name="allArrivalsTitle">Tutti gli arrivi</string>
     <string name="nextArrivalsTitle">"PROSSIMI ARRIVI: "</string>
+    <string name="routeCircular">Circolare</string>
+    <string name="routeSchool">Scolastica</string>
 </resources>

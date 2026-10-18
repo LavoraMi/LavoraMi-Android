@@ -972,8 +972,17 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         String destinazione;
-        if (modalitaRitorno) destinazione = filtrate.get(0).getName();
-        else destinazione = filtrate.get(filtrate.size() - 1).getName();
+        if ("z515".equalsIgnoreCase(nomeLinea)) {
+            String currentBranch = (selectedBranch != null) ? selectedBranch : (filtrate.get(0).getBranch() != null ? filtrate.get(0).getBranch() : "Main");
+            if (currentBranch.equalsIgnoreCase("main") || currentBranch.toLowerCase().contains("main")) {
+                destinazione = getString(R.string.routeCircular);
+            } else {
+                destinazione = getString(R.string.routeSchool);
+            }
+        } else {
+            if (modalitaRitorno) destinazione = filtrate.get(0).getName();
+            else destinazione = filtrate.get(filtrate.size() - 1).getName();
+        }
 
         txtDirezioneMappa.setText(String.format("%s →  %s", getString(R.string.directionTitleArrivals), destinazione));
     }
@@ -1525,6 +1534,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             if (btnBranch != null) btnBranch.setText(selectedBranch);
 
             applyBranchFromCache(findViewById(R.id.containerInterscambi), allMatched);
+            if (ultimeStazioniDisegnate != null) {
+                aggiornaTestoDirezione(ultimeStazioniDisegnate);
+            }
             dialog.dismiss();
         });
 

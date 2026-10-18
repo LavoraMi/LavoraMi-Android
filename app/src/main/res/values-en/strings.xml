@@ -495,4 +495,6 @@
     <string name="viewAllArrivals">View all arrivals</string>
     <string name="allArrivalsTitle">All arrivals</string>
     <string name="nextArrivalsTitle">"NEXT ARRIVALS: "</string>
+    <string name="routeCircular">Circular</string>
+    <string name="routeSchool">School service</string>
 </resources>
