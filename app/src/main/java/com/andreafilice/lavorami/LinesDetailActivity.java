@@ -1152,7 +1152,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         for (EventDescriptor evento : eventiTrovati) {
             View card = inflater.inflate(R.layout.item_lavoro, container, false);
             boolean important = evento.getDetails() != null && evento.getDetails().contains("[LAVORO IMPORTANTE]");
-            String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : evento.getDetails();
+            boolean event = evento.getDetails() != null && evento.getDetails().contains("[EVENTO]");
+            String cleanDet = important ? evento.getDetails().replace("[LAVORO IMPORTANTE]", "").trim() : event ? evento.getDetails().replace("[EVENTO]", "").trim() : evento.getDetails();
 
             card.setTag(new Object[]{evento, cleanDet, langCode});
             cards.add(card);
