@@ -497,4 +497,25 @@
     <string name="nextArrivalsTitle">"NEXT ARRIVALS: "</string>
     <string name="routeCircular">Circular</string>
     <string name="routeSchool">School service</string>
+
+    <!-- Account Level -->
+    <string name="accountHeaderTitle">Account</string>
+    <string name="levelAccountTitle">Account level:</string>
+    <string name="levelAccountSubtitle">earn 10 XP for every minute spent in the app</string>
+    <string name="accountLevelShortFormat">Lvl %1$d</string>
+    <string name="levelUpDialogTitle">LEVEL %1$d REACHED</string>
+    <string name="levelUpDialogMessage">You reached level %1$d, now you are \"%2$s\"</string>
+    <string name="levelUpDialogRegisterNotice">to avoid losing your progress, register in Settings > Account</string>
+
+    <!-- Account Rank Titles -->
+    <string name="rank_sunday_commuter">Sunday Commuter</string>
+    <string name="rank_seat_hunter">Seat Hunter</string>
+    <string name="rank_platform_strategist">Platform Strategist</string>
+    <string name="rank_zen_passenger">Zen Passenger</string>
+    <string name="rank_habitual_commuter">Seasoned Commuter</string>
+    <string name="rank_tram_acrobat">Tram Acrobat</string>
+    <string name="rank_pro_passenger">Pro Commuter</string>
+    <string name="rank_ticket_collector">Ticket Collector</string>
+    <string name="rank_train_philosopher">Train Philosopher</string>
+    <string name="rank_subway_resident">Subway Resident</string>
 </resources>

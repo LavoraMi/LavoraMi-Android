@@ -497,4 +497,25 @@
     <string name="nextArrivalsTitle">"PRÓXIMAS LLEGADAS: "</string>
     <string name="routeCircular">Circular</string>
     <string name="routeSchool">Escolar</string>
+
+    <!-- Nivel de Cuenta -->
+    <string name="accountHeaderTitle">Cuenta</string>
+    <string name="levelAccountTitle">Nivel de cuenta:</string>
+    <string name="levelAccountSubtitle">gana 10 XP por cada minuto en la app</string>
+    <string name="accountLevelShortFormat">Niv. %1$d</string>
+    <string name="levelUpDialogTitle">NIVEL %1$d ALCANZADO</string>
+    <string name="levelUpDialogMessage">Has alcanzado el nivel %1$d, ahora eres \"%2$s\"</string>
+    <string name="levelUpDialogRegisterNotice">para evitar perder tu progreso, regístrate en Ajustes > Cuenta</string>
+
+    <!-- Titulos de rango de Cuenta -->
+    <string name="rank_sunday_commuter">Viajero del Domingo</string>
+    <string name="rank_seat_hunter">Cazador de Asientos</string>
+    <string name="rank_platform_strategist">Estratega del Andén</string>
+    <string name="rank_zen_passenger">Pasajero Zen</string>
+    <string name="rank_habitual_commuter">Viajero Habitual</string>
+    <string name="rank_tram_acrobat">Acróbata del Tranvía</string>
+    <string name="rank_pro_passenger">Pasajero Profesional</string>
+    <string name="rank_ticket_collector">Coleccionista de Billetes</string>
+    <string name="rank_train_philosopher">Filósofo del Tren</string>
+    <string name="rank_subway_resident">Inquilino del Metro</string>
 </resources>

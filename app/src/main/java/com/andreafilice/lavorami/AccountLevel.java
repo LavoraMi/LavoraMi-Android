@@ -10,11 +10,17 @@ public class AccountLevel {
     private static final int BASE_XP = 50;
     private static final double LEVEL_MULTIPLIER = 1.30;
 
+    private final Context context;
     private int level;
     private int xp;
 
     public AccountLevel(Context context) {
-        DataManager.init(context);
+        if (context != null) {
+            this.context = context.getApplicationContext();
+            DataManager.init(this.context);
+        } else {
+            this.context = null;
+        }
         this.level = DataManager.getIntData(DataKeys.KEY_USER_LEVEL, 1);
         this.xp = DataManager.getIntData(DataKeys.KEY_USER_XP, 0);
     }
@@ -23,23 +29,42 @@ public class AccountLevel {
         return new AccountLevel(context);
     }
 
-    /**
-     * Calcola il titolo/grado in base al livello.
-     */
+    /** Calcola il titolo/grado in base al livello e al Context per la localizzazione. */
+    public static String getRankTitle(Context context, int level) {
+        if (context == null) {
+            return getRankTitle(level); ///Fallback
+        }
+        if (level <= 1) return context.getString(R.string.rank_sunday_commuter);
+        if (level <= 2) return context.getString(R.string.rank_seat_hunter);
+        if (level <= 3) return context.getString(R.string.rank_platform_strategist);
+        if (level <= 4) return context.getString(R.string.rank_zen_passenger);
+        if (level <= 5) return context.getString(R.string.rank_habitual_commuter);
+        if (level <= 10) return context.getString(R.string.rank_tram_acrobat);
+        if (level <= 15) return context.getString(R.string.rank_pro_passenger);
+        if (level <= 30) return context.getString(R.string.rank_ticket_collector);
+        if (level <= 50) return context.getString(R.string.rank_train_philosopher);
+        return context.getString(R.string.rank_subway_resident);
+    }
+
     public static String getRankTitle(int level) {
-        if (level <= 1) return "Pendolare della Domenica";
-        if (level <= 3) return "Pendolare";
-        if (level <= 5) return "Viaggiatore";
-        if (level <= 7) return "Esploratore delle Linee";
-        if (level <= 9) return "Conoscitore dei Mezzi";
-        if (level <= 14) return "Esperto di Trasporti";
-        if (level <= 19) return "Mastro della Viabilità";
-        if (level <= 29) return "Leggenda della Metro";
-        return "Inquilino delle Metro";
+        if (level == 1) return "Pendolare della Domenica";
+        if (level == 2) return "Cacciatore di Posti";
+        if (level == 3) return "Stratega della Banchina";
+        if (level == 4) return "Passeggero Zen";
+        if (level == 5) return "Pendolare Abituale";
+        if (level < 10) return "Acrobata del Tram";
+        if (level < 15) return "Passeggero Professionista";
+        if (level < 30) return "Collezionista di Biglietti";
+        if (level < 50) return "Filosofo del Treno";
+        return "Inquilino della Metropolitana";
     }
 
     public String getRankTitle() {
-        return getRankTitle(this.level);
+        return getRankTitle(this.context, this.level);
+    }
+
+    public String getRankTitle(Context context) {
+        return getRankTitle(context != null ? context : this.context, this.level);
     }
 
     /**
@@ -78,7 +103,8 @@ public class AccountLevel {
     public void addXp(Context context, int amount) {
         if (amount <= 0) return;
 
-        String oldRankTitle = getRankTitle();
+        Context effectiveContext = context != null ? context : this.context;
+        String oldRankTitle = getRankTitle(effectiveContext);
 
         this.xp += amount;
         int requiredXp = getRequiredXpForCurrentLevel();
@@ -93,10 +119,10 @@ public class AccountLevel {
 
         save();
 
-        if (leveledUp && context != null) {
-            String newRankTitle = getRankTitle();
+        if (leveledUp && effectiveContext != null) {
+            String newRankTitle = getRankTitle(effectiveContext);
             if (!oldRankTitle.equals(newRankTitle)) {
-                showLevelUpDialog(context, this.level);
+                showLevelUpDialog(effectiveContext, this.level);
             }
         }
     }
@@ -115,23 +141,33 @@ public class AccountLevel {
     }
 
     private void showLevelUpDialog(Context context, int newLevel) {
-        String title = String.format(java.util.Locale.ITALIAN, "LIVELLO %d RAGGIUNTO", newLevel);
-        String message = String.format(java.util.Locale.ITALIAN, "Hai raggiunto il livello %d, ora sei \"%s\"", newLevel, getRankTitle(newLevel));
+        Context effContext = context != null ? context : this.context;
+        String title;
+        String message;
 
-        SessionManager sessionManager = new SessionManager(context);
-        if (!sessionManager.isLoggedIn()) {
-            message += "\n\nper evitare di perdere i tuoi progressi, registrati nella sezione Impostazioni > Account";
+        if (effContext != null) {
+            title = effContext.getString(R.string.levelUpDialogTitle, newLevel);
+            message = effContext.getString(R.string.levelUpDialogMessage, newLevel, getRankTitle(effContext, newLevel));
+            SessionManager sessionManager = new SessionManager(effContext);
+            if (!sessionManager.isLoggedIn()) {
+                message += "\n\n" + effContext.getString(R.string.levelUpDialogRegisterNotice);
+            }
+        } else {
+            ///Fallback
+            title = String.format(java.util.Locale.ITALIAN, "LIVELLO %d RAGGIUNTO", newLevel);
+            message = String.format(java.util.Locale.ITALIAN, "Hai raggiunto il livello %d, ora sei \"%s\"", newLevel, getRankTitle(null, newLevel));
         }
 
+        final String finalTitle = title;
         final String finalMessage = message;
 
         if (context instanceof Activity) {
             Activity activity = (Activity) context;
             if (!activity.isFinishing() && !activity.isDestroyed()) {
-                activity.runOnUiThread(() -> DialogHelper.createDefaultDialog(context, title, finalMessage));
+                activity.runOnUiThread(() -> DialogHelper.createDefaultDialog(context, finalTitle, finalMessage));
             }
         } else {
-            DialogHelper.createDefaultDialog(context, title, finalMessage);
+            DialogHelper.createDefaultDialog(context, finalTitle, finalMessage);
         }
     }
 
@@ -150,7 +186,11 @@ public class AccountLevel {
             progressBar.setProgress(xp);
         }
         if (levelText != null) {
-            levelText.setText("Liv. " + level);
+            if (this.context != null) {
+                levelText.setText(this.context.getString(R.string.accountLevelShortFormat, level));
+            } else {
+                levelText.setText("Liv. " + level);
+            }
         }
         if (xpText != null) {
             xpText.setText(xp + " / " + max + " XP");
