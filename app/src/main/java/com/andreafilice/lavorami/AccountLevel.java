@@ -27,7 +27,7 @@ public class AccountLevel {
      * Calcola il titolo/grado in base al livello.
      */
     public static String getRankTitle(int level) {
-        if (level <= 1) return "Pendolare Novizio";
+        if (level <= 1) return "Pendolare della Domenica";
         if (level <= 3) return "Pendolare";
         if (level <= 5) return "Viaggiatore";
         if (level <= 7) return "Esploratore delle Linee";
@@ -35,7 +35,7 @@ public class AccountLevel {
         if (level <= 14) return "Esperto di Trasporti";
         if (level <= 19) return "Mastro della Viabilità";
         if (level <= 29) return "Leggenda della Metro";
-        return "Gran Maestro di LavoraMi";
+        return "Inquilino delle Metro";
     }
 
     public String getRankTitle() {
@@ -78,6 +78,8 @@ public class AccountLevel {
     public void addXp(Context context, int amount) {
         if (amount <= 0) return;
 
+        String oldRankTitle = getRankTitle();
+
         this.xp += amount;
         int requiredXp = getRequiredXpForCurrentLevel();
         boolean leveledUp = false;
@@ -92,7 +94,10 @@ public class AccountLevel {
         save();
 
         if (leveledUp && context != null) {
-            showLevelUpDialog(context, this.level);
+            String newRankTitle = getRankTitle();
+            if (!oldRankTitle.equals(newRankTitle)) {
+                showLevelUpDialog(context, this.level);
+            }
         }
     }
 
@@ -109,21 +114,24 @@ public class AccountLevel {
         addXp(context, 10);
     }
 
-    public void addMinuteXp() {
-        addXp(null, 10);
-    }
-
     private void showLevelUpDialog(Context context, int newLevel) {
         String title = String.format(java.util.Locale.ITALIAN, "LIVELLO %d RAGGIUNTO", newLevel);
         String message = String.format(java.util.Locale.ITALIAN, "Hai raggiunto il livello %d, ora sei \"%s\"", newLevel, getRankTitle(newLevel));
 
+        SessionManager sessionManager = new SessionManager(context);
+        if (!sessionManager.isLoggedIn()) {
+            message += "\n\nper evitare di perdere i tuoi progressi, registrati nella sezione Impostazioni > Account";
+        }
+
+        final String finalMessage = message;
+
         if (context instanceof Activity) {
             Activity activity = (Activity) context;
             if (!activity.isFinishing() && !activity.isDestroyed()) {
-                activity.runOnUiThread(() -> DialogHelper.createDefaultDialog(context, title, message));
+                activity.runOnUiThread(() -> DialogHelper.createDefaultDialog(context, title, finalMessage));
             }
         } else {
-            DialogHelper.createDefaultDialog(context, title, message);
+            DialogHelper.createDefaultDialog(context, title, finalMessage);
         }
     }
 

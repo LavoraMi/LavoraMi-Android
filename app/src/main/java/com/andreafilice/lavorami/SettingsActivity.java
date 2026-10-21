@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -48,6 +50,15 @@ public class SettingsActivity extends AppCompatActivity {
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
     private Set<String> favorites = new HashSet<>();
+
+    private final Handler accountLevelHandler = new Handler(Looper.getMainLooper());
+    private final Runnable accountLevelRunnable = new Runnable() {
+        @Override
+        public void run() {
+            setupAccountLevelUI();
+            accountLevelHandler.postDelayed(this, 61000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -311,6 +322,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onResume();
 
         setupAccountLevelUI();
+        accountLevelHandler.removeCallbacks(accountLevelRunnable);
+        accountLevelHandler.postDelayed(accountLevelRunnable, 61000);
 
         favorites = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
 
@@ -363,6 +376,12 @@ public class SettingsActivity extends AppCompatActivity {
         setStarIcons(starIcons, starButtons, lineCodes);
         loadFavorites(starIcons, lineCodes);
         reloadDatas();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        accountLevelHandler.removeCallbacks(accountLevelRunnable);
     }
 
     private void syncFavoritesToSupabase() {
