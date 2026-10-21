@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -309,6 +310,8 @@ public class SettingsActivity extends AppCompatActivity {
         /// In this section of the code, we reload the datas of the SettingsActivity for updating it to the latest versions.
         super.onResume();
 
+        setupAccountLevelUI();
+
         favorites = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
 
         //*SET FAVORITES
@@ -581,5 +584,20 @@ public class SettingsActivity extends AppCompatActivity {
             ActivityUtils.triggerFeedback(this);
             ActivityUtils.changeActivity(this, WrappedActivity.class);
         });
+    }
+
+    private void setupAccountLevelUI() {
+        ProgressBar progressBar = findViewById(R.id.accountLevelProgressBar);
+        TextView levelText = findViewById(R.id.accountLevelText);
+        TextView xpText = findViewById(R.id.accountXpText);
+        TextView rankText = findViewById(R.id.levelRankSettingsText);
+
+        AccountLevel accountLevel = AccountLevel.getInstance(this);
+        if (progressBar != null && levelText != null && xpText != null) {
+            accountLevel.updateUI(progressBar, levelText, xpText);
+        }
+        if (rankText != null) {
+            rankText.setText(accountLevel.getRankTitle());
+        }
     }
 }

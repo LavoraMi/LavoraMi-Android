@@ -146,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
 
+    //* ACCOUNT LEVEL VARIABLES
+    private AccountLevel accountLevel;
+
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (viewPager != null)
@@ -188,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        accountLevel = AccountLevel.getInstance(this);
 
         defaultCategory = CategoriesEnum.valueOf(DataManager.getStringData(DataKeys.KEY_DEFAULT_FILTER, "TUTTI").toUpperCase());
         ThemeSettings.setTheme();
