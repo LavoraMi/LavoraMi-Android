@@ -163,6 +163,9 @@
         <meta-data
             android:name="AdUnitID"
             android:value="${GOOGLE_ADS_UNIT_ID}"/>
+        <meta-data
+            android:name="AdRewardUnitID"
+            android:value="${GOOGLE_ADS_REWARD_UNIT_ID}"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

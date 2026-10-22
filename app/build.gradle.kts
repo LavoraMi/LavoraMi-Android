@@ -17,6 +17,7 @@ val apiSupabaseANON = envProperties.getProperty("API_SUPABASE_ANON", "")
 val googleLoginAPI = envProperties.getProperty("API_GOOGLE_SIGNUP", "")
 val adMobApplicationID = envProperties.getProperty("GOOGLE_ADS_APPLICATION_ID", "")
 val adMobUnitID = envProperties.getProperty("GOOGLE_ADS_UNIT_ID", "")
+val adMobRewardUnitID = envProperties.getProperty("GOOGLE_ADS_REWARD_UNIT_ID", "")
 
 android {
     namespace = "com.andreafilice.lavorami"
@@ -39,6 +40,7 @@ android {
         manifestPlaceholders["API_GOOGLE_SIGNUP"] = googleLoginAPI
         manifestPlaceholders["GOOGLE_ADS_APPLICATION_ID"] = adMobApplicationID
         manifestPlaceholders["GOOGLE_ADS_UNIT_ID"] = adMobUnitID
+        manifestPlaceholders["GOOGLE_ADS_REWARD_UNIT_ID"] = adMobRewardUnitID
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
