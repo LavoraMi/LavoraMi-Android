@@ -500,6 +500,8 @@
     <string name="accountHeaderTitle">Cuenta</string>
     <string name="levelAccountTitle">Nivel de cuenta:</string>
     <string name="levelAccountSubtitle">gana 10 XP por cada minuto en la app</string>
+    <string name="earn_xp_button">"gana 50xp\n(5 minutos)"</string>
+    <string name="earn_xp_counter">5/5 disponibles</string>
     <string name="accountLevelShortFormat">Niv. %1$d</string>
     <string name="levelUpDialogTitle">NIVEL %1$d ALCANZADO</string>
     <string name="levelUpDialogMessage">Has alcanzado el nivel %1$d, ahora eres \"%2$s\"</string>
