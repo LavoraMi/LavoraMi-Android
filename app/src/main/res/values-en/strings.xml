@@ -498,7 +498,7 @@
     <string name="routeCircular">Circular</string>
     <string name="routeSchool">School service</string>
     <string name="accountHeaderTitle">Account</string>
-    <string name="levelAccountTitle">Account level:</string>
+    <string name="levelAccountTitle">Account level</string>
     <string name="levelAccountSubtitle">earn 10 XP for every minute spent in the app</string>
     <string name="earn_xp_button">"earn 50xp\n(5 minutes)"</string>
     <string name="earn_xp_counter">5/5 available</string>

@@ -172,31 +172,40 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/levelAccountTitleText"
+                            <LinearLayout
+                                android:id="@+id/accountTitleContainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_main"
-                                android:text="@string/levelAccountTitle"
-                                android:textColor="@color/text_primary"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/levelAccountSubtitleText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:fontFamily="@font/inter"
-                                android:text="@string/levelAccountSubtitle"
-                                android:textColor="@color/subtitle"
-                                android:textSize="11sp" />
+                                <TextView
+                                    android:id="@+id/levelAccountTitleText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_main"
+                                    android:text="@string/levelAccountTitle"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/infoLevelAccount"
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginStart="6dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:src="@drawable/ic_info"
+                                    app:tint="@color/subtitle" />
+
+                            </LinearLayout>
 
                             <FrameLayout
                                 android:id="@+id/accountLevelProgressBarContainer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp">
+                                android:layout_marginTop="10dp">
 
                                 <ProgressBar
                                     android:id="@+id/accountLevelProgressBar"

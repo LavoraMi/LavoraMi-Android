@@ -140,6 +140,12 @@ public class SettingsActivity extends AppCompatActivity {
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
         infoFavouriteLines.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText)));
 
+        //*ACCOUNT LEVEL INFO
+        ImageView infoLevelAccount = findViewById(R.id.infoLevelAccount);
+        if (infoLevelAccount != null) {
+            infoLevelAccount.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.levelAccountTitle), getString(R.string.levelAccountSubtitle)));
+        }
+
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
         groupTrenord.setOnClickListener(v -> {
             LinearLayout trenordLayout = findViewById(R.id.disclosureContentTrenord);

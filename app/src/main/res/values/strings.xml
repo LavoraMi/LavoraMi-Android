@@ -497,7 +497,7 @@
     <string name="routeCircular">Circolare</string>
     <string name="routeSchool">Scolastica</string>
     <string name="accountHeaderTitle">Account</string>
-    <string name="levelAccountTitle">Livello account:</string>
+    <string name="levelAccountTitle">Livello account</string>
     <string name="levelAccountSubtitle">guadagna 10 XP ogni minuto passato in app</string>
     <string name="earn_xp_button">"guadagna 50xp\n(5 minuti)"</string>
     <string name="earn_xp_counter">5/5 disponibili</string>
