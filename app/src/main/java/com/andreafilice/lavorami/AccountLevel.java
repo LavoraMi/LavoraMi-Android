@@ -35,10 +35,9 @@ public class AccountLevel {
             return getRankTitle(level); ///Fallback
         }
         if (level <= 1) return context.getString(R.string.rank_sunday_commuter);
-        if (level <= 2) return context.getString(R.string.rank_seat_hunter);
         if (level <= 3) return context.getString(R.string.rank_platform_strategist);
         if (level <= 4) return context.getString(R.string.rank_zen_passenger);
-        if (level <= 5) return context.getString(R.string.rank_habitual_commuter);
+        if (level == 5) return context.getString(R.string.rank_seat_hunter);
         if (level <= 10) return context.getString(R.string.rank_tram_acrobat);
         if (level <= 15) return context.getString(R.string.rank_pro_passenger);
         if (level <= 30) return context.getString(R.string.rank_ticket_collector);
@@ -48,10 +47,9 @@ public class AccountLevel {
 
     public static String getRankTitle(int level) {
         if (level == 1) return "Pendolare della Domenica";
-        if (level == 2) return "Cacciatore di Posti";
         if (level == 3) return "Stratega della Banchina";
         if (level == 4) return "Passeggero Zen";
-        if (level == 5) return "Pendolare Abituale";
+        if (level == 5) return "Cacciatore di Posti";
         if (level < 10) return "Acrobata del Tram";
         if (level < 15) return "Passeggero Professionista";
         if (level < 30) return "Collezionista di Biglietti";
