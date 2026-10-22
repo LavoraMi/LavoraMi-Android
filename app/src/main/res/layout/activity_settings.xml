@@ -157,7 +157,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="14dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -205,7 +207,7 @@
                                 android:id="@+id/accountLevelProgressBarContainer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp">
+                                android:layout_marginTop="6dp">
 
                                 <ProgressBar
                                     android:id="@+id/accountLevelProgressBar"
@@ -235,8 +237,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="end|center_vertical"
                                     android:layout_marginEnd="10dp"
-                                    android:fontFamily="@font/inter"
-                                    android:textColor="@color/White"
+                                    android:fontFamily="@font/font_main"
+                                    android:textColor="@color/text_primary"
                                     android:textSize="12sp"
                                     android:textStyle="bold"
                                     tools:text="150 / 500 XP" />
@@ -276,7 +278,7 @@
                                 android:id="@+id/earnXpCounterText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="3dp"
                                 android:fontFamily="@font/inter"
                                 android:gravity="center"
                                 android:text="@string/earn_xp_counter"
