@@ -70,7 +70,7 @@ public class TramStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.50806, 9.13679, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.50799, 9.1369, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.50793, 9.13703, "Main", "1"));
-        stations.add(new MetroStation("Certosa FS", 45.50778, 9.13729, "Main", "1"));
+        stations.add(new MetroStation("Certosa", 45.50778, 9.13729, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.50778, 9.13729, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.50764, 9.1378, "Main", "1"));
         stations.add(new MetroStation("NO_DRAW", 45.50757, 9.13799, "Main", "1"));
