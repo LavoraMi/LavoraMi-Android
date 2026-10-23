@@ -500,7 +500,9 @@
     <string name="levelAccountTitle">Livello account</string>
     <string name="levelAccountSubtitle">guadagna 10 XP ogni minuto passato in app</string>
     <string name="earn_xp_button">guadagna 50xp</string>
-    <string name="earn_xp_counter">5/5 disponibili</string>
+    <string name="earn_xp_counter">%1$d/5 disponibili</string>
+    <string name="ad_limit_reached_title">Limite di pubblicità raggiunto</string>
+    <string name="ad_limit_reached_message">Limite di ads raggiunte, si resetteranno il giorno dopo</string>
     <string name="accountLevelShortFormat">Liv. %1$d</string>
     <string name="levelUpDialogTitle">LIVELLO %1$d RAGGIUNTO</string>
     <string name="levelUpDialogMessage">Hai raggiunto il livello %1$d, ora sei \"%2$s\"</string>

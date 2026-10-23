@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -32,6 +34,16 @@ import androidx.core.view.WindowInsetsCompat;
 import com.andreafilice.lavorami.supabase.SupabaseAPI;
 import com.andreafilice.lavorami.supabase.SupabaseDataManager;
 import com.andreafilice.lavorami.wrapped.WrappedActivity;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -50,6 +62,8 @@ public class SettingsActivity extends AppCompatActivity {
     Retrofit retrofitAPI;
     private String SupabaseANON, SupabaseURL;
     private Set<String> favorites = new HashSet<>();
+    private RewardedAd rewardedAd;
+    private boolean isAdLoading = false;
 
     private final Handler accountLevelHandler = new Handler(Looper.getMainLooper());
     private final Runnable accountLevelRunnable = new Runnable() {
@@ -144,6 +158,32 @@ public class SettingsActivity extends AppCompatActivity {
         ImageView infoLevelAccount = findViewById(R.id.infoLevelAccount);
         if (infoLevelAccount != null) {
             infoLevelAccount.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.levelAccountTitle), getString(R.string.levelAccountSubtitle)));
+        }
+
+        //*EARN XP REWARDED AD
+        MobileAds.initialize(this, initializationStatus -> loadRewardedAd());
+
+        MaterialButton btnEarnXp = findViewById(R.id.btnEarnXp);
+        if (btnEarnXp != null) {
+            btnEarnXp.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
+                int watchedToday = getAdsWatchedToday();
+                if (watchedToday >= MAX_DAILY_ADS) {
+                    DialogHelper.createDefaultDialog(
+                        this,
+                        getString(R.string.ad_limit_reached_title),
+                        getString(R.string.ad_limit_reached_message)
+                    );
+                    return;
+                }
+
+                if (rewardedAd != null) {
+                    showRewardedAd();
+                } else {
+                    Toast.makeText(this, getString(R.string.loadingEllipsis), Toast.LENGTH_SHORT).show();
+                    loadRewardedAd();
+                }
+            });
         }
 
         RelativeLayout groupTrenord = findViewById(R.id.groupTrenord);
@@ -611,6 +651,34 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    private static final int MAX_DAILY_ADS = 5;
+
+    private int getAdsWatchedToday() {
+        String todayDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+        String savedDate = DataManager.getStringData(DataKeys.KEY_ADS_WATCHED_DATE, "");
+        if (!todayDate.equals(savedDate)) {
+            DataManager.saveStringData(DataKeys.KEY_ADS_WATCHED_DATE, todayDate);
+            DataManager.saveIntData(DataKeys.KEY_ADS_WATCHED_COUNT, 0);
+            return 0;
+        }
+        return DataManager.getIntData(DataKeys.KEY_ADS_WATCHED_COUNT, 0);
+    }
+
+    private void incrementAdsWatchedToday() {
+        int current = getAdsWatchedToday();
+        DataManager.saveIntData(DataKeys.KEY_ADS_WATCHED_COUNT, current + 1);
+        updateEarnXpCounterUI();
+    }
+
+    private void updateEarnXpCounterUI() {
+        TextView earnXpCounterText = findViewById(R.id.earnXpCounterText);
+        if (earnXpCounterText != null) {
+            int watchedToday = getAdsWatchedToday();
+            int remaining = Math.max(0, MAX_DAILY_ADS - watchedToday);
+            earnXpCounterText.setText(getString(R.string.earn_xp_counter, remaining));
+        }
+    }
+
     private void setupAccountLevelUI() {
         ProgressBar progressBar = findViewById(R.id.accountLevelProgressBar);
         TextView levelText = findViewById(R.id.accountLevelText);
@@ -623,6 +691,82 @@ public class SettingsActivity extends AppCompatActivity {
         }
         if (rankText != null) {
             rankText.setText(accountLevel.getRankTitle());
+        }
+        updateEarnXpCounterUI();
+    }
+
+    private void loadRewardedAd() {
+        if (isAdLoading || rewardedAd != null) {
+            return;
+        }
+        isAdLoading = true;
+
+        String adUnitId = getMetaData(this, "AdRewardUnitID");
+
+        boolean isDebug = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+        if (isDebug) {
+            adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        }
+
+        if (adUnitId == null || adUnitId.isEmpty() || adUnitId.contains("${")) {
+            Log.e("ADMOB", "AdRewardUnitID non configurato o non valido");
+            isAdLoading = false;
+            return;
+        }
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        RewardedAd.load(this, adUnitId, adRequest, new RewardedAdLoadCallback() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                Log.e("ADMOB", "Errore caricamento ad con reward: " + loadAdError.getMessage() + " (Code: " + loadAdError.getCode() + ")");
+                rewardedAd = null;
+                isAdLoading = false;
+            }
+
+            @Override
+            public void onAdLoaded(@NonNull RewardedAd ad) {
+                Log.d("ADMOB", "Ad con reward caricata con successo!");
+                rewardedAd = ad;
+                isAdLoading = false;
+            }
+        });
+    }
+
+    private void showRewardedAd() {
+        if (rewardedAd != null) {
+            rewardedAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                @Override
+                public void onAdShowedFullScreenContent() {
+                    Log.d("ADMOB", "Ad con reward mostrata.");
+                }
+
+                @Override
+                public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                    Log.e("ADMOB", "Errore mostra ad con reward: " + adError.getMessage());
+                    rewardedAd = null;
+                    loadRewardedAd();
+                }
+
+                @Override
+                public void onAdDismissedFullScreenContent() {
+                    Log.d("ADMOB", "Ad con reward chiusa dall'utente.");
+                    rewardedAd = null;
+                    loadRewardedAd();
+                }
+            });
+
+            rewardedAd.show(this, new OnUserEarnedRewardListener() {
+                @Override
+                public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+                    Log.d("ADMOB", "L'utente ha guadagnato la ricompensa: " + rewardItem.getAmount() + " " + rewardItem.getType());
+                    incrementAdsWatchedToday();
+                    AccountLevel.getInstance(SettingsActivity.this).addXp(SettingsActivity.this, 50);
+                    setupAccountLevelUI();
+                }
+            });
+        } else {
+            Toast.makeText(this, getString(R.string.loadingEllipsis), Toast.LENGTH_SHORT).show();
+            loadRewardedAd();
         }
     }
 }
