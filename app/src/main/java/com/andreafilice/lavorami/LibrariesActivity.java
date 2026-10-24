@@ -178,7 +178,7 @@ public class LibrariesActivity extends AppCompatActivity {
                 ),
                 new LibraryModel(
                         "Gson",
-                        "2.14.0",
+                        "2.15.0",
                         "Apache License 2.0",
                         "Copyright 2008 Google Inc.",
                         APACHE_LICENSE_TEXT
