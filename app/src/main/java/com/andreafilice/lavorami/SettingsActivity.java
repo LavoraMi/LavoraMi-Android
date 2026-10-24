@@ -64,6 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Set<String> favorites = new HashSet<>();
     private RewardedAd rewardedAd;
     private boolean isAdLoading = false;
+    private boolean pendingShowAd = false;
 
     private final Handler accountLevelHandler = new Handler(Looper.getMainLooper());
     private final Runnable accountLevelRunnable = new Runnable() {
@@ -180,6 +181,7 @@ public class SettingsActivity extends AppCompatActivity {
                 if (rewardedAd != null) {
                     showRewardedAd();
                 } else {
+                    pendingShowAd = true;
                     Toast.makeText(this, getString(R.string.loadingEllipsis), Toast.LENGTH_SHORT).show();
                     loadRewardedAd();
                 }
@@ -427,6 +429,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        pendingShowAd = false;
         accountLevelHandler.removeCallbacks(accountLevelRunnable);
     }
 
@@ -721,6 +724,12 @@ public class SettingsActivity extends AppCompatActivity {
                 Log.e("ADMOB", "Errore caricamento ad con reward: " + loadAdError.getMessage() + " (Code: " + loadAdError.getCode() + ")");
                 rewardedAd = null;
                 isAdLoading = false;
+                if (pendingShowAd) {
+                    pendingShowAd = false;
+                    if (!isFinishing() && !isDestroyed()) {
+                        Toast.makeText(SettingsActivity.this, getString(R.string.downloadDataError), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
 
             @Override
@@ -728,11 +737,18 @@ public class SettingsActivity extends AppCompatActivity {
                 Log.d("ADMOB", "Ad con reward caricata con successo!");
                 rewardedAd = ad;
                 isAdLoading = false;
+                if (pendingShowAd) {
+                    pendingShowAd = false;
+                    if (!isFinishing() && !isDestroyed()) {
+                        showRewardedAd();
+                    }
+                }
             }
         });
     }
 
     private void showRewardedAd() {
+        pendingShowAd = false;
         if (rewardedAd != null) {
             rewardedAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                 @Override
