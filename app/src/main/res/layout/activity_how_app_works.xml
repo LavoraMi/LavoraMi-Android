@@ -710,7 +710,7 @@
 
                             <TextView
                                 android:id="@+id/badgeS2"
-                                android:layout_width="40dp"
+                                android:layout_width="35dp"
                                 android:layout_height="26dp"
                                 android:background="@drawable/bg_badge_line_shimmer"
                                 android:backgroundTint="@color/S2"
@@ -723,7 +723,7 @@
 
                             <TextView
                                 android:id="@+id/badgeR16"
-                                android:layout_width="42dp"
+                                android:layout_width="35dp"
                                 android:layout_height="26dp"
                                 android:layout_marginStart="5dp"
                                 android:background="@drawable/bg_badge_line_shimmer"
@@ -737,7 +737,7 @@
 
                             <TextView
                                 android:id="@+id/badgeS4"
-                                android:layout_width="35dp"
+                                android:layout_width="38dp"
                                 android:layout_height="26dp"
                                 android:layout_marginStart="5dp"
                                 android:background="@drawable/bg_badge_line_shimmer"
