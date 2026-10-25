@@ -77,7 +77,6 @@ public class EventDescriptor {
             case "clock.fill":
                 return R.drawable.ic_clock;
             case "clock.badge.fill":
-                return R.drawable.ic_clock_badge;
             case "clock.badge.exclamationmark.fill":
                 return R.drawable.ic_clock_exclamation;
             case "exclamationmark.triangle.fill":

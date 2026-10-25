@@ -660,7 +660,7 @@
                         android:id="@+id/iconWorksiteCard"
                         android:layout_width="26dp"
                         android:layout_height="26dp"
-                        android:src="@drawable/ic_clock_badge"
+                        android:src="@drawable/ic_clock_exclamation"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/text_primary" />

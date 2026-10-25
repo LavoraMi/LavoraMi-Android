@@ -375,7 +375,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         btnCopy.setOnClickListener(viewClick -> {
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             android.content.ClipData clip = android.content.ClipData.newPlainText("traduzione", translatedTxt.getText());
-            btnCopy.setIcon(ContextCompat.getDrawable(context, R.drawable.ic_checkmark_single));
+            btnCopy.setIcon(ContextCompat.getDrawable(context, R.drawable.ic_checkmark));
             btnCopy.setText(context.getString(R.string.translationCopied));
             clipboard.setPrimaryClip(clip);
 
