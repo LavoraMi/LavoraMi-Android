@@ -520,7 +520,7 @@
 
                                 <TextView
                                     android:id="@+id/badgeR31"
-                                    android:layout_width="42dp"
+                                    android:layout_width="35dp"
                                     android:layout_height="26dp"
                                     android:layout_marginStart="5dp"
                                     android:background="@drawable/bg_badge_line_shimmer"
@@ -548,7 +548,7 @@
 
                                 <TextView
                                     android:id="@+id/badgeS19"
-                                    android:layout_width="42dp"
+                                    android:layout_width="35dp"
                                     android:layout_height="26dp"
                                     android:layout_marginStart="5dp"
                                     android:background="@drawable/bg_badge_line_shimmer"
@@ -566,7 +566,7 @@
                                     android:layout_height="26dp"
                                     android:layout_marginStart="5dp"
                                     android:background="@drawable/bg_badge_line_shimmer"
-                                    android:backgroundTint="@color/RE80"
+                                    android:backgroundTint="@color/REGIONAL"
                                     android:fontFamily="@font/inter"
                                     android:gravity="center"
                                     android:text="R21"
