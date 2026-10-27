@@ -381,9 +381,9 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Tre Torri", 45.47807, 9.15664, "Main", "M5"));
         stations.add(new MetroStation("Portello", 45.4814, 9.15045, "Main", "M5"));
         stations.add(new MetroStation("Lotto", 45.47909, 9.14454, "Main", "M5"));
-        stations.add(new MetroStation("Segesta", 45.47909, 9.13734, "Main", "M5"));
-        stations.add(new MetroStation("San Siro Ippodromo", 45.47909, 9.12858, "Main", "M5"));
-        stations.add(new MetroStation("San Siro Stadio", 45.47909, 9.11857, "Main", "M5"));
+        stations.add(new MetroStation("Segesta", 45.47621, 9.13734, "Main", "M5"));
+        stations.add(new MetroStation("San Siro Ippodromo", 45.47608, 9.12858, "Main", "M5"));
+        stations.add(new MetroStation("San Siro Stadio", 45.4765, 9.11857, "Main", "M5"));
         return stations;
     }
 
