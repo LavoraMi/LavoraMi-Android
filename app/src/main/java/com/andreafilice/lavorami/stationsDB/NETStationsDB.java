@@ -5879,7 +5879,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.58044, 9.40146, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.5804, 9.4014, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.5803, 9.40107, "Main", "z314"));
-        stations.add(new MetroStation("NO_DRAW", 45.58012, 9.40027, "Main", "z314"));
+        stations.add(new MetroStation("Via Roma Via Miles (Cavenago B.)", 45.58012, 9.40027, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57988, 9.39915, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57985, 9.39896, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57983, 9.39879, "Main", "z314"));
