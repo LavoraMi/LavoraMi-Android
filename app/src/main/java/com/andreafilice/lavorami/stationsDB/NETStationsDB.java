@@ -6467,7 +6467,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57795, 9.27393, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.578, 9.27393, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57805, 9.27394, "Main", "z314"));
-        stations.add(new MetroStation("NO_DRAW", 45.57842, 9.27419, "Main", "z314"));
+        stations.add(new MetroStation("Monza FS (P.ta Castello)", 45.57842, 9.27419, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57859, 9.2743, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57865, 9.27436, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57868, 9.27443, "Main", "z314"));
