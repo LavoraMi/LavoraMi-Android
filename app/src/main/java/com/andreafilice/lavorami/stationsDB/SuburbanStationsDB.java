@@ -760,7 +760,7 @@ public class SuburbanStationsDB {
         stations.add(new MetroStation("Magenta", 45.4681, 8.88073, "Main", "S6"));
         stations.add(new MetroStation("Corbetta Santo Stefano", 45.48107, 8.91821, "Main", "S6"));
         stations.add(new MetroStation("Vittuone Arluno", 45.49093, 8.94733, "Main", "S6"));
-        stations.add(new MetroStation("Pregana Milanese", 45.51011, 9.00279, "Main", "S6"));
+        stations.add(new MetroStation("Pregnana Milanese", 45.51011, 9.00279, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.51851, 9.02764, "Main", "S6"));
         stations.add(new MetroStation("Rho", 45.52411, 9.04355, "Main", "S6"));
         stations.add(new MetroStation("NO_DRAW", 45.52714, 9.05292, "Main", "S6"));
