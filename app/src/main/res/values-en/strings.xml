@@ -87,7 +87,7 @@
     <string name="tramLinesTitle">Tram Lines</string>
     <string name="busLinesTitle">Bus Lines</string>
     <string name="linesDirectionsTitle">DIRECTIONS:</string>
-    <string name="tramDeviationsTitle">TRAM ROUTE SUBJECT TO DETOURS</string>
+    <string name="tramDeviationsTitle">TRAM ROUTE SUBJECT TO DIVERSIONS</string>
     <string name="waitingTimeLinesDetails">WAITING TIME:</string>
     <string name="interchangeStopLinesDetails">TRANSFER STATION:</string>
     <string name="noInterchangeStationTitle">No transfer stops.</string>
@@ -216,7 +216,7 @@
     <string name="howAppWorks">App features</string>
     <string name="lavoriInCorsoTitle">Work in progress</string>
     <string name="forgotPasswordDeps">Forgot your password? Don\'t worry, you can reset it here.</string>
-    <string name="backToLogin">Back to Login</string>
+    <string name="backToLogin">Back to Sign In</string>
     <string name="sendEmailButton">Send Email</string>
     <string name="progressBar">Progress bar</string>
     <string name="progressBarText">You can visually see the progress of the work and when the disruption is expected to end (based on the PLANNED start and end dates of the work).</string>
@@ -265,10 +265,10 @@
     <string name="verifyBiometricsToast">Unable to verify biometric authentication.</string>
     <string name="connectionErrorToast">Error connecting to the server.</string>
     <string name="passwordLengthToast">Error: Password is too short (minimum 8 characters).</string>
-    <string name="loginErrorCredentialsToast">Login Error: Incorrect credentials</string>
+    <string name="loginErrorCredentialsToast">Sign In Error: Incorrect credentials</string>
     <string name="networkErrorToast">Network Error:</string>
-    <string name="googleSignInSuccesfulToast">Login with Google successful!</string>
-    <string name="loginErrorToast">Login Error:</string>
+    <string name="googleSignInSuccesfulToast">Sign In with Google successful!</string>
+    <string name="loginErrorToast">Sign In Error:</string>
     <string name="registrationErrorToast">An error occurred during registration. Please try again.</string>
     <string name="signOutSuccesfulToast">Account disconnected!</string>
     <string name="signOutFailedToast">Error while disconnecting</string>
@@ -284,7 +284,7 @@
     <string name="viewInterchanges">Changes</string>
     <string name="viewInterchangesText">View the lines that interchange with YOUR line, or on buses view where they end with an interchange stop.</string>
     <string name="worksiteStop">Worksite Stop</string>
-    <string name="worksiteStopText">Not just \"work in progress\", we explain what type of work is being done and the consequences that construction site may have (detours, suspended stops, etc.).</string>
+    <string name="worksiteStopText">Not just \"work in progress\", we explain what type of work is being done and the consequences that works may have (diversions, suspended stops, etc.).</string>
     <string name="fermataExample">On weekdays (excluding Saturdays), due to infrastructure upgrade works on the Palazzolo – Camnago/L. – Seveso section, the following trains will run between Milano Cadorna and Palazzolo M., with the exception of the “R” train 11689, which will be cancelled for the entire journey. Please note that scheduled bus services 1689A, 691A and 693A will be replaced by services 3689A, 2691A and 2693A respectively.</string>
     <string name="rallentamento">Slowdown</string>
     <string name="disclaimerAppFunctions">All examples given are for illustrative purposes only and may be current or past events.</string>
@@ -300,9 +300,9 @@
     <string name="fullyAccessibleDeps">Accessible</string>
     <string name="partiallyAccessibleDeps">Partially Accessible</string>
     <string name="nonAccessibleDeps">Not Accessible</string>
-    <string name="accessibilityPart1">All vehicles operating on this route are equipped with boarding ramps (manual or electric) and reserved seating. Furthermore, almost all stops (over 90%) have raised platforms, enabling passengers to board independently or with minimal assistance.</string>
-    <string name="accessibilityPart2">The route has some limitations. Although the vehicles are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services.</string>
-    <string name="accessibilityPart3">This route does not meet the minimum accessibility requirements. There may be steps at the entrance to the vehicle, or the road infrastructure along the route may make it impossible to lower the ramp safely.</string>
+    <string name="accessibilityPart1">All vehicles operating on this line are equipped with boarding ramps (manual or electric) and reserved seating. Furthermore, almost all stops (over 90%) have raised platforms, enabling passengers to board independently or with minimal assistance.</string>
+    <string name="accessibilityPart2">The line has some limitations. Although the vehicles are accessible, many stops along the route may not have kerbs that meet accessibility standards or sufficient space for the boarding ramp. In other cases, accessibility is only guaranteed on certain specific services.</string>
+    <string name="accessibilityPart3">This line does not meet the minimum accessibility requirements. There may be steps at the entrance to the vehicle, or the road infrastructure along the route may make it impossible to lower the ramp safely.</string>
     <string name="noLinesFound">No lines found for: \"%s\"</string>
     <string name="noLinesFoundSubtitle">Try searching for another one, such as: \"%s\"</string>
     <string name="accessibilityInfoDeps3">LavoraMi obtains this information from authoritative and reliable sources. However, the data may not be up to date.</string>

@@ -111,8 +111,8 @@
     <string name="avvisoSciopero">AVISO DE HUELGA</string>
     <string name="dateSciopero">Huelga convocada para el:</string>
     <string name="noWorkOnFilter">No se encontraron obras para este filtro</string>
-    <string name="noWorkOnFilterHint">Intenta modificar los filtros seleccionados para encontrar otros trabajos.</string>
-    <string name="resetFilters">Mostrar todos los trabajos</string>
+    <string name="noWorkOnFilterHint">Intenta modificar los filtros seleccionados para encontrar otras obras.</string>
+    <string name="resetFilters">Mostrar todos las obras</string>
     <string name="downloadDataError">No se pueden cargar los datos desde el servidor.</string>
     <string name="retry">Reintentar</string>
     <string name="next">Siguiente</string>
@@ -310,7 +310,7 @@
     <string name="linksSettingsTitle">Enlaces</string>
     <string name="supportLavoraMiButtonSettings">Apoya a LavoraMi</string>
     <string name="noRoutesToday">No hay servicios previstos para hoy.</string>
-    <string name="selectAStop">Elige una parada</string>
+    <string name="selectAStop">Selecciona una parada</string>
     <string name="leavingTitle">En salida</string>
     <string name="nextDepartures">PRÓXIMAS SALIDAS:</string>
     <string name="busDisclaimerBadge">El autobús puede llevar entre 3 y 5 minutos de retraso. Este es el horario programado.</string>
@@ -400,7 +400,7 @@
     <string name="openLinkDepsText">Selecciona la forma en la que quieres abrir los enlaces.</string>
     <string name="busKey">Autobús</string>
     <string name="arrivalsNotLoaded">Carga de horarios aún no completada...</string>
-    <string name="operatorTextDeps2">O bien guarda una línea en la sección \"Tus líneas\" para ver, mediante el filtro correspondiente, solo los trabajos que te interesan.</string>
+    <string name="operatorTextDeps2">O bien guarda una línea en la sección \"Tus líneas\" para ver, mediante el filtro correspondiente, solo las obras que te interesan.</string>
     <string name="selectBranch">Elige la rama</string>
     <string name="noInterchangesView">Parada sin transbordos.</string>
     <string name="liveTitle">"EN DIRECTO: "</string>
