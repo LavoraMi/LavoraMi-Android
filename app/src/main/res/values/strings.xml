@@ -478,7 +478,7 @@
     <string name="lineSlowdownPopUpDeps">Su questa linea ci sono lavori attualmente in corso che potrebbero comportare anticipi o ritardi nell\'arrivo a destinazione. Controlla la sezione \"Lavori\".</string>
     <string name="optionSelectedToast">Questa opzione è già selezionata.</string>
     <string name="eventBannerText">EVENTO</string>
-    <string name="prossimoArrivoTram">Prossimo Arrivo:</string>
+    <string name="prossimoArrivoTram">Prossimo arrivo:</string>
     <string name="loadingOrariShort">Caricamento orari...</string>
     <string name="directionSmallButton">Direzione</string>
     <string name="dialog_tram_title1">Guarda gli Orari</string>
