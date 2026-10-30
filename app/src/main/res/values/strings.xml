@@ -225,7 +225,7 @@
     <string name="exampleDate1">15 Dic 2026</string>
     <string name="setupTitleTranslate">Traduci i lavori, nella lingua che vuoi tu.</string>
     <string name="setupDepsTranslate">Traduci i dettagli dei lavori in altre lingue, basta cliccare sui dettagli del lavoro e cliccare \"Traduci\".</string>
-    <string name="setupMiniDepsTranslate">Per attivare questa Funzionalità anche in lingua Italiana, Vai in Impostazioni > Opzioni Avanzate ed attiva \"Mostra Pulsante Traduci\".</string>
+    <string name="setupMiniDepsTranslate">Per attivare questa funzionalità anche in lingua Italiana, vai in Impostazioni > Opzioni Avanzate e attiva \"Mostra Pulsante Traduci\".</string>
     <string name="rateUsTitle">Valuta LavoraMi</string>
     <string name="translateTitle">Traduzione (it-en):</string>
     <string name="copyTranslation">Copia Traduzione</string>
@@ -303,7 +303,7 @@
     <string name="accessibilityPart2">La linea presenta delle limitazioni. Sebbene i mezzi siano accessibili, molte fermate lungo il percorso potrebbero non avere marciapiedi a norma o spazio sufficiente per la pedana. In altri casi, l\'accessibilità è garantita solo su alcune corse specifiche.</string>
     <string name="accessibilityPart3">Questa linea non garantisce i requisiti minimi di accessibilità. I mezzi potrebbero presentare gradini all\'ingresso del mezzo oppure le infrastrutture stradali del percorso rendono impossibile la discesa della pedana in sicurezza.</string>
     <string name="noLinesFound">Nessuna linea trovata per: \"%s\"</string>
-    <string name="noLinesFoundSubtitle">Prova a cercarne un\' altra, come: \"%s\"</string>
+    <string name="noLinesFoundSubtitle">Prova a cercarne un\'altra, come: \"%s\"</string>
     <string name="accessibilityInfoDeps3">LavoraMi prende queste informazioni da fonti autorevoli e affidabili, i dati potrebbero non essere aggiornati all\'ultimo minuto.</string>
     <string name="helpSettingsTitle">Aiuto</string>
     <string name="linksSettingsTitle">Collegamenti</string>
@@ -312,7 +312,7 @@
     <string name="selectAStop">Scegli una fermata</string>
     <string name="leavingTitle">In partenza</string>
     <string name="nextDepartures">PROSSIME PARTENZE:</string>
-    <string name="busDisclaimerBadge">Il bus può fare un ritardo dai 3 ai 5 minuti, questo è l\'orario programmato.</string>
+    <string name="busDisclaimerBadge">Il bus può fare un ritardo di 3-5 minuti, questo è l\'orario programmato.</string>
     <string name="arrivalsChipText">Arrivi</string>
     <string name="popUpDeleteRecentDeps">Sei sicuro di voler cancellare le ricerche recenti?</string>
     <string name="recentSearchTitle">Cercate di recente</string>
@@ -343,7 +343,7 @@
     <string name="notShowAnymore">Non mostrare più</string>
     <string name="tutorialTitle">Come posso mettere una linea nei preferiti?</string>
     <string name="tutorialExplanation1">Troverai tutte le linee premendo sull\'icona:</string>
-    <string name="tutorialExplanation2">E basterà che premerai il cuore come mostrato qui</string>
+    <string name="tutorialExplanation2">E basterà premere il cuore come mostrato qui</string>
     <string name="howItWorks">Come funziona?</string>
     <string name="understood">Ho capito</string>
     <string name="obsoleteTitle">Stai usando una versione obsoleta.</string>
@@ -464,7 +464,7 @@
     <string name="loadingIntechanges">Interscambi in caricamento...</string>
     <string name="ospedaleInterchange">Ospedale</string>
     <string name="dialog_bus_title_1">Visualizza le Mappe</string>
-    <string name="dialog_bus_title_2">Selezione una fermata</string>
+    <string name="dialog_bus_title_2">Seleziona una fermata</string>
     <string name="dialog_bus_desc_2">Seleziona una fermata e visualizza gli orari del bus! Basta cliccarci sopra e vedrai le prossime partenze.</string>
     <string name="dialog_bus_title_3">Cambia Direzione</string>
     <string name="dialog_bus_desc_3">Cambia la direzione del tuo bus, selezionando il pulsante con questa icona. Potrai vedere le fermate nel senso opposto!</string>
