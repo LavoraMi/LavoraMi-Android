@@ -180,7 +180,7 @@ public class StationDB {
         ));
 
         interchanges.add(new InterchangeInfo(
-            "Linate Aereoporto M4",
+            "Linate Aeroporto M4",
             new String[]{"M4", "NM4", "183", "901", "903", "923", "973", "z409"},
             new String[]{"z409"},
             "airplane.departure"

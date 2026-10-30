@@ -57,14 +57,14 @@ public class MPXStationsDB {
         stations.add(new MetroStation("NO_DRAW",  45.65225,  8.72808,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.65145,  8.72692,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.65104,  8.72515,  "Main","MXP1"));
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP1"));
+        stations.add(new MetroStation("Malpensa Aeroporto Terminal 2",  45.65013,  8.72133,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.64847,  8.7129,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.64736,  8.71028,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.6458,  8.70848,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.64373,  8.70771,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.64127,  8.70758,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.638,  8.7084,  "Main","MXP1"));
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","MXP1"));
+        stations.add(new MetroStation("Malpensa Aeroporto Terminal 1",  45.62714,  8.71129,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.62098,  8.71307,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.61858,  8.71389,  "Main","MXP1"));
         stations.add(new MetroStation("NO_DRAW",  45.61627,  8.71496,  "Main","MXP1"));
@@ -191,14 +191,14 @@ public class MPXStationsDB {
 
     public static List<MetroStation> getStationsMXP2() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","MXP2"));
+        stations.add(new MetroStation("Malpensa Aeroporto Terminal 2",  45.65013,  8.72133,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.64847,  8.7129,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.64736,  8.71028,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.6458,  8.70848,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.64373,  8.70771,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.64127,  8.70758,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.638,  8.7084,  "Main","MXP2"));
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","MXP2"));
+        stations.add(new MetroStation("Malpensa Aeroporto Terminal 1",  45.62714,  8.71129,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.62098,  8.71307,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.61858,  8.71389,  "Main","MXP2"));
         stations.add(new MetroStation("NO_DRAW",  45.61627,  8.71496,  "Main","MXP2"));

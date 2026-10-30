@@ -2463,14 +2463,14 @@ public class TILOStationsDB {
 
     public static List<MetroStation> getStationsS50() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 2",  45.65013,  8.72133,  "Main","S50"));
+        stations.add(new MetroStation("Malpensa Aeroporto Terminal 2",  45.65013,  8.72133,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.64847,  8.7129,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.64736,  8.71028,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.6458,  8.70848,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.64373,  8.70771,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.64127,  8.70758,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.638,  8.7084,  "Main","S50"));
-        stations.add(new MetroStation("Malpensa Aereoporto Terminal 1",  45.62714,  8.71129,  "Main","S50"));
+        stations.add(new MetroStation("Malpensa Aeroporto Terminal 1",  45.62714,  8.71129,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.62098,  8.71307,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.61858,  8.71389,  "Main","S50"));
         stations.add(new MetroStation("NO_DRAW",  45.61627,  8.71496,  "Main","S50"));

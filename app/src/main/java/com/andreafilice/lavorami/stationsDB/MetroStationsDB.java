@@ -258,7 +258,7 @@ public class MetroStationsDB {
 
     public static List<MetroStation> getStationsM4() {
         List<MetroStation> stations = new ArrayList<>();
-        stations.add(new MetroStation("Linate Aereoporto", 45.46284, 9.27791, "Main", "M4"));
+        stations.add(new MetroStation("Linate Aeroporto", 45.46284, 9.27791, "Main", "M4"));
         stations.add(new MetroStation("Repetti", 45.46201, 9.2404, "Main", "M4"));
         stations.add(new MetroStation("Stazione Forlanini", 45.46465, 9.2363, "Main", "M4"));
         stations.add(new MetroStation("Argonne", 45.46815, 9.23119, "Main", "M4"));
