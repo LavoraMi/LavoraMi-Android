@@ -30,8 +30,8 @@
     <string name="createAccount">Crear Cuenta</string>
     <string name="createAccountDeps">Regístrate para empezar.</string>
     <string name="fullNameAccount">Nombre usuario</string>
-    <string name="signUpWithGoogle">Registrarse con Google</string>
-    <string name="signUpAccount">Registrarse</string>
+    <string name="signUpWithGoogle">Regístrate con Google</string>
+    <string name="signUpAccount">Regístrate</string>
     <string name="haiAccountButton">¿Ya tienes una cuenta?</string>
     <string name="logginInGoogleTitle">Iniciando sesión</string>
     <string name="logginInGoogleDeps">Estamos iniciando sesión con tu cuenta de Google, por favor espera.</string>
@@ -308,7 +308,7 @@
     <string name="accessibilityInfoDeps3">LavoraMi obtiene esta información de fuentes autorizadas y fiables; los datos pueden no estar actualizados al último momento.</string>
     <string name="helpSettingsTitle">Ayuda</string>
     <string name="linksSettingsTitle">Enlaces</string>
-    <string name="supportLavoraMiButtonSettings">Apoya LavoraMi</string>
+    <string name="supportLavoraMiButtonSettings">Apoya a LavoraMi</string>
     <string name="noRoutesToday">No hay servicios previstos para hoy.</string>
     <string name="selectAStop">Elige una parada</string>
     <string name="leavingTitle">En salida</string>
@@ -338,7 +338,7 @@
     <string name="onBoardPersonalDeps">Si tu trayecto en tren continúa con un autobús sustitutivo, el personal de a bordo te facilitará toda la información necesaria para continuar el viaje con tranquilidad.</string>
     <string name="seeWorks">Ver las obras</string>
     <string name="seeWorksDeps">El mapa muestra el recorrido original de la línea. ¡Consulta los desvíos en la sección \"Obras\"!</string>
-    <string name="incorrectDetails">Reportar posibles errores</string>
+    <string name="incorrectDetails">Informar de posibles errores</string>
     <string name="incorrectDetailsDeps">¡Si encuentras incoherencias en nuestra app con tu línea, reporta el problema a: report-informazioni@lavorami.it!</string>
     <string name="deviationMapTxt">ESTA LÍNEA ESTÁ SUJETA A DESVÍOS.</string>
     <string name="notShowAnymore">No mostrar más</string>
