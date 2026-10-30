@@ -91,7 +91,7 @@
     <string name="waitingTimeLinesDetails">WAITING TIME:</string>
     <string name="interchangeStopLinesDetails">TRANSFER STATION:</string>
     <string name="noInterchangeStationTitle">No transfer stops.</string>
-    <string name="onlyOnWorkingDaysTitle">THE LINE IS AVAILABLE ONLY ON WORKING DAYS</string>
+    <string name="onlyOnWorkingDaysTitle">THE LINE OPERATES ONLY ON WEEKDAYS</string>
     <string name="worksLineDetails">WORK ON THE LINE:</string>
     <string name="mapChip">Map</string>
     <string name="lineWorksChip">Works</string>
@@ -195,7 +195,7 @@
     <string name="setupTitle4">Stay Updated</string>
     <string name="setupTitle5">You, and you again.</string>
     <string name="setupDeps1">Stay informed. Before and during your trip.</string>
-    <string name="setupDeps2">Plan your trip with an awareness of any potential delays along the way, well before you leave.</string>
+    <string name="setupDeps2">Plan your trip knowing about any disruption along the way, well before you leave.</string>
     <string name="setupDeps3">Select your favourite lines in the settings. Don\'t be the last to know.</string>
     <string name="setupDeps4">Turn on notifications to stay up to date on the work. Don\'t miss out on any surprises.</string>
     <string name="setupDeps5">Your information is secure. Create an account to sign up for our LavoraMi club.</string>
@@ -225,7 +225,7 @@
     <string name="choseLine">Choose your line</string>
     <string name="exampleDate1">15 Dec 2026</string>
     <string name="setupTitleTranslate">Translate the works into the language you select.</string>
-    <string name="setupDepsTranslate">To translate work details into other languages, simply click on the job details and then click “Translate”.</string>
+    <string name="setupDepsTranslate">To translate work details into other languages, simply tap on the job details and then tap “Translate”.</string>
     <string name="setupMiniDepsTranslate">This feature is available in all languages.</string>
     <string name="rateUsTitle">Rate LavoraMi</string>
     <string name="translateTitle">Translation (it-en):</string>
@@ -234,7 +234,7 @@
     <string name="maintenanceTitle">Maintenance in progress.</string>
     <string name="maintenanceDeps">The LavoraMi servers are currently unavailable. We apologise for the inconvenience.</string>
     <string name="retryMaintenanceBtn">Try Again</string>
-    <string name="endWorksNotificationTitle">Work ended!</string>
+    <string name="endWorksNotificationTitle">Works completed!</string>
     <string name="endWorksNotificationDepsVar1">Work on the %s lines in %s is expected to be completed today. Please visit the %s website for the latest updates.</string>
     <string name="endWorksNotificationDepsVar2">Work on the %s line in %s is expected to be completed today. Please visit the %s website for the latest updates.</string>
     <string name="endWorksNotificationDepsVar3">Work on the %s line at %s is expected to be completed today. Please visit the %s website for the latest updates.</string>
@@ -244,7 +244,7 @@
     <string name="endWorksTomorrowNotificationDepsVar2">Work on the %s lines in %s will be completed tomorrow. Visit the %s website for more information.</string>
     <string name="endWorksTomorrowNotificationDepsVar3">Work on the %s line at %s will be completed tomorrow. Visit the %s website for more information.</string>
     <string name="endWorksTomorrowNotificationDepsVar4">Work on the %s lines at %s will be completed tomorrow. Visit the %s website for more information.</string>
-    <string name="startWorkNotificationTitle">Works started!</string>
+    <string name="startWorkNotificationTitle">Works have started!</string>
     <string name="startWorkNotificationVar1">Work on the %s line in %s began today. Visit the %s website for more information.</string>
     <string name="startWorkNotificationVar2">Work on the %s lines in %s began today. Visit the %s website for more information.</string>
     <string name="startWorkNotificationVar3">Work on the %s line at %s began today. Visit the %s website for more information.</string>
@@ -328,7 +328,7 @@
     <string name="hoursPrefix">hours</string>
     <string name="yourLinesPrefix">Your Lines</string>
     <string name="yourLinesDot">Your Lines.</string>
-    <string name="yourLinesDeps">To add a line in this section, go to the Lines tab, click on the heart icon to add it. You can edit it at any time.</string>
+    <string name="yourLinesDeps">To add a line in this section, go to the Lines tab and tap the heart icon to add it. You can edit it at any time.</string>
     <string name="regioExpressLines">Regio Express Lines</string>
     <string name="deviationInfoTitle">Maps</string>
     <string name="deviationInfoDeps">Info about maps</string>
@@ -343,8 +343,8 @@
     <string name="incorrectDetails">Report any errors</string>
     <string name="notShowAnymore">Don\'t show again</string>
     <string name="tutorialTitle">How do I add a line to my favourites?</string>
-    <string name="tutorialExplanation1">You will find all lines by clicking on:</string>
-    <string name="tutorialExplanation2">And then you only need to click the heart as shown below</string>
+    <string name="tutorialExplanation1">You will find all lines by tapping on:</string>
+    <string name="tutorialExplanation2">And then you only need to tap the heart as shown below</string>
     <string name="howItWorks">How does it work?</string>
     <string name="understood">Understood</string>
     <string name="obsoleteTitle">You are using an outdated version.</string>
@@ -371,7 +371,7 @@
     <string name="circolareSinistraDesc">Anticlockwise Circular</string>
     <string name="homeBottomText">Home</string>
     <string name="locationPermissionDenied">Location permission denied.</string>
-    <string name="setupTitlePosition">Never get Lost.</string>
+    <string name="setupTitlePosition">Never get lost.</string>
     <string name="setupDepsPosition">Turn on your location so you always know where you are and never miss your stop.</string>
     <string name="dataPreferencesTitle">Data Preferences</string>
     <string name="dataSynched">Synced Data</string>
@@ -399,7 +399,7 @@
     <string name="inAppText">In App</string>
     <string name="openLinkDepsText">Select how you want links to open.</string>
     <string name="busKey">Bus</string>
-    <string name="arrivalsNotLoaded">Schedules loading not yet complete...</string>
+    <string name="arrivalsNotLoaded">Timetables are still loading...</string>
     <string name="operatorTextDeps2">Alternatively, save a line in the \"Your Lines\" section to use the filter to view only the works that interest you.</string>
     <string name="selectBranch">Choose Branch</string>
     <string name="noInterchangesView">Stop with no interchanges.</string>
@@ -424,7 +424,7 @@
     <string name="widget_detail_programmati">SCHEDULED</string>
     <string name="widget_line_added_description">The %1$s line has been added to the widget.</string>
     <string name="widget_line_added_title">Line added to the Widget</string>
-    <string name="busPopUpTitle">Route replaced by Bus</string>
+    <string name="busPopUpTitle">Line replaced by Bus</string>
     <string name="busPopUpDeps">This line is currently served entirely by buses, and there are no trains running on this route. However, the service is guaranteed between all stations on the line.</string>
     <string name="lineSubBusTitle">ROUTE FULLY REPLACED BY BUSES</string>
     <string name="dialogFavouriteLineText">Select your most frequently used transport operators and add them to your favourites to receive instant notifications about new works.</string>
@@ -437,7 +437,7 @@
     <string name="metroStatoInterrotta">Interrupted</string>
     <string name="metroStatoChiusa">Closed</string>
     <string name="metroStatoRallentata">Delayed</string>
-    <string name="metroStatoTitle">Current Status Metro</string>
+    <string name="metroStatoTitle">Current Metro Status</string>
     <string name="lineSuspendedMainText">LINE COMPLETELY SUSPENDED</string>
     <string name="lineSuspendedPopUpTitle">Line Completely Suspended</string>
     <string name="lineSuspendedPopUpDeps">This line has been suspended along its entire route due to engineering works or timetable changes. For more information, please go to the “Works” section for this line.</string>
@@ -450,7 +450,7 @@
     <string name="widgetSettingsDeps">Opens the line selected for the widget when you tap it. If disabled, the app opens on the Home screen.</string>
     <string name="dialog_bus_title">Bus Maps</string>
     <string name="dialog_bus_desc_1">Take a look at the bus maps for the routes you use every day! They’re detailed and designed especially for you! [Feature available for MOVIBUS routes].</string>
-    <string name="dialog_bus_desc_2">Select a stop to view the bus schedule! Simply click on it to see the upcoming departures.</string>
+    <string name="dialog_bus_desc_2">Select a stop to view the bus schedule! Simply tap on it to see the upcoming departures.</string>
     <string name="emptySubtitleNoResultsWorks">Why not try looking for something else?</string>
     <string name="saveYourLinesTitle">Save your lines</string>
     <string name="saveYourLinesDeps">Choose what type of data you want to be saved in our Databases, so that you can always access it from your Account.</string>
@@ -470,9 +470,9 @@
     <string name="dialog_bus_title_3">Change Direction</string>
     <string name="dialog_bus_desc_3">Change your bus direction by selecting the button with this icon. You will be able to see the stops in the opposite direction!</string>
     <string name="dialog_tram_title">Tram Timetables</string>
-    <string name="dialog_tram_desc_1">Click on a stop on the map to see the next arrivals! No more pointless waiting at bus stops.</string>
+    <string name="dialog_tram_desc_1">Tap on a stop on the map to see the next arrivals! No more pointless waiting at bus stops.</string>
     <string name="dialog_tram_desc_2">Take a look at the connections for that stop, just below the timetables. You’ll now know which line to change to.</string>
-    <string name="busSubtitlePopUp">You can view this page again by clicking on the \"Map\" tab when it is selected.</string>
+    <string name="busSubtitlePopUp">You can view this page again by tapping on the \"Map\" tab when it is selected.</string>
     <string name="errorBrowserSlowToast">The page is taking longer to load.</string>
     <string name="slowdownBannerTitle">LINE WITH SLOWDOWNS</string>
     <string name="lineSlowdownPopUpTitle">Line with Slowdowns</string>
