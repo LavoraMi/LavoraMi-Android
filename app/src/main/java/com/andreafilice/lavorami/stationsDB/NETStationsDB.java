@@ -8688,7 +8688,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.65269, 9.37621, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65269, 9.37612, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65264, 9.37606, "Main - Ritorno", "z318"));
-        stations.add(new MetroStation("CARNATE Stazione FS - Via Della Chiesa", 45.65243, 9.37591, "Main - Ritorno", "z318"));
+        stations.add(new MetroStation("Carnate,Carnate: Via Dalla Chiesa", 45.65243, 9.37591, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65227, 9.37588, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65219, 9.37589, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65215, 9.37594, "Main - Ritorno", "z318"));
@@ -8813,7 +8813,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.65353, 9.3667, "Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65342, 9.36649, "Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65334, 9.36631, "Main - Ritorno", "z318"));
-        stations.add(new MetroStation("USMATE VELATE,USMATE V.: Via Roma", 45.6523, 9.3648, "Main - Ritorno", "z318"));
+        stations.add(new MetroStation("Usmate Velate,Usmate V.: Via Roma", 45.6523, 9.3648, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65159, 9.36375, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65134, 9.36333, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65104, 9.3628, "Main - Ritorno", "z318"));
@@ -8944,7 +8944,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.65232, 9.3431, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65328, 9.34286, "Main - Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.65509, 9.34238, "Main - Ritorno", "z318"));
-        stations.add(new MetroStation("USMATE-VELATE (V.Verdi)", 45.6553, 9.34232, "Main - Ritorno", "z318"));
+        stations.add(new MetroStation("Usmate-Velate (V.Verdi)", 45.6553, 9.34232, "Main - Ritorno", "z318"));
 
         return stations;
     }
