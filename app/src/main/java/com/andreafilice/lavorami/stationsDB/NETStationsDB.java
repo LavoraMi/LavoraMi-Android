@@ -2362,7 +2362,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60977, 9.37186, "Ritorno", "z307"));
         stations.add(new MetroStation("NO_DRAW", 45.60983, 9.37184, "Ritorno", "z307"));
         stations.add(new MetroStation("NO_DRAW", 45.61044, 9.37147, "Main - Ritorno", "z307"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.61041, 9.37147, "Main - Ritorno", "z307"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.61041, 9.37147, "Main - Ritorno", "z307"));
 
         return stations;
     }
