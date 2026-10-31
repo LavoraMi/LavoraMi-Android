@@ -8161,7 +8161,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53714, 9.40333, "Ritorno", "z315"));
         stations.add(new MetroStation("NO_DRAW", 45.53706, 9.4033, "Ritorno", "z315"));
         stations.add(new MetroStation("NO_DRAW", 45.53698, 9.40324, "Ritorno", "z315"));
-        stations.add(new MetroStation("GORGONZOLA M2", 45.53691, 9.40303, "Main - Ritorno", "z315"));
+        stations.add(new MetroStation("Gorgonzola M2", 45.53691, 9.40303, "Main - Ritorno", "z315"));
 
         return stations;
     }
