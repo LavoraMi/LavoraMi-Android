@@ -4761,7 +4761,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.6097, 9.37176, "Ritorno", "z312"));
         stations.add(new MetroStation("NO_DRAW", 45.60975, 9.37182, "Ritorno", "z312"));
         stations.add(new MetroStation("NO_DRAW", 45.60986, 9.37183, "Ritorno", "z312"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.61026, 9.37154, "Main - Ritorno", "z312"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.61026, 9.37154, "Main - Ritorno", "z312"));
 
         return stations;
     }
@@ -7091,7 +7091,7 @@ public class NETStationsDB {
     public static List<MetroStation> getStationsZ315() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37158, "Main - Ritorno", "z315"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37158, "Main - Ritorno", "z315"));
         stations.add(new MetroStation("NO_DRAW", 45.61035, 9.37121, "Main", "z315"));
         stations.add(new MetroStation("NO_DRAW", 45.61048, 9.37111, "Main", "z315"));
         stations.add(new MetroStation("NO_DRAW", 45.61054, 9.37104, "Main", "z315"));
@@ -8378,7 +8378,7 @@ public class NETStationsDB {
     public static List<MetroStation> getStationsZ318() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.61043, 9.37115, "Main", "z318"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.61043, 9.37115, "Main", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61048, 9.37111, "Main", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61053, 9.37106, "Main", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61057, 9.37097, "Main", "z318"));
@@ -8400,7 +8400,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61076, 9.36763, "Main", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61083, 9.36751, "Main", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61089, 9.36736, "Main", "z318"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.61041, 9.37148, "Ritorno", "z318"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.61041, 9.37148, "Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.6105, 9.37137, "Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61052, 9.37129, "Ritorno", "z318"));
         stations.add(new MetroStation("NO_DRAW", 45.61055, 9.37103, "Ritorno", "z318"));
@@ -9418,7 +9418,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61052, 9.37114, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61048, 9.37112, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61042, 9.37115, "Ritorno", "z319"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37158, "Ritorno", "z319"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37158, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60978, 9.37161, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60974, 9.37164, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60971, 9.37169, "Ritorno", "z319"));
@@ -9440,7 +9440,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60973, 9.37165, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60975, 9.37163, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60978, 9.37161, "Main", "z319"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37158, "Main", "z319"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37158, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61042, 9.37115, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61048, 9.37112, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61055, 9.37102, "Main", "z319"));
@@ -9499,7 +9499,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60687, 9.36463, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.6069, 9.36457, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.607, 9.36454, "Main", "z319"));
-        stations.add(new MetroStation("VIMERCATE Via D.Chiesa (Ingresso Parco)", 45.6079, 9.36448, "Main", "z319"));
+        stations.add(new MetroStation("Vimercate Via D.Chiesa (Ingresso Parco)", 45.6079, 9.36448, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60815, 9.36448, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60821, 9.36447, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60904, 9.36724, "Ritorno", "z319"));
@@ -9508,7 +9508,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60894, 9.36693, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.609, 9.36645, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.609, 9.36625, "Ritorno", "z319"));
-        stations.add(new MetroStation("VIMERCATE,VIMERCATE: Via Damiano Chiesa", 45.60899, 9.36583, "Ritorno", "z319"));
+        stations.add(new MetroStation("Vimercate,Vimercate: Via Damiano Chiesa", 45.60899, 9.36583, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60896, 9.36471, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60895, 9.36462, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60892, 9.36456, "Ritorno", "z319"));
@@ -9550,7 +9550,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60843, 9.35689, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60857, 9.3569, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60868, 9.35688, "Ritorno", "z319"));
-        stations.add(new MetroStation("VIMERCATE (Nuovo Ospedale)", 45.60879, 9.35685, "Ritorno", "z319"));
+        stations.add(new MetroStation("Vimercate (Nuovo Ospedale)", 45.60879, 9.35685, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60911, 9.35686, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60916, 9.35692, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60917, 9.35699, "Ritorno", "z319"));
@@ -9587,7 +9587,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60917, 9.35699, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60916, 9.35692, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60911, 9.35686, "Main", "z319"));
-        stations.add(new MetroStation("VIMERCATE (Nuovo Ospedale)", 45.60879, 9.35685, "Main", "z319"));
+        stations.add(new MetroStation("Vimercate (Nuovo Ospedale)", 45.60879, 9.35685, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60857, 9.3569, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60848, 9.3569, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60843, 9.35689, "Main", "z319"));
@@ -9657,7 +9657,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61358, 9.35891, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61362, 9.35881, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61363, 9.35867, "Ritorno", "z319"));
-        stations.add(new MetroStation("VIMERCATE,VIMERCATE: Oreno- Via Fermi", 45.61368, 9.35792, "Main - Ritorno", "z319"));
+        stations.add(new MetroStation("Vimercate,Vimercate: Oreno- Via Fermi", 45.61368, 9.35792, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61369, 9.35754, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61368, 9.35723, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61364, 9.35676, "Main - Ritorno", "z319"));
@@ -9690,7 +9690,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61525, 9.35166, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61548, 9.3515, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61572, 9.35141, "Main - Ritorno", "z319"));
-        stations.add(new MetroStation("VIMERCATE Matteotti/Tagliamento", 45.61778, 9.35083, "Main - Ritorno", "z319"));
+        stations.add(new MetroStation("Vimercate Matteotti/Tagliamento", 45.61778, 9.35083, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61906, 9.35047, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61929, 9.35041, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.6194, 9.35038, "Main - Ritorno", "z319"));
@@ -10562,7 +10562,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61044, 9.37118, "Ritorno", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.6104, 9.37119, "Ritorno", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.61039, 9.37119, "Ritorno", "z321"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37156, "Ritorno", "z321"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37156, "Ritorno", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.60978, 9.3716, "Ritorno", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.60973, 9.37166, "Ritorno", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.60971, 9.37168, "Ritorno", "z321"));
@@ -10588,7 +10588,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60971, 9.37168, "Main", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.60973, 9.37166, "Main", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.60978, 9.3716, "Main", "z321"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37156, "Main", "z321"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37156, "Main", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.61039, 9.37119, "Main", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.6104, 9.37119, "Main", "z321"));
         stations.add(new MetroStation("NO_DRAW", 45.61042, 9.37119, "Main", "z321"));
@@ -11812,7 +11812,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61046, 9.37118, "Ritorno", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.61043, 9.37118, "Ritorno", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.61035, 9.37121, "Ritorno", "z322"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37156, "Ritorno", "z322"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37156, "Ritorno", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.60974, 9.37164, "Ritorno", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.60971, 9.37166, "Ritorno", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.6097, 9.37171, "Ritorno", "z322"));
@@ -11836,7 +11836,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.6097, 9.37171, "Main", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.60971, 9.37166, "Main", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.60974, 9.37164, "Main", "z322"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.60985, 9.37156, "Main", "z322"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.60985, 9.37156, "Main", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.61008, 9.3714, "Main", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.61035, 9.37121, "Main", "z322"));
         stations.add(new MetroStation("NO_DRAW", 45.61043, 9.37118, "Main", "z322"));
@@ -12270,9 +12270,9 @@ public class NETStationsDB {
     public static List<MetroStation> getStationsZ323() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.61046, 9.37116, "Main", "z323"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.61046, 9.37116, "Main", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.61053, 9.37109, "Main", "z323"));
-        stations.add(new MetroStation("VIMERCATE (Autostazione)", 45.61042, 9.37147, "Ritorno", "z323"));
+        stations.add(new MetroStation("Vimercate (Autostazione)", 45.61042, 9.37147, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.61051, 9.37136, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.61053, 9.37126, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.61056, 9.37102, "Main - Ritorno", "z323"));
