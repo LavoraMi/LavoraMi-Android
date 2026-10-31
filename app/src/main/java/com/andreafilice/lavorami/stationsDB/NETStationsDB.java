@@ -1603,7 +1603,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52037, 9.34635, "Ritorno", "z305"));
         stations.add(new MetroStation("NO_DRAW", 45.5204, 9.34625, "Ritorno", "z305"));
         stations.add(new MetroStation("NO_DRAW", 45.52041, 9.34612, "Ritorno", "z305"));
-        stations.add(new MetroStation("Villa Fiorita", 45.52044, 9.34557, "Main - Ritorno", "z305"));
+        stations.add(new MetroStation("Villa Fiorita M2", 45.52044, 9.34557, "Main - Ritorno", "z305"));
 
         return stations;
     }
