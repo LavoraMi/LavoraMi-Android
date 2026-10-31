@@ -5554,7 +5554,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.67809, 9.4397, "Ritorno", "z313"));
         stations.add(new MetroStation("NO_DRAW", 45.67811, 9.43967, "Ritorno", "z313"));
         stations.add(new MetroStation("NO_DRAW", 45.67819, 9.43963, "Main - Ritorno", "z313"));
-        stations.add(new MetroStation("PADERNO D'ADDA (Stazione FS)", 45.67816, 9.43963, "Main - Ritorno", "z313"));
+        stations.add(new MetroStation("Paderno d'Adda (Stazione FS)", 45.67816, 9.43963, "Main - Ritorno", "z313"));
 
         return stations;
     }
@@ -5714,7 +5714,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.55811, 9.43338, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.55817, 9.43336, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.55828, 9.43332, "Main - Ritorno", "z314"));
-        stations.add(new MetroStation("Via Brianza Via Europa (Gessate)", 45.55995, 9.43265, "Main - Ritorno", "z314"));
+        stations.add(new MetroStation("Via Brianza V.Le Europa (Gessate)", 45.55995, 9.43265, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.56013, 9.4326, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.56022, 9.4326, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.56027, 9.4326, "Main - Ritorno", "z314"));
@@ -6893,7 +6893,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57644, 9.33389, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57659, 9.33334, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57669, 9.33304, "Main - Ritorno", "z314"));
-        stations.add(new MetroStation("[S.P.13 Via D'Azeglio (Concorezzo)", 45.57773, 9.33023, "Main - Ritorno", "z314"));
+        stations.add(new MetroStation("S.P.13 Via D'Azeglio (Concorezzo)", 45.57773, 9.33023, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57943, 9.32571, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57957, 9.32535, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57966, 9.32504, "Main - Ritorno", "z314"));
@@ -6988,10 +6988,10 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5751, 9.2968, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.5751, 9.29673, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("P.za Cimitero (Monza)", 45.57517, 9.29631, "Main - Ritorno", "z314"));
-        stations.add(new MetroStation("V.le Foscolo Via Sangalli (Monza)", 45.57612, 9.29138, "Main - Ritorno", "z314"));
+        stations.add(new MetroStation("V.le Foscolo Via Sangalli (Monza)", 45.57612, 9.29138, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57664, 9.28865, "Main - Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57717, 9.28585, "Main - Ritorno", "z314"));
-        stations.add(new MetroStation("V.le Foscolo Via Mentana (Monza)", 45.57763, 9.28349, "Main - Ritorno", "z314"));
+        stations.add(new MetroStation("V.le Foscolo Via Mentana (Monza)", 45.57763, 9.28349, "Ritorno", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57774, 9.28299, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57777, 9.28291, "Main", "z314"));
         stations.add(new MetroStation("NO_DRAW", 45.57779, 9.28288, "Main", "z314"));
