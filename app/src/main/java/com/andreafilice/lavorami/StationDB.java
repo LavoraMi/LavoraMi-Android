@@ -437,6 +437,7 @@ public class StationDB {
             allStations.addAll(NETStationsDB.getStationsZ319());
             allStations.addAll(NETStationsDB.getStationsZ321());
             allStations.addAll(NETStationsDB.getStationsZ322());
+            allStations.addAll(NETStationsDB.getStationsZ323());
 
             allStations.addAll(FilobusStationsDB.getStationsFilobus90());
             allStations.addAll(FilobusStationsDB.getStationsFilobus91());
