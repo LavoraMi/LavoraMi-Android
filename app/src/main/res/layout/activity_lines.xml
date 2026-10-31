@@ -335,6 +335,16 @@
                         android:textSize="13sp"
                         android:fontFamily="@font/inter" />
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/infoIconAds"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="@color/desc"
+                    android:contentDescription="Info"
+                    android:clickable="true"
+                    android:focusable="true"/>
             </LinearLayout>
 
             <LinearLayout

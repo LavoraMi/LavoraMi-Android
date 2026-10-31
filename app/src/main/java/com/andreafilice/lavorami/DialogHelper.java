@@ -144,4 +144,39 @@ public class DialogHelper {
             dialog.dismiss();
         });
     }
+
+    public static void createCustomDialogWithButtonText(Context context, @NotNull String titleText, @NotNull String depsText, @NotNull String buttonText, Runnable toExecute) {
+        /// In this method, we create a custom dialog with specific button text and action.
+        /// @PARAMETERS
+        /// Context context is the Activity Context where to show the dialog
+        /// @NotNull String titleText is the main text of the dialog (the bigger one).
+        /// @NotNull String depsText is the description text of the dialog, long and exhaustive.
+        /// @NotNull String buttonText is the text of the action button.
+        /// Runnable toExecute is the action to perform when the user clicks on the button.
+
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.info_dialog_layout, null);
+        TextView text_title = dialogView.findViewById(R.id.text_title);
+        TextView text_description = dialogView.findViewById(R.id.text_description);
+        Button btnClose = dialogView.findViewById(R.id.btn_close_dialog);
+
+        text_title.setText(titleText);
+        text_description.setText(depsText);
+        btnClose.setText(buttonText);
+        btnClose.setAllCaps(false);
+
+        AlertDialog dialog = new AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create();
+        dialog.show();
+
+        if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        btnClose.setOnClickListener(v1 -> {
+            dialog.dismiss();
+            if (toExecute != null) {
+                toExecute.run();
+            }
+        });
+    }
 }

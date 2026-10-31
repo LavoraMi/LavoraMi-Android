@@ -502,6 +502,7 @@
     <string name="levelAccountSubtitle">gana 10 XP por cada minuto en la app</string>
     <string name="earn_xp_button">gana 50xp</string>
     <string name="earn_xp_counter">%1$d/5 disponibles</string>
+    <string name="supportLavoraMiAdDialogDesc">Mira un anuncio para ganar 50 xp</string>
     <string name="ad_limit_reached_title">Límite de anuncios alcanzado</string>
     <string name="ad_limit_reached_message">Límite de anuncios alcanzado, se reiniciarán mañana</string>
     <string name="accountLevelShortFormat">Niv. %1$d</string>
