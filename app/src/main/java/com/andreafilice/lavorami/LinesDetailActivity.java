@@ -1904,7 +1904,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         String[] lineeSostituiteBus = cdnData.getlineeSostituiteBus();
         String[] lineeConRallentamenti = cdnData.getlinesWithSlowdowns();
         String[] lineeConOrariImprecisi = cdnData.getorariTramImprecisi();
-        String[] linesMultipleRoutes = {"z301", "z509", "z515", "z555", "z619", "z647"};
+        String[] linesMultipleRoutes = {"z301", "z321", "z322", "z323", "z509", "z515", "z555", "z619", "z647"};
 
         LinearLayout deviazioneLinea = findViewById(R.id.deviazioneLinea);
         LinearLayout lineaRallentata = findViewById(R.id.lineaRallentata);
