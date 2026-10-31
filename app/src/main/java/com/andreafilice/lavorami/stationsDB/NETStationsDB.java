@@ -9143,7 +9143,7 @@ public class NETStationsDB {
     public static List<MetroStation> getStationsZ319() {
         List<MetroStation> stations = new ArrayList<>();
 
-        stations.add(new MetroStation("RONCO BRIANTINO (V.Mandelli)", 45.66628, 9.39874, "Main", "z319"));
+        stations.add(new MetroStation("Ronco Briantino (V.Mandelli)", 45.66628, 9.39874, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66616, 9.39865, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66609, 9.3986, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66607, 9.39855, "Main", "z319"));
@@ -9154,7 +9154,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.66629, 9.39853, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66639, 9.39861, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66645, 9.39862, "Main", "z319"));
-        stations.add(new MetroStation("RONCO BRIANTINO (V.Mandelli)", 45.66628, 9.39874, "Ritorno", "z319"));
+        stations.add(new MetroStation("Ronco Briantino (V.Mandelli)", 45.66628, 9.39874, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66635, 9.39877, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.6664, 9.39877, "Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.66648, 9.39858, "Main - Ritorno", "z319"));
