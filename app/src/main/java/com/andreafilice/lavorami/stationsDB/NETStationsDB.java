@@ -3948,7 +3948,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.57532, 9.52535, "Ritorno", "z311"));
         stations.add(new MetroStation("NO_DRAW", 45.57536, 9.52548, "Ritorno", "z311"));
         stations.add(new MetroStation("NO_DRAW", 45.57545, 9.52569, "Ritorno", "z311"));
-        stations.add(new MetroStation("Vaprio d'Adda, Perego 62,Cimitero", 45.57574, 9.5263, "Main - Ritorno", "z311"));
+        stations.add(new MetroStation("Vaprio d'Adda (Cimitero)", 45.57574, 9.5263, "Main - Ritorno", "z311"));
 
         return stations;
     }
