@@ -237,7 +237,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.54597, 9.23055, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.5455, 9.23078, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.54544, 9.23088, "Main", "z301"));
-        stations.add(new MetroStation("Via M.Te Grappa Via Picardi", 45.54509, 9.23158, "Main", "z301"));
+        stations.add(new MetroStation("Via M.Te Grappa Via Picardi (Sesto S.G.)", 45.54509, 9.23158, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.54454, 9.23272, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.5443, 9.23319, "Main", "z301"));
         stations.add(new MetroStation("NO_DRAW", 45.54407, 9.23364, "Main", "z301"));
