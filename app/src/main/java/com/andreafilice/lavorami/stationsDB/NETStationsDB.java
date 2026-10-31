@@ -637,7 +637,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53509, 9.29095, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53516, 9.29102, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53572, 9.29172, "Main", "z304"));
-        stations.add(new MetroStation("Cologno M2", 45.53566, 9.29218, "Main", "z304"));
+        stations.add(new MetroStation("Cologno Nord M2", 45.53566, 9.29218, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53563, 9.29246, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53635, 9.29331, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53667, 9.29371, "Main", "z304"));
@@ -929,7 +929,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53428, 9.29044, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53424, 9.29057, "Main", "z304"));
         stations.add(new MetroStation("NO_DRAW", 45.53427, 9.29068, "Main", "z304"));
-        stations.add(new MetroStation("Cologno M2", 45.53433, 9.29077, "Main", "z304"));
+        stations.add(new MetroStation("Cologno Nord M2", 45.53433, 9.29077, "Main", "z304"));
 
         return stations;
     }
