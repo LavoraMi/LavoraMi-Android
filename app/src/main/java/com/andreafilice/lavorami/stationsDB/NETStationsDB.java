@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NETStationsDB {
-    public static List<MetroStation> getStationsZ301() {
+    public static List<MetroStation> getStationsZ301(){
         List<MetroStation> stations = new ArrayList<>();
 
         stations.add(new MetroStation("Bergamo (Autostazione)", 45.69195, 9.67609, "Main", "z301"));
