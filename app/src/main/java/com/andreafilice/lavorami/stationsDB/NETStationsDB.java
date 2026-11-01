@@ -3083,7 +3083,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60777, 9.52232, "Ritorno", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60774, 9.52235, "Ritorno", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60771, 9.52236, "Ritorno", "z310"));
-        stations.add(new MetroStation("Trezzo sull'Adda, I Maggio", 45.60767, 9.52237, "Ritorno", "z310"));
+        stations.add(new MetroStation("Trezzo d'Adda (1° Maggio)", 45.60767, 9.52237, "Ritorno", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60745, 9.5223, "Ritorno", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60732, 9.52225, "Ritorno", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.6073, 9.52224, "Ritorno", "z310"));
@@ -3107,7 +3107,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60732, 9.52225, "Main", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60745, 9.5223, "Main", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60759, 9.52234, "Main", "z310"));
-        stations.add(new MetroStation("Trezzo sull'Adda, I Maggio", 45.60767, 9.52237, "Main", "z310"));
+        stations.add(new MetroStation("Trezzo d'Adda (1° Maggio)", 45.60767, 9.52237, "Main", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60771, 9.52236, "Main", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60774, 9.52235, "Main", "z310"));
         stations.add(new MetroStation("NO_DRAW", 45.60776, 9.52232, "Main", "z310"));
