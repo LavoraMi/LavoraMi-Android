@@ -179,4 +179,43 @@ public class DialogHelper {
             }
         });
     }
+
+    public static void createRewardAdDialog(Context context, @NotNull String titleText, @NotNull String depsText, @NotNull String buttonText, @NotNull String counterText, Runnable toExecute) {
+        /// In this method, we create a dialog with a title, description, action button, and counter text under the button.
+        /// @PARAMETERS
+        /// Context context is the Activity Context where to show the dialog
+        /// @NotNull String titleText is the main text of the dialog (the title).
+        /// @NotNull String depsText is the description text of the dialog.
+        /// @NotNull String buttonText is the text of the action button.
+        /// @NotNull String counterText is the text for remaining ads shown under the button.
+        /// Runnable toExecute is the action to perform when the user clicks on the button.
+
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_reward_layout, null);
+        TextView text_title = dialogView.findViewById(R.id.text_title);
+        TextView text_description = dialogView.findViewById(R.id.text_description);
+        Button btnAction = dialogView.findViewById(R.id.btn_action_dialog);
+        TextView text_counter = dialogView.findViewById(R.id.text_counter);
+
+        text_title.setText(titleText);
+        text_description.setText(depsText);
+        btnAction.setText(buttonText);
+        btnAction.setAllCaps(false);
+        text_counter.setText(counterText);
+        text_counter.setText(counterText);
+
+        AlertDialog dialog = new AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create();
+        dialog.show();
+
+        if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        btnAction.setOnClickListener(v1 -> {
+            dialog.dismiss();
+            if (toExecute != null) {
+                toExecute.run();
+            }
+        });
+    }
 }

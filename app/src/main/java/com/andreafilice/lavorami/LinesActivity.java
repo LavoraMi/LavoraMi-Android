@@ -436,6 +436,7 @@ public class LinesActivity extends AppCompatActivity {
         reloadSavedLines();
         reloadRecentLines();
         resetAndReloadAds();
+        updateAdsCounterUI();
 
         if(!searchLines.getText().toString().isEmpty()) {
             titleRecent.setVisibility(View.GONE);
@@ -1066,6 +1067,15 @@ public class LinesActivity extends AppCompatActivity {
     private void incrementAdsWatchedToday() {
         int current = getAdsWatchedToday();
         DataManager.saveIntData(DataKeys.KEY_ADS_WATCHED_COUNT, current + 1);
+        updateAdsCounterUI();
+    }
+
+    private void updateAdsCounterUI() {
+        TextView subTitleAdsDesc = findViewById(R.id.subTitleAdsDesc);
+        if (subTitleAdsDesc != null) {
+            int remaining = Math.max(0, MAX_DAILY_ADS - getAdsWatchedToday());
+            subTitleAdsDesc.setText(getString(R.string.supportLavoraMiDeps) + " (" + getString(R.string.earn_xp_counter, remaining) + ")");
+        }
     }
 
     private void loadRewardedAd() {
@@ -1156,14 +1166,17 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     private void showSupportAdsDialog() {
-        DialogHelper.createCustomDialogWithButtonText(
+        int watchedToday = getAdsWatchedToday();
+        int remaining = Math.max(0, MAX_DAILY_ADS - watchedToday);
+
+        DialogHelper.createRewardAdDialog(
             this,
             getString(R.string.supportLavoraMiTitle),
             getString(R.string.supportLavoraMiAdDialogDesc),
             getString(R.string.earn_xp_button),
+            getString(R.string.earn_xp_counter, remaining),
             () -> {
                 ActivityUtils.triggerFeedback(this);
-                int watchedToday = getAdsWatchedToday();
                 if (watchedToday >= MAX_DAILY_ADS) {
                     DialogHelper.createDefaultDialog(
                         this,

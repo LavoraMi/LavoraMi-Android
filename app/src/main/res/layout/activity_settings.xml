@@ -267,12 +267,12 @@
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingVertical="7dp"
                                 android:text="@string/earn_xp_button"
                                 android:textAllCaps="false"
                                 android:textColor="@color/White"
                                 android:textSize="11sp"
-                                app:cornerRadius="10dp" />
+                                app:cornerRadius="12dp" />
 
                             <TextView
                                 android:id="@+id/earnXpCounterText"
