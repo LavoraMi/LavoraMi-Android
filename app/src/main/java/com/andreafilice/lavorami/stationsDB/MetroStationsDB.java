@@ -13,7 +13,7 @@ public class MetroStationsDB {
         stations.add(new MetroStation("Sesto 1° Maggio FS", 45.54156, 9.23835, "Main", "M1"));
         stations.add(new MetroStation("Sesto Rondò", 45.5342, 9.23128, "Main", "M1"));
         stations.add(new MetroStation("Sesto Marelli", 45.52356, 9.22796, "Main", "M1"));
-        stations.add(new MetroStation("Villa S. Giovanni", 45.51745, 9.22613, "Main", "M1"));
+        stations.add(new MetroStation("Villa San Giovanni", 45.51745, 9.22613, "Main", "M1"));
         stations.add(new MetroStation("Precotto", 45.51215, 9.22449, "Main", "M1"));
         stations.add(new MetroStation("Gorla", 45.50662, 9.22287, "Main", "M1"));
         stations.add(new MetroStation("Turro", 45.50091, 9.22114, "Main", "M1"));
@@ -202,7 +202,7 @@ public class MetroStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.52121, 9.35995, "Gessate", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.52138, 9.36076, "Gessate", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.52138, 9.36076, "Gessate", "M2"));
-        stations.add(new MetroStation("Cassina De Pecchi", 45.5217, 9.36208, "Gessate", "M2"));
+        stations.add(new MetroStation("Cassina De' Pecchi", 45.5217, 9.36208, "Gessate", "M2"));
         stations.add(new MetroStation("NO_DRAW", 45.52406, 9.37142, "Gessate", "M2"));
         stations.add(new MetroStation("Bussero", 45.52531, 9.37584, "Gessate", "M2"));
         stations.add(new MetroStation("Villa Pompea", 45.52787, 9.38491, "Gessate", "M2"));
