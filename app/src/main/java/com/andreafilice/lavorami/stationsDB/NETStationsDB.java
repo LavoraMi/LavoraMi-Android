@@ -9690,7 +9690,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.60687, 9.36463, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.6069, 9.36457, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.607, 9.36454, "Main", "z319"));
-        stations.add(new MetroStation("Vimercate Via D.Chiesa (Ingresso Parco)", 45.6079, 9.36448, "Main", "z319"));
+        stations.add(new MetroStation("Vimercate,Vimercate: Via Damiano Chiesa", 45.6079, 9.36448, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60815, 9.36448, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60821, 9.36447, "Main", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.60904, 9.36724, "Ritorno", "z319"));
@@ -9881,7 +9881,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.61525, 9.35166, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61548, 9.3515, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61572, 9.35141, "Main - Ritorno", "z319"));
-        stations.add(new MetroStation("Vimercate Matteotti/Tagliamento", 45.61778, 9.35083, "Main - Ritorno", "z319"));
+        stations.add(new MetroStation("Via Matteotti Via Tagliamento (Vimercate)", 45.61778, 9.35083, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61906, 9.35047, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.61929, 9.35041, "Main - Ritorno", "z319"));
         stations.add(new MetroStation("NO_DRAW", 45.6194, 9.35038, "Main - Ritorno", "z319"));
