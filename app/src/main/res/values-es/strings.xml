@@ -497,4 +497,5 @@
     <string name="nextArrivalsTitle">"PRÓXIMAS LLEGADAS: "</string>
     <string name="routeCircular">Circular</string>
     <string name="routeSchool">Escolar</string>
+    <string name="iceHockeyArena">Ice Hockey Arena</string>
 </resources>

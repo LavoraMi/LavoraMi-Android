@@ -566,6 +566,8 @@ public class StationDB {
                     return R.color.monument;
                 else if (nomeLinea.equalsIgnoreCase(context.getString(R.string.ospedaleInterchange)))
                     return R.color.ospedale;
+                else if(nomeLinea.equalsIgnoreCase(context.getString(R.string.iceHockeyArena)))
+                    return R.color.iceHockeyArena;
                 else
                     return R.color.OTHER_LINES;
         }
