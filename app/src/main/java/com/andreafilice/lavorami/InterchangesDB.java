@@ -1561,7 +1561,7 @@ public class InterchangesDB {
         interchanges.add(new InterchangeInfo("Viale Certosa Via Tibullo", new String[]{"14"}, "tram.fill", "Main", 4));
         interchanges.add(new InterchangeInfo("Viale Certosa Via Giannini", new String[]{"14"}, "tram.fill", "Main", 5));
         interchanges.add(new InterchangeInfo("Viale Certosa Via Casella", new String[]{"14"}, "tram.fill", "Main", 6));
-        interchanges.add(new InterchangeInfo("Piazzale Accursio", new String[]{"14", "1", "z602", "z603", "z6C3"}, "tram.fill", "Main", 7));
+        interchanges.add(new InterchangeInfo("Piazzale Accursio", new String[]{"14", "1", "69", "z602", "z603", "z6C3"}, "bus.fill", "Main", 7));
         interchanges.add(new InterchangeInfo("Viale Certosa Via Grosotto", new String[]{"14", "1", "48", "69"}, "tram.fill", "Main", 8));
         interchanges.add(new InterchangeInfo("Viale Certosa Viale Serra", new String[]{"14", "1", "69", "90", "z602", "z603", "z6C3"}, "bus.fill", "Main", 9));
         interchanges.add(new InterchangeInfo("Piazza Firenze", new String[]{"14", "1", "19", "43", "48", "57", "69"}, "tram.fill", "Main", 10));
