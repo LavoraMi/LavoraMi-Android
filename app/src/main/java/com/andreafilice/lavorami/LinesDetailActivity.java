@@ -3077,7 +3077,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 break;
             case "Info":
                 baseColor = ContextCompat.getColor(this, R.color.RE80);
-                lineaRegolareIcon.setImageResource(R.drawable.ic_question);
+                lineaRegolareIcon.setImageResource(R.drawable.ic_info_metro);
                 statusText.setText(getString(R.string.infoMetro));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
