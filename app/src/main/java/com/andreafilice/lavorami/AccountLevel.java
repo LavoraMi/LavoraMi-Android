@@ -159,13 +159,15 @@ public class AccountLevel {
         final String finalTitle = title;
         final String finalMessage = message;
 
+        Runnable shareInstagramAction = () -> InstagramShareHelper.shareLevelUpStory(effContext, newLevel, getRankTitle(effContext, newLevel));
+
         if (context instanceof Activity) {
             Activity activity = (Activity) context;
             if (!activity.isFinishing() && !activity.isDestroyed()) {
-                activity.runOnUiThread(() -> DialogHelper.createDefaultDialog(context, finalTitle, finalMessage));
+                activity.runOnUiThread(() -> DialogHelper.createLevelUpDialog(context, finalTitle, finalMessage, shareInstagramAction));
             }
         } else {
-            DialogHelper.createDefaultDialog(context, finalTitle, finalMessage);
+            DialogHelper.createLevelUpDialog(context, finalTitle, finalMessage, shareInstagramAction);
         }
     }
 

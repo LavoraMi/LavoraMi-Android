@@ -218,4 +218,39 @@ public class DialogHelper {
             }
         });
     }
+
+    public static void createLevelUpDialog(Context context, @NotNull String titleText, @NotNull String depsText, Runnable onShareInstagram) {
+        /// In this method, we create a level up dialog with two buttons: "Ho capito" (close) and "Condividi su Instagram" (share).
+        /// @PARAMETERS
+        /// Context context is the Activity Context where to show the dialog
+        /// @NotNull String titleText is the title text of the dialog
+        /// @NotNull String depsText is the description text of the dialog
+        /// Runnable onShareInstagram is the action to perform when the user clicks on "Condividi su Instagram" button.
+
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_level_up_layout, null);
+        TextView text_title = dialogView.findViewById(R.id.text_title);
+        TextView text_description = dialogView.findViewById(R.id.text_description);
+        Button btnShareInstagram = dialogView.findViewById(R.id.btn_share_instagram);
+        Button btnClose = dialogView.findViewById(R.id.btn_close_dialog);
+
+        text_title.setText(titleText);
+        text_description.setText(depsText);
+
+        AlertDialog dialog = new AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create();
+        dialog.show();
+
+        if (dialog.getWindow() != null) dialog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        btnClose.setOnClickListener(v -> dialog.dismiss());
+        btnShareInstagram.setOnClickListener(v -> {
+            dialog.dismiss();
+            if (onShareInstagram != null) {
+                onShareInstagram.run();
+            }
+        });
+    }
 }
+

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="1080px"
+    android:layout_height="1920px"
+    android:background="#121216"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="48px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/bg_story_card"
+        android:padding="60px">
+
+        <!-- App Branding -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="72px"
+                android:layout_height="72px"
+                android:src="@drawable/ic_app" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20px"
+                android:fontFamily="@font/font_main"
+                android:text="LavoraMi"
+                android:textColor="@color/White"
+                android:textSize="36px"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Red Accent Bar -->
+        <View
+            android:layout_width="120px"
+            android:layout_height="6px"
+            android:layout_marginTop="36px"
+            android:layout_marginBottom="48px"
+            android:background="@color/redMetro" />
+
+        <!-- Subtitle Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:text="NUOVO LIVELLO RAGGIUNTO!"
+            android:textColor="@color/redMetro"
+            android:textSize="28px"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <!-- Level Number Circle / Badge -->
+        <FrameLayout
+            android:layout_width="220px"
+            android:layout_height="220px"
+            android:layout_marginTop="48px"
+            android:layout_marginBottom="48px"
+            android:background="@drawable/bg_story_level_circle">
+
+            <TextView
+                android:id="@+id/story_level_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/font_main"
+                android:textColor="@color/White"
+                android:textSize="96px"
+                android:textStyle="bold"
+                tools:text="5" />
+        </FrameLayout>
+
+        <!-- Level Label -->
+        <TextView
+            android:id="@+id/story_level_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_main"
+            android:textColor="@color/White"
+            android:textSize="44px"
+            android:textStyle="bold"
+            tools:text="LIVELLO 5" />
+
+        <!-- Rank Title Badge / Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28px"
+            android:background="@drawable/bg_story_rank_badge"
+            android:gravity="center"
+            android:paddingHorizontal="32px"
+            android:paddingVertical="24px">
+
+            <TextView
+                android:id="@+id/story_rank_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_main"
+                android:textColor="@color/White"
+                android:textSize="40px"
+                android:textStyle="bold"
+                android:gravity="center"
+                tools:text="Cacciatore di Posti" />
+        </LinearLayout>
+
+        <!-- Tagline -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48px"
+            android:fontFamily="@font/inter"
+            android:text="Tieni traccia dei tuoi viaggi sui mezzi di Milano"
+            android:textColor="#A0A0AA"
+            android:textSize="24px"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Footer -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60px"
+        android:fontFamily="@font/inter"
+        android:text="Scaricabile su App Store e Google Play"
+        android:textColor="#666677"
+        android:textSize="22px" />
+
+</LinearLayout>

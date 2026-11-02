@@ -518,4 +518,6 @@
     <string name="rank_ticket_collector">Coleccionista de Billetes</string>
     <string name="rank_train_philosopher">Filósofo del Tren</string>
     <string name="rank_subway_resident">Inquilino del Metro</string>
+    <string name="share_on_instagram">Compartir en Instagram</string>
+    <string name="instagram_not_installed">Instagram no está instalado en tu dispositivo</string>
 </resources>

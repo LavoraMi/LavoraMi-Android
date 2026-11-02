@@ -517,4 +517,6 @@
     <string name="rank_ticket_collector">Collezionista di Biglietti</string>
     <string name="rank_train_philosopher">Filosofo del Treno</string>
     <string name="rank_subway_resident">Inquilino della Metropolitana</string>
+    <string name="share_on_instagram">Condividi su Instagram</string>
+    <string name="instagram_not_installed">Instagram non è installato sul tuo dispositivo</string>
 </resources>

@@ -518,4 +518,6 @@
     <string name="rank_ticket_collector">Ticket Collector</string>
     <string name="rank_train_philosopher">Train Philosopher</string>
     <string name="rank_subway_resident">Subway Resident</string>
+    <string name="share_on_instagram">Share on Instagram</string>
+    <string name="instagram_not_installed">Instagram is not installed on your device</string>
 </resources>
