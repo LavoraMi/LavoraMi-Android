@@ -6,12 +6,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    app:cardBackgroundColor="@color/surface_card"
     app:cardCornerRadius="16dp"
     app:cardElevation="8dp"
     android:layout_margin="20dp">
 
     <LinearLayout
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
@@ -19,33 +20,36 @@
 
         <TextView
             android:id="@+id/text_title"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
             android:fontFamily="@font/font_main"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/text_primary"/>
+            android:textColor="@color/text_primary"
+            tools:text="LIVELLO 4 RAGGIUNTO"/>
 
         <TextView
             android:id="@+id/text_description"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/inter"
             android:gravity="center"
             android:textColor="@color/subtitle"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:text="Hai raggiunto il livello 4, ora sei &quot;Passeggero Zen&quot;" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_share_instagram"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/redMetro"
             android:fontFamily="@font/font_main"
             android:gravity="center"
+            android:paddingHorizontal="16dp"
             android:paddingVertical="10dp"
             android:text="@string/share_on_instagram"
             android:textAllCaps="false"
@@ -60,12 +64,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_close_dialog"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/disclosureBg"
             android:fontFamily="@font/font_main"
             android:gravity="center"
+            android:paddingHorizontal="16dp"
             android:paddingVertical="10dp"
             android:text="@string/understood"
             android:textAllCaps="false"
