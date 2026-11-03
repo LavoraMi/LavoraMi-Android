@@ -13111,7 +13111,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.53964, 9.28725, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53953, 9.28717, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53897, 9.28672, "Main - Ritorno", "z323"));
-        stations.add(new MetroStation("C.So Roma Tangenziale Est (Cologno M.Se)", 45.53751, 9.2856, "Main", "z323"));
+        stations.add(new MetroStation("Via Roma (Tang. Est) (Cologno M.Se)", 45.53751, 9.2856, "Main", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53587, 9.28437, "Main", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53576, 9.28428, "Main", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53568, 9.28422, "Main", "z323"));
@@ -13170,7 +13170,7 @@ public class NETStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.5353, 9.29115, "Main", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53538, 9.29128, "Main", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53539, 9.29137, "Main", "z323"));
-        stations.add(new MetroStation("C.So Roma Tangenziale Est (Cologno M.Se)", 45.53702, 9.28529, "Ritorno", "z323"));
+        stations.add(new MetroStation("Via Roma (Tang. Est) (Cologno M.Se)", 45.53702, 9.28529, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53585, 9.28442, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53572, 9.28433, "Ritorno", "z323"));
         stations.add(new MetroStation("NO_DRAW", 45.53558, 9.28426, "Ritorno", "z323"));
