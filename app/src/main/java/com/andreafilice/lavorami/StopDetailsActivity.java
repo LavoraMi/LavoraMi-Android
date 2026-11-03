@@ -261,7 +261,7 @@ public class StopDetailsActivity extends AppCompatActivity{
             detDirezioni.setTextColor(getColor(R.color.text_primary));
 
         direzioniDisponibili = new ArrayList<>(departuresByDir.entrySet());
-        
+
         if (indiceDirezioneCorrente >= direzioniDisponibili.size()) indiceDirezioneCorrente = 0;
 
         popolaRigaArrivo(detDirezioni, nextArrivals, direzioniDisponibili.get(indiceDirezioneCorrente).getValue());

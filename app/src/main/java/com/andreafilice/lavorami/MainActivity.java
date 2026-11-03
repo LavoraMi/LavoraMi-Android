@@ -974,7 +974,7 @@ public class MainActivity extends AppCompatActivity {
                     swipeRefreshLayout.setRefreshing(false);
 
                     /// In this section of the code, we check the android version and adapt the style to that version.
-                    iconWiFi.setImageResource((Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) ? R.drawable.ic_no_wifi_connection : R.drawable.ic_wifi_slash_android10_previous);
+                    iconWiFi.setImageResource(R.drawable.ic_no_wifi_connection);
                 }
             }
         });
