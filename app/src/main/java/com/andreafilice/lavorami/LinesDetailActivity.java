@@ -2746,7 +2746,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         if (activeAllArrivalsDialog != null && activeAllArrivalsDialog.isShowing()) {
             try {
                 activeAllArrivalsDialog.dismiss();
-            } catch (Exception ignored) {}
+            }
+            catch (Exception ignored) {}
         }
         activeAllArrivalsDialog = null;
     }
@@ -2771,16 +2772,10 @@ public class LinesDetailActivity extends AppCompatActivity {
         TextView sheetSubtitle = sheetView.findViewById(R.id.sheetSubtitle);
         RecyclerView rvAllArrivi = sheetView.findViewById(R.id.rvAllArrivi);
 
-        if (sheetTitle != null) {
-            sheetTitle.setText(getString(R.string.allArrivalsTitle));
-        }
-        if (sheetSubtitle != null && headsign != null) {
-            sheetSubtitle.setText(getString(R.string.directionTitleArrivals) + headsign.toUpperCase());
-        }
+        if (sheetTitle != null) sheetTitle.setText(getString(R.string.allArrivalsTitle));
+        if (sheetSubtitle != null && headsign != null) sheetSubtitle.setText(getString(R.string.directionTitleArrivals) + headsign.toUpperCase());
 
-        if (closeBtn != null) {
-            closeBtn.setOnClickListener(v -> bottomSheetDialog.dismiss());
-        }
+        if (closeBtn != null) closeBtn.setOnClickListener(v -> bottomSheetDialog.dismiss());
 
         AllArrivalsAdapter adapter = new AllArrivalsAdapter(departures);
         if (rvAllArrivi != null) {
@@ -2803,9 +2798,8 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         bottomSheetDialog.setOnDismissListener(d -> {
             allArrivalsHandler.removeCallbacksAndMessages(null);
-            if (activeAllArrivalsDialog == bottomSheetDialog) {
+            if (activeAllArrivalsDialog == bottomSheetDialog)
                 activeAllArrivalsDialog = null;
-            }
         });
 
         Runnable refreshRunnable = new Runnable() {
@@ -2828,16 +2822,13 @@ public class LinesDetailActivity extends AppCompatActivity {
         private final List<GTFSHelper.Departure> departures = new ArrayList<>();
 
         AllArrivalsAdapter(List<GTFSHelper.Departure> departures) {
-            if (departures != null) {
-                this.departures.addAll(departures);
-            }
+            if (departures != null) this.departures.addAll(departures);
         }
 
         public void updateData(List<GTFSHelper.Departure> newDepartures) {
             this.departures.clear();
-            if (newDepartures != null) {
-                this.departures.addAll(newDepartures);
-            }
+            if (newDepartures != null) this.departures.addAll(newDepartures);
+
             notifyDataSetChanged();
         }
 
@@ -2854,48 +2845,39 @@ public class LinesDetailActivity extends AppCompatActivity {
 
             holder.txtTime.setText(dep.time);
 
-            if (dep.minutesFromNow == 0) {
+            if (dep.minutesFromNow == 0)
                 holder.txtMins.setText(getString(R.string.leavingTitle));
-            } else if (dep.minutesFromNow >= 60) {
+            else if (dep.minutesFromNow >= 60) {
                 int hours = dep.minutesFromNow / 60;
                 int mins = dep.minutesFromNow % 60;
                 if (mins == 0) holder.txtMins.setText("in " + hours + " h");
                 else holder.txtMins.setText("in " + hours + " h " + mins + " min");
-            } else {
-                holder.txtMins.setText("in " + dep.minutesFromNow + " min");
             }
+            else holder.txtMins.setText("in " + dep.minutesFromNow + " min");
 
             if (dep.headsign != null) {
                 holder.txtHeadsign.setText(getString(R.string.directionTitleArrivals) + dep.headsign.toUpperCase());
                 holder.txtHeadsign.setVisibility(View.VISIBLE);
-            } else {
-                holder.txtHeadsign.setVisibility(View.GONE);
             }
+            else holder.txtHeadsign.setVisibility(View.GONE);
 
-            if (position == 0) {
-                holder.lineTop.setVisibility(View.INVISIBLE);
-            } else {
-                holder.lineTop.setVisibility(View.VISIBLE);
-            }
+            if (position == 0) holder.lineTop.setVisibility(View.INVISIBLE);
+            else holder.lineTop.setVisibility(View.VISIBLE);
 
-            if (position == departures.size() - 1) {
-                holder.lineBottom.setVisibility(View.INVISIBLE);
-            } else {
-                holder.lineBottom.setVisibility(View.VISIBLE);
-            }
+            if (position == departures.size() - 1) holder.lineBottom.setVisibility(View.INVISIBLE);
+            else holder.lineBottom.setVisibility(View.VISIBLE);
 
             if (coloreLinea != 0) {
                 holder.lineTop.setBackgroundColor(coloreLinea);
                 holder.lineBottom.setBackgroundColor(coloreLinea);
                 if (holder.dotOrario != null) {
                     Drawable dotDrawable = holder.dotOrario.getBackground();
+                    
                     if (dotDrawable != null) {
                         dotDrawable = dotDrawable.mutate();
-                        if (dotDrawable instanceof GradientDrawable) {
-                            ((GradientDrawable) dotDrawable).setStroke((int) (3 * getResources().getDisplayMetrics().density), coloreLinea);
-                        } else {
-                            DrawableCompat.setTint(dotDrawable, coloreLinea);
-                        }
+                        if (dotDrawable instanceof GradientDrawable) ((GradientDrawable) dotDrawable).setStroke((int) (3 * getResources().getDisplayMetrics().density), coloreLinea);
+                        else DrawableCompat.setTint(dotDrawable, coloreLinea);
+
                         holder.dotOrario.setBackground(dotDrawable);
                     }
                 }

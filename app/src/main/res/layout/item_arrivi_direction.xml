@@ -116,7 +116,6 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnViewAllArrivals"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
