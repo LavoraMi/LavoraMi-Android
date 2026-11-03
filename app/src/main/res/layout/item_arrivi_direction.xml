@@ -120,6 +120,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/inter"
+                android:textColor="@color/text_primary"
+                android:text="@string/viewAllArrivals"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:paddingStart="16dp"
@@ -128,8 +130,9 @@
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/subtitle"
                 app:backgroundTint="@android:color/transparent"
-                android:textColor="@color/text_primary"
-                android:text="@string/viewAllArrivals" />
+                app:icon="@drawable/ic_see_all_arrivals"
+                app:iconTint="@color/text_primary"
+                app:iconGravity="textStart" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
