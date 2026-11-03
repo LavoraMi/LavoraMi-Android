@@ -17,7 +17,6 @@
         android:background="@drawable/bg_story_card"
         android:padding="60px">
 
-        <!-- App Branding -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +26,8 @@
             <ImageView
                 android:layout_width="72px"
                 android:layout_height="72px"
-                android:src="@drawable/ic_app" />
+                android:src="@drawable/ic_app_vector"
+                android:background="@color/redMetro"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,7 +40,6 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Red Accent Bar -->
         <View
             android:layout_width="120px"
             android:layout_height="6px"
@@ -48,18 +47,16 @@
             android:layout_marginBottom="48px"
             android:background="@color/redMetro" />
 
-        <!-- Subtitle Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter"
+            android:fontFamily="@font/font_main"
             android:text="NUOVO LIVELLO RAGGIUNTO!"
             android:textColor="@color/redMetro"
-            android:textSize="28px"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:letterSpacing="0.08" />
 
-        <!-- Level Number Circle / Badge -->
         <FrameLayout
             android:layout_width="220px"
             android:layout_height="220px"
@@ -79,7 +76,6 @@
                 tools:text="5" />
         </FrameLayout>
 
-        <!-- Level Label -->
         <TextView
             android:id="@+id/story_level_text"
             android:layout_width="wrap_content"
@@ -90,7 +86,6 @@
             android:textStyle="bold"
             tools:text="LIVELLO 5" />
 
-        <!-- Rank Title Badge / Container -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,7 +107,6 @@
                 tools:text="Cacciatore di Posti" />
         </LinearLayout>
 
-        <!-- Tagline -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,7 +118,6 @@
             android:gravity="center" />
     </LinearLayout>
 
-    <!-- Footer -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
