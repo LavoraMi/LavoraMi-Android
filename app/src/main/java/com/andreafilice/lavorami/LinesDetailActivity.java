@@ -3041,6 +3041,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Regolare":
                 baseColor = ContextCompat.getColor(this, R.color.M2);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_checkmark_metro);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoRegolare));
                 statusText.setPaddingRelative(0, Math.round(density*6), Math.round(density*10), Math.round(density*6));
                 infoIconStatus.setVisibility(View.GONE);
@@ -3048,42 +3050,56 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Rallentata":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_clock_exclamation);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoRallentata));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Tratta Sospesa":
                 baseColor = ContextCompat.getColor(this, R.color.redMetro);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoTrattaSospesa));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Fermata Sospesa":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoFermataSospesa));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Fermate Sospese":
                 baseColor = ContextCompat.getColor(this, R.color.amber_on_banner);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_triangle_warning);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoFermateSospese));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Interrotta":
                 baseColor = ContextCompat.getColor(this, R.color.redMetro);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_close_browser);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoInterrotta));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Info":
                 baseColor = ContextCompat.getColor(this, R.color.RE80);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_info_metro);
+                lineaRegolareIcon.getLayoutParams().width = 30;
+                lineaRegolareIcon.getLayoutParams().height = 30;
                 statusText.setText(getString(R.string.infoMetro));
                 infoIconStatus.setVisibility(View.VISIBLE);
                 break;
             case "Chiusa":
                 baseColor = ContextCompat.getColor(this, R.color.S12);
                 lineaRegolareIcon.setImageResource(R.drawable.ic_dark);
+                lineaRegolareIcon.getLayoutParams().width = 40;
+                lineaRegolareIcon.getLayoutParams().height = 40;
                 statusText.setText(getString(R.string.metroStatoChiusa));
                 statusText.setPaddingRelative(0, Math.round(density*6), Math.round(density*10), Math.round(density*6));
                 infoIconStatus.setVisibility(View.GONE);

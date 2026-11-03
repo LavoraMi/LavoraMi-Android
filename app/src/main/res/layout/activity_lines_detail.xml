@@ -748,8 +748,8 @@
 
                 <ImageView
                     android:id="@+id/lineaRegolareIcon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginHorizontal="6dp"
                     android:src="@drawable/ic_checkmark"
                     android:layout_gravity="center_vertical"
