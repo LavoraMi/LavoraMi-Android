@@ -170,11 +170,14 @@ public class StopDetailsActivity extends AppCompatActivity{
 
                     if(stationClosed && detDirezioni != null) {
                         detDirezioni.setText(getString(R.string.metroStatoFermataSospesa));
-                        if (nextArrivals != null) nextArrivals.setText("");
                         detDirezioni.setTextColor(getColor(R.color.subtitle));
+
+                        if (nextArrivals != null) nextArrivals.setText("");
                         if (rigaCambiaDirezione != null)
                             rigaCambiaDirezione.setVisibility(View.GONE);
                     }
+                    else
+                        detDirezioni.setTextColor(getColor(R.color.text_primary));
                 });
             }
 
@@ -202,6 +205,7 @@ public class StopDetailsActivity extends AppCompatActivity{
         if (routeData == null || routeData.stops == null || nomeFermata == null) return;
 
         String stopIdTrovato = null;
+        TextView detDirezioni = findViewById(R.id.detDirezioni);
 
         for (Map.Entry<String, GTFSHelper.GTFSStop> entry : routeData.stops.entrySet()) {
             String nomeGTFS = entry.getValue().name;
@@ -213,12 +217,12 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         if (stopIdTrovato != null) {
             selectedStopId = stopIdTrovato;
+            detDirezioni.setTextColor(getColor(R.color.text_primary));
             updateArriviView();
         }
         else {
             mostraCaricamentoOrari(false);
 
-            TextView detDirezioni = findViewById(R.id.detDirezioni);
             TextView nextArrivals = findViewById(R.id.nextArrivals);
             LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
             nextArrivals.setText("");
@@ -253,10 +257,11 @@ public class StopDetailsActivity extends AppCompatActivity{
             scheduleArriviRefresh();
             return;
         }
+        else
+            detDirezioni.setTextColor(getColor(R.color.text_primary));
 
         direzioniDisponibili = new ArrayList<>(departuresByDir.entrySet());
-
-        //*Se l'indice salvato non è più valido (es. dati ricaricati), riparte da 0
+        
         if (indiceDirezioneCorrente >= direzioniDisponibili.size()) indiceDirezioneCorrente = 0;
 
         popolaRigaArrivo(detDirezioni, nextArrivals, direzioniDisponibili.get(indiceDirezioneCorrente).getValue());
