@@ -2772,8 +2772,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         TextView sheetSubtitle = sheetView.findViewById(R.id.sheetSubtitle);
         RecyclerView rvAllArrivi = sheetView.findViewById(R.id.rvAllArrivi);
 
+        GTFSHelper.GTFSStop stop = routeData.stops.get(selectedStopId);
+        final String stopName = (stop != null && stop.name != null) ? stop.name : "";
+
         if (sheetTitle != null) sheetTitle.setText(getString(R.string.allArrivalsTitle));
-        if (sheetSubtitle != null && headsign != null) sheetSubtitle.setText(getString(R.string.directionTitleArrivals) + headsign.toUpperCase());
+        if (sheetSubtitle != null && headsign != null) sheetSubtitle.setText(stopName.toUpperCase());
 
         if (closeBtn != null) closeBtn.setOnClickListener(v -> bottomSheetDialog.dismiss());
 
@@ -2788,6 +2791,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         bottomSheetDialog.setOnShowListener(dialogInterface -> {
             BottomSheetDialog d = (BottomSheetDialog) dialogInterface;
             FrameLayout bottomSheet = d.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+
             if (bottomSheet != null) {
                 bottomSheet.setBackgroundColor(Color.TRANSPARENT);
                 BottomSheetBehavior<FrameLayout> behavior = BottomSheetBehavior.from(bottomSheet);
@@ -2808,6 +2812,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (routeData != null && selectedStopId != null) {
                     Map<String, List<GTFSHelper.Departure>> updatedMap = GTFSHelper.getDepartures(LinesDetailActivity.this, selectedStopId, routeData, Integer.MAX_VALUE);
                     List<GTFSHelper.Departure> updatedList = (updatedMap != null) ? updatedMap.get(dirId) : null;
+
                     adapter.updateData(updatedList);
                 }
                 allArrivalsHandler.postDelayed(this, 10000);
@@ -2850,13 +2855,14 @@ public class LinesDetailActivity extends AppCompatActivity {
             else if (dep.minutesFromNow >= 60) {
                 int hours = dep.minutesFromNow / 60;
                 int mins = dep.minutesFromNow % 60;
-                if (mins == 0) holder.txtMins.setText("in " + hours + " h");
-                else holder.txtMins.setText("in " + hours + " h " + mins + " min");
+
+                if (mins == 0) holder.txtMins.setText("• " + hours + " h");
+                else holder.txtMins.setText("• " + hours + " h " + mins + " min");
             }
-            else holder.txtMins.setText("in " + dep.minutesFromNow + " min");
+            else holder.txtMins.setText("• " + dep.minutesFromNow + " min");
 
             if (dep.headsign != null) {
-                holder.txtHeadsign.setText(getString(R.string.directionTitleArrivals) + dep.headsign.toUpperCase());
+                holder.txtHeadsign.setText("→ " + dep.headsign.toUpperCase());
                 holder.txtHeadsign.setVisibility(View.VISIBLE);
             }
             else holder.txtHeadsign.setVisibility(View.GONE);
