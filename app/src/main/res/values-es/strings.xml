@@ -520,4 +520,13 @@
     <string name="rank_subway_resident">Inquilino del Metro</string>
     <string name="share_on_instagram">Compartir en Instagram</string>
     <string name="instagram_not_installed">Instagram no está instalado en tu dispositivo</string>
+    <string name="account_badges_format">%1$d/%2$d insignias</string>
+    <string name="account_badges_unlocked_subtitle">%1$d de %2$d insignias desbloqueadas</string>
+    <string name="accountLevelDetailsTitle">Nivel &amp; Insignias</string>
+    <string name="unlocked_badges_header">Insignias desbloqueadas</string>
+    <string name="locked_badges_header">Insignias por desbloquear</string>
+    <string name="no_unlocked_badges">¡Aún no hay insignias desbloqueadas!</string>
+    <string name="badge_status_unlocked">¡DESBLOQUEADO!</string>
+    <string name="badge_status_locked">AÚN NO DESBLOQUEADO</string>
+    <string name="badge_progress_format">Progreso: %1$d / %2$d</string>
 </resources>

@@ -519,4 +519,13 @@
     <string name="rank_subway_resident">Inquilino della Metropolitana</string>
     <string name="share_on_instagram">Condividi su Instagram</string>
     <string name="instagram_not_installed">Instagram non è installato sul tuo dispositivo</string>
+    <string name="account_badges_format">%1$d/%2$d distintivi</string>
+    <string name="account_badges_unlocked_subtitle">%1$d di %2$d badge sbloccati</string>
+    <string name="accountLevelDetailsTitle">Livello &amp; Distintivi</string>
+    <string name="unlocked_badges_header">Badge sbloccati</string>
+    <string name="locked_badges_header">Badge da sbloccare</string>
+    <string name="no_unlocked_badges">Nessun badge ancora sbloccato. Continua a usare l\'app per sbloccarli!</string>
+    <string name="badge_status_unlocked">SBLOCCATO!</string>
+    <string name="badge_status_locked">NON ANCORA SBLOCCATO</string>
+    <string name="badge_progress_format">Progresso: %1$d / %2$d</string>
 </resources>

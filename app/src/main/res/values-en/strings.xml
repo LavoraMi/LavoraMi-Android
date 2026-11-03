@@ -520,4 +520,13 @@
     <string name="rank_subway_resident">Subway Resident</string>
     <string name="share_on_instagram">Share on Instagram</string>
     <string name="instagram_not_installed">Instagram is not installed on your device</string>
+    <string name="account_badges_format">%1$d/%2$d badges</string>
+    <string name="account_badges_unlocked_subtitle">%1$d of %2$d badges unlocked</string>
+    <string name="accountLevelDetailsTitle">Level &amp; Badges</string>
+    <string name="unlocked_badges_header">Unlocked Badges</string>
+    <string name="locked_badges_header">Badges to Unlock</string>
+    <string name="no_unlocked_badges">No badges unlocked yet. Keep using the app to unlock them!</string>
+    <string name="badge_status_unlocked">UNLOCKED!</string>
+    <string name="badge_status_locked">NOT UNLOCKED YET</string>
+    <string name="badge_progress_format">Progress: %1$d / %2$d</string>
 </resources>

@@ -98,6 +98,9 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
+            android:name=".ActivityAccountLevelDetails"
+            android:exported="false" />
+        <activity
             android:name=".LinesActivity"
             android:exported="false" />
         <activity android:name=".wrapped.WrappedActivity"

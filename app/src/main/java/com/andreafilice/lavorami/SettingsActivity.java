@@ -155,7 +155,15 @@ public class SettingsActivity extends AppCompatActivity {
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
         infoFavouriteLines.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.dialogFavouriteLineTextTitle), getString(R.string.dialogFavouriteLineText)));
 
-        //*ACCOUNT LEVEL INFO
+        //*ACCOUNT LEVEL INFO & CARD CLICK
+        View levelAccountCard = findViewById(R.id.levelAccountCard);
+        if (levelAccountCard != null) {
+            levelAccountCard.setOnClickListener(v -> {
+                ActivityUtils.triggerFeedback(this);
+                changeActivity(this, ActivityAccountLevelDetails.class);
+            });
+        }
+
         ImageView infoLevelAccount = findViewById(R.id.infoLevelAccount);
         if (infoLevelAccount != null) {
             infoLevelAccount.setOnClickListener(v -> DialogHelper.createDefaultDialog(this, getString(R.string.levelAccountTitle), getString(R.string.levelAccountSubtitle)));
@@ -687,6 +695,7 @@ public class SettingsActivity extends AppCompatActivity {
         TextView levelText = findViewById(R.id.accountLevelText);
         TextView xpText = findViewById(R.id.accountXpText);
         TextView rankText = findViewById(R.id.levelRankSettingsText);
+        TextView accountBadgesText = findViewById(R.id.accountBadgesText);
 
         AccountLevel accountLevel = AccountLevel.getInstance(this);
         if (progressBar != null && levelText != null && xpText != null) {
@@ -694,6 +703,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
         if (rankText != null) {
             rankText.setText(accountLevel.getRankTitle());
+        }
+        if (accountBadgesText != null) {
+            int unlocked = BadgeManager.getUnlockedBadgesCount(this);
+            int total = BadgeManager.getTotalBadgesCount();
+            accountBadgesText.setText(getString(R.string.account_badges_format, unlocked, total));
         }
         updateEarnXpCounterUI();
     }
