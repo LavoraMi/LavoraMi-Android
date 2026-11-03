@@ -2,6 +2,8 @@ package com.andreafilice.lavorami;
 
 import static com.andreafilice.lavorami.ActivityUtils.changeActivity;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
+import static com.andreafilice.lavorami.ActivityUtils.openURL;
+import static com.andreafilice.lavorami.ActivityUtils.openURLWithTabBuilder;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -104,7 +106,7 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout accountBtn = findViewById(R.id.btnAccount);
         accountBtn.setOnClickListener(v -> {changeActivity(this, AccountManagement.class);});
 
-       loadWrapped();
+        loadWrapped();
 
         RelativeLayout sourcesBtn = findViewById(R.id.btnFonts);
         sourcesBtn.setOnClickListener(v -> {changeActivity(this, SourcesDevelopment.class);});
@@ -123,6 +125,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         RelativeLayout howAppWorksButton = findViewById(R.id.btnHowWorks);
         howAppWorksButton.setOnClickListener(v -> changeActivity(this, HowAppWorks.class));
+
+        RelativeLayout faqButton = findViewById(R.id.btnFAQ);
+        faqButton.setOnClickListener(v -> openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it/#help"));
 
         //*FAVORITES LINES
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
@@ -267,6 +272,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 ActivityUtils.triggerFeedback(this);
+
                 startActivity(intent);
             } catch (android.content.ActivityNotFoundException anfe) {startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));}
         });
@@ -276,8 +282,8 @@ public class SettingsActivity extends AppCompatActivity {
         RelativeLayout supportBtn = findViewById(R.id.btnSupportUs);
 
         supportBtn.setOnClickListener(v ->{
-                ActivityUtils.triggerFeedback(this);
-                ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami");
+            ActivityUtils.triggerFeedback(this);
+            ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami");
         });
 
         //*MAPS INFOS
