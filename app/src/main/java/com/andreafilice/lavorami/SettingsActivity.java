@@ -127,7 +127,7 @@ public class SettingsActivity extends AppCompatActivity {
         howAppWorksButton.setOnClickListener(v -> changeActivity(this, HowAppWorks.class));
 
         RelativeLayout faqButton = findViewById(R.id.btnFAQ);
-        faqButton.setOnClickListener(v -> openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it/#help"));
+        faqButton.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it#help"));
 
         //*FAVORITES LINES
         ImageView infoFavouriteLines = findViewById(R.id.infoFavouriteLines);
