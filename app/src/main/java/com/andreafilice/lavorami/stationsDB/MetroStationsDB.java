@@ -91,11 +91,14 @@ public class MetroStationsDB {
         stations.add(new MetroStation("NO_DRAW", 45.4317, 9.1672, "Assago", "M2"));
 
         stations.add(new MetroStation("Piazza Abbiategrasso", 45.42984, 9.17838, "Abbiategrasso", "M2"));
-        stations.add(new MetroStation("NO_DRAW", 45.42979, 9.17633, "Abbiategrasso", "M2"));
-        stations.add(new MetroStation("NO_DRAW", 45.43016, 9.17427, "Abbiategrasso", "M2"));
-        stations.add(new MetroStation("NO_DRAW", 45.43151, 9.17171, "Abbiategrasso", "M2"));
-        stations.add(new MetroStation("NO_DRAW", 45.43287, 9.16946, "Abbiategrasso", "M2"));
-        stations.add(new MetroStation("NO_DRAW", 45.43458, 9.16778, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.42998, 9.17727, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.43016, 9.17509, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.43123, 9.17192, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.43213, 9.16994, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.4328, 9.16868, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.43325, 9.16802, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.43377, 9.16762, "Abbiategrasso", "M2"));
+        stations.add(new MetroStation("NO_DRAW", 45.4348, 9.16762, "Abbiategrasso", "M2"));
 
         stations.add(new MetroStation("Famagosta", 45.43719, 9.16795, "Main", "M2"));
         stations.add(new MetroStation("Romolo", 45.44373, 9.16767, "Main", "M2"));
