@@ -117,6 +117,9 @@ public class SupabaseModels {
         }
     }
 
+    /// This class represent the UpdateUserRequest data packet to send to Supabase.
+    /// @ATTRIBUTES
+    /// @Map<String,Object> data is the packet request to send to Supabase to edit user IDs.
     public static class UpdateUserRequest {
         public Map<String, Object> data;
 
@@ -124,5 +127,40 @@ public class SupabaseModels {
             this.data = new java.util.HashMap<>();
             this.data.put("full_name", fullName);
         }
+    }
+
+    /// This class represent the PasskeyChallenge structure for Android Supabase.
+    /// @ATTRIBUTES
+    /// @String challenge_id is the identificator of the Passkey challenge.
+    /// @JsonObject options are the options setted-up for Supabase login.
+    public static class PasskeyChallenge {
+        public String challenge_id;
+        public com.google.gson.JsonObject options;
+    }
+
+    /// This class represent the PasskeyVerifyRequest for Passkey istructions.
+    /// @ATTRIBUTES
+    /// @String challenge_id is the identificator of the Passkey challenge.
+    /// @JsonObject credential are the credentials of the user linked by that Passkey.
+    public static class PasskeyVerifyRequest {
+        public String challenge_id;
+        public com.google.gson.JsonObject credential;
+        public PasskeyVerifyRequest(String challengeId, com.google.gson.JsonObject credential) {
+            this.challenge_id = challengeId;
+            this.credential = credential;
+        }
+    }
+
+    /// This class represent the PasskeyItem for Passkeys itself.
+    /// @ATTRIBUTES
+    /// @String id is the Identificator for the Passkey registration.
+    /// @String friendly_name is the name of the Passkey created (generally the name of the device).
+    /// @String created_at is the Timestamp of the Passkey creation.
+    /// @String last_used_at is the Timestamp of the utilization from the user of that Passkey.
+    public static class PasskeyItem {
+        public String id;
+        public String friendly_name;
+        public String created_at;
+        public String last_used_at;
     }
 }

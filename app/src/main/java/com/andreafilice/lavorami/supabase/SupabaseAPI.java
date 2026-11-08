@@ -85,8 +85,38 @@ public interface SupabaseAPI {
 
     @PUT("auth/v1/user")
     Call<Void> updateUsername(
-            @Header("apikey") String apiKey,
-            @Header("Authorization") String bearerToken,
-            @Body SupabaseModels.UpdateUserRequest request
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Body SupabaseModels.UpdateUserRequest request
+    );
+
+    @POST("auth/v1/passkeys/registration/options")
+    Call<SupabaseModels.PasskeyChallenge> passkeyRegistrationOptions(
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken
+    );
+
+    @POST("auth/v1/passkeys/registration/verify")
+    Call<SupabaseModels.PasskeyItem> passkeyRegistrationVerify(
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Body SupabaseModels.PasskeyVerifyRequest request
+    );
+
+    @POST("auth/v1/passkeys/authentication/options")
+    Call<SupabaseModels.PasskeyChallenge> passkeyAuthenticationOptions(
+        @Header("apikey") String apiKey
+    );
+
+    @POST("auth/v1/passkeys/authentication/verify")
+    Call<SupabaseModels.AuthResponse> passkeyAuthenticationVerify(
+        @Header("apikey") String apiKey,
+        @Body SupabaseModels.PasskeyVerifyRequest request
+    );
+
+    @GET("auth/v1/passkeys")
+    Call<java.util.ArrayList<SupabaseModels.PasskeyItem>> listPasskeys(
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken
     );
 }

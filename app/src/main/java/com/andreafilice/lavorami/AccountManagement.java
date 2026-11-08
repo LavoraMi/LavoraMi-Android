@@ -1,5 +1,6 @@
 package com.andreafilice.lavorami;
 
+import static android.app.ProgressDialog.show;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.app.AlertDialog;
@@ -46,6 +47,7 @@ import com.andreafilice.lavorami.supabase.SupabaseAPI;
 import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
 import com.andreafilice.lavorami.supabase.SupabaseDataManager;
 import com.andreafilice.lavorami.supabase.SupabaseModels;
+import com.andreafilice.lavorami.supabase.PasskeyManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -67,6 +69,7 @@ public class AccountManagement extends AppCompatActivity {
     GoogleSignInClient googleClient;
     SupabaseAPI api;
     SupabaseDataManager dataManager;
+    PasskeyManager passkeyManager;
     Retrofit retrofitAPI;
     LinearLayout loginView;
     LinearLayout loggedInView;
@@ -83,11 +86,12 @@ public class AccountManagement extends AppCompatActivity {
     ImageView retryIconErrorSynched;
     ProgressBar synchProgressBar;
     LinearLayout createdWithGoogle;
+    boolean passkeyInProgress = false;
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
+    boolean errorWhileSyncing = false;
     int dataSyncing = 0;
     int currentFetchID = 0;
-    boolean errorWhileSyncing = false;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$");
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
@@ -169,6 +173,7 @@ public class AccountManagement extends AppCompatActivity {
                     .build();
 
             api = retrofitAPI.create(SupabaseAPI.class);
+            passkeyManager = new PasskeyManager(this, api, SupabaseANON);
         }
         else
             Toast.makeText(this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
@@ -198,6 +203,13 @@ public class AccountManagement extends AppCompatActivity {
         btnGoogleLogin.setOnClickListener(v -> {initializeGoogleIntent();});
         btnGoogleRegister.setOnClickListener(v -> {initializeGoogleIntent();});
         createdWithGoogle = findViewById(R.id.createdWithGoogle);
+
+        //*PASSKEYS
+        /// In this section we initialize the buttons for SignIn with Passkey and for adding a new Passkey to the logged account.
+        CardView btnPasskeyLogin = findViewById(R.id.btnPasskeyLogin);
+        CardView btnAddPasskey = findViewById(R.id.btnAddPasskey);
+        btnPasskeyLogin.setOnClickListener(v -> loginWithPasskey());
+        btnAddPasskey.setOnClickListener(v -> registerPasskey());
 
         //*VIEWS
         /// In this section we initialize the views for this states: LOGGED IN, SIGN IN, SIGN UP and LOCKEDSCREEN.
@@ -471,6 +483,94 @@ public class AccountManagement extends AppCompatActivity {
                 Toast.makeText(AccountManagement.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void loginWithPasskey() {
+        /// In this method we start the Passkey SignIn ceremony (no email needed: discoverable credential).
+
+        if (passkeyManager == null || passkeyInProgress) return;
+        passkeyInProgress = true;
+
+        passkeyManager.signIn(this, new PasskeyManager.Result<SupabaseModels.AuthResponse>() {
+            @Override
+            public void onSuccess(SupabaseModels.AuthResponse auth) {
+                passkeyInProgress = false;
+
+                if (auth.user == null || auth.user.email == null) {
+                    Toast.makeText(AccountManagement.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String nameUser = extractUserName(auth.user, "User");
+                sessionManager.saveSession(auth.access_token, auth.refresh_token, auth.user.email, nameUser, false);
+
+                dataManager.setBearerToken(auth.access_token);
+                dataManager.setUserEmail(auth.user.email);
+
+                screenUnlocked = true;
+                loggingInWithGoogle = false;
+
+                fetchUserDataOnInit();
+                updateUI();
+
+                Toast.makeText(AccountManagement.this, getString(R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String error) {
+                passkeyInProgress = false;
+
+                if (PasskeyManager.ERROR_CANCELLED.equals(error)) return;
+                if (PasskeyManager.ERROR_NO_CREDENTIAL.equals(error))
+                    Toast.makeText(AccountManagement.this, "Passkey non trovata.", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(AccountManagement.this, "Creazione della Passkey fallita.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void registerPasskey() {
+        /// In this method we register a new Passkey for the account that is already logged in.
+
+        if (passkeyManager == null || passkeyInProgress || !sessionManager.isLoggedIn()) return;
+        passkeyInProgress = true;
+
+        passkeyManager.register(this, new PasskeyManager.Result<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+                passkeyInProgress = false;
+                Toast.makeText(AccountManagement.this, "Passkey aggiunta con successo!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String error) {
+                passkeyInProgress = false;
+
+                if (PasskeyManager.ERROR_CANCELLED.equals(error)) return;
+                if ("webauthn_credential_exists".equals(error))
+                    Toast.makeText(AccountManagement.this, "Esiste già una passkey per questo Account.", Toast.LENGTH_SHORT).show();
+                else if ("too_many_passkeys".equals(error))
+                    Toast.makeText(AccountManagement.this, "Troppe Passkeys collegate ad un singolo Account.", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(AccountManagement.this, "Si è verificato un errore imprevisto, riprova.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private String extractUserName(SupabaseModels.AuthResponse.User user, String fallback) {
+        /// This method reads the display name from the user metadata, using the same keys of the other login methods.
+        /// @PARAMETERS
+        /// AuthResponse.User user is the User Session response, fetched from the Database.
+        /// String fallback is the nickname fallback to apply at the user.
+
+        if (user == null || user.userMetadata == null) return fallback;
+
+        for (String key : new String[]{"full_name", "name", "display_name"}) {
+            Object value = user.userMetadata.get(key);
+
+            if (value != null) return value.toString();
+        }
+        return fallback;
     }
 
     private void signUp(String name, String email, String password){
