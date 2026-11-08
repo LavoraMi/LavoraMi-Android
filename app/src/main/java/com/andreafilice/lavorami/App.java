@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 
 public class App extends Application implements Application.ActivityLifecycleCallbacks {
 
-    private static final long CHECK_BACKGROUND_DELAY = 1000; // 1 secondo di tolleranza per transizione Activity
-    private static final long XP_INTERVAL = 60000; // 1 minuto
+    private static final long CHECK_BACKGROUND_DELAY = 1000;
+    private static final long XP_INTERVAL = 60000;
 
     private int resumedActivitiesCount = 0;
     private boolean isForeground = false;
