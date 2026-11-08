@@ -11,19 +11,36 @@ import androidx.annotation.Nullable;
 
 public class App extends Application implements Application.ActivityLifecycleCallbacks {
 
+    private static final long CHECK_BACKGROUND_DELAY = 1000; // 1 secondo di tolleranza per transizione Activity
+    private static final long XP_INTERVAL = 60000; // 1 minuto
+
     private int resumedActivitiesCount = 0;
+    private boolean isForeground = false;
     private Activity currentActivity;
     private AccountLevel accountLevel;
 
-    private final Handler xpHandler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
+
+    private final Runnable checkBackgroundRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (resumedActivitiesCount <= 0) {
+                isForeground = false;
+                currentActivity = null;
+                handler.removeCallbacks(xpRunnable);
+            }
+        }
+    };
+
     private final Runnable xpRunnable = new Runnable() {
         @Override
         public void run() {
-            if (accountLevel != null && resumedActivitiesCount > 0) {
+            if (isForeground) {
+                if (accountLevel == null) {
+                    accountLevel = AccountLevel.getInstance(App.this);
+                }
                 accountLevel.addMinuteXp(currentActivity);
-            }
-            if (resumedActivitiesCount > 0) {
-                xpHandler.postDelayed(this, 60000);
+                handler.postDelayed(this, XP_INTERVAL);
             }
         }
     };
@@ -46,9 +63,13 @@ public class App extends Application implements Application.ActivityLifecycleCal
     public void onActivityResumed(@NonNull Activity activity) {
         currentActivity = activity;
         resumedActivitiesCount++;
-        if (resumedActivitiesCount == 1) {
-            xpHandler.removeCallbacks(xpRunnable);
-            xpHandler.postDelayed(xpRunnable, 60000);
+
+        handler.removeCallbacks(checkBackgroundRunnable);
+
+        if (!isForeground) {
+            isForeground = true;
+            handler.removeCallbacks(xpRunnable);
+            handler.postDelayed(xpRunnable, XP_INTERVAL);
         }
     }
 
@@ -57,8 +78,7 @@ public class App extends Application implements Application.ActivityLifecycleCal
         resumedActivitiesCount--;
         if (resumedActivitiesCount <= 0) {
             resumedActivitiesCount = 0;
-            currentActivity = null;
-            xpHandler.removeCallbacks(xpRunnable);
+            handler.postDelayed(checkBackgroundRunnable, CHECK_BACKGROUND_DELAY);
         }
     }
 
