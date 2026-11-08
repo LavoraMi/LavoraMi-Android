@@ -498,4 +498,6 @@
     <string name="routeCircular">Circular</string>
     <string name="routeSchool">School service</string>
     <string name="iceHockeyArena">Ice Hockey Arena</string>
+    <string name="strikeInProgress">STRIKE UNDERWAY</string>
+    <string name="strikeBannerArrivalsDeps">The timetables for this route may not be accurate. Further information on the strike can be found on the Home page.</string>
 </resources>

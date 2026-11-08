@@ -497,4 +497,6 @@
     <string name="routeCircular">Circolare</string>
     <string name="routeSchool">Scolastica</string>
     <string name="iceHockeyArena">Ice Hockey Arena</string>
+    <string name="strikeInProgress">SCIOPERO IN CORSO</string>
+    <string name="strikeBannerArrivalsDeps">Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home.</string>
 </resources>

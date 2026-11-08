@@ -498,4 +498,6 @@
     <string name="routeCircular">Circular</string>
     <string name="routeSchool">Escolar</string>
     <string name="iceHockeyArena">Ice Hockey Arena</string>
+    <string name="strikeInProgress">HUELGA EN CURSO</string>
+    <string name="strikeBannerArrivalsDeps">Es posible que los horarios de esta línea no sean exactos. Más información sobre la huelga en la página de inicio.</string>
 </resources>

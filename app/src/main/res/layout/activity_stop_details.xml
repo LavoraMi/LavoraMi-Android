@@ -138,7 +138,7 @@
                     android:textColor="@color/amber_on_banner"
                     android:fontFamily="@font/font_main"
                     android:textSize="13sp"
-                    android:text="SCIOPERO IN CORSO"
+                    android:text="@string/strikeInProgress"
                     android:textStyle="bold" />
 
                 <TextView
@@ -149,7 +149,7 @@
                     android:textColor="@color/amber_on_banner"
                     android:fontFamily="@font/font_main"
                     android:textSize="12sp"
-                    android:text="Oggi, gli orari di questa linea potrebbero non essere corretti per via di uno sciopero. Maggiori informazioni nella sezione Home."/>
+                    android:text="@string/strikeBannerArrivalsDeps"/>
             </LinearLayout>
         </LinearLayout>
 
