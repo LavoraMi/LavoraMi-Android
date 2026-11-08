@@ -88,6 +88,54 @@
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/font_main" />
 
+            <LinearLayout
+                android:id="@+id/strikeNowBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_status_banner_warning"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="10dp"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_clock_exclamation"
+                    app:tint="@color/amber_on_banner" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/amber_on_banner"
+                        android:fontFamily="@font/font_main"
+                        android:textSize="13sp"
+                        android:text="SCIOPERO IN CORSO"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/strikeNowSubtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/amber_on_banner"
+                        android:fontFamily="@font/font_main"
+                        android:textSize="12sp"
+                        android:text="Oggi, gli orari di questa linea potrebbero non essere corretti per via di uno sciopero. Maggiori informazioni nella sezione Home."/>
+                </LinearLayout>
+            </LinearLayout>
+
             <View
                 android:id="@+id/dividerArrivi"
                 android:layout_width="match_parent"

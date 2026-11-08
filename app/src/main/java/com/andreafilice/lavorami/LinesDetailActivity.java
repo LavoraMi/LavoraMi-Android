@@ -2694,6 +2694,14 @@ public class LinesDetailActivity extends AppCompatActivity {
                         showAllArrivalsBottomSheet(dirId, headsignStr);
                     });
                 }
+
+                //*STRIKE BANNER
+                /// Update Strike banner visibility
+                int firstEmptySpace = tipoDiLinea.indexOf(" ");
+                boolean isCompanyInStrike = strikeCDNResponse.getStrikeCompanies().contains(tipoDiLinea.substring(0, firstEmptySpace));
+                boolean isStrikeEnabled = strikeCDNResponse.isStrikeEnabled();
+
+                holder.strikeNowBanner.setVisibility((isCompanyInStrike && isStrikeEnabled) ? View.VISIBLE : View.GONE);
             }
         }
 
@@ -2722,10 +2730,12 @@ public class LinesDetailActivity extends AppCompatActivity {
             ImageView iconFirstClock;
             View dividerArrivi;
             FlexboxLayout containerOtherDepartures;
+            LinearLayout strikeNowBanner;
             MaterialButton btnViewAllArrivals;
 
             ArrivalsView(View view) {
                 super(view);
+
                 txtDirectionHeadsign = view.findViewById(R.id.txtDirectionHeadsign);
                 iconFirstClock = view.findViewById(R.id.iconFirstClock);
                 txtFirstMins = view.findViewById(R.id.txtFirstMins);
@@ -2733,6 +2743,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 dividerArrivi = view.findViewById(R.id.dividerArrivi);
                 containerOtherDepartures = view.findViewById(R.id.containerOtherDepartures);
                 nextArrivals = view.findViewById(R.id.nextArrivals);
+                strikeNowBanner = view.findViewById(R.id.strikeNowBanner);
                 btnViewAllArrivals = view.findViewById(R.id.btnViewAllArrivals);
             }
         }

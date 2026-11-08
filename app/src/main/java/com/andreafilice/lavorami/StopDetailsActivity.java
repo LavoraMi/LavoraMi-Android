@@ -22,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
@@ -38,6 +39,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StopDetailsActivity extends AppCompatActivity{
     private String nomeFermata;
@@ -74,6 +79,7 @@ public class StopDetailsActivity extends AppCompatActivity{
     );
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 2001;
+    private VariablesDescriptor cdnResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +112,34 @@ public class StopDetailsActivity extends AppCompatActivity{
 
         LinearLayout rigaCambiaDirezione = findViewById(R.id.rigaCambiaDirezione);
         rigaCambiaDirezione.setOnClickListener(v -> cambiaDirezione());
+
+        //*FETCH VARS
+        /// In this section of the code, we fetch the variables from the .json file in cdn
+        APIWorks apiworks = RetrofitManager.get().create(APIWorks.class);
+
+        apiworks.getStrike().enqueue(new Callback<VariablesDescriptor>() {
+            @Override
+            public void onResponse(Call<VariablesDescriptor> call, Response<VariablesDescriptor> response) {
+                if (response.isSuccessful()) {
+                    cdnResponse = response.body();
+
+                    //*STRIKE BANNERS
+                    /// Update Strike banner visibility
+                    boolean isATMInStrike = cdnResponse.getStrikeCompanies().contains("ATM");
+                    boolean isStrikeEnabled = cdnResponse.isStrikeEnabled();
+
+                    findViewById(R.id.strikeNowBanner).setVisibility((isATMInStrike && isStrikeEnabled) ? View.VISIBLE : View.GONE);
+                    findViewById(R.id.viewDividerStrikeBanner).setVisibility((isATMInStrike && isStrikeEnabled) ? View.VISIBLE : View.GONE);
+                }
+                checkIfReadyToLoadMap();
+            }
+
+            @Override
+            public void onFailure(Call<VariablesDescriptor> call, Throwable t) {
+                Toast.makeText(StopDetailsActivity.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
+                checkIfReadyToLoadMap();
+            }
+        });
 
         aggiornaTestView();
         caricaDatiGTFS();
