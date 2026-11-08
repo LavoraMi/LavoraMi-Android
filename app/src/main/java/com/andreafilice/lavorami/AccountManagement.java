@@ -1,6 +1,5 @@
 package com.andreafilice.lavorami;
 
-import static android.app.ProgressDialog.show;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.app.AlertDialog;
@@ -70,6 +69,7 @@ public class AccountManagement extends AppCompatActivity {
     SupabaseAPI api;
     SupabaseDataManager dataManager;
     PasskeyManager passkeyManager;
+    boolean passkeyInProgress = false;
     Retrofit retrofitAPI;
     LinearLayout loginView;
     LinearLayout loggedInView;
@@ -86,12 +86,13 @@ public class AccountManagement extends AppCompatActivity {
     ImageView retryIconErrorSynched;
     ProgressBar synchProgressBar;
     LinearLayout createdWithGoogle;
-    boolean passkeyInProgress = false;
+
     boolean screenUnlocked = false;
     boolean loggingInWithGoogle = false;
-    boolean errorWhileSyncing = false;
+
     int dataSyncing = 0;
     int currentFetchID = 0;
+    boolean errorWhileSyncing = false;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$");
     private final ActivityResultLauncher<Intent> googleLoginLauncher = registerForActivityResult(
@@ -151,9 +152,9 @@ public class AccountManagement extends AppCompatActivity {
         String webClientID = getMetaData(this, "googleAPI");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(webClientID)
-                .requestEmail()
-                .build();
+            .requestIdToken(webClientID)
+            .requestEmail()
+            .build();
 
         googleClient = GoogleSignIn.getClient(this, gso);
 
@@ -162,15 +163,15 @@ public class AccountManagement extends AppCompatActivity {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient client = new OkHttpClient.Builder()
-                    .addInterceptor(logging)
-                    .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
-                    .build();
+                .addInterceptor(logging)
+                .authenticator(new SupabaseAuthenticator(this, SupabaseANON, SupabaseURL))
+                .build();
 
             retrofitAPI = new Retrofit.Builder()
-                    .baseUrl(SupabaseURL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
-                    .build();
+                .baseUrl(SupabaseURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
 
             api = retrofitAPI.create(SupabaseAPI.class);
             passkeyManager = new PasskeyManager(this, api, SupabaseANON);
@@ -207,9 +208,9 @@ public class AccountManagement extends AppCompatActivity {
         //*PASSKEYS
         /// In this section we initialize the buttons for SignIn with Passkey and for adding a new Passkey to the logged account.
         CardView btnPasskeyLogin = findViewById(R.id.btnPasskeyLogin);
-        CardView btnAddPasskey = findViewById(R.id.btnAddPasskey);
+        CardView btnManagePasskeys = findViewById(R.id.btnManagePasskeys);
         btnPasskeyLogin.setOnClickListener(v -> loginWithPasskey());
-        btnAddPasskey.setOnClickListener(v -> registerPasskey());
+        btnManagePasskeys.setOnClickListener(v -> ActivityUtils.changeActivity(this, ManagePasskeys.class));
 
         //*VIEWS
         /// In this section we initialize the views for this states: LOGGED IN, SIGN IN, SIGN UP and LOCKEDSCREEN.
@@ -487,6 +488,7 @@ public class AccountManagement extends AppCompatActivity {
 
     private void loginWithPasskey() {
         /// In this method we start the Passkey SignIn ceremony (no email needed: discoverable credential).
+        /// On success we save the session exactly like the classic 'login' method does.
 
         if (passkeyManager == null || passkeyInProgress) return;
         passkeyInProgress = true;
@@ -501,7 +503,7 @@ public class AccountManagement extends AppCompatActivity {
                     return;
                 }
 
-                String nameUser = extractUserName(auth.user, "User");
+                String nameUser = extractUserName(auth.user, "Utente");
                 sessionManager.saveSession(auth.access_token, auth.refresh_token, auth.user.email, nameUser, false);
 
                 dataManager.setBearerToken(auth.access_token);
@@ -509,65 +511,32 @@ public class AccountManagement extends AppCompatActivity {
 
                 screenUnlocked = true;
                 loggingInWithGoogle = false;
-
                 fetchUserDataOnInit();
                 updateUI();
-
                 Toast.makeText(AccountManagement.this, getString(R.string.bentornatoAccount), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(String error) {
                 passkeyInProgress = false;
+                Log.e("PASSKEY", "Login fallito: " + error);
 
                 if (PasskeyManager.ERROR_CANCELLED.equals(error)) return;
                 if (PasskeyManager.ERROR_NO_CREDENTIAL.equals(error))
-                    Toast.makeText(AccountManagement.this, "Passkey non trovata.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AccountManagement.this, "Passkey non trovata", Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(AccountManagement.this, "Creazione della Passkey fallita.", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void registerPasskey() {
-        /// In this method we register a new Passkey for the account that is already logged in.
-
-        if (passkeyManager == null || passkeyInProgress || !sessionManager.isLoggedIn()) return;
-        passkeyInProgress = true;
-
-        passkeyManager.register(this, new PasskeyManager.Result<Void>() {
-            @Override
-            public void onSuccess(Void result) {
-                passkeyInProgress = false;
-                Toast.makeText(AccountManagement.this, "Passkey aggiunta con successo!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(String error) {
-                passkeyInProgress = false;
-
-                if (PasskeyManager.ERROR_CANCELLED.equals(error)) return;
-                if ("webauthn_credential_exists".equals(error))
-                    Toast.makeText(AccountManagement.this, "Esiste già una passkey per questo Account.", Toast.LENGTH_SHORT).show();
-                else if ("too_many_passkeys".equals(error))
-                    Toast.makeText(AccountManagement.this, "Troppe Passkeys collegate ad un singolo Account.", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(AccountManagement.this, "Si è verificato un errore imprevisto, riprova.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountManagement.this, "Aggiunta della Passkey Fallita", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private String extractUserName(SupabaseModels.AuthResponse.User user, String fallback) {
         /// This method reads the display name from the user metadata, using the same keys of the other login methods.
-        /// @PARAMETERS
-        /// AuthResponse.User user is the User Session response, fetched from the Database.
-        /// String fallback is the nickname fallback to apply at the user.
 
         if (user == null || user.userMetadata == null) return fallback;
 
         for (String key : new String[]{"full_name", "name", "display_name"}) {
             Object value = user.userMetadata.get(key);
-
             if (value != null) return value.toString();
         }
         return fallback;

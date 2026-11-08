@@ -1,11 +1,14 @@
 package com.andreafilice.lavorami.supabase;
 
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Body;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.Call;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface SupabaseAPI {
@@ -118,5 +121,12 @@ public interface SupabaseAPI {
     Call<java.util.ArrayList<SupabaseModels.PasskeyItem>> listPasskeys(
         @Header("apikey") String apiKey,
         @Header("Authorization") String bearerToken
+    );
+
+    @DELETE("auth/v1/passkeys/{id}")
+    Call<Void> deletePasskey(
+        @Header("apikey") String apiKey,
+        @Header("Authorization") String bearerToken,
+        @Path("id") String id
     );
 }

@@ -60,7 +60,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -559,7 +559,7 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="24dp"
                 android:paddingTop="40dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -861,6 +861,7 @@
                     android:layout_height="56dp"
                     android:clickable="true"
                     app:cardBackgroundColor="#007AFF"
+                    android:layout_marginBottom="12dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
 
@@ -888,13 +889,12 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/btnAddPasskey"
+                    android:id="@+id/btnManagePasskeys"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:clickable="true"
                     app:cardBackgroundColor="#007AFF"
                     app:cardCornerRadius="16dp"
-                    android:layout_marginTop="10dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
@@ -914,7 +914,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/font_main"
-                            android:text="Aggiungi Passkey"
+                            android:text="Gestisci Passkey"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>

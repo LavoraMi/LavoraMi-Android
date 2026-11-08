@@ -10,17 +10,21 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <category android:name="android.intent.category.BROWSABLE" />
+
             <data android:scheme="http" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <category android:name="android.intent.category.BROWSABLE" />
+
             <data android:scheme="https" />
         </intent>
     </queries>
@@ -39,6 +43,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LavoraMi">
+        <activity
+            android:name=".ManagePasskeys"
+            android:exported="false" />
         <activity
             android:name=".ObsoleteVersion"
             android:exported="false" />
@@ -99,7 +106,8 @@
         <activity
             android:name=".LinesActivity"
             android:exported="false" />
-        <activity android:name=".wrapped.WrappedActivity"
+        <activity
+            android:name=".wrapped.WrappedActivity"
             android:exported="false" />
         <activity
             android:name=".StopDetailsActivity"
@@ -120,11 +128,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="lavorami"
-                    android:host="linea" />
+                    android:host="linea"
+                    android:scheme="lavorami" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
@@ -159,24 +166,25 @@
             android:value="${API_GOOGLE_SIGNUP}" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="${GOOGLE_ADS_APPLICATION_ID}"/>
+            android:value="${GOOGLE_ADS_APPLICATION_ID}" />
         <meta-data
             android:name="AdUnitID"
-            android:value="${GOOGLE_ADS_UNIT_ID}"/>
-
+            android:value="${GOOGLE_ADS_UNIT_ID}" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="1112577687962954"/>
+            android:value="1112577687962954" />
 
         <receiver
             android:name=".NotificationReceiver"
             android:enabled="true"
             android:exported="false" />
-
-        <receiver android:name=".WidgetLines" android:exported="true">
+        <receiver
+            android:name=".WidgetLines"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_lines_info" />
