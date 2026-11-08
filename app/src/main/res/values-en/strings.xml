@@ -500,4 +500,8 @@
     <string name="iceHockeyArena">Ice Hockey Arena</string>
     <string name="strikeInProgress">STRIKE UNDERWAY</string>
     <string name="strikeBannerArrivalsDeps">The timetables for this route may not be accurate. Further information on the strike can be found on the Home page.</string>
+    <string name="managePasskeyBtn">Manage Passkey</string>
+    <string name="managePasskeyDeps">Manage the Passkeys linked to your Account.</string>
+    <string name="addPasskeyButton">Add Passkey</string>
+    <string name="loadingPasskeysFailedToast">Passkeys not loaded.</string>
 </resources>

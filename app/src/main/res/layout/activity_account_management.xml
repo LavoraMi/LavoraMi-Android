@@ -914,7 +914,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/font_main"
-                            android:text="Gestisci Passkey"
+                            android:text="@string/managePasskeyBtn"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp" />
                     </LinearLayout>

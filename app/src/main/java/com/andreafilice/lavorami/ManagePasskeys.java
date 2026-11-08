@@ -153,7 +153,7 @@ public class ManagePasskeys extends AppCompatActivity {
                     refreshListVisibility();
                 }
                 else {
-                    Toast.makeText(ManagePasskeys.this, "Caricamento delle Passkey fallito.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagePasskeys.this, getString(R.string.loadingPasskeysFailedToast), Toast.LENGTH_SHORT).show();
                     refreshListVisibility();
                 }
             }

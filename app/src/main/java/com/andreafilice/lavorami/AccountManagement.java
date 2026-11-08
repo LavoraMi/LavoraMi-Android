@@ -108,12 +108,10 @@ public class AccountManagement extends AppCompatActivity {
                         performSupabaseGoogleLogin(idToken);
                     }
                     catch(ApiException e) {
-                        Log.e("GOOGLE", "Login fallito. Status Code: " + e.getStatusCode());
                         Toast.makeText(this, getString(R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Log.e("GOOGLE", "Finestra chiusa o annullata. Result Code: " + result.getResultCode());
                     Toast.makeText(this, getString(R.string.googleSignInFailedToast), Toast.LENGTH_SHORT).show();
                     loggingInWithGoogle = false;
                     updateUI();
@@ -519,7 +517,6 @@ public class AccountManagement extends AppCompatActivity {
             @Override
             public void onError(String error) {
                 passkeyInProgress = false;
-                Log.e("PASSKEY", "Login fallito: " + error);
 
                 if (PasskeyManager.ERROR_CANCELLED.equals(error)) return;
                 if (PasskeyManager.ERROR_NO_CREDENTIAL.equals(error))

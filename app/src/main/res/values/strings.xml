@@ -499,4 +499,8 @@
     <string name="iceHockeyArena">Ice Hockey Arena</string>
     <string name="strikeInProgress">SCIOPERO IN CORSO</string>
     <string name="strikeBannerArrivalsDeps">Gli orari di questa linea potrebbero non essere accurati. Maggiori informazioni sullo sciopero nella Home.</string>
+    <string name="managePasskeyBtn">Gestisci Passkey</string>
+    <string name="managePasskeyDeps">Gestisci le Passkey collegate al tuo Account.</string>
+    <string name="addPasskeyButton">Aggiungi Passkey</string>
+    <string name="loadingPasskeysFailedToast">Caricamento Passkey fallito.</string>
 </resources>
