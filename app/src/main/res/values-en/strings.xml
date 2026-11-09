@@ -504,4 +504,11 @@
     <string name="managePasskeyDeps">Manage the Passkeys linked to your Account.</string>
     <string name="addPasskeyButton">Add Passkey</string>
     <string name="loadingPasskeysFailedToast">Passkeys not loaded.</string>
+    <string name="passkeyCreatedSuccesfully">Passkey successfully added!</string>
+    <string name="passkeyAlreadyExist">A Passkey already exists for this Account.</string>
+    <string name="tooManyPasskeysToast">Too many Passkeys have been registered.</string>
+    <string name="areYouSurePasskeyPopUp">Are you sure you want to delete this Passkey linked to your Account?</string>
+    <string name="passkeySuccesfullyDeletedToast">Passkey successfully deleted!</string>
+    <string name="createdAtPasskey">"Created on: "</string>
+    <string name="noPasskeysRegistered">No Passkeys for this Account.</string>
 </resources>

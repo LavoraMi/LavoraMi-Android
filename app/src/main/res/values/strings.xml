@@ -503,4 +503,11 @@
     <string name="managePasskeyDeps">Gestisci le Passkey collegate al tuo Account.</string>
     <string name="addPasskeyButton">Aggiungi Passkey</string>
     <string name="loadingPasskeysFailedToast">Caricamento Passkey fallito.</string>
+    <string name="passkeyCreatedSuccesfully">Passkey aggiunta con successo!</string>
+    <string name="passkeyAlreadyExist">Passkey già presente per questo Account.</string>
+    <string name="tooManyPasskeysToast">Troppe Passkeys registrate.</string>
+    <string name="areYouSurePasskeyPopUp">Sei sicuro di voler eliminare questa Passkey collegata al tuo Account?</string>
+    <string name="passkeySuccesfullyDeletedToast">Passkey eliminata con successo!</string>
+    <string name="createdAtPasskey">"Creata il: "</string>
+    <string name="noPasskeysRegistered">Nessuna Passkey per questo Account.</string>
 </resources>

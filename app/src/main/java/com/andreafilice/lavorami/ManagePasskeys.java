@@ -3,6 +3,7 @@ package com.andreafilice.lavorami;
 import static com.andreafilice.lavorami.ActivityUtils.getMetaData;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -33,6 +34,7 @@ import com.andreafilice.lavorami.supabase.PasskeyManager;
 import com.andreafilice.lavorami.supabase.SupabaseAPI;
 import com.andreafilice.lavorami.supabase.SupabaseAuthenticator;
 import com.andreafilice.lavorami.supabase.SupabaseModels;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -49,7 +51,7 @@ public class ManagePasskeys extends AppCompatActivity {
     PasskeyManager passkeyManager;
     PasskeyAdapter adapter;
     RecyclerView recyclerViewPasskeys;
-    ProgressBar progressBar;
+    ShimmerFrameLayout progressBar;
     TextView tvEmpty;
     CardView btnAddPasskey;
     boolean operationInProgress = false;
@@ -124,11 +126,14 @@ public class ManagePasskeys extends AppCompatActivity {
 
     private void showLoading(boolean loading) {
         progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
+        progressBar.startShimmer();
 
         if (loading) {
             recyclerViewPasskeys.setVisibility(View.GONE);
             tvEmpty.setVisibility(View.GONE);
         }
+        else
+            progressBar.stopShimmer();
     }
 
     private void refreshListVisibility() {
@@ -161,7 +166,6 @@ public class ManagePasskeys extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<SupabaseModels.PasskeyItem>> call, Throwable t) {
                 showLoading(false);
-                Log.e("PASSKEY", "Lista fallita: " + t.getMessage());
                 Toast.makeText(ManagePasskeys.this, getString(R.string.connectionErrorToast), Toast.LENGTH_SHORT).show();
 
                 refreshListVisibility();
@@ -177,7 +181,7 @@ public class ManagePasskeys extends AppCompatActivity {
             @Override
             public void onSuccess(Void result) {
                 operationInProgress = false;
-                Toast.makeText(ManagePasskeys.this, "Passkey aggiunta con successo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagePasskeys.this, getString(R.string.passkeyCreatedSuccesfully), Toast.LENGTH_SHORT).show();
 
                 loadPasskeys();
             }
@@ -188,11 +192,11 @@ public class ManagePasskeys extends AppCompatActivity {
 
                 if (PasskeyManager.ERROR_CANCELLED.equals(error)) return;
                 if ("webauthn_credential_exists".equals(error))
-                    Toast.makeText(ManagePasskeys.this, "Esiste già una passkey per questo Account.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagePasskeys.this, getString(R.string.passkeyAlreadyExist), Toast.LENGTH_SHORT).show();
                 else if ("too_many_passkeys".equals(error))
-                    Toast.makeText(ManagePasskeys.this, "Troppe Passkeys collegate ad un singolo Account.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagePasskeys.this, getString(R.string.tooManyPasskeysToast), Toast.LENGTH_SHORT).show();
                 else
-                    Toast.makeText(ManagePasskeys.this, "Si è verificato un errore imprevisto, riprova.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagePasskeys.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -203,7 +207,7 @@ public class ManagePasskeys extends AppCompatActivity {
             public void run() {deletePasskey(item);}
         };
 
-        DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), "Sei sicuro di voler eliminare questa Passkey?", onConfirm);
+        DialogHelper.createDefaultAnswerDialog(this, getString(R.string.areYouSurePopUp), getString(R.string.areYouSurePasskeyPopUp), onConfirm);
     }
 
     private void deletePasskey(SupabaseModels.PasskeyItem item) {
@@ -223,7 +227,7 @@ public class ManagePasskeys extends AppCompatActivity {
                     }
 
                     refreshListVisibility();
-                    Toast.makeText(ManagePasskeys.this, "Passkey eliminata con successo!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagePasskeys.this, getString(R.string.passkeySuccesfullyDeletedToast), Toast.LENGTH_SHORT).show();
                 }
                 else
                     Toast.makeText(ManagePasskeys.this, getString(R.string.unknownErrorToast), Toast.LENGTH_SHORT).show();
@@ -274,11 +278,11 @@ public class ManagePasskeys extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
             SupabaseModels.PasskeyItem item = items.get(position);
-            android.content.Context ctx = viewHolder.itemView.getContext();
+            Context context = viewHolder.itemView.getContext();
 
             String shownName = safeName(item);
             viewHolder.passkeyName.setText(shownName.isEmpty() ? "Passkey" : shownName);
-            viewHolder.passkeyCreatedAt.setText("Creata il: " + formatDate(item.created_at));
+            viewHolder.passkeyCreatedAt.setText(context.getString(R.string.createdAtPasskey) + formatDate(item.created_at));
 
             viewHolder.passkeyDeleteBtn.setOnClickListener(v -> listener.onDelete(item));
         }
