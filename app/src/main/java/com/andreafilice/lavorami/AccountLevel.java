@@ -10,6 +10,8 @@ public class AccountLevel {
     private static final int BASE_XP = 50;
     private static final double LEVEL_MULTIPLIER = 1.30;
 
+    private static volatile AccountLevel instance;
+
     private final Context context;
     private int level;
     private int xp;
@@ -26,7 +28,18 @@ public class AccountLevel {
     }
 
     public static AccountLevel getInstance(Context context) {
-        return new AccountLevel(context);
+        if (instance == null) {
+            synchronized (AccountLevel.class) {
+                if (instance == null) {
+                    instance = new AccountLevel(context);
+                }
+            }
+        }
+        return instance;
+    }
+
+    public static AccountLevel getInstance() {
+        return instance;
     }
 
     /** Calcola il titolo/grado in base al livello e al Context per la localizzazione. */
