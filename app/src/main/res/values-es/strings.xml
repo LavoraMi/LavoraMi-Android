@@ -505,7 +505,7 @@
     <string name="addPasskeyButton">Añadir Passkey</string>
     <string name="loadingPasskeysFailedToast">Error al cargar las Passkey.</string>
     <string name="passkeyCreatedSuccesfully">¡Passkey añadida correctamente!</string>
-    <string name="passkeyAlreadyExist">Ya existe una Passkey para esta Cuenta.</string>
+    <string name="passkeyAlreadyExist">Ya existe una Passkey para este dispositivo.</string>
     <string name="tooManyPasskeysToast">Hay demasiadas Passkey registradas.</string>
     <string name="areYouSurePasskeyPopUp">¿Estás seguro de que quieres eliminar esta Passkey vinculada a tu Cuenta?</string>
     <string name="passkeySuccesfullyDeletedToast">¡Passkey eliminada con éxito!</string>
