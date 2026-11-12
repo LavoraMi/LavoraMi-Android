@@ -52,7 +52,7 @@ public class ManagePasskeys extends AppCompatActivity {
     PasskeyAdapter adapter;
     RecyclerView recyclerViewPasskeys;
     ShimmerFrameLayout progressBar;
-    TextView tvEmpty;
+    LinearLayout tvEmpty;
     CardView btnAddPasskey;
     boolean operationInProgress = false;
 

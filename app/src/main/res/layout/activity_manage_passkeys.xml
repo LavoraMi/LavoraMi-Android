@@ -107,17 +107,39 @@
                 </LinearLayout>
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/tvPasskeysEmpty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="50dp"
                 android:gravity="center"
-                android:fontFamily="@font/inter"
-                android:text="@string/noPasskeysRegistered"
-                android:textColor="#8E8E93"
-                android:textSize="16sp"
-                android:visibility="gone" />
+                android:paddingHorizontal="32dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@+id/swipeRefreshLayout"
+                app:layout_constraintBottom_toBottomOf="@+id/swipeRefreshLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/emptyIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_user_passkeys"
+                    android:layout_marginBottom="20dp"
+                    app:tint="@color/text_primary"/>
+
+                <TextView
+                    android:id="@+id/emptyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_main"
+                    android:text="@string/noPasskeysRegistered"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center" />
+            </LinearLayout>
         </FrameLayout>
 
         <androidx.cardview.widget.CardView
