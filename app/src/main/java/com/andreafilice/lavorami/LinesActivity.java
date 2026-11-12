@@ -308,7 +308,7 @@ public class LinesActivity extends AppCompatActivity {
                     containerMela.setVisibility(hasMinimetro ? View.VISIBLE : View.GONE);
 
                     LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) containerMela.getLayoutParams();
-                    layoutParams.topMargin = hasMinimetro ? 0 : (int)(13 * getResources().getDisplayMetrics().density);
+                    layoutParams.topMargin = !hasMinimetro ? 0 : (int)(12 * getResources().getDisplayMetrics().density);
 
                     setUpMargin(headerMetro, isFirstVisibleContainer(hasMinimetro, firstContainerTracker));
 
