@@ -126,10 +126,9 @@ public class StopDetailsActivity extends AppCompatActivity{
                     //*STRIKE BANNERS
                     /// Update Strike banner visibility
                     boolean isATMInStrike = cdnResponse.getStrikeCompanies().contains("ATM");
-                    boolean isStrikeEnabled = cdnResponse.isStrikeEnabled();
 
-                    findViewById(R.id.strikeNowBanner).setVisibility((isATMInStrike && isStrikeEnabled) ? View.VISIBLE : View.GONE);
-                    findViewById(R.id.viewDividerStrikeBanner).setVisibility((isATMInStrike && isStrikeEnabled) ? View.VISIBLE : View.GONE);
+                    findViewById(R.id.strikeNowBanner).setVisibility((isATMInStrike && cdnResponse.isStrikeEnabled() && cdnResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
+                    findViewById(R.id.viewDividerStrikeBanner).setVisibility((isATMInStrike && cdnResponse.isStrikeEnabled() && cdnResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
                 }
                 checkIfReadyToLoadMap();
             }

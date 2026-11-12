@@ -2699,9 +2699,8 @@ public class LinesDetailActivity extends AppCompatActivity {
                 /// Update Strike banner visibility
                 int firstEmptySpace = tipoDiLinea.indexOf(" ");
                 boolean isCompanyInStrike = strikeCDNResponse.getStrikeCompanies().contains(tipoDiLinea.substring(0, firstEmptySpace));
-                boolean isStrikeEnabled = strikeCDNResponse.isStrikeEnabled();
 
-                holder.strikeNowBanner.setVisibility((isCompanyInStrike && isStrikeEnabled) ? View.VISIBLE : View.GONE);
+                holder.strikeNowBanner.setVisibility((isCompanyInStrike && strikeCDNResponse.isStrikeEnabled() && strikeCDNResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
             }
         }
 
