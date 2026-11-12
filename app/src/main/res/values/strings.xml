@@ -510,4 +510,5 @@
     <string name="passkeySuccesfullyDeletedToast">Passkey eliminata con successo!</string>
     <string name="createdAtPasskey">"Creata il: "</string>
     <string name="noPasskeysRegistered">Nessuna Passkey per questo Account.</string>
+    <string name="signInWithPasskey">Accedi con Passkey</string>
 </resources>
