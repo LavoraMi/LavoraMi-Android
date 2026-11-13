@@ -498,8 +498,8 @@
     <string name="routeSchool">Scolastica</string>
     <string name="accountHeaderTitle">Account</string>
     <string name="levelAccountTitle">Livello account</string>
-    <string name="levelAccountSubtitle">guadagna 10 XP ogni minuto passato in app</string>
-    <string name="earn_xp_button">guadagna 50xp</string>
+    <string name="levelAccountSubtitle">Guadagna 10 XP ogni minuto passato in app</string>
+    <string name="earn_xp_button">Guadagna 50xp</string>
     <string name="earn_xp_counter">%1$d/5 disponibili</string>
     <string name="supportLavoraMiAdDialogDesc">Guarda una pubblicità per guardare 50 xp</string>
     <string name="ad_limit_reached_title">Limite di pubblicità raggiunto</string>
