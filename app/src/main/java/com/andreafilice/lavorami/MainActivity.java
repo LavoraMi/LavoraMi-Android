@@ -1115,6 +1115,12 @@ public class MainActivity extends AppCompatActivity {
                 strikeBannerClosed = !strikeBannerClosed;
                 closeBtn.animate().rotation(!strikeBannerClosed ? 0f : -90f).setDuration(200).start();
             });
+
+            //*SHOW OPERATORS
+            /// Show a dialog which contains the Strike operators
+            strikeCompanies.setOnClickListener(v -> {
+                DialogHelper.createDefaultDialog(this, "Aderenti Sciopero", String.format("%s %s", "Aderenti a questo sciopero:", variablesDescriptor.getStrikeCompanies()));
+            });
         }
         else
             findViewById(R.id.strikeBanner).setVisibility(View.GONE);
