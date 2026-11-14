@@ -512,4 +512,6 @@
     <string name="createdAtPasskey">"Creada el: "</string>
     <string name="noPasskeysRegistered">Esta Cuenta no tiene ninguna Passkey.</string>
     <string name="signInWithPasskey">Inicia sesión con Passkey</string>
+    <string name="strikeMembersTitlePopUp">Participantes en la Huelga</string>
+    <string name="strikeMembersDepsPopUp">Participantes en esta huelga:</string>
 </resources>

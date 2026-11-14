@@ -511,4 +511,6 @@
     <string name="createdAtPasskey">"Creata il: "</string>
     <string name="noPasskeysRegistered">Nessuna Passkey per questo Account.</string>
     <string name="signInWithPasskey">Accedi con Passkey</string>
+    <string name="strikeMembersTitlePopUp">Aderenti Sciopero</string>
+    <string name="strikeMembersDepsPopUp">Aderenti a questo sciopero:</string>
 </resources>

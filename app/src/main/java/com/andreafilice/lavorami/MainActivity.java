@@ -1117,9 +1117,9 @@ public class MainActivity extends AppCompatActivity {
             });
 
             //*SHOW OPERATORS
-            /// Show a dialog which contains the Strike operators
+            /// Show a dialog which contains the Strike members
             strikeCompanies.setOnClickListener(v -> {
-                DialogHelper.createDefaultDialog(this, "Aderenti Sciopero", String.format("%s %s", "Aderenti a questo sciopero:", variablesDescriptor.getStrikeCompanies()));
+                DialogHelper.createDefaultDialog(this, getString(R.string.strikeMembersTitlePopUp), String.format("%s %s", getString(R.string.strikeMembersDepsPopUp), variablesDescriptor.getStrikeCompanies()));
             });
         }
         else

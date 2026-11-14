@@ -512,4 +512,6 @@
     <string name="createdAtPasskey">"Created on: "</string>
     <string name="noPasskeysRegistered">No Passkeys for this Account.</string>
     <string name="signInWithPasskey">Sign in with Passkey</string>
+    <string name="strikeMembersTitlePopUp">Strike Members</string>
+    <string name="strikeMembersDepsPopUp">Members in this strike:</string>
 </resources>
