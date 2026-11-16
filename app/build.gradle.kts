@@ -25,7 +25,7 @@ android {
     defaultConfig {
         applicationId = "com.andreafilice.lavorami"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 75
         versionName = "2.9.1"
         var buildNumber = "16112026"
