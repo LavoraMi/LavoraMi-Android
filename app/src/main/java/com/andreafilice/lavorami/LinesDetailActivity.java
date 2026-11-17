@@ -27,6 +27,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionListenerAdapter;
@@ -133,6 +137,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private LinearLayout arriviEmptyState;
     private ChipGroup detActionGroup;
     private GTFSHelper.GTFSRoute routeData;
+    private GTFSRealtime.Snapshot rtSnapshot;
     private String selectedStopId;
     private int coloreLinea;
     private boolean foundAtLeastOne = false;
@@ -556,8 +561,69 @@ public class LinesDetailActivity extends AppCompatActivity {
         });
     }
 
+    private String getRealtimeUrl() {
+        if (nomeLinea == null) return null;
+        String lineaName = nomeLinea.toLowerCase(java.util.Locale.ROOT);
+
+        return (lineaName.startsWith("z2") || lineaName.startsWith("z4")) ? "https://proxy.busone.app/autoguidovie/gtfs-rt/trip-updates.json" : null;
+    }
+
+    private GTFSRealtime.Snapshot freshRealtime() {return (rtSnapshot != null && rtSnapshot.isFresh()) ? rtSnapshot : null;}
+    private void refreshRealtime(Runnable onDone) {
+        String url = getRealtimeUrl();
+        if (url == null) {
+            onDone.run();
+            return;
+        }
+
+        GTFSRealtime.load(url, snap -> runOnUiThread(() -> {
+            if (isFinishing() || isDestroyed()) return;
+            if (snap != null) rtSnapshot = snap;
+
+            onDone.run();
+        }));
+    }
+
+    private CharSequence timeWithDelay(GTFSHelper.Departure dep) {
+        if (!dep.isRealtime() || dep.delayMinutes == 0) return dep.time;
+
+        int delayMinutes = dep.delayMinutes;
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(dep.time);
+        int lenghtSpannable = spannableStringBuilder.length();
+
+        spannableStringBuilder.append("  ").append(delayMinutes > 0 ? "+" + delayMinutes + "'" : delayMinutes + "'");
+        spannableStringBuilder.setSpan(new RelativeSizeSpan(0.75f), lenghtSpannable, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(delayMinutes > 0 ? "#F44336" : "#4CAF50")), lenghtSpannable, spannableStringBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        return spannableStringBuilder;
+    }
+
+    private void bindBusDisclaimer(TextView textView, GTFSHelper.Departure departure) {
+        if (textView == null) return;
+        int delayMinutes = departure.delayMinutes;
+
+        if (!departure.isRealtime()) {
+            textView.setText(R.string.busDisclaimerBadge);
+            textView.setTextColor(ContextCompat.getColor(this, R.color.subtitle));
+
+            return;
+        }
+
+        if (delayMinutes > 0) {
+            textView.setText(String.format("Il bus è in ritardo di %smin. Orario programmato: %s", Math.abs(delayMinutes), departure.scheduledTime));
+            textView.setTextColor(getColor(R.color.M1));
+        }
+        else if (delayMinutes < 0) {
+            textView.setText(String.format("Il bus è in anticipo di %smin. Orario programmato: %s", Math.abs(delayMinutes), departure.scheduledTime));
+            textView.setTextColor(getColor(R.color.M2));
+        }
+        else {
+            textView.setText(String.format("Il bus è in orario. Orario programmato: %s", departure.scheduledTime));
+            textView.setTextColor(getColor(R.color.subtitle));
+        }
+    }
+
     private void updateSavedLines() {
-        /// In this function, we apply the changes into the UI and also on the AppData folder.
 
         Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
         ImageButton buttonAddLine = findViewById(R.id.buttonAddLine);
@@ -2391,6 +2457,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                     routeData = route;
                     if (arriviProgressBar != null) arriviProgressBar.setVisibility(View.GONE);
                     setupStopDropdown();
+                    refreshRealtime(LinesDetailActivity.this::updateArriviList);
                 });
             }
 
@@ -2437,7 +2504,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private void updateArriviList() {
         if (routeData == null || selectedStopId == null) return;
 
-        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 3);
+        Map<String, List<GTFSHelper.Departure>> departuresByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, 3, freshRealtime());
 
         if (departuresByDir == null || departuresByDir.isEmpty()) {
             arriviRecyclerView.setVisibility(View.GONE);
@@ -2456,7 +2523,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
     private void scheduleArriviRefresh() {
         handler.removeCallbacks(arriviRunnable);
-        arriviRunnable = () -> updateArriviList();
+        arriviRunnable = () -> refreshRealtime(LinesDetailActivity.this::updateArriviList);
         handler.postDelayed(arriviRunnable, 10000);
     }
 
@@ -2518,12 +2585,12 @@ public class LinesDetailActivity extends AppCompatActivity {
             changeBounds.addListener(new TransitionListenerAdapter() {
                 @Override
                 public void onTransitionEnd(Transition transition) {
-                isChipTransitioning = false;
+                    isChipTransitioning = false;
 
-                if (pendingChipUpdate) {
-                    pendingChipUpdate = false;
-                    updateChipGroupSizes(chipGroup);
-                }
+                    if (pendingChipUpdate) {
+                        pendingChipUpdate = false;
+                        updateChipGroupSizes(chipGroup);
+                    }
                 }
             });
 
@@ -2592,10 +2659,12 @@ public class LinesDetailActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         handler.removeCallbacksAndMessages(null);
         executor.shutdownNow();
         interchangeHandler.removeCallbacksAndMessages(null);
         interchangeHandler.removeCallbacksAndMessages(null);
+
         dismissActiveBranchDialog();
         dismissActiveAllArrivalsDialog();
     }
@@ -2657,6 +2726,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 else holder.txtFirstMins.setText(first.minutesFromNow + " min");
 
                 holder.txtFirstTime.setText(first.time);
+                bindBusDisclaimer(holder.txtBusDisclaimer, first);
 
                 holder.containerOtherDepartures.removeAllViews();
                 if (deps.size() > 1) {
@@ -2677,7 +2747,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                             else txtMins.setText(hours + " h " + mins + " min");
                         }
                         else txtMins.setText(dep.minutesFromNow + " min");
-                        txtTime.setText(dep.time);
+                        txtTime.setText(timeWithDelay(dep));
 
                         holder.containerOtherDepartures.addView(otherDepView);
                     }
@@ -2713,9 +2783,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 if (stop != null) selectedStopName = stop.name;
             }
 
-            boolean isSameAsStop = selectedStopName != null
-                    && headsign.trim().equalsIgnoreCase(selectedStopName.trim());
-
+            boolean isSameAsStop = selectedStopName != null && headsign.trim().equalsIgnoreCase(selectedStopName.trim());
             String prefix = isSameAsStop ? getString(R.string.nextArrivalsTitle) : getString(R.string.directionTitleArrivals);
 
             return prefix + headsign.toUpperCase();
@@ -2725,7 +2793,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         public int getItemCount() {return directions.size();}
 
         class ArrivalsView extends RecyclerView.ViewHolder {
-            TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals;
+            TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals, txtBusDisclaimer;
             ImageView iconFirstClock;
             View dividerArrivi;
             FlexboxLayout containerOtherDepartures;
@@ -2739,6 +2807,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 iconFirstClock = view.findViewById(R.id.iconFirstClock);
                 txtFirstMins = view.findViewById(R.id.txtFirstMins);
                 txtFirstTime = view.findViewById(R.id.txtFirstTime);
+                txtBusDisclaimer = view.findViewById(R.id.txtBusDisclaimer);
                 dividerArrivi = view.findViewById(R.id.dividerArrivi);
                 containerOtherDepartures = view.findViewById(R.id.containerOtherDepartures);
                 nextArrivals = view.findViewById(R.id.nextArrivals);
@@ -2767,7 +2836,7 @@ public class LinesDetailActivity extends AppCompatActivity {
 
         dismissActiveAllArrivalsDialog();
 
-        Map<String, List<GTFSHelper.Departure>> allDeparturesByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, Integer.MAX_VALUE);
+        Map<String, List<GTFSHelper.Departure>> allDeparturesByDir = GTFSHelper.getDepartures(this, selectedStopId, routeData, Integer.MAX_VALUE, freshRealtime());
         List<GTFSHelper.Departure> departures = (allDeparturesByDir != null) ? allDeparturesByDir.get(dirId) : null;
 
         if (departures == null || departures.isEmpty()) return;
@@ -2820,7 +2889,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (routeData != null && selectedStopId != null) {
-                    Map<String, List<GTFSHelper.Departure>> updatedMap = GTFSHelper.getDepartures(LinesDetailActivity.this, selectedStopId, routeData, Integer.MAX_VALUE);
+                    Map<String, List<GTFSHelper.Departure>> updatedMap = GTFSHelper.getDepartures(LinesDetailActivity.this, selectedStopId, routeData, Integer.MAX_VALUE, freshRealtime());
                     List<GTFSHelper.Departure> updatedList = (updatedMap != null) ? updatedMap.get(dirId) : null;
 
                     adapter.updateData(updatedList);
@@ -2858,7 +2927,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             GTFSHelper.Departure dep = departures.get(position);
 
-            holder.txtTime.setText(dep.time);
+            holder.txtTime.setText(timeWithDelay(dep));
 
             if (dep.minutesFromNow == 0)
                 holder.txtMins.setText(getString(R.string.leavingTitle));

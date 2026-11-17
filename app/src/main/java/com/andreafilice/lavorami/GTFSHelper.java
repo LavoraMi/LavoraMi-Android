@@ -11,6 +11,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,14 +46,26 @@ public class GTFSHelper {
 
     public static class Departure {
         public String time;
+        public String scheduledTime;
         public String headsign;
         public int minutesFromNow;
+        public String tripId;
+        public Integer delayMinutes;
 
         public Departure(String time, String headsign, int minutesFromNow) {
+            this(time, time, headsign, minutesFromNow, null, null);
+        }
+
+        public Departure(String time, String scheduledTime, String headsign, int minutesFromNow, String tripId, Integer delayMinutes) {
             this.time = time;
+            this.scheduledTime = scheduledTime;
             this.headsign = headsign;
             this.minutesFromNow = minutesFromNow;
+            this.tripId = tripId;
+            this.delayMinutes = delayMinutes;
         }
+
+        public boolean isRealtime() {return delayMinutes != null;}
     }
 
     public interface GTFSCallback {
@@ -162,8 +175,9 @@ public class GTFSHelper {
 
     public static synchronized void invalidateCache(String lineKey) {routeCache.remove(lineKey);}
     public static synchronized void invalidateAllCache() {routeCache.clear();}
+    public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit) {return getDepartures(context, stopId, route, limit, null);}
 
-    public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit) {
+    public static Map<String, List<Departure>> getDepartures(Context context, String stopId, GTFSRoute route, int limit, GTFSRealtime.Snapshot realtime) {
         GTFSStop stop = route.stops.get(stopId);
         if (stop == null) return null;
 
@@ -180,10 +194,12 @@ public class GTFSHelper {
             if (info.daytype != null) {
                 if (info.daytype.equals("sconosciuto")) {
                     active = false;
-                } else {
+                }
+                else {
                     active = info.daytype.equals(todayType);
                 }
-            } else {
+            }
+            else {
                 active = info.dates.isEmpty() || info.dates.contains(today);
             }
 
@@ -201,29 +217,64 @@ public class GTFSHelper {
                     String timeStr = depArray.getString(0);
                     int headsignIdx = depArray.getInt(1);
                     String serviceId = depArray.getString(2);
+                    String tripId = depArray.length() > 3 ? depArray.optString(3, null) : null;
 
                     if (!activeServices.contains(serviceId)) continue;
 
                     String[] parts = timeStr.split(":");
                     int depMins = Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);
-                    int diff = depMins - nowMins;
 
-                    if (diff >= 0) {
-                        String headsign = headsignIdx < route.headsigns.size() ? route.headsigns.get(headsignIdx) : context.getString(R.string.unknownErrorToast) ;
-                        dirDepartures.add(new Departure(timeStr, headsign, diff));
+                    Integer delayMin = null;
+                    if (tripId != null && realtime != null) {
+                        if (realtime.isCanceled(tripId)) continue;
+
+                        GTFSRealtime.Prediction prediction = realtime.prediction(tripId, stopId);
+                        if (prediction != null) {
+                            if (prediction.skipped) continue;
+
+                            if (prediction.delay != null) delayMin = (int) Math.round(prediction.delay / 60.0);
+                            else if (prediction.time != null) {
+                                int delayMinutes = romeMinutesOfDay(prediction.time) - depMins;
+                                if (Math.abs(delayMinutes) < 720) delayMin = delayMinutes;
+                            }
+                        }
                     }
-                    if (dirDepartures.size() >= limit) break;
+
+                    int effective = depMins + (delayMin != null ? delayMin : 0);
+                    int diff = effective - nowMins;
+                    if (diff < 0) continue;
+
+                    String headsign = headsignIdx < route.headsigns.size() ? route.headsigns.get(headsignIdx) : context.getString(R.string.unknownErrorToast);
+                    dirDepartures.add(new Departure(formatMinutes(effective), formatMinutes(depMins), headsign, diff, tripId, delayMin));
                 }
                 catch (Exception ignored) {}
             }
+
+            Collections.sort(dirDepartures, (a, b) -> Integer.compare(a.minutesFromNow, b.minutesFromNow));
+            if (dirDepartures.size() > limit) dirDepartures = new ArrayList<>(dirDepartures.subList(0, limit));
+
             if (!dirDepartures.isEmpty()) result.put(dirId, dirDepartures);
         }
         return result.isEmpty() ? null : result;
     }
 
+    private static String formatMinutes(int minutes) {
+        int formattedMinutes = ((minutes % 1440) + 1440) % 1440;
+
+        return String.format(Locale.ROOT, "%02d:%02d", formattedMinutes / 60, formattedMinutes % 60);
+    }
+
+    private static int romeMinutesOfDay(long epochSeconds) {
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"));
+        calendar.setTimeInMillis(epochSeconds * 1000L);
+
+        return calendar.get(Calendar.HOUR_OF_DAY) * 60 + calendar.get(Calendar.MINUTE);
+    }
+
     private static String todayString() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
+
         return simpleDateFormat.format(new Date());
     }
 
