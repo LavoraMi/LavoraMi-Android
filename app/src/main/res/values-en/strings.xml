@@ -514,4 +514,7 @@
     <string name="signInWithPasskey">Sign in with Passkey</string>
     <string name="strikeMembersTitlePopUp">Strike Members</string>
     <string name="strikeMembersDepsPopUp">Members in this strike:</string>
+    <string name="busLateText">The bus is %smin late. Scheduled departure time: %s</string>
+    <string name="busEarlyText">The bus is %smin early. Scheduled departure time: %s</string>
+    <string name="busOnTimeText">The bus is on time. Scheduled departure time: %s</string>
 </resources>

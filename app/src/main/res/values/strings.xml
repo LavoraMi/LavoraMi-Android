@@ -513,4 +513,7 @@
     <string name="signInWithPasskey">Accedi con Passkey</string>
     <string name="strikeMembersTitlePopUp">Aderenti Sciopero</string>
     <string name="strikeMembersDepsPopUp">Aderenti a questo sciopero:</string>
+    <string name="busLateText">Il bus è in ritardo di %smin. Orario programmato: %s</string>
+    <string name="busEarlyText">Il bus è in anticipo di %smin. Orario programmato: %s</string>
+    <string name="busOnTimeText">Il bus è in orario. Orario programmato: %s</string>
 </resources>

@@ -610,15 +610,15 @@ public class LinesDetailActivity extends AppCompatActivity {
         }
 
         if (delayMinutes > 0) {
-            textView.setText(String.format("Il bus è in ritardo di %smin. Orario programmato: %s", Math.abs(delayMinutes), departure.scheduledTime));
+            textView.setText(String.format(getString(R.string.busLateText), Math.abs(delayMinutes), departure.scheduledTime));
             textView.setTextColor(getColor(R.color.M1));
         }
         else if (delayMinutes < 0) {
-            textView.setText(String.format("Il bus è in anticipo di %smin. Orario programmato: %s", Math.abs(delayMinutes), departure.scheduledTime));
+            textView.setText(String.format(getString(R.string.busEarlyText), Math.abs(delayMinutes), departure.scheduledTime));
             textView.setTextColor(getColor(R.color.M2));
         }
         else {
-            textView.setText(String.format("Il bus è in orario. Orario programmato: %s", departure.scheduledTime));
+            textView.setText(String.format(getString(R.string.busOnTimeText), departure.scheduledTime));
             textView.setTextColor(getColor(R.color.subtitle));
         }
     }
