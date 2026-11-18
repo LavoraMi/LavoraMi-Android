@@ -585,7 +585,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private CharSequence timeWithDelay(GTFSHelper.Departure dep) {
-        if (!dep.isRealtime() || dep.delayMinutes == 0) return dep.time;
+        if (dep == null || !dep.isRealtime() || dep.delayMinutes == null || dep.delayMinutes == 0) return dep != null ? dep.time : "";
 
         int delayMinutes = dep.delayMinutes;
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(dep.time);
@@ -599,26 +599,28 @@ public class LinesDetailActivity extends AppCompatActivity {
     }
 
     private void bindBusDisclaimer(TextView textView, GTFSHelper.Departure departure) {
-        if (textView == null) return;
-        int delayMinutes = departure.delayMinutes;
+        if (textView == null || departure == null) return;
 
-        if (!departure.isRealtime()) {
+        if (!departure.isRealtime() || departure.delayMinutes == null) {
             textView.setText(R.string.busDisclaimerBadge);
             textView.setTextColor(ContextCompat.getColor(this, R.color.subtitle));
 
             return;
         }
 
+        int delayMinutes = departure.delayMinutes;
+        String scheduledTime = departure.scheduledTime != null ? departure.scheduledTime : departure.time;
+
         if (delayMinutes > 0) {
-            textView.setText(String.format(getString(R.string.busLateText), Math.abs(delayMinutes), departure.scheduledTime));
+            textView.setText(String.format(getString(R.string.busLateText), Math.abs(delayMinutes), scheduledTime));
             textView.setTextColor(getColor(R.color.M1));
         }
         else if (delayMinutes < 0) {
-            textView.setText(String.format(getString(R.string.busEarlyText), Math.abs(delayMinutes), departure.scheduledTime));
+            textView.setText(String.format(getString(R.string.busEarlyText), Math.abs(delayMinutes), scheduledTime));
             textView.setTextColor(getColor(R.color.M2));
         }
         else {
-            textView.setText(String.format(getString(R.string.busOnTimeText), departure.scheduledTime));
+            textView.setText(String.format(getString(R.string.busOnTimeText), scheduledTime));
             textView.setTextColor(getColor(R.color.subtitle));
         }
     }
