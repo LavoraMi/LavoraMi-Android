@@ -517,4 +517,7 @@
     <string name="busLateText">The bus is %smin late. Scheduled departure time: %s</string>
     <string name="busEarlyText">The bus is %smin early. Scheduled departure time: %s</string>
     <string name="busOnTimeText">The bus is on time. Scheduled departure time: %s</string>
+    <string name="buttonGoToLines">Show the lines</string>
+    <string name="noLinesSelectedEmptyScreen">No line selected</string>
+    <string name="noLinesSelectedDepsEmptyScreen">You haven’t added any lines under “Your lines”. To add one, click on the heart icon in the top right-hand corner!</string>
 </resources>

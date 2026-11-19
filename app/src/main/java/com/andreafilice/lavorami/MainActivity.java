@@ -1173,11 +1173,11 @@ public class MainActivity extends AppCompatActivity {
             emptyView.setPadding(0, 0, 0, 50);
         }
         else if(searchInfo.equals("null") && yourLinesChip.isChecked()){
-            noWorkFounds.setText("Nessuna linea selezionata");
-            emptySubtitle.setText("Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull'icona del cuore in alto a destra!");
+            noWorkFounds.setText(getString(R.string.noLinesSelectedEmptyScreen));
+            emptySubtitle.setText(getString(R.string.noLinesSelectedDepsEmptyScreen));
             emptyIcon.setImageResource(R.drawable.ic_no_selected_lines);
             resetFilterStateBtn.setVisibility(View.VISIBLE);
-            resetFilterStateBtn.setText("Mostra le linee");
+            resetFilterStateBtn.setText(getString(R.string.buttonGoToLines));
             emptyView.setPadding(0, 0, 0, 50);
         }
         else {

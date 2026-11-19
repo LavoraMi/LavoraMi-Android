@@ -516,4 +516,7 @@
     <string name="busLateText">Il bus è in ritardo di %smin. Orario programmato: %s</string>
     <string name="busEarlyText">Il bus è in anticipo di %smin. Orario programmato: %s</string>
     <string name="busOnTimeText">Il bus è in orario. Orario programmato: %s</string>
+    <string name="buttonGoToLines">Mostra le linee</string>
+    <string name="noLinesSelectedEmptyScreen">Nessuna linea selezionata</string>
+    <string name="noLinesSelectedDepsEmptyScreen">Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull\'icona del cuore in alto a destra!</string>
 </resources>

@@ -517,4 +517,7 @@
     <string name="busLateText">El autobús lleva un retraso de %smin. Horario previsto: %s</string>
     <string name="busEarlyText">El autobús lleva un adelanto de %smin. Horario previsto: %s</string>
     <string name="busOnTimeText">El autobús va según el horario previsto. Horario previsto: %s</string>
+    <string name="buttonGoToLines">Mostrar las líneas</string>
+    <string name="noLinesSelectedEmptyScreen">No hay ninguna línea seleccionada</string>
+    <string name="noLinesSelectedDepsEmptyScreen">No has introducido ninguna línea en “Tus líneas”. Para añadir una, ¡haz clic en el icono del corazón de la esquina superior derecha!</string>
 </resources>
