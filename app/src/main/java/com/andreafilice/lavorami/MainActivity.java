@@ -1160,14 +1160,24 @@ public class MainActivity extends AppCompatActivity {
         TextView noWorkFounds = findViewById(R.id.emptyTitle);
         TextView emptySubtitle = findViewById(R.id.emptySubtitle);
         Button resetFilterStateBtn = findViewById(R.id.resetFilterState);
+        Chip yourLinesChip = findViewById(R.id.chipYourLines);
 
         emptyView.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
 
-        if(searchInfo.equals("null")){
+        if(searchInfo.equals("null") && !yourLinesChip.isChecked()){
             noWorkFounds.setText((getString(R.string.noWorkOnFilter)));
             emptySubtitle.setText(getString(R.string.noWorkOnFilterHint));
             emptyIcon.setImageResource(R.drawable.ic_filter_empty);
             resetFilterStateBtn.setVisibility(View.VISIBLE);
+            resetFilterStateBtn.setText(getString(R.string.resetFilters));
+            emptyView.setPadding(0, 0, 0, 50);
+        }
+        else if(searchInfo.equals("null") && yourLinesChip.isChecked()){
+            noWorkFounds.setText("Nessuna linea selezionata");
+            emptySubtitle.setText("Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull'icona del cuore in alto a destra!");
+            emptyIcon.setImageResource(R.drawable.ic_no_selected_lines);
+            resetFilterStateBtn.setVisibility(View.VISIBLE);
+            resetFilterStateBtn.setText("Mostra le linee");
             emptyView.setPadding(0, 0, 0, 50);
         }
         else {
@@ -1181,9 +1191,14 @@ public class MainActivity extends AppCompatActivity {
 
         Button resetFilter = findViewById(R.id.resetFilterState);
         resetFilter.setOnClickListener(v->{
-            ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
-            filterGroup.check(R.id.chipAll);
-            findViewById(R.id.filterScroll).scrollTo(0,0);
+            String buttonTxt = resetFilterStateBtn.getText().toString();
+
+            if(buttonTxt.contains(getString(R.string.resetFilters))) {
+                ChipGroup filterGroup = findViewById(R.id.filterChipGroup);
+                filterGroup.check(R.id.chipAll);
+                findViewById(R.id.filterScroll).scrollTo(0,0);
+            }
+            else ActivityUtils.changeActivity(this, LinesActivity.class);
         });
     }
 
