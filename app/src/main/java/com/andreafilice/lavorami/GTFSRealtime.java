@@ -115,10 +115,11 @@ public class GTFSRealtime {
 
             if (conn.getResponseCode() / 100 != 2) throw new IOException("HTTP " + conn.getResponseCode());
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) sb.append(line);
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) sb.append(line);
+            }
 
             return parse(new JSONObject(sb.toString()));
         }
