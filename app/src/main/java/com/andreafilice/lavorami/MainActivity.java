@@ -245,12 +245,6 @@ public class MainActivity extends AppCompatActivity {
             maybeLoadAds();
         });
 
-        MobileAds.openAdInspector(this, error -> {
-            if (error != null) {
-                Log.e("ADMOB", "Errore apertura Ad Inspector: " + error.getMessage());
-            }
-        });
-
         //*SETUP PAGES
         /// In this section of the code, we create the Setup-Pages for our OnBoarding screen.
         /// This method is also used into the iOS version of LavoraMi.
@@ -339,14 +333,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
+            super.onPageSelected(position);
 
-                btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
-                btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
-                if(position == 3)
-                    askForNotificationPermission();
-                if(position == 5)
-                    askForPositionPermission();
+            btnSetupNext.setText((position == pages.size() -1) ? getString(R.string.endPages) : getString(R.string.nextPages));
+            btnSetupSkip.setVisibility((position == pages.size() -1) ? View.GONE : View.VISIBLE);
+            if(position == 3)
+                askForNotificationPermission();
+            if(position == 5)
+                askForPositionPermission();
             }
         });
 
@@ -369,6 +363,7 @@ public class MainActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+
             return insets;
         });
 
@@ -380,6 +375,7 @@ public class MainActivity extends AppCompatActivity {
         hintSwitcher.setFactory(() -> {
             TextView title = new TextView(MainActivity.this);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
             title.setLayoutParams(params);
             title.setGravity(Gravity.CENTER_VERTICAL);
             title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
@@ -426,11 +422,11 @@ public class MainActivity extends AppCompatActivity {
         );
 
         swipeRefreshLayout.setColorSchemeResources(
-                R.color.M1,
-                R.color.M2,
-                R.color.M3,
-                R.color.M4,
-                R.color.M5
+            R.color.M1,
+            R.color.M2,
+            R.color.M3,
+            R.color.M4,
+            R.color.M5
         );
         swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.bottomBarPillTint));
 
