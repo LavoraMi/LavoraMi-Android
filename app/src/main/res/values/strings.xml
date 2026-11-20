@@ -230,8 +230,8 @@
     <string name="translateTitle">Traduzione (it-en):</string>
     <string name="copyTranslation">Copia Traduzione</string>
     <string name="translateBtnText">Traduci</string>
-    <string name="maintenanceTitle">Manutenzione in corso.</string>
-    <string name="maintenanceDeps">I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio.</string>
+    <string name="maintenanceTitle">Manutenzione in corso</string>
+    <string name="maintenanceDeps">I server di LavoraMi non sono attualmente disponibili. Ci scusiamo per il disagio</string>
     <string name="retryMaintenanceBtn">Riprova</string>
     <string name="endWorksNotificationTitle">Lavori terminati!</string>
     <string name="endWorksNotificationDepsVar1">I lavori in %s delle linee %s dovrebbero terminare oggi. Consulta il sito di %s per gli ultimi aggiornamenti.</string>

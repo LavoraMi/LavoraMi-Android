@@ -19,12 +19,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iconWifi"
-            android:layout_width="88dp"
-            android:layout_height="59dp"
-            android:src="@drawable/ic_wifi_slash"
-            app:tint="@color/text_primary" />
+        <FrameLayout
+            android:layout_width="108dp"
+            android:layout_height="108dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="top|start"
+                android:padding="2dp"
+                android:src="@drawable/ic_app"
+                app:shapeAppearanceOverlay="@style/RoundedCorners"
+                app:strokeWidth="1dp" />
+
+            <ImageView
+                android:id="@+id/iconWifi"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/bg_badge"
+                android:padding="8dp"
+                android:src="@drawable/ic_wrench"
+                app:tint="@color/White" />
+        </FrameLayout>
 
         <TextView
             android:layout_width="wrap_content"

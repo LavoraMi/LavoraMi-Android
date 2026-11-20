@@ -231,8 +231,8 @@
     <string name="translateTitle">Translation (it-en):</string>
     <string name="copyTranslation">Copy Translation</string>
     <string name="translateBtnText">Translate</string>
-    <string name="maintenanceTitle">Maintenance in progress.</string>
-    <string name="maintenanceDeps">The LavoraMi servers are currently unavailable. We apologise for the inconvenience.</string>
+    <string name="maintenanceTitle">Maintenance in progress</string>
+    <string name="maintenanceDeps">The LavoraMi servers are currently unavailable. We apologise for the inconvenience</string>
     <string name="retryMaintenanceBtn">Try Again</string>
     <string name="endWorksNotificationTitle">Works completed!</string>
     <string name="endWorksNotificationDepsVar1">Work on the %s lines in %s is expected to be completed today. Please visit the %s website for the latest updates.</string>
