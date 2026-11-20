@@ -123,9 +123,7 @@
     <string name="webDeveloper">Web Developers:</string>
     <string name="support">Support us</string>
     <string name="supportText">If you like LavoraMi, you can support us by making a donation via Patreon or Buy Me A Coffee!</string>
-    <string name="patreonSupport">Support us on Patreon</string>
-    <string name="buyACoffeSupport">Support us on Buy Me A Coffee</string>
-    <string name="followOn">Follow us on:</string>
+    <string name="followOn">Follow us:</string>
     <string name="contacts">Contact us:</string>
     <string name="bugReport">Report a bug</string>
     <string name="webSite">Website</string>
@@ -455,7 +453,7 @@
     <string name="saveYourLinesTitle">Save your lines</string>
     <string name="saveYourLinesDeps">Choose what type of data you want to be saved in our Databases, so that you can always access it from your Account.</string>
     <string name="connectionErrorCloudToast">Connection error whilst saving data to your Account.</string>
-    <string name="reportInfosButton">Report Inaccuracies</string>
+    <string name="reportInfosButton">Report inaccuracies</string>
     <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
     <string name="connectionErrorBasic">Connection error. Try Again.</string>
     <string name="usernameCharacterLimits">The Username must contain at least 3 characters.</string>

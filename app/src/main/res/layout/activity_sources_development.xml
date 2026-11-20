@@ -232,11 +232,20 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/font_main"
+                android:text="© Andrea Filice"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
             <View
                 android:layout_width="150dp"
                 android:layout_height="1dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
                 android:background="?android:attr/listDivider" />
 
@@ -268,7 +277,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
-                android:text="@string/patreonSupport"
+                android:text="Patreon"
                 android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"
@@ -287,7 +296,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/font_main"
-                android:text="@string/buyACoffeSupport"
+                android:text="Buy Me A Coffee"
                 android:textAllCaps="false"
                 android:textColor="#FF5252"
                 android:textSize="20sp"

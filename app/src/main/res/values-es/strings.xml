@@ -112,7 +112,7 @@
     <string name="dateSciopero">Huelga convocada para el:</string>
     <string name="noWorkOnFilter">No se encontraron obras para este filtro</string>
     <string name="noWorkOnFilterHint">Intenta modificar los filtros seleccionados para encontrar otras obras.</string>
-    <string name="resetFilters">Mostrar todos las obras</string>
+    <string name="resetFilters">Mostrar todas las obras</string>
     <string name="downloadDataError">No se pueden cargar los datos desde el servidor.</string>
     <string name="retry">Reintentar</string>
     <string name="next">Siguiente</string>
@@ -123,9 +123,7 @@
     <string name="webDeveloper">Desarrolladores Web:</string>
     <string name="support">Apóyanos</string>
     <string name="supportText">Si te gusta LavoraMi, puedes ayudarnos haciendo una donación a través de Patreon o Buy Me A Coffee.</string>
-    <string name="patreonSupport">Apóyanos en Patreon</string>
-    <string name="buyACoffeSupport">Apóyanos en Buy Me A Coffee</string>
-    <string name="followOn">Síguenos en:</string>
+    <string name="followOn">Síguenos:</string>
     <string name="contacts">Contáctanos:</string>
     <string name="bugReport">Reportar un error</string>
     <string name="webSite">Sitio Web</string>
@@ -455,7 +453,7 @@
     <string name="saveYourLinesTitle">Guarda tus líneas</string>
     <string name="saveYourLinesDeps">Elige qué tipo de datos quieres que se guarden en nuestras bases de datos, para poder acceder a ellos en cualquier momento desde tu Cuenta.</string>
     <string name="connectionErrorCloudToast">Se ha producido un error de conexión al guardar los datos de la Cuenta.</string>
-    <string name="reportInfosButton">Informar de Errores</string>
+    <string name="reportInfosButton">Informar de errores</string>
     <string name="reportInfosTitleMail">Reporting Incorrect Information</string>
     <string name="connectionErrorBasic">Error de conexión. Inténtalo de nuevo.</string>
     <string name="usernameCharacterLimits">El Nombre de Usuario no puede tener menos de 3 caracteres.</string>
