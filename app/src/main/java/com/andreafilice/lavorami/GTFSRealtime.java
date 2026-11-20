@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 
 public class GTFSRealtime {
     private static final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor();
-    private static final long MIN_INTERVAL_MS = 8_000;
+    private static final long MIN_INTERVAL_MS = 15_000;
 
     private static final Map<String, Snapshot> cache = new HashMap<>();
     private static final Map<String, List<Callback>> pending = new HashMap<>();
