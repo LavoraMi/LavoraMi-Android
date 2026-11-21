@@ -1157,6 +1157,7 @@ public class MainActivity extends AppCompatActivity {
         TextView emptySubtitle = findViewById(R.id.emptySubtitle);
         Button resetFilterStateBtn = findViewById(R.id.resetFilterState);
         Chip yourLinesChip = findViewById(R.id.chipYourLines);
+        Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
         emptyView.setVisibility((list.isEmpty()) ? View.VISIBLE : View.GONE);
 
@@ -1168,12 +1169,20 @@ public class MainActivity extends AppCompatActivity {
             resetFilterStateBtn.setText(getString(R.string.resetFilters));
             emptyView.setPadding(0, 0, 0, 50);
         }
-        else if(searchInfo.equals("null") && yourLinesChip.isChecked()){
+        else if(searchInfo.equals("null") && yourLinesChip.isChecked() && linesSaved.isEmpty()){
             noWorkFounds.setText(getString(R.string.noLinesSelectedEmptyScreen));
             emptySubtitle.setText(getString(R.string.noLinesSelectedDepsEmptyScreen));
             emptyIcon.setImageResource(R.drawable.ic_no_selected_lines);
             resetFilterStateBtn.setVisibility(View.VISIBLE);
             resetFilterStateBtn.setText(getString(R.string.buttonGoToLines));
+            emptyView.setPadding(0, 0, 0, 50);
+        }
+        else if(searchInfo.equals("null") && yourLinesChip.isChecked() && !linesSaved.isEmpty()){
+            noWorkFounds.setText((getString(R.string.noWorkOnFilter)));
+            emptySubtitle.setText(getString(R.string.noWorkOnFilterHint));
+            emptyIcon.setImageResource(R.drawable.ic_filter_empty);
+            resetFilterStateBtn.setVisibility(View.VISIBLE);
+            resetFilterStateBtn.setText(getString(R.string.resetFilters));
             emptyView.setPadding(0, 0, 0, 50);
         }
         else {
