@@ -91,6 +91,8 @@ import com.mapbox.maps.ScreenCoordinate;
 import com.mapbox.maps.plugin.gestures.GesturesUtils;
 import com.mapbox.maps.plugin.gestures.OnMapClickListener;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -2086,8 +2088,8 @@ public class LinesDetailActivity extends AppCompatActivity {
         return nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
     }
 
-    public static String getCapolinea(Context context, String linea) {
-        if (linea == null) return context != null ? context.getString(R.string.directionsNotAvailable) : "Direzioni non disponibili";
+    public static String getCapolinea(@NotNull Context context, String linea) {
+        if (linea == null) return context.getString(R.string.directionsNotAvailable);
 
         switch (linea.toUpperCase().trim()) {
             case "M1": return "Sesto 1° Maggio FS - Rho Fiera / Bisceglie";
@@ -2187,8 +2189,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "31": return "Bicocca M5 - Cinisello (1° Maggio)";
             case "33": return "P.Le Lagosta - Rimembranze di Lambrate";
 
-            case "90": return String.format("%s (Lotto M1 M5 - Lodi M3)", context != null ? context.getString(R.string.circolareDestraDesc) : "Circolare Destra");
-            case "91": return String.format("%s (Lodi M3 - Lotto M1 M5)", context != null ? context.getString(R.string.circolareSinistraDesc) : "Circolare Sinistra");
+            case "90": return String.format("%s (Lotto M1 M5 - Lodi M3)", context.getString(R.string.circolareDestraDesc));
+            case "91": return String.format("%s (Lodi M3 - Lotto M1 M5)", context.getString(R.string.circolareSinistraDesc));
             case "92": return "Via Varè (Bovisa FN) - Lodi M3";
             case "93": return "V.Le Omero - Lambrate FS";
 
@@ -2287,13 +2289,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z250": return "Lissone FS - Cesano FN - Limbiate";
             case "Z251": return "Desio FS - Limbiate - Cesano FN";
             default:
-                String notAvailableFor = context != null ? context.getString(R.string.directionsNotAvailableFor) : "Direzioni non disponibili per ";
-                return notAvailableFor + linea;
+                return context.getString(R.string.directionsNotAvailableFor) + linea;
         }
-    }
-
-    public static String getCapolinea(String linea) {
-        return getCapolinea(null, linea);
     }
 
     public boolean haveMapAvailable(){return tipoDiLinea.contains(getString(R.string.tramLinesScroll)) || this.nomeLinea.contains("z");}

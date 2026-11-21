@@ -749,11 +749,11 @@ public class LinesActivity extends AppCompatActivity {
             TextView name = row.findViewById(R.id.lineName);
 
             if (badge != null && name != null) {
-                String bText = badge.getText().toString().toLowerCase();
-                String nText = name.getText().toString().toLowerCase();
-                String capolineaText = LinesDetailActivity.getCapolinea(this, bText).toLowerCase();
+                String badgeText = badge.getText().toString().toLowerCase();
+                String nameText = name.getText().toString().toLowerCase();
+                String capolineaText = LinesDetailActivity.getCapolinea(this, badgeText).toLowerCase();
 
-                if (query.isEmpty() || bText.contains(query) || nText.contains(query) || capolineaText.contains(query)) {
+                if (query.isEmpty() || badgeText.contains(query) || nameText.contains(query) || capolineaText.contains(query)) {
                     row.setVisibility(View.VISIBLE);
                     trovatoAtLeastOne = true;
                 }
