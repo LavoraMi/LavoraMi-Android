@@ -1351,7 +1351,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             layoutTerms.setVisibility(View.GONE);
             layoutDefault.setVisibility(View.VISIBLE);
             downloadingText.setVisibility(View.GONE);
-            translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+            translateStrings(this, sheetView, evento, cleanDet, langCode, loadingLayout);
         }
         else {
             layoutDefault.setVisibility(View.GONE);
@@ -1362,7 +1362,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 layoutTerms.setVisibility(View.GONE);
                 downloadingText.setVisibility(View.VISIBLE);
                 DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
-                translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+                translateStrings(this, sheetView, evento, cleanDet, langCode, loadingLayout);
             });
 
             cancelTerms.setOnClickListener(v -> bottomSheetDialog.cancel());

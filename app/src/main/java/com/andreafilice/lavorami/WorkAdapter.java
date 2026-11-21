@@ -45,7 +45,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int sColorGreen = Color.parseColor("#5ab455");
     private static int sColorWhite = -1;
 
-    static Context context;
+    private Context context;
     private List<EventDescriptor> eventList;
     private static Typeface sFontMainNormal;
     private List<NativeAd> adsList;
@@ -230,7 +230,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             bindChips(itemHolder, event);
             itemHolder.locationIcon.setVisibility((event.getLines() != null && event.getLines().length > 0) ? View.VISIBLE : View.GONE);
         }
-        else if (holder instanceof AdViewHolder) ((AdViewHolder) holder).bindAd((NativeAd) item);
+        else if (holder instanceof AdViewHolder) ((AdViewHolder) holder).bindAd(context, (NativeAd) item);
     }
 
     private void bindChips(ViewHolder holder, EventDescriptor item) {
@@ -322,7 +322,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             layoutTerms.setVisibility(View.GONE);
             layoutDefault.setVisibility(View.VISIBLE);
             downloadingText.setVisibility(View.GONE);
-            translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+            translateStrings(ctx, sheetView, evento, cleanDet, langCode, loadingLayout);
         }
         else {
             layoutDefault.setVisibility(View.GONE);
@@ -333,14 +333,14 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 layoutTerms.setVisibility(View.GONE);
                 downloadingText.setVisibility(View.VISIBLE);
                 DataManager.saveBoolData(DataKeys.KEY_DOWNLOAD_POLICIES, true);
-                translateStrings(sheetView, evento, cleanDet, langCode, loadingLayout);
+                translateStrings(ctx, sheetView, evento, cleanDet, langCode, loadingLayout);
             });
 
             cancelTerms.setOnClickListener(v -> bottomSheetDialog.cancel());
         }
     }
 
-    public static void translateStrings(View sheetView, EventDescriptor item, String cleanedDetails, String langCode, ShimmerFrameLayout loadingLayout) {
+    public static void translateStrings(Context context, View sheetView, EventDescriptor item, String cleanedDetails, String langCode, ShimmerFrameLayout loadingLayout) {
         MaterialButton btnCopy = sheetView.findViewById(R.id.btn_copy);
         TextView translatedTxt = sheetView.findViewById(R.id.translated_text);
 
@@ -488,7 +488,7 @@ public class WorkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mediaView = itemView.findViewById(R.id.ad_media);
         }
 
-        public void bindAd(NativeAd nativeAd) {
+        public void bindAd(Context context, NativeAd nativeAd) {
             if (boundAd == nativeAd) return;
             boundAd = nativeAd;
 
