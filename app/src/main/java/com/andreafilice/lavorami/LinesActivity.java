@@ -751,8 +751,9 @@ public class LinesActivity extends AppCompatActivity {
             if (badge != null && name != null) {
                 String bText = badge.getText().toString().toLowerCase();
                 String nText = name.getText().toString().toLowerCase();
+                String capolineaText = LinesDetailActivity.getCapolinea(this, bText).toLowerCase();
 
-                if ((bText.contains(query) || nText.contains(query)) || query.isEmpty()) {
+                if (query.isEmpty() || bText.contains(query) || nText.contains(query) || capolineaText.contains(query)) {
                     row.setVisibility(View.VISIBLE);
                     trovatoAtLeastOne = true;
                 }
