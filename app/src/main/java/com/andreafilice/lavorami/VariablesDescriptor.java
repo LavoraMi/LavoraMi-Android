@@ -74,9 +74,7 @@ public class VariablesDescriptor {
     /*@SerializedName("enablePassanteWork")
     private String enablePassanteWork;*/
 
-    /*?
-        To comply with Passante works, add this parameter to the costructor: "String enablePassanteWork".
-     */
+    /*?To comply with Passante works, add this parameter to the costructor: "String enablePassanteWork".*/
     public VariablesDescriptor(String isStrikeEnabled, String enableStrikeDebug, String strikeUpdateLive, String strikeDate, String strikeCompanies, String strikeGuaranteed, String isWrappedEnabled, String isWrappedEnabledDebug, String[] linesDeviation, String[] linesDeviationLinks, String[] supportedGTFSLines, String[] suburbanWithInterruptions, String[] suburbanInterruptionLinks, String[] regionalLinesWithDeviations, String[] regionalLinesDeviationLinks, String[] lineeSospeseInteramente, String[] stazioniChiuse, String[] lineeSostituiteBus, String[] linesWithSlowdowns, String[] orariTramImprecisi) {
         this.isStrikeEnabled = isStrikeEnabled;
         this.enableStrikeDebug = enableStrikeDebug;
