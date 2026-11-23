@@ -41,7 +41,8 @@ public class WidgetLines extends AppWidgetProvider {
         STAR("STAR", R.drawable.ic_bus),
         NET("NET", R.drawable.ic_bus),
         STAV("STAV", R.drawable.ic_bus),
-        AUTOGUIDOVIE("Autoguidovie", R.drawable.ic_bus);
+        AUTOGUIDOVIE("Autoguidovie", R.drawable.ic_bus),
+        AIRPULLMAN("AirPullman", R.drawable.ic_bus);
 
         final String label;
         final int iconRes;
@@ -89,6 +90,9 @@ public class WidgetLines extends AppWidgetProvider {
             "z203", "z205", "z209", "z219", "z221", "z222",
             "z225", "z227", "z228", "z229", "z231", "z232",
             "z233", "z234", "z250", "z251"};
+    private static final String[] AIRPULLMAN_LINES = {"z110", "z111", "z112", "z113", "z114", "z115",
+            "z116", "z117", "z119", "z120", "z121", "z122",
+            "z130", "z150", "z160", "z161", "z163", "z165", "z166"};
     private static final int[] METRO_COLORS = {R.color.M1, R.color.M2, R.color.M3, R.color.M4, R.color.M5};
     private static final int[] SUBURBAN_COLORS = {
             R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
@@ -113,6 +117,7 @@ public class WidgetLines extends AppWidgetProvider {
         addAllWithSharedColor(all, STAR_LINES, LineType.STAR, R.color.BUS);
         addAllWithSharedColor(all, STAV_LINES, LineType.STAV, R.color.BUS);
         addAllWithSharedColor(all, AUTOGUIDOVIE_LINES, LineType.AUTOGUIDOVIE, R.color.BUS);
+        addAllWithSharedColor(all, AIRPULLMAN_LINES, LineType.AIRPULLMAN, R.color.BUS);
 
         return all;
     }

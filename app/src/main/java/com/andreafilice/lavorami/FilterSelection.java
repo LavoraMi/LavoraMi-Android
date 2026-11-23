@@ -54,7 +54,8 @@ public class FilterSelection extends AppCompatActivity {
             findViewById(R.id.checkdiNET), //? "di NET"
             findViewById(R.id.checkdiSTAV), //? "di STAV"
             findViewById(R.id.checkdiSTAR), //? "di STAR"
-            findViewById(R.id.checkdiAutoguidovie) //? "di Autoguidovie"
+            findViewById(R.id.checkdiAutoguidovie), //? "di Autoguidovie"
+            findViewById(R.id.checkdiAirPullman) //? "di AirPullman"
         };
 
         RelativeLayout[] filterLayouts = {
@@ -73,7 +74,8 @@ public class FilterSelection extends AppCompatActivity {
             findViewById(R.id.diNET), //? "di NET"
             findViewById(R.id.diSTAV), //? "di STAV"
             findViewById(R.id.diSTAR), //? "di STAR"
-            findViewById(R.id.diAutoguidovie) //? "di Autoguidovie"
+            findViewById(R.id.diAutoguidovie), //? "di Autoguidovie"
+            findViewById(R.id.diAirPullman) //? "di AirPullman"
         };
 
         String[] filterValues = {
@@ -92,7 +94,8 @@ public class FilterSelection extends AppCompatActivity {
             "di_NET",
             "di_STAV",
             "di_STAR",
-            "di_Autoguidovie"
+            "di_Autoguidovie",
+            "di_AirPullman"
         };
 
         //*LOAD FROM DATAS

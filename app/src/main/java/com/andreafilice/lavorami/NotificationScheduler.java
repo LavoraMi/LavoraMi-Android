@@ -91,8 +91,18 @@ public class NotificationScheduler {
                                 if (line.toLowerCase().startsWith("z3")) { isMatch = true; break; }
                             }
                             break;
+                        case "z1":
+                            for (String line : event.lines) {
+                                if (line.toLowerCase().startsWith("z1")) { isMatch = true; break; }
+                            }
+                            break;
                         case "Autoguidovie":
                             if (event.company != null && event.company.toLowerCase().contains("autoguidovie")) {
+                                isMatch = true;
+                            }
+                            break;
+                        case "AirPullman":
+                            if (event.company != null && event.company.toLowerCase().contains("airpullman")) {
                                 isMatch = true;
                             }
                             break;

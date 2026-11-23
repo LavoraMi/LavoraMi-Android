@@ -77,6 +77,7 @@
     <string name="movibusFilter">di Movibus</string>
     <string name="stavFilter">di STAV</string>
     <string name="autoguidovieFilter">di Autoguidovie</string>
+    <string name="airPullmanFilter">di AirPullman</string>
     <string name="acknowledgmentsTitle">Librerie Open-Source</string>
     <string name="linesSearchBar">Cerca per tipo o numero...</string>
     <string name="metroLinesTitle">Linee Metropolitane</string>
@@ -171,6 +172,7 @@
     <string name="netLines">Linee NET</string>
     <string name="stavLines">Linee STAV</string>
     <string name="autoguidovieLines">Linee Autoguidovie</string>
+    <string name="airPullmanLines">Linee AirPullman</string>
     <string name="sourcesDevelopment">Fonti &amp; Sviluppo</string>
     <string name="versionTitle">Versione</string>
     <string name="resetSettingsTitle">Ripristina Impostazioni</string>

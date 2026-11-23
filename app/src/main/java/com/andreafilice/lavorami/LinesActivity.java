@@ -62,8 +62,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LinesActivity extends AppCompatActivity {
 
-    LinearLayout containerRecent, headerMetro, containerMetro, containerMela, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerNET, containerStav, containerSTAR, containerAutoGuidovie;
-    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleNET, titleStav, titleSTAR, titleAutoguidovie;
+    LinearLayout containerRecent, headerMetro, containerMetro, containerMela, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerNET, containerStav, containerSTAR, containerAutoGuidovie, containerAirPullman;
+    LinearLayout titleRecent, titleMetro, titleSub, titleRegio, titleRegional, titleMXP, titleTram, titleTrans, titleFilobus, titleMovibus, titleNET, titleStav, titleSTAR, titleAutoguidovie, titleAirPullman;
     ShimmerFrameLayout loadingLayout;
     EditText searchLines;
     LinearLayout containerAds;
@@ -83,7 +83,7 @@ public class LinesActivity extends AppCompatActivity {
     private Set<String> linesSaved = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_ARRAY_YOUR_LINES, new HashSet<>()));
 
     //* BOOLEAN VALUES
-    boolean hasRecent, hasMetro, hasMinimetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasNET, hasStav, hasSTAR, hasAuto;
+    boolean hasRecent, hasMetro, hasMinimetro, hasSub, hasRegioExpress, hasRegional, hasMXP, hasTrans, hasTram, hasFilobus, hasMovibus, hasNET, hasStav, hasSTAR, hasAuto, hasAirPullman;
 
     //* SUPABASE VALUES
     SessionManager sessionManager;
@@ -120,6 +120,7 @@ public class LinesActivity extends AppCompatActivity {
         containerStav = findViewById(R.id.groupStav);
         containerSTAR = findViewById(R.id.groupStar);
         containerAutoGuidovie = findViewById(R.id.groupAutoGuidoVie);
+        containerAirPullman = findViewById(R.id.groupAirPullman);
         randomElement = new Random();
 
         titleRecent = findViewById(R.id.headerRecentSearch);
@@ -137,6 +138,7 @@ public class LinesActivity extends AppCompatActivity {
         titleStav = findViewById(R.id.headerSTAV);
         titleSTAR = findViewById(R.id.headerSTAR);
         titleAutoguidovie = findViewById(R.id.headerAutoguidovie);
+        titleAirPullman = findViewById(R.id.headerAirPullman);
 
         parentScrollLayout = (LinearLayout) containerRecent.getParent();
 
@@ -218,7 +220,8 @@ public class LinesActivity extends AppCompatActivity {
             findViewById(R.id.infoIconNET),
             findViewById(R.id.infoIconStav),
             findViewById(R.id.infoIconStar),
-            findViewById(R.id.infoIconAutoGuidoVie)
+            findViewById(R.id.infoIconAutoGuidoVie),
+            findViewById(R.id.infoIconAirPullman)
         };
 
         String[] infoUrls = {
@@ -234,7 +237,8 @@ public class LinesActivity extends AppCompatActivity {
             "https://www.nordesttrasporti.it/percorsi-e-orari/",
             "https://stavautolinee.it/reti-servite/",
             "https://starmobility.it/orari-autobus/",
-            "https://autoguidovie.it/it/avvisi"
+            "https://autoguidovie.it/it/avvisi",
+            "https://www.airpullman.com"
         };
 
         for (int i = 0; i < infoButtons.length; i++) {
@@ -286,6 +290,7 @@ public class LinesActivity extends AppCompatActivity {
                     hasStav = filtraContainer(containerStav, query);
                     hasSTAR = filtraContainer(containerSTAR, query);
                     hasAuto = filtraContainer(containerAutoGuidovie, query);
+                    hasAirPullman = filtraContainer(containerAirPullman, query);
 
                     //*HIDE ADS
                     titleAds.setVisibility(query.isEmpty() ? View.VISIBLE: View.GONE);
@@ -371,7 +376,12 @@ public class LinesActivity extends AppCompatActivity {
                     titleAutoguidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     containerAutoGuidovie.setVisibility(hasAuto ? View.VISIBLE : View.GONE);
                     setUpMargin(titleAutoguidovie, isFirstVisibleContainer(hasAuto, firstContainerTracker));
-                    checkForEmptySearch(!hasMetro && !hasMinimetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasNET && !hasStav && !hasSTAR && !hasAuto, s);
+
+                    //*AIRPULLMAN LINES
+                    titleAirPullman.setVisibility(hasAirPullman ? View.VISIBLE : View.GONE);
+                    containerAirPullman.setVisibility(hasAirPullman ? View.VISIBLE : View.GONE);
+                    setUpMargin(titleAirPullman, isFirstVisibleContainer(hasAirPullman, firstContainerTracker));
+                    checkForEmptySearch(!hasMetro && !hasMinimetro && !hasSub && !hasRegioExpress && !hasRegional && !hasMXP && !hasTrans && !hasTram && !hasFilobus && !hasMovibus && !hasNET && !hasStav && !hasSTAR && !hasAuto && !hasAirPullman, s);
 
                     searchLines.setCompoundDrawables(searchIcon, null, (s.length() > 0) ? deleteIcon : null, null);
                 };
@@ -628,6 +638,14 @@ public class LinesActivity extends AppCompatActivity {
             aggiungiLinea(containerAutoGuidovie, line, R.color.BUS, "Autoguidovie");
         }
 
+        // AIRPULLMAN
+        String[] airPullmanLines = {"z110", "z111", "z112", "z113", "z114", "z115",
+                "z116", "z117", "z119", "z120", "z121", "z122",
+                "z130", "z150", "z160", "z161", "z163", "z165", "z166"};
+        for (String line : airPullmanLines) {
+            aggiungiLinea(containerAirPullman, line, R.color.BUS, "AirPullman");
+        }
+
         //Stop the Shimmer animation.
         loadingLayout.setVisibility(View.GONE);
     }
@@ -721,7 +739,7 @@ public class LinesActivity extends AppCompatActivity {
     }
 
     public void reloadSavedLines(){
-        LinearLayout [] containers = {containerRecent, containerMetro, containerMela, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerStav, containerSTAR, containerAutoGuidovie};
+        LinearLayout [] containers = {containerRecent, containerMetro, containerMela, containerSub, containerRegioExpress, containerRegional, containerMXP, containerTram, containerTrans, containerFilobus, containerMovibus, containerNET, containerStav, containerSTAR, containerAutoGuidovie, containerAirPullman};
         for (LinearLayout container : containers) {
             int numeroLinee = container.getChildCount();
 

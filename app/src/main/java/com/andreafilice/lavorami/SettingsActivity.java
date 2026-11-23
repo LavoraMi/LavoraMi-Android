@@ -165,11 +165,13 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.busLinesFavorites), //? "Linee Bus"
             findViewById(R.id.tramLinesFavorites), //? "Linee Tram"
             findViewById(R.id.metroLinesFavorites), //? "Linee Metropolitane"
+            findViewById(R.id.tiloLinesFavorites), //? "Linee TILO"
             findViewById(R.id.movibusLinesFavorites), //? "Linee Movibus"
             findViewById(R.id.netLinesFavorites), //? "Linee NET"
             findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
             findViewById(R.id.starLinesFavorites), //? "Linee STAR"
-            findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
+            findViewById(R.id.autoguidovieLinesFavorites), //? "Linee Autoguidovie"
+            findViewById(R.id.airPullmanLinesFavorites)  //? "Linee AirPullman"
         };
 
         RelativeLayout[] starButtons = {
@@ -179,11 +181,13 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.busLinesATMLayout),
             findViewById(R.id.tramLinesATMLayout),
             findViewById(R.id.metroLinesATMLayout),
+            findViewById(R.id.disclosureHeaderTILO),
             findViewById(R.id.disclosureHeaderMovibus),
             findViewById(R.id.disclosureHeaderNet),
             findViewById(R.id.disclosureHeaderStav),
             findViewById(R.id.disclosureHeaderStar),
-            findViewById(R.id.disclosureHeaderAutoguidovie)
+            findViewById(R.id.disclosureHeaderAutoguidovie),
+            findViewById(R.id.disclosureHeaderAirPullman)
         };
 
         String[] lineCodes = {
@@ -197,7 +201,8 @@ public class SettingsActivity extends AppCompatActivity {
             "z3",
             "z55",
             "z50",
-            "Autoguidovie"
+            "Autoguidovie",
+            "z1"
         };
 
         favorites = new HashSet<>(DataManager.getStringArray(DataKeys.KEY_FAVORITE_LINES, new HashSet<>()));
@@ -330,7 +335,8 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.netLinesFavorites), //? "Linee NET"
             findViewById(R.id.stavLinesFavorites), //? "Linee STAV"
             findViewById(R.id.starLinesFavorites), //? "Linee STAR"
-            findViewById(R.id.autoguidovieLinesFavorites) //? "Linee Autoguidovie"
+            findViewById(R.id.autoguidovieLinesFavorites), //? "Linee Autoguidovie"
+            findViewById(R.id.airPullmanLinesFavorites)  //? "Linee AirPullman"
         };
 
         RelativeLayout[] starButtons = {
@@ -345,7 +351,8 @@ public class SettingsActivity extends AppCompatActivity {
             findViewById(R.id.disclosureHeaderNet),
             findViewById(R.id.disclosureHeaderStav),
             findViewById(R.id.disclosureHeaderStar),
-            findViewById(R.id.disclosureHeaderAutoguidovie)
+            findViewById(R.id.disclosureHeaderAutoguidovie),
+            findViewById(R.id.disclosureHeaderAirPullman)
         };
 
         String[] lineCodes = {
@@ -360,7 +367,8 @@ public class SettingsActivity extends AppCompatActivity {
             "z3",
             "z55",
             "z50",
-            "Autoguidovie"
+            "Autoguidovie",
+            "z1"
         };
 
         setStarIcons(starIcons, starButtons, lineCodes);
@@ -477,6 +485,7 @@ public class SettingsActivity extends AppCompatActivity {
             case DI_STAV: return getString(R.string.stavFilter);
             case DI_STAR: return getString(R.string.starFilter);
             case DI_AUTOGUIDOVIE: return getString(R.string.autoguidovieFilter);
+            case DI_AIRPULLMAN: return getString(R.string.airPullmanFilter);
             default: return getString(R.string.error);
         }
     }

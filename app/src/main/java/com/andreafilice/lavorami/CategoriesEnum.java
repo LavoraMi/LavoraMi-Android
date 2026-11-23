@@ -16,5 +16,6 @@ public enum CategoriesEnum {
     DI_NET,
     DI_STAV,
     DI_STAR,
-    DI_AUTOGUIDOVIE
+    DI_AUTOGUIDOVIE,
+    DI_AIRPULLMAN
 }

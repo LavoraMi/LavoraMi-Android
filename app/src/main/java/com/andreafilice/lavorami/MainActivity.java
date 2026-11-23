@@ -506,6 +506,9 @@ public class MainActivity extends AppCompatActivity {
                 case DI_AUTOGUIDOVIE:
                     filterGroup.check(R.id.chipAutoguidovie);
                     break;
+                case DI_AIRPULLMAN:
+                    filterGroup.check(R.id.chipAirPullman);
+                    break;
             }
 
             for (int i = 0; i < filterGroup.getChildCount(); i++) {
@@ -684,7 +687,8 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.chipNET),
             findViewById(R.id.chipStav),
             findViewById(R.id.chipStar),
-            findViewById(R.id.chipAutoguidovie)
+            findViewById(R.id.chipAutoguidovie),
+            findViewById(R.id.chipAirPullman)
         };
         int colorChecked = ContextCompat.getColor(this, R.color.White);
         int colorUnchecked = ContextCompat.getColor(this, R.color.text_primary);
@@ -799,7 +803,8 @@ public class MainActivity extends AppCompatActivity {
             R.id.chipNET,
             R.id.chipStav,
             R.id.chipStar,
-            R.id.chipAutoguidovie
+            R.id.chipAutoguidovie,
+            R.id.chipAirPullman
         };
 
         CategoriesEnum[] arrayEnums = {
@@ -818,7 +823,8 @@ public class MainActivity extends AppCompatActivity {
             CategoriesEnum.DI_NET,
             CategoriesEnum.DI_STAV,
             CategoriesEnum.DI_STAR,
-            CategoriesEnum.DI_AUTOGUIDOVIE
+            CategoriesEnum.DI_AUTOGUIDOVIE,
+            CategoriesEnum.DI_AIRPULLMAN
         };
 
         for (int i = 0; i < arrayEnums.length; i++) {
@@ -1315,6 +1321,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case DI_AUTOGUIDOVIE:
                         if(item.company != null && item.company.equalsIgnoreCase("Autoguidovie") && terminated > limiteMassimo) filtrata.add(item);
+                        break;
+                    case DI_AIRPULLMAN:
+                        if(item.company != null && item.company.equalsIgnoreCase("AirPullman") && terminated > limiteMassimo) filtrata.add(item);
                         break;
                 }
             }
