@@ -2300,7 +2300,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z116": return "Cesano M. FN - Seregno FS";
             case "Z117": return "Saronno FN - Cesano M. FN";
             case "Z119": return "Saronno FN - Limbiate (Mombello)";
-            case "Z120": return "Garbagnate M.Se (Ospedale) -  Rho FS";
+            case "Z120": return "Garbagnate M.Se (Ospedale) - Rho FS";
             case "Z121": return "Comasina M3 - Rho FS";
             case "Z122": return "Rho FS - Garbagnate M.Se FN";
             case "Z130": return "Limbiate - Bollate FN";
@@ -2308,7 +2308,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z160": return "Saronno FN - Camnago - Lentate FS";
             case "Z161": return "Saronno FN (Circolare)";
             case "Z163": return "Lazzate  Limbiate (Mombello)";
-            case "Z165": return "Lentate s/S (Camnago FNM/FS) - Barlassina - Meda (Istituti)";
+            case "Z165": return "Camnago - Lentate FS - Meda";
             case "Z166": return "Seregno FS - Lentate S. Seveso (Copreno)";
             default:
                 return context.getString(R.string.directionsNotAvailableFor) + linea;
