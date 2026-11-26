@@ -2297,8 +2297,8 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z113": return "Saronno FN - Rho FS";
             case "Z114": return "Saronno FN - Palazzolo M.se FN";
             case "Z115": return "Saronno FN - Seregno FS";
-            case "Z116": return "Cesano M. FN - Seregno FS";
-            case "Z117": return "Saronno FN - Cesano M. FN";
+            case "Z116": return "Cesano Maderno FN - Seregno FS";
+            case "Z117": return "Saronno FN - Cesano Maderno FN";
             case "Z119": return "Saronno FN - Limbiate (Mombello)";
             case "Z120": return "Garbagnate M.Se (Ospedale) - Rho FS";
             case "Z121": return "Comasina M3 - Rho FS";
@@ -2307,7 +2307,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z150": return "Cantù - Comasina M3";
             case "Z160": return "Saronno FN - Camnago - Lentate FS";
             case "Z161": return "Saronno FN (Circolare)";
-            case "Z163": return "Lazzate  Limbiate (Mombello)";
+            case "Z163": return "Lazzate - Limbiate (Mombello)";
             case "Z165": return "Camnago - Lentate FS - Meda";
             case "Z166": return "Seregno FS - Lentate S. Seveso (Copreno)";
             default:

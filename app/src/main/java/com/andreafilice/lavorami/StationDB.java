@@ -34,6 +34,13 @@ public class StationDB {
         ));
 
         interchanges.add(new InterchangeInfo(
+            "Milano Comasina M3",
+            new String[]{"M3", "NM3", "35", "41", "52", "83", "89", "165", "705", "729", "z121", "z150"},
+            new String[]{"z121", "z150"},
+            "tram.fill.tunnel"
+        ));
+
+        interchanges.add(new InterchangeInfo(
             "Milano Cadorna FN",
             new String[]{"M1", "NM1", "M2", "NM2", "S3", "S4", "R16", "R17", "R22", "R27", "RE1", "RE7", "MXP2", "1", "2", "50", "96", "97", "z602", "z603", "z6C3", "N25", "N26"},
             new String[]{"z602", "z603", "z6C3"},
@@ -44,6 +51,13 @@ public class StationDB {
             "Parabiago FS",
             new String[]{"S5", "R21", "R23", "RE5", "z644"},
             new String[]{"z644"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Camnago - Lentate FS",
+            new String[]{"S4", "S11", "z160", "z165"},
+            new String[]{"z165"},
             "train.side.front.car"
         ));
 
@@ -63,8 +77,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Rho FS",
-            new String[]{"S5", "S6", "S11", "z616"},
-            new String[]{"z616"},
+            new String[]{"S5", "S6", "S11", "z113", "z120", "z121", "z122", "z616"},
+            new String[]{"z120", "z122", "z616"},
             "train.side.front.car"
         ));
 
@@ -216,9 +230,9 @@ public class StationDB {
         ));
 
         interchanges.add(new InterchangeInfo(
-            "Cesano FN",
-            new String[]{"S2", "S4", "S9", "R16", "z209", "z250", "z251"},
-            new String[]{"z209", "z250", "z251"},
+            "Cesano Maderno FN",
+            new String[]{"S2", "S4", "S9", "R16", "z116", "z209", "z250", "z251"},
+            new String[]{"z209", "z250", "z251", "z116"},
             "train.side.front.car"
         ));
 
@@ -231,8 +245,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Seregno FS",
-            new String[]{"S9", "S11", "R15", "RE80", "z228", "z231", "z232", "z233", "z242"},
-            new String[]{"z231", "z232", "z233", "z242"},
+            new String[]{"S9", "S11", "R15", "RE80", "z166", "z228", "z231", "z232", "z233", "z242"},
+            new String[]{"z166", "z231", "z232", "z233", "z242"},
             "train.side.front.car"
         ));
 
@@ -275,6 +289,20 @@ public class StationDB {
             "Carnate Usmate FS",
             new String[]{"S8", "R13", "R14", "R15", "RE8", "z318", "z319"},
             new String[]{"z318"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Saronno FN",
+            new String[]{"S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"},
+            new String[]{"z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"},
+            "train.side.front.car"
+        ));
+
+        interchanges.add(new InterchangeInfo(
+            "Bollate Centro FN",
+            new String[]{"S1", "S3", "S13", "RE13", "z130"},
+            new String[]{"z130"},
             "train.side.front.car"
         ));
 
@@ -439,8 +467,6 @@ public class StationDB {
             allStations.addAll(NETStationsDB.getStationsZ321());
             allStations.addAll(NETStationsDB.getStationsZ322());
             allStations.addAll(NETStationsDB.getStationsZ323());
-
-            allStations.addAll(AutoguidovieStationsDB.getStationsZ225());
 
             allStations.addAll(FilobusStationsDB.getStationsFilobus90());
             allStations.addAll(FilobusStationsDB.getStationsFilobus91());
