@@ -203,7 +203,7 @@ public class LinesDetailActivity extends AppCompatActivity {
         CardView cardMappa = findViewById(R.id.mapCard);
         LinearLayout containerLavori = findViewById(R.id.containerLavori);
         LinearLayout containerInterscambi = findViewById(R.id.containerInterscambi);
-        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z301", "z304", "z305", "z307", "z309", "z310", "z311", "z312", "z313", "z314", "z315", "z317", "z318", "z319", "z321", "z322", "z323", "z501", "z509", "z510", "z515", "z516", "z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560", "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649", "z6C3")); //STAV + Movibus
+        ArrayList<String> busLinesWithMap = new ArrayList<>(Arrays.asList("z301", "z304", "z305", "z307", "z309", "z310", "z311", "z312", "z313", "z314", "z315", "z317", "z318", "z319", "z321", "z322", "z323", "z501", "z509", "z510", "z515", "z516", "z551", "z552", "z553", "z554", "z555", "z556", "z557", "z559", "z560", "z601", "z602", "z603", "z606", "z611", "z612", "z616", "z617", "z618", "z619", "z620", "z621", "z622", "z625", "z627", "z636", "z641", "z642", "z643", "z644", "z646", "z647", "z649", "z6C3"));
 
         ArrayList<String> busWithMapsNotInRelease = new ArrayList<>(Arrays.asList());
         busLinesWithMap.addAll(busWithMapsNotInRelease);
@@ -2290,25 +2290,26 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z242": return "Desio - Seregno FS - Monticello";
             case "Z250": return "Lissone FS - Cesano FN - Limbiate";
             case "Z251": return "Desio FS - Limbiate - Cesano FN";
-            case "Z110": return "Saronno (FNM) - Caronno P. - Garbagnate M.Se (FNM) / Arese - Rho (FS / Fiera M1)";
-            case "Z111": return "Saronno (FNM) - Solaro - Limbiate - dir. Senago - Varedo (FNM) / Bovisio - Desio (Istituti)";
-            case "Z112": return "Saronno (FNM) - Uboldo - Rescaldina - dir. Rescalda Legnano (Ospedale Nuovo)";
-            case "Z113": return "Saronno (FNM) - Uboldo - Origgio - Lainate - Rho (FS)";
-            case "Z114": return "Saronno (FNM) - Solaro - Cesate - Garbagnate M.Se (FNM) / Senago - Palazzolo M.Se (FNM)";
-            case "Z115": return "Saronno (FNM) - Solaro – Ceriano L. - Cesano M. (FNM) / Seveso (FNM) - Barlassina - Seregno (FS / Istituti)";
-            case "Z116": return "Cesano M. (FNM) - Seregno (FS)";
-            case "Z117": return "Saronno (FNM) - Cesano M. (FNM)";
-            case "Z119": return "Saronno (FNM) - Solaro - Limbiate (Mombello)";
-            case "Z120": return "Garbagnate M.Se (FNM / Ospedale) / dir. Arese (Istituti) - Lainate - Rho (FS)";
-            case "Z121": return "Rho (FS / Fiera M1) - Arese - Bollate (FNM) - dir. Milano (Zara M3)";
-            case "Z122": return "Rho (FS) - Arese - Garbagnate M.Se (FNM)";
-            case "Z130": return "Limbiate - Senago - dir. Milano (Comasina M3) - Bollate (FNM)";
-            case "Z150": return "Cantù - Asnago (FS) - Lentate s/S. (Camnago FNM/FS) / Seveso - Cesano M. (FNM) Limbiate - Senago - Paderno D. / Milano (Comasina M3)";
-            case "Z160": return "Lentate s/S. (Camnago FNM/FS) - Lazzate - Misinto / dir. Rovellasca - Saronno (FNM)";
-            case "Z161": return "Saronno (FNM) - Ceriano L. - Cogliate - Saronno (FNM) [Circolare]";
-            case "Z163": return "Lazzate - Misinto - Cogliate - dir. Ceriano L. - Seveso - Cesano M. (FNM) / Limbiate (Mombello)";
+
+            case "Z110": return "Saronno FN - Rho Fiera Milano M1";
+            case "Z111": return "Saronno FN - Bovisio Masciago/Desio";
+            case "Z112": return "Saronno FN - Legnano (Ospedale Nuovo)";
+            case "Z113": return "Saronno FN - Rho FS";
+            case "Z114": return "Saronno FN - Palazzolo M.se FN";
+            case "Z115": return "Saronno FN - Seregno FS";
+            case "Z116": return "Cesano M. FN - Seregno FS";
+            case "Z117": return "Saronno FN - Cesano M. FN";
+            case "Z119": return "Saronno FN - Limbiate (Mombello)";
+            case "Z120": return "Garbagnate M.Se (Ospedale) -  Rho FS";
+            case "Z121": return "Comasina M3 - Rho FS";
+            case "Z122": return "Rho FS - Garbagnate M.Se FN";
+            case "Z130": return "Limbiate - Bollate FN";
+            case "Z150": return "Cantù - Comasina M3";
+            case "Z160": return "Saronno FN - Camnago - Lentate FS";
+            case "Z161": return "Saronno FN (Circolare)";
+            case "Z163": return "Lazzate  Limbiate (Mombello)";
             case "Z165": return "Lentate s/S (Camnago FNM/FS) - Barlassina - Meda (Istituti)";
-            case "Z166": return "Lentate s/S Copreno - Camnago (FNM/FS) - Barlassina / Meda - Seregno (Istituti)";
+            case "Z166": return "Seregno FS - Lentate S. Seveso (Copreno)";
             default:
                 return context.getString(R.string.directionsNotAvailableFor) + linea;
         }
