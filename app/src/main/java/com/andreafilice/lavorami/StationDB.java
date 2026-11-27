@@ -55,13 +55,6 @@ public class StationDB {
         ));
 
         interchanges.add(new InterchangeInfo(
-            "Camnago - Lentate FS",
-            new String[]{"S4", "S11", "z160", "z165"},
-            new String[]{"z165"},
-            "train.side.front.car"
-        ));
-
-        interchanges.add(new InterchangeInfo(
             "Vittuone FS",
             new String[]{"S6", "RV", "z622", "z643"},
             new String[]{"z643"},
