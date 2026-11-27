@@ -65,7 +65,7 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnReportInfos.setOnClickListener(v -> {
             String subject = ContextCompat.getString(SourcesDevelopment.this, R.string.reportInfosTitleMail);
 
-            String mailtoUri = "mailto:report-informazioni@lavorami.it?subject=" + Uri.encode(subject);
+            String mailtoUri = "mailto:support@lavorami.it?subject=" + Uri.encode(subject);
 
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse(mailtoUri));
@@ -81,8 +81,9 @@ public class SourcesDevelopment extends AppCompatActivity {
         btnCofee.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://www.buymeacoffee.com/lavorami"));
         btnPrivacyPolicy.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it/privacypolicy"));
         btnTermsOfService.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it/termsofservice"));
-        btnBack.setOnClickListener(v -> finish());
         btnRiconoscimenti.setOnClickListener(v ->{ActivityUtils.changeActivity(this, LibrariesActivity.class);});
         btnWebsite.setOnClickListener(v -> ActivityUtils.openURLWithTabBuilder(this, getSupportFragmentManager(), "https://lavorami.it"));
+
+        btnBack.setOnClickListener(v -> finish());
     }
 }
