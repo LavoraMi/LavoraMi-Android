@@ -70,7 +70,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Rho FS",
-            new String[]{"S5", "S6", "S11", "z113", "z120", "z121", "z122", "z616"},
+            new String[]{"S5", "S6", "S11", "z113", "z120", "z121", "z122", "z601", "z606", "z616", "z618"},
             new String[]{"z120", "z122", "z616"},
             "train.side.front.car"
         ));
@@ -91,14 +91,14 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Arese, Il Centro",
-            new String[]{"561", "z612"},
+            new String[]{"561", "z120", "z121", "z122", "z612"},
             new String[]{"z612"},
             "bus.fill"
         ));
 
         interchanges.add(new InterchangeInfo(
             "Legnano FS",
-            new String[]{"S5", "R21", "R23", "RE5", "REG", "RV", "z601", "z602", "z611", "z627", "z636", "z642"},
+            new String[]{"S5", "R21", "R23", "RE5", "REG", "RV", "z112", "z601", "z602", "z611", "z627", "z636", "z642"},
             new String[]{"z611", "z612", "z627", "z636", "z642"},
             "train.side.front.car"
         ));
@@ -153,10 +153,10 @@ public class StationDB {
         ));
 
         interchanges.add(new InterchangeInfo(
-                "Abbiategrasso FS",
-                new String[]{"R31", "z551", "z552", "z553", "z555", "z559", "z560"},
-                new String[]{"z556"},
-                "train.side.front.car"
+            "Abbiategrasso FS",
+            new String[]{"R31", "z551", "z552", "z553", "z555", "z559", "z560"},
+            new String[]{"z556"},
+            "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
@@ -224,7 +224,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Cesano Maderno FN",
-            new String[]{"S2", "S4", "S9", "R16", "z116", "z209", "z250", "z251"},
+            new String[]{"S2", "S4", "S9", "R16", "z115", "z116", "z117", "z150", "z209", "z250", "z251"},
             new String[]{"z209", "z250", "z251", "z116"},
             "train.side.front.car"
         ));
@@ -238,7 +238,7 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Seregno FS",
-            new String[]{"S9", "S11", "R15", "RE80", "z166", "z228", "z231", "z232", "z233", "z242"},
+            new String[]{"S9", "S11", "R15", "RE80", "z115", "z116", "z166", "z228", "z231", "z232", "z233", "z242"},
             new String[]{"z166", "z231", "z232", "z233", "z242"},
             "train.side.front.car"
         ));
