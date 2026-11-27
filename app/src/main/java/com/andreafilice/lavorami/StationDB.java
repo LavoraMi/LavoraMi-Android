@@ -36,7 +36,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
             "Milano Comasina M3",
             new String[]{"M3", "NM3", "35", "41", "52", "83", "89", "165", "705", "729", "z121", "z150"},
-            new String[]{"z121", "z150"},
+            new String[]{"z150"},
             "tram.fill.tunnel"
         ));
 
@@ -294,8 +294,8 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Bollate Centro FN",
-            new String[]{"S1", "S3", "S13", "RE13", "z130"},
-            new String[]{"z130"},
+            new String[]{"S1", "S3", "S13", "RE13", "z121", "z130"},
+            new String[]{"z121", "z130"},
             "train.side.front.car"
         ));
 
