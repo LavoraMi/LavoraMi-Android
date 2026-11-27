@@ -641,7 +641,7 @@ public class LinesActivity extends AppCompatActivity {
         // AIRPULLMAN
         String[] airPullmanLines = {"z110", "z111", "z112", "z113", "z114", "z115",
                 "z116", "z117", "z119", "z120", "z121", "z122",
-                "z130", "z150", "z160", "z161", "z163", "z165", "z166"};
+                "z130", "z150", "z160", "z161", "z163", "z166"};
         for (String line : airPullmanLines) {
             aggiungiLinea(containerAirPullman, line, R.color.BUS, "AirPullman");
         }
