@@ -225,7 +225,7 @@ public class StationDB {
         interchanges.add(new InterchangeInfo(
             "Cesano Maderno FN",
             new String[]{"S2", "S4", "S9", "R16", "z115", "z116", "z117", "z150", "z209", "z250", "z251"},
-            new String[]{"z209", "z250", "z251", "z116"},
+            new String[]{"z209", "z250", "z251", "z116", "z163"},
             "train.side.front.car"
         ));
 
