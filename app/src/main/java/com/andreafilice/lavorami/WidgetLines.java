@@ -92,7 +92,7 @@ public class WidgetLines extends AppWidgetProvider {
             "z233", "z234", "z250", "z251"};
     private static final String[] AIRPULLMAN_LINES = {"z110", "z111", "z112", "z113", "z114", "z115",
             "z116", "z117", "z119", "z120", "z121", "z122",
-            "z130", "z150", "z160", "z161", "z163", "z165", "z166"};
+            "z130", "z150", "z160", "z161", "z163", "z166"};
     private static final int[] METRO_COLORS = {R.color.M1, R.color.M2, R.color.M3, R.color.M4, R.color.M5};
     private static final int[] SUBURBAN_COLORS = {
             R.color.S1, R.color.S2, R.color.S3, R.color.S4, R.color.S5,
