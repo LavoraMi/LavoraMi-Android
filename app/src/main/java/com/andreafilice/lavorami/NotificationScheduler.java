@@ -101,11 +101,6 @@ public class NotificationScheduler {
                                 isMatch = true;
                             }
                             break;
-                        case "AirPullman":
-                            if (event.company != null && event.company.toLowerCase().contains("airpullman")) {
-                                isMatch = true;
-                            }
-                            break;
                         case "Bus":
                             for (String line : event.lines) {
                                 boolean isTram  = line.matches("^([1-9]|[1-2][0-9]|3[0-3])$");
