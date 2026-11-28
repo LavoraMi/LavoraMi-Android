@@ -522,4 +522,5 @@
     <string name="noLinesSelectedDepsEmptyScreen">No has introducido ninguna línea en “Tus líneas”. Para añadir una, ¡haz clic en el icono del corazón de la esquina superior derecha!</string>
     <string name="orariModificatiTitle">HORARIOS MODIFICADOS</string>
     <string name="orariModificatiDeps">%s, la empresa que gestiona esta línea, ha informado de un periodo en el que, debido a días festivos o obras en el trayecto, los horarios de los servicios pueden sufrir variaciones o estos pueden ser suspendidos.</string>
+    <string name="lineaCircolare">Circular</string>
 </resources>

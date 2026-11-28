@@ -2359,7 +2359,7 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z130": return "Limbiate - Bollate Centro FN";
             case "Z150": return "Cantù - Comasina M3";
             case "Z160": return "Saronno FN - Camnago - Lentate FS";
-            case "Z161": return "Saronno FN (Circolare)";
+            case "Z161": return String.format("Saronno FN (%s)", context.getString(R.string.lineaCircolare));
             case "Z163": return "Lazzate - Limbiate (Mombello)";
             case "Z166": return "Seregno FS - Lentate S. Seveso (Copreno)";
             default:
