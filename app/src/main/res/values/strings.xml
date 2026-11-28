@@ -519,4 +519,6 @@
     <string name="buttonGoToLines">Mostra le linee</string>
     <string name="noLinesSelectedEmptyScreen">Nessuna linea selezionata</string>
     <string name="noLinesSelectedDepsEmptyScreen">Non hai inserito nessuna linea tra \"Le tue linee\". Per aggiungerne una, clicca sull\'icona del cuore in alto a destra!</string>
+    <string name="orariModificatiTitle">ORARI MODIFICATI</string>
+    <string name="orariModificatiDeps">%s, che gestisce questa linea, ha dichiarato un periodo dove, per festività o cantieri sul tragitto, le corse subiscono variazioni di orario oppure sono soppresse.</string>
 </resources>

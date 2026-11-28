@@ -520,4 +520,6 @@
     <string name="buttonGoToLines">Show the lines</string>
     <string name="noLinesSelectedEmptyScreen">No line selected</string>
     <string name="noLinesSelectedDepsEmptyScreen">You haven’t added any lines under “Your lines”. To add one, click on the heart icon in the top right-hand corner!</string>
+    <string name="orariModificatiTitle">MODIFIED TIMETABLES</string>
+    <string name="orariModificatiDeps">%s, which operates this route, has announced a period during which, due to public holidays or roadworks along the route, services may be subject to timetable changes or may be cancelled.</string>
 </resources>

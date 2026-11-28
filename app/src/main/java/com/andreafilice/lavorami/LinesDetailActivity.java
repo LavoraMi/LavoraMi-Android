@@ -2857,7 +2857,7 @@ public class LinesDetailActivity extends AppCompatActivity {
                 calcolaModificheOrarie();
 
                 holder.orariModificatiBanner.setVisibility((workContainingTimetablesModifications) ? View.VISIBLE : View.GONE);
-                holder.txtModifiedTimetableDeps.setText(String.format("%s, che gestisce questa linea, ha dichiarato un periodo dove, per festività o cantieri sul tragitto, le corse subiscono variazioni di orario oppure sono soppresse.", tipoDiLinea.split(" ")[0]));
+                holder.txtModifiedTimetableDeps.setText(String.format(getString(R.string.orariModificatiDeps), tipoDiLinea.split(" ")[0]));
             }
         }
 

@@ -137,7 +137,7 @@ public class StopDetailsActivity extends AppCompatActivity{
                     LinearLayout orariModificatiBanner = findViewById(R.id.orariModificatiBanner);
 
                     orariModificatiBanner.setVisibility((workContainingTimetablesModifications) ? View.VISIBLE : View.GONE);
-                    txtModifiedTimetableDeps.setText(String.format("%s, che gestisce questa linea, ha dichiarato un periodo dove, per festività o cantieri sul tragitto, le corse subiscono variazioni di orario oppure sono soppresse.", "ATM"));
+                    txtModifiedTimetableDeps.setText(String.format(getString(R.string.orariModificatiDeps), "ATM"));
 
                     findViewById(R.id.strikeNowBanner).setVisibility((isATMInStrike && cdnResponse.isStrikeEnabled() && cdnResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
                     findViewById(R.id.viewDividerStrikeBanner).setVisibility((isATMInStrike && cdnResponse.isStrikeEnabled() && cdnResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
