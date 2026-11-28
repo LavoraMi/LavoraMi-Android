@@ -238,7 +238,7 @@ public class LinesActivity extends AppCompatActivity {
             "https://stavautolinee.it/reti-servite/",
             "https://starmobility.it/orari-autobus/",
             "https://autoguidovie.it/it/avvisi",
-            "https://www.airpullman.com"
+            "https://www.airpullmanspa.com/percorsi-ed-orari.html"
         };
 
         for (int i = 0; i < infoButtons.length; i++) {

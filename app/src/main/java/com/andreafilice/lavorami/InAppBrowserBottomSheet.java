@@ -73,7 +73,8 @@ public class InAppBrowserBottomSheet extends BottomSheetDialogFragment {
         "buymeacoffee.com",
         "comune.milano.it",
         "company.sbb.ch",
-        "nordesttrasporti.it"
+        "nordesttrasporti.it",
+        "airpullmanspa.com"
     };
 
     public static InAppBrowserBottomSheet newInstance(String url) {
