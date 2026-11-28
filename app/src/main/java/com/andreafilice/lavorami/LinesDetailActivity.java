@@ -2301,9 +2301,9 @@ public class LinesDetailActivity extends AppCompatActivity {
             case "Z117": return "Saronno FN - Cesano Maderno FN";
             case "Z119": return "Saronno FN - Limbiate (Mombello)";
             case "Z120": return "Garbagnate M.Se (Ospedale) - Rho FS";
-            case "Z121": return "Bollate FN - Rho FS";
+            case "Z121": return "Bollate Centro FN - Rho FS";
             case "Z122": return "Rho FS - Garbagnate M.Se FN";
-            case "Z130": return "Limbiate - Bollate FN";
+            case "Z130": return "Limbiate - Bollate Centro FN";
             case "Z150": return "Cantù - Comasina M3";
             case "Z160": return "Saronno FN - Camnago - Lentate FS";
             case "Z161": return "Saronno FN (Circolare)";
