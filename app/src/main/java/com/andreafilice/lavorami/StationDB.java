@@ -287,14 +287,14 @@ public class StationDB {
 
         interchanges.add(new InterchangeInfo(
             "Saronno FN",
-            new String[]{"S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "RE13", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"},
+            new String[]{"S1", "S3", "S9", "R17", "R22", "R27", "RE1", "RE7", "MXP1", "MXP2", "z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"},
             new String[]{"z110", "z111", "z112", "z113", "z114", "z115", "z117", "z119", "z160", "z161"},
             "train.side.front.car"
         ));
 
         interchanges.add(new InterchangeInfo(
             "Bollate Centro FN",
-            new String[]{"S1", "S3", "S13", "RE13", "z121", "z130"},
+            new String[]{"S1", "S3", "S13", "z121", "z130"},
             new String[]{"z121", "z130"},
             "train.side.front.car"
         ));
