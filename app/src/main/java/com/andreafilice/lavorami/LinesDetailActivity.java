@@ -155,6 +155,7 @@ public class LinesDetailActivity extends AppCompatActivity {
     private boolean mapAlreadyLoaded = false;
     private boolean strikeFetchAttempted = false;
     private boolean modalitaRitorno = false;
+    boolean workContainingTimetablesModifications = false;
     private TextView txtDirezioneMappa;
     private List<MetroStation> ultimeStazioniDisegnate;
     private Map<String, String> dizionarioAbbreviazioni = Map.of(
@@ -1140,7 +1141,6 @@ public class LinesDetailActivity extends AppCompatActivity {
         emptyView.setVisibility(View.GONE);
 
         if (EventData.listaEventiCompleta.isEmpty()) {
-
             emptyView.setVisibility(View.VISIBLE);
             ((TextView) findViewById(R.id.emptyView)).setText(getString(R.string.loadingDataInProgress));
             ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(R.drawable.ic_info);
@@ -1318,6 +1318,59 @@ public class LinesDetailActivity extends AppCompatActivity {
         ((ImageView) findViewById(R.id.emptyViewIcon)).setImageResource(!manager.isConnected() ? R.drawable.ic_no_wifi_connection : R.drawable.ic_info);
 
         aggiornaInfoSuperiori();
+    }
+
+    private String getCompanyName() {
+        if (tipoDiLinea == null) return "";
+        int firstSpace = tipoDiLinea.indexOf(" ");
+
+        return (firstSpace > 0 ? tipoDiLinea.substring(0, firstSpace) : tipoDiLinea).trim();
+    }
+
+    private boolean isModificaOraria(EventDescriptor evento) {
+        if (evento == null || evento.getTitle() == null || evento.getCompany() == null) return false;
+
+        boolean titoloOk = evento.getTitle().toLowerCase(Locale.ROOT).contains("modifica oraria");
+        String company = evento.getCompany().trim().toLowerCase(Locale.ROOT);
+        String mine = getCompanyName().toLowerCase(Locale.ROOT);
+
+        boolean compagniaOk = !mine.isEmpty() && (company.contains(mine) || mine.contains(company));
+        return titoloOk && compagniaOk;
+    }
+
+    private void calcolaModificheOrarie() {
+        workContainingTimetablesModifications = false;
+        if (nomeLinea == null || EventData.listaEventiCompleta == null) return;
+
+        String searchTag = nomeLinea.matches("9[0-3]") ? "FILOBUS " + nomeLinea.trim() : nomeLinea.trim().toUpperCase();
+
+        for (EventDescriptor evento : EventData.listaEventiCompleta) {
+            if (evento.getLines() == null) continue;
+            if (!isAttivoOggi(evento)) continue;
+
+            for (String lineInEvent : evento.getLines()) {
+                if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag) && isModificaOraria(evento)) {
+                    workContainingTimetablesModifications = true;
+                    return;
+                }
+            }
+        }
+    }
+
+    private boolean isAttivoOggi(EventDescriptor evento) {
+        long start = evento.getStartDateMillis();
+        long end = evento.getEndDateMillis();
+        if (start <= 0 || end <= 0) return false;
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        long inizioGiornata = cal.getTimeInMillis();
+        long fineGiornata = inizioGiornata + 86400000L - 1;
+
+        return start <= fineGiornata && end >= inizioGiornata;
     }
 
     private void mostraErroreCaricamento() {
@@ -2798,6 +2851,13 @@ public class LinesDetailActivity extends AppCompatActivity {
                 boolean isCompanyInStrike = strikeCDNResponse.getStrikeCompanies().contains(tipoDiLinea.substring(0, firstEmptySpace));
 
                 holder.strikeNowBanner.setVisibility((isCompanyInStrike && strikeCDNResponse.isStrikeEnabled() && strikeCDNResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
+
+                //*MODIFIED TIMETABLES
+                /// Update the modified TimeTable banner visibility and text
+                calcolaModificheOrarie();
+
+                holder.orariModificatiBanner.setVisibility((workContainingTimetablesModifications) ? View.VISIBLE : View.GONE);
+                holder.txtModifiedTimetableDeps.setText(String.format("%s, che gestisce questa linea, ha dichiarato un periodo dove, per festività o cantieri sul tragitto, le corse subiscono variazioni di orario oppure sono soppresse.", tipoDiLinea.split(" ")[0]));
             }
         }
 
@@ -2820,11 +2880,11 @@ public class LinesDetailActivity extends AppCompatActivity {
         public int getItemCount() {return directions.size();}
 
         class ArrivalsView extends RecyclerView.ViewHolder {
-            TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals, txtBusDisclaimer;
+            TextView txtDirectionHeadsign, txtFirstMins, txtFirstTime, nextArrivals, txtBusDisclaimer, txtModifiedTimetableDeps;
             ImageView iconFirstClock;
             View dividerArrivi;
             FlexboxLayout containerOtherDepartures;
-            LinearLayout strikeNowBanner;
+            LinearLayout strikeNowBanner, orariModificatiBanner;
             MaterialButton btnViewAllArrivals;
 
             ArrivalsView(View view) {
@@ -2835,10 +2895,12 @@ public class LinesDetailActivity extends AppCompatActivity {
                 txtFirstMins = view.findViewById(R.id.txtFirstMins);
                 txtFirstTime = view.findViewById(R.id.txtFirstTime);
                 txtBusDisclaimer = view.findViewById(R.id.txtBusDisclaimer);
+                txtModifiedTimetableDeps = view.findViewById(R.id.orariModificatiDeps);
                 dividerArrivi = view.findViewById(R.id.dividerArrivi);
                 containerOtherDepartures = view.findViewById(R.id.containerOtherDepartures);
                 nextArrivals = view.findViewById(R.id.nextArrivals);
                 strikeNowBanner = view.findViewById(R.id.strikeNowBanner);
+                orariModificatiBanner = view.findViewById(R.id.orariModificatiBanner);
                 btnViewAllArrivals = view.findViewById(R.id.btnViewAllArrivals);
             }
         }

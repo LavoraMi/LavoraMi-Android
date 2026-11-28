@@ -36,8 +36,10 @@ import com.mapbox.geojson.Point;
 import com.mapbox.maps.MapView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -50,6 +52,7 @@ public class StopDetailsActivity extends AppCompatActivity{
     private String[] stazioniChiuse;
     private MapView pendingMapView;
     private boolean mapAlreadyLoaded = false;
+    private boolean workContainingTimetablesModifications = false;
     private boolean stationClosed = false;
     private MapView mapViewRef;
     private int coloreLinea;
@@ -127,6 +130,15 @@ public class StopDetailsActivity extends AppCompatActivity{
                     /// Update Strike banner visibility
                     boolean isATMInStrike = cdnResponse.getStrikeCompanies().contains("ATM");
 
+                    //*MODIFIED TIMETABLES
+                    /// Update the modified TimeTable banner visibility and text
+                    calcolaModificheOrarie();
+                    TextView txtModifiedTimetableDeps = findViewById(R.id.orariModificatiDeps);
+                    LinearLayout orariModificatiBanner = findViewById(R.id.orariModificatiBanner);
+
+                    orariModificatiBanner.setVisibility((workContainingTimetablesModifications) ? View.VISIBLE : View.GONE);
+                    txtModifiedTimetableDeps.setText(String.format("%s, che gestisce questa linea, ha dichiarato un periodo dove, per festività o cantieri sul tragitto, le corse subiscono variazioni di orario oppure sono soppresse.", "ATM"));
+
                     findViewById(R.id.strikeNowBanner).setVisibility((isATMInStrike && cdnResponse.isStrikeEnabled() && cdnResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
                     findViewById(R.id.viewDividerStrikeBanner).setVisibility((isATMInStrike && cdnResponse.isStrikeEnabled() && cdnResponse.isStrikeToday()) ? View.VISIBLE : View.GONE);
                 }
@@ -148,6 +160,52 @@ public class StopDetailsActivity extends AppCompatActivity{
             pendingMapView = mapViewReady;
             checkIfReadyToLoadMap();
         });
+    }
+
+    private boolean isModificaOraria(EventDescriptor evento) {
+        if (evento == null || evento.getTitle() == null || evento.getCompany() == null) return false;
+
+        boolean titoloOk = evento.getTitle().toLowerCase(Locale.ROOT).contains("modifica oraria");
+        String company = evento.getCompany().trim().toLowerCase(Locale.ROOT);
+        String mine = "ATM";
+
+        boolean compagniaOk = !mine.isEmpty() && (company.contains(mine) || mine.contains(company));
+        return titoloOk && compagniaOk;
+    }
+
+    private void calcolaModificheOrarie() {
+        workContainingTimetablesModifications = false;
+        if (nomeLinea == null || EventData.listaEventiCompleta == null) return;
+
+        String searchTag = nomeLinea.matches("9[0-3]") ? "FILOBUS " + nomeLinea.trim() : nomeLinea.trim().toUpperCase();
+
+        for (EventDescriptor evento : EventData.listaEventiCompleta) {
+            if (evento.getLines() == null) continue;
+            if (!isAttivoOggi(evento)) continue;
+
+            for (String lineInEvent : evento.getLines()) {
+                if (lineInEvent != null && lineInEvent.trim().toUpperCase().equals(searchTag) && isModificaOraria(evento)) {
+                    workContainingTimetablesModifications = true;
+                    return;
+                }
+            }
+        }
+    }
+
+    private boolean isAttivoOggi(EventDescriptor evento) {
+        long start = evento.getStartDateMillis();
+        long end = evento.getEndDateMillis();
+        if (start <= 0 || end <= 0) return false;
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        long inizioGiornata = cal.getTimeInMillis();
+        long fineGiornata = inizioGiornata + 86400000L - 1;
+
+        return start <= fineGiornata && end >= inizioGiornata;
     }
 
     private void aggiornaTestView() {
